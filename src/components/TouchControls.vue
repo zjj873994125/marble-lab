@@ -41,7 +41,7 @@ onBeforeUnmount(() => { reset(); window.removeEventListener('blur', reset); wind
     </button>
     <button ref="brake" type="button" class="touch-brake" :aria-pressed="value.brake" aria-label="按住刹车"
       @pointerdown.prevent="brakeDown" @pointerup="release" @pointercancel="release" @lostpointercapture="release" @contextmenu.prevent>
-      <svg class="brake-pedal" viewBox="0 0 64 68" aria-hidden="true"><path class="pedal-stem" d="M31 49 35 62h13"/><g class="pedal-face"><path d="M15 11 47 7Q52 7 53 13L57 42Q58 48 52 49L20 54Q14 55 13 49L9 20Q8 13 15 11Z"/><g class="pedal-grip"><circle cx="20" cy="22" r="3"/><circle cx="33" cy="20" r="3"/><circle cx="46" cy="18" r="3"/><circle cx="22" cy="35" r="3"/><circle cx="35" cy="33" r="3"/><circle cx="48" cy="31" r="3"/><path d="m26 46 20-3"/></g></g></svg><span class="brake-label">刹车</span>
+      <svg class="brake-pedal" viewBox="0 0 64 68" aria-hidden="true"><path class="pedal-stem" d="M31 49 35 62h13"/><g class="pedal-face"><path d="M15 11 47 7Q52 7 53 13L57 42Q58 48 52 49L20 54Q14 55 13 49L9 20Q8 13 15 11Z"/><g class="pedal-grip"><circle cx="20" cy="22" r="3"/><circle cx="33" cy="20" r="3"/><circle cx="46" cy="18" r="3"/><circle cx="22" cy="35" r="3"/><circle cx="35" cy="33" r="3"/><circle cx="48" cy="31" r="3"/><path d="m26 46 20-3"/></g></g></svg>
     </button>
   </div>
 </template>
@@ -53,10 +53,9 @@ onBeforeUnmount(() => { reset(); window.removeEventListener('blur', reset); wind
 .stick-axis { position: absolute; inset: 18px; border: 1px solid #edf0e878; border-radius: 50%; &:before, &:after { content: ''; position: absolute; background: #e5eadc85; } &:before { top: 50%; left: 0; width: 100%; height: 1px; } &:after { left: 50%; top: 0; height: 100%; width: 1px; } }
 .stick-knob { position: absolute; left: 39px; top: 39px; width: 48px; height: 48px; border-radius: 50%; background: #fbfaf1eb; border: 1px solid #ffffffb3; box-shadow: 0 3px 10px #123e3d33; }
 .active .stick-knob { background: #f7b38c; }
-.touch-brake { right: max(24px, calc(env(safe-area-inset-right) + 12px)); bottom: max(24px, calc(env(safe-area-inset-bottom) + 12px)); width: 96px; height: 96px; border-radius: 24px; background: #163e443d; border-color: #f4f6e887; color: #f6f6e8; box-shadow: inset 0 0 0 3px #fcfcef0d, 0 4px 18px #123e3d26; font: inherit; &[aria-pressed='true'] { background: #5f493d66; border-color: #ffb276; box-shadow: inset 0 0 0 2px #f28b5759, 0 0 16px #ee914c33; .pedal-face { transform: translateY(3px); >path { fill: #f1a679bd; stroke: #ffe0b9; } } .brake-label { color: #ffd4a9; } } }
-.brake-pedal { position: absolute; width: 60px; height: 64px; left: 17px; top: 8px; overflow: visible; }
+.touch-brake { right: max(24px, calc(env(safe-area-inset-right) + 12px)); bottom: max(24px, calc(env(safe-area-inset-bottom) + 12px)); width: 88px; height: 88px; border: 0; border-radius: 0; background: transparent; box-shadow: none; &[aria-pressed='true'] .pedal-face { transform: translateY(2px); >path { fill: #f1a679bd; stroke: #ffe0b9; } } }
+.brake-pedal { position: absolute; width: 44px; height: 48px; left: 21px; top: 20px; overflow: visible; filter: drop-shadow(0 1px 2px #173d4380); }
 .pedal-stem { fill: none; stroke: #f4f4eac9; stroke-width: 3; stroke-linecap: round; }
 .pedal-face { >path { fill: #f4f3e547; stroke: #fafbeaeb; stroke-width: 2; } }
 .pedal-grip { fill: #173d43d6; stroke: #173d43d6; stroke-width: 2; stroke-linecap: round; }
-.brake-label { position: absolute; bottom: 7px; left: 0; right: 0; font-size: 10px; letter-spacing: 2px; color: #f4f5e8d9; }
 </style>

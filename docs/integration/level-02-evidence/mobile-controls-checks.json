@@ -1,0 +1,603 @@
+{
+  "checks": [
+    {
+      "label": "chrome-ready",
+      "t": 0.3748999999999944,
+      "phase": "playing",
+      "level": "water-rush",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 0,
+        "z": 0,
+        "brake": false
+      },
+      "p": [
+        -30.00377082824707,
+        3.825000047683716,
+        17.999813079833984
+      ],
+      "speed": 0.023044223923804424,
+      "size": [
+        844,
+        390
+      ],
+      "scroll": [
+        844,
+        390
+      ]
+    },
+    {
+      "label": "stick-only",
+      "t": 38.67090000000067,
+      "phase": "playing",
+      "level": "water-rush",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 1,
+        "z": 0,
+        "brake": false
+      },
+      "p": [
+        -29.31012535095215,
+        3.825000047683716,
+        17.99983787536621
+      ],
+      "speed": 3.469503164291382,
+      "size": [
+        844,
+        390
+      ],
+      "scroll": [
+        844,
+        390
+      ]
+    },
+    {
+      "label": "both-fingers",
+      "t": 39.27870000000071,
+      "phase": "playing",
+      "level": "water-rush",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 1,
+        "z": 0,
+        "brake": true
+      },
+      "p": [
+        -27.740253448486328,
+        3.8249998092651367,
+        17.999820709228516
+      ],
+      "speed": 1.755700726017111,
+      "size": [
+        844,
+        390
+      ],
+      "scroll": [
+        844,
+        390
+      ]
+    },
+    {
+      "label": "stick-finger-up-brake-held",
+      "t": 39.521100000000764,
+      "phase": "playing",
+      "level": "water-rush",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 0,
+        "z": 0,
+        "brake": true
+      },
+      "p": [
+        -27.452037811279297,
+        3.8249998092651367,
+        17.99985694885254
+      ],
+      "speed": 0.5741710677961578,
+      "size": [
+        844,
+        390
+      ],
+      "scroll": [
+        844,
+        390
+      ]
+    },
+    {
+      "label": "all-up",
+      "t": 39.62090000000076,
+      "phase": "playing",
+      "level": "water-rush",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 0,
+        "z": 0,
+        "brake": false
+      },
+      "p": [
+        -27.404422760009766,
+        3.8249998092651367,
+        17.99985694885254
+      ],
+      "speed": 0.3664096305488006,
+      "size": [
+        844,
+        390
+      ],
+      "scroll": [
+        844,
+        390
+      ]
+    },
+    {
+      "label": "restart-two-fingers",
+      "t": 0.7259000000000232,
+      "phase": "playing",
+      "level": "water-rush",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 1,
+        "z": 0,
+        "brake": true
+      },
+      "p": [
+        -29.733327865600586,
+        3.825000047683716,
+        17.999818801879883
+      ],
+      "speed": 1.2921202183728775,
+      "size": [
+        844,
+        390
+      ],
+      "scroll": [
+        844,
+        390
+      ]
+    },
+    {
+      "label": "brake-up-stick-still-held",
+      "t": 1.159200000000011,
+      "phase": "playing",
+      "level": "water-rush",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 1,
+        "z": 0,
+        "brake": false
+      },
+      "p": [
+        -28.456649780273438,
+        3.825000047683716,
+        17.999818801879883
+      ],
+      "speed": 4.6834087371887385,
+      "size": [
+        844,
+        390
+      ],
+      "scroll": [
+        844,
+        390
+      ]
+    },
+    {
+      "label": "drag-outside-capture",
+      "t": 1.2167000000000114,
+      "phase": "playing",
+      "level": "water-rush",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 1,
+        "z": 0,
+        "brake": false
+      },
+      "p": [
+        -28.173982620239258,
+        3.8249998092651367,
+        17.999818801879883
+      ],
+      "speed": 5.143806934364745,
+      "size": [
+        844,
+        390
+      ],
+      "scroll": [
+        844,
+        390
+      ]
+    },
+    {
+      "label": "outside-finger-up",
+      "t": 1.2587000000000113,
+      "phase": "playing",
+      "level": "water-rush",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 0,
+        "z": 0,
+        "brake": false
+      },
+      "p": [
+        -27.95138931274414,
+        3.8249998092651367,
+        17.999820709228516
+      ],
+      "speed": 5.398845691972368,
+      "size": [
+        844,
+        390
+      ],
+      "scroll": [
+        844,
+        390
+      ]
+    },
+    {
+      "label": "touch-cancel-cleared",
+      "t": 1.5841000000000052,
+      "phase": "playing",
+      "level": "water-rush",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 0,
+        "z": 0,
+        "brake": false
+      },
+      "p": [
+        -26.236345291137695,
+        3.8249995708465576,
+        18.00010871887207
+      ],
+      "speed": 5.15379317606981,
+      "size": [
+        844,
+        390
+      ],
+      "scroll": [
+        844,
+        390
+      ]
+    },
+    {
+      "label": "paused-while-held",
+      "t": 1.6341000000000052,
+      "phase": "paused",
+      "level": "water-rush",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 0,
+        "z": 0,
+        "brake": false
+      },
+      "p": [
+        -25.979549407958984,
+        3.8249995708465576,
+        18.000137329101562
+      ],
+      "speed": 5.118433196995324,
+      "size": [
+        844,
+        390
+      ],
+      "scroll": [
+        844,
+        390
+      ]
+    },
+    {
+      "label": "portrait-paused",
+      "t": 1.8341000000000054,
+      "phase": "paused",
+      "level": "water-rush",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 0,
+        "z": 0,
+        "brake": false
+      },
+      "p": [
+        -24.969846725463867,
+        3.8249995708465576,
+        18.0002498626709
+      ],
+      "speed": 4.979657748749511,
+      "size": [
+        390,
+        844
+      ],
+      "scroll": [
+        390,
+        844
+      ]
+    },
+    {
+      "label": "portrait-time-frozen",
+      "t": 1.8341000000000054,
+      "phase": "paused",
+      "level": "water-rush",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 0,
+        "z": 0,
+        "brake": false
+      },
+      "p": [
+        -24.969846725463867,
+        3.8249995708465576,
+        18.0002498626709
+      ],
+      "speed": 4.979657748749511,
+      "size": [
+        390,
+        844
+      ],
+      "scroll": [
+        390,
+        844
+      ]
+    },
+    {
+      "label": "landscape-awaits-continue",
+      "t": 1.8341000000000054,
+      "phase": "paused",
+      "level": "water-rush",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 0,
+        "z": 0,
+        "brake": false
+      },
+      "p": [
+        -24.969846725463867,
+        3.8249995708465576,
+        18.0002498626709
+      ],
+      "speed": 4.979657748749511,
+      "size": [
+        844,
+        390
+      ],
+      "scroll": [
+        844,
+        390
+      ]
+    },
+    {
+      "label": "first-level-740-start",
+      "t": 0.26750000000000007,
+      "phase": "playing",
+      "level": "initial-gravity",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 0,
+        "z": 0,
+        "brake": false
+      },
+      "p": [
+        -10,
+        3.825000047683716,
+        7
+      ],
+      "speed": 0.000004491610980039695,
+      "size": [
+        740,
+        360
+      ],
+      "scroll": [
+        740,
+        360
+      ]
+    },
+    {
+      "label": "first-level-touch-forward",
+      "t": 0.9425000000000006,
+      "phase": "playing",
+      "level": "initial-gravity",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 0,
+        "z": -0.8863636363636364,
+        "brake": false
+      },
+      "p": [
+        -10,
+        3.825000047683716,
+        6.257007122039795
+      ],
+      "speed": 3.3161876201630345,
+      "size": [
+        740,
+        360
+      ],
+      "scroll": [
+        740,
+        360
+      ]
+    },
+    {
+      "label": "first-level-touch-turn-and-brake",
+      "t": 1.3833000000000475,
+      "phase": "playing",
+      "level": "initial-gravity",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 0.4808839455002981,
+        "z": -0.5770607346003578,
+        "brake": true
+      },
+      "p": [
+        -9.848676681518555,
+        3.825000047683716,
+        5.166197776794434
+      ],
+      "speed": 1.4333677499444972,
+      "size": [
+        740,
+        360
+      ],
+      "scroll": [
+        740,
+        360
+      ]
+    }
+  ],
+  "events": [
+    {
+      "type": "pointerdown",
+      "id": 2,
+      "trusted": true,
+      "target": "移动摇杆"
+    },
+    {
+      "type": "pointerdown",
+      "id": 3,
+      "trusted": true,
+      "target": "按住刹车"
+    },
+    {
+      "type": "pointerup",
+      "id": 2,
+      "trusted": true,
+      "target": "移动摇杆"
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 2,
+      "trusted": true,
+      "target": "移动摇杆"
+    },
+    {
+      "type": "pointerup",
+      "id": 3,
+      "trusted": true,
+      "target": "按住刹车"
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 3,
+      "trusted": true,
+      "target": "按住刹车"
+    },
+    {
+      "type": "pointerdown",
+      "id": 4,
+      "trusted": true,
+      "target": "移动摇杆"
+    },
+    {
+      "type": "pointerdown",
+      "id": 5,
+      "trusted": true,
+      "target": "按住刹车"
+    },
+    {
+      "type": "pointerup",
+      "id": 5,
+      "trusted": true,
+      "target": "按住刹车"
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 5,
+      "trusted": true,
+      "target": "按住刹车"
+    },
+    {
+      "type": "pointermove",
+      "id": 4,
+      "trusted": true,
+      "target": "移动摇杆"
+    },
+    {
+      "type": "pointerup",
+      "id": 4,
+      "trusted": true,
+      "target": "移动摇杆"
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 4,
+      "trusted": true,
+      "target": "移动摇杆"
+    },
+    {
+      "type": "pointerdown",
+      "id": 12,
+      "trusted": true,
+      "target": "按住刹车"
+    },
+    {
+      "type": "pointerup",
+      "id": 12,
+      "trusted": true,
+      "target": "按住刹车"
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 12,
+      "trusted": true,
+      "target": "按住刹车"
+    },
+    {
+      "type": "pointerdown",
+      "id": 13,
+      "trusted": true,
+      "target": "移动摇杆"
+    },
+    {
+      "type": "pointerdown",
+      "id": 14,
+      "trusted": true,
+      "target": "按住刹车"
+    },
+    {
+      "type": "pointermove",
+      "id": 13,
+      "trusted": true,
+      "target": "移动摇杆"
+    },
+    {
+      "type": "pointerup",
+      "id": 13,
+      "trusted": true,
+      "target": "移动摇杆"
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 13,
+      "trusted": true,
+      "target": "移动摇杆"
+    },
+    {
+      "type": "pointerup",
+      "id": 14,
+      "trusted": true,
+      "target": "按住刹车"
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 14,
+      "trusted": true,
+      "target": "按住刹车"
+    }
+  ]
+}

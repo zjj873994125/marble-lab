@@ -1,20 +1,21 @@
 {
   "status": "passed",
-  "layout_sha256": "180d7ca0dafda9057fe043a429b7c0a0ac39832cb79cf66110e1adbff73d2855",
+  "layout_sha256": "eb9aa5d196407af67d5d50ec9137734522006c371e55f17ba1c57d8c7bb9bd53",
   "layout_synced": true,
-  "source_sha256": "1bf0bad811f998ac50e11da38712989a56aee93571440323fff641fabb48755d",
+  "asset_geometry_source_sha256": "d23759cb2f79dc11cc1b7138f12123c3a4aa6fb3394d532c0f1225050b5f1ed4",
+  "source_sha256": "9458eded8a2213cbaa9cbcb53052917fda78b3cb0816fb53bf52f8cff212d7e0",
   "assets": [
     {
       "file": "water-rush-track.glb",
       "node": "TrackStatic",
-      "sha256": "cadc68dfb2fc18009458f8219f70925312fb61b85ba2f6e80366a6113f161589",
-      "bytes": 1610872,
-      "triangles": 70313,
+      "sha256": "72b738df516f2f2854d3b126bce9342f22eed6e720aeca4bae3fba217433195a",
+      "bytes": 2620592,
+      "triangles": 106474,
       "materials": 5,
       "bounds_min": [
         -32.040000915527344,
         -0.39999985694885254,
-        -12.370000839233398
+        -28.37000274658203
       ],
       "bounds_max": [
         22.439998626708984,
@@ -24,13 +25,13 @@
       "dimensions_xyz_m": [
         54.47999954223633,
         8.420000314712524,
-        33.69500160217285
+        49.695003509521484
       ]
     },
     {
       "file": "water-rush-turntable.glb",
       "node": "TurntableVisual",
-      "sha256": "edb71c6e97280f1236d776168e7a428d8697400d88abd90881397a74812fd4d9",
+      "sha256": "9333a0f8277158ade0c72f1089fc2c6586fefc75ab865f9e19bf82c706db1fed",
       "bytes": 60360,
       "triangles": 1764,
       "materials": 4,
@@ -53,13 +54,13 @@
     {
       "file": "water-rush-lift.glb",
       "node": "LiftVisual",
-      "sha256": "cbc2c00b323692f3e51013d5c4d16e6fb3408a0beec2c996ec7b63200ed254e5",
+      "sha256": "70cd31683b429b47553d3f534170fc877931c2652de033387b7e9dfaf59d0ff1",
       "bytes": 20744,
       "triangles": 968,
       "materials": 4,
       "bounds_min": [
         -1.600000023841858,
-        -1.5800000429153442,
+        -2.4499998092651367,
         -1.399999976158142
       ],
       "bounds_max": [
@@ -69,7 +70,7 @@
       ],
       "dimensions_xyz_m": [
         3.200000047683716,
-        1.7439999878406525,
+        2.613999754190445,
         2.799999952316284
       ]
     }
@@ -114,7 +115,7 @@
   ],
   "first_level_unchanged": true,
   "physics_playtest_verified_by_art": false,
-  "cross_radius": 4.096733452779173,
+  "cross_radius": 4.058229294072272,
   "cross_void_probe_hits": [
     0,
     0,
@@ -122,5 +123,67 @@
     0
   ],
   "central_support_radius": 0.5240048834639411,
+  "source_geometry_validation": {
+    "source_sha256": "9458eded8a2213cbaa9cbcb53052917fda78b3cb0816fb53bf52f8cff212d7e0",
+    "layout_sha256": "eb9aa5d196407af67d5d50ec9137734522006c371e55f17ba1c57d8c7bb9bd53",
+    "controls_checked": 63,
+    "max_control_error_m": 1.9073486345888568e-07,
+    "max_endpoint_error_m": 1.966049969490843e-06,
+    "bridge_widths_m": {
+      "narrow-bridge Graphite chassis control": 0.8600006103515625,
+      "narrow-bridge Recessed orange gasket control": 0.8899993896484375,
+      "narrow-bridge support 1 mounting flange": 0.7400016784667969,
+      "narrow-bridge support 2 mounting flange": 0.7400016784667969
+    },
+    "lifts": [
+      {
+        "id": "lift-1",
+        "stem_low_y": -0.10999991893768313,
+        "belly_sleeve_gap": 0.11000022888183603,
+        "stem_foot_gap": 0.060000082850456216,
+        "high_insertion": 0.15999982357025155,
+        "radial_clearance": 0.019541535111125358,
+        "sleeve_bottom_y": -0.18000000715255737,
+        "sleeve_top_y": 1.8499999046325684
+      },
+      {
+        "id": "lift-2",
+        "stem_low_y": -0.10999991893768313,
+        "belly_sleeve_gap": 0.11000022888183603,
+        "stem_foot_gap": 0.060000082850456216,
+        "high_insertion": 0.15999982357025155,
+        "radial_clearance": 0.019540620037728676,
+        "sleeve_bottom_y": -0.18000000715255737,
+        "sleeve_top_y": 1.8499999046325684
+      },
+      {
+        "id": "lift-3",
+        "stem_low_y": -0.10999991893768313,
+        "belly_sleeve_gap": 0.11000022888183603,
+        "stem_foot_gap": 0.060000082850456216,
+        "high_insertion": 0.15999982357025155,
+        "radial_clearance": 0.019541357775969256,
+        "sleeve_bottom_y": -0.18000000715255737,
+        "sleeve_top_y": 1.8499999046325684
+      },
+      {
+        "id": "lift-4",
+        "stem_low_y": -0.10999991893768313,
+        "belly_sleeve_gap": 0.11000022888183603,
+        "stem_foot_gap": 0.060000082850456216,
+        "high_insertion": 0.15999982357025155,
+        "radial_clearance": 0.019541368142091606,
+        "sleeve_bottom_y": -0.18000000715255737,
+        "sleeve_top_y": 1.8499999046325684
+      }
+    ]
+  },
+  "s_bend_surface_samples": 540,
+  "old_route_void_probe_hits": [
+    0,
+    0,
+    0,
+    0
+  ],
   "limit": "Triangle/box and stem/sleeve geometry only; transfer, ramp and rotating contact need CODE playtest"
 }

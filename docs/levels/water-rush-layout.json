@@ -1,7 +1,7 @@
 {
   "id": "water-rush",
   "name": "水上冲关",
-  "status": "challenge-first-parameters-runtime-enabled-assets-and-physics-validation-pending",
+  "status": "challenge-geometry-frozen-assets-paired-full-route-pending",
   "schemaPurpose": "Authoritative design geometry mapped into src/levels/water-rush.ts; this JSON itself is not loaded by the game. Runtime capabilities are implemented; physical playtest is pending.",
   "revisionPolicy": "Maintain this single formal file; no candidate, version, or backup copies.",
   "standardTopY": 3.4,
@@ -713,7 +713,7 @@
     ],
     "supportTopMaxY": 2.84,
     "centralSupportMaxRadius": 0.55,
-    "visualLayerNote": "Every layer follows the cross cutouts. Keep all moving geometry above Y2.90 and within radius4.15; no round under-deck or full-square slab. A .36 top plus .14 base fits the .50 body.",
+    "visualLayerNote": "Every layer follows the cross cutouts. Keep all moving geometry above Y2.90 and within radius4.11; no round under-deck or full-square slab. A .36 top plus .14 base fits the .50 body.",
     "reservedSweepBounds": {
       "min": [
         -10.11,
@@ -750,7 +750,7 @@
     ],
     "noCornerSupport": true,
     "noCoMovingBarrier": true,
-    "centerHubNote": "Hub width equals arm width1.8; do not enlarge into a waiting island. Center/arm switching may remain a skilled route, not forbidden by a hidden timer.",
+    "centerHubNote": "Hub width equals arm width1.4; do not enlarge into a waiting island. Center/arm switching may remain a skilled route, not forbidden by a hidden timer.",
     "ports": {
       "entry": {
         "tongueId": "turntable-entry-tongue",
@@ -1043,7 +1043,7 @@
       "noHiddenMinimumWait": true,
       "note": "Do not offset ports to prevent skilled fast passage. Record center-switch shortcuts as techniques if physically valid; actual carried contact and corner falls still require tests."
     },
-    "implementation": "CODE uses five synchronized non-overlapping kinematic boxes and one visual root. No cylinder/bounding hull. Actual seam crossing, contact-driven rotation and carry control await physical validation."
+    "implementation": "CODE uses five synchronized non-overlapping kinematic boxes and one visual root. Standard physical route passed; challenge full-route validation pending. No cylinder/bounding hull."
   },
   "lifts": {
     "visualAsset": "water-rush-lift.glb",
@@ -1750,7 +1750,7 @@
     "dynamicOrigins": "Cross rotation centre, lift body centres, individual hammer head centres and handle midpoints; metres/Y-up. Implemented and referenced by formal TS.",
     "turntableCollisionProtocol": "Current CODE TurntableConfig position/parts/angularSpeed/phase/visual supports five synchronized boxes; geometry-only calculations are not a gameplay pass."
   },
-  "playtestStatus": "Standard route88.1256s was completed. Challenge/S/narrow candidates not yet physically validated; do not reuse standard result.",
+  "playtestStatus": "Challenge isolated S/50degree comparison passed; ART geometry verified and matching GLB references enabled. Full challenge and runtime asset integration pending. Standard88.1256s remains historical.",
   "waitPoints": [
     {
       "id": "hammer-1-observe",
@@ -2036,7 +2036,7 @@
       ]
     },
     "topViewArtifact": "docs/levels/water-rush-top-view.png",
-    "progressNote": "A future per-stage axis estimate can use x/z/z/x; the first two stages still contain secondary-axis transitions. routeWaypoints retain the ordered full route; no precise path progress is claimed.",
+    "progressNote": "Current per-stage axis estimate uses x/z/z/x; turns and S are not measured as precise path progress. routeWaypoints retain the ordered full route.",
     "supersedes": "Older single-column/one-hammer/closed-disk routes and the withdrawn offset-port design. Current cross ports are centered and aligned.",
     "routePolylineLengthMetres": 159.32467397140687,
     "checkpointProgressAxes": [
@@ -2045,7 +2045,7 @@
       "z",
       "x"
     ],
-    "recommendedRouteDistanceIncludingRide": 160.07786361392078,
+    "recommendedRouteDistanceIncludingRide": 159.3358377202057,
     "routeMeaning": "Challenge path keeps earlier folds; final 12m straight replaced by 5m pre-run, two smooth opposite R8 arcs and .6m tangent. Reference includes carried cross arc."
   },
   "hammers": [
@@ -2133,7 +2133,7 @@
         "initialAndPreview": "Neutral reference model is centered; gameplay t=0 uses each instance phase. Restart restores individual phases, not a shared middle pose.",
         "pause": "freeze the current time and pose, do not reset to middle",
         "handleScaling": "normalized 1m handle uses constant Y scale 3.6 for all phases, never stretch per pose",
-        "replaces": "The old offset Z anchor and z-sine plus abs(offset)*lift formula; requires future CODE implementation."
+        "replaces": "The old offset Z anchor and z-sine plus abs(offset)*lift formula; CODE fixed-length arc implementation is active."
       },
       "standFootPads": [
         {
@@ -2419,7 +2419,7 @@
         "initialAndPreview": "Neutral reference model is centered; gameplay t=0 uses each instance phase. Restart restores individual phases, not a shared middle pose.",
         "pause": "freeze the current time and pose, do not reset to middle",
         "handleScaling": "normalized 1m handle uses constant Y scale 3.6 for all phases, never stretch per pose",
-        "replaces": "The old offset Z anchor and z-sine plus abs(offset)*lift formula; requires future CODE implementation."
+        "replaces": "The old offset Z anchor and z-sine plus abs(offset)*lift formula; CODE fixed-length arc implementation is active."
       },
       "standFootPads": [
         {
@@ -2705,7 +2705,7 @@
         "initialAndPreview": "Neutral reference model is centered; gameplay t=0 uses each instance phase. Restart restores individual phases, not a shared middle pose.",
         "pause": "freeze the current time and pose, do not reset to middle",
         "handleScaling": "normalized 1m handle uses constant Y scale 3.6 for all phases, never stretch per pose",
-        "replaces": "The old offset Z anchor and z-sine plus abs(offset)*lift formula; requires future CODE implementation."
+        "replaces": "The old offset Z anchor and z-sine plus abs(offset)*lift formula; CODE fixed-length arc implementation is active."
       },
       "standFootPads": [
         {
@@ -3561,15 +3561,17 @@
   },
   "runtimeIntegration": {
     "configPath": "src/levels/water-rush.ts",
-    "configSha256": null,
-    "geometrySourceSha256": "180d7ca0dafda9057fe043a429b7c0a0ac39832cb79cf66110e1adbff73d2855",
+    "configSha256": "c2d65e7344f52b3d779f7d5196293a81447665ee0e7580589d1995740ffeda69",
     "catalogPath": "src/game/levels.ts",
     "registrationVerifiedInSource": true,
-    "tests": "24/24 plus typecheck and build passed",
+    "tests": "Previous 24/24 test and build results are historical; current challenge verification recorded in water-rush.md.",
     "physicalPlaytestVerified": false,
     "previousStandardConfigSha256": "b40f12260be40dadd17ccde76e262eded0bb4bd496ade2bb205f9460aea49aca",
     "currentRule": "challenge",
-    "assetsPaired": false
+    "assetsPaired": true,
+    "previousStandardGeometrySourceSha256": "180d7ca0dafda9057fe043a429b7c0a0ac39832cb79cf66110e1adbff73d2855",
+    "assetGeometrySourceSha256": "d23759cb2f79dc11cc1b7138f12123c3a4aa6fb3394d532c0f1225050b5f1ed4",
+    "assetVerification": "docs/art/water-rush-verification.json"
   },
   "rulesVersion": "challenge",
   "sBend": {
@@ -5305,7 +5307,7 @@
     "rulesVersion": "challenge",
     "previousRule": "standard",
     "standardRecordPreserved": true,
-    "status": "first user-approved candidate, real challenge playtest pending",
+    "status": "geometry frozen after successful isolated S/50degree three-way comparison; full challenge pending",
     "changes": [
       "hammer frequencies1.8/2.3/2.8",
       "cross width1.4,omega.85",
@@ -5313,12 +5315,8 @@
       "narrow bridge width.9",
       "R8 S speed retention and50degree/4.25m slope"
     ],
-    "visualsTemporarilyDisabled": [
-      "static track",
-      "cross",
-      "lifts"
-    ],
-    "reason": "Existing GLBs still represent old dimensions; use honest base geometry until ART same-name assets are paired.",
+    "visualsTemporarilyDisabled": [],
+    "reason": "Matching same-name GLBs passed ART geometry verification and references are enabled; runtime integration/full-route checks remain pending.",
     "slopeTrial": {
       "rejected": {
         "angle": 55,
@@ -5332,7 +5330,25 @@
       "current": {
         "angle": 50,
         "length": 4.25,
-        "status": "pending same three-way physical comparison"
+        "status": "three-way physical comparison passed; geometry frozen",
+        "evidence": "docs/integration/level-02-evidence/s-50deg-short-comparison.json",
+        "fast": {
+          "sExitSpeed": 6.8759,
+          "slopeFootSpeed": 6.0672,
+          "summitBallY": 7.935739040374756,
+          "falls": 0,
+          "result": "reached-summit"
+        },
+        "braked": {
+          "sExitSpeed": 0.0842,
+          "slopeFootSpeed": 2.6829,
+          "result": "slid-back"
+        },
+        "foot": {
+          "initialSpeed": 0,
+          "result": "slid-back"
+        },
+        "scope": "isolated CP3/foot diagnostic using original controls; not full-route completion"
       },
       "evidence": "docs/integration/level-02-evidence/s-55deg-short-comparison.json",
       "reason": "S retains speed; main slope consumed too much energy. Keep S and player physics, reduce only the main slope and attached high deck."

@@ -4,8 +4,8 @@ import type { LevelConfig } from '../game/level-types'
 const level: LevelConfig = {
   id: 'water-rush',
   rulesVersion: 'challenge',
-  // 新S弯/窄梁/升降/坡模型尚未配套，暂用同形基础几何，避免旧外观遮盖新碰撞。
-  visuals: null,
+  // 同名模型已按冻结的 challenge 几何配套，显示与碰撞独立。
+  visuals: { track: 'water-rush-track.glb', platform: 'platform-refined.glb' },
   staticObjects: [
     {"name":"Pool basin","type":"box","position":[-3.5,-0.65,-3.5],"size":[97.6,0.5,101.6],"material":"dark"},
     {"name":"Pool water","type":"box","position":[-3.5,-0.11,-3.5],"size":[96,0.02,100],"material":"water"},
@@ -135,13 +135,13 @@ const level: LevelConfig = {
       {"name":"cross-arm-positive-x","type":"box","position":[2.35,0,0],"size":[3.3,0.5,1.4],"material":"cream"},
       {"name":"cross-arm-negative-x","type":"box","position":[-2.35,0,0],"size":[3.3,0.5,1.4],"material":"cream"},
     ],
-    angularSpeed: 0.85, phase: 0,
+    angularSpeed: 0.85, phase: 0, visual: 'water-rush-turntable.glb',
   },
   lifts: [
-    {"body":{"name":"lift-1","type":"box","position":[8,3.24,6.4],"size":[3.2,0.32,2.8],"material":"blue"},"amplitude":0.9,"angularSpeed":1.1,"phase":0},
-    {"body":{"name":"lift-2","type":"box","position":[8,3.24,9.35],"size":[3.2,0.32,2.8],"material":"blue"},"amplitude":0.9,"angularSpeed":1.1,"phase":3.141592653589793},
-    {"body":{"name":"lift-3","type":"box","position":[8,3.24,12.3],"size":[3.2,0.32,2.8],"material":"blue"},"amplitude":0.9,"angularSpeed":1.1,"phase":0},
-    {"body":{"name":"lift-4","type":"box","position":[8,3.24,15.25],"size":[3.2,0.32,2.8],"material":"blue"},"amplitude":0.9,"angularSpeed":1.1,"phase":3.141592653589793},
+    {"body":{"name":"lift-1","type":"box","position":[8,3.24,6.4],"size":[3.2,0.32,2.8],"material":"blue"},"amplitude":0.9,"angularSpeed":1.1,"phase":0,"visual":"water-rush-lift.glb"},
+    {"body":{"name":"lift-2","type":"box","position":[8,3.24,9.35],"size":[3.2,0.32,2.8],"material":"blue"},"amplitude":0.9,"angularSpeed":1.1,"phase":3.141592653589793,"visual":"water-rush-lift.glb"},
+    {"body":{"name":"lift-3","type":"box","position":[8,3.24,12.3],"size":[3.2,0.32,2.8],"material":"blue"},"amplitude":0.9,"angularSpeed":1.1,"phase":0,"visual":"water-rush-lift.glb"},
+    {"body":{"name":"lift-4","type":"box","position":[8,3.24,15.25],"size":[3.2,0.32,2.8],"material":"blue"},"amplitude":0.9,"angularSpeed":1.1,"phase":3.141592653589793,"visual":"water-rush-lift.glb"},
   ],
   platform: {"axis":"x","centerX":20,"centerZ":3.3,"body":{"name":"Crossing platform","type":"box","position":[20,3.22,3.3],"size":[3,0.36,2.9],"material":"blue"},"stripe":{"name":"Crossing platform stripe","type":"box","position":[20,3.413,3.3],"size":[0.17,0.035,2.6],"material":"cream"},"angularSpeed":1.25,"amplitude":3.6,"stripeY":3.413},
   // 含转向与S弯，轴向进度只是阶段粗估。

@@ -1,24 +1,24 @@
 {
-  "blend_sha256": "1bf0bad811f998ac50e11da38712989a56aee93571440323fff641fabb48755d",
-  "layout_sha256": "180d7ca0dafda9057fe043a429b7c0a0ac39832cb79cf66110e1adbff73d2855",
-  "contract_sha256": "38dfbf5f8bdd81debee38c785078d75b2952041884b4945d5293099eceeac49b",
-  "stage": "Assets from design handoff; runtime implementation and physics playtest pending",
+  "blend_sha256": "9458eded8a2213cbaa9cbcb53052917fda78b3cb0816fb53bf52f8cff212d7e0",
+  "layout_sha256": "d23759cb2f79dc11cc1b7138f12123c3a4aa6fb3394d532c0f1225050b5f1ed4",
+  "contract_sha256": "a545f94beed05fb33d4441b20f098f4413801ac4cf09811ac9633aff335fdec3",
+  "stage": "Challenge model geometry verified; runtime integration and full route playtest pending",
   "units": "meters",
   "coordinates": "glTF Y-up; Blender (x,-z,y)",
-  "static_controls": 21,
-  "static_parts": 283,
+  "static_controls": 58,
+  "static_parts": 331,
   "exports": [
     {
       "file": "water-rush-track.glb",
       "node": "TrackStatic",
-      "sha256": "cadc68dfb2fc18009458f8219f70925312fb61b85ba2f6e80366a6113f161589",
-      "bytes": 1610872,
-      "triangles": 70313,
+      "sha256": "72b738df516f2f2854d3b126bce9342f22eed6e720aeca4bae3fba217433195a",
+      "bytes": 2620592,
+      "triangles": 106474,
       "materials": 5,
       "bounds_min": [
         -32.040000915527344,
         -0.39999985694885254,
-        -12.370000839233398
+        -28.37000274658203
       ],
       "bounds_max": [
         22.439998626708984,
@@ -28,13 +28,13 @@
       "dimensions_xyz_m": [
         54.47999954223633,
         8.420000314712524,
-        33.69500160217285
+        49.695003509521484
       ]
     },
     {
       "file": "water-rush-turntable.glb",
       "node": "TurntableVisual",
-      "sha256": "edb71c6e97280f1236d776168e7a428d8697400d88abd90881397a74812fd4d9",
+      "sha256": "9333a0f8277158ade0c72f1089fc2c6586fefc75ab865f9e19bf82c706db1fed",
       "bytes": 60360,
       "triangles": 1764,
       "materials": 4,
@@ -57,13 +57,13 @@
     {
       "file": "water-rush-lift.glb",
       "node": "LiftVisual",
-      "sha256": "cbc2c00b323692f3e51013d5c4d16e6fb3408a0beec2c996ec7b63200ed254e5",
+      "sha256": "70cd31683b429b47553d3f534170fc877931c2652de033387b7e9dfaf59d0ff1",
       "bytes": 20744,
       "triangles": 968,
       "materials": 4,
       "bounds_min": [
         -1.600000023841858,
-        -1.5800000429153442,
+        -2.4499998092651367,
         -1.399999976158142
       ],
       "bounds_max": [
@@ -73,7 +73,7 @@
       ],
       "dimensions_xyz_m": [
         3.200000047683716,
-        1.7439999878406525,
+        2.613999754190445,
         2.799999952316284
       ]
     }
@@ -85,10 +85,10 @@
   ],
   "cross_geometry": {
     "span": 8,
-    "armWidth": 1.8,
+    "armWidth": 1.4,
     "thickness": 0.5
   },
-  "ports_forced_to_centerline": true,
+  "ports_forced_to_centerline": false,
   "lift_centers": [
     [
       8,
@@ -111,8 +111,9 @@
       15.25
     ]
   ],
-  "lift_stem_min_world_y": 1.21,
-  "lift_sleeve_top_y": 2.3,
+  "lift_stem_min_world_y": -0.10999999999999988,
+  "lift_sleeve_top_y": 1.85,
+  "lift_sleeve_bottom_y": -0.18,
   "lift_stem_radius": 0.075,
   "lift_sleeve_inner_radius": 0.095,
   "protected_first_level": {
@@ -124,8 +125,20 @@
     "public/models/hammer-handle-toy-round-03.glb": "3ec0b73b02fc079c6657165da3dc935195964a006caeaf7278427c11745bb5ad"
   },
   "preview_note": "Lifts manually posed at alternating extremes for display only; no gameplay animation exported",
-  "input_blend_sha256": "1f5a8e91354938efe94ef3259a5f8a85d48ac5e743d0eee19a20c44d4f4704fb",
+  "input_blend_sha256": "1bf0bad811f998ac50e11da38712989a56aee93571440323fff641fabb48755d",
   "preexisting_object_count": 416,
+  "retired_route_objects": [
+    "runway support 2 alloy foot",
+    "runway support 2 anchor",
+    "runway support 2 anchor.001",
+    "runway support 2 diagonal brace",
+    "runway support 2 leg",
+    "runway support 2 mounting flange",
+    "runway support 2 orange collar",
+    "runway support 2 rubber foot"
+  ],
+  "s_bend_segments": 36,
+  "s_bend_supports": 6,
   "material_values_preserved": true,
   "hammers": [
     {
@@ -146,7 +159,7 @@
         7.9,
         18
       ],
-      "angularSpeed": 1.1,
+      "angularSpeed": 1.8,
       "rodWidth": 0.12,
       "headAsset": "hammer-head-toy-round-03.glb",
       "handleAsset": "hammer-handle-toy-round-03.glb",
@@ -200,11 +213,11 @@
       "motionAxis": "YZ arc about world X hinge; symmetric +/-Z around lane center",
       "motion": {
         "mode": "fixed-length-pendulum-arc",
-        "runtimeSupported": false,
+        "runtimeSupported": true,
         "rodLength": 3.6,
         "maxLateralOffset": 1.65,
         "maxAngleRadians": 0.47611906091179634,
-        "phaseFrequency": 1.1,
+        "phaseFrequency": 1.8,
         "phase": 0,
         "hingeAxis": "X",
         "swingPlane": "YZ",
@@ -212,7 +225,7 @@
         "initialAndPreview": "Neutral reference model is centered; gameplay t=0 uses each instance phase. Restart restores individual phases, not a shared middle pose.",
         "pause": "freeze the current time and pose, do not reset to middle",
         "handleScaling": "normalized 1m handle uses constant Y scale 3.6 for all phases, never stretch per pose",
-        "replaces": "The old offset Z anchor and z-sine plus abs(offset)*lift formula; requires future CODE implementation."
+        "replaces": "The old offset Z anchor and z-sine plus abs(offset)*lift formula; CODE fixed-length arc implementation is active."
       },
       "standFootPads": [
         {
@@ -381,7 +394,7 @@
         "footToLaneHorizontalClearance": 0.775,
         "poseImage": "docs/levels/water-rush-hammer-poses.png",
         "status": "analytic design only, no engine or final model pose validation",
-        "safeLaneCenterWindowPerSideSeconds": 1.3830913734205135,
+        "safeLaneCenterWindowPerSideSeconds": 0.8452225059792028,
         "laneCenterWindowNote": "Projection-only clearance: head Z extent is outside a radius .425 ball on Z=18; not a hidden speed/time gate or verified gameplay window."
       },
       "id": "hammer-1",
@@ -411,7 +424,7 @@
           0
         ],
         "handleLength": 3.6,
-        "zVelocity": 1.8854314812107138
+        "zVelocity": 3.0852515147084407
       }
     },
     {
@@ -432,7 +445,7 @@
         7.9,
         18
       ],
-      "angularSpeed": 1.5,
+      "angularSpeed": 2.3,
       "rodWidth": 0.12,
       "headAsset": "hammer-head-toy-round-03.glb",
       "handleAsset": "hammer-handle-toy-round-03.glb",
@@ -486,11 +499,11 @@
       "motionAxis": "YZ arc about world X hinge; symmetric +/-Z around lane center",
       "motion": {
         "mode": "fixed-length-pendulum-arc",
-        "runtimeSupported": false,
+        "runtimeSupported": true,
         "rodLength": 3.6,
         "maxLateralOffset": 1.65,
         "maxAngleRadians": 0.47611906091179634,
-        "phaseFrequency": 1.5,
+        "phaseFrequency": 2.3,
         "phase": 3.141592653589793,
         "hingeAxis": "X",
         "swingPlane": "YZ",
@@ -498,7 +511,7 @@
         "initialAndPreview": "Neutral reference model is centered; gameplay t=0 uses each instance phase. Restart restores individual phases, not a shared middle pose.",
         "pause": "freeze the current time and pose, do not reset to middle",
         "handleScaling": "normalized 1m handle uses constant Y scale 3.6 for all phases, never stretch per pose",
-        "replaces": "The old offset Z anchor and z-sine plus abs(offset)*lift formula; requires future CODE implementation."
+        "replaces": "The old offset Z anchor and z-sine plus abs(offset)*lift formula; CODE fixed-length arc implementation is active."
       },
       "standFootPads": [
         {
@@ -667,7 +680,7 @@
         "footToLaneHorizontalClearance": 0.775,
         "poseImage": "docs/levels/water-rush-hammer-poses.png",
         "status": "analytic design only, no engine or final model pose validation",
-        "safeLaneCenterWindowPerSideSeconds": 1.0142670071750433,
+        "safeLaneCenterWindowPerSideSeconds": 0.6614784829402456,
         "laneCenterWindowNote": "Projection-only clearance: head Z extent is outside a radius .425 ball on Z=18; not a hidden speed/time gate or verified gameplay window."
       },
       "id": "hammer-2",
@@ -697,7 +710,7 @@
           0
         ],
         "handleLength": 3.6,
-        "zVelocity": -2.5710429289237005
+        "zVelocity": -3.9422658243496738
       }
     },
     {
@@ -718,7 +731,7 @@
         7.9,
         18
       ],
-      "angularSpeed": 1.9,
+      "angularSpeed": 2.8,
       "rodWidth": 0.12,
       "headAsset": "hammer-head-toy-round-03.glb",
       "handleAsset": "hammer-handle-toy-round-03.glb",
@@ -772,11 +785,11 @@
       "motionAxis": "YZ arc about world X hinge; symmetric +/-Z around lane center",
       "motion": {
         "mode": "fixed-length-pendulum-arc",
-        "runtimeSupported": false,
+        "runtimeSupported": true,
         "rodLength": 3.6,
         "maxLateralOffset": 1.65,
         "maxAngleRadians": 0.47611906091179634,
-        "phaseFrequency": 1.9,
+        "phaseFrequency": 2.8,
         "phase": 1.5707963267948966,
         "hingeAxis": "X",
         "swingPlane": "YZ",
@@ -784,7 +797,7 @@
         "initialAndPreview": "Neutral reference model is centered; gameplay t=0 uses each instance phase. Restart restores individual phases, not a shared middle pose.",
         "pause": "freeze the current time and pose, do not reset to middle",
         "handleScaling": "normalized 1m handle uses constant Y scale 3.6 for all phases, never stretch per pose",
-        "replaces": "The old offset Z anchor and z-sine plus abs(offset)*lift formula; requires future CODE implementation."
+        "replaces": "The old offset Z anchor and z-sine plus abs(offset)*lift formula; CODE fixed-length arc implementation is active."
       },
       "standFootPads": [
         {
@@ -953,7 +966,7 @@
         "footToLaneHorizontalClearance": 0.775,
         "poseImage": "docs/levels/water-rush-hammer-poses.png",
         "status": "analytic design only, no engine or final model pose validation",
-        "safeLaneCenterWindowPerSideSeconds": 0.8007371109276659,
+        "safeLaneCenterWindowPerSideSeconds": 0.5433573252723447,
         "laneCenterWindowNote": "Projection-only clearance: head Z extent is outside a radius .425 ball on Z=18; not a hidden speed/time gate or verified gameplay window."
       },
       "id": "hammer-3",
@@ -983,18 +996,69 @@
           0
         ],
         "handleLength": 3.6,
-        "zVelocity": 1.7723397695419059e-16
+        "zVelocity": 2.611869134061756e-16
       }
     }
   ],
   "pending": [
-    "Runtime and level selection implementation",
-    "Final LevelConfig mapping/freeze",
-    "Real contact and full route playtest"
+    "CODE refined model integration, full challenge route and mobile playtest"
   ],
-  "build_layout_sha256": "b308f1fa981181a34b205525a4fe6be905d7f7908f1ca9dcf2e0d568e366cc00",
-  "latest_layout_geometry_verified": true,
+  "build_layout_sha256": "d23759cb2f79dc11cc1b7138f12123c3a4aa6fb3394d532c0f1225050b5f1ed4",
   "central_support_radius": 0.5240048834639411,
   "central_support_top_y": 2.8400001525878906,
-  "controller_max_position_error": 0.0
+  "source_geometry_validation": {
+    "source_sha256": "9458eded8a2213cbaa9cbcb53052917fda78b3cb0816fb53bf52f8cff212d7e0",
+    "layout_sha256": "eb9aa5d196407af67d5d50ec9137734522006c371e55f17ba1c57d8c7bb9bd53",
+    "controls_checked": 63,
+    "max_control_error_m": 1.9073486345888568e-07,
+    "max_endpoint_error_m": 1.966049969490843e-06,
+    "bridge_widths_m": {
+      "narrow-bridge Graphite chassis control": 0.8600006103515625,
+      "narrow-bridge Recessed orange gasket control": 0.8899993896484375,
+      "narrow-bridge support 1 mounting flange": 0.7400016784667969,
+      "narrow-bridge support 2 mounting flange": 0.7400016784667969
+    },
+    "lifts": [
+      {
+        "id": "lift-1",
+        "stem_low_y": -0.10999991893768313,
+        "belly_sleeve_gap": 0.11000022888183603,
+        "stem_foot_gap": 0.060000082850456216,
+        "high_insertion": 0.15999982357025155,
+        "radial_clearance": 0.019541535111125358,
+        "sleeve_bottom_y": -0.18000000715255737,
+        "sleeve_top_y": 1.8499999046325684
+      },
+      {
+        "id": "lift-2",
+        "stem_low_y": -0.10999991893768313,
+        "belly_sleeve_gap": 0.11000022888183603,
+        "stem_foot_gap": 0.060000082850456216,
+        "high_insertion": 0.15999982357025155,
+        "radial_clearance": 0.019540620037728676,
+        "sleeve_bottom_y": -0.18000000715255737,
+        "sleeve_top_y": 1.8499999046325684
+      },
+      {
+        "id": "lift-3",
+        "stem_low_y": -0.10999991893768313,
+        "belly_sleeve_gap": 0.11000022888183603,
+        "stem_foot_gap": 0.060000082850456216,
+        "high_insertion": 0.15999982357025155,
+        "radial_clearance": 0.019541357775969256,
+        "sleeve_bottom_y": -0.18000000715255737,
+        "sleeve_top_y": 1.8499999046325684
+      },
+      {
+        "id": "lift-4",
+        "stem_low_y": -0.10999991893768313,
+        "belly_sleeve_gap": 0.11000022888183603,
+        "stem_foot_gap": 0.060000082850456216,
+        "high_insertion": 0.15999982357025155,
+        "radial_clearance": 0.019541368142091606,
+        "sleeve_bottom_y": -0.18000000715255737,
+        "sleeve_top_y": 1.8499999046325684
+      }
+    ]
+  }
 }

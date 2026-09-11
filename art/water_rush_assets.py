@@ -324,13 +324,20 @@ def prepare_scene():
             if modifier.type == 'BOOLEAN' and modifier.name.startswith(('Union ', 'Layer union ')):
                 if not modifier.object or modifier.object.name not in desired:
                     obj.modifiers.remove(modifier)
-        for index, control in enumerate(controls[1:]):
+        ordered=[]
+        for control in controls[1:]:
             modifier = next((m for m in obj.modifiers if m.type=='BOOLEAN' and m.object==control), None)
             if not modifier:
                 modifier = obj.modifiers.new('Union '+control.name, 'BOOLEAN')
                 modifier.operation, modifier.solver, modifier.object = 'UNION','EXACT',control
-            bpy.context.view_layer.objects.active = obj
-            bpy.ops.object.modifier_move_to_index(modifier=modifier.name, index=index)
+            ordered.append(modifier.name)
+        ordered.extend(m.name for m in obj.modifiers if m.name not in ordered)
+        # 先把末端倒角/法线移到末尾，避免每新增一段S弯都重新求值整个布尔链。
+        bpy.context.view_layer.objects.active=obj
+        for index in range(len(ordered)-1,-1,-1):
+            name=ordered[index]
+            if obj.modifiers.find(name)!=index:
+                bpy.ops.object.modifier_move_to_index(modifier=name,index=index)
         if not any(m.type=='BEVEL' for m in obj.modifiers):
             modifier = obj.modifiers.new('Same-family bevel','BEVEL')
             modifier.width, modifier.segments = radius,3
@@ -602,7 +609,7 @@ def prepare_scene():
     scene['level_id'] = 'water-rush'
     scene['layout_sha256'] = layout_hash
     scene['contract_sha256'] = contract_hash
-    scene['stage'] = 'Assets from design handoff; runtime implementation and physics playtest pending'
+    scene['stage'] = 'Challenge models exported; refined integration and full challenge playtest pending'
     scene['editing'] = 'Current saved scene updated in place; meshes/materials preserved; no backup/version files'
     scene['hammer_reference_pose'] = 'Neutral centered pose for editing; animation previews use independent frequencies/phases'
     latest_layout=json.loads(LAYOUT.read_text())
@@ -701,7 +708,7 @@ def prepare_scene():
               'input_blend_sha256':input_hash,'preexisting_object_count':len(original_objects),
               'retired_route_objects':retired_objects,'s_bend_segments':len(s_segments),'s_bend_supports':len(s_bend.get('supportPoints',[])),
               'material_values_preserved':True,'hammers':hammers,
-              'pending': ['Runtime and level selection implementation', 'Final LevelConfig mapping/freeze', 'Real contact and full route playtest']}
+              'pending': ['Saved source and GLB geometry verification', 'Restore refined models in LevelConfig', 'CODE full challenge route and mobile playtest']}
     latest_layout=json.loads(LAYOUT.read_text())
     assert json.dumps({k:latest_layout.get(k) for k in geometry_keys},sort_keys=True)==geometry_snapshot, '制作期间几何变化，需复核当前资源'
     report['build_layout_sha256']=layout_hash
@@ -720,6 +727,12 @@ if __name__ == '__main__':
         centers = [list(o['base_center_game']) for o in bpy.data.objects if 'base_center_game' in o]
         center = [sum(c[i] for c in centers)/len(centers) for i in range(3)]
         center[1] -= 1.2
-        render_preview(center, 15, ROOT / 'docs/art/water-rush-lifts-preview.png', (10,-13,8))
+        lift = json.loads(LAYOUT.read_text())['lifts']
+        for i, instance in enumerate(lift['instances']):
+            for obj in bpy.data.collections['Lift plates'].objects:
+                if obj.name.startswith(instance['id']+' '):
+                    obj.location.z += lift['amplitude']*(1 if i%2==0 else -1)
+        bpy.context.view_layer.update()
+        render_preview(center, 16, ROOT / 'docs/art/water-rush-lifts-preview.png', (14,-9,6))
     else:
         prepare_scene()
