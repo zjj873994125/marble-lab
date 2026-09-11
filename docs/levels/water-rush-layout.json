@@ -1,7 +1,7 @@
 {
   "id": "water-rush",
   "name": "水上冲关",
-  "status": "design-only-awaiting-code-contract-and-physics-playtest",
+  "status": "bent-layout-design-only-awaiting-runtime-and-playtest",
   "schemaPurpose": "Design handoff in metres/Y-up, NOT a runtime LevelConfig; no new engine fields are claimed implemented.",
   "revisionPolicy": "Maintain this single formal file; no candidate, version, or backup copies.",
   "standardTopY": 3.4,
@@ -15,14 +15,14 @@
   },
   "start": {
     "ballCenter": [
-      -12,
+      -18,
       3.95,
-      10
+      18
     ],
     "ringCenter": [
-      -12,
+      -18,
       3.46,
-      10
+      18
     ],
     "ringRadius": 1
   },
@@ -30,9 +30,9 @@
     {
       "id": "start-pad",
       "bodyCenter": [
-        -12,
+        -18,
         3.2199999999999998,
-        10
+        18
       ],
       "bodySize": [
         4,
@@ -46,9 +46,9 @@
     {
       "id": "hammer-lane",
       "bodyCenter": [
-        -6,
+        -12,
         3.2199999999999998,
-        10
+        18
       ],
       "bodySize": [
         12,
@@ -62,9 +62,9 @@
     {
       "id": "turntable-approach-island",
       "bodyCenter": [
-        0,
+        -6,
         3.2199999999999998,
-        9.5
+        17.5
       ],
       "bodySize": [
         4,
@@ -78,9 +78,9 @@
     {
       "id": "turntable-entry-tongue",
       "bodyCenter": [
-        0,
+        -6,
         3.2199999999999998,
-        6.65
+        14.65
       ],
       "bodySize": [
         1.6,
@@ -94,9 +94,9 @@
     {
       "id": "turntable-exit-tongue",
       "bodyCenter": [
-        0,
+        -6,
         3.2199999999999998,
-        -2.65
+        5.35
       ],
       "bodySize": [
         1.6,
@@ -108,11 +108,11 @@
       "material": "cream"
     },
     {
-      "id": "checkpoint-one-island",
+      "id": "turntable-exit-island",
       "bodyCenter": [
-        0,
+        -6,
         3.2199999999999998,
-        -5.5
+        2.5
       ],
       "bodySize": [
         4,
@@ -124,11 +124,43 @@
       "material": "cream"
     },
     {
-      "id": "checkpoint-two-island",
+      "id": "turntable-to-lifts-link",
       "bodyCenter": [
-        0,
+        1,
         3.2199999999999998,
-        -22
+        2.5
+      ],
+      "bodySize": [
+        10,
+        0.36,
+        3.2
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream"
+    },
+    {
+      "id": "checkpoint-one-island",
+      "bodyCenter": [
+        8,
+        3.2199999999999998,
+        2.5
+      ],
+      "bodySize": [
+        4,
+        0.36,
+        4.7
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream"
+    },
+    {
+      "id": "lift-exit-island",
+      "bodyCenter": [
+        8,
+        3.2199999999999998,
+        19
       ],
       "bodySize": [
         4,
@@ -140,11 +172,43 @@
       "material": "cream"
     },
     {
+      "id": "lifts-to-narrow-link",
+      "bodyCenter": [
+        14,
+        3.2199999999999998,
+        19
+      ],
+      "bodySize": [
+        8,
+        0.36,
+        3.2
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream"
+    },
+    {
+      "id": "checkpoint-two-island",
+      "bodyCenter": [
+        20,
+        3.2199999999999998,
+        19
+      ],
+      "bodySize": [
+        4,
+        0.36,
+        4
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream"
+    },
+    {
       "id": "narrow-bridge",
       "bodyCenter": [
-        0,
+        20,
         3.2199999999999998,
-        -28.2
+        13
       ],
       "bodySize": [
         1.6,
@@ -158,9 +222,9 @@
     {
       "id": "crossing-wait-island",
       "bodyCenter": [
-        0,
+        20,
         3.2199999999999998,
-        -34.2
+        7
       ],
       "bodySize": [
         3.6,
@@ -172,11 +236,11 @@
       "material": "cream"
     },
     {
-      "id": "checkpoint-three-island",
+      "id": "crossing-exit-island",
       "bodyCenter": [
-        0,
+        20,
         3.2199999999999998,
-        -42
+        -0.8
       ],
       "bodySize": [
         4,
@@ -188,16 +252,48 @@
       "material": "cream"
     },
     {
-      "id": "runway",
+      "id": "crossing-to-runup-link",
       "bodyCenter": [
-        0,
+        20,
         3.2199999999999998,
-        -50.4
+        -5.6
       ],
       "bodySize": [
-        3.4,
+        3.2,
         0.36,
-        12
+        4.8
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream"
+    },
+    {
+      "id": "checkpoint-three-island",
+      "bodyCenter": [
+        20,
+        3.2199999999999998,
+        -10
+      ],
+      "bodySize": [
+        4.8,
+        0.36,
+        4
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream"
+    },
+    {
+      "id": "runway",
+      "bodyCenter": [
+        11.6,
+        3.2199999999999998,
+        -10
+      ],
+      "bodySize": [
+        12,
+        0.36,
+        3.4
       ],
       "topY": 3.4,
       "collision": true,
@@ -206,14 +302,14 @@
     {
       "id": "finish-deck",
       "bodyCenter": [
-        0,
+        -3.0776586767109615,
         6.903477483060361,
-        -65.07765867671097
+        -10
       ],
       "bodySize": [
-        4.4,
+        7,
         0.36,
-        7
+        4.4
       ],
       "topY": 7.083477483060361,
       "collision": true,
@@ -224,29 +320,29 @@
     {
       "id": "ramp-entry",
       "topStart": [
-        0,
+        5.6,
         3.4,
-        -56.4
+        -10
       ],
       "topEnd": [
-        0,
+        4.425384224017614,
         3.8275251791570857,
-        -57.57461577598239
+        -10
       ],
       "rotationEulerDegrees": [
-        20,
         0,
-        0
+        0,
+        -20
       ],
       "bodyCenter": [
-        0,
+        4.9511284862101865,
         3.4446179178370793,
-        -57.04887151378981
+        -10
       ],
       "bodySize": [
-        3.4,
+        1.25,
         0.36,
-        1.25
+        3.4
       ],
       "slopeLength": 1.25,
       "collision": true
@@ -254,29 +350,29 @@
     {
       "id": "ramp-climb",
       "topStart": [
-        0,
+        4.425384224017614,
         3.8275251791570857,
-        -57.57461577598239
+        -10
       ],
       "topEnd": [
-        0,
+        1.5969570992714242,
         6.655952303903275,
-        -60.40304290072858
+        -10
       ],
       "rotationEulerDegrees": [
-        45,
         0,
-        0
+        0,
+        -45
       ],
       "bodyCenter": [
-        0,
+        2.883891441030941,
         5.1144595209166015,
-        -59.11610855896907
+        -10
       ],
       "bodySize": [
-        3.4,
+        4,
         0.36,
-        4
+        3.4
       ],
       "slopeLength": 4,
       "collision": true
@@ -284,29 +380,29 @@
     {
       "id": "ramp-crest",
       "topStart": [
-        0,
+        1.5969570992714242,
         6.655952303903275,
-        -60.40304290072858
+        -10
       ],
       "topEnd": [
-        0,
+        0.4223413232890385,
         7.083477483060361,
-        -61.57765867671097
+        -10
       ],
       "rotationEulerDegrees": [
-        20,
         0,
-        0
+        0,
+        -20
       ],
       "bodyCenter": [
-        0,
+        0.9480855854816109,
         6.700570221740355,
-        -61.05191441451839
+        -10
       ],
       "bodySize": [
-        3.4,
+        1.25,
         0.36,
-        1.25
+        3.4
       ],
       "slopeLength": 1.25,
       "collision": true
@@ -316,9 +412,9 @@
     {
       "id": "entry-rail-near",
       "bodyCenter": [
-        -10.75,
+        -16.75,
         3.53,
-        11.66
+        19.66
       ],
       "bodySize": [
         4.5,
@@ -331,9 +427,9 @@
     {
       "id": "entry-rail-far",
       "bodyCenter": [
-        -10.75,
+        -16.75,
         3.53,
-        8.34
+        16.34
       ],
       "bodySize": [
         4.5,
@@ -344,31 +440,31 @@
       "material": "orange"
     },
     {
-      "id": "finish-rail-left",
+      "id": "finish-rail-north",
       "bodyCenter": [
-        -2.26,
+        -3.3276586767109615,
         7.213477483060361,
-        -65.32765867671097
+        -12.26
       ],
       "bodySize": [
-        0.12,
+        6.5,
         0.26,
-        6.5
+        0.12
       ],
       "collision": true,
       "material": "orange"
     },
     {
-      "id": "finish-rail-right",
+      "id": "finish-rail-south",
       "bodyCenter": [
-        2.26,
+        -3.3276586767109615,
         7.213477483060361,
-        -65.32765867671097
+        -7.74
       ],
       "bodySize": [
-        0.12,
+        6.5,
         0.26,
-        6.5
+        0.12
       ],
       "collision": true,
       "material": "orange"
@@ -376,14 +472,14 @@
     {
       "id": "finish-rail-end",
       "bodyCenter": [
-        0,
+        -6.637658676710961,
         7.213477483060361,
-        -68.63765867671097
+        -10
       ],
       "bodySize": [
-        4.64,
+        0.12,
         0.26,
-        0.12
+        4.64
       ],
       "collision": true,
       "material": "orange"
@@ -393,42 +489,42 @@
     {
       "id": "cp1",
       "position": [
-        0,
+        8,
         3.95,
-        -5.5
+        2.5
       ],
       "ringCenter": [
-        0,
+        8,
         3.46,
-        -5.5
+        2.5
       ],
       "ringRadius": 0.8
     },
     {
       "id": "cp2",
       "position": [
-        0,
+        20,
         3.95,
-        -22
+        19
       ],
       "ringCenter": [
-        0,
+        20,
         3.46,
-        -22
+        19
       ],
       "ringRadius": 0.8
     },
     {
       "id": "cp3",
       "position": [
-        0,
+        20,
         3.95,
-        -42
+        -10
       ],
       "ringCenter": [
-        0,
+        20,
         3.46,
-        -42
+        -10
       ],
       "ringRadius": 0.8
     }
@@ -439,14 +535,14 @@
   },
   "finish": {
     "position": [
-      0,
+      -4.377658676710961,
       7.583477483060361,
-      -66.37765867671096
+      -10
     ],
     "ringCenter": [
-      0,
+      -4.377658676710961,
       7.1434774830603605,
-      -66.37765867671096
+      -10
     ],
     "ringRadius": 0.9,
     "triggerRadius": 1.2,
@@ -454,9 +550,9 @@
   },
   "hammer": {
     "bodyCenter": [
-      -6,
+      -12,
       4.3,
-      10
+      18
     ],
     "bodySize": [
       0.9,
@@ -466,9 +562,9 @@
     "shape": "cylinder",
     "collisionAxis": 2,
     "anchor": [
-      -6,
+      -12,
       7.9,
-      8.4
+      16.4
     ],
     "angularSpeed": 1.8,
     "amplitude": 1.65,
@@ -477,20 +573,20 @@
     "headAsset": "hammer-head-toy-round-03.glb",
     "handleAsset": "hammer-handle-toy-round-03.glb",
     "observationPoint": [
-      -8.5,
+      -14.5,
       3.825,
-      10
+      18
     ],
     "standPosts": [
       [
-        -6.8,
+        -12.8,
         5.7,
-        8.4
+        16.4
       ],
       [
-        -5.2,
+        -11.2,
         5.7,
-        8.4
+        16.4
       ]
     ],
     "standPostSize": [
@@ -500,9 +596,9 @@
     ],
     "standCrossbar": {
       "position": [
-        -6,
+        -12,
         7.9,
-        8.4
+        16.4
       ],
       "size": [
         2,
@@ -512,22 +608,24 @@
     },
     "reservedHeadSweepBounds": {
       "min": [
-        -6.5,
+        -12.5,
         3.6,
-        7.2
+        15.2
       ],
       "max": [
-        -5.5,
+        -11.5,
         5.4,
-        12.8
+        20.8
       ]
-    }
+    },
+    "travelDirection": "+X",
+    "motionAxis": "unchanged local Z"
   },
   "turntable": {
     "bodyCenter": [
-      0,
+      -6,
       3.15,
-      2
+      10
     ],
     "radius": 4,
     "thickness": 0.5,
@@ -556,20 +654,21 @@
     "centralWaitingRadius": 0.65,
     "reservedSweepBounds": {
       "min": [
-        -4,
+        -10,
         2.9,
-        -2
+        6
       ],
       "max": [
-        4,
+        -2,
         3.68,
-        6
+        14
       ]
     },
     "entryExitTongueGapAtCenter": 0.15,
     "entryExitTongueMaxGap": 0.23081641154691557,
     "supportTopMaxY": 2.84,
-    "centralAreaNote": "Radius 0.65 excludes bar contact for a centered ball, but it is not a fixed safe island; rotation contact still requires player control and testing."
+    "centralAreaNote": "Radius 0.65 excludes bar contact for a centered ball, but it is not a fixed safe island; rotation contact still requires player control and testing.",
+    "travelDirection": "-Z"
   },
   "lifts": {
     "visualAsset": "water-rush-lift.glb",
@@ -589,36 +688,36 @@
       {
         "id": "lift-1",
         "center": [
-          0,
+          8,
           3.24,
-          -9.4
+          6.4
         ],
         "phase": 0
       },
       {
         "id": "lift-2",
         "center": [
-          0,
+          8,
           3.24,
-          -12.35
+          9.35
         ],
         "phase": 3.141592653589793
       },
       {
         "id": "lift-3",
         "center": [
-          0,
+          8,
           3.24,
-          -15.3
+          12.3
         ],
         "phase": 0
       },
       {
         "id": "lift-4",
         "center": [
-          0,
+          8,
           3.24,
-          -18.25
+          15.25
         ],
         "phase": 3.141592653589793
       }
@@ -631,15 +730,21 @@
     "period": 8.975979010256552,
     "waitingIslands": [
       "checkpoint-one-island",
-      "checkpoint-two-island"
+      "lift-exit-island"
     ],
-    "notes": "Only deck top is walkable. Underslung stems/sleeves require explicit clearance checks; no unrelated supports enter the sweep."
+    "notes": "Only deck top is walkable. Underslung stems/sleeves require explicit clearance checks; no unrelated supports enter the sweep.",
+    "travelDirection": "+Z",
+    "bodyRotationEulerDegrees": [
+      0,
+      0,
+      0
+    ]
   },
   "crossing": {
     "bodyCenter": [
-      0,
+      20,
       3.22,
-      -37.9
+      3.3
     ],
     "bodySize": [
       3,
@@ -647,47 +752,47 @@
       2.9
     ],
     "axis": "X",
-    "centerX": 0,
-    "centerZ": -37.9,
+    "centerX": 20,
+    "centerZ": 3.3,
     "amplitude": 3.6,
     "angularSpeed": 1.25,
     "asset": "platform-refined.glb",
     "channelX": [
-      -1.8,
-      1.8
+      18.2,
+      21.8
     ],
     "gapZ": [
-      -39.6,
-      -36.2
+      1.6,
+      5
     ],
     "seams": [
       0.25,
       0.25
     ],
     "xCenterExtremes": [
-      -3.6,
-      3.6
+      16.4,
+      23.6
     ],
     "completeClearMargin": 0.3,
     "completeClearWindowPerEnd": 0.6578205797157566,
     "sweepBounds": {
       "min": [
-        -5.1,
+        14.9,
         2.8,
-        -39.35
+        1.85
       ],
       "max": [
-        5.1,
+        25.1,
         3.411,
-        -36.45
+        4.75
       ]
     },
     "guides": [
       {
         "position": [
-          0,
+          20,
           2.95,
-          -39.45
+          1.75
         ],
         "size": [
           10.6,
@@ -698,9 +803,9 @@
       },
       {
         "position": [
-          0,
+          20,
           2.95,
-          -36.35
+          4.85
         ],
         "size": [
           10.6,
@@ -709,26 +814,45 @@
         ],
         "collision": false
       }
-    ]
+    ],
+    "travelDirection": "-Z"
   },
   "runup": {
     "length": 12,
     "width": 3.4,
-    "startZ": -44.4,
-    "rampFootZ": -56.4,
     "landingTopY": 7.083477483060361,
     "landingLength": 7,
     "mainAngleDegrees": 45,
     "mainSlopeLength": 4,
-    "slowTest": "At sensitivity=1, stop naturally near toe z=-56.25 (+/-0.1) with measured speed<=0.5; release brake and hold same uphill input. Separately observe slow motion on the main slope. Do not inject velocity or position for a claimed playable run.",
-    "runTest": "Start CP3, accelerate along full runway with same settings, continue uphill without injected force/velocity.",
-    "modelLimit": "Ideal force/energy estimates do not prove rolling, slope transitions, or real damping behavior."
+    "slowTest": "At sensitivity=1, stop naturally near foot x=5.75 (+/-0.1), z=-10, measured speed<=0.5; release brake and hold -X input. Do not inject pose or velocity for claimed playable runs.",
+    "runTest": "Turn on CP3 island (20,-10), then use the full 12m straight runway from x17.6 to5.6 with unchanged input and physics.",
+    "modelLimit": "Ideal force/energy estimates do not prove rolling, slope transitions, or real damping behavior.",
+    "axis": "X",
+    "travelDirection": "-X",
+    "startX": 17.6,
+    "rampFootX": 5.6,
+    "constantZ": -10
   },
   "routeWaypoints": [
     [
+      -18,
+      3.4,
+      18
+    ],
+    [
       -12,
       3.4,
-      10
+      18
+    ],
+    [
+      -6,
+      3.4,
+      18
+    ],
+    [
+      -6,
+      3.4,
+      14.15
     ],
     [
       -6,
@@ -736,69 +860,94 @@
       10
     ],
     [
-      0,
+      -6,
       3.4,
-      10
+      5.85
     ],
     [
-      0,
+      -6,
       3.4,
-      6.15
+      2.5
     ],
     [
-      0,
+      8,
       3.4,
-      2
+      2.5
     ],
     [
-      0,
+      8,
       3.4,
-      -2.15
+      6.4
     ],
     [
-      0,
+      8,
       3.4,
-      -5.5
+      15.25
     ],
     [
-      0,
+      8,
       3.4,
-      -22
+      19
     ],
     [
-      0,
+      20,
       3.4,
-      -34.2
+      19
     ],
     [
-      0,
+      20,
       3.4,
-      -42
+      13
     ],
     [
-      0,
+      20,
       3.4,
-      -56.4
+      7
     ],
     [
-      0,
+      20,
+      3.4,
+      3.3
+    ],
+    [
+      20,
+      3.4,
+      -0.8
+    ],
+    [
+      20,
+      3.4,
+      -10
+    ],
+    [
+      17.6,
+      3.4,
+      -10
+    ],
+    [
+      5.6,
+      3.4,
+      -10
+    ],
+    [
+      4.425384224017614,
       3.8275251791570857,
-      -57.57461577598239
+      -10
     ],
     [
-      0,
+      1.5969570992714242,
       6.655952303903275,
-      -60.40304290072858
+      -10
     ],
     [
-      0,
+      0.4223413232890385,
       7.083477483060361,
-      -61.57765867671097
+      -10
     ],
     [
-      0,
+      -4.377658676710961,
       7.083477483060361,
-      -66.37765867671096
+      -10
     ]
   ],
   "modelOwnership": {
@@ -825,71 +974,89 @@
     {
       "id": "hammer-observe",
       "position": [
-        -8.5,
+        -14.5,
         3.825,
-        10
+        18
       ],
       "kind": "fixed deck"
     },
     {
       "id": "turntable-observe",
       "position": [
-        0,
+        -6,
         3.825,
-        8.3
+        16.3
       ],
       "kind": "fixed island"
     },
     {
+      "id": "turntable-exit-turn",
+      "position": [
+        -6,
+        3.825,
+        2.5
+      ],
+      "kind": "fixed turning island"
+    },
+    {
       "id": "lifts-observe",
       "position": [
-        0,
+        8,
         3.825,
-        -6.7
+        3.7
       ],
-      "kind": "fixed checkpoint-one island"
+      "kind": "fixed cp1 island"
+    },
+    {
+      "id": "lift-exit-turn",
+      "position": [
+        8,
+        3.825,
+        19
+      ],
+      "kind": "fixed landing island"
     },
     {
       "id": "narrow-reset",
       "position": [
-        0,
+        20,
         3.825,
-        -22
+        19
       ],
-      "kind": "fixed checkpoint-two island"
+      "kind": "fixed cp2 turning island"
     },
     {
       "id": "crossing-observe",
       "position": [
-        0,
+        20,
         3.825,
-        -34.8
+        6.4
       ],
       "kind": "fixed island"
     },
     {
       "id": "runway-start",
       "position": [
-        0,
+        20,
         3.825,
-        -42
+        -10
       ],
-      "kind": "fixed checkpoint-three island"
+      "kind": "fixed cp3 turning island"
     }
   ],
   "runtimeMarkings": {
     "narrowDashes": {
       "x": [
-        -0.66,
-        0.66
+        19.34,
+        20.66
       ],
       "z": [
-        -24.9,
-        -26.2,
-        -27.5,
-        -28.8,
-        -30.1,
-        -31.4
+        16.3,
+        15,
+        13.7,
+        12.4,
+        11.1,
+        9.8
       ],
       "y": 3.413,
       "size": [
@@ -907,18 +1074,78 @@
     "firstLevelPoolReuse": true,
     "createNewPoolModel": false,
     "coverageReviewAtRuntimeIntegration": true,
-    "coverageNote": "The long second-level route extends beyond the current first-level pool bounds. Reuse the existing environment; assess only necessary display-plane coverage during integration, without a new pool design or changing first-level geometry.",
+    "coverageNote": "Use existing first-level appearance/environment. This compact route fits within the previous long-layout envelope only after relocation; check camera coverage during integration, without redesigning the pool or changing first-level geometry.",
     "trackAndObstacleBounds": {
       "min": [
-        -14,
+        -20,
         -0.4,
-        -68.69765867671097
+        -12.32
       ],
       "max": [
-        5.3,
+        25.3,
         8,
-        12.8
+        21.2
       ]
     }
+  },
+  "spatialPlan": {
+    "pattern": "compact serpentine with six 90-degree route changes; no vertically stacked routes",
+    "mainTravelDirections": [
+      "+X",
+      "-Z",
+      "+X",
+      "+Z",
+      "+X",
+      "-Z",
+      "-X"
+    ],
+    "corners": [
+      [
+        -6,
+        18
+      ],
+      [
+        -6,
+        2.5
+      ],
+      [
+        8,
+        2.5
+      ],
+      [
+        8,
+        19
+      ],
+      [
+        20,
+        19
+      ],
+      [
+        20,
+        -10
+      ]
+    ],
+    "connectorClearLengths": [
+      10,
+      8,
+      4.8
+    ],
+    "envelopeXZ": {
+      "min": [
+        -20,
+        -12.32
+      ],
+      "max": [
+        25.3,
+        21.2
+      ],
+      "size": [
+        45.3,
+        33.52
+      ]
+    },
+    "topViewArtifact": "docs/levels/water-rush-top-view.png",
+    "progressNote": "Multiple turns occur within each checkpoint stage. Single global Z progress is invalid; routeWaypoints express the ordered route for future CODE integration.",
+    "supersedes": "The prior single-column layout, 89.7m length, old coordinates and old geometry checks are no longer current."
   }
 }

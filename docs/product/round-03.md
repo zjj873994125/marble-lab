@@ -1,6 +1,6 @@
 # 第三轮：摆锤、平台、锤形模型与水池环境
 
-当前优先级调整：用户要求代码对话先处理 GitHub/项目 CI/CD，再继续功能开发。用户最新明确服务器由自己部署，我们只准备项目配置与 GitHub 设置说明，不连接服务器。第二关美术/关卡照常推进；UI/钢珠剩余代码保留待续，不回滚。CI/部署文件由代码对话负责，统筹不同时编辑。
+当前优先级调整：GitHub 首次推送与项目 CI/CD 已完成并验证，服务器由用户手动部署，我们未连接服务器。代码功能开发保持暂停，等用户确认恢复；第二关美术/关卡照常推进。UI/钢珠等后续事项与并行工作区修改保留，不回滚。
 
 日期：2026-09-11。负责人：产品与统筹。状态：平端锤头/短栏配套已完成、技术回归中；用户追加首页/HUD 优化与无缝金属球，由代码继续实施文末两项显示任务。
 
@@ -305,3 +305,14 @@ CODE 继续当前任务，先建立实际运行对照：在本项目 5177 的隔
 最新明确范围覆盖上述服务器信息待问阶段：服务器地址为 `101.42.154.80`，游戏对外端口为 **28083**；用户自行部署。我们只配置项目内 CI/CD，并列明 GitHub 所需设置与手动部署命令，不登录服务器、不修改其 Docker/Nginx、不再索要 SSH 凭据。GitHub 设置/包可见性/私有包拉取配置由用户按文档操作。
 
 代码已获同步：CI 执行 npm ci/test/build，通过后按实际发布分支构建静态站容器并推送 GHCR，优先使用内置 GITHUB_TOKEN 的 packages:write 权限；项目提供 Dockerfile、Nginx 静态配置、Compose（游戏端口 28083）与简明说明。服务器更新由用户手动 pull/up，不配置自动 SSH 生产发布，也不把它描述为已经部署成功。既定 Git 推送按实际远端与用户暂存核对继续，第一关功能开发仍暂缓，第二关设计美术不暂停。
+
+### GitHub / CI 与镜像交付完成
+
+- 采用工作区已有首次提交 `15f6f680d6bdb08263295e0d6fc3412c497285e2`（init），已推送至 `https://github.com/zjj873994125/marble-lab` 的 main。origin 原 SSH URL 保留；代码使用本机已有 HTTPS 凭据与命令级代理完成推送，不在文档保存凭据。提交后用户/美术/关卡和产品文件的新改动保留在工作区，不擅自纳入此发布或回滚。
+- 6 份部署文件已在该提交：`.github/workflows/ci.yml`、`Dockerfile`、`.dockerignore`、`compose.yaml`、`deploy/nginx.conf`、`docs/DEPLOYMENT.md`。统筹核对过工作区与该提交的这六份内容一致。CI 对 push/PR 执行 Node22 干净安装、14 项测试、构建；main 检查通过后发布 GHCR。
+- 首次 [Actions 运行](https://github.com/zjj873994125/marble-lab/actions/runs/34574366196) 的 check 与 publish 均 success，统筹通过公开 API 独立核实。发布镜像 `ghcr.io/zjj873994125/marble-lab:latest` 及 `sha-15f6f680d6bdb08263295e0d6fc3412c497285e2`。
+- 代码已拉取固定 SHA 镜像并在本机临时容器验证，镜像 digest 为 `sha256:14f1f7496d8327667ea2cf7bc3b253d8d94ada7c57b1cb2811d401ca22da2fa0`；Nginx 语法、首页品牌、healthz、GLB、WASM MIME、缓存头和静态缺失404通过，临时容器清理。本机 Docker Hub 构建网络限制已由 GitHub 实际构建发布及已发布镜像验证补齐；服务器未操作。
+- GitHub 发布使用内置 GITHUB_TOKEN，无服务器 SSH secrets。用户需检查 GHCR 包可见性：希望匿名拉取则自行设为 Public；若保留 Private，使用具有 read:packages 的凭据在服务器登录。现有 Actions 权限已由成功发布验证，不要求无谓地修改其他仓库设置。
+- 手动部署方式见 [DEPLOYMENT.md](../DEPLOYMENT.md)：服务器独立目录放 compose.yaml，执行 docker compose pull/up -d，端口28083，核对healthz及用户自己的安全组/防火墙。更新/固定SHA回退由用户触发。当前未宣称 `101.42.154.80:28083` 已上线。
+
+本次 Git/CI/CD 项目配置任务交付完成。用户部署前代码不自行恢复功能开发；第二关的设计和建模继续，当前可玩部署内容仍为第一关。
