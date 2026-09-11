@@ -7,8 +7,8 @@ import { nextTick } from 'vue'
 // 在 Node 中检查游戏状态与持久化边界，不依赖 WebGL 或浏览器插件。
 const source = readFileSync(new URL('../src/state.ts', import.meta.url), 'utf8')
 let counter = 0
-async function load(saved, { version, v2, v3 } = {}) {
-  const compiled = ts.transpileModule(source.replace("from 'vue'", `from '${import.meta.resolve('vue')}'`).replace("import { levelCatalog } from './game/levels'", `const levelCatalog = ${JSON.stringify([{config:{id:'initial-gravity',rulesVersion:version ?? 'classic'},medals:[35,55,90]},{config:{id:'water-rush',rulesVersion:'standard'}}])}`), { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext } }).outputText
+async function load(saved, { version, v2, v3, waterVersion = 'standard' } = {}) {
+  const compiled = ts.transpileModule(source.replace("from 'vue'", `from '${import.meta.resolve('vue')}'`).replace("import { levelCatalog } from './game/levels'", `const levelCatalog = ${JSON.stringify([{config:{id:'initial-gravity',rulesVersion:version ?? 'classic'},medals:[35,55,90]},{config:{id:'water-rush',rulesVersion:waterVersion}}])}`), { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext } }).outputText
   const storage = new Map([['marble-lab-v1', saved], ['marble-lab-v2', v2], ['marble-lab-v3', v3]])
   globalThis.localStorage = { getItem: key => storage.get(key) ?? null, setItem: (key,value) => storage.set(key,value) }
   globalThis.HTMLElement = class {}
@@ -159,4 +159,20 @@ test('快速连续选关不串桶，未知关卡历史保留且非法选择不�
   await nextTick()
   assert.equal(current.state.runs[0].time,12)
   assert.deepEqual(JSON.parse(current.storage.get('marble-lab-v3')).runsByLevel,buckets)
+})
+
+test('调难challenge不混入standard，往返第一关及刷新保留所有旧记录',async()=>{
+  const buckets={'initial-gravity':{classic:[{time:11,falls:0,date:'classic'}],'open-hammer':[{time:22,falls:0,date:'open'}],'flat-hammer':[{time:33,falls:0,date:'flat'}]},'water-rush':{standard:[{time:88.1256,falls:1,date:'standard'}]}}
+  const v3=JSON.stringify({schemaVersion:3,runsByLevel:buckets,selectedLevelId:'water-rush'})
+  const current=await load('{}',{version:'flat-hammer',waterVersion:'challenge',v3})
+  assert.equal(current.rulesVersion.value,'challenge');assert.equal(current.state.runs.length,0)
+  assert.equal(current.archivedGroups.value[0].version,'standard')
+  current.state.ready=true;current.startRun();current.state.elapsed=120;current.finishRun();current.state.phase='menu'
+  current.selectLevel('initial-gravity');current.selectLevel('water-rush');await nextTick()
+  const written=current.storage.get('marble-lab-v3'),saved=JSON.parse(written)
+  assert.deepEqual(saved.runsByLevel['initial-gravity'],buckets['initial-gravity'])
+  assert.deepEqual(saved.runsByLevel['water-rush'].standard,buckets['water-rush'].standard)
+  assert.equal(saved.runsByLevel['water-rush'].challenge[0].time,120)
+  const refreshed=await load('{}',{version:'flat-hammer',waterVersion:'challenge',v3:written})
+  assert.equal(refreshed.state.runs[0].time,120);assert.equal(refreshed.archivedGroups.value[0].runs[0].time,88.1256)
 })

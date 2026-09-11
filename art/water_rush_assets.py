@@ -2,6 +2,7 @@
 import hashlib
 import json
 import math
+import re
 import struct
 import sys
 from pathlib import Path
@@ -30,7 +31,7 @@ def resize_existing(obj, position, dimensions):
     points = [v.co.copy() for v in obj.data.vertices]
     low = [min(v[i] for v in points) for i in range(3)]
     high = [max(v[i] for v in points) for i in range(3)]
-    if any(abs(high[i]-low[i]-dimensions[i]) > 1e-5 for i in range(3)):
+    if any(abs(high[i]-low[i]-dimensions[i]) > 1e-5 or abs(high[i]+low[i])>1e-5 for i in range(3)):
         if obj.data.users > 1:
             obj.data = obj.data.copy()
         for vertex in obj.data.vertices:
@@ -221,6 +222,11 @@ def prepare_scene():
     input_hash = sha(BLEND) if BLEND.exists() else None
     layout_hash = sha(LAYOUT)
     layout = json.loads(LAYOUT.read_text())
+    s_bend=layout.get('sBend',{})
+    s_segments=s_bend.get('collisionSegments',[]) if s_bend.get('enabled') else []
+    walkable_specs=layout['staticDecks']+layout['ramps']+s_segments
+    geometry_keys=('staticDecks','ramps','staticRails','sBend','hammers','turntable','lifts','crossing','start','checkpoints','finish','runtimeMarkings')
+    geometry_snapshot=json.dumps({k:layout.get(k) for k in geometry_keys},sort_keys=True)
     # 用户要求接驳口与中心共线；关卡JSON同步过程中也不保留已被否定的偏移。
     cross_spec = {key:layout['turntable'][key] for key in ('span','armWidth','thickness')}
     assert layout['turntable']['noCornerSupport'] and layout['turntable']['noCoMovingBarrier']
@@ -249,6 +255,7 @@ def prepare_scene():
             loaded.materials = missing
     ivory, graphite, orange, alloy, blue, rubber, ink = [bpy.data.materials[name] for name in material_names]
     original_objects = set(bpy.data.objects.keys())
+    original_layout_ids={o['layout_id'] for o in bpy.data.objects if 'layout_id' in o}
     original_materials = {m.name: list(m.diffuse_color) for m in bpy.data.materials}
     # 改名只用于对应同一段转到新朝向的护栏，保留原网格和材质。
     for old, new in [('finish-rail-left','finish-rail-north'),('finish-rail-right','finish-rail-south')]:
@@ -279,6 +286,8 @@ def prepare_scene():
 
     def support(name, x, z, top, width=.36):
         bearing=name=='Turntable spindle'
+        narrow_width=next((s['bodySize'][0] for s in layout['staticDecks'] if s['id']=='narrow-bridge'),1.6)
+        narrow=name.startswith('narrow-bridge support') and narrow_width<1.6
         foot=.76 if bearing else .95
         plate=.70 if bearing else .8
         add(box(name+' rubber foot', [x, -.34, z], [foot, .12, foot], rubber, .05), 'Static structure', static)
@@ -286,11 +295,15 @@ def prepare_scene():
         height = top+.125
         add(box(name+' leg', [x, -.2+height/2, z], [width, height, width], graphite, .06), 'Static structure', static)
         flange=[.76,.15,.76] if bearing else [1,.15,.7]
+        if narrow:
+            flange[0]=min(flange[0],narrow_width-.16)
         add(box(name+' mounting flange', [x, top-.075, z], flange, alloy, .035), 'Static structure', static)
         add(box(name+' orange collar', [x, .02, z], [width+.04, .13, width+.04], orange, .03), 'Static structure', static)
         for dx in (-.27, .27):
             add(cylinder(name+' anchor', [x+dx, -.155, z], .055, .04, graphite, .008, 16), 'Static structure', static)
         brace_offset=.32 if bearing else .62
+        if narrow:
+            brace_offset=min(brace_offset,narrow_width/2-.15)
         start, end = Vector(game_position([x, top-.75, z])), Vector(game_position([x+brace_offset, top-.075, z]))
         brace = box(name+' diagonal brace', [0,0,0], [.1, (end-start).length, .1], alloy, .02)
         brace.location = (start+end)/2
@@ -328,7 +341,7 @@ def prepare_scene():
         return obj
 
     # 原始碰撞模块保持独立可编辑；可见台面通过非破坏布尔并集去掉交叠内部面。
-    for spec in layout['staticDecks']+layout['ramps']:
+    for spec in walkable_specs:
         obj = flat_box(spec['id'], spec['bodyCenter'], spec['bodySize'], ivory, 'Layout controls', deck_controls)
         obj['layout_id'] = spec['id']
         rotation = spec.get('rotationEulerDegrees', [0, 0, 0])
@@ -342,14 +355,17 @@ def prepare_scene():
             ('Graphite chassis', .10, .22, .08, graphite, .06),
             ('Recessed orange gasket', -.035, .045, .015, orange, .015)):
         controls = []
-        for spec in layout['staticDecks']+layout['ramps']:
+        for spec in walkable_specs:
             x, y, z = spec['bodyCenter']
             w, h, d = spec['bodySize']
             degrees = spec.get('rotationEulerDegrees', [0,0,0])
             normal_game = Euler(tuple(math.radians(v) for v in degrees),'XYZ').to_matrix()@Vector((0,1,0))
             offset = h/2+depth
             center = [value-offset*normal_game[i] for i,value in enumerate((x,y,z))]
-            control = flat_box(spec['id']+' '+name+' control', center, [w+extra, height, d+extra], material, 'Layout controls')
+            width_extra=extra
+            if spec['id']=='narrow-bridge' and w<1.6:
+                width_extra=-.04 if name=='Graphite chassis' else -.01
+            control = flat_box(spec['id']+' '+name+' control', center, [w+width_extra, height, d+extra], material, 'Layout controls')
             control.rotation_mode = 'QUATERNION'
             control.rotation_quaternion = game_rotation(degrees)
             controls.append(control)
@@ -374,6 +390,9 @@ def prepare_scene():
             points = [(x, z)]
         for i, (sx, sz) in enumerate(points):
             support(spec['id']+f' support {i+1}', sx, sz, y-h/2-.21)
+    for i,spec in enumerate(s_bend.get('supportPoints',[])):
+        x,_,z=spec['pathPosition']
+        support(f'S-bend support {i+1}',x,z,spec['topLimitY'])
 
     for spec in layout['staticRails']:
         obj = add(box(spec['id'], spec['bodyCenter'], spec['bodySize'], orange, .048), 'Static structure', static)
@@ -424,6 +443,19 @@ def prepare_scene():
     support('Turntable spindle', tc[0], tc[2], turn['supportTopMaxY'], .7)
 
     lift = layout['lifts']
+    structure=lift.get('visualStructure',{})
+    if lift['amplitude']>.45:
+        assert structure, '扩大行程前需要关卡确认新的杆套结构'
+    stem_top=structure.get('stemTopLocalY',-.38)
+    stem_bottom=structure.get('stemBottomLocalY',-1.58)
+    stem_radius=structure.get('stemRadius',.075)
+    sleeve_inner=structure.get('sleeveInnerRadius',.095)
+    sleeve_outer=structure.get('sleeveOuterRadius',.16)
+    sleeve_bottom=structure.get('sleeveBottomY',-.24)
+    sleeve_top=structure.get('sleeveTopY',2.30)
+    assert lift['centerY']-lift['amplitude']+stem_top-sleeve_top >= .10-1e-5
+    assert lift['centerY']+lift['amplitude']+stem_bottom < sleeve_top
+    assert lift['centerY']-lift['amplitude']+stem_bottom > -.17
     for instance in lift['instances']:
         parts = []
         center = instance['center']
@@ -439,11 +471,11 @@ def prepare_scene():
         for side in (-1, 1):
             flat_box(instance['id']+' seam paint', [x, y+h/2+.002, z+side*(d/2-.18)], [w-.4, .004, .10], orange, 'Lift plates', parts)
         # 细杆进入真正中空的固定套筒，避免活动板像浮空，也不进入可行驶面。
-        add(cylinder(instance['id']+' sliding stem', [x, y-.98, z], .075, 1.20, alloy, .006, 24), 'Lift plates', parts)
-        outer, inner, low, high, count = .16, .095, -.24, 2.30, 32
+        add(cylinder(instance['id']+' sliding stem', [x,y+(stem_top+stem_bottom)/2,z],stem_radius,stem_top-stem_bottom,alloy,.006,24), 'Lift plates', parts)
+        outer, inner, low, high, count = sleeve_outer,sleeve_inner,sleeve_bottom,sleeve_top,32
         vertices = []
         for yy, rr in ((low, outer), (high, outer), (low, inner), (high, inner)):
-            vertices.extend(game_position([x+rr*math.cos(i*2*math.pi/count), yy, z+rr*math.sin(i*2*math.pi/count)]) for i in range(count))
+            vertices.extend(game_position([rr*math.cos(i*2*math.pi/count),yy-(low+high)/2,rr*math.sin(i*2*math.pi/count)]) for i in range(count))
         faces = []
         for i in range(count):
             j = (i+1)%count
@@ -452,8 +484,7 @@ def prepare_scene():
         faces = [tuple(reversed(face)) for face in faces]
         sleeve = bpy.data.objects.get(instance['id']+' hollow sleeve')
         if sleeve:
-            delta = Vector(game_position([x-old_center[0],0,z-old_center[2]]))
-            sleeve.location += delta
+            resize_existing(sleeve,[x,(low+high)/2,z],[outer*2,outer*2,high-low])
         else:
             mesh = bpy.data.meshes.new(instance['id']+' hollow sleeve')
             mesh.from_pydata(vertices, [], faces)
@@ -461,6 +492,7 @@ def prepare_scene():
             sleeve = bpy.data.objects.new(instance['id']+' hollow sleeve',mesh)
             scene.collection.objects.link(sleeve)
             rounded(sleeve,sleeve.name,graphite,0)
+            sleeve.location=game_position([x,(low+high)/2,z])
         add(sleeve, 'Static structure',static)
         add(box(instance['id']+' rubber foot', [x, -.34, z], [.95,.12,.95], rubber, .05), 'Static structure', static)
         add(box(instance['id']+' alloy foot', [x, -.23, z], [.8,.12,.8], alloy, .035), 'Static structure', static)
@@ -550,6 +582,18 @@ def prepare_scene():
 
     for i in range(len(hammers)):
         pose_hammer(i,0)
+    # 只撤掉已被替换路线的生成件，用户额外物件保持。
+    current_ids={s['id'] for s in walkable_specs+layout['staticRails']}
+    retired_ids=original_layout_ids-current_ids
+    retired_objects=[]
+    support_pattern=re.compile(r'^(.*?) support \d+ (?:rubber foot|alloy foot|leg|mounting flange|orange collar|anchor(?:\.\d+)?|diagonal brace)$')
+    for obj in list(bpy.data.objects):
+        support_match=support_pattern.match(obj.name)
+        obsolete_support=support_match and support_match.group(1) in original_layout_ids and obj not in static
+        obsolete_control=any(obj.name==oid or obj.name.startswith(oid+' Graphite chassis control') or obj.name.startswith(oid+' Recessed orange gasket control') for oid in retired_ids)
+        if obsolete_support or obsolete_control:
+            retired_objects.append(obj.name)
+            bpy.data.objects.remove(obj,do_unlink=True)
     # 非本轮新增的用户对象保留在其原集合；可见静态额外件也随资源导出。
     for obj in groups['Static structure'].objects:
         if obj.type in ('MESH','FONT') and obj not in static:
@@ -561,7 +605,8 @@ def prepare_scene():
     scene['stage'] = 'Assets from design handoff; runtime implementation and physics playtest pending'
     scene['editing'] = 'Current saved scene updated in place; meshes/materials preserved; no backup/version files'
     scene['hammer_reference_pose'] = 'Neutral centered pose for editing; animation previews use independent frequencies/phases'
-    assert sha(LAYOUT)==layout_hash, '保存前布局已变化'
+    latest_layout=json.loads(LAYOUT.read_text())
+    assert json.dumps({k:latest_layout.get(k) for k in geometry_keys},sort_keys=True)==geometry_snapshot, '保存前几何已变化'
     assert all(list(bpy.data.materials[name].diffuse_color)==value for name,value in original_materials.items()), '原有材质颜色意外变化'
     if input_hash:
         assert sha(BLEND) == input_hash, '保存前场景有并发修改'
@@ -648,14 +693,19 @@ def prepare_scene():
               'stage': scene['stage'], 'units': 'meters', 'coordinates': 'glTF Y-up; Blender (x,-z,y)',
               'static_controls': len(deck_controls), 'static_parts': len(static), 'exports': exports,
               'turntable_origin': tc, 'cross_geometry':cross_spec, 'ports_forced_to_centerline':port_override, 'lift_centers': [i['center'] for i in lift['instances']],
-              'lift_stem_min_world_y': lift['centerY']-lift['amplitude']-1.58,
-              'lift_sleeve_top_y': 2.30, 'lift_stem_radius': .075, 'lift_sleeve_inner_radius': .095,
+              'lift_stem_min_world_y': lift['centerY']-lift['amplitude']+stem_bottom,
+              'lift_sleeve_top_y': sleeve_top, 'lift_sleeve_bottom_y':sleeve_bottom,
+              'lift_stem_radius': stem_radius, 'lift_sleeve_inner_radius': sleeve_inner,
               'protected_first_level': protected,
               'preview_note': 'Lifts manually posed at alternating extremes for display only; no gameplay animation exported',
               'input_blend_sha256':input_hash,'preexisting_object_count':len(original_objects),
+              'retired_route_objects':retired_objects,'s_bend_segments':len(s_segments),'s_bend_supports':len(s_bend.get('supportPoints',[])),
               'material_values_preserved':True,'hammers':hammers,
               'pending': ['Runtime and level selection implementation', 'Final LevelConfig mapping/freeze', 'Real contact and full route playtest']}
-    assert sha(LAYOUT) == layout_hash, '制作期间布局变化，需复核当前资源'
+    latest_layout=json.loads(LAYOUT.read_text())
+    assert json.dumps({k:latest_layout.get(k) for k in geometry_keys},sort_keys=True)==geometry_snapshot, '制作期间几何变化，需复核当前资源'
+    report['build_layout_sha256']=layout_hash
+    report['layout_sha256']=sha(LAYOUT)
     assert all(sha(ROOT / name) == digest for name, digest in protected.items())
     REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n')
     print('WATER_RUSH_ASSETS', json.dumps({k:v for k,v in report.items() if k!='protected_first_level'}, ensure_ascii=False))

@@ -11,7 +11,7 @@
 - 现有控制力度、摩擦、刹车、速度上限、镜头手感已获用户认可，未经用户明确要求不得调整。
 - 现有文件和用户手动修改均为用户所有。编辑前重读；发现与其他对话或用户修改重叠，先说明并获用户确认，不按旧副本覆盖。
 - 重新运行模型生成脚本前，检查 Blender 中的未保存编辑、磁盘文件和交付校验值；仅凭时间戳不能判定未被手改。用户已要求建模直接修改当前 `.blend`/GLB，不另建版本文件或备份；修改前仍需核对未保存编辑及具体并发冲突，不能覆盖无关手改。
-- 优先复用 `http://127.0.0.1:5173/`。不要清空浏览器设置和成绩。统一验证入口为 `npm test`、`npm run build`。
-- 本项目仍是本地单关卡版本，尚无 PlayCanvas Editor 导入、多关卡存档或云端发布功能；不得把规划写成已有能力。
+- 优先复用 `http://127.0.0.1:5177/`；5173 为其他项目。不要清空浏览器设置和成绩。统一验证入口为 `npm test`、`npm run build`。
+- 本项目已接入本地双关选择与按关卡/规则保存，PlayCanvas Editor 导入仍未实现。GitHub Actions/GHCR 已配置，服务器状态以实际部署证据为准；不得把规划写成已有能力。
 
-当前单关规则的成绩由 `rulesVersion` 区分，包括 classic/open-hammer/flat-hammer，省略为 classic；新规则变更先核对 `docs/integration/round-03-contract.md`，不得将旧成绩误记新版或删除 v1 原始存储。
+成绩由关卡 id + rulesVersion 区分：第一关 classic/open-hammer/flat-hammer，第二关 standard/challenge。v3 为当前存储，v1/v2 原文只读保留。新难度变更先核对 docs/integration/level-02-contract.md 和当前产品要求，不把旧成绩记入新规则。

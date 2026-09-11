@@ -1,8 +1,8 @@
 {
   "id": "water-rush",
   "name": "水上冲关",
-  "status": "bent-layout-design-only-awaiting-runtime-and-playtest",
-  "schemaPurpose": "Design handoff in metres/Y-up, NOT a runtime LevelConfig; no new engine fields are claimed implemented.",
+  "status": "challenge-first-parameters-runtime-enabled-assets-and-physics-validation-pending",
+  "schemaPurpose": "Authoritative design geometry mapped into src/levels/water-rush.ts; this JSON itself is not loaded by the game. Runtime capabilities are implemented; physical playtest is pending.",
   "revisionPolicy": "Maintain this single formal file; no candidate, version, or backup copies.",
   "standardTopY": 3.4,
   "fallY": -0.5,
@@ -211,7 +211,7 @@
         13
       ],
       "bodySize": [
-        1.6,
+        0.9,
         0.36,
         8
       ],
@@ -286,12 +286,12 @@
     {
       "id": "runway",
       "bodyCenter": [
-        11.6,
-        3.2199999999999998,
+        15.1,
+        3.22,
         -10
       ],
       "bodySize": [
-        12,
+        5,
         0.36,
         3.4
       ],
@@ -300,18 +300,34 @@
       "material": "cream"
     },
     {
+      "id": "s-bend-to-slope-tangent",
+      "bodyCenter": [
+        -3.7,
+        3.22,
+        -26
+      ],
+      "bodySize": [
+        0.6,
+        0.36,
+        2.2
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream"
+    },
+    {
       "id": "finish-deck",
       "bodyCenter": [
-        -3.0776586767109615,
-        6.903477483060361,
-        -10
+        -12.581078893132563,
+        7.3307392415698285,
+        -26
       ],
       "bodySize": [
         7,
         0.36,
         4.4
       ],
-      "topY": 7.083477483060361,
+      "topY": 7.510739241569828,
       "collision": true,
       "material": "cream"
     }
@@ -320,14 +336,14 @@
     {
       "id": "ramp-entry",
       "topStart": [
-        5.6,
+        -4,
         3.4,
-        -10
+        -26
       ],
       "topEnd": [
-        4.425384224017614,
+        -5.174615775982385,
         3.8275251791570857,
-        -10
+        -26
       ],
       "rotationEulerDegrees": [
         0,
@@ -335,9 +351,9 @@
         -20
       ],
       "bodyCenter": [
-        4.9511284862101865,
+        -4.648871513789813,
         3.4446179178370793,
-        -10
+        -26
       ],
       "bodySize": [
         1.25,
@@ -350,44 +366,44 @@
     {
       "id": "ramp-climb",
       "topStart": [
-        4.425384224017614,
+        -5.174615775982385,
         3.8275251791570857,
-        -10
+        -26
       ],
       "topEnd": [
-        1.5969570992714242,
-        6.655952303903275,
-        -10
+        -7.906463117150178,
+        7.083214062412742,
+        -26
       ],
       "rotationEulerDegrees": [
         0,
         0,
-        -45
+        -50
       ],
       "bodyCenter": [
-        2.883891441030941,
-        5.1144595209166015,
-        -10
+        -6.678427446327698,
+        5.339667851041337,
+        -26
       ],
       "bodySize": [
-        4,
+        4.25,
         0.36,
         3.4
       ],
-      "slopeLength": 4,
+      "slopeLength": 4.25,
       "collision": true
     },
     {
       "id": "ramp-crest",
       "topStart": [
-        1.5969570992714242,
-        6.655952303903275,
-        -10
+        -7.906463117150178,
+        7.083214062412742,
+        -26
       ],
       "topEnd": [
-        0.4223413232890385,
-        7.083477483060361,
-        -10
+        -9.081078893132563,
+        7.510739241569828,
+        -26
       ],
       "rotationEulerDegrees": [
         0,
@@ -395,9 +411,9 @@
         -20
       ],
       "bodyCenter": [
-        0.9480855854816109,
-        6.700570221740355,
-        -10
+        -8.55533463093999,
+        7.127831980249821,
+        -26
       ],
       "bodySize": [
         1.25,
@@ -442,9 +458,9 @@
     {
       "id": "finish-rail-north",
       "bodyCenter": [
-        -3.3276586767109615,
-        7.213477483060361,
-        -12.26
+        -12.831078893132563,
+        7.640739241569828,
+        -28.26
       ],
       "bodySize": [
         6.5,
@@ -457,9 +473,9 @@
     {
       "id": "finish-rail-south",
       "bodyCenter": [
-        -3.3276586767109615,
-        7.213477483060361,
-        -7.74
+        -12.831078893132563,
+        7.640739241569828,
+        -23.74
       ],
       "bodySize": [
         6.5,
@@ -472,9 +488,9 @@
     {
       "id": "finish-rail-end",
       "bodyCenter": [
-        -6.637658676710961,
-        7.213477483060361,
-        -10
+        -16.141078893132562,
+        7.640739241569828,
+        -26
       ],
       "bodySize": [
         0.12,
@@ -535,14 +551,14 @@
   },
   "finish": {
     "position": [
-      -4.377658676710961,
-      7.583477483060361,
-      -10
+      -13.881078893132564,
+      8.010739241569828,
+      -26
     ],
     "ringCenter": [
-      -4.377658676710961,
-      7.1434774830603605,
-      -10
+      -13.881078893132564,
+      7.570739241569828,
+      -26
     ],
     "ringRadius": 0.9,
     "triggerRadius": 1.2,
@@ -557,12 +573,12 @@
     ],
     "bodyShape": "non-overlapping hub plus four arm box union",
     "span": 8,
-    "armWidth": 1.8,
+    "armWidth": 1.4,
     "thickness": 0.5,
     "rotationAxis": "Y",
-    "angularSpeed": 0.55,
+    "angularSpeed": 0.85,
     "phase": 0,
-    "runtimeSupported": false,
+    "runtimeSupported": true,
     "collisionParts": [
       {
         "id": "hub",
@@ -572,9 +588,9 @@
           0
         ],
         "bodySize": [
-          1.8,
+          1.4,
           0.5,
-          1.8
+          1.4
         ],
         "shape": "box"
       },
@@ -583,12 +599,12 @@
         "localCenter": [
           0,
           0,
-          2.45
+          2.35
         ],
         "bodySize": [
-          1.8,
+          1.4,
           0.5,
-          3.1
+          3.3
         ],
         "shape": "box"
       },
@@ -597,100 +613,100 @@
         "localCenter": [
           0,
           0,
-          -2.45
+          -2.35
         ],
         "bodySize": [
-          1.8,
+          1.4,
           0.5,
-          3.1
+          3.3
         ],
         "shape": "box"
       },
       {
         "id": "arm-positive-x",
         "localCenter": [
-          2.45,
+          2.35,
           0,
           0
         ],
         "bodySize": [
-          3.1,
+          3.3,
           0.5,
-          1.8
+          1.4
         ],
         "shape": "box"
       },
       {
         "id": "arm-negative-x",
         "localCenter": [
-          -2.45,
+          -2.35,
           0,
           0
         ],
         "bodySize": [
-          3.1,
+          3.3,
           0.5,
-          1.8
+          1.4
         ],
         "shape": "box"
       }
     ],
     "walkingOutlineLocalXZ": [
       [
-        -0.9,
+        -0.7,
         -4
       ],
       [
-        0.9,
+        0.7,
         -4
       ],
       [
-        0.9,
-        -0.9
+        0.7,
+        -0.7
       ],
       [
         4,
-        -0.9
+        -0.7
       ],
       [
         4,
-        0.9
+        0.7
       ],
       [
-        0.9,
-        0.9
+        0.7,
+        0.7
       ],
       [
-        0.9,
+        0.7,
         4
       ],
       [
-        -0.9,
+        -0.7,
         4
       ],
       [
-        -0.9,
-        0.9
+        -0.7,
+        0.7
       ],
       [
         -4,
-        0.9
+        0.7
       ],
       [
         -4,
-        -0.9
+        -0.7
       ],
       [
-        -0.9,
-        -0.9
+        -0.7,
+        -0.7
       ]
     ],
     "visualAsset": "water-rush-turntable.glb",
     "rootNode": "TurntableVisual",
     "topY": 3.4,
-    "topArea": 25.56,
-    "outerCornerRadius": 4.1,
-    "visualOuterRadiusLimit": 4.15,
+    "topArea": 20.44,
+    "outerCornerRadius": 4.060788100849391,
+    "visualOuterRadiusLimit": 4.11,
     "visualVerticalBounds": [
       2.9,
       3.42
@@ -700,14 +716,14 @@
     "visualLayerNote": "Every layer follows the cross cutouts. Keep all moving geometry above Y2.90 and within radius4.15; no round under-deck or full-square slab. A .36 top plus .14 base fits the .50 body.",
     "reservedSweepBounds": {
       "min": [
-        -10.15,
+        -10.11,
         2.9,
-        5.85
+        5.89
       ],
       "max": [
-        -1.85,
+        -1.89,
         3.42,
-        14.15
+        14.11
       ]
     },
     "voidProbesLocal": [
@@ -760,26 +776,26 @@
       },
       "facingEdgeDistanceFromCenterZ": 4.3,
       "offsetXEach": 0,
-      "bodyToTongueSweepClearanceLowerBound": 0.20000000000000018,
-      "visualToTongueCollisionClearanceLowerBound": 0.14999999999999947,
-      "visualToExpandedStaticBaseClearanceLowerBound": 0.10999999999999943,
+      "bodyToTongueSweepClearanceLowerBound": 0.23921189915060914,
+      "visualToTongueCollisionClearanceLowerBound": 0.1899999999999995,
+      "visualToExpandedStaticBaseClearanceLowerBound": 0.14999999999999947,
       "nominalArmTipToMouthCenterGap": 0.3,
       "projectedEntryAngleRangeRadians": [
-        -0.09388787510751649,
-        0.09388787510751649
+        -0.0786524970386508,
+        0.0786524970386508
       ],
       "projectedEntryAngleRangeDegrees": [
-        -5.379378991112075,
-        5.379378991112075
+        -4.506456128479897,
+        4.506456128479897
       ],
       "projectedExitAngleRangeRadians": [
-        3.047704778482277,
-        3.2354805286973094
+        3.0629401565511425,
+        3.2202451506284437
       ],
-      "projectedWindowSeconds": 0.3414104549364236,
-      "windowDefinition": "Centered ports: necessary projection band where a radius .425 rider following arm center at radius4 (and inner radius3.5) fits the fixed 1.6m tongue. Contact across the .3m gap still needs physical validation; not a hidden gate.",
+      "projectedWindowSeconds": 0.1850646989144725,
+      "windowDefinition": "Conservative projection band combining fixed tongue margin .375 at radius4 and narrower arm margin .275 at radius3.5. Not a hidden gate and not a proof of physical crossing.",
       "alignmentRepeatsEveryRadians": 1.5707963267948966,
-      "alignmentRepeatsEverySeconds": 2.855993321445266
+      "alignmentRepeatsEverySeconds": 1.8479956785822313
     },
     "carryReference": {
       "arm": "arm-positive-z (other arms equivalent)",
@@ -790,8 +806,8 @@
       ],
       "entryYaw": 0,
       "exitYaw": 3.141592653589793,
-      "halfTurnSeconds": 5.711986642890532,
-      "localLateralMarginAfterBallRadius": 0.475,
+      "halfTurnSeconds": 3.6959913571644627,
+      "localLateralMarginAfterBallRadius": 0.275,
       "localTipMarginAfterBallRadius": 0.375,
       "worldSurfaceWaypoints": [
         [
@@ -1019,7 +1035,6 @@
         ]
       }
     ],
-    "futureImplementation": "One kinematic compound made of five box children, or rigorously synchronized kinematic parts with flush seams. No cylinder, encompassing box, or convex hull that fills corners. Native contact, pose/velocity and player control require CODE implementation.",
     "replaces": "Old closed Y cylinder, radius-only sweep, coMovingBar, enlarged central waiting area and circular rim seam formulas.",
     "routeAssessment": {
       "portsCentered": true,
@@ -1027,7 +1042,8 @@
       "centerSwitchingSkillRouteAllowed": true,
       "noHiddenMinimumWait": true,
       "note": "Do not offset ports to prevent skilled fast passage. Record center-switch shortcuts as techniques if physically valid; actual carried contact and corner falls still require tests."
-    }
+    },
+    "implementation": "CODE uses five synchronized non-overlapping kinematic boxes and one visual root. No cylinder/bounding hull. Actual seam crossing, contact-driven rotation and carry control await physical validation."
   },
   "lifts": {
     "visualAsset": "water-rush-lift.glb",
@@ -1037,12 +1053,12 @@
       2.8
     ],
     "centerY": 3.24,
-    "amplitude": 0.45,
-    "angularSpeed": 0.7,
+    "amplitude": 0.9,
+    "angularSpeed": 1.1,
     "centerPitch": 2.95,
     "gap": 0.15,
-    "maxAdjacentHeightDifference": 0.9,
-    "phaseConvention": "topY=3.4+0.45*sin(0.7*t+phase)",
+    "maxAdjacentHeightDifference": 1.8,
+    "phaseConvention": "topY=3.4+0.9*sin(1.1*t+phase)",
     "instances": [
       {
         "id": "lift-1",
@@ -1081,12 +1097,12 @@
         "phase": 3.141592653589793
       }
     ],
-    "bodySweepMinY": 2.63,
-    "bodySweepMaxY": 3.85,
-    "visualUndersideEnvelopeMinY": 1.2,
-    "topEqualityWindowAt12cm": 0.38209025545697584,
-    "bankEqualityWindowAt12cm": 0.7712365595240099,
-    "period": 8.975979010256552,
+    "bodySweepMinY": 2.18,
+    "bodySweepMaxY": 4.3,
+    "visualUndersideEnvelopeMinY": -0.12,
+    "topEqualityWindowAt12cm": 0.12130208801859137,
+    "bankEqualityWindowAt12cm": 0.24314834438171187,
+    "period": 5.711986642890532,
     "waitingIslands": [
       "checkpoint-one-island",
       "lift-exit-island"
@@ -1097,7 +1113,24 @@
       0,
       0,
       0
-    ]
+    ],
+    "runtimeSupported": true,
+    "visualStructure": {
+      "platformBellyBottomLocalY": -0.38,
+      "stemTopLocalY": -0.38,
+      "stemBottomLocalY": -2.45,
+      "stemLength": 2.07,
+      "stemCenterLocalY": -1.415,
+      "stemRadius": 0.075,
+      "sleeveTopY": 1.85,
+      "sleeveBottomY": -0.18,
+      "sleeveInnerRadius": 0.095,
+      "sleeveOuterRadius": 0.16,
+      "minimumBellyToSleeveGap": 0.11,
+      "minimumStemToExistingBaseGap": 0.06,
+      "raisedStemInsertion": 0.16,
+      "mechanicalNestingIntentional": true
+    }
   },
   "crossing": {
     "bodyCenter": [
@@ -1177,20 +1210,32 @@
     "travelDirection": "-Z"
   },
   "runup": {
-    "length": 12,
+    "length": 5,
     "width": 3.4,
-    "landingTopY": 7.083477483060361,
+    "landingTopY": 7.510739241569828,
     "landingLength": 7,
-    "mainAngleDegrees": 45,
-    "mainSlopeLength": 4,
-    "slowTest": "At sensitivity=1, stop naturally near foot x=5.75 (+/-0.1), z=-10, measured speed<=0.5; release brake and hold -X input. Do not inject pose or velocity for claimed playable runs.",
-    "runTest": "Turn on CP3 island (20,-10), then use the full 12m straight runway from x17.6 to5.6 with unchanged input and physics.",
+    "mainAngleDegrees": 50,
+    "mainSlopeLength": 4.25,
+    "slowTest": "Same settings; start near footX=-3.85,Z=-26 at measured speed<=.5 and hold -X. No injected velocity.",
+    "runTest": "Accelerate before S, continuously steer through R8 S without node-by-node stops; retain exit speed, use only .6m tangent to enter main slope.",
     "modelLimit": "Ideal force/energy estimates do not prove rolling, slope transitions, or real damping behavior.",
     "axis": "X",
     "travelDirection": "-X",
     "startX": 17.6,
-    "rampFootX": 5.6,
-    "constantZ": -10
+    "rampFootX": -4,
+    "constantZ": -26,
+    "preSRunFrom": [
+      17.6,
+      3.4,
+      -10
+    ],
+    "preSRunTo": [
+      12.6,
+      3.4,
+      -10
+    ],
+    "postSRunLength": 0.6,
+    "old12mStraightSuperseded": true
   },
   "routeWaypoints": [
     [
@@ -1474,29 +1519,214 @@
       -10
     ],
     [
-      5.6,
+      12.6,
       3.4,
       -10
     ],
     [
-      4.425384224017614,
+      11.902754058018735,
+      3.4,
+      -10.030442415266036
+    ],
+    [
+      11.210814578664557,
+      3.4,
+      -10.121537975902335
+    ],
+    [
+      10.529447639179834,
+      3.4,
+      -10.272593389687454
+    ],
+    [
+      9.86383885339465,
+      3.4,
+      -10.482459033712733
+    ],
+    [
+      9.219053906074404,
+      3.4,
+      -10.7495377037068
+    ],
+    [
+      8.6,
+      3.4,
+      -11.07179676972449
+    ],
+    [
+      8.011388509191631,
+      3.4,
+      -11.446783645688065
+    ],
+    [
+      7.457699122507686,
+      3.4,
+      -11.871644455048177
+    ],
+    [
+      6.94314575050762,
+      3.4,
+      -12.34314575050762
+    ],
+    [
+      6.4716444550481755,
+      3.4,
+      -12.857699122507686
+    ],
+    [
+      6.046783645688066,
+      3.4,
+      -13.411388509191632
+    ],
+    [
+      5.671796769724491,
+      3.4,
+      -14
+    ],
+    [
+      5.3495377037068,
+      3.4,
+      -14.619053906074404
+    ],
+    [
+      5.082459033712733,
+      3.4,
+      -15.263838853394649
+    ],
+    [
+      4.872593389687454,
+      3.4,
+      -15.929447639179832
+    ],
+    [
+      4.7215379759023355,
+      3.4,
+      -16.610814578664556
+    ],
+    [
+      4.630442415266035,
+      3.4,
+      -17.302754058018735
+    ],
+    [
+      4.6,
+      3.4,
+      -18
+    ],
+    [
+      4.569557584733964,
+      3.4,
+      -18.697245941981265
+    ],
+    [
+      4.478462024097664,
+      3.4,
+      -19.389185421335444
+    ],
+    [
+      4.327406610312546,
+      3.4,
+      -20.070552360820166
+    ],
+    [
+      4.117540966287267,
+      3.4,
+      -20.73616114660535
+    ],
+    [
+      3.850462296293199,
+      3.4,
+      -21.380946093925594
+    ],
+    [
+      3.5282032302755093,
+      3.4,
+      -22
+    ],
+    [
+      3.153216354311934,
+      3.4,
+      -22.58861149080837
+    ],
+    [
+      2.7283555449518238,
+      3.4,
+      -23.142300877492314
+    ],
+    [
+      2.2568542494923802,
+      3.4,
+      -23.65685424949238
+    ],
+    [
+      1.7423008774923145,
+      3.4,
+      -24.128355544951823
+    ],
+    [
+      1.188611490808369,
+      3.4,
+      -24.553216354311935
+    ],
+    [
+      0.6000000000000005,
+      3.4,
+      -24.928203230275507
+    ],
+    [
+      -0.01905390607440438,
+      3.4,
+      -25.2504622962932
+    ],
+    [
+      -0.6638388533946493,
+      3.4,
+      -25.517540966287267
+    ],
+    [
+      -1.3294476391798327,
+      3.4,
+      -25.727406610312546
+    ],
+    [
+      -2.010814578664557,
+      3.4,
+      -25.878462024097665
+    ],
+    [
+      -2.7027540580187353,
+      3.4,
+      -25.969557584733963
+    ],
+    [
+      -3.3999999999999995,
+      3.4,
+      -26
+    ],
+    [
+      -4,
+      3.4,
+      -26
+    ],
+    [
+      -5.174615775982385,
       3.8275251791570857,
-      -10
+      -26
     ],
     [
-      1.5969570992714242,
-      6.655952303903275,
-      -10
+      -7.906463117150178,
+      7.083214062412742,
+      -26
     ],
     [
-      0.4223413232890385,
-      7.083477483060361,
-      -10
+      -9.081078893132563,
+      7.510739241569828,
+      -26
     ],
     [
-      -4.377658676710961,
-      7.083477483060361,
-      -10
+      -13.881078893132564,
+      7.510739241569828,
+      -26
     ]
   ],
   "modelOwnership": {
@@ -1510,17 +1740,17 @@
       "dynamic collision behavior",
       "carry-reference arc (not fixed geometry)"
     ],
-    "runtimeReady": false,
+    "runtimeReady": true,
     "contract": "docs/integration/level-02-contract.md",
     "rootNodes": {
       "static": "TrackStatic",
       "turntable": "TurntableVisual",
       "lift": "LiftVisual"
     },
-    "dynamicOrigins": "cross rotation centre with non-overlapping five-box union; each lift body centre; three hammer heads at their own centre and handles at midpoint. Metres/Y-up; runtime implementation pending.",
-    "turntableCollisionProtocol": "Updated cross compound requirement supersedes the initial CODE circular-disk/barrier draft; runtime not yet ready."
+    "dynamicOrigins": "Cross rotation centre, lift body centres, individual hammer head centres and handle midpoints; metres/Y-up. Implemented and referenced by formal TS.",
+    "turntableCollisionProtocol": "Current CODE TurntableConfig position/parts/angularSpeed/phase/visual supports five synchronized boxes; geometry-only calculations are not a gameplay pass."
   },
-  "playtestStatus": "Not run; no claim of reachable ramp, lift transfer, turntable contact, or calibrated medals.",
+  "playtestStatus": "Standard route88.1256s was completed. Challenge/S/narrow candidates not yet physically validated; do not reuse standard result.",
   "waitPoints": [
     {
       "id": "hammer-1-observe",
@@ -1616,8 +1846,8 @@
   "runtimeMarkings": {
     "narrowDashes": {
       "x": [
-        19.34,
-        20.66
+        19.68,
+        20.32
       ],
       "z": [
         16.3,
@@ -1629,7 +1859,7 @@
       ],
       "y": 3.413,
       "size": [
-        0.1,
+        0.04,
         0.008,
         0.65
       ],
@@ -1643,22 +1873,114 @@
     "firstLevelPoolReuse": true,
     "createNewPoolModel": false,
     "coverageReviewAtRuntimeIntegration": true,
-    "coverageNote": "Geometry fits within first-level pool footprint but the extended start and raised summit camera may exceed its visible coverage. Reuse the existing appearance and review display coverage at later integration; no new pool-theme/model request and no first-level changes.",
+    "coverageNote": "Only second-level same-style noncolliding Pool display coverage enlarged for extended start and northward high finish. First-level environment unchanged.",
     "trackAndObstacleBounds": {
       "min": [
         -32,
         -0.4,
-        -12.32
+        -28.32
       ],
       "max": [
         25.3,
         8.02,
         21.325
       ]
-    }
+    },
+    "runtimePoolObjects": [
+      {
+        "name": "Pool basin",
+        "type": "box",
+        "position": [
+          -3.5,
+          -0.65,
+          -3.5
+        ],
+        "size": [
+          97.6,
+          0.5,
+          101.6
+        ],
+        "material": "dark"
+      },
+      {
+        "name": "Pool water",
+        "type": "box",
+        "position": [
+          -3.5,
+          -0.11,
+          -3.5
+        ],
+        "size": [
+          96,
+          0.02,
+          100
+        ],
+        "material": "water"
+      },
+      {
+        "name": "Pool rim left",
+        "type": "box",
+        "position": [
+          -51.9,
+          -0.11,
+          -3.5
+        ],
+        "size": [
+          0.8,
+          0.58,
+          100
+        ],
+        "material": "poolEdge"
+      },
+      {
+        "name": "Pool rim right",
+        "type": "box",
+        "position": [
+          44.9,
+          -0.11,
+          -3.5
+        ],
+        "size": [
+          0.8,
+          0.58,
+          100
+        ],
+        "material": "poolEdge"
+      },
+      {
+        "name": "Pool rim near",
+        "type": "box",
+        "position": [
+          -3.5,
+          -0.11,
+          46.9
+        ],
+        "size": [
+          97.6,
+          0.58,
+          0.8
+        ],
+        "material": "poolEdge"
+      },
+      {
+        "name": "Pool rim far",
+        "type": "box",
+        "position": [
+          -3.5,
+          -0.11,
+          -53.9
+        ],
+        "size": [
+          97.6,
+          0.58,
+          0.8
+        ],
+        "material": "poolEdge"
+      }
+    ]
   },
   "spatialPlan": {
-    "pattern": "compact serpentine with six 90-degree route changes; no vertically stacked routes",
+    "pattern": "main folded route plus a tangent-continuous R8 S before the final slope",
     "mainTravelDirections": [
       "+X",
       "-Z",
@@ -1702,7 +2024,7 @@
     "envelopeXZ": {
       "min": [
         -32,
-        -12.32
+        -28.32
       ],
       "max": [
         25.3,
@@ -1710,21 +2032,21 @@
       ],
       "size": [
         57.3,
-        33.645
+        49.645
       ]
     },
     "topViewArtifact": "docs/levels/water-rush-top-view.png",
     "progressNote": "A future per-stage axis estimate can use x/z/z/x; the first two stages still contain secondary-axis transitions. routeWaypoints retain the ordered full route; no precise path progress is claimed.",
     "supersedes": "Older single-column/one-hammer/closed-disk routes and the withdrawn offset-port design. Current cross ports are centered and aligned.",
-    "routePolylineLengthMetres": 140.3499068489734,
+    "routePolylineLengthMetres": 159.32467397140687,
     "checkpointProgressAxes": [
       "x",
       "z",
       "z",
       "x"
     ],
-    "recommendedRouteDistanceIncludingRide": 140.35309649148732,
-    "routeMeaning": "Ports are centered on X=-6. Reference includes time-dependent same-arm half-turn, not a fixed arc walkway; main six-turn layout remains."
+    "recommendedRouteDistanceIncludingRide": 160.07786361392078,
+    "routeMeaning": "Challenge path keeps earlier folds; final 12m straight replaced by 5m pre-run, two smooth opposite R8 arcs and .6m tangent. Reference includes carried cross arc."
   },
   "hammers": [
     {
@@ -1745,7 +2067,7 @@
         7.9,
         18
       ],
-      "angularSpeed": 1.1,
+      "angularSpeed": 1.8,
       "rodWidth": 0.12,
       "headAsset": "hammer-head-toy-round-03.glb",
       "handleAsset": "hammer-handle-toy-round-03.glb",
@@ -1799,11 +2121,11 @@
       "motionAxis": "YZ arc about world X hinge; symmetric +/-Z around lane center",
       "motion": {
         "mode": "fixed-length-pendulum-arc",
-        "runtimeSupported": false,
+        "runtimeSupported": true,
         "rodLength": 3.6,
         "maxLateralOffset": 1.65,
         "maxAngleRadians": 0.47611906091179634,
-        "phaseFrequency": 1.1,
+        "phaseFrequency": 1.8,
         "phase": 0,
         "hingeAxis": "X",
         "swingPlane": "YZ",
@@ -1980,7 +2302,7 @@
         "footToLaneHorizontalClearance": 0.775,
         "poseImage": "docs/levels/water-rush-hammer-poses.png",
         "status": "analytic design only, no engine or final model pose validation",
-        "safeLaneCenterWindowPerSideSeconds": 1.3830913734205135,
+        "safeLaneCenterWindowPerSideSeconds": 0.8452225059792028,
         "laneCenterWindowNote": "Projection-only clearance: head Z extent is outside a radius .425 ball on Z=18; not a hidden speed/time gate or verified gameplay window."
       },
       "id": "hammer-1",
@@ -2010,7 +2332,7 @@
           0
         ],
         "handleLength": 3.6,
-        "zVelocity": 1.8854314812107138
+        "zVelocity": 3.0852515147084407
       }
     },
     {
@@ -2031,7 +2353,7 @@
         7.9,
         18
       ],
-      "angularSpeed": 1.5,
+      "angularSpeed": 2.3,
       "rodWidth": 0.12,
       "headAsset": "hammer-head-toy-round-03.glb",
       "handleAsset": "hammer-handle-toy-round-03.glb",
@@ -2085,11 +2407,11 @@
       "motionAxis": "YZ arc about world X hinge; symmetric +/-Z around lane center",
       "motion": {
         "mode": "fixed-length-pendulum-arc",
-        "runtimeSupported": false,
+        "runtimeSupported": true,
         "rodLength": 3.6,
         "maxLateralOffset": 1.65,
         "maxAngleRadians": 0.47611906091179634,
-        "phaseFrequency": 1.5,
+        "phaseFrequency": 2.3,
         "phase": 3.141592653589793,
         "hingeAxis": "X",
         "swingPlane": "YZ",
@@ -2266,7 +2588,7 @@
         "footToLaneHorizontalClearance": 0.775,
         "poseImage": "docs/levels/water-rush-hammer-poses.png",
         "status": "analytic design only, no engine or final model pose validation",
-        "safeLaneCenterWindowPerSideSeconds": 1.0142670071750433,
+        "safeLaneCenterWindowPerSideSeconds": 0.6614784829402456,
         "laneCenterWindowNote": "Projection-only clearance: head Z extent is outside a radius .425 ball on Z=18; not a hidden speed/time gate or verified gameplay window."
       },
       "id": "hammer-2",
@@ -2296,7 +2618,7 @@
           0
         ],
         "handleLength": 3.6,
-        "zVelocity": -2.5710429289237005
+        "zVelocity": -3.9422658243496738
       }
     },
     {
@@ -2317,7 +2639,7 @@
         7.9,
         18
       ],
-      "angularSpeed": 1.9,
+      "angularSpeed": 2.8,
       "rodWidth": 0.12,
       "headAsset": "hammer-head-toy-round-03.glb",
       "handleAsset": "hammer-handle-toy-round-03.glb",
@@ -2371,11 +2693,11 @@
       "motionAxis": "YZ arc about world X hinge; symmetric +/-Z around lane center",
       "motion": {
         "mode": "fixed-length-pendulum-arc",
-        "runtimeSupported": false,
+        "runtimeSupported": true,
         "rodLength": 3.6,
         "maxLateralOffset": 1.65,
         "maxAngleRadians": 0.47611906091179634,
-        "phaseFrequency": 1.9,
+        "phaseFrequency": 2.8,
         "phase": 1.5707963267948966,
         "hingeAxis": "X",
         "swingPlane": "YZ",
@@ -2552,7 +2874,7 @@
         "footToLaneHorizontalClearance": 0.775,
         "poseImage": "docs/levels/water-rush-hammer-poses.png",
         "status": "analytic design only, no engine or final model pose validation",
-        "safeLaneCenterWindowPerSideSeconds": 0.8007371109276659,
+        "safeLaneCenterWindowPerSideSeconds": 0.5433573252723447,
         "laneCenterWindowNote": "Projection-only clearance: head Z extent is outside a radius .425 ball on Z=18; not a hidden speed/time gate or verified gameplay window."
       },
       "id": "hammer-3",
@@ -2582,7 +2904,7 @@
           0
         ],
         "handleLength": 3.6,
-        "zVelocity": 1.7723397695419059e-16
+        "zVelocity": 2.611869134061756e-16
       }
     }
   ],
@@ -2617,7 +2939,7 @@
     "allFrameGeometryShared": true,
     "sharedHeadAsset": "hammer-head-toy-round-03.glb",
     "sharedHandleAsset": "hammer-handle-toy-round-03.glb",
-    "runtimeSupported": false,
+    "runtimeSupported": true,
     "neutralReference": "Each model's resting head is vertically below its own centered anchor.",
     "initialState": "Instance phases 0/PI/PI/2; first begins right, second begins left, third starts at right extreme then reverses.",
     "pause": "freeze each current phase/pose; restart restores that instance's configured phase",
@@ -2631,216 +2953,27 @@
     "summaries": [
       {
         "id": "hammer-1",
-        "phaseFrequency": 1.1,
+        "phaseFrequency": 1.8,
         "phase": 0,
-        "period": 5.711986642890532,
-        "cyclesIn24Seconds": 4.201690497626037,
-        "initialDirectionAt10ms": 1,
-        "minimumCompleteCenterlineClearWindow": 1.3830913734205126,
-        "centerlineClearWindows": [
-          {
-            "start": 0.7364509740123764,
-            "end": 2.1195423474328896,
-            "complete": true
-          },
-          {
-            "start": 3.5924442954576428,
-            "end": 4.975535668878156,
-            "complete": true
-          },
-          {
-            "start": 6.448437616902909,
-            "end": 7.831528990323422,
-            "complete": true
-          },
-          {
-            "start": 9.304430938348176,
-            "end": 10.687522311768689,
-            "complete": true
-          },
-          {
-            "start": 12.16042425979344,
-            "end": 13.543515633213955,
-            "complete": true
-          },
-          {
-            "start": 15.016417581238708,
-            "end": 16.399508954659222,
-            "complete": true
-          },
-          {
-            "start": 17.872410902683974,
-            "end": 19.255502276104487,
-            "complete": true
-          },
-          {
-            "start": 20.72840422412924,
-            "end": 22.11149559754975,
-            "complete": true
-          },
-          {
-            "start": 23.584397545574507,
-            "end": 24,
-            "complete": false
-          }
-        ]
+        "period": 3.490658503988659,
+        "cyclesIn24Seconds": 6.875493541569879,
+        "minimumCompleteCenterlineClearWindow": 0.8452225059792028
       },
       {
         "id": "hammer-2",
-        "phaseFrequency": 1.5,
+        "phaseFrequency": 2.3,
         "phase": 3.141592653589793,
-        "period": 4.1887902047863905,
-        "cyclesIn24Seconds": 5.729577951308232,
-        "initialDirectionAt10ms": -1,
-        "minimumCompleteCenterlineClearWindow": 1.014267007175043,
-        "centerlineClearWindows": [
-          {
-            "start": 0.5400640476090762,
-            "end": 1.5543310547841191,
-            "complete": true
-          },
-          {
-            "start": 2.6344591500022716,
-            "end": 3.6487261571773146,
-            "complete": true
-          },
-          {
-            "start": 4.728854252395467,
-            "end": 5.74312125957051,
-            "complete": true
-          },
-          {
-            "start": 6.823249354788662,
-            "end": 7.837516361963705,
-            "complete": true
-          },
-          {
-            "start": 8.917644457181858,
-            "end": 9.9319114643569,
-            "complete": true
-          },
-          {
-            "start": 11.012039559575053,
-            "end": 12.026306566750096,
-            "complete": true
-          },
-          {
-            "start": 13.10643466196825,
-            "end": 14.120701669143292,
-            "complete": true
-          },
-          {
-            "start": 15.200829764361444,
-            "end": 16.215096771536487,
-            "complete": true
-          },
-          {
-            "start": 17.29522486675464,
-            "end": 18.309491873929684,
-            "complete": true
-          },
-          {
-            "start": 19.389619969147834,
-            "end": 20.403886976322877,
-            "complete": true
-          },
-          {
-            "start": 21.484015071541023,
-            "end": 22.498282078716073,
-            "complete": true
-          },
-          {
-            "start": 23.57841017393422,
-            "end": 24,
-            "complete": false
-          }
-        ]
+        "period": 2.7318196987737333,
+        "cyclesIn24Seconds": 8.785352858672622,
+        "minimumCompleteCenterlineClearWindow": 0.6614784829402456
       },
       {
         "id": "hammer-3",
-        "phaseFrequency": 1.9,
+        "phaseFrequency": 2.8,
         "phase": 1.5707963267948966,
-        "period": 3.306939635357677,
-        "cyclesIn24Seconds": 7.257465404990427,
-        "initialDirectionAt10ms": -1,
-        "minimumCompleteCenterlineClearWindow": 0.8007371109276633,
-        "centerlineClearWindows": [
-          {
-            "start": 0,
-            "end": 0.4003685554638328,
-            "complete": false
-          },
-          {
-            "start": 1.2531012622150057,
-            "end": 2.0538383731426713,
-            "complete": true
-          },
-          {
-            "start": 2.9065710798938444,
-            "end": 3.70730819082151,
-            "complete": true
-          },
-          {
-            "start": 4.560040897572683,
-            "end": 5.360778008500349,
-            "complete": true
-          },
-          {
-            "start": 6.213510715251521,
-            "end": 7.014247826179187,
-            "complete": true
-          },
-          {
-            "start": 7.86698053293036,
-            "end": 8.667717643858026,
-            "complete": true
-          },
-          {
-            "start": 9.520450350609199,
-            "end": 10.321187461536864,
-            "complete": true
-          },
-          {
-            "start": 11.173920168288037,
-            "end": 11.974657279215704,
-            "complete": true
-          },
-          {
-            "start": 12.827389985966876,
-            "end": 13.62812709689454,
-            "complete": true
-          },
-          {
-            "start": 14.480859803645714,
-            "end": 15.281596914573381,
-            "complete": true
-          },
-          {
-            "start": 16.13432962132455,
-            "end": 16.935066732252217,
-            "complete": true
-          },
-          {
-            "start": 17.787799439003386,
-            "end": 18.588536549931053,
-            "complete": true
-          },
-          {
-            "start": 19.441269256682226,
-            "end": 20.242006367609896,
-            "complete": true
-          },
-          {
-            "start": 21.09473907436107,
-            "end": 21.895476185288736,
-            "complete": true
-          },
-          {
-            "start": 22.748208892039905,
-            "end": 23.548946002967572,
-            "complete": true
-          }
-        ]
+        "period": 2.243994752564138,
+        "cyclesIn24Seconds": 10.695212175775366,
+        "minimumCompleteCenterlineClearWindow": 0.5433573252723447
       }
     ],
     "sparseSamples": [
@@ -2851,19 +2984,19 @@
             "id": "hammer-1",
             "z": 18,
             "y": 4.300000000000001,
-            "zVelocity": 1.8854314812107138
+            "zVelocity": 3.0852515147084407
           },
           {
             "id": "hammer-2",
             "z": 18,
             "y": 4.300000000000001,
-            "zVelocity": -2.5710429289237005
+            "zVelocity": -3.9422658243496738
           },
           {
             "id": "hammer-3",
             "z": 19.65,
             "y": 4.700390648844769,
-            "zVelocity": 1.7723397695419059e-16
+            "zVelocity": 2.611869134061756e-16
           }
         ]
       },
@@ -2872,21 +3005,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 19.48212691028198,
-            "y": 4.619253160968072,
-            "zVelocity": 0.7793818806184157
+            "z": 19.610032732012243,
+            "y": 4.680094007296301,
+            "zVelocity": -0.6269654325177932
           },
           {
             "id": "hammer-2",
-            "z": 16.35381729753604,
-            "y": 4.698424995395478,
-            "zVelocity": -0.16174035179167523
+            "z": 16.74852459242122,
+            "y": 4.5245282841911525,
+            "zVelocity": 2.462816537976213
           },
           {
             "id": "hammer-3",
-            "z": 17.44805796891902,
-            "y": 4.3425627209568125,
-            "zVelocity": -3.0453365956785308
+            "z": 16.438631373832365,
+            "y": 4.656217021251362,
+            "zVelocity": -1.4486211940830418
           }
         ]
       },
@@ -2895,21 +3028,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 19.351814531620462,
-            "y": 4.563445269128685,
-            "zVelocity": -1.0283804178402052
+            "z": 17.24710659866016,
+            "y": 4.3796091799036105,
+            "zVelocity": -2.705542837557999
           },
           {
             "id": "hammer-2",
-            "z": 17.758298223147445,
-            "y": 4.30812301838352,
-            "zVelocity": 2.539569978632933
+            "z": 19.640381476954516,
+            "y": 4.695448766197595,
+            "zVelocity": 0.39356791584886747
           },
           {
             "id": "hammer-3",
-            "z": 16.676078255497952,
-            "y": 4.552279698894387,
-            "zVelocity": 1.8529721868390179
+            "z": 19.2993371787435,
+            "y": 4.542661337318666,
+            "zVelocity": 2.825410723424038
           }
         ]
       },
@@ -2918,21 +3051,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 17.72987349102884,
-            "y": 4.3101487956809335,
-            "zVelocity": -1.8565767546789547
+            "z": 16.705141979334044,
+            "y": 4.540931273951507,
+            "zVelocity": 1.8271347884483988
           },
           {
             "id": "hammer-2",
-            "z": 19.615675722547433,
-            "y": 4.682921828806327,
-            "zVelocity": 0.48431775848117803
+            "z": 17.02102374298724,
+            "y": 4.435666660350757,
+            "zVelocity": -3.094616976040898
           },
           {
             "id": "hammer-3",
-            "z": 19.39335541519673,
-            "y": 4.580578260157057,
-            "zVelocity": 1.6536183317553454
+            "z": 17.118964978973572,
+            "y": 4.409473207132631,
+            "zVelocity": -3.9767373587323274
           }
         ]
       },
@@ -2941,21 +3074,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 16.424160679567212,
-            "y": 4.663222213963719,
-            "zVelocity": -0.520990914715691
+            "z": 19.328224457734805,
+            "y": 4.553984490490954,
+            "zVelocity": 1.7444979921746468
           },
           {
             "id": "hammer-2",
-            "z": 18.477514711855612,
-            "y": 4.331810024681779,
-            "zVelocity": -2.4468258404025067
+            "z": 17.61867698724048,
+            "y": 4.320252416728241,
+            "zVelocity": 3.821472716430582
           },
           {
             "id": "hammer-3",
-            "z": 18.42964006701449,
-            "y": 4.325729527187991,
-            "zVelocity": -3.1296509203774856
+            "z": 18.347414626537134,
+            "y": 4.3168026739700665,
+            "zVelocity": 4.6774144409218
           }
         ]
       },
@@ -2964,21 +3097,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 16.81329953365309,
-            "y": 4.501214628257321,
-            "zVelocity": 1.2614670289173138
+            "z": 18.701858820315856,
+            "y": 4.369080261979207,
+            "zVelocity": -2.757124582481325
           },
           {
             "id": "hammer-2",
-            "z": 16.445155656976684,
-            "y": 4.653084684047274,
-            "zVelocity": -0.8038048068701849
+            "z": 19.457475430689776,
+            "y": 4.608227624981392,
+            "zVelocity": -1.742185007038718
           },
           {
             "id": "hammer-3",
-            "z": 16.354309417340918,
-            "y": 4.698172005533837,
-            "zVelocity": 0.21767202965586901
+            "z": 18.234205979360024,
+            "y": 4.307626472757599,
+            "zVelocity": -4.744130593442891
           }
         ]
       },
@@ -2987,21 +3120,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 18.532034820026826,
-            "y": 4.3395310771923565,
-            "zVelocity": 1.7719251610283386
+            "z": 16.37910922027156,
+            "y": 4.68554622366547,
+            "zVelocity": -0.5353464166476046
           },
           {
             "id": "hammer-2",
-            "z": 17.298141179684144,
-            "y": 4.369080261979207,
-            "zVelocity": 2.2976038187344376
+            "z": 16.43635630957181,
+            "y": 4.657313087980262,
+            "zVelocity": -1.1747175475734224
           },
           {
             "id": "hammer-3",
-            "z": 18.67051602593566,
-            "y": 4.362994450249838,
-            "zVelocity": 2.941546014948472
+            "z": 17.21669979219091,
+            "y": 4.386249754970306,
+            "zVelocity": 4.157628220603358
           }
         ]
       },
@@ -3010,21 +3143,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 19.63194946117404,
-            "y": 4.691146473244103,
-            "zVelocity": 0.25775642551582406
+            "z": 18.057628403683193,
+            "y": 4.300461284124183,
+            "zVelocity": 3.0831119651974137
           },
           {
             "id": "hammer-2",
-            "z": 19.464123318845772,
-            "y": 4.611179100769997,
-            "zVelocity": 1.1169437410273224
+            "z": 18.65127544933152,
+            "y": 4.359401139764909,
+            "zVelocity": 3.5830635783983515
           },
           {
             "id": "hammer-3",
-            "z": 19.24672344050891,
-            "y": 4.522770267973227,
-            "zVelocity": -2.0456230372775375
+            "z": 19.2284338713045,
+            "y": 4.516074731346475,
+            "zVelocity": -3.076490444775139
           }
         ]
       },
@@ -3033,21 +3166,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 18.989655682615965,
-            "y": 4.438702319957741,
-            "zVelocity": -1.4703403162819928
+            "z": 19.59746499689937,
+            "y": 4.6738404280505135,
+            "zVelocity": -0.7183598933730136
           },
           {
             "id": "hammer-2",
-            "z": 18.909729691742335,
-            "y": 4.416841679170699,
-            "zVelocity": -2.099168663165988
+            "z": 18.739554757116863,
+            "y": 4.376782896098252,
+            "zVelocity": -3.4748344972564036
           },
           {
             "id": "hammer-3",
-            "z": 16.54521323301891,
-            "y": 4.607038496639126,
-            "zVelocity": -1.4489327153710396
+            "z": 16.476799286857574,
+            "y": 4.638120237120564,
+            "zVelocity": 1.7287791423535923
           }
         ]
       },
@@ -3056,21 +3189,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 17.22195827873625,
-            "y": 4.385081639643256,
-            "zVelocity": -1.6368867325533958
+            "z": 17.197065860862075,
+            "y": 4.390684287755398,
+            "zVelocity": -2.6507575396798453
           },
           {
             "id": "hammer-2",
-            "z": 16.65567429841286,
-            "y": 4.560420923521613,
-            "zVelocity": -1.4189190265179257
+            "z": 16.409458595002114,
+            "y": 4.67042138368063,
+            "zVelocity": 0.9761695485476657
           },
           {
             "id": "hammer-3",
-            "z": 17.695594081768224,
-            "y": 4.312892943199845,
-            "zVelocity": 3.193282165814864
+            "z": 19.64655462014464,
+            "y": 4.6986162549796795,
+            "zVelocity": -0.2868354174648914
           }
         ]
       },
@@ -3079,21 +3212,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 16.350014919309626,
-            "y": 4.700382955180547,
-            "zVelocity": 0.007416312635951478
+            "z": 16.740039661545822,
+            "y": 4.52768626229373,
+            "zVelocity": 1.9083952708654337
           },
           {
             "id": "hammer-2",
-            "z": 16.903110859107915,
-            "y": 4.471175972349554,
-            "zVelocity": 1.8603182260099884
+            "z": 19.41152151186396,
+            "y": 4.588262235389813,
+            "zVelocity": 1.9323708415323362
           },
           {
             "id": "hammer-3",
-            "z": 19.63276889392554,
-            "y": 4.691563349693629,
-            "zVelocity": -0.4350089947244985
+            "z": 16.40722453210198,
+            "y": 4.671522602082796,
+            "zVelocity": -1.1659760625991253
           }
         ]
       },
@@ -3102,21 +3235,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 17.235165176501752,
-            "y": 4.382184244056491,
-            "zVelocity": 1.6456331570929101
+            "z": 19.360035114581546,
+            "y": 4.5667876624635575,
+            "zVelocity": 1.6606100905313335
           },
           {
             "id": "hammer-2",
-            "z": 19.196801057360247,
-            "y": 4.504758148658421,
-            "zVelocity": 1.7031787366291975
+            "z": 17.714947218017883,
+            "y": 4.311303173645863,
+            "zVelocity": -3.8750457625486914
           },
           {
             "id": "hammer-3",
-            "z": 17.215381356411157,
-            "y": 4.386543925970782,
-            "zVelocity": -2.819709970610065
+            "z": 19.364104430279024,
+            "y": 4.568450945386945,
+            "zVelocity": 2.5658631479794267
           }
         ]
       },
@@ -3125,21 +3258,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 19.001443460497693,
-            "y": 4.442094420689541,
-            "zVelocity": 1.4594657055502707
+            "z": 18.64989152719593,
+            "y": 4.359146853810661,
+            "zVelocity": -2.8053667468506305
           },
           {
             "id": "hammer-2",
-            "z": 19.259960338454178,
-            "y": 4.527686262293731,
-            "zVelocity": -1.590329392387861
+            "z": 16.945493216880976,
+            "y": 4.45790536963959,
+            "zVelocity": 2.944324374338858
           },
           {
             "id": "hammer-3",
-            "z": 16.837944389653558,
-            "y": 4.492709763101718,
-            "zVelocity": 2.2300453031773597
+            "z": 17.025790357945482,
+            "y": 4.4343232156867245,
+            "zVelocity": -3.7782513138563454
           }
         ]
       },
@@ -3148,21 +3281,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 19.629815885142907,
-            "y": 4.6900622777792345,
-            "zVelocity": -0.27253767774957716
+            "z": 16.36996466239158,
+            "y": 4.6901737121539115,
+            "zVelocity": -0.4435442049045101
           },
           {
             "id": "hammer-2",
-            "z": 16.976406608270224,
-            "y": 4.448586294225635,
-            "zVelocity": -1.9616248341037728
+            "z": 19.647706913850158,
+            "y": 4.699209171774827,
+            "zVelocity": -0.19222774009832827
           },
           {
             "id": "hammer-3",
-            "z": 19.508029028964163,
-            "y": 4.631078396810134,
-            "zVelocity": 1.240114046929353
+            "z": 18.458716855840436,
+            "y": 4.329344759547926,
+            "zVelocity": 4.585558068143394
           }
         ]
       },
@@ -3171,21 +3304,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 18.517751838920752,
-            "y": 4.3374260662697575,
-            "zVelocity": -1.7780484185414178
+            "z": 18.115176901723288,
+            "y": 4.301842932651574,
+            "zVelocity": 3.0766998550637665
           },
           {
             "id": "hammer-2",
-            "z": 16.603574617752237,
-            "y": 4.58186857526496,
-            "zVelocity": 1.2979750754855643
+            "z": 16.81228150946392,
+            "y": 4.5015702468288845,
+            "zVelocity": -2.6350038372345432
           },
           {
             "id": "hammer-3",
-            "z": 18.177077945033112,
-            "y": 4.304357720603613,
-            "zVelocity": -3.235293258630541
+            "z": 18.119704957854832,
+            "y": 4.301990727768344,
+            "zVelocity": -4.784910079839494
           }
         ]
       },
@@ -3194,21 +3327,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 16.803198942639753,
-            "y": 4.504758148658421,
-            "zVelocity": -1.2489977401947447
+            "z": 19.58319219065759,
+            "y": 4.666812333402095,
+            "zVelocity": -0.8094839475089585
           },
           {
             "id": "hammer-2",
-            "z": 18.82756341892953,
-            "y": 4.396410585178442,
-            "zVelocity": 2.1851728737307887
+            "z": 17.901477120006827,
+            "y": 4.30134841334732,
+            "zVelocity": 3.934272043138011
           },
           {
             "id": "hammer-3",
-            "z": 16.388744547823816,
-            "y": 4.6807056879134965,
-            "zVelocity": 0.6516341600868404
+            "z": 17.318550313226392,
+            "y": 4.365084679317459,
+            "zVelocity": 4.319120237323255
           }
         ]
       },
@@ -3217,21 +3350,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 16.428411713725108,
-            "y": 4.66115603054986,
-            "zVelocity": 0.5355907272284137
+            "z": 17.148077508214612,
+            "y": 4.402253858841357,
+            "zVelocity": -2.5929096702672245
           },
           {
             "id": "hammer-2",
-            "z": 19.504539920940562,
-            "y": 4.6294710479348815,
-            "zVelocity": -0.990772621157939
+            "z": 19.310852455330355,
+            "y": 4.5471406470962155,
+            "zVelocity": -2.2848744316667546
           },
           {
             "id": "hammer-3",
-            "z": 18.89356669378683,
-            "y": 4.412660245437094,
-            "zVelocity": 2.68143046820131
+            "z": 19.15161745570235,
+            "y": 4.489167662326152,
+            "zVelocity": -3.317454304786302
           }
         ]
       },
@@ -3240,21 +3373,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 17.744825565805318,
-            "y": 4.309054997896316,
-            "zVelocity": 1.859695610501902
+            "z": 16.776441662290566,
+            "y": 4.514308786344844,
+            "zVelocity": 1.9881487150714463
           },
           {
             "id": "hammer-2",
-            "z": 17.387557061538864,
-            "y": 4.352477815836934,
-            "zVelocity": -2.3646139384830405
+            "z": 16.371975039407566,
+            "y": 4.689153580800228,
+            "zVelocity": -0.5945461790420288
           },
           {
             "id": "hammer-3",
-            "z": 19.07027635471973,
-            "y": 4.462776043879618,
-            "zVelocity": -2.404587982506736
+            "z": 16.52165874211813,
+            "y": 4.617545563873849,
+            "zVelocity": 2.005609064558281
           }
         ]
       },
@@ -3263,21 +3396,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 19.360035114581546,
-            "y": 4.5667876624635575,
-            "zVelocity": 1.014817277546926
+            "z": 19.3902677404449,
+            "y": 4.579283870928107,
+            "zVelocity": 1.5755903443358406
           },
           {
             "id": "hammer-2",
-            "z": 16.41680780934241,
-            "y": 4.666812333402095,
-            "zVelocity": 0.6745699562574652
+            "z": 18.899802589917357,
+            "y": 4.414264023311861,
+            "zVelocity": 3.2355175611234968
           },
           {
             "id": "hammer-3",
-            "z": 16.447060663172707,
-            "y": 4.652173124051345,
-            "zVelocity": -1.0281813862730094
+            "z": 19.636222657820728,
+            "y": 4.693323306905718,
+            "zVelocity": -0.5733200779626216
           }
         ]
       },
@@ -3286,21 +3419,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 19.47579821664089,
-            "y": 4.616401421647346,
-            "zVelocity": -0.7935945632284712
+            "z": 18.597055140660867,
+            "y": 4.34985561434321,
+            "zVelocity": -2.8501392278637177
           },
           {
             "id": "hammer-2",
-            "z": 18.382798511796096,
-            "y": 4.320409897856084,
-            "zVelocity": 2.4916481106239967
+            "z": 18.476065708617973,
+            "y": 4.331616410602965,
+            "zVelocity": -3.7529714585468867
           },
           {
             "id": "hammer-3",
-            "z": 17.95147434949461,
-            "y": 4.300327061906453,
-            "zVelocity": 3.2550531723033225
+            "z": 16.382629915215468,
+            "y": 4.68377332750876,
+            "zVelocity": -0.8815357675750709
           }
         ]
       },
@@ -3309,21 +3442,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 17.984828647465754,
-            "y": 4.300031968188845,
-            "zVelocity": -1.8853408799873461
+            "z": 16.36253666163971,
+            "y": 4.693956672855783,
+            "zVelocity": -0.3515962338248074
           },
           {
             "id": "hammer-2",
-            "z": 19.63174074579564,
-            "y": 4.6910403339228,
-            "zVelocity": -0.35350889067033464
+            "z": 16.501364188611785,
+            "y": 4.626761434782856,
+            "zVelocity": 1.5491150160654688
           },
           {
             "id": "hammer-3",
-            "z": 19.581187172997648,
-            "y": 4.66583130867487,
-            "zVelocity": -0.8670896359556592
+            "z": 19.42255065555029,
+            "y": 4.592984784977027,
+            "zVelocity": 2.2993579078583393
           }
         ]
       },
@@ -3332,21 +3465,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 16.51165887848321,
-            "y": 4.6220676172315365,
-            "zVelocity": -0.7651404014894387
+            "z": 18.172565832466017,
+            "y": 4.304138346172741,
+            "zVelocity": 3.066034747354074
           },
           {
             "id": "hammer-2",
-            "z": 17.856103724310778,
-            "y": 4.302877002124786,
-            "zVelocity": -2.559914331666065
+            "z": 19.531798096646636,
+            "y": 4.642148777014251,
+            "zVelocity": 1.3718033427538268
           },
           {
             "id": "hammer-3",
-            "z": 17.003257135178718,
-            "y": 4.440736543507006,
-            "zVelocity": -2.5284238221942363
+            "z": 16.937576277491694,
+            "y": 4.460340738699312,
+            "zVelocity": -3.564033065279216
           }
         ]
       },
@@ -3355,21 +3488,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 16.656514993465326,
-            "y": 4.560082630181322,
-            "zVelocity": 1.0418943573087138
+            "z": 19.567219832270347,
+            "y": 4.659039957460365,
+            "zVelocity": -0.9002867290237694
           },
           {
             "id": "hammer-2",
-            "z": 16.35013427332469,
-            "y": 4.700321409275276,
-            "zVelocity": 0.030339252022412996
+            "z": 17.43955021088335,
+            "y": 4.343893135199801,
+            "zVelocity": -3.6783395089481017
           },
           {
             "id": "hammer-3",
-            "z": 17.02818900240183,
-            "y": 4.433649846748421,
-            "zVelocity": 2.567513345540265
+            "z": 18.567521153723316,
+            "y": 4.345014804520763,
+            "zVelocity": 4.469636008974049
           }
         ]
       },
@@ -3378,21 +3511,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 18.28505278198212,
-            "y": 4.311303173645864,
-            "zVelocity": 1.8532827560015472
+            "z": 17.10019741008264,
+            "y": 4.414264023311862,
+            "zVelocity": -2.5321441782705563
           },
           {
             "id": "hammer-2",
-            "z": 17.901477120006827,
-            "y": 4.30134841334732,
-            "zVelocity": 2.565829593350877
+            "z": 17.17502578940753,
+            "y": 4.395800012576718,
+            "zVelocity": 3.354497781237274
           },
           {
             "id": "hammer-3",
-            "z": 19.589411660176616,
-            "y": 4.669865238957573,
-            "zVelocity": 0.8139779263917033
+            "z": 18.004541138491547,
+            "y": 4.300002864159307,
+            "zVelocity": -4.799259471883351
           }
         ]
       },
@@ -3401,21 +3534,21 @@
         "instances": [
           {
             "id": "hammer-1",
-            "z": 19.579972814058756,
-            "y": 4.665237890225116,
-            "zVelocity": 0.5063764198141896
+            "z": 16.814318565031144,
+            "y": 4.500859000457588,
+            "zVelocity": 2.066259392350967
           },
           {
             "id": "hammer-2",
-            "z": 19.637463338360295,
-            "y": 4.6939566728557836,
-            "zVelocity": 0.292996861520665
+            "z": 19.612459248331305,
+            "y": 4.68130846888509,
+            "zVelocity": -0.776514995521635
           },
           {
             "id": "hammer-3",
-            "z": 17.919637032532673,
-            "y": 4.300897084902983,
-            "zVelocity": -3.2522617184321123
+            "z": 17.42402993536699,
+            "y": 4.346373896335372,
+            "zVelocity": 4.4595181011186735
           }
         ]
       }
@@ -3423,8 +3556,1786 @@
     "rodLengthConstantVerified": true,
     "initialDirectionsVerified": true,
     "frequenciesDistinct": true,
-    "maximumAllOnSameSideSeconds": 1.5300000000000011,
     "interpretation": "Same-side or same-position coincidences can occur briefly; distinct periods/phase velocities mean they are not locked in sync. Each gate has separate clear windows and fixed stopping intervals. No physical collision/playability proof.",
     "status": "design sampling only"
+  },
+  "runtimeIntegration": {
+    "configPath": "src/levels/water-rush.ts",
+    "configSha256": null,
+    "geometrySourceSha256": "180d7ca0dafda9057fe043a429b7c0a0ac39832cb79cf66110e1adbff73d2855",
+    "catalogPath": "src/game/levels.ts",
+    "registrationVerifiedInSource": true,
+    "tests": "24/24 plus typecheck and build passed",
+    "physicalPlaytestVerified": false,
+    "previousStandardConfigSha256": "b40f12260be40dadd17ccde76e262eded0bb4bd496ade2bb205f9460aea49aca",
+    "currentRule": "challenge",
+    "assetsPaired": false
+  },
+  "rulesVersion": "challenge",
+  "sBend": {
+    "enabled": true,
+    "style": "same first-level track, actual union of flat rotated boxes",
+    "radius": 8,
+    "roadWidth": 2.2,
+    "arcsDegrees": [
+      90,
+      -90
+    ],
+    "start": [
+      12.6,
+      3.4,
+      -10
+    ],
+    "inflection": [
+      4.6,
+      3.4,
+      -18
+    ],
+    "end": [
+      -3.4,
+      3.4,
+      -26
+    ],
+    "entryDirection": "-X",
+    "exitDirection": "-X",
+    "preRunLength": 5,
+    "postRunLength": 0.6,
+    "segmentAngleDegrees": 5,
+    "jointExtensionEachEnd": 0.05802703719936327,
+    "centerlinePoints": [
+      [
+        12.6,
+        3.4,
+        -10
+      ],
+      [
+        11.902754058018735,
+        3.4,
+        -10.030442415266036
+      ],
+      [
+        11.210814578664557,
+        3.4,
+        -10.121537975902335
+      ],
+      [
+        10.529447639179834,
+        3.4,
+        -10.272593389687454
+      ],
+      [
+        9.86383885339465,
+        3.4,
+        -10.482459033712733
+      ],
+      [
+        9.219053906074404,
+        3.4,
+        -10.7495377037068
+      ],
+      [
+        8.6,
+        3.4,
+        -11.07179676972449
+      ],
+      [
+        8.011388509191631,
+        3.4,
+        -11.446783645688065
+      ],
+      [
+        7.457699122507686,
+        3.4,
+        -11.871644455048177
+      ],
+      [
+        6.94314575050762,
+        3.4,
+        -12.34314575050762
+      ],
+      [
+        6.4716444550481755,
+        3.4,
+        -12.857699122507686
+      ],
+      [
+        6.046783645688066,
+        3.4,
+        -13.411388509191632
+      ],
+      [
+        5.671796769724491,
+        3.4,
+        -14
+      ],
+      [
+        5.3495377037068,
+        3.4,
+        -14.619053906074404
+      ],
+      [
+        5.082459033712733,
+        3.4,
+        -15.263838853394649
+      ],
+      [
+        4.872593389687454,
+        3.4,
+        -15.929447639179832
+      ],
+      [
+        4.7215379759023355,
+        3.4,
+        -16.610814578664556
+      ],
+      [
+        4.630442415266035,
+        3.4,
+        -17.302754058018735
+      ],
+      [
+        4.6,
+        3.4,
+        -18
+      ],
+      [
+        4.569557584733964,
+        3.4,
+        -18.697245941981265
+      ],
+      [
+        4.478462024097664,
+        3.4,
+        -19.389185421335444
+      ],
+      [
+        4.327406610312546,
+        3.4,
+        -20.070552360820166
+      ],
+      [
+        4.117540966287267,
+        3.4,
+        -20.73616114660535
+      ],
+      [
+        3.850462296293199,
+        3.4,
+        -21.380946093925594
+      ],
+      [
+        3.5282032302755093,
+        3.4,
+        -22
+      ],
+      [
+        3.153216354311934,
+        3.4,
+        -22.58861149080837
+      ],
+      [
+        2.7283555449518238,
+        3.4,
+        -23.142300877492314
+      ],
+      [
+        2.2568542494923802,
+        3.4,
+        -23.65685424949238
+      ],
+      [
+        1.7423008774923145,
+        3.4,
+        -24.128355544951823
+      ],
+      [
+        1.188611490808369,
+        3.4,
+        -24.553216354311935
+      ],
+      [
+        0.6000000000000005,
+        3.4,
+        -24.928203230275507
+      ],
+      [
+        -0.01905390607440438,
+        3.4,
+        -25.2504622962932
+      ],
+      [
+        -0.6638388533946493,
+        3.4,
+        -25.517540966287267
+      ],
+      [
+        -1.3294476391798327,
+        3.4,
+        -25.727406610312546
+      ],
+      [
+        -2.010814578664557,
+        3.4,
+        -25.878462024097665
+      ],
+      [
+        -2.7027540580187353,
+        3.4,
+        -25.969557584733963
+      ],
+      [
+        -3.3999999999999995,
+        3.4,
+        -26
+      ]
+    ],
+    "collisionSegments": [
+      {
+        "id": "s-bend-01",
+        "pathStart": [
+          12.6,
+          3.4,
+          -10
+        ],
+        "pathEnd": [
+          11.902754058018735,
+          3.4,
+          -10.030442415266036
+        ],
+        "bodyCenter": [
+          12.251377029009367,
+          3.22,
+          -10.015221207633019
+        ],
+        "bodySize": [
+          0.8139642722441022,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -2.499999999999993,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          12.657971808317688,
+          3.4,
+          -9.997468896186739
+        ],
+        "bodyEndFaceCenter": [
+          11.844782249701046,
+          3.4,
+          -10.032973519079297
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-02",
+        "pathStart": [
+          11.902754058018735,
+          3.4,
+          -10.030442415266036
+        ],
+        "pathEnd": [
+          11.210814578664557,
+          3.4,
+          -10.121537975902335
+        ],
+        "bodyCenter": [
+          11.556784318341645,
+          3.22,
+          -10.075990195584186
+        ],
+        "bodySize": [
+          0.8139642722441024,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -7.499999999999964,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          11.960284665870791,
+          3.4,
+          -10.022868367054592
+        ],
+        "bodyEndFaceCenter": [
+          11.1532839708125,
+          3.4,
+          -10.129112024113779
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-03",
+        "pathStart": [
+          11.210814578664557,
+          3.4,
+          -10.121537975902335
+        ],
+        "pathEnd": [
+          10.529447639179834,
+          3.4,
+          -10.272593389687454
+        ],
+        "bodyCenter": [
+          10.870131108922195,
+          3.22,
+          -10.197065682794895
+        ],
+        "bodySize": [
+          0.813964272244103,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -12.500000000000098,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          11.267466143387296,
+          3.4,
+          -10.108978626372933
+        ],
+        "bodyEndFaceCenter": [
+          10.472796074457095,
+          3.4,
+          -10.285152739216857
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-04",
+        "pathStart": [
+          10.529447639179834,
+          3.4,
+          -10.272593389687454
+        ],
+        "pathEnd": [
+          9.86383885339465,
+          3.4,
+          -10.482459033712733
+        ],
+        "bodyCenter": [
+          10.196643246287241,
+          3.22,
+          -10.377526211700093
+        ],
+        "bodySize": [
+          0.8139642722441017,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -17.49999999999993,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          10.584789008158564,
+          3.4,
+          -10.255144323073555
+        ],
+        "bodyEndFaceCenter": [
+          9.80849748441592,
+          3.4,
+          -10.499908100326632
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-05",
+        "pathStart": [
+          9.86383885339465,
+          3.4,
+          -10.482459033712733
+        ],
+        "pathEnd": [
+          9.219053906074404,
+          3.4,
+          -10.7495377037068
+        ],
+        "bodyCenter": [
+          9.541446379734527,
+          3.22,
+          -10.615998368709766
+        ],
+        "bodySize": [
+          0.8139642722441033,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -22.499999999999943,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          9.917448845395413,
+          3.4,
+          -10.460253047947303
+        ],
+        "bodyEndFaceCenter": [
+          9.165443914073641,
+          3.4,
+          -10.77174368947223
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-06",
+        "pathStart": [
+          9.219053906074404,
+          3.4,
+          -10.7495377037068
+        ],
+        "pathEnd": [
+          8.6,
+          3.4,
+          -11.07179676972449
+        ],
+        "bodyCenter": [
+          8.9095269530372,
+          3.22,
+          -10.910667236715645
+        ],
+        "bodySize": [
+          0.8139642722441018,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -27.49999999999997,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          9.270524516687475,
+          3.4,
+          -10.722743799749855
+        ],
+        "bodyEndFaceCenter": [
+          8.548529389386928,
+          3.4,
+          -11.098590673681434
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-07",
+        "pathStart": [
+          8.6,
+          3.4,
+          -11.07179676972449
+        ],
+        "pathEnd": [
+          8.011388509191631,
+          3.4,
+          -11.446783645688065
+        ],
+        "bodyCenter": [
+          8.305694254595815,
+          3.22,
+          -11.259290207706277
+        ],
+        "bodySize": [
+          0.8139642722441024,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -32.50000000000005,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          8.648939506799808,
+          3.4,
+          -11.040618865363745
+        ],
+        "bodyEndFaceCenter": [
+          7.962449002391822,
+          3.4,
+          -11.477961550048809
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-08",
+        "pathStart": [
+          8.011388509191631,
+          3.4,
+          -11.446783645688065
+        ],
+        "pathEnd": [
+          7.457699122507686,
+          3.4,
+          -11.871644455048177
+        ],
+        "bodyCenter": [
+          7.734543815849658,
+          3.22,
+          -11.65921405036812
+        ],
+        "bodySize": [
+          0.8139642722441035,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -37.50000000000014,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          8.05742445298095,
+          3.4,
+          -11.411459023601438
+        ],
+        "bodyEndFaceCenter": [
+          7.411663178718367,
+          3.4,
+          -11.906969077134804
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-09",
+        "pathStart": [
+          7.457699122507686,
+          3.4,
+          -11.871644455048177
+        ],
+        "pathEnd": [
+          6.94314575050762,
+          3.4,
+          -12.34314575050762
+        ],
+        "bodyCenter": [
+          7.200422436507653,
+          3.22,
+          -12.107395102777899
+        ],
+        "bodySize": [
+          0.8139642722441022,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -42.499999999999964,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          7.500481141957014,
+          3.4,
+          -11.832441956939338
+        ],
+        "bodyEndFaceCenter": [
+          6.900363731058292,
+          3.4,
+          -12.38234824861646
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-10",
+        "pathStart": [
+          6.94314575050762,
+          3.4,
+          -12.34314575050762
+        ],
+        "pathEnd": [
+          6.4716444550481755,
+          3.4,
+          -12.857699122507686
+        ],
+        "bodyCenter": [
+          6.707395102777898,
+          3.22,
+          -12.600422436507653
+        ],
+        "bodySize": [
+          0.8139642722441028,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -47.49999999999999,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          6.98234824861646,
+          3.4,
+          -12.300363731058292
+        ],
+        "bodyEndFaceCenter": [
+          6.432441956939336,
+          3.4,
+          -12.900481141957014
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-11",
+        "pathStart": [
+          6.4716444550481755,
+          3.4,
+          -12.857699122507686
+        ],
+        "pathEnd": [
+          6.046783645688066,
+          3.4,
+          -13.411388509191632
+        ],
+        "bodyCenter": [
+          6.25921405036812,
+          3.22,
+          -13.134543815849659
+        ],
+        "bodySize": [
+          0.813964272244102,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -52.500000000000036,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          6.506969077134802,
+          3.4,
+          -12.811663178718367
+        ],
+        "bodyEndFaceCenter": [
+          6.011459023601439,
+          3.4,
+          -13.45742445298095
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-12",
+        "pathStart": [
+          6.046783645688066,
+          3.4,
+          -13.411388509191632
+        ],
+        "pathEnd": [
+          5.671796769724491,
+          3.4,
+          -14
+        ],
+        "bodyCenter": [
+          5.8592902077062785,
+          3.22,
+          -13.705694254595816
+        ],
+        "bodySize": [
+          0.8139642722441024,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -57.49999999999996,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          6.07796155004881,
+          3.4,
+          -13.362449002391823
+        ],
+        "bodyEndFaceCenter": [
+          5.640618865363747,
+          3.4,
+          -14.048939506799808
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-13",
+        "pathStart": [
+          5.671796769724491,
+          3.4,
+          -14
+        ],
+        "pathEnd": [
+          5.3495377037068,
+          3.4,
+          -14.619053906074404
+        ],
+        "bodyCenter": [
+          5.510667236715646,
+          3.22,
+          -14.309526953037203
+        ],
+        "bodySize": [
+          0.8139642722441022,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -62.49999999999997,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          5.6985906736814345,
+          3.4,
+          -13.948529389386929
+        ],
+        "bodyEndFaceCenter": [
+          5.322743799749857,
+          3.4,
+          -14.670524516687475
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-14",
+        "pathStart": [
+          5.3495377037068,
+          3.4,
+          -14.619053906074404
+        ],
+        "pathEnd": [
+          5.082459033712733,
+          3.4,
+          -15.263838853394649
+        ],
+        "bodyCenter": [
+          5.215998368709767,
+          3.22,
+          -14.941446379734526
+        ],
+        "bodySize": [
+          0.8139642722441018,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -67.5,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          5.371743689472229,
+          3.4,
+          -14.565443914073642
+        ],
+        "bodyEndFaceCenter": [
+          5.060253047947304,
+          3.4,
+          -15.317448845395411
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-15",
+        "pathStart": [
+          5.082459033712733,
+          3.4,
+          -15.263838853394649
+        ],
+        "pathEnd": [
+          4.872593389687454,
+          3.4,
+          -15.929447639179832
+        ],
+        "bodyCenter": [
+          4.977526211700093,
+          3.22,
+          -15.59664324628724
+        ],
+        "bodySize": [
+          0.8139642722441021,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -72.50000000000001,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          5.0999081003266316,
+          3.4,
+          -15.208497484415918
+        ],
+        "bodyEndFaceCenter": [
+          4.855144323073556,
+          3.4,
+          -15.984789008158563
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-16",
+        "pathStart": [
+          4.872593389687454,
+          3.4,
+          -15.929447639179832
+        ],
+        "pathEnd": [
+          4.7215379759023355,
+          3.4,
+          -16.610814578664556
+        ],
+        "bodyCenter": [
+          4.797065682794894,
+          3.22,
+          -16.270131108922193
+        ],
+        "bodySize": [
+          0.8139642722441027,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -77.49999999999997,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          4.885152739216856,
+          3.4,
+          -15.872796074457094
+        ],
+        "bodyEndFaceCenter": [
+          4.708978626372933,
+          3.4,
+          -16.667466143387294
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-17",
+        "pathStart": [
+          4.7215379759023355,
+          3.4,
+          -16.610814578664556
+        ],
+        "pathEnd": [
+          4.630442415266035,
+          3.4,
+          -17.302754058018735
+        ],
+        "bodyCenter": [
+          4.675990195584186,
+          3.22,
+          -16.956784318341647
+        ],
+        "bodySize": [
+          0.8139642722441042,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -82.49999999999999,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          4.72911202411378,
+          3.4,
+          -16.5532839708125
+        ],
+        "bodyEndFaceCenter": [
+          4.622868367054591,
+          3.4,
+          -17.36028466587079
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-18",
+        "pathStart": [
+          4.630442415266035,
+          3.4,
+          -17.302754058018735
+        ],
+        "pathEnd": [
+          4.6,
+          3.4,
+          -18
+        ],
+        "bodyCenter": [
+          4.6152212076330175,
+          3.22,
+          -17.651377029009367
+        ],
+        "bodySize": [
+          0.8139642722441022,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -87.50000000000001,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          4.632973519079297,
+          3.4,
+          -17.244782249701046
+        ],
+        "bodyEndFaceCenter": [
+          4.597468896186738,
+          3.4,
+          -18.05797180831769
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-19",
+        "pathStart": [
+          4.6,
+          3.4,
+          -18
+        ],
+        "pathEnd": [
+          4.569557584733964,
+          3.4,
+          -18.697245941981265
+        ],
+        "bodyCenter": [
+          4.584778792366982,
+          3.22,
+          -18.348622970990633
+        ],
+        "bodySize": [
+          0.8139642722441022,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -87.50000000000001,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          4.602531103813261,
+          3.4,
+          -17.94202819168231
+        ],
+        "bodyEndFaceCenter": [
+          4.567026480920703,
+          3.4,
+          -18.755217750298954
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-20",
+        "pathStart": [
+          4.569557584733964,
+          3.4,
+          -18.697245941981265
+        ],
+        "pathEnd": [
+          4.478462024097664,
+          3.4,
+          -19.389185421335444
+        ],
+        "bodyCenter": [
+          4.5240098044158135,
+          3.22,
+          -19.043215681658353
+        ],
+        "bodySize": [
+          0.8139642722441042,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -82.49999999999999,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          4.577131632945409,
+          3.4,
+          -18.63971533412921
+        ],
+        "bodyEndFaceCenter": [
+          4.470887975886219,
+          3.4,
+          -19.4467160291875
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-21",
+        "pathStart": [
+          4.478462024097664,
+          3.4,
+          -19.389185421335444
+        ],
+        "pathEnd": [
+          4.327406610312546,
+          3.4,
+          -20.070552360820166
+        ],
+        "bodyCenter": [
+          4.402934317205105,
+          3.22,
+          -19.729868891077807
+        ],
+        "bodySize": [
+          0.8139642722441008,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -77.50000000000001,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          4.491021373627066,
+          3.4,
+          -19.332533856612706
+        ],
+        "bodyEndFaceCenter": [
+          4.314847260783144,
+          3.4,
+          -20.127203925542904
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-22",
+        "pathStart": [
+          4.327406610312546,
+          3.4,
+          -20.070552360820166
+        ],
+        "pathEnd": [
+          4.117540966287267,
+          3.4,
+          -20.73616114660535
+        ],
+        "bodyCenter": [
+          4.222473788299906,
+          3.22,
+          -20.403356753712757
+        ],
+        "bodySize": [
+          0.8139642722441037,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -72.50000000000004,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          4.344855676926445,
+          3.4,
+          -20.015210991841435
+        ],
+        "bodyEndFaceCenter": [
+          4.100091899673369,
+          3.4,
+          -20.79150251558408
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-23",
+        "pathStart": [
+          4.117540966287267,
+          3.4,
+          -20.73616114660535
+        ],
+        "pathEnd": [
+          3.850462296293199,
+          3.4,
+          -21.380946093925594
+        ],
+        "bodyCenter": [
+          3.984001631290233,
+          3.22,
+          -21.05855362026547
+        ],
+        "bodySize": [
+          0.8139642722441004,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -67.49999999999989,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          4.139746952052696,
+          3.4,
+          -20.68255115460459
+        ],
+        "bodyEndFaceCenter": [
+          3.82825631052777,
+          3.4,
+          -21.434556085926356
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-24",
+        "pathStart": [
+          3.850462296293199,
+          3.4,
+          -21.380946093925594
+        ],
+        "pathEnd": [
+          3.5282032302755093,
+          3.4,
+          -22
+        ],
+        "bodyCenter": [
+          3.689332763284354,
+          3.22,
+          -21.690473046962797
+        ],
+        "bodySize": [
+          0.8139642722441033,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -62.50000000000011,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          3.8772562002501427,
+          3.4,
+          -21.329475483312525
+        ],
+        "bodyEndFaceCenter": [
+          3.5014093263185657,
+          3.4,
+          -22.05147061061307
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-25",
+        "pathStart": [
+          3.5282032302755093,
+          3.4,
+          -22
+        ],
+        "pathEnd": [
+          3.153216354311934,
+          3.4,
+          -22.58861149080837
+        ],
+        "bodyCenter": [
+          3.3407097922937217,
+          3.22,
+          -22.294305745404184
+        ],
+        "bodySize": [
+          0.8139642722441024,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -57.49999999999996,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          3.559381134636254,
+          3.4,
+          -21.951060493200192
+        ],
+        "bodyEndFaceCenter": [
+          3.1220384499511895,
+          3.4,
+          -22.637550997608177
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-26",
+        "pathStart": [
+          3.153216354311934,
+          3.4,
+          -22.58861149080837
+        ],
+        "pathEnd": [
+          2.7283555449518238,
+          3.4,
+          -23.142300877492314
+        ],
+        "bodyCenter": [
+          2.940785949631879,
+          3.22,
+          -22.86545618415034
+        ],
+        "bodySize": [
+          0.8139642722441025,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -52.49999999999998,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          3.188540976398561,
+          3.4,
+          -22.542575547019048
+        ],
+        "bodyEndFaceCenter": [
+          2.693030922865197,
+          3.4,
+          -23.188336821281634
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-27",
+        "pathStart": [
+          2.7283555449518238,
+          3.4,
+          -23.142300877492314
+        ],
+        "pathEnd": [
+          2.2568542494923802,
+          3.4,
+          -23.65685424949238
+        ],
+        "bodyCenter": [
+          2.492604897222102,
+          3.22,
+          -23.399577563492347
+        ],
+        "bodySize": [
+          0.8139642722441022,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -47.500000000000036,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          2.767558043060663,
+          3.4,
+          -23.099518858042984
+        ],
+        "bodyEndFaceCenter": [
+          2.2176517513835408,
+          3.4,
+          -23.69963626894171
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-28",
+        "pathStart": [
+          2.2568542494923802,
+          3.4,
+          -23.65685424949238
+        ],
+        "pathEnd": [
+          1.7423008774923145,
+          3.4,
+          -24.128355544951823
+        ],
+        "bodyCenter": [
+          1.9995775634923474,
+          3.22,
+          -23.8926048972221
+        ],
+        "bodySize": [
+          0.8139642722441022,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -42.499999999999964,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          2.299636268941709,
+          3.4,
+          -23.61765175138354
+        ],
+        "bodyEndFaceCenter": [
+          1.6995188580429859,
+          3.4,
+          -24.167558043060662
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-29",
+        "pathStart": [
+          1.7423008774923145,
+          3.4,
+          -24.128355544951823
+        ],
+        "pathEnd": [
+          1.188611490808369,
+          3.4,
+          -24.553216354311935
+        ],
+        "bodyCenter": [
+          1.4654561841503417,
+          3.22,
+          -24.34078594963188
+        ],
+        "bodySize": [
+          0.8139642722441035,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -37.50000000000014,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          1.788336821281633,
+          3.4,
+          -24.093030922865196
+        ],
+        "bodyEndFaceCenter": [
+          1.1425755470190504,
+          3.4,
+          -24.588540976398562
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-30",
+        "pathStart": [
+          1.188611490808369,
+          3.4,
+          -24.553216354311935
+        ],
+        "pathEnd": [
+          0.6000000000000005,
+          3.4,
+          -24.928203230275507
+        ],
+        "bodyCenter": [
+          0.8943057454041847,
+          3.22,
+          -24.74070979229372
+        ],
+        "bodySize": [
+          0.8139642722441004,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -32.4999999999998,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          1.2375509976081782,
+          3.4,
+          -24.52203844995119
+        ],
+        "bodyEndFaceCenter": [
+          0.5510604932001913,
+          3.4,
+          -24.959381134636253
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-31",
+        "pathStart": [
+          0.6000000000000005,
+          3.4,
+          -24.928203230275507
+        ],
+        "pathEnd": [
+          -0.01905390607440438,
+          3.4,
+          -25.2504622962932
+        ],
+        "bodyCenter": [
+          0.2904730469627981,
+          3.22,
+          -25.089332763284354
+        ],
+        "bodySize": [
+          0.8139642722441043,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -27.500000000000195,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          0.6514706106130713,
+          3.4,
+          -24.901409326318564
+        ],
+        "bodyEndFaceCenter": [
+          -0.07052451668747517,
+          3.4,
+          -25.277256200250143
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-32",
+        "pathStart": [
+          -0.01905390607440438,
+          3.4,
+          -25.2504622962932
+        ],
+        "pathEnd": [
+          -0.6638388533946493,
+          3.4,
+          -25.517540966287267
+        ],
+        "bodyCenter": [
+          -0.34144637973452685,
+          3.22,
+          -25.384001631290232
+        ],
+        "bodySize": [
+          0.8139642722441018,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -22.499999999999996,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          0.0345560859263584,
+          3.4,
+          -25.228256310527772
+        ],
+        "bodyEndFaceCenter": [
+          -0.7174488453954121,
+          3.4,
+          -25.539746952052695
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-33",
+        "pathStart": [
+          -0.6638388533946493,
+          3.4,
+          -25.517540966287267
+        ],
+        "pathEnd": [
+          -1.3294476391798327,
+          3.4,
+          -25.727406610312546
+        ],
+        "bodyCenter": [
+          -0.996643246287241,
+          3.22,
+          -25.622473788299907
+        ],
+        "bodySize": [
+          0.8139642722441017,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -17.49999999999993,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          -0.6084974844159187,
+          3.4,
+          -25.500091899673368
+        ],
+        "bodyEndFaceCenter": [
+          -1.3847890081585634,
+          3.4,
+          -25.744855676926445
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-34",
+        "pathStart": [
+          -1.3294476391798327,
+          3.4,
+          -25.727406610312546
+        ],
+        "pathEnd": [
+          -2.010814578664557,
+          3.4,
+          -25.878462024097665
+        ],
+        "bodyCenter": [
+          -1.6701311089221949,
+          3.22,
+          -25.802934317205107
+        ],
+        "bodySize": [
+          0.8139642722441038,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -12.500000000000082,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          -1.2727960744570945,
+          3.4,
+          -25.714847260783145
+        ],
+        "bodyEndFaceCenter": [
+          -2.0674661433872954,
+          3.4,
+          -25.891021373627066
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-35",
+        "pathStart": [
+          -2.010814578664557,
+          3.4,
+          -25.878462024097665
+        ],
+        "pathEnd": [
+          -2.7027540580187353,
+          3.4,
+          -25.969557584733963
+        ],
+        "bodyCenter": [
+          -2.356784318341646,
+          3.22,
+          -25.924009804415814
+        ],
+        "bodySize": [
+          0.813964272244103,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -7.499999999999808,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          -1.9532839708125014,
+          3.4,
+          -25.87088797588622
+        ],
+        "bodyEndFaceCenter": [
+          -2.760284665870791,
+          3.4,
+          -25.977131632945408
+        ],
+        "collision": true,
+        "material": "cream"
+      },
+      {
+        "id": "s-bend-36",
+        "pathStart": [
+          -2.7027540580187353,
+          3.4,
+          -25.969557584733963
+        ],
+        "pathEnd": [
+          -3.3999999999999995,
+          3.4,
+          -26
+        ],
+        "bodyCenter": [
+          -3.0513770290093674,
+          3.22,
+          -25.98477879236698
+        ],
+        "bodySize": [
+          0.8139642722441014,
+          0.36,
+          2.2
+        ],
+        "rotationEulerDegrees": [
+          0,
+          -2.500000000000141,
+          0
+        ],
+        "bodyStartFaceCenter": [
+          -2.644782249701047,
+          3.4,
+          -25.9670264809207
+        ],
+        "bodyEndFaceCenter": [
+          -3.4579718083176876,
+          3.4,
+          -26.00253110381326
+        ],
+        "collision": true,
+        "material": "cream"
+      }
+    ],
+    "supportPoints": [
+      {
+        "pathPosition": [
+          10.870131108922195,
+          3.22,
+          -10.197065682794895
+        ],
+        "topLimitY": 2.8,
+        "footBottomY": -0.4
+      },
+      {
+        "pathPosition": [
+          7.200422436507653,
+          3.22,
+          -12.107395102777899
+        ],
+        "topLimitY": 2.8,
+        "footBottomY": -0.4
+      },
+      {
+        "pathPosition": [
+          4.977526211700093,
+          3.22,
+          -15.59664324628724
+        ],
+        "topLimitY": 2.8,
+        "footBottomY": -0.4
+      },
+      {
+        "pathPosition": [
+          4.402934317205105,
+          3.22,
+          -19.729868891077807
+        ],
+        "topLimitY": 2.8,
+        "footBottomY": -0.4
+      },
+      {
+        "pathPosition": [
+          2.492604897222102,
+          3.22,
+          -23.399577563492347
+        ],
+        "topLimitY": 2.8,
+        "footBottomY": -0.4
+      },
+      {
+        "pathPosition": [
+          -0.996643246287241,
+          3.22,
+          -25.622473788299907
+        ],
+        "topLimitY": 2.8,
+        "footBottomY": -0.4
+      }
+    ],
+    "instructions": "Keep tangent continuity; adjacent boxes overlap only to close outer join wedges, all topsY3.4. Render the same union, not a filled hull or ideal arc over disconnected physics. No pillar per segment. Continuous steering test must not brake at each node.",
+    "minimumStraightChordDeviation": 2.3431457505076194,
+    "estimatedCentripetalAccelerationAt7": 6.125,
+    "runtimeUsesExistingPrimitiveRotation": true
+  },
+  "narrowBridgeVisualLimits": {
+    "topWidth": 0.9,
+    "baseWidth": 0.86,
+    "gasketWidth": 0.89,
+    "flangeWidthMax": 0.74,
+    "braceReachMax": 0.3,
+    "noSolidRails": true,
+    "markingsOwnedByRuntime": true
+  },
+  "difficultyAdjustment": {
+    "rulesVersion": "challenge",
+    "previousRule": "standard",
+    "standardRecordPreserved": true,
+    "status": "first user-approved candidate, real challenge playtest pending",
+    "changes": [
+      "hammer frequencies1.8/2.3/2.8",
+      "cross width1.4,omega.85",
+      "lifts A.9,omega1.1 with stem/sleeve adaptation",
+      "narrow bridge width.9",
+      "R8 S speed retention and50degree/4.25m slope"
+    ],
+    "visualsTemporarilyDisabled": [
+      "static track",
+      "cross",
+      "lifts"
+    ],
+    "reason": "Existing GLBs still represent old dimensions; use honest base geometry until ART same-name assets are paired.",
+    "slopeTrial": {
+      "rejected": {
+        "angle": 55,
+        "length": 5,
+        "goodExitSpeed": 6.762,
+        "footSpeed": 6.189,
+        "maximumBallY": 7.088,
+        "maximumX": -6.939,
+        "result": "slides back"
+      },
+      "current": {
+        "angle": 50,
+        "length": 4.25,
+        "status": "pending same three-way physical comparison"
+      },
+      "evidence": "docs/integration/level-02-evidence/s-55deg-short-comparison.json",
+      "reason": "S retains speed; main slope consumed too much energy. Keep S and player physics, reduce only the main slope and attached high deck."
+    }
   }
 }

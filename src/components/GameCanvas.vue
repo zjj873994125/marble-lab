@@ -2,6 +2,8 @@
 import { onMounted, onBeforeUnmount, ref, watch } from 'vue'
 import { state, startRun, finishRun, activeLevel } from '../state'
 import type { MarbleGame } from '../game/runtime'
+import type { GameInput } from '../game/input'
+const props = defineProps<{ input?: GameInput }>()
 const host = ref<HTMLDivElement>()
 let game: MarbleGame | undefined
 let disposed = false
@@ -21,6 +23,7 @@ async function load() {
     const instance = await createGame(canvas, {
       settings: () => state.settings,
       phase: () => state.phase,
+      input: () => props.input,
       tick: (time, falls, checkpoint, progress) => { if (disposed) return; state.elapsed = time; state.falls = falls; state.checkpoint = checkpoint; state.progress = progress },
       finish: () => { if (!disposed) finishRun() },
       pause: () => { if (state.settingsOpen || state.helpOpen) return; if (state.phase === 'playing') state.phase = 'paused'; else if (state.phase === 'paused') state.phase = 'playing' },
@@ -35,7 +38,7 @@ async function load() {
   } finally { loading = false }
 }
 onMounted(load)
-watch(() => state.runId, () => { if (game) game.start(); else void load() })
+watch(() => state.runId, () => { if (game) { game.start(); game.setPhase(state.phase) } else void load() })
 watch(() => state.phase, phase => game?.setPhase(phase))
 watch(() => state.settings, () => game?.applySettings(), { deep: true })
 onBeforeUnmount(() => { disposed = true; game?.destroy(); controller.abort(); state.ready = false })

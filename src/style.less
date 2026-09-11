@@ -175,3 +175,23 @@ kbd { background: #f5f6ef; color: #485e53; border-color: #c8d2c8; }
   .game-dialog.el-dialog { padding: 22px; .el-dialog__title { font-size: 22px; } }
   .settings-drawer { .el-drawer__header { padding: 22px; } .el-drawer__body { padding: 0 22px; } .el-drawer__footer { padding: 18px 22px; } .el-form-item { margin-bottom: 26px; } }
 }
+
+.touch-layout.in-game { height: 100dvh; min-height: 0; overflow: hidden; }
+.touch-layout.in-game .game-top { inset: max(10px, env(safe-area-inset-top)) max(16px, calc(env(safe-area-inset-right) + 8px)) auto max(16px, calc(env(safe-area-inset-left) + 8px)); align-items: center; }
+.mobile-status { display: flex; align-items: center; gap: 16px; min-height: 44px; padding: 0 14px; border: 1px solid var(--ui-line); border-radius: 12px; background: #faf9f2e8; color: #40534a; strong { font-size: 24px; line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -.5px; } span { font-size: 11px; white-space: nowrap; } }
+.touch-layout .pause-button.el-button { height: 44px; min-width: 76px; font-size: 13px; padding: 0 12px; }
+.touch-layout .progress-rail { bottom: 0; }
+.mobile-pause-detail { display: block; margin-top: 8px; font-size: 12px; }
+.portrait-prompt { position: absolute; inset: 0; z-index: 20; display: grid; place-items: center; padding: 28px; background: #143e43bf; text-align: center; >div { width: 100%; max-width: 340px; border-radius: 20px; background: #faf9f2; padding: 28px 20px; } h2 { font-size: 21px; } p { color: #65756b; margin: 16px 0 24px; font-size: 14px; } .el-button { min-height: 44px; } }
+.rotate-phone { display: block; color: #d96d3e; font-size: 44px; line-height: 1; margin-bottom: 16px; }
+@media (pointer: coarse) and (max-width: 1100px) {
+  .game-dialog.el-dialog { max-height: calc(100dvh - 24px); overflow-y: auto; margin-block: 12px; }
+  .game-dialog .el-button { min-height: 44px; }
+  .settings-drawer .el-drawer__footer .el-button { min-height: 44px; }
+}
+@media (pointer: coarse) and (orientation: landscape) and (max-height: 480px) {
+  .game-dialog.el-dialog { padding: 20px 24px; .el-dialog__title { font-size: 23px; } }
+  .game-dialog .dialog-subtitle { margin: 10px 0 16px; }
+  .game-dialog .dialog-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; .el-button { margin: 0; } }
+  .game-dialog .result-time { font-size: 38px; }
+}

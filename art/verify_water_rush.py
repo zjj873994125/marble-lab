@@ -80,6 +80,16 @@ cross_radius=max(math.hypot(p[0],p[2]) for p in turn_points)
 assert cross_radius <= layout['turntable']['visualOuterRadiusLimit']+1e-5
 assert min(p[1] for p in turn_points)+report['turntable_origin'][1] >= 2.9-1e-5
 assert max(p[1] for p in turn_points)+report['turntable_origin'][1] <= 3.42+1e-5
+half_width=layout['turntable']['armWidth']/2
+assert all(abs(p[0])<=half_width+.07 or abs(p[2])<=half_width+.07 for p in turn_points), '中心或底座仍超出新十字轮廓'
+section_z=(layout['turntable']['span']/2+half_width)/2
+section_x=[]
+for triangle in assets['TurntableVisual']:
+    for a,b in zip(triangle,triangle[1:]+triangle[:1]):
+        if abs(a[2]-b[2])>1e-8 and min(a[2],b[2])<=section_z<=max(a[2],b[2]):
+            t=(section_z-a[2])/(b[2]-a[2])
+            section_x.append(a[0]+t*(b[0]-a[0]))
+assert section_x and abs(max(section_x)-min(section_x)-2*half_width)<1e-5, '各层臂宽未同步新配置'
 
 def covers_xz(point,triangle):
     a,b,c=[(p[0],p[2]) for p in triangle]
@@ -110,7 +120,7 @@ if synced:
     assert all(s['static_triangle_intersections']==0 for s in sweeps), sweeps
     assert report['lift_stem_min_world_y'] >= layout['lifts']['visualUndersideEnvelopeMinY']-1e-6
     assert report['lift_sleeve_inner_radius']*math.cos(math.pi/32) > report['lift_stem_radius']
-result = {'status':'passed' if synced else 'assets-pass-layout-awaiting-rebuild',
+result = {'status':'passed' if synced else 'assets-pass-layout-metadata-review-needed',
           'layout_sha256':report['layout_sha256'], 'layout_synced':synced,
           'source_sha256':report['blend_sha256'], 'assets':report['exports'], 'sweeps':sweeps,
           'first_level_unchanged':True, 'physics_playtest_verified_by_art':False,

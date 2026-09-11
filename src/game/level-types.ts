@@ -1,7 +1,7 @@
 // 由代码对话维护格式；关卡对话只填写 src/levels 下的数据。
 export type Position = [number, number, number]
 export type MaterialName = 'cream' | 'edge' | 'orange' | 'dark' | 'blue' | 'floorMat' | 'water' | 'poolEdge'
-export type RulesVersion = 'classic' | 'open-hammer' | 'flat-hammer' | 'standard'
+export type RulesVersion = 'classic' | 'open-hammer' | 'flat-hammer' | 'standard' | 'challenge'
 
 export interface PrimitiveConfig {
   name: string

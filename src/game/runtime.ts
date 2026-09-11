@@ -6,10 +6,12 @@ import { createWaterMaterial } from './water-material'
 import { createSteelMaterial } from './steel-material'
 import { createModelAssets, attachMovingVisual } from './model-assets'
 import { arcHammerPose, liftPosition, turntablePose } from './mechanism-motion'
+import { resolveInput, type GameInput } from './input'
 import type { LevelConfig, Position, PrimitiveConfig, RingConfig } from './level-types'
 
 interface Hooks {
   settings: () => Settings; phase: () => Phase
+  input?: () => GameInput | undefined
   tick: (time: number, falls: number, checkpoint: number, progress: number) => void
   finish: () => void; pause: () => void; restart: () => void
 }
@@ -122,7 +124,8 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
     ...lifts.map(lift => attachMovingVisual(modelAssets.load, lift.config.visual, lift.entity, [lift.entity.render!])),
     ...(turntable ? [attachMovingVisual(modelAssets.load, turntable.config.visual, turntable.root, turntable.parts.map(part => part.render!))] : []),
   ])
-  function disposeScene() { visualDisposers.forEach(dispose => dispose()); modelAssets.destroy(); water?.destroy(); steel.destroy(); app.destroy(); materials.forEach(m=>m.destroy()); meshes.forEach(m=>m.destroy()) }
+  let sceneDisposed = false
+  function disposeScene() { if (sceneDisposed) return; sceneDisposed = true; visualDisposers.forEach(dispose => dispose()); modelAssets.destroy(); water?.destroy(); steel.destroy(); app.destroy(); materials.forEach(m=>m.destroy()); meshes.forEach(m=>m.destroy()) }
   if (signal?.aborted) { disposeScene(); throw new DOMException('关卡已卸载', 'AbortError') }
 
   let audio: AudioContext | undefined
@@ -201,14 +204,12 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
       elapsed+=dt; time+=dt
       updateMechanisms()
       if (water) water.update(hooks.settings().quality === 'high' && !hooks.settings().reducedMotion && !matchMedia('(prefers-reduced-motion: reduce)').matches ? time : 0)
-      let x=Number(keys.has('KeyD')||keys.has('ArrowRight'))-Number(keys.has('KeyA')||keys.has('ArrowLeft'))
-      let zforce=Number(keys.has('KeyS')||keys.has('ArrowDown'))-Number(keys.has('KeyW')||keys.has('ArrowUp'))
-      const length=Math.hypot(x,zforce)
-      if(length) { x/=length; zforce/=length; rigid.applyForce(x*12*hooks.settings().sensitivity,0,zforce*12*hooks.settings().sensitivity) }
+      const input=resolveInput(keys,hooks.input?.())
+      if(input.x || input.z) rigid.applyForce(input.x*12*hooks.settings().sensitivity,0,input.z*12*hooks.settings().sensitivity)
       const v=rigid.linearVelocity
       const speed=Math.hypot(v.x,v.z)
       if (speed>7) rigid.linearVelocity=new pc.Vec3(v.x*7/speed,v.y,v.z*7/speed)
-      if(keys.has('Space')) { const brake=Math.exp(-7*dt); rigid.linearVelocity=new pc.Vec3(v.x*brake,v.y,v.z*brake) }
+      if(input.brake) { const brake=Math.exp(-7*dt); rigid.linearVelocity=new pc.Vec3(v.x*brake,v.y,v.z*brake) }
       pos.copy(ball.getPosition())
       if(pos.y<level.fallY) { falls++; tone(140,.18); respawn(); pos.copy(ball.getPosition()) }
       const next=checkpoints[checkpoint]
@@ -232,5 +233,5 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
     }
   })
   app.start()
-  return { start,setPhase,applySettings,destroy() { observer.disconnect(); window.removeEventListener('keydown',down); window.removeEventListener('keyup',up); window.removeEventListener('blur',blur); document.removeEventListener('visibilitychange',hidden); void audio?.close(); disposeScene() } }
+  return { start,setPhase,applySettings,destroy() { if (sceneDisposed) return; observer.disconnect(); window.removeEventListener('keydown',down); window.removeEventListener('keyup',up); window.removeEventListener('blur',blur); document.removeEventListener('visibilitychange',hidden); void audio?.close(); disposeScene() } }
 }
