@@ -185,5 +185,8 @@
     0,
     0
   ],
-  "limit": "Triangle/box and stem/sleeve geometry only; transfer, ramp and rotating contact need CODE playtest"
+  "limit": "Triangle/box and stem/sleeve geometry only; transfer, ramp and rotating contact need CODE playtest",
+  "applies_to_current_models": false,
+  "historical_scope": "Previous R8 / 0.9m bridge / 50 degree geometry; retained as historical evidence.",
+  "current_revision_status": "Not run: user requested continuing development without automatic tests or playtests for the four-hairpin / 0.5m revision."
 }

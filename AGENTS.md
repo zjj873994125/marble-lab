@@ -14,4 +14,4 @@
 - 优先复用 `http://127.0.0.1:5177/`；5173 为其他项目。不要清空浏览器设置和成绩。统一验证入口为 `npm test`、`npm run build`。
 - 本项目已接入本地双关选择与按关卡/规则保存，PlayCanvas Editor 导入仍未实现。GitHub Actions/GHCR 已配置，服务器状态以实际部署证据为准；不得把规划写成已有能力。
 
-成绩由关卡 id + rulesVersion 区分：第一关 classic/open-hammer/flat-hammer，第二关 standard/challenge。v3 为当前存储，v1/v2 原文只读保留。新难度变更先核对 docs/integration/level-02-contract.md 和当前产品要求，不把旧成绩记入新规则。
+成绩由关卡 id + rulesVersion 区分：第一关 classic/open-hammer/flat-hammer，第二关 standard/challenge/serpentine。v3 为当前存储，v1/v2 原文只读保留。新难度变更先核对 docs/integration/level-02-contract.md 和当前产品要求，不把旧成绩记入新规则。

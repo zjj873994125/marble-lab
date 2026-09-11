@@ -6,14 +6,14 @@
 
 - 稳定 id=`water-rush`，名称“水上冲关”，编号02；配置为 `src/levels/water-rush.ts`。代码目录已注册第一关与第二关，HUD/运行时/成绩使用同一选中项。
 - 继续使用 LevelConfig 的 staticObjects、start、checkpoints、checkpointTrigger、finish、fallY、platform、progress。旧 `pendulum` 改为可选，仅服务第一关原运动；第二关使用 `hammers` 数组，不同时填写旧 pendulum。一个横移平台继续使用既有字段/资产。
-- 第二关初始规则为 `standard`，本轮调难统一为 `challenge`，成绩在v3的water-rush下分别保存。历史 classic/open-hammer/flat-hammer 均明确归第一关，保留原键、记录及共享设置；第一关成绩不会成为第二关最佳。选择、生命周期及存档隔离已实现，challenge保留standard的专项测试已通过。
+- 第二关初始规则为 `standard`，R8调难为 `challenge`，最新手绘回头弯/0.5米桥改为 `serpentine`，成绩在v3的water-rush下分别保存。历史 classic/open-hammer/flat-hammer 均明确归第一关，保留原键、记录及共享设置；第一关成绩不会成为第二关最佳。选择、生命周期及存档隔离已实现，challenge保留standard的专项测试已通过。
 - progress 每段增加 `axis?: 'x' | 'z'` 与 `origin?: number`，缺省使用 z/originZ 兼容第一关。按当前已过检查点取一段，第二关建议 x/z/z/x；它仍是分段估计，不宣称精确路程。原 originZ 保留以免改写第一关配置。
 
 ## 静态图元与坡面
 
 PrimitiveConfig 已支持字段 `rotation?: [x,y,z]`，单位度，按 PlayCanvas `setEulerAngles` 解释；未填为零。body=static 的盒体与基础显示一起旋转，真实碰撞不是水平代理。
 
-上坡用旋转盒体表达：size 为局部 X/Y/Z 完整尺寸，position 为盒体中心。当前坡向 -X，局部长轴 X，standard 三段 rotation 为 `[0,0,-20]`、`[0,0,-45]`、`[0,0,-20]`，challenge 的主坡角/长度按本轮实际数据及试玩调整；精确 position/size/topStart/topEnd 以最新设计 JSON 为准。局部顶面端点 `[±L/2,h/2,0]` 经旋转再加 position 得到接驳位置，不能只对齐盒中心。旧向 -Z 示例不适用于当前第二关。
+上坡用旋转盒体表达：size 为局部 X/Y/Z 完整尺寸，position 为盒体中心。R8版坡向 -X，局部长轴 X；最新蛇形出口向 -Z，坡可用局部长轴 Z 和 X 轴坡角，具体以正式数据为准。对于旧X向坡，standard 三段 rotation 为 `[0,0,-20]`、`[0,0,-45]`、`[0,0,-20]`，challenge 的主坡角/长度按本轮实际数据及试玩调整；精确 position/size/topStart/topEnd 以最新设计 JSON 为准。局部顶面端点 `[±L/2,h/2,0]` 经旋转再加 position 得到接驳位置，不能只对齐盒中心。旧向 -Z 示例不适用于当前第二关。
 
 保留现有力12、重力16、水平限速7及球体摩擦。坡角大于约 atan(12/16)=36.87° 才可能在理想受力上出现低速难上，但撞坡损耗、滚动惯量与接缝必须实测。standard 已完成严格低速/助跑对照。challenge 在坡前加入真实S弯，出弯切向衔接应短，不能重新用长直路加满速；先验证原控制能保速通过，再联合校准坡角/长度。水平S弯复用带Y旋转的静态盒体分段，模型与代理同形接合，不能只在直路画线。
 
@@ -68,3 +68,9 @@ body 由代码设为运动学盒体。Y=baseY+amplitude*sin(angularSpeed*t+phase
 - 各资源失败时使用该机关的基础显示与真实碰撞继续游戏；具体加载/卸载和多实例测试随运行时能力交付。
 
 类型、姿态、代理、选择、加载和按关卡存档已实现；LEVEL维护正式TS。后续几何/难度修改先交接实际字段和模型暂态，再按新参数做短段与整关验收。原 v1/v2 存储原文保留，新增按关卡+规则组织的存储，不把历史桶改记为第二关。所有浏览器验证使用5177对应的隔离测试origin，不清用户数据。standard基线可玩不代表challenge/S弯的新难度已经验收。
+
+## 最新开发边界
+
+用户在代码任务明确暂停自动检查和试玩，当前先开发手绘连续回头弯/.5米桥及手机交互。serpentine规则已可填写，v3保留standard、challenge和第一关全部桶。通用Primitive.rotation支持新-Z坡，无需新引擎字段；模型仍原位同名更新。新几何未实测时不得引用R8下50°/55°对照作为完成结论；后续Git写操作由产品统筹统一执行。
+
+本批最终serpentine配置已恢复静态模型引用：入口90°加四次交替180°回头（R3.5、宽1.6），桥宽.5；末弯后.6m衔接-Z坡，局部长轴Z，三段rotation为[20,0,0]/[50,0,0]/[20,0,0]，主坡长4.4m。当前为按用户要求完成的开发配套，不宣称新线形经过速度/可通性验收。

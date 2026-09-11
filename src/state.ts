@@ -8,7 +8,7 @@ export interface Run { time: number; falls: number; date: string }
 export const defaults: Settings = { quality: 'high', volume: 45, sensitivity: 1, reducedMotion: false }
 const key = 'marble-lab-v3'
 const firstLevel = levelCatalog[0]!
-const versionLabels: Record<string, string> = { classic: '初版', 'open-hammer': '圆头锤版', 'flat-hammer': '平端锤版', standard: '初始难度', challenge: '挑战难度' }
+const versionLabels: Record<string, string> = { classic: '初版', 'open-hammer': '圆头锤版', 'flat-hammer': '平端锤版', standard: '初始难度', challenge: '挑战难度', serpentine: '蛇形挑战' }
 interface Saved { schemaVersion?: number; settings?: Partial<Settings>; runs?: Run[]; runsByVersion?: Record<string, Run[]>; runsByLevel?: Record<string, Record<string, Run[]>>; selectedLevelId?: string }
 function readSaved(storageKey: string): Saved {
   try { const value = JSON.parse(localStorage.getItem(storageKey) || '{}'); return value && typeof value === 'object' && !Array.isArray(value) ? value : {} }

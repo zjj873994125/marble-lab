@@ -154,6 +154,9 @@ def export_meshes(objects, node, filename, origin=None):
     bpy.ops.object.join()
     merged = bpy.context.object
     merged.name = node
+    # 布尔接缝可能留下退化环，仅清理导出副本，保留源控制体。
+    merged.data.validate(verbose=False, clean_customdata=False)
+    merged.data.update()
     bpy.context.scene.cursor.location = (0, 0, 0)
     bpy.ops.object.origin_set(type='ORIGIN_CURSOR')
     bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
@@ -257,12 +260,6 @@ def prepare_scene():
     original_objects = set(bpy.data.objects.keys())
     original_layout_ids={o['layout_id'] for o in bpy.data.objects if 'layout_id' in o}
     original_materials = {m.name: list(m.diffuse_color) for m in bpy.data.materials}
-    # 改名只用于对应同一段转到新朝向的护栏，保留原网格和材质。
-    for old, new in [('finish-rail-left','finish-rail-north'),('finish-rail-right','finish-rail-south')]:
-        if new not in bpy.data.objects:
-            for obj in list(bpy.data.objects):
-                if obj.name.startswith(old):
-                    obj.name = new+obj.name[len(old):]
     groups = {}
     for name in ('Layout controls', 'Static structure', 'Turntable', 'Lift plates', 'Runtime references'):
         collection = bpy.data.collections.get(name)
@@ -288,22 +285,29 @@ def prepare_scene():
         bearing=name=='Turntable spindle'
         narrow_width=next((s['bodySize'][0] for s in layout['staticDecks'] if s['id']=='narrow-bridge'),1.6)
         narrow=name.startswith('narrow-bridge support') and narrow_width<1.6
+        limits=layout.get('narrowBridgeVisualLimits',{})
+        if narrow:
+            width=min(width,limits.get('upperPostWidth',narrow_width-.26))
         foot=.76 if bearing else .95
         plate=.70 if bearing else .8
-        add(box(name+' rubber foot', [x, -.34, z], [foot, .12, foot], rubber, .05), 'Static structure', static)
-        add(box(name+' alloy foot', [x, -.23, z], [plate, .12, plate], alloy, .035), 'Static structure', static)
+        foot_width=min(foot,limits.get('footWidthX',foot)) if narrow else foot
+        plate_width=min(plate,limits.get('footWidthX',plate)) if narrow else plate
+        add(box(name+' rubber foot', [x, -.34, z], [foot_width, .12, foot], rubber, .05), 'Static structure', static)
+        add(box(name+' alloy foot', [x, -.23, z], [plate_width, .12, plate], alloy, .035), 'Static structure', static)
         height = top+.125
         add(box(name+' leg', [x, -.2+height/2, z], [width, height, width], graphite, .06), 'Static structure', static)
         flange=[.76,.15,.76] if bearing else [1,.15,.7]
         if narrow:
-            flange[0]=min(flange[0],narrow_width-.16)
+            flange[0]=min(flange[0],limits.get('flangeWidthMax',narrow_width-.16))
         add(box(name+' mounting flange', [x, top-.075, z], flange, alloy, .035), 'Static structure', static)
-        add(box(name+' orange collar', [x, .02, z], [width+.04, .13, width+.04], orange, .03), 'Static structure', static)
-        for dx in (-.27, .27):
+        collar_width=limits.get('collarWidth',width+.04) if narrow else width+.04
+        add(box(name+' orange collar', [x, .02, z], [collar_width, .13, width+.04], orange, .03), 'Static structure', static)
+        anchor_offset=limits.get('anchorOffsetX',.27) if narrow else .27
+        for dx in (-anchor_offset, anchor_offset):
             add(cylinder(name+' anchor', [x+dx, -.155, z], .055, .04, graphite, .008, 16), 'Static structure', static)
         brace_offset=.32 if bearing else .62
         if narrow:
-            brace_offset=min(brace_offset,narrow_width/2-.15)
+            brace_offset=min(brace_offset,limits.get('braceReachMax',narrow_width/2-.15))
         start, end = Vector(game_position([x, top-.75, z])), Vector(game_position([x+brace_offset, top-.075, z]))
         brace = box(name+' diagonal brace', [0,0,0], [.1, (end-start).length, .1], alloy, .02)
         brace.location = (start+end)/2
@@ -371,7 +375,8 @@ def prepare_scene():
             center = [value-offset*normal_game[i] for i,value in enumerate((x,y,z))]
             width_extra=extra
             if spec['id']=='narrow-bridge' and w<1.6:
-                width_extra=-.04 if name=='Graphite chassis' else -.01
+                key='baseWidth' if name=='Graphite chassis' else 'gasketWidth'
+                width_extra=layout.get('narrowBridgeVisualLimits',{}).get(key,w+(-.04 if name=='Graphite chassis' else -.01))-w
             control = flat_box(spec['id']+' '+name+' control', center, [w+width_extra, height, d+extra], material, 'Layout controls')
             control.rotation_mode = 'QUATERNION'
             control.rotation_quaternion = game_rotation(degrees)
@@ -594,11 +599,14 @@ def prepare_scene():
     retired_ids=original_layout_ids-current_ids
     retired_objects=[]
     support_pattern=re.compile(r'^(.*?) support \d+ (?:rubber foot|alloy foot|leg|mounting flange|orange collar|anchor(?:\.\d+)?|diagonal brace)$')
+    rail_pattern=re.compile(r'^(finish-rail-(?:left|right|north|south|end|back))(?: (?:mount|rivet)(?:\.\d+)?)?$')
     for obj in list(bpy.data.objects):
         support_match=support_pattern.match(obj.name)
-        obsolete_support=support_match and support_match.group(1) in original_layout_ids and obj not in static
+        obsolete_support=support_match and (support_match.group(1) in original_layout_ids or support_match.group(1)=='S-bend') and obj not in static
         obsolete_control=any(obj.name==oid or obj.name.startswith(oid+' Graphite chassis control') or obj.name.startswith(oid+' Recessed orange gasket control') for oid in retired_ids)
-        if obsolete_support or obsolete_control:
+        rail_match=rail_pattern.match(obj.name)
+        obsolete_rail=rail_match and rail_match.group(1) not in current_ids
+        if obsolete_support or obsolete_control or obsolete_rail:
             retired_objects.append(obj.name)
             bpy.data.objects.remove(obj,do_unlink=True)
     # 非本轮新增的用户对象保留在其原集合；可见静态额外件也随资源导出。
@@ -609,7 +617,7 @@ def prepare_scene():
     scene['level_id'] = 'water-rush'
     scene['layout_sha256'] = layout_hash
     scene['contract_sha256'] = contract_hash
-    scene['stage'] = 'Challenge models exported; refined integration and full challenge playtest pending'
+    scene['stage'] = layout.get('rulesVersion','challenge')+' geometry exported; current gameplay not tested'
     scene['editing'] = 'Current saved scene updated in place; meshes/materials preserved; no backup/version files'
     scene['hammer_reference_pose'] = 'Neutral centered pose for editing; animation previews use independent frequencies/phases'
     latest_layout=json.loads(LAYOUT.read_text())
@@ -622,9 +630,15 @@ def prepare_scene():
     bpy.ops.object.select_all(action='DESELECT')
     bpy.ops.wm.save_as_mainfile(filepath=str(BLEND))
     bpy.context.preferences.filepaths.save_version = backup_count
-    exports = [export_meshes(static, 'TrackStatic', 'water-rush-track.glb'),
-               export_meshes(rotating, 'TurntableVisual', 'water-rush-turntable.glb', tc),
-               export_meshes(lift_groups[0], 'LiftVisual', 'water-rush-lift.glb', lift['instances'][0]['center'])]
+    exports = [export_meshes(static, 'TrackStatic', 'water-rush-track.glb')]
+    if '--static-only' in sys.argv:
+        assert previous and previous['cross_geometry']==cross_spec and previous['lift_centers']==[i['center'] for i in lift['instances']]
+        for entry in previous['exports'][1:]:
+            assert sha(ROOT/'public/models'/entry['file'])==entry['sha256']
+            exports.append(entry)
+    else:
+        exports.extend([export_meshes(rotating, 'TurntableVisual', 'water-rush-turntable.glb', tc),
+                        export_meshes(lift_groups[0], 'LiftVisual', 'water-rush-lift.glb', lift['instances'][0]['center'])])
     for i, parts in enumerate(lift_groups):
         offset = lift['amplitude']*(1 if i%2 == 0 else -1)
         for obj in parts:
@@ -649,53 +663,54 @@ def prepare_scene():
     width, depth = hi[0]-lo[0], hi[1]-lo[1]
     render_preview(target, math.hypot(width,depth)*1.25)
     render_preview(target, max(width,depth*1.6)*1.12, ROOT/'docs/art/water-rush-top.png', (0,0,100))
-    turn_matrices={obj:obj.matrix_world.copy() for obj in rotating}
-    pivot=Vector(game_position(tc))
-    entry_angle=0
-    for label,angle in [('entry',entry_angle),('diagonal',math.pi/4),('exit',entry_angle+math.pi)]:
-        transform=Matrix.Translation(pivot)@game_rotation([0,math.degrees(angle),0]).to_matrix().to_4x4()@Matrix.Translation(-pivot)
+    if '--static-only' not in sys.argv:
+        turn_matrices={obj:obj.matrix_world.copy() for obj in rotating}
+        pivot=Vector(game_position(tc))
+        entry_angle=0
+        for label,angle in [('entry',entry_angle),('diagonal',math.pi/4),('exit',entry_angle+math.pi)]:
+            transform=Matrix.Translation(pivot)@game_rotation([0,math.degrees(angle),0]).to_matrix().to_4x4()@Matrix.Translation(-pivot)
+            for obj,matrix in turn_matrices.items():
+                obj.matrix_world=transform@matrix
+            bpy.context.view_layer.update()
+            render_preview([tc[0],3.2,tc[2]],13,ROOT/f'docs/art/water-rush-cross-{label}.png',(10,-14,16))
         for obj,matrix in turn_matrices.items():
-            obj.matrix_world=transform@matrix
+            obj.matrix_world=matrix
         bpy.context.view_layer.update()
-        render_preview([tc[0],3.2,tc[2]],13,ROOT/f'docs/art/water-rush-cross-{label}.png',(10,-14,16))
-    for obj,matrix in turn_matrices.items():
-        obj.matrix_world=matrix
-    bpy.context.view_layer.update()
-    center = hammers[1]['anchor']
-    front_target = [center[0],3.81,center[2]]
-    max_angle = hammers[1]['motion']['maxAngleRadians']
-    keep = {o for o in bpy.data.objects if o.name.startswith(hammers[1]['id'])}
-    water_obj = bpy.data.objects['Preview water only']
-    keep.add(water_obj)
-    hidden = {o: o.hide_render for o in bpy.data.objects if o not in keep}
-    for obj in hidden:
-        obj.hide_render = True
-    lane_preview = box('Portal preview lane only',[center[0],3.22,center[2]],[4,.36,3.2],ivory,.065)
-    for label,theta in [('middle',0),('left',-max_angle),('right',max_angle)]:
-        pose_hammer(1,theta)
-        render_preview(front_target,15,ROOT/f'docs/art/water-rush-hammer-{label}.png',(-14,0,0))
-    bpy.data.objects.remove(lane_preview,do_unlink=True)
-    for obj,value in hidden.items():
-        obj.hide_render = value
-    pose_hammer(1,0)
-    samples=[]
-    for sample in range(241):
-        t=sample/10
-        entry={'time':t,'heads':[]}
+        center = hammers[1]['anchor']
+        front_target = [center[0],3.81,center[2]]
+        max_angle = hammers[1]['motion']['maxAngleRadians']
+        keep = {o for o in bpy.data.objects if o.name.startswith(hammers[1]['id'])}
+        water_obj = bpy.data.objects['Preview water only']
+        keep.add(water_obj)
+        hidden = {o: o.hide_render for o in bpy.data.objects if o not in keep}
+        for obj in hidden:
+            obj.hide_render = True
+        lane_preview = box('Portal preview lane only',[center[0],3.22,center[2]],[4,.36,3.2],ivory,.065)
+        for label,theta in [('middle',0),('left',-max_angle),('right',max_angle)]:
+            pose_hammer(1,theta)
+            render_preview(front_target,15,ROOT/f'docs/art/water-rush-hammer-{label}.png',(-14,0,0))
+        bpy.data.objects.remove(lane_preview,do_unlink=True)
+        for obj,value in hidden.items():
+            obj.hide_render = value
+        pose_hammer(1,0)
+        samples=[]
+        for sample in range(241):
+            t=sample/10
+            entry={'time':t,'heads':[]}
+            for i,hammer in enumerate(hammers):
+                motion=hammer['motion']
+                theta=motion['maxAngleRadians']*math.sin(motion['phaseFrequency']*t+motion['phase'])
+                entry['heads'].append({'id':hammer['id'],'theta':theta,'center':pose_hammer(i,theta)})
+            samples.append(entry)
+        preview_t=.8
         for i,hammer in enumerate(hammers):
             motion=hammer['motion']
-            theta=motion['maxAngleRadians']*math.sin(motion['phaseFrequency']*t+motion['phase'])
-            entry['heads'].append({'id':hammer['id'],'theta':theta,'center':pose_hammer(i,theta)})
-        samples.append(entry)
-    preview_t=.8
-    for i,hammer in enumerate(hammers):
-        motion=hammer['motion']
-        pose_hammer(i,motion['maxAngleRadians']*math.sin(motion['phaseFrequency']*preview_t+motion['phase']))
-    center_x=sum(h['anchor'][0] for h in hammers)/len(hammers)
-    render_preview([center_x,3.81,hammers[0]['anchor'][2]],24,ROOT/'docs/art/water-rush-three-hammers.png',(6,-20,12))
-    for i in range(3):
-        pose_hammer(i,0)
-    (ROOT/'docs/art/water-rush-motion-preview.json').write_text(json.dumps({'design_only':True,'duration':24,'sample_step':.1,'samples':samples},ensure_ascii=False,indent=2)+'\n')
+            pose_hammer(i,motion['maxAngleRadians']*math.sin(motion['phaseFrequency']*preview_t+motion['phase']))
+        center_x=sum(h['anchor'][0] for h in hammers)/len(hammers)
+        render_preview([center_x,3.81,hammers[0]['anchor'][2]],24,ROOT/'docs/art/water-rush-three-hammers.png',(6,-20,12))
+        for i in range(3):
+            pose_hammer(i,0)
+        (ROOT/'docs/art/water-rush-motion-preview.json').write_text(json.dumps({'design_only':True,'duration':24,'sample_step':.1,'samples':samples},ensure_ascii=False,indent=2)+'\n')
     report = {'blend_sha256': sha(BLEND), 'layout_sha256': layout_hash, 'contract_sha256': contract_hash,
               'stage': scene['stage'], 'units': 'meters', 'coordinates': 'glTF Y-up; Blender (x,-z,y)',
               'static_controls': len(deck_controls), 'static_parts': len(static), 'exports': exports,
@@ -708,7 +723,8 @@ def prepare_scene():
               'input_blend_sha256':input_hash,'preexisting_object_count':len(original_objects),
               'retired_route_objects':retired_objects,'s_bend_segments':len(s_segments),'s_bend_supports':len(s_bend.get('supportPoints',[])),
               'material_values_preserved':True,'hammers':hammers,
-              'pending': ['Saved source and GLB geometry verification', 'Restore refined models in LevelConfig', 'CODE full challenge route and mobile playtest']}
+              'validation_status': 'Not run this revision per user instruction; export statistics only',
+              'pending': ['Restore static refined model reference', 'Current route difficulty not playtested']}
     latest_layout=json.loads(LAYOUT.read_text())
     assert json.dumps({k:latest_layout.get(k) for k in geometry_keys},sort_keys=True)==geometry_snapshot, '制作期间几何变化，需复核当前资源'
     report['build_layout_sha256']=layout_hash

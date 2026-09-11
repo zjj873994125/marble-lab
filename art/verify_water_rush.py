@@ -42,10 +42,16 @@ if '--source' in sys.argv:
         errors.append(max(abs(actual[i][j]-rotation[i][j]) for i in range(3) for j in range(3)))
         local = [game(v.co) for v in obj.data.vertices]
         errors.extend(abs(max(v[i] for v in local)-min(v[i] for v in local)-spec['bodySize'][i]) for i in range(3))
-        for sign,key in [(1,'topStart'),(-1,'topEnd'),(1,'bodyStartFaceCenter'),(-1,'bodyEndFaceCenter')]:
-            if key in spec:
-                v = Vector((sign*spec['bodySize'][0]/2,spec['bodySize'][1]/2,0))
-                endpoint_errors.append((game(obj.matrix_world@(basis@v))-Vector(spec[key])).length)
+        for keys in [('topStart','topEnd'),('bodyStartFaceCenter','bodyEndFaceCenter')]:
+            if keys[0] in spec:
+                axis=2 if keys[0]=='topStart' and layout['runup']['axis']=='Z' else 0
+                actual=[]
+                for sign in (1,-1):
+                    v=Vector((0,spec['bodySize'][1]/2,0))
+                    v[axis]=sign*spec['bodySize'][axis]/2
+                    actual.append(game(obj.matrix_world@(basis@v)))
+                expected=[Vector(spec[key]) for key in keys]
+                endpoint_errors.append(min(max((actual[i]-expected[i]).length for i in range(2)),max((actual[i]-expected[1-i]).length for i in range(2))))
     assert max(errors+endpoint_errors)<1e-5, (max(errors),max(endpoint_errors))
     support = [p for o in bpy.data.objects if o.name.startswith('Turntable spindle') for p in points(o.name)]
     cx,_,cz = layout['turntable']['bodyCenter']
@@ -53,7 +59,8 @@ if '--source' in sys.argv:
     top = max(p.y for p in support)
     assert radius <= .55+1e-5 and top <= 2.84+1e-5
     bridge_widths = {}
-    for name,limit in [('narrow-bridge Graphite chassis control',.86),('narrow-bridge Recessed orange gasket control',.89),('narrow-bridge support 1 mounting flange',.74),('narrow-bridge support 2 mounting flange',.74)]:
+    limits=layout['narrowBridgeVisualLimits']
+    for name,limit in [('narrow-bridge Graphite chassis control',limits['baseWidth']),('narrow-bridge Recessed orange gasket control',limits['gasketWidth']),('narrow-bridge support 1 mounting flange',limits['flangeWidthMax']),('narrow-bridge support 2 mounting flange',limits['flangeWidthMax'])]:
         ps = points(name)
         width = max(p.x for p in ps)-min(p.x for p in ps)
         assert abs(width-limit)<1e-5, (name,width)
@@ -145,6 +152,7 @@ def intersects(triangle, low, high):
 
 
 assets = {entry['node']: load(entry) for entry in report['exports']}
+assert 'source_geometry_validation' in report, '当前源文件尚未采集几何验证；本轮用户要求跳过检查，不沿用旧结果'
 synced = sha(layout_path) == report['source_geometry_validation']['layout_sha256']
 assert synced, '交付布局已变化，需重新核对'
 source_check = report['source_geometry_validation']
@@ -185,11 +193,12 @@ for segment in layout['sBend']['collisionSegments']:
     dx,dz = end[0]-start[0],end[2]-start[2]
     length = math.hypot(dx,dz)
     for fraction in (0,.25,.5,.75,1):
-        for lateral in (-.85,0,.85):
+        margin=min(.85,layout['sBend']['roadWidth']/2-.15)
+        for lateral in (-margin,0,margin):
             p = [start[0]+dx*fraction-dz/length*lateral,3.4,start[2]+dz*fraction+dx/length*lateral]
             assert any(covers_xz(p,t) for t in s_top), ('S弯台面缺口',segment['id'],p)
             s_samples.append(p)
-old_route_voids = [[6,3.4,-10],[0,3.4,-10],[12.6,3.4,-18],[-3.4,3.4,-18]]
+old_route_voids = [p['position'] for p in layout['sBend']['voidProbes']] if 'voidProbes' in layout['sBend'] else [[6,3.4,-10],[0,3.4,-10],[12.6,3.4,-18],[-3.4,3.4,-18]]
 upper_triangles = [t for t in assets['TrackStatic'] if min(p[1] for p in t)>3.3]
 old_route_hits = [sum(covers_xz(p,t) for t in upper_triangles) for p in old_route_voids]
 assert not any(old_route_hits), '旧直道或S弯内部仍有悬空台面'

@@ -1,24 +1,24 @@
 {
-  "blend_sha256": "9458eded8a2213cbaa9cbcb53052917fda78b3cb0816fb53bf52f8cff212d7e0",
-  "layout_sha256": "d23759cb2f79dc11cc1b7138f12123c3a4aa6fb3394d532c0f1225050b5f1ed4",
-  "contract_sha256": "a545f94beed05fb33d4441b20f098f4413801ac4cf09811ac9633aff335fdec3",
-  "stage": "Challenge model geometry verified; runtime integration and full route playtest pending",
+  "blend_sha256": "23ff6837e9ede1f2c5aadd4d5f87e4b371c258e52a3387d0e4102e6126092449",
+  "layout_sha256": "62525d6c3a6dc0fc9d41a4032e4ca994e074398ad1150c1f9ef69bf8e7f764f0",
+  "contract_sha256": "a446dc2c0ba6de23857b3ae8dcf2c748657937a148fdb1babc18988e0ccf197a",
+  "stage": "serpentine geometry exported; current gameplay not tested",
   "units": "meters",
   "coordinates": "glTF Y-up; Blender (x,-z,y)",
-  "static_controls": 58,
-  "static_parts": 331,
+  "static_controls": 188,
+  "static_parts": 411,
   "exports": [
     {
       "file": "water-rush-track.glb",
       "node": "TrackStatic",
-      "sha256": "72b738df516f2f2854d3b126bce9342f22eed6e720aeca4bae3fba217433195a",
-      "bytes": 2620592,
-      "triangles": 106474,
+      "sha256": "81ceb56321a53c7b97932fa2b69019df82b7f815598744c4e42ee7a6f631d6fc",
+      "bytes": 7710160,
+      "triangles": 198453,
       "materials": 5,
       "bounds_min": [
         -32.040000915527344,
         -0.39999985694885254,
-        -28.37000274658203
+        -26.447498321533203
       ],
       "bounds_max": [
         22.439998626708984,
@@ -28,7 +28,7 @@
       "dimensions_xyz_m": [
         54.47999954223633,
         8.420000314712524,
-        49.695003509521484
+        47.772499084472656
       ]
     },
     {
@@ -125,20 +125,24 @@
     "public/models/hammer-handle-toy-round-03.glb": "3ec0b73b02fc079c6657165da3dc935195964a006caeaf7278427c11745bb5ad"
   },
   "preview_note": "Lifts manually posed at alternating extremes for display only; no gameplay animation exported",
-  "input_blend_sha256": "1bf0bad811f998ac50e11da38712989a56aee93571440323fff641fabb48755d",
-  "preexisting_object_count": 416,
+  "input_blend_sha256": "2aefcd91436a2f69f6f41f1369b0e29d16197dd9afa2b117a949e91798201d20",
+  "preexisting_object_count": 1057,
   "retired_route_objects": [
-    "runway support 2 alloy foot",
-    "runway support 2 anchor",
-    "runway support 2 anchor.001",
-    "runway support 2 diagonal brace",
-    "runway support 2 leg",
-    "runway support 2 mounting flange",
-    "runway support 2 orange collar",
-    "runway support 2 rubber foot"
+    "finish-rail-north mount",
+    "finish-rail-north mount.001",
+    "finish-rail-north mount.002",
+    "finish-rail-north rivet",
+    "finish-rail-north rivet.001",
+    "finish-rail-north rivet.002",
+    "finish-rail-south mount",
+    "finish-rail-south mount.001",
+    "finish-rail-south mount.002",
+    "finish-rail-south rivet",
+    "finish-rail-south rivet.001",
+    "finish-rail-south rivet.002"
   ],
-  "s_bend_segments": 36,
-  "s_bend_supports": 6,
+  "s_bend_segments": 166,
+  "s_bend_supports": 16,
   "material_values_preserved": true,
   "hammers": [
     {
@@ -1000,65 +1004,26 @@
       }
     }
   ],
+  "validation_status": "Not run this revision per user instruction; export statistics only",
   "pending": [
-    "CODE refined model integration, full challenge route and mobile playtest"
+    "Current route geometry and difficulty not independently verified or playtested per user instruction; not a commit blocker"
   ],
-  "build_layout_sha256": "d23759cb2f79dc11cc1b7138f12123c3a4aa6fb3394d532c0f1225050b5f1ed4",
-  "central_support_radius": 0.5240048834639411,
-  "central_support_top_y": 2.8400001525878906,
-  "source_geometry_validation": {
-    "source_sha256": "9458eded8a2213cbaa9cbcb53052917fda78b3cb0816fb53bf52f8cff212d7e0",
-    "layout_sha256": "eb9aa5d196407af67d5d50ec9137734522006c371e55f17ba1c57d8c7bb9bd53",
-    "controls_checked": 63,
-    "max_control_error_m": 1.9073486345888568e-07,
-    "max_endpoint_error_m": 1.966049969490843e-06,
-    "bridge_widths_m": {
-      "narrow-bridge Graphite chassis control": 0.8600006103515625,
-      "narrow-bridge Recessed orange gasket control": 0.8899993896484375,
-      "narrow-bridge support 1 mounting flange": 0.7400016784667969,
-      "narrow-bridge support 2 mounting flange": 0.7400016784667969
-    },
-    "lifts": [
-      {
-        "id": "lift-1",
-        "stem_low_y": -0.10999991893768313,
-        "belly_sleeve_gap": 0.11000022888183603,
-        "stem_foot_gap": 0.060000082850456216,
-        "high_insertion": 0.15999982357025155,
-        "radial_clearance": 0.019541535111125358,
-        "sleeve_bottom_y": -0.18000000715255737,
-        "sleeve_top_y": 1.8499999046325684
-      },
-      {
-        "id": "lift-2",
-        "stem_low_y": -0.10999991893768313,
-        "belly_sleeve_gap": 0.11000022888183603,
-        "stem_foot_gap": 0.060000082850456216,
-        "high_insertion": 0.15999982357025155,
-        "radial_clearance": 0.019540620037728676,
-        "sleeve_bottom_y": -0.18000000715255737,
-        "sleeve_top_y": 1.8499999046325684
-      },
-      {
-        "id": "lift-3",
-        "stem_low_y": -0.10999991893768313,
-        "belly_sleeve_gap": 0.11000022888183603,
-        "stem_foot_gap": 0.060000082850456216,
-        "high_insertion": 0.15999982357025155,
-        "radial_clearance": 0.019541357775969256,
-        "sleeve_bottom_y": -0.18000000715255737,
-        "sleeve_top_y": 1.8499999046325684
-      },
-      {
-        "id": "lift-4",
-        "stem_low_y": -0.10999991893768313,
-        "belly_sleeve_gap": 0.11000022888183603,
-        "stem_foot_gap": 0.060000082850456216,
-        "high_insertion": 0.15999982357025155,
-        "radial_clearance": 0.019541368142091606,
-        "sleeve_bottom_y": -0.18000000715255737,
-        "sleeve_top_y": 1.8499999046325684
-      }
-    ]
+  "build_layout_sha256": "62525d6c3a6dc0fc9d41a4032e4ca994e074398ad1150c1f9ef69bf8e7f764f0",
+  "geometry_scope": {
+    "rulesVersion": "serpentine",
+    "hairpinCount": 4,
+    "radius": 3.5,
+    "roadWidth": 1.6,
+    "bridgeWidth": 0.5,
+    "mainSlopeDegrees": 50,
+    "mainSlopeLength": 4.4,
+    "slopeAxis": "-Z"
+  },
+  "historical_verification": "docs/art/water-rush-verification.json describes the previous R8/0.9m geometry; it does not apply to this export.",
+  "integration_handoff": {
+    "config_sha256": "a31ce222807ac355893f65d62c35a1ebcaee893775fea0c0cd1e47990d8447b6",
+    "layout_metadata_sha256": "495f64546da3cc62b5a978a28563426d3ee3944d0c1110b9f35afae163a6a691",
+    "static_reference_restored_by": "LEVEL",
+    "geometry_source_sha256": "62525d6c3a6dc0fc9d41a4032e4ca994e074398ad1150c1f9ef69bf8e7f764f0"
   }
 }

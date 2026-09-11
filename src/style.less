@@ -185,6 +185,8 @@ kbd { background: #f5f6ef; color: #485e53; border-color: #c8d2c8; }
 .portrait-prompt { position: absolute; inset: 0; z-index: 20; display: grid; place-items: center; padding: 28px; background: #143e43bf; text-align: center; >div { width: 100%; max-width: 340px; border-radius: 20px; background: #faf9f2; padding: 28px 20px; } h2 { font-size: 21px; } p { color: #65756b; margin: 16px 0 24px; font-size: 14px; } .el-button { min-height: 44px; } }
 .rotate-phone { display: block; color: #d96d3e; font-size: 44px; line-height: 1; margin-bottom: 16px; }
 @media (pointer: coarse) and (max-width: 1100px) {
+  // 恢复游戏后立即接收触摸，避免退场遮罩挡住第一下刹车。
+  .dialog-fade-enter-active, .dialog-fade-leave-active { &, .el-overlay-dialog { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
   .game-dialog.el-dialog { max-height: calc(100dvh - 24px); overflow-y: auto; margin-block: 12px; }
   .game-dialog .el-button { min-height: 44px; }
   .settings-drawer .el-drawer__footer .el-button { min-height: 44px; }
@@ -192,6 +194,6 @@ kbd { background: #f5f6ef; color: #485e53; border-color: #c8d2c8; }
 @media (pointer: coarse) and (orientation: landscape) and (max-height: 480px) {
   .game-dialog.el-dialog { padding: 20px 24px; .el-dialog__title { font-size: 23px; } }
   .game-dialog .dialog-subtitle { margin: 10px 0 16px; }
-  .game-dialog .dialog-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; .el-button { margin: 0; } }
+  .game-dialog .dialog-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; .el-button { margin: 0; } .el-button:first-child { grid-column: 1 / -1; } }
   .game-dialog .result-time { font-size: 38px; }
 }

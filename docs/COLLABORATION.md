@@ -19,7 +19,7 @@
 
 数据入口为 `src/levels/initial-gravity.ts`，类型定义为 `src/game/level-types.ts`。使用普通 TypeScript 对象、数组和数值，允许简单坐标算术；不导入 Vue 或 PlayCanvas，不创建实体，不写回调、存储或资源请求。类型导入不产生运行时代码。
 
-运行时和 HUD 读取同一份配置。当前已注册“教学关卡”和“水上冲关”，目录由代码维护于 `src/game/levels.ts`；单独增加配置文件不会自动注册。第一关 `rulesVersion` 为 classic/open-hammer/flat-hammer（省略为classic），第二关区分standard/challenge。`marble-lab-v3` 按关卡和规则分桶，v1/v2原文只读保留，旧成绩不参与新难度最佳。后续改变真实规则仍需先确认版本归属，不能清空记录。
+运行时和 HUD 读取同一份配置。当前已注册“教学关卡”和“水上冲关”，目录由代码维护于 `src/game/levels.ts`；单独增加配置文件不会自动注册。第一关 `rulesVersion` 为 classic/open-hammer/flat-hammer（省略为classic），第二关区分standard/challenge/serpentine。`marble-lab-v3` 按关卡和规则分桶，v1/v2原文只读保留，旧成绩不参与新难度最佳。后续改变真实规则仍需先确认版本归属，不能清空记录。
 
 - `staticObjects`：完整的静态场景和基础外观，每项包含 `name`、`type`、`position`、`size`、`material`。`name` 是调试名称，可重复；不作为模型替换查找键。
 - `body: 'static'`：创建静态碰撞代理；省略 `body` 的对象仅显示，没有碰撞。增加螺栓、拼缝等外观时不要增加 `body`。
@@ -80,3 +80,7 @@ npm run build
 代码对话统一进行浏览器接入验证，复用 `http://127.0.0.1:5177/`，确认服务工作目录是本项目。布局或模型变更还要检查：加载、外观与碰撞对齐、开局、刹车、暂停、重开、机关运动、按序检查点、掉落重生和终点结算。需要写入测试成绩时使用隔离测试浏览器，不清空或覆盖用户当前浏览器的设置与成绩。
 
 当前两关通过独立配置加载；第二关新增三圆弧锤、五盒十字、四升降及旋转坡面，具体字段见 [第二关接入协议](integration/level-02-contract.md)，不是通用关卡编辑器。Vue 与运行时的 `start / setPhase / applySettings / destroy`、`tick / finish / pause / restart` 边界保留。本地选关与卸载已经实现，PlayCanvas Editor 场景导入仍未实现。
+
+## 手机瞬时输入
+
+`src/game/input.ts` 定义 GameInput（x/z/brake），App局部持有，通过GameCanvas hook进入原施力和刹车。输入不写存档；键盘方向优先，触控向量最多1，刹车取两来源实际按下状态。TouchControls分别捕获摇杆和踏板指针，暂停、旋屏、重开、切关及卸载清零。手机游戏使用精简横屏HUD，竖屏暂停，返回横屏需明确继续；小踏板仅显示图标，可点击区保留88px。

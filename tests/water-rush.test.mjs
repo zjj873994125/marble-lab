@@ -9,7 +9,7 @@ const {default:level}=await import(`data:text/javascript;base64,${Buffer.from(co
 const layout=JSON.parse(readFileSync(new URL('../docs/levels/water-rush-layout.json',import.meta.url),'utf8'))
 
 test('第二关使用三圆弧锤、五盒十字和四升降，动态件没有静态替身',()=>{
-  assert.equal(level.id,'water-rush');assert.ok(['standard','challenge'].includes(level.rulesVersion));assert.equal(level.pendulum,undefined)
+  assert.equal(level.id,'water-rush');assert.ok(['standard','challenge','serpentine'].includes(level.rulesVersion));assert.equal(level.pendulum,undefined)
   assert.equal(level.hammers.length,3);assert.equal(level.turntable.parts.length,5);assert.equal(level.lifts.length,4)
   assert.equal(level.checkpoints.length,3);assert.equal(level.progress.length,4)
   const objects=[...level.staticObjects,...level.turntable.parts,...level.lifts.map(l=>l.body),...level.hammers.flatMap(h=>[h.ball,h.rod]),level.platform.body,level.platform.stripe]
@@ -25,8 +25,10 @@ test('真实旋转盒坡面与设计端点一致，检查点始终落在固定�
   for(const ramp of layout.ramps){
     const body=level.staticObjects.find(o=>o.name===ramp.id)
     const rotation=new Quat().setFromEulerAngles(...body.rotation)
-    for(const [sign,expected] of [[1,ramp.topStart],[-1,ramp.topEnd]]){
-      const p=rotation.transformVector(new Vec3(sign*body.size[0]/2,body.size[1]/2,0)).add(new Vec3(...body.position))
+    const riseX=rotation.transformVector(new Vec3(1,0,0)).y,riseZ=rotation.transformVector(new Vec3(0,0,1)).y
+    const axis=Math.abs(riseX)>Math.abs(riseZ)?0:2,lowerSign=(axis===0?riseX:riseZ)<0?1:-1
+    for(const [sign,expected] of [[lowerSign,ramp.topStart],[-lowerSign,ramp.topEnd]]){
+      const p=rotation.transformVector(new Vec3(axis===0?sign*body.size[0]/2:0,body.size[1]/2,axis===2?sign*body.size[2]/2:0)).add(new Vec3(...body.position))
       p.toArray().forEach((value,axis)=>assert.ok(Math.abs(value-expected[axis])<1e-6))
     }
   }
