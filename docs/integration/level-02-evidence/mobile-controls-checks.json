@@ -458,6 +458,114 @@
         740,
         360
       ]
+    },
+    {
+      "label": "932-layout",
+      "t": 0.3332999999999301,
+      "phase": "playing",
+      "level": "initial-gravity",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 0,
+        "z": 0,
+        "brake": false
+      },
+      "p": [
+        -10,
+        3.825000047683716,
+        7
+      ],
+      "speed": 0.0000054564029596804176,
+      "size": [
+        932,
+        430
+      ],
+      "scroll": [
+        932,
+        430
+      ]
+    },
+    {
+      "label": "new-tab-without-focus-no-background-test",
+      "t": 0.6,
+      "phase": "playing",
+      "level": "initial-gravity",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 0.5454545454545454,
+        "z": 0,
+        "brake": true
+      },
+      "p": [
+        -9.910798072814941,
+        3.825000047683716,
+        7
+      ],
+      "speed": 0.5787222385439363,
+      "size": [
+        932,
+        430
+      ],
+      "scroll": [
+        932,
+        430
+      ]
+    },
+    {
+      "label": "focus-tool-kept-page-visible",
+      "t": 61.59209999999819,
+      "phase": "playing",
+      "level": "initial-gravity",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 0,
+        "z": 0,
+        "brake": false
+      },
+      "p": [
+        -8.974093437194824,
+        3.8249998092651367,
+        7.022536754608154
+      ],
+      "speed": 0,
+      "size": [
+        932,
+        430
+      ],
+      "scroll": [
+        932,
+        430
+      ]
+    },
+    {
+      "label": "simulated-window-blur",
+      "t": 61.92319999999816,
+      "phase": "paused",
+      "level": "initial-gravity",
+      "cp": 0,
+      "falls": 0,
+      "input": {
+        "x": 0,
+        "z": 0,
+        "brake": false
+      },
+      "p": [
+        -8.974093437194824,
+        3.8249998092651367,
+        7.022536754608154
+      ],
+      "speed": 0,
+      "size": [
+        932,
+        430
+      ],
+      "scroll": [
+        932,
+        430
+      ]
     }
   ],
   "events": [
@@ -596,6 +704,42 @@
     {
       "type": "lostpointercapture",
       "id": 14,
+      "trusted": true,
+      "target": "按住刹车"
+    },
+    {
+      "type": "pointerdown",
+      "id": 15,
+      "trusted": true,
+      "target": "移动摇杆"
+    },
+    {
+      "type": "pointerdown",
+      "id": 16,
+      "trusted": true,
+      "target": "按住刹车"
+    },
+    {
+      "type": "pointerup",
+      "id": 15,
+      "trusted": true,
+      "target": "移动摇杆"
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 15,
+      "trusted": true,
+      "target": "移动摇杆"
+    },
+    {
+      "type": "pointerup",
+      "id": 16,
+      "trusted": true,
+      "target": "按住刹车"
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 16,
       "trusted": true,
       "target": "按住刹车"
     }
