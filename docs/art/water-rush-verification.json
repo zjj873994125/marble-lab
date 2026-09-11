@@ -1,30 +1,30 @@
 {
   "status": "passed",
-  "layout_sha256": "1abf589b83106ffd83a0b0ae7a38d2d164816cceb24dad328c7a8f75349a6326",
+  "layout_sha256": "626307ecf24f077532570286358cc183a5cfbe09d1152fa68d3d8d88e5e4d25e",
   "layout_synced": true,
-  "source_sha256": "5a0c5d5807ead389658aee31678524eef194973fb5001a096955392ca71e9155",
+  "source_sha256": "dfe976274db9259dd5c636e627ba49dcc461d9f3e05ba388266a1645cd84cd25",
   "assets": [
     {
       "file": "water-rush-track.glb",
       "node": "TrackStatic",
-      "sha256": "3f0966ce938bbaec858318545b171a7583e125a2a25c4c000b13e0a0dd1bfc74",
-      "bytes": 1222868,
-      "triangles": 50532,
+      "sha256": "c62a3f649d15fb73062918a5e0a2fae372eaa4cacb2e422221598934217738e6",
+      "bytes": 1611376,
+      "triangles": 70293,
       "materials": 5,
       "bounds_min": [
-        -14.039999961853027,
+        -32.040000915527344,
         -0.39999985694885254,
-        -68.7476577758789
+        -12.370000839233398
       ],
       "bounds_max": [
-        2.369999885559082,
-        8,
-        12.039999961853027
+        22.439998626708984,
+        8.020000457763672,
+        21.325000762939453
       ],
       "dimensions_xyz_m": [
-        16.40999984741211,
-        8.399999856948853,
-        80.78765773773193
+        54.47999954223633,
+        8.420000314712524,
+        33.69500160217285
       ]
     },
     {
@@ -53,7 +53,7 @@
     {
       "file": "water-rush-lift.glb",
       "node": "LiftVisual",
-      "sha256": "19ff93b33c35f9ff7a5da9a21f04cc104fcb7c0433da6b6c3f47f940a1ddd709",
+      "sha256": "fe172c7a04c000175407c24d3696b783b07c610606900a338b1b1fe67dd70aae",
       "bytes": 20744,
       "triangles": 968,
       "materials": 4,
@@ -84,7 +84,15 @@
       "static_triangle_intersections": 0
     },
     {
-      "name": "hammer",
+      "name": "hammer-1",
+      "static_triangle_intersections": 0
+    },
+    {
+      "name": "hammer-2",
+      "static_triangle_intersections": 0
+    },
+    {
+      "name": "hammer-3",
       "static_triangle_intersections": 0
     },
     {

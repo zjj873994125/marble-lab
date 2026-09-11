@@ -15,12 +15,12 @@
   },
   "start": {
     "ballCenter": [
-      -18,
+      -30,
       3.95,
       18
     ],
     "ringCenter": [
-      -18,
+      -30,
       3.46,
       18
     ],
@@ -30,7 +30,7 @@
     {
       "id": "start-pad",
       "bodyCenter": [
-        -18,
+        -30,
         3.2199999999999998,
         18
       ],
@@ -46,12 +46,12 @@
     {
       "id": "hammer-lane",
       "bodyCenter": [
-        -12,
+        -18,
         3.2199999999999998,
         18
       ],
       "bodySize": [
-        12,
+        24,
         0.36,
         3.2
       ],
@@ -412,7 +412,7 @@
     {
       "id": "entry-rail-near",
       "bodyCenter": [
-        -16.75,
+        -28.75,
         3.53,
         19.66
       ],
@@ -427,7 +427,7 @@
     {
       "id": "entry-rail-far",
       "bodyCenter": [
-        -16.75,
+        -28.75,
         3.53,
         16.34
       ],
@@ -547,79 +547,6 @@
     "ringRadius": 0.9,
     "triggerRadius": 1.2,
     "heightTolerance": 1
-  },
-  "hammer": {
-    "bodyCenter": [
-      -12,
-      4.3,
-      18
-    ],
-    "bodySize": [
-      0.9,
-      0.9,
-      1.36
-    ],
-    "shape": "cylinder",
-    "collisionAxis": 2,
-    "anchor": [
-      -12,
-      7.9,
-      16.4
-    ],
-    "angularSpeed": 1.8,
-    "amplitude": 1.65,
-    "lift": 0.16,
-    "rodWidth": 0.12,
-    "headAsset": "hammer-head-toy-round-03.glb",
-    "handleAsset": "hammer-handle-toy-round-03.glb",
-    "observationPoint": [
-      -14.5,
-      3.825,
-      18
-    ],
-    "standPosts": [
-      [
-        -12.8,
-        5.7,
-        16.4
-      ],
-      [
-        -11.2,
-        5.7,
-        16.4
-      ]
-    ],
-    "standPostSize": [
-      0.16,
-      4.6,
-      0.16
-    ],
-    "standCrossbar": {
-      "position": [
-        -12,
-        7.9,
-        16.4
-      ],
-      "size": [
-        2,
-        0.2,
-        0.3
-      ]
-    },
-    "reservedHeadSweepBounds": {
-      "min": [
-        -12.5,
-        3.6,
-        15.2
-      ],
-      "max": [
-        -11.5,
-        5.4,
-        20.8
-      ]
-    },
-    "travelDirection": "+X",
-    "motionAxis": "unchanged local Z"
   },
   "turntable": {
     "bodyCenter": [
@@ -835,6 +762,16 @@
   },
   "routeWaypoints": [
     [
+      -30,
+      3.4,
+      18
+    ],
+    [
+      -24,
+      3.4,
+      18
+    ],
+    [
       -18,
       3.4,
       18
@@ -972,13 +909,31 @@
   "playtestStatus": "Not run; no claim of reachable ramp, lift transfer, turntable contact, or calibrated medals.",
   "waitPoints": [
     {
-      "id": "hammer-observe",
+      "id": "hammer-1-observe",
       "position": [
-        -14.5,
+        -27,
         3.825,
         18
       ],
-      "kind": "fixed deck"
+      "kind": "fixed hammer lane, outside all head X collision bands"
+    },
+    {
+      "id": "hammer-2-observe",
+      "position": [
+        -21,
+        3.825,
+        18
+      ],
+      "kind": "fixed hammer lane, outside all head X collision bands"
+    },
+    {
+      "id": "hammer-3-observe",
+      "position": [
+        -15,
+        3.825,
+        18
+      ],
+      "kind": "fixed hammer lane, outside all head X collision bands"
     },
     {
       "id": "turntable-observe",
@@ -1074,17 +1029,17 @@
     "firstLevelPoolReuse": true,
     "createNewPoolModel": false,
     "coverageReviewAtRuntimeIntegration": true,
-    "coverageNote": "Use existing first-level appearance/environment. This compact route fits within the previous long-layout envelope only after relocation; check camera coverage during integration, without redesigning the pool or changing first-level geometry.",
+    "coverageNote": "Geometry fits within first-level pool footprint but the extended start and raised summit camera may exceed its visible coverage. Reuse the existing appearance and review display coverage at later integration; no new pool-theme/model request and no first-level changes.",
     "trackAndObstacleBounds": {
       "min": [
-        -20,
+        -32,
         -0.4,
         -12.32
       ],
       "max": [
         25.3,
-        8,
-        21.2
+        8.02,
+        21.325
       ]
     }
   },
@@ -1132,20 +1087,1728 @@
     ],
     "envelopeXZ": {
       "min": [
-        -20,
+        -32,
         -12.32
       ],
       "max": [
         25.3,
-        21.2
+        21.325
       ],
       "size": [
-        45.3,
-        33.52
+        57.3,
+        33.645
       ]
     },
     "topViewArtifact": "docs/levels/water-rush-top-view.png",
-    "progressNote": "Multiple turns occur within each checkpoint stage. Single global Z progress is invalid; routeWaypoints express the ordered route for future CODE integration.",
-    "supersedes": "The prior single-column layout, 89.7m length, old coordinates and old geometry checks are no longer current."
+    "progressNote": "A future per-stage axis estimate can use x/z/z/x; the first two stages still contain secondary-axis transitions. routeWaypoints retain the ordered full route; no precise path progress is claimed.",
+    "supersedes": "All earlier single-column/89.7m and one-hammer/124.7m plans. This is the current six-turn, three-hammer design.",
+    "routePolylineLengthMetres": 136.70000000000002,
+    "checkpointProgressAxes": [
+      "x",
+      "z",
+      "z",
+      "x"
+    ]
+  },
+  "hammers": [
+    {
+      "bodyCenter": [
+        -24,
+        4.3,
+        18
+      ],
+      "bodySize": [
+        0.9,
+        0.9,
+        1.36
+      ],
+      "shape": "cylinder",
+      "collisionAxis": 2,
+      "anchor": [
+        -24,
+        7.9,
+        18
+      ],
+      "angularSpeed": 1.1,
+      "rodWidth": 0.12,
+      "headAsset": "hammer-head-toy-round-03.glb",
+      "handleAsset": "hammer-handle-toy-round-03.glb",
+      "observationPoint": [
+        -27,
+        3.825,
+        18
+      ],
+      "standPosts": [
+        [
+          -24,
+          3.92,
+          15.15
+        ],
+        [
+          -24,
+          3.92,
+          20.85
+        ]
+      ],
+      "standPostSize": [
+        0.24,
+        8.2,
+        0.24
+      ],
+      "standCrossbar": {
+        "position": [
+          -24,
+          7.9,
+          18
+        ],
+        "size": [
+          0.28,
+          0.24,
+          5.94
+        ]
+      },
+      "reservedHeadSweepBounds": {
+        "min": [
+          -24.5,
+          3.74,
+          15.48
+        ],
+        "max": [
+          -23.5,
+          5.47,
+          20.52
+        ]
+      },
+      "travelDirection": "+X",
+      "motionAxis": "YZ arc about world X hinge; symmetric +/-Z around lane center",
+      "motion": {
+        "mode": "fixed-length-pendulum-arc",
+        "runtimeSupported": false,
+        "rodLength": 3.6,
+        "maxLateralOffset": 1.65,
+        "maxAngleRadians": 0.47611906091179634,
+        "phaseFrequency": 1.1,
+        "phase": 0,
+        "hingeAxis": "X",
+        "swingPlane": "YZ",
+        "formula": "theta=maxAngleRadians*sin(phaseFrequency*t+phase); head=[instanceX,anchorY-L*cos(theta),laneCenterZ+L*sin(theta)]; head/handle Euler X=-theta",
+        "initialAndPreview": "Neutral reference model is centered; gameplay t=0 uses each instance phase. Restart restores individual phases, not a shared middle pose.",
+        "pause": "freeze the current time and pose, do not reset to middle",
+        "handleScaling": "normalized 1m handle uses constant Y scale 3.6 for all phases, never stretch per pose",
+        "replaces": "The old offset Z anchor and z-sine plus abs(offset)*lift formula; requires future CODE implementation."
+      },
+      "standFootPads": [
+        {
+          "id": "hammer-1-rubber-foot-15.15",
+          "position": [
+            -24,
+            -0.34,
+            15.15
+          ],
+          "size": [
+            0.95,
+            0.12,
+            0.95
+          ],
+          "material": "dark",
+          "collision": false
+        },
+        {
+          "id": "hammer-1-alloy-foot-15.15",
+          "position": [
+            -24,
+            -0.23,
+            15.15
+          ],
+          "size": [
+            0.8,
+            0.1,
+            0.8
+          ],
+          "material": "edge",
+          "collision": false
+        },
+        {
+          "id": "hammer-1-rubber-foot-20.85",
+          "position": [
+            -24,
+            -0.34,
+            20.85
+          ],
+          "size": [
+            0.95,
+            0.12,
+            0.95
+          ],
+          "material": "dark",
+          "collision": false
+        },
+        {
+          "id": "hammer-1-alloy-foot-20.85",
+          "position": [
+            -24,
+            -0.23,
+            20.85
+          ],
+          "size": [
+            0.8,
+            0.1,
+            0.8
+          ],
+          "material": "edge",
+          "collision": false
+        }
+      ],
+      "poseSamples": [
+        {
+          "name": "left",
+          "swingAngleRadians": -0.47611906091179634,
+          "headCenter": [
+            -24,
+            4.700390648844769,
+            16.35
+          ],
+          "headEulerDegrees": [
+            27.279612735978098,
+            0,
+            0
+          ],
+          "handleCenter": [
+            -24,
+            6.3001953244223845,
+            17.175
+          ],
+          "handleEulerDegrees": [
+            27.279612735978098,
+            0,
+            0
+          ],
+          "handleLength": 3.6
+        },
+        {
+          "name": "middle",
+          "swingAngleRadians": 0,
+          "headCenter": [
+            -24,
+            4.300000000000001,
+            18
+          ],
+          "headEulerDegrees": [
+            0,
+            0,
+            0
+          ],
+          "handleCenter": [
+            -24,
+            6.1000000000000005,
+            18
+          ],
+          "handleEulerDegrees": [
+            0,
+            0,
+            0
+          ],
+          "handleLength": 3.6
+        },
+        {
+          "name": "right",
+          "swingAngleRadians": 0.47611906091179634,
+          "headCenter": [
+            -24,
+            4.700390648844769,
+            19.65
+          ],
+          "headEulerDegrees": [
+            -27.279612735978098,
+            0,
+            0
+          ],
+          "handleCenter": [
+            -24,
+            6.3001953244223845,
+            18.825
+          ],
+          "handleEulerDegrees": [
+            -27.279612735978098,
+            0,
+            0
+          ],
+          "handleLength": 3.6
+        }
+      ],
+      "clearanceAudit": {
+        "samples": 7201,
+        "exactCylinderSweepBounds": {
+          "min": [
+            -24.45,
+            3.793310335567028,
+            15.539379344781791
+          ],
+          "max": [
+            -23.55,
+            5.412008484405839,
+            20.460620655218207
+          ]
+        },
+        "pillarInnerZ": [
+          15.27,
+          20.73
+        ],
+        "pillarInnerGap": 5.46,
+        "minimumPillarClearance": 0.2693793447817914,
+        "minimumLaneClearance": 0.393310335567028,
+        "minimumCrossbarClearance": 2.367991515594161,
+        "footBottomY": -0.4,
+        "postBottomY": -0.18,
+        "postTopY": 8.02,
+        "footToLaneHorizontalClearance": 0.775,
+        "poseImage": "docs/levels/water-rush-hammer-poses.png",
+        "status": "analytic design only, no engine or final model pose validation",
+        "safeLaneCenterWindowPerSideSeconds": 1.3830913734205135,
+        "laneCenterWindowNote": "Projection-only clearance: head Z extent is outside a radius .425 ball on Z=18; not a hidden speed/time gate or verified gameplay window."
+      },
+      "id": "hammer-1",
+      "speedLabel": "slow",
+      "startDirection": "toward +Z (player right)",
+      "initialPose": {
+        "time": 0,
+        "swingAngleRadians": 0,
+        "headCenter": [
+          -24,
+          4.300000000000001,
+          18
+        ],
+        "headEulerDegrees": [
+          0,
+          0,
+          0
+        ],
+        "handleCenter": [
+          -24,
+          6.1000000000000005,
+          18
+        ],
+        "handleEulerDegrees": [
+          0,
+          0,
+          0
+        ],
+        "handleLength": 3.6,
+        "zVelocity": 1.8854314812107138
+      }
+    },
+    {
+      "bodyCenter": [
+        -18,
+        4.3,
+        18
+      ],
+      "bodySize": [
+        0.9,
+        0.9,
+        1.36
+      ],
+      "shape": "cylinder",
+      "collisionAxis": 2,
+      "anchor": [
+        -18,
+        7.9,
+        18
+      ],
+      "angularSpeed": 1.5,
+      "rodWidth": 0.12,
+      "headAsset": "hammer-head-toy-round-03.glb",
+      "handleAsset": "hammer-handle-toy-round-03.glb",
+      "observationPoint": [
+        -21,
+        3.825,
+        18
+      ],
+      "standPosts": [
+        [
+          -18,
+          3.92,
+          15.15
+        ],
+        [
+          -18,
+          3.92,
+          20.85
+        ]
+      ],
+      "standPostSize": [
+        0.24,
+        8.2,
+        0.24
+      ],
+      "standCrossbar": {
+        "position": [
+          -18,
+          7.9,
+          18
+        ],
+        "size": [
+          0.28,
+          0.24,
+          5.94
+        ]
+      },
+      "reservedHeadSweepBounds": {
+        "min": [
+          -18.5,
+          3.74,
+          15.48
+        ],
+        "max": [
+          -17.5,
+          5.47,
+          20.52
+        ]
+      },
+      "travelDirection": "+X",
+      "motionAxis": "YZ arc about world X hinge; symmetric +/-Z around lane center",
+      "motion": {
+        "mode": "fixed-length-pendulum-arc",
+        "runtimeSupported": false,
+        "rodLength": 3.6,
+        "maxLateralOffset": 1.65,
+        "maxAngleRadians": 0.47611906091179634,
+        "phaseFrequency": 1.5,
+        "phase": 3.141592653589793,
+        "hingeAxis": "X",
+        "swingPlane": "YZ",
+        "formula": "theta=maxAngleRadians*sin(phaseFrequency*t+phase); head=[instanceX,anchorY-L*cos(theta),laneCenterZ+L*sin(theta)]; head/handle Euler X=-theta",
+        "initialAndPreview": "Neutral reference model is centered; gameplay t=0 uses each instance phase. Restart restores individual phases, not a shared middle pose.",
+        "pause": "freeze the current time and pose, do not reset to middle",
+        "handleScaling": "normalized 1m handle uses constant Y scale 3.6 for all phases, never stretch per pose",
+        "replaces": "The old offset Z anchor and z-sine plus abs(offset)*lift formula; requires future CODE implementation."
+      },
+      "standFootPads": [
+        {
+          "id": "hammer-2-rubber-foot-15.15",
+          "position": [
+            -18,
+            -0.34,
+            15.15
+          ],
+          "size": [
+            0.95,
+            0.12,
+            0.95
+          ],
+          "material": "dark",
+          "collision": false
+        },
+        {
+          "id": "hammer-2-alloy-foot-15.15",
+          "position": [
+            -18,
+            -0.23,
+            15.15
+          ],
+          "size": [
+            0.8,
+            0.1,
+            0.8
+          ],
+          "material": "edge",
+          "collision": false
+        },
+        {
+          "id": "hammer-2-rubber-foot-20.85",
+          "position": [
+            -18,
+            -0.34,
+            20.85
+          ],
+          "size": [
+            0.95,
+            0.12,
+            0.95
+          ],
+          "material": "dark",
+          "collision": false
+        },
+        {
+          "id": "hammer-2-alloy-foot-20.85",
+          "position": [
+            -18,
+            -0.23,
+            20.85
+          ],
+          "size": [
+            0.8,
+            0.1,
+            0.8
+          ],
+          "material": "edge",
+          "collision": false
+        }
+      ],
+      "poseSamples": [
+        {
+          "name": "left",
+          "swingAngleRadians": -0.47611906091179634,
+          "headCenter": [
+            -18,
+            4.700390648844769,
+            16.35
+          ],
+          "headEulerDegrees": [
+            27.279612735978098,
+            0,
+            0
+          ],
+          "handleCenter": [
+            -18,
+            6.3001953244223845,
+            17.175
+          ],
+          "handleEulerDegrees": [
+            27.279612735978098,
+            0,
+            0
+          ],
+          "handleLength": 3.6
+        },
+        {
+          "name": "middle",
+          "swingAngleRadians": 0,
+          "headCenter": [
+            -18,
+            4.300000000000001,
+            18
+          ],
+          "headEulerDegrees": [
+            0,
+            0,
+            0
+          ],
+          "handleCenter": [
+            -18,
+            6.1000000000000005,
+            18
+          ],
+          "handleEulerDegrees": [
+            0,
+            0,
+            0
+          ],
+          "handleLength": 3.6
+        },
+        {
+          "name": "right",
+          "swingAngleRadians": 0.47611906091179634,
+          "headCenter": [
+            -18,
+            4.700390648844769,
+            19.65
+          ],
+          "headEulerDegrees": [
+            -27.279612735978098,
+            0,
+            0
+          ],
+          "handleCenter": [
+            -18,
+            6.3001953244223845,
+            18.825
+          ],
+          "handleEulerDegrees": [
+            -27.279612735978098,
+            0,
+            0
+          ],
+          "handleLength": 3.6
+        }
+      ],
+      "clearanceAudit": {
+        "samples": 7201,
+        "exactCylinderSweepBounds": {
+          "min": [
+            -18.45,
+            3.793310335567028,
+            15.539379344781791
+          ],
+          "max": [
+            -17.55,
+            5.412008484405839,
+            20.460620655218207
+          ]
+        },
+        "pillarInnerZ": [
+          15.27,
+          20.73
+        ],
+        "pillarInnerGap": 5.46,
+        "minimumPillarClearance": 0.2693793447817914,
+        "minimumLaneClearance": 0.393310335567028,
+        "minimumCrossbarClearance": 2.367991515594161,
+        "footBottomY": -0.4,
+        "postBottomY": -0.18,
+        "postTopY": 8.02,
+        "footToLaneHorizontalClearance": 0.775,
+        "poseImage": "docs/levels/water-rush-hammer-poses.png",
+        "status": "analytic design only, no engine or final model pose validation",
+        "safeLaneCenterWindowPerSideSeconds": 1.0142670071750433,
+        "laneCenterWindowNote": "Projection-only clearance: head Z extent is outside a radius .425 ball on Z=18; not a hidden speed/time gate or verified gameplay window."
+      },
+      "id": "hammer-2",
+      "speedLabel": "medium",
+      "startDirection": "toward -Z (player left)",
+      "initialPose": {
+        "time": 0,
+        "swingAngleRadians": 5.830776839586751e-17,
+        "headCenter": [
+          -18,
+          4.300000000000001,
+          18
+        ],
+        "headEulerDegrees": [
+          -3.3407890419094948e-15,
+          0,
+          0
+        ],
+        "handleCenter": [
+          -18,
+          6.1000000000000005,
+          18
+        ],
+        "handleEulerDegrees": [
+          -3.3407890419094948e-15,
+          0,
+          0
+        ],
+        "handleLength": 3.6,
+        "zVelocity": -2.5710429289237005
+      }
+    },
+    {
+      "bodyCenter": [
+        -12,
+        4.3,
+        18
+      ],
+      "bodySize": [
+        0.9,
+        0.9,
+        1.36
+      ],
+      "shape": "cylinder",
+      "collisionAxis": 2,
+      "anchor": [
+        -12,
+        7.9,
+        18
+      ],
+      "angularSpeed": 1.9,
+      "rodWidth": 0.12,
+      "headAsset": "hammer-head-toy-round-03.glb",
+      "handleAsset": "hammer-handle-toy-round-03.glb",
+      "observationPoint": [
+        -15,
+        3.825,
+        18
+      ],
+      "standPosts": [
+        [
+          -12,
+          3.92,
+          15.15
+        ],
+        [
+          -12,
+          3.92,
+          20.85
+        ]
+      ],
+      "standPostSize": [
+        0.24,
+        8.2,
+        0.24
+      ],
+      "standCrossbar": {
+        "position": [
+          -12,
+          7.9,
+          18
+        ],
+        "size": [
+          0.28,
+          0.24,
+          5.94
+        ]
+      },
+      "reservedHeadSweepBounds": {
+        "min": [
+          -12.5,
+          3.74,
+          15.48
+        ],
+        "max": [
+          -11.5,
+          5.47,
+          20.52
+        ]
+      },
+      "travelDirection": "+X",
+      "motionAxis": "YZ arc about world X hinge; symmetric +/-Z around lane center",
+      "motion": {
+        "mode": "fixed-length-pendulum-arc",
+        "runtimeSupported": false,
+        "rodLength": 3.6,
+        "maxLateralOffset": 1.65,
+        "maxAngleRadians": 0.47611906091179634,
+        "phaseFrequency": 1.9,
+        "phase": 1.5707963267948966,
+        "hingeAxis": "X",
+        "swingPlane": "YZ",
+        "formula": "theta=maxAngleRadians*sin(phaseFrequency*t+phase); head=[instanceX,anchorY-L*cos(theta),laneCenterZ+L*sin(theta)]; head/handle Euler X=-theta",
+        "initialAndPreview": "Neutral reference model is centered; gameplay t=0 uses each instance phase. Restart restores individual phases, not a shared middle pose.",
+        "pause": "freeze the current time and pose, do not reset to middle",
+        "handleScaling": "normalized 1m handle uses constant Y scale 3.6 for all phases, never stretch per pose",
+        "replaces": "The old offset Z anchor and z-sine plus abs(offset)*lift formula; requires future CODE implementation."
+      },
+      "standFootPads": [
+        {
+          "id": "hammer-3-rubber-foot-15.15",
+          "position": [
+            -12,
+            -0.34,
+            15.15
+          ],
+          "size": [
+            0.95,
+            0.12,
+            0.95
+          ],
+          "material": "dark",
+          "collision": false
+        },
+        {
+          "id": "hammer-3-alloy-foot-15.15",
+          "position": [
+            -12,
+            -0.23,
+            15.15
+          ],
+          "size": [
+            0.8,
+            0.1,
+            0.8
+          ],
+          "material": "edge",
+          "collision": false
+        },
+        {
+          "id": "hammer-3-rubber-foot-20.85",
+          "position": [
+            -12,
+            -0.34,
+            20.85
+          ],
+          "size": [
+            0.95,
+            0.12,
+            0.95
+          ],
+          "material": "dark",
+          "collision": false
+        },
+        {
+          "id": "hammer-3-alloy-foot-20.85",
+          "position": [
+            -12,
+            -0.23,
+            20.85
+          ],
+          "size": [
+            0.8,
+            0.1,
+            0.8
+          ],
+          "material": "edge",
+          "collision": false
+        }
+      ],
+      "poseSamples": [
+        {
+          "name": "left",
+          "swingAngleRadians": -0.47611906091179634,
+          "headCenter": [
+            -12,
+            4.700390648844769,
+            16.35
+          ],
+          "headEulerDegrees": [
+            27.279612735978098,
+            0,
+            0
+          ],
+          "handleCenter": [
+            -12,
+            6.3001953244223845,
+            17.175
+          ],
+          "handleEulerDegrees": [
+            27.279612735978098,
+            0,
+            0
+          ],
+          "handleLength": 3.6
+        },
+        {
+          "name": "middle",
+          "swingAngleRadians": 0,
+          "headCenter": [
+            -12,
+            4.300000000000001,
+            18
+          ],
+          "headEulerDegrees": [
+            0,
+            0,
+            0
+          ],
+          "handleCenter": [
+            -12,
+            6.1000000000000005,
+            18
+          ],
+          "handleEulerDegrees": [
+            0,
+            0,
+            0
+          ],
+          "handleLength": 3.6
+        },
+        {
+          "name": "right",
+          "swingAngleRadians": 0.47611906091179634,
+          "headCenter": [
+            -12,
+            4.700390648844769,
+            19.65
+          ],
+          "headEulerDegrees": [
+            -27.279612735978098,
+            0,
+            0
+          ],
+          "handleCenter": [
+            -12,
+            6.3001953244223845,
+            18.825
+          ],
+          "handleEulerDegrees": [
+            -27.279612735978098,
+            0,
+            0
+          ],
+          "handleLength": 3.6
+        }
+      ],
+      "clearanceAudit": {
+        "samples": 7201,
+        "exactCylinderSweepBounds": {
+          "min": [
+            -12.45,
+            3.793310335567028,
+            15.539379344781791
+          ],
+          "max": [
+            -11.55,
+            5.412008484405839,
+            20.460620655218207
+          ]
+        },
+        "pillarInnerZ": [
+          15.27,
+          20.73
+        ],
+        "pillarInnerGap": 5.46,
+        "minimumPillarClearance": 0.2693793447817914,
+        "minimumLaneClearance": 0.393310335567028,
+        "minimumCrossbarClearance": 2.367991515594161,
+        "footBottomY": -0.4,
+        "postBottomY": -0.18,
+        "postTopY": 8.02,
+        "footToLaneHorizontalClearance": 0.775,
+        "poseImage": "docs/levels/water-rush-hammer-poses.png",
+        "status": "analytic design only, no engine or final model pose validation",
+        "safeLaneCenterWindowPerSideSeconds": 0.8007371109276659,
+        "laneCenterWindowNote": "Projection-only clearance: head Z extent is outside a radius .425 ball on Z=18; not a hidden speed/time gate or verified gameplay window."
+      },
+      "id": "hammer-3",
+      "speedLabel": "fast",
+      "startDirection": "at +Z extreme, then toward -Z",
+      "initialPose": {
+        "time": 0,
+        "swingAngleRadians": 0.47611906091179634,
+        "headCenter": [
+          -12,
+          4.700390648844769,
+          19.65
+        ],
+        "headEulerDegrees": [
+          -27.279612735978098,
+          0,
+          0
+        ],
+        "handleCenter": [
+          -12,
+          6.3001953244223845,
+          18.825
+        ],
+        "handleEulerDegrees": [
+          -27.279612735978098,
+          0,
+          0
+        ],
+        "handleLength": 3.6,
+        "zVelocity": 1.7723397695419059e-16
+      }
+    }
+  ],
+  "hammerSection": {
+    "travelDirection": "+X",
+    "laneZ": 18,
+    "laneWidth": 3.2,
+    "centerSpacing": 6,
+    "betweenHeadFreeXAfterBallRadius": [
+      [
+        -23.125,
+        -18.875
+      ],
+      [
+        -17.125,
+        -12.875
+      ]
+    ],
+    "observationIntervalsWith20cmMargin": [
+      [
+        -22.925,
+        -19.075
+      ],
+      [
+        -16.925,
+        -13.075
+      ]
+    ],
+    "safeIntervalLength": 3.85,
+    "maximumHeadXWidth": 0.9,
+    "ballDiameter": 0.85,
+    "allFrameGeometryShared": true,
+    "sharedHeadAsset": "hammer-head-toy-round-03.glb",
+    "sharedHandleAsset": "hammer-handle-toy-round-03.glb",
+    "runtimeSupported": false,
+    "neutralReference": "Each model's resting head is vertically below its own centered anchor.",
+    "initialState": "Instance phases 0/PI/PI/2; first begins right, second begins left, third starts at right extreme then reverses.",
+    "pause": "freeze each current phase/pose; restart restores that instance's configured phase",
+    "observationNote": "Stable lane intervals allow stopping between gates; no need to clear all three at once. Real braking and crossing are pending runtime.",
+    "timingDiagram": "docs/levels/water-rush-hammer-timing.png"
+  },
+  "hammerTimingAudit": {
+    "durationSeconds": 24,
+    "samplingStep": 0.01,
+    "sampleCount": 2401,
+    "summaries": [
+      {
+        "id": "hammer-1",
+        "phaseFrequency": 1.1,
+        "phase": 0,
+        "period": 5.711986642890532,
+        "cyclesIn24Seconds": 4.201690497626037,
+        "initialDirectionAt10ms": 1,
+        "minimumCompleteCenterlineClearWindow": 1.3830913734205126,
+        "centerlineClearWindows": [
+          {
+            "start": 0.7364509740123764,
+            "end": 2.1195423474328896,
+            "complete": true
+          },
+          {
+            "start": 3.5924442954576428,
+            "end": 4.975535668878156,
+            "complete": true
+          },
+          {
+            "start": 6.448437616902909,
+            "end": 7.831528990323422,
+            "complete": true
+          },
+          {
+            "start": 9.304430938348176,
+            "end": 10.687522311768689,
+            "complete": true
+          },
+          {
+            "start": 12.16042425979344,
+            "end": 13.543515633213955,
+            "complete": true
+          },
+          {
+            "start": 15.016417581238708,
+            "end": 16.399508954659222,
+            "complete": true
+          },
+          {
+            "start": 17.872410902683974,
+            "end": 19.255502276104487,
+            "complete": true
+          },
+          {
+            "start": 20.72840422412924,
+            "end": 22.11149559754975,
+            "complete": true
+          },
+          {
+            "start": 23.584397545574507,
+            "end": 24,
+            "complete": false
+          }
+        ]
+      },
+      {
+        "id": "hammer-2",
+        "phaseFrequency": 1.5,
+        "phase": 3.141592653589793,
+        "period": 4.1887902047863905,
+        "cyclesIn24Seconds": 5.729577951308232,
+        "initialDirectionAt10ms": -1,
+        "minimumCompleteCenterlineClearWindow": 1.014267007175043,
+        "centerlineClearWindows": [
+          {
+            "start": 0.5400640476090762,
+            "end": 1.5543310547841191,
+            "complete": true
+          },
+          {
+            "start": 2.6344591500022716,
+            "end": 3.6487261571773146,
+            "complete": true
+          },
+          {
+            "start": 4.728854252395467,
+            "end": 5.74312125957051,
+            "complete": true
+          },
+          {
+            "start": 6.823249354788662,
+            "end": 7.837516361963705,
+            "complete": true
+          },
+          {
+            "start": 8.917644457181858,
+            "end": 9.9319114643569,
+            "complete": true
+          },
+          {
+            "start": 11.012039559575053,
+            "end": 12.026306566750096,
+            "complete": true
+          },
+          {
+            "start": 13.10643466196825,
+            "end": 14.120701669143292,
+            "complete": true
+          },
+          {
+            "start": 15.200829764361444,
+            "end": 16.215096771536487,
+            "complete": true
+          },
+          {
+            "start": 17.29522486675464,
+            "end": 18.309491873929684,
+            "complete": true
+          },
+          {
+            "start": 19.389619969147834,
+            "end": 20.403886976322877,
+            "complete": true
+          },
+          {
+            "start": 21.484015071541023,
+            "end": 22.498282078716073,
+            "complete": true
+          },
+          {
+            "start": 23.57841017393422,
+            "end": 24,
+            "complete": false
+          }
+        ]
+      },
+      {
+        "id": "hammer-3",
+        "phaseFrequency": 1.9,
+        "phase": 1.5707963267948966,
+        "period": 3.306939635357677,
+        "cyclesIn24Seconds": 7.257465404990427,
+        "initialDirectionAt10ms": -1,
+        "minimumCompleteCenterlineClearWindow": 0.8007371109276633,
+        "centerlineClearWindows": [
+          {
+            "start": 0,
+            "end": 0.4003685554638328,
+            "complete": false
+          },
+          {
+            "start": 1.2531012622150057,
+            "end": 2.0538383731426713,
+            "complete": true
+          },
+          {
+            "start": 2.9065710798938444,
+            "end": 3.70730819082151,
+            "complete": true
+          },
+          {
+            "start": 4.560040897572683,
+            "end": 5.360778008500349,
+            "complete": true
+          },
+          {
+            "start": 6.213510715251521,
+            "end": 7.014247826179187,
+            "complete": true
+          },
+          {
+            "start": 7.86698053293036,
+            "end": 8.667717643858026,
+            "complete": true
+          },
+          {
+            "start": 9.520450350609199,
+            "end": 10.321187461536864,
+            "complete": true
+          },
+          {
+            "start": 11.173920168288037,
+            "end": 11.974657279215704,
+            "complete": true
+          },
+          {
+            "start": 12.827389985966876,
+            "end": 13.62812709689454,
+            "complete": true
+          },
+          {
+            "start": 14.480859803645714,
+            "end": 15.281596914573381,
+            "complete": true
+          },
+          {
+            "start": 16.13432962132455,
+            "end": 16.935066732252217,
+            "complete": true
+          },
+          {
+            "start": 17.787799439003386,
+            "end": 18.588536549931053,
+            "complete": true
+          },
+          {
+            "start": 19.441269256682226,
+            "end": 20.242006367609896,
+            "complete": true
+          },
+          {
+            "start": 21.09473907436107,
+            "end": 21.895476185288736,
+            "complete": true
+          },
+          {
+            "start": 22.748208892039905,
+            "end": 23.548946002967572,
+            "complete": true
+          }
+        ]
+      }
+    ],
+    "sparseSamples": [
+      {
+        "time": 0,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 18,
+            "y": 4.300000000000001,
+            "zVelocity": 1.8854314812107138
+          },
+          {
+            "id": "hammer-2",
+            "z": 18,
+            "y": 4.300000000000001,
+            "zVelocity": -2.5710429289237005
+          },
+          {
+            "id": "hammer-3",
+            "z": 19.65,
+            "y": 4.700390648844769,
+            "zVelocity": 1.7723397695419059e-16
+          }
+        ]
+      },
+      {
+        "time": 1,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 19.48212691028198,
+            "y": 4.619253160968072,
+            "zVelocity": 0.7793818806184157
+          },
+          {
+            "id": "hammer-2",
+            "z": 16.35381729753604,
+            "y": 4.698424995395478,
+            "zVelocity": -0.16174035179167523
+          },
+          {
+            "id": "hammer-3",
+            "z": 17.44805796891902,
+            "y": 4.3425627209568125,
+            "zVelocity": -3.0453365956785308
+          }
+        ]
+      },
+      {
+        "time": 2,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 19.351814531620462,
+            "y": 4.563445269128685,
+            "zVelocity": -1.0283804178402052
+          },
+          {
+            "id": "hammer-2",
+            "z": 17.758298223147445,
+            "y": 4.30812301838352,
+            "zVelocity": 2.539569978632933
+          },
+          {
+            "id": "hammer-3",
+            "z": 16.676078255497952,
+            "y": 4.552279698894387,
+            "zVelocity": 1.8529721868390179
+          }
+        ]
+      },
+      {
+        "time": 3,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 17.72987349102884,
+            "y": 4.3101487956809335,
+            "zVelocity": -1.8565767546789547
+          },
+          {
+            "id": "hammer-2",
+            "z": 19.615675722547433,
+            "y": 4.682921828806327,
+            "zVelocity": 0.48431775848117803
+          },
+          {
+            "id": "hammer-3",
+            "z": 19.39335541519673,
+            "y": 4.580578260157057,
+            "zVelocity": 1.6536183317553454
+          }
+        ]
+      },
+      {
+        "time": 4,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 16.424160679567212,
+            "y": 4.663222213963719,
+            "zVelocity": -0.520990914715691
+          },
+          {
+            "id": "hammer-2",
+            "z": 18.477514711855612,
+            "y": 4.331810024681779,
+            "zVelocity": -2.4468258404025067
+          },
+          {
+            "id": "hammer-3",
+            "z": 18.42964006701449,
+            "y": 4.325729527187991,
+            "zVelocity": -3.1296509203774856
+          }
+        ]
+      },
+      {
+        "time": 5,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 16.81329953365309,
+            "y": 4.501214628257321,
+            "zVelocity": 1.2614670289173138
+          },
+          {
+            "id": "hammer-2",
+            "z": 16.445155656976684,
+            "y": 4.653084684047274,
+            "zVelocity": -0.8038048068701849
+          },
+          {
+            "id": "hammer-3",
+            "z": 16.354309417340918,
+            "y": 4.698172005533837,
+            "zVelocity": 0.21767202965586901
+          }
+        ]
+      },
+      {
+        "time": 6,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 18.532034820026826,
+            "y": 4.3395310771923565,
+            "zVelocity": 1.7719251610283386
+          },
+          {
+            "id": "hammer-2",
+            "z": 17.298141179684144,
+            "y": 4.369080261979207,
+            "zVelocity": 2.2976038187344376
+          },
+          {
+            "id": "hammer-3",
+            "z": 18.67051602593566,
+            "y": 4.362994450249838,
+            "zVelocity": 2.941546014948472
+          }
+        ]
+      },
+      {
+        "time": 7,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 19.63194946117404,
+            "y": 4.691146473244103,
+            "zVelocity": 0.25775642551582406
+          },
+          {
+            "id": "hammer-2",
+            "z": 19.464123318845772,
+            "y": 4.611179100769997,
+            "zVelocity": 1.1169437410273224
+          },
+          {
+            "id": "hammer-3",
+            "z": 19.24672344050891,
+            "y": 4.522770267973227,
+            "zVelocity": -2.0456230372775375
+          }
+        ]
+      },
+      {
+        "time": 8,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 18.989655682615965,
+            "y": 4.438702319957741,
+            "zVelocity": -1.4703403162819928
+          },
+          {
+            "id": "hammer-2",
+            "z": 18.909729691742335,
+            "y": 4.416841679170699,
+            "zVelocity": -2.099168663165988
+          },
+          {
+            "id": "hammer-3",
+            "z": 16.54521323301891,
+            "y": 4.607038496639126,
+            "zVelocity": -1.4489327153710396
+          }
+        ]
+      },
+      {
+        "time": 9,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 17.22195827873625,
+            "y": 4.385081639643256,
+            "zVelocity": -1.6368867325533958
+          },
+          {
+            "id": "hammer-2",
+            "z": 16.65567429841286,
+            "y": 4.560420923521613,
+            "zVelocity": -1.4189190265179257
+          },
+          {
+            "id": "hammer-3",
+            "z": 17.695594081768224,
+            "y": 4.312892943199845,
+            "zVelocity": 3.193282165814864
+          }
+        ]
+      },
+      {
+        "time": 10,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 16.350014919309626,
+            "y": 4.700382955180547,
+            "zVelocity": 0.007416312635951478
+          },
+          {
+            "id": "hammer-2",
+            "z": 16.903110859107915,
+            "y": 4.471175972349554,
+            "zVelocity": 1.8603182260099884
+          },
+          {
+            "id": "hammer-3",
+            "z": 19.63276889392554,
+            "y": 4.691563349693629,
+            "zVelocity": -0.4350089947244985
+          }
+        ]
+      },
+      {
+        "time": 11,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 17.235165176501752,
+            "y": 4.382184244056491,
+            "zVelocity": 1.6456331570929101
+          },
+          {
+            "id": "hammer-2",
+            "z": 19.196801057360247,
+            "y": 4.504758148658421,
+            "zVelocity": 1.7031787366291975
+          },
+          {
+            "id": "hammer-3",
+            "z": 17.215381356411157,
+            "y": 4.386543925970782,
+            "zVelocity": -2.819709970610065
+          }
+        ]
+      },
+      {
+        "time": 12,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 19.001443460497693,
+            "y": 4.442094420689541,
+            "zVelocity": 1.4594657055502707
+          },
+          {
+            "id": "hammer-2",
+            "z": 19.259960338454178,
+            "y": 4.527686262293731,
+            "zVelocity": -1.590329392387861
+          },
+          {
+            "id": "hammer-3",
+            "z": 16.837944389653558,
+            "y": 4.492709763101718,
+            "zVelocity": 2.2300453031773597
+          }
+        ]
+      },
+      {
+        "time": 13,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 19.629815885142907,
+            "y": 4.6900622777792345,
+            "zVelocity": -0.27253767774957716
+          },
+          {
+            "id": "hammer-2",
+            "z": 16.976406608270224,
+            "y": 4.448586294225635,
+            "zVelocity": -1.9616248341037728
+          },
+          {
+            "id": "hammer-3",
+            "z": 19.508029028964163,
+            "y": 4.631078396810134,
+            "zVelocity": 1.240114046929353
+          }
+        ]
+      },
+      {
+        "time": 14,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 18.517751838920752,
+            "y": 4.3374260662697575,
+            "zVelocity": -1.7780484185414178
+          },
+          {
+            "id": "hammer-2",
+            "z": 16.603574617752237,
+            "y": 4.58186857526496,
+            "zVelocity": 1.2979750754855643
+          },
+          {
+            "id": "hammer-3",
+            "z": 18.177077945033112,
+            "y": 4.304357720603613,
+            "zVelocity": -3.235293258630541
+          }
+        ]
+      },
+      {
+        "time": 15,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 16.803198942639753,
+            "y": 4.504758148658421,
+            "zVelocity": -1.2489977401947447
+          },
+          {
+            "id": "hammer-2",
+            "z": 18.82756341892953,
+            "y": 4.396410585178442,
+            "zVelocity": 2.1851728737307887
+          },
+          {
+            "id": "hammer-3",
+            "z": 16.388744547823816,
+            "y": 4.6807056879134965,
+            "zVelocity": 0.6516341600868404
+          }
+        ]
+      },
+      {
+        "time": 16,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 16.428411713725108,
+            "y": 4.66115603054986,
+            "zVelocity": 0.5355907272284137
+          },
+          {
+            "id": "hammer-2",
+            "z": 19.504539920940562,
+            "y": 4.6294710479348815,
+            "zVelocity": -0.990772621157939
+          },
+          {
+            "id": "hammer-3",
+            "z": 18.89356669378683,
+            "y": 4.412660245437094,
+            "zVelocity": 2.68143046820131
+          }
+        ]
+      },
+      {
+        "time": 17,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 17.744825565805318,
+            "y": 4.309054997896316,
+            "zVelocity": 1.859695610501902
+          },
+          {
+            "id": "hammer-2",
+            "z": 17.387557061538864,
+            "y": 4.352477815836934,
+            "zVelocity": -2.3646139384830405
+          },
+          {
+            "id": "hammer-3",
+            "z": 19.07027635471973,
+            "y": 4.462776043879618,
+            "zVelocity": -2.404587982506736
+          }
+        ]
+      },
+      {
+        "time": 18,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 19.360035114581546,
+            "y": 4.5667876624635575,
+            "zVelocity": 1.014817277546926
+          },
+          {
+            "id": "hammer-2",
+            "z": 16.41680780934241,
+            "y": 4.666812333402095,
+            "zVelocity": 0.6745699562574652
+          },
+          {
+            "id": "hammer-3",
+            "z": 16.447060663172707,
+            "y": 4.652173124051345,
+            "zVelocity": -1.0281813862730094
+          }
+        ]
+      },
+      {
+        "time": 19,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 19.47579821664089,
+            "y": 4.616401421647346,
+            "zVelocity": -0.7935945632284712
+          },
+          {
+            "id": "hammer-2",
+            "z": 18.382798511796096,
+            "y": 4.320409897856084,
+            "zVelocity": 2.4916481106239967
+          },
+          {
+            "id": "hammer-3",
+            "z": 17.95147434949461,
+            "y": 4.300327061906453,
+            "zVelocity": 3.2550531723033225
+          }
+        ]
+      },
+      {
+        "time": 20,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 17.984828647465754,
+            "y": 4.300031968188845,
+            "zVelocity": -1.8853408799873461
+          },
+          {
+            "id": "hammer-2",
+            "z": 19.63174074579564,
+            "y": 4.6910403339228,
+            "zVelocity": -0.35350889067033464
+          },
+          {
+            "id": "hammer-3",
+            "z": 19.581187172997648,
+            "y": 4.66583130867487,
+            "zVelocity": -0.8670896359556592
+          }
+        ]
+      },
+      {
+        "time": 21,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 16.51165887848321,
+            "y": 4.6220676172315365,
+            "zVelocity": -0.7651404014894387
+          },
+          {
+            "id": "hammer-2",
+            "z": 17.856103724310778,
+            "y": 4.302877002124786,
+            "zVelocity": -2.559914331666065
+          },
+          {
+            "id": "hammer-3",
+            "z": 17.003257135178718,
+            "y": 4.440736543507006,
+            "zVelocity": -2.5284238221942363
+          }
+        ]
+      },
+      {
+        "time": 22,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 16.656514993465326,
+            "y": 4.560082630181322,
+            "zVelocity": 1.0418943573087138
+          },
+          {
+            "id": "hammer-2",
+            "z": 16.35013427332469,
+            "y": 4.700321409275276,
+            "zVelocity": 0.030339252022412996
+          },
+          {
+            "id": "hammer-3",
+            "z": 17.02818900240183,
+            "y": 4.433649846748421,
+            "zVelocity": 2.567513345540265
+          }
+        ]
+      },
+      {
+        "time": 23,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 18.28505278198212,
+            "y": 4.311303173645864,
+            "zVelocity": 1.8532827560015472
+          },
+          {
+            "id": "hammer-2",
+            "z": 17.901477120006827,
+            "y": 4.30134841334732,
+            "zVelocity": 2.565829593350877
+          },
+          {
+            "id": "hammer-3",
+            "z": 19.589411660176616,
+            "y": 4.669865238957573,
+            "zVelocity": 0.8139779263917033
+          }
+        ]
+      },
+      {
+        "time": 24,
+        "instances": [
+          {
+            "id": "hammer-1",
+            "z": 19.579972814058756,
+            "y": 4.665237890225116,
+            "zVelocity": 0.5063764198141896
+          },
+          {
+            "id": "hammer-2",
+            "z": 19.637463338360295,
+            "y": 4.6939566728557836,
+            "zVelocity": 0.292996861520665
+          },
+          {
+            "id": "hammer-3",
+            "z": 17.919637032532673,
+            "y": 4.300897084902983,
+            "zVelocity": -3.2522617184321123
+          }
+        ]
+      }
+    ],
+    "rodLengthConstantVerified": true,
+    "initialDirectionsVerified": true,
+    "frequenciesDistinct": true,
+    "maximumAllOnSameSideSeconds": 1.5300000000000011,
+    "interpretation": "Same-side or same-position coincidences can occur briefly; distinct periods/phase velocities mean they are not locked in sync. Each gate has separate clear windows and fixed stopping intervals. No physical collision/playability proof.",
+    "status": "design sampling only"
   }
 }

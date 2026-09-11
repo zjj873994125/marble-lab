@@ -1,34 +1,34 @@
 {
-  "blend_sha256": "5a0c5d5807ead389658aee31678524eef194973fb5001a096955392ca71e9155",
-  "layout_sha256": "1abf589b83106ffd83a0b0ae7a38d2d164816cceb24dad328c7a8f75349a6326",
+  "blend_sha256": "dfe976274db9259dd5c636e627ba49dcc461d9f3e05ba388266a1645cd84cd25",
+  "layout_sha256": "626307ecf24f077532570286358cc183a5cfbe09d1152fa68d3d8d88e5e4d25e",
   "contract_sha256": "3394e72ba5299b42bbee92fa0cfc3ff7aef1da0157d873754d2aa3999bc9a109",
   "stage": "Assets from design handoff; runtime implementation and physics playtest pending",
   "units": "meters",
   "coordinates": "glTF Y-up; Blender (x,-z,y)",
-  "static_controls": 15,
-  "static_parts": 203,
+  "static_controls": 21,
+  "static_parts": 283,
   "exports": [
     {
       "file": "water-rush-track.glb",
       "node": "TrackStatic",
-      "sha256": "3f0966ce938bbaec858318545b171a7583e125a2a25c4c000b13e0a0dd1bfc74",
-      "bytes": 1222868,
-      "triangles": 50532,
+      "sha256": "c62a3f649d15fb73062918a5e0a2fae372eaa4cacb2e422221598934217738e6",
+      "bytes": 1611376,
+      "triangles": 70293,
       "materials": 5,
       "bounds_min": [
-        -14.039999961853027,
+        -32.040000915527344,
         -0.39999985694885254,
-        -68.7476577758789
+        -12.370000839233398
       ],
       "bounds_max": [
-        2.369999885559082,
-        8,
-        12.039999961853027
+        22.439998626708984,
+        8.020000457763672,
+        21.325000762939453
       ],
       "dimensions_xyz_m": [
-        16.40999984741211,
-        8.399999856948853,
-        80.78765773773193
+        54.47999954223633,
+        8.420000314712524,
+        33.69500160217285
       ]
     },
     {
@@ -57,7 +57,7 @@
     {
       "file": "water-rush-lift.glb",
       "node": "LiftVisual",
-      "sha256": "19ff93b33c35f9ff7a5da9a21f04cc104fcb7c0433da6b6c3f47f940a1ddd709",
+      "sha256": "fe172c7a04c000175407c24d3696b783b07c610606900a338b1b1fe67dd70aae",
       "bytes": 20744,
       "triangles": 968,
       "materials": 4,
@@ -78,6 +78,33 @@
       ]
     }
   ],
+  "turntable_origin": [
+    -6,
+    3.15,
+    10
+  ],
+  "lift_centers": [
+    [
+      8,
+      3.24,
+      6.4
+    ],
+    [
+      8,
+      3.24,
+      9.35
+    ],
+    [
+      8,
+      3.24,
+      12.3
+    ],
+    [
+      8,
+      3.24,
+      15.25
+    ]
+  ],
   "lift_stem_min_world_y": 1.21,
   "lift_sleeve_top_y": 2.3,
   "lift_stem_radius": 0.075,
@@ -91,6 +118,869 @@
     "public/models/hammer-handle-toy-round-03.glb": "3ec0b73b02fc079c6657165da3dc935195964a006caeaf7278427c11745bb5ad"
   },
   "preview_note": "Lifts manually posed at alternating extremes for display only; no gameplay animation exported",
+  "input_blend_sha256": "f2123cb6721a1ef80a85342a5948f64513dee787f3acf31fec13ca46065df89e",
+  "preexisting_object_count": 398,
+  "material_values_preserved": true,
+  "hammers": [
+    {
+      "bodyCenter": [
+        -24,
+        4.3,
+        18
+      ],
+      "bodySize": [
+        0.9,
+        0.9,
+        1.36
+      ],
+      "shape": "cylinder",
+      "collisionAxis": 2,
+      "anchor": [
+        -24,
+        7.9,
+        18
+      ],
+      "angularSpeed": 1.1,
+      "rodWidth": 0.12,
+      "headAsset": "hammer-head-toy-round-03.glb",
+      "handleAsset": "hammer-handle-toy-round-03.glb",
+      "observationPoint": [
+        -27,
+        3.825,
+        18
+      ],
+      "standPosts": [
+        [
+          -24,
+          3.92,
+          15.15
+        ],
+        [
+          -24,
+          3.92,
+          20.85
+        ]
+      ],
+      "standPostSize": [
+        0.24,
+        8.2,
+        0.24
+      ],
+      "standCrossbar": {
+        "position": [
+          -24,
+          7.9,
+          18
+        ],
+        "size": [
+          0.28,
+          0.24,
+          5.94
+        ]
+      },
+      "reservedHeadSweepBounds": {
+        "min": [
+          -24.5,
+          3.74,
+          15.48
+        ],
+        "max": [
+          -23.5,
+          5.47,
+          20.52
+        ]
+      },
+      "travelDirection": "+X",
+      "motionAxis": "YZ arc about world X hinge; symmetric +/-Z around lane center",
+      "motion": {
+        "mode": "fixed-length-pendulum-arc",
+        "runtimeSupported": false,
+        "rodLength": 3.6,
+        "maxLateralOffset": 1.65,
+        "maxAngleRadians": 0.47611906091179634,
+        "phaseFrequency": 1.1,
+        "phase": 0,
+        "hingeAxis": "X",
+        "swingPlane": "YZ",
+        "formula": "theta=maxAngleRadians*sin(phaseFrequency*t+phase); head=[instanceX,anchorY-L*cos(theta),laneCenterZ+L*sin(theta)]; head/handle Euler X=-theta",
+        "initialAndPreview": "Neutral reference model is centered; gameplay t=0 uses each instance phase. Restart restores individual phases, not a shared middle pose.",
+        "pause": "freeze the current time and pose, do not reset to middle",
+        "handleScaling": "normalized 1m handle uses constant Y scale 3.6 for all phases, never stretch per pose",
+        "replaces": "The old offset Z anchor and z-sine plus abs(offset)*lift formula; requires future CODE implementation."
+      },
+      "standFootPads": [
+        {
+          "id": "hammer-1-rubber-foot-15.15",
+          "position": [
+            -24,
+            -0.34,
+            15.15
+          ],
+          "size": [
+            0.95,
+            0.12,
+            0.95
+          ],
+          "material": "dark",
+          "collision": false
+        },
+        {
+          "id": "hammer-1-alloy-foot-15.15",
+          "position": [
+            -24,
+            -0.23,
+            15.15
+          ],
+          "size": [
+            0.8,
+            0.1,
+            0.8
+          ],
+          "material": "edge",
+          "collision": false
+        },
+        {
+          "id": "hammer-1-rubber-foot-20.85",
+          "position": [
+            -24,
+            -0.34,
+            20.85
+          ],
+          "size": [
+            0.95,
+            0.12,
+            0.95
+          ],
+          "material": "dark",
+          "collision": false
+        },
+        {
+          "id": "hammer-1-alloy-foot-20.85",
+          "position": [
+            -24,
+            -0.23,
+            20.85
+          ],
+          "size": [
+            0.8,
+            0.1,
+            0.8
+          ],
+          "material": "edge",
+          "collision": false
+        }
+      ],
+      "poseSamples": [
+        {
+          "name": "left",
+          "swingAngleRadians": -0.47611906091179634,
+          "headCenter": [
+            -24,
+            4.700390648844769,
+            16.35
+          ],
+          "headEulerDegrees": [
+            27.279612735978098,
+            0,
+            0
+          ],
+          "handleCenter": [
+            -24,
+            6.3001953244223845,
+            17.175
+          ],
+          "handleEulerDegrees": [
+            27.279612735978098,
+            0,
+            0
+          ],
+          "handleLength": 3.6
+        },
+        {
+          "name": "middle",
+          "swingAngleRadians": 0,
+          "headCenter": [
+            -24,
+            4.300000000000001,
+            18
+          ],
+          "headEulerDegrees": [
+            0,
+            0,
+            0
+          ],
+          "handleCenter": [
+            -24,
+            6.1000000000000005,
+            18
+          ],
+          "handleEulerDegrees": [
+            0,
+            0,
+            0
+          ],
+          "handleLength": 3.6
+        },
+        {
+          "name": "right",
+          "swingAngleRadians": 0.47611906091179634,
+          "headCenter": [
+            -24,
+            4.700390648844769,
+            19.65
+          ],
+          "headEulerDegrees": [
+            -27.279612735978098,
+            0,
+            0
+          ],
+          "handleCenter": [
+            -24,
+            6.3001953244223845,
+            18.825
+          ],
+          "handleEulerDegrees": [
+            -27.279612735978098,
+            0,
+            0
+          ],
+          "handleLength": 3.6
+        }
+      ],
+      "clearanceAudit": {
+        "samples": 7201,
+        "exactCylinderSweepBounds": {
+          "min": [
+            -24.45,
+            3.793310335567028,
+            15.539379344781791
+          ],
+          "max": [
+            -23.55,
+            5.412008484405839,
+            20.460620655218207
+          ]
+        },
+        "pillarInnerZ": [
+          15.27,
+          20.73
+        ],
+        "pillarInnerGap": 5.46,
+        "minimumPillarClearance": 0.2693793447817914,
+        "minimumLaneClearance": 0.393310335567028,
+        "minimumCrossbarClearance": 2.367991515594161,
+        "footBottomY": -0.4,
+        "postBottomY": -0.18,
+        "postTopY": 8.02,
+        "footToLaneHorizontalClearance": 0.775,
+        "poseImage": "docs/levels/water-rush-hammer-poses.png",
+        "status": "analytic design only, no engine or final model pose validation",
+        "safeLaneCenterWindowPerSideSeconds": 1.3830913734205135,
+        "laneCenterWindowNote": "Projection-only clearance: head Z extent is outside a radius .425 ball on Z=18; not a hidden speed/time gate or verified gameplay window."
+      },
+      "id": "hammer-1",
+      "speedLabel": "slow",
+      "startDirection": "toward +Z (player right)",
+      "initialPose": {
+        "time": 0,
+        "swingAngleRadians": 0,
+        "headCenter": [
+          -24,
+          4.300000000000001,
+          18
+        ],
+        "headEulerDegrees": [
+          0,
+          0,
+          0
+        ],
+        "handleCenter": [
+          -24,
+          6.1000000000000005,
+          18
+        ],
+        "handleEulerDegrees": [
+          0,
+          0,
+          0
+        ],
+        "handleLength": 3.6,
+        "zVelocity": 1.8854314812107138
+      }
+    },
+    {
+      "bodyCenter": [
+        -18,
+        4.3,
+        18
+      ],
+      "bodySize": [
+        0.9,
+        0.9,
+        1.36
+      ],
+      "shape": "cylinder",
+      "collisionAxis": 2,
+      "anchor": [
+        -18,
+        7.9,
+        18
+      ],
+      "angularSpeed": 1.5,
+      "rodWidth": 0.12,
+      "headAsset": "hammer-head-toy-round-03.glb",
+      "handleAsset": "hammer-handle-toy-round-03.glb",
+      "observationPoint": [
+        -21,
+        3.825,
+        18
+      ],
+      "standPosts": [
+        [
+          -18,
+          3.92,
+          15.15
+        ],
+        [
+          -18,
+          3.92,
+          20.85
+        ]
+      ],
+      "standPostSize": [
+        0.24,
+        8.2,
+        0.24
+      ],
+      "standCrossbar": {
+        "position": [
+          -18,
+          7.9,
+          18
+        ],
+        "size": [
+          0.28,
+          0.24,
+          5.94
+        ]
+      },
+      "reservedHeadSweepBounds": {
+        "min": [
+          -18.5,
+          3.74,
+          15.48
+        ],
+        "max": [
+          -17.5,
+          5.47,
+          20.52
+        ]
+      },
+      "travelDirection": "+X",
+      "motionAxis": "YZ arc about world X hinge; symmetric +/-Z around lane center",
+      "motion": {
+        "mode": "fixed-length-pendulum-arc",
+        "runtimeSupported": false,
+        "rodLength": 3.6,
+        "maxLateralOffset": 1.65,
+        "maxAngleRadians": 0.47611906091179634,
+        "phaseFrequency": 1.5,
+        "phase": 3.141592653589793,
+        "hingeAxis": "X",
+        "swingPlane": "YZ",
+        "formula": "theta=maxAngleRadians*sin(phaseFrequency*t+phase); head=[instanceX,anchorY-L*cos(theta),laneCenterZ+L*sin(theta)]; head/handle Euler X=-theta",
+        "initialAndPreview": "Neutral reference model is centered; gameplay t=0 uses each instance phase. Restart restores individual phases, not a shared middle pose.",
+        "pause": "freeze the current time and pose, do not reset to middle",
+        "handleScaling": "normalized 1m handle uses constant Y scale 3.6 for all phases, never stretch per pose",
+        "replaces": "The old offset Z anchor and z-sine plus abs(offset)*lift formula; requires future CODE implementation."
+      },
+      "standFootPads": [
+        {
+          "id": "hammer-2-rubber-foot-15.15",
+          "position": [
+            -18,
+            -0.34,
+            15.15
+          ],
+          "size": [
+            0.95,
+            0.12,
+            0.95
+          ],
+          "material": "dark",
+          "collision": false
+        },
+        {
+          "id": "hammer-2-alloy-foot-15.15",
+          "position": [
+            -18,
+            -0.23,
+            15.15
+          ],
+          "size": [
+            0.8,
+            0.1,
+            0.8
+          ],
+          "material": "edge",
+          "collision": false
+        },
+        {
+          "id": "hammer-2-rubber-foot-20.85",
+          "position": [
+            -18,
+            -0.34,
+            20.85
+          ],
+          "size": [
+            0.95,
+            0.12,
+            0.95
+          ],
+          "material": "dark",
+          "collision": false
+        },
+        {
+          "id": "hammer-2-alloy-foot-20.85",
+          "position": [
+            -18,
+            -0.23,
+            20.85
+          ],
+          "size": [
+            0.8,
+            0.1,
+            0.8
+          ],
+          "material": "edge",
+          "collision": false
+        }
+      ],
+      "poseSamples": [
+        {
+          "name": "left",
+          "swingAngleRadians": -0.47611906091179634,
+          "headCenter": [
+            -18,
+            4.700390648844769,
+            16.35
+          ],
+          "headEulerDegrees": [
+            27.279612735978098,
+            0,
+            0
+          ],
+          "handleCenter": [
+            -18,
+            6.3001953244223845,
+            17.175
+          ],
+          "handleEulerDegrees": [
+            27.279612735978098,
+            0,
+            0
+          ],
+          "handleLength": 3.6
+        },
+        {
+          "name": "middle",
+          "swingAngleRadians": 0,
+          "headCenter": [
+            -18,
+            4.300000000000001,
+            18
+          ],
+          "headEulerDegrees": [
+            0,
+            0,
+            0
+          ],
+          "handleCenter": [
+            -18,
+            6.1000000000000005,
+            18
+          ],
+          "handleEulerDegrees": [
+            0,
+            0,
+            0
+          ],
+          "handleLength": 3.6
+        },
+        {
+          "name": "right",
+          "swingAngleRadians": 0.47611906091179634,
+          "headCenter": [
+            -18,
+            4.700390648844769,
+            19.65
+          ],
+          "headEulerDegrees": [
+            -27.279612735978098,
+            0,
+            0
+          ],
+          "handleCenter": [
+            -18,
+            6.3001953244223845,
+            18.825
+          ],
+          "handleEulerDegrees": [
+            -27.279612735978098,
+            0,
+            0
+          ],
+          "handleLength": 3.6
+        }
+      ],
+      "clearanceAudit": {
+        "samples": 7201,
+        "exactCylinderSweepBounds": {
+          "min": [
+            -18.45,
+            3.793310335567028,
+            15.539379344781791
+          ],
+          "max": [
+            -17.55,
+            5.412008484405839,
+            20.460620655218207
+          ]
+        },
+        "pillarInnerZ": [
+          15.27,
+          20.73
+        ],
+        "pillarInnerGap": 5.46,
+        "minimumPillarClearance": 0.2693793447817914,
+        "minimumLaneClearance": 0.393310335567028,
+        "minimumCrossbarClearance": 2.367991515594161,
+        "footBottomY": -0.4,
+        "postBottomY": -0.18,
+        "postTopY": 8.02,
+        "footToLaneHorizontalClearance": 0.775,
+        "poseImage": "docs/levels/water-rush-hammer-poses.png",
+        "status": "analytic design only, no engine or final model pose validation",
+        "safeLaneCenterWindowPerSideSeconds": 1.0142670071750433,
+        "laneCenterWindowNote": "Projection-only clearance: head Z extent is outside a radius .425 ball on Z=18; not a hidden speed/time gate or verified gameplay window."
+      },
+      "id": "hammer-2",
+      "speedLabel": "medium",
+      "startDirection": "toward -Z (player left)",
+      "initialPose": {
+        "time": 0,
+        "swingAngleRadians": 5.830776839586751e-17,
+        "headCenter": [
+          -18,
+          4.300000000000001,
+          18
+        ],
+        "headEulerDegrees": [
+          -3.3407890419094948e-15,
+          0,
+          0
+        ],
+        "handleCenter": [
+          -18,
+          6.1000000000000005,
+          18
+        ],
+        "handleEulerDegrees": [
+          -3.3407890419094948e-15,
+          0,
+          0
+        ],
+        "handleLength": 3.6,
+        "zVelocity": -2.5710429289237005
+      }
+    },
+    {
+      "bodyCenter": [
+        -12,
+        4.3,
+        18
+      ],
+      "bodySize": [
+        0.9,
+        0.9,
+        1.36
+      ],
+      "shape": "cylinder",
+      "collisionAxis": 2,
+      "anchor": [
+        -12,
+        7.9,
+        18
+      ],
+      "angularSpeed": 1.9,
+      "rodWidth": 0.12,
+      "headAsset": "hammer-head-toy-round-03.glb",
+      "handleAsset": "hammer-handle-toy-round-03.glb",
+      "observationPoint": [
+        -15,
+        3.825,
+        18
+      ],
+      "standPosts": [
+        [
+          -12,
+          3.92,
+          15.15
+        ],
+        [
+          -12,
+          3.92,
+          20.85
+        ]
+      ],
+      "standPostSize": [
+        0.24,
+        8.2,
+        0.24
+      ],
+      "standCrossbar": {
+        "position": [
+          -12,
+          7.9,
+          18
+        ],
+        "size": [
+          0.28,
+          0.24,
+          5.94
+        ]
+      },
+      "reservedHeadSweepBounds": {
+        "min": [
+          -12.5,
+          3.74,
+          15.48
+        ],
+        "max": [
+          -11.5,
+          5.47,
+          20.52
+        ]
+      },
+      "travelDirection": "+X",
+      "motionAxis": "YZ arc about world X hinge; symmetric +/-Z around lane center",
+      "motion": {
+        "mode": "fixed-length-pendulum-arc",
+        "runtimeSupported": false,
+        "rodLength": 3.6,
+        "maxLateralOffset": 1.65,
+        "maxAngleRadians": 0.47611906091179634,
+        "phaseFrequency": 1.9,
+        "phase": 1.5707963267948966,
+        "hingeAxis": "X",
+        "swingPlane": "YZ",
+        "formula": "theta=maxAngleRadians*sin(phaseFrequency*t+phase); head=[instanceX,anchorY-L*cos(theta),laneCenterZ+L*sin(theta)]; head/handle Euler X=-theta",
+        "initialAndPreview": "Neutral reference model is centered; gameplay t=0 uses each instance phase. Restart restores individual phases, not a shared middle pose.",
+        "pause": "freeze the current time and pose, do not reset to middle",
+        "handleScaling": "normalized 1m handle uses constant Y scale 3.6 for all phases, never stretch per pose",
+        "replaces": "The old offset Z anchor and z-sine plus abs(offset)*lift formula; requires future CODE implementation."
+      },
+      "standFootPads": [
+        {
+          "id": "hammer-3-rubber-foot-15.15",
+          "position": [
+            -12,
+            -0.34,
+            15.15
+          ],
+          "size": [
+            0.95,
+            0.12,
+            0.95
+          ],
+          "material": "dark",
+          "collision": false
+        },
+        {
+          "id": "hammer-3-alloy-foot-15.15",
+          "position": [
+            -12,
+            -0.23,
+            15.15
+          ],
+          "size": [
+            0.8,
+            0.1,
+            0.8
+          ],
+          "material": "edge",
+          "collision": false
+        },
+        {
+          "id": "hammer-3-rubber-foot-20.85",
+          "position": [
+            -12,
+            -0.34,
+            20.85
+          ],
+          "size": [
+            0.95,
+            0.12,
+            0.95
+          ],
+          "material": "dark",
+          "collision": false
+        },
+        {
+          "id": "hammer-3-alloy-foot-20.85",
+          "position": [
+            -12,
+            -0.23,
+            20.85
+          ],
+          "size": [
+            0.8,
+            0.1,
+            0.8
+          ],
+          "material": "edge",
+          "collision": false
+        }
+      ],
+      "poseSamples": [
+        {
+          "name": "left",
+          "swingAngleRadians": -0.47611906091179634,
+          "headCenter": [
+            -12,
+            4.700390648844769,
+            16.35
+          ],
+          "headEulerDegrees": [
+            27.279612735978098,
+            0,
+            0
+          ],
+          "handleCenter": [
+            -12,
+            6.3001953244223845,
+            17.175
+          ],
+          "handleEulerDegrees": [
+            27.279612735978098,
+            0,
+            0
+          ],
+          "handleLength": 3.6
+        },
+        {
+          "name": "middle",
+          "swingAngleRadians": 0,
+          "headCenter": [
+            -12,
+            4.300000000000001,
+            18
+          ],
+          "headEulerDegrees": [
+            0,
+            0,
+            0
+          ],
+          "handleCenter": [
+            -12,
+            6.1000000000000005,
+            18
+          ],
+          "handleEulerDegrees": [
+            0,
+            0,
+            0
+          ],
+          "handleLength": 3.6
+        },
+        {
+          "name": "right",
+          "swingAngleRadians": 0.47611906091179634,
+          "headCenter": [
+            -12,
+            4.700390648844769,
+            19.65
+          ],
+          "headEulerDegrees": [
+            -27.279612735978098,
+            0,
+            0
+          ],
+          "handleCenter": [
+            -12,
+            6.3001953244223845,
+            18.825
+          ],
+          "handleEulerDegrees": [
+            -27.279612735978098,
+            0,
+            0
+          ],
+          "handleLength": 3.6
+        }
+      ],
+      "clearanceAudit": {
+        "samples": 7201,
+        "exactCylinderSweepBounds": {
+          "min": [
+            -12.45,
+            3.793310335567028,
+            15.539379344781791
+          ],
+          "max": [
+            -11.55,
+            5.412008484405839,
+            20.460620655218207
+          ]
+        },
+        "pillarInnerZ": [
+          15.27,
+          20.73
+        ],
+        "pillarInnerGap": 5.46,
+        "minimumPillarClearance": 0.2693793447817914,
+        "minimumLaneClearance": 0.393310335567028,
+        "minimumCrossbarClearance": 2.367991515594161,
+        "footBottomY": -0.4,
+        "postBottomY": -0.18,
+        "postTopY": 8.02,
+        "footToLaneHorizontalClearance": 0.775,
+        "poseImage": "docs/levels/water-rush-hammer-poses.png",
+        "status": "analytic design only, no engine or final model pose validation",
+        "safeLaneCenterWindowPerSideSeconds": 0.8007371109276659,
+        "laneCenterWindowNote": "Projection-only clearance: head Z extent is outside a radius .425 ball on Z=18; not a hidden speed/time gate or verified gameplay window."
+      },
+      "id": "hammer-3",
+      "speedLabel": "fast",
+      "startDirection": "at +Z extreme, then toward -Z",
+      "initialPose": {
+        "time": 0,
+        "swingAngleRadians": 0.47611906091179634,
+        "headCenter": [
+          -12,
+          4.700390648844769,
+          19.65
+        ],
+        "headEulerDegrees": [
+          -27.279612735978098,
+          0,
+          0
+        ],
+        "handleCenter": [
+          -12,
+          6.3001953244223845,
+          18.825
+        ],
+        "handleEulerDegrees": [
+          -27.279612735978098,
+          0,
+          0
+        ],
+        "handleLength": 3.6,
+        "zVelocity": 1.7723397695419059e-16
+      }
+    }
+  ],
   "pending": [
     "Runtime and level selection implementation",
     "Final LevelConfig mapping/freeze",

@@ -15,6 +15,33 @@ REPORT = ROOT / 'art/water-rush-report.json'
 LAYOUT = ROOT / 'docs/levels/water-rush-layout.json'
 PREVIEW = ROOT / 'docs/art/water-rush-preview.png'
 sha = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
+_names = {}
+_touched = set()
+
+
+def current_name(name):
+    count = _names.get(name, 0)
+    _names[name] = count+1
+    return name if count == 0 else f'{name}.{count:03d}'
+
+
+def resize_existing(obj, position, dimensions):
+    """只调整既有网格尺寸和摆放，保留材质、修饰器及局部几何细节。"""
+    points = [v.co.copy() for v in obj.data.vertices]
+    low = [min(v[i] for v in points) for i in range(3)]
+    high = [max(v[i] for v in points) for i in range(3)]
+    if any(abs(high[i]-low[i]-dimensions[i]) > 1e-5 for i in range(3)):
+        if obj.data.users > 1:
+            obj.data = obj.data.copy()
+        for vertex in obj.data.vertices:
+            for i in range(3):
+                vertex.co[i] = (vertex.co[i]-(low[i]+high[i])/2)*dimensions[i]/(high[i]-low[i])
+    obj.location = game_position(position)
+    obj.rotation_mode = 'QUATERNION'
+    obj.rotation_quaternion = (1,0,0,0)
+    obj.scale = (1,1,1)
+    _touched.add(obj.name)
+    return obj
 
 
 def game_position(value):
@@ -43,6 +70,10 @@ def rounded(obj, name, material, radius=.035):
 
 
 def box(name, position, size, material, radius=.035):
+    name = current_name(name)
+    existing = bpy.data.objects.get(name)
+    if existing:
+        return resize_existing(existing, position, (size[0],size[2],size[1]))
     bpy.ops.mesh.primitive_cube_add(size=1, location=game_position(position))
     obj = bpy.context.object
     obj.dimensions = (size[0], size[2], size[1])
@@ -51,12 +82,52 @@ def box(name, position, size, material, radius=.035):
 
 
 def cylinder(name, position, radius, height, material, edge=.025, vertices=64):
+    name = current_name(name)
+    existing = bpy.data.objects.get(name)
+    if existing:
+        return resize_existing(existing, position, (radius*2,radius*2,height))
     bpy.ops.mesh.primitive_cylinder_add(vertices=vertices, radius=radius, depth=height,
                                        location=game_position(position))
     return rounded(bpy.context.object, name, material, edge)
 
 
+def cross_prism(name, position, length, width, height, material, edge):
+    """完整十字外轮廓；四角没有圆盘或方板残留。"""
+    a,b = width/2,length/2
+    outline = [(-a,-b),(a,-b),(a,-a),(b,-a),(b,a),(a,a),
+               (a,b),(-a,b),(-a,a),(-b,a),(-b,-a),(-a,-a)]
+    n=len(outline)
+    vertices=[game_position((x,y,z)) for y in (-height/2,height/2) for x,z in outline]
+    faces=[tuple(range(n)),tuple(reversed(range(n,2*n)))]
+    faces.extend((i,n+i,n+(i+1)%n,(i+1)%n) for i in range(n))
+    mesh=bpy.data.meshes.new(name+' cross profile')
+    mesh.from_pydata(vertices,[],faces)
+    mesh.update()
+    obj=bpy.data.objects.get(name)
+    if obj:
+        old=obj.data
+        materials=list(old.materials)
+        obj.data=mesh
+        for mat in materials:
+            mesh.materials.append(mat)
+        if old.users==0:
+            bpy.data.meshes.remove(old)
+    else:
+        obj=bpy.data.objects.new(name,mesh)
+        bpy.context.scene.collection.objects.link(obj)
+        rounded(obj,name,material,edge)
+    obj.location=game_position(position)
+    obj.rotation_mode='QUATERNION'
+    obj.rotation_quaternion=(1,0,0,0)
+    obj.scale=(1,1,1)
+    for face in mesh.polygons:
+        face.use_smooth=len(face.vertices)==4
+    return obj
+
+
 def move_to_collection(obj, collection):
+    if collection in obj.users_collection:
+        return
     for owner in list(obj.users_collection):
         owner.objects.unlink(obj)
     collection.objects.link(obj)
@@ -144,8 +215,9 @@ def render_preview(target, scale, path=PREVIEW, offset=(14, -20, 28)):
 def prepare_scene():
     """按当前唯一设计布局制作；代码尚未实现时资源也不自动启用。"""
     previous = json.loads(REPORT.read_text()) if REPORT.exists() else None
-    if BLEND.exists():
-        assert previous and sha(BLEND) == previous['blend_sha256'], '场景有后续手改，停止重建'
+    _names.clear()
+    _touched.clear()
+    input_hash = sha(BLEND) if BLEND.exists() else None
     layout_hash = sha(LAYOUT)
     layout = json.loads(LAYOUT.read_text())
     contract = ROOT / 'docs/integration/level-02-contract.md'
@@ -154,19 +226,33 @@ def prepare_scene():
         'art/track-round-03.blend', 'art/hammer-toy-round-03.blend',
         'public/models/track-round-03.glb', 'public/models/platform-refined.glb',
         'public/models/hammer-head-toy-round-03.glb', 'public/models/hammer-handle-toy-round-03.glb')}
-    bpy.ops.wm.read_factory_settings(use_empty=True)
+    if BLEND.exists():
+        bpy.ops.wm.open_mainfile(filepath=str(BLEND))
+    else:
+        bpy.ops.wm.read_factory_settings(use_empty=True)
     scene = bpy.context.scene
     scene.unit_settings.system = 'METRIC'
     scene.unit_settings.scale_length = 1
-    with bpy.data.libraries.load(str(ROOT / 'art/track-round-03.blend'), link=False) as (available, loaded):
-        loaded.materials = ['Ivory polymer', 'Graphite chassis', 'Safety terracotta',
-                            'Brushed alloy', 'Platform enamel', 'Rubber pads', 'Printed markings']
-    ivory, graphite, orange, alloy, blue, rubber, ink = loaded.materials
-    assert all(loaded.materials)
+    material_names = ['Ivory polymer','Graphite chassis','Safety terracotta','Brushed alloy','Platform enamel','Rubber pads','Printed markings']
+    missing = [name for name in material_names if name not in bpy.data.materials]
+    if missing:
+        with bpy.data.libraries.load(str(ROOT/'art/track-round-03.blend'), link=False) as (_, loaded):
+            loaded.materials = missing
+    ivory, graphite, orange, alloy, blue, rubber, ink = [bpy.data.materials[name] for name in material_names]
+    original_objects = set(bpy.data.objects.keys())
+    original_materials = {m.name: list(m.diffuse_color) for m in bpy.data.materials}
+    # 改名只用于对应同一段转到新朝向的护栏，保留原网格和材质。
+    for old, new in [('finish-rail-left','finish-rail-north'),('finish-rail-right','finish-rail-south')]:
+        if new not in bpy.data.objects:
+            for obj in list(bpy.data.objects):
+                if obj.name.startswith(old):
+                    obj.name = new+obj.name[len(old):]
     groups = {}
     for name in ('Layout controls', 'Static structure', 'Turntable', 'Lift plates', 'Runtime references'):
-        collection = bpy.data.collections.new(name)
-        scene.collection.children.link(collection)
+        collection = bpy.data.collections.get(name)
+        if not collection:
+            collection = bpy.data.collections.new(name)
+            scene.collection.children.link(collection)
         groups[name] = collection
     static, deck_controls, rotating, lift_groups = [], [], [], []
 
@@ -194,8 +280,38 @@ def prepare_scene():
         start, end = Vector(game_position([x, top-.75, z])), Vector(game_position([x+.62, top-.075, z]))
         brace = box(name+' diagonal brace', [0,0,0], [.1, (end-start).length, .1], alloy, .02)
         brace.location = (start+end)/2
+        brace.rotation_mode = 'XYZ'
         brace.rotation_euler = (end-start).to_track_quat('Z', 'Y').to_euler()
         add(brace, 'Static structure', static)
+
+    def union(name, controls, radius):
+        obj = bpy.data.objects.get(name)
+        if not obj:
+            obj = controls[0].copy()
+            obj.data = controls[0].data.copy()
+            obj.name = name
+            groups['Static structure'].objects.link(obj)
+        obj.matrix_world = controls[0].matrix_world.copy()
+        desired = {c.name for c in controls[1:]}
+        for modifier in list(obj.modifiers):
+            if modifier.type == 'BOOLEAN' and modifier.name.startswith(('Union ', 'Layer union ')):
+                if not modifier.object or modifier.object.name not in desired:
+                    obj.modifiers.remove(modifier)
+        for index, control in enumerate(controls[1:]):
+            modifier = next((m for m in obj.modifiers if m.type=='BOOLEAN' and m.object==control), None)
+            if not modifier:
+                modifier = obj.modifiers.new('Union '+control.name, 'BOOLEAN')
+                modifier.operation, modifier.solver, modifier.object = 'UNION','EXACT',control
+            bpy.context.view_layer.objects.active = obj
+            bpy.ops.object.modifier_move_to_index(modifier=modifier.name, index=index)
+        if not any(m.type=='BEVEL' for m in obj.modifiers):
+            modifier = obj.modifiers.new('Same-family bevel','BEVEL')
+            modifier.width, modifier.segments = radius,3
+        if not any(m.type=='WEIGHTED_NORMAL' for m in obj.modifiers):
+            modifier = obj.modifiers.new('Same-family normals','WEIGHTED_NORMAL')
+            modifier.keep_sharp = True
+        static.append(obj)
+        return obj
 
     # 原始碰撞模块保持独立可编辑；可见台面通过非破坏布尔并集去掉交叠内部面。
     for spec in layout['staticDecks']+layout['ramps']:
@@ -205,21 +321,7 @@ def prepare_scene():
         obj.rotation_mode = 'QUATERNION'
         obj.rotation_quaternion = game_rotation(rotation)
     bpy.context.view_layer.update()
-    surface = deck_controls[0].copy()
-    surface.data = deck_controls[0].data.copy()
-    surface.name = 'Continuous walkable surface'
-    groups['Static structure'].objects.link(surface)
-    static.append(surface)
-    for control in deck_controls[1:]:
-        modifier = surface.modifiers.new('Union '+control.name, 'BOOLEAN')
-        modifier.operation = 'UNION'
-        modifier.solver = 'EXACT'
-        modifier.object = control
-    bevel = surface.modifiers.new('Same-family deck roundover', 'BEVEL')
-    bevel.width, bevel.segments = .065, 3
-    normal = surface.modifiers.new('Same-family deck normals', 'WEIGHTED_NORMAL')
-    normal.keep_sharp = True
-    normal.weight = 50
+    surface = union('Continuous walkable surface', deck_controls, .065)
     # 底座和橙色夹层也做连续并集，避免首段交叠处产生重复外壁。
     layer_controls = []
     for name, depth, height, extra, material, radius in (
@@ -238,18 +340,7 @@ def prepare_scene():
             control.rotation_quaternion = game_rotation(degrees)
             controls.append(control)
         bpy.context.view_layer.update()
-        combined = controls[0].copy()
-        combined.data = controls[0].data.copy()
-        combined.name = name
-        groups['Static structure'].objects.link(combined)
-        static.append(combined)
-        for control in controls[1:]:
-            modifier = combined.modifiers.new('Layer union '+control.name, 'BOOLEAN')
-            modifier.operation, modifier.solver, modifier.object = 'UNION', 'EXACT', control
-        bevel = combined.modifiers.new('Same-family layer bevel', 'BEVEL')
-        bevel.width, bevel.segments = radius, 3
-        normal = combined.modifiers.new('Layer normals', 'WEIGHTED_NORMAL')
-        normal.keep_sharp = True
+        combined = union(name, controls, radius)
         for control in controls:
             control.hide_render = True
             control.hide_set(True)
@@ -280,12 +371,23 @@ def prepare_scene():
             add(box(spec['id']+' mount', pos, [.22, .055, .22], alloy, .015), 'Static structure', static)
             add(cylinder(spec['id']+' rivet', [pos[0], y+.142, pos[2]], .035, .024, graphite, .0048, 16), 'Static structure', static)
 
-    hammer = layout['hammer']
-    for i, pos in enumerate(hammer['standPosts']):
-        add(box(f'Hammer post {i+1}', pos, hammer['standPostSize'], graphite), 'Static structure', static)
-        add(box(f'Hammer post shoe {i+1}', [pos[0],3.39,pos[2]], [.45,.25,.45], alloy, .06), 'Static structure', static)
-    crossbar = hammer['standCrossbar']
-    add(box('Hammer crossbar', crossbar['position'], crossbar['size'], graphite), 'Static structure', static)
+    hammers = layout.get('hammers')
+    assert hammers and len(hammers) == 3, '等待关卡三锤统一数据，不回退单锤草案'
+    first_id = hammers[0]['id']
+    for old, new in [('Hammer post 1',first_id+' post 1'),('Hammer post 2',first_id+' post 2'),
+                     ('Hammer crossbar',first_id+' crossbar'),('Hammer post shoe 1',first_id+' foot 2'),
+                     ('Hammer post shoe 2',first_id+' foot 4')]:
+        if old in bpy.data.objects and new not in bpy.data.objects:
+            bpy.data.objects[old].name = new
+    for hammer in hammers:
+        hid = hammer['id']
+        for i, pos in enumerate(hammer['standPosts']):
+            add(box(f'{hid} post {i+1}',pos,hammer['standPostSize'],graphite), 'Static structure',static)
+        crossbar = hammer['standCrossbar']
+        add(box(hid+' crossbar',crossbar['position'],crossbar['size'],graphite), 'Static structure',static)
+        for i, pad in enumerate(hammer['standFootPads']):
+            material = rubber if 'rubber' in pad['id'] else alloy
+            add(box(f'{hid} foot {i+1}',pad['position'],pad['size'],material,.035), 'Static structure',static)
 
     turn = layout['turntable']
     tc, radius, thickness = turn['bodyCenter'], turn['radius'], turn['thickness']
@@ -298,6 +400,7 @@ def prepare_scene():
     for angle in (0, math.pi/2, math.pi, math.pi*1.5):
         position = [tc[0]+math.sin(angle)*radius*.5, top+.002, tc[2]+math.cos(angle)*radius*.5]
         strip = flat_box('Turntable radial paint', position, [.12, .004, radius*.65], ink, 'Turntable', rotating)
+        strip.rotation_mode = 'XYZ'
         strip.rotation_euler.z = -angle
     bar = turn['coMovingBar']
     bar_pos = [tc[i]+bar['localCenter'][i] for i in range(3)]
@@ -310,6 +413,8 @@ def prepare_scene():
         center = instance['center']
         x, y, z = center
         w, h, d = lift['bodySize']
+        old_body = bpy.data.objects.get(instance['id']+' deck')
+        old_center = list(old_body.get('base_center_game', center)) if old_body else center
         body = add(box(instance['id']+' deck', center, lift['bodySize'], blue, .065), 'Lift plates', parts)
         add(box(instance['id']+' graphite belly', [x,y-.28,z], [w-.18,.2,d-.16], graphite, .055), 'Lift plates', parts)
         add(box(instance['id']+' orange gasket', [x,y-.165,z], [w-.1,.045,d-.1], orange, .015), 'Lift plates', parts)
@@ -329,13 +434,18 @@ def prepare_scene():
             faces.extend([(i,j,count+j,count+i), (2*count+j,2*count+i,3*count+i,3*count+j),
                           (count+i,count+j,3*count+j,3*count+i), (j,i,2*count+i,2*count+j)])
         faces = [tuple(reversed(face)) for face in faces]
-        mesh = bpy.data.meshes.new(instance['id']+' hollow sleeve')
-        mesh.from_pydata(vertices, [], faces)
-        mesh.update()
-        sleeve = bpy.data.objects.new(instance['id']+' hollow sleeve', mesh)
-        scene.collection.objects.link(sleeve)
-        rounded(sleeve, sleeve.name, graphite, 0)
-        add(sleeve, 'Static structure', static)
+        sleeve = bpy.data.objects.get(instance['id']+' hollow sleeve')
+        if sleeve:
+            delta = Vector(game_position([x-old_center[0],0,z-old_center[2]]))
+            sleeve.location += delta
+        else:
+            mesh = bpy.data.meshes.new(instance['id']+' hollow sleeve')
+            mesh.from_pydata(vertices, [], faces)
+            mesh.update()
+            sleeve = bpy.data.objects.new(instance['id']+' hollow sleeve',mesh)
+            scene.collection.objects.link(sleeve)
+            rounded(sleeve,sleeve.name,graphite,0)
+        add(sleeve, 'Static structure',static)
         add(box(instance['id']+' rubber foot', [x, -.34, z], [.95,.12,.95], rubber, .05), 'Static structure', static)
         add(box(instance['id']+' alloy foot', [x, -.23, z], [.8,.12,.8], alloy, .035), 'Static structure', static)
         add(box(instance['id']+' orange collar', [x,.02,z], [.36,.13,.36], orange, .03), 'Static structure', static)
@@ -343,35 +453,78 @@ def prepare_scene():
             add(cylinder(instance['id']+' anchor', [x+dx,-.155,z], .055,.04,graphite,.008,16), 'Static structure', static)
         lift_groups.append(parts)
 
-    # 参考件只帮助Blender排布，导出列表不包含它们。
-    with bpy.data.libraries.load(str(ROOT / 'art/track-round-03.blend'), link=False) as (available, loaded):
-        loaded.objects = [n for n in available.objects if n.startswith('Platform') and n != 'Platform identifier']
-    for obj in loaded.objects:
-        groups['Runtime references'].objects.link(obj)
-        obj.location += Vector(game_position(layout['crossing']['bodyCenter']))
-        obj['resource_reference'] = 'platform-refined.glb'
-    with bpy.data.libraries.load(str(ROOT / 'art/hammer-toy-round-03.blend'), link=False) as (available, loaded):
-        loaded.objects = available.objects
-    a, b = Vector(game_position(hammer['anchor'])), Vector(game_position(hammer['bodyCenter']))
-    rotation = Vector((0,0,1)).rotation_difference((a-b).normalized())
-    for obj in loaded.objects:
-        groups['Runtime references'].objects.link(obj)
-        if obj.name.startswith('Normalized toy handle'):
-            obj.location = (a+b)/2
-            obj.scale.z = (a-b).length
-        else:
-            obj.location = b+rotation@obj.location
-        obj.rotation_mode = 'QUATERNION'
-        obj.rotation_quaternion = rotation
-        obj['resource_reference'] = 'Existing flat hammer'
+    # 保留已有参考件的网格与材质，只改变实例位置；不输出重复的动态GLB。
+    platform_parts = [o for o in groups['Runtime references'].objects if o.name.startswith('Platform')]
+    platform_body = bpy.data.objects['Platform rounded deck']
+    delta = Vector(game_position(layout['crossing']['bodyCenter']))-platform_body.location
+    for obj in platform_parts:
+        obj.location += delta
+    templates = {}
+    for role, legacy in [('head','Toy flat-faced head'),('socket','Inset toy handle socket'),('handle','Normalized toy handle')]:
+        name = hammers[0]['id']+' '+role+' reference'
+        obj = bpy.data.objects.get(name) or bpy.data.objects.get(legacy)
+        assert obj, f'当前场景缺少参考件：{role}'
+        obj.name = name
+        templates[role] = obj
+    old_head = templates['head']
+    if 'mount_local_offset' not in templates['socket']:
+        offset = old_head.rotation_quaternion.inverted()@(templates['socket'].location-old_head.location)
+        templates['socket']['mount_local_offset'] = list(offset)
+    hammer_parts = []
+    for hammer in hammers:
+        parts = {}
+        for role, template in templates.items():
+            name = hammer['id']+' '+role+' reference'
+            obj = bpy.data.objects.get(name)
+            if not obj:
+                obj = template.copy()
+                obj.data = template.data
+                obj.name = name
+                groups['Runtime references'].objects.link(obj)
+            parts[role] = obj
+        hammer_parts.append(parts)
+
+    def pose_hammer(index, theta):
+        hammer, parts = hammers[index],hammer_parts[index]
+        anchor = Vector(hammer['anchor'])
+        length = hammer['motion']['rodLength']
+        head = Vector((anchor.x,anchor.y-length*math.cos(theta),anchor.z+length*math.sin(theta)))
+        a,b = Vector(game_position(anchor)),Vector(game_position(head))
+        rotation = Vector((0,0,1)).rotation_difference((a-b).normalized())
+        for role,obj in parts.items():
+            obj.rotation_mode = 'QUATERNION'
+            obj.rotation_quaternion = rotation
+            obj.scale = (1,1,length if role=='handle' else 1)
+            if role=='handle':
+                obj.location=(a+b)/2
+            elif role=='socket':
+                obj.location=b+rotation@Vector(obj['mount_local_offset'])
+            else:
+                obj.location=b
+            obj['hammer_id']=hammer['id']
+        bpy.context.view_layer.update()
+        handle = parts['handle']
+        assert (handle.matrix_world@Vector((0,0,.5))-a).length<1e-5
+        assert (handle.matrix_world@Vector((0,0,-.5))-b).length<1e-5
+        return list(head)
+
+    for i in range(len(hammers)):
+        pose_hammer(i,0)
+    # 非本轮新增的用户对象保留在其原集合；可见静态额外件也随资源导出。
+    for obj in groups['Static structure'].objects:
+        if obj.type in ('MESH','FONT') and obj not in static:
+            static.append(obj)
     bpy.context.view_layer.update()
     scene['level_id'] = 'water-rush'
     scene['layout_sha256'] = layout_hash
     scene['contract_sha256'] = contract_hash
     scene['stage'] = 'Assets from design handoff; runtime implementation and physics playtest pending'
-    scene['editing'] = 'Unhide Layout controls to adjust individual boolean operands; no backups or versions'
-    if previous:
-        assert sha(BLEND) == previous['blend_sha256'], '保存前场景有并发修改'
+    scene['editing'] = 'Current saved scene updated in place; meshes/materials preserved; no backup/version files'
+    scene['hammer_reference_pose'] = 'Neutral centered pose for editing; animation previews use independent frequencies/phases'
+    assert sha(LAYOUT)==layout_hash, '保存前布局已变化'
+    assert all(list(bpy.data.materials[name].diffuse_color)==value for name,value in original_materials.items()), '原有材质颜色意外变化'
+    if input_hash:
+        assert sha(BLEND) == input_hash, '保存前场景有并发修改'
     backup_count = bpy.context.preferences.filepaths.save_version
     bpy.context.preferences.filepaths.save_version = 0
     bpy.ops.object.select_all(action='DESELECT')
@@ -388,8 +541,9 @@ def prepare_scene():
     water = bpy.data.materials.new('Preview water')
     water.diffuse_color = (.0176,.1144,.1413,1)
     water.use_nodes = True
-    water.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value = water.diffuse_color
-    water.node_tree.nodes['Principled BSDF'].inputs['Roughness'].default_value = .8
+    water_shader = next(n for n in water.node_tree.nodes if n.type=='BSDF_PRINCIPLED')
+    water_shader.inputs['Base Color'].default_value = water.diffuse_color
+    water_shader.inputs['Roughness'].default_value = .8
     # 只用第一关同色水作预览底；不设计或导出第二套池体。
     box('Preview water only', [0,-.11,-30], [160,.02,240], water, 0)
     bounds = []
@@ -403,6 +557,41 @@ def prepare_scene():
     width, depth = hi[0]-lo[0], hi[1]-lo[1]
     render_preview(target, math.hypot(width,depth)*1.25)
     render_preview(target, max(width,depth*1.6)*1.12, ROOT/'docs/art/water-rush-top.png', (0,0,100))
+    center = hammers[1]['anchor']
+    front_target = [center[0],3.81,center[2]]
+    max_angle = hammers[1]['motion']['maxAngleRadians']
+    keep = {o for o in bpy.data.objects if o.name.startswith(hammers[1]['id'])}
+    water_obj = bpy.data.objects['Preview water only']
+    keep.add(water_obj)
+    hidden = {o: o.hide_render for o in bpy.data.objects if o not in keep}
+    for obj in hidden:
+        obj.hide_render = True
+    lane_preview = box('Portal preview lane only',[center[0],3.22,center[2]],[4,.36,3.2],ivory,.065)
+    for label,theta in [('middle',0),('left',-max_angle),('right',max_angle)]:
+        pose_hammer(1,theta)
+        render_preview(front_target,15,ROOT/f'docs/art/water-rush-hammer-{label}.png',(-14,0,0))
+    bpy.data.objects.remove(lane_preview,do_unlink=True)
+    for obj,value in hidden.items():
+        obj.hide_render = value
+    pose_hammer(1,0)
+    samples=[]
+    for sample in range(241):
+        t=sample/10
+        entry={'time':t,'heads':[]}
+        for i,hammer in enumerate(hammers):
+            motion=hammer['motion']
+            theta=motion['maxAngleRadians']*math.sin(motion['phaseFrequency']*t+motion['phase'])
+            entry['heads'].append({'id':hammer['id'],'theta':theta,'center':pose_hammer(i,theta)})
+        samples.append(entry)
+    preview_t=.8
+    for i,hammer in enumerate(hammers):
+        motion=hammer['motion']
+        pose_hammer(i,motion['maxAngleRadians']*math.sin(motion['phaseFrequency']*preview_t+motion['phase']))
+    center_x=sum(h['anchor'][0] for h in hammers)/len(hammers)
+    render_preview([center_x,3.81,hammers[0]['anchor'][2]],24,ROOT/'docs/art/water-rush-three-hammers.png',(6,-20,12))
+    for i in range(3):
+        pose_hammer(i,0)
+    (ROOT/'docs/art/water-rush-motion-preview.json').write_text(json.dumps({'design_only':True,'duration':24,'sample_step':.1,'samples':samples},ensure_ascii=False,indent=2)+'\n')
     report = {'blend_sha256': sha(BLEND), 'layout_sha256': layout_hash, 'contract_sha256': contract_hash,
               'stage': scene['stage'], 'units': 'meters', 'coordinates': 'glTF Y-up; Blender (x,-z,y)',
               'static_controls': len(deck_controls), 'static_parts': len(static), 'exports': exports,
@@ -411,6 +600,8 @@ def prepare_scene():
               'lift_sleeve_top_y': 2.30, 'lift_stem_radius': .075, 'lift_sleeve_inner_radius': .095,
               'protected_first_level': protected,
               'preview_note': 'Lifts manually posed at alternating extremes for display only; no gameplay animation exported',
+              'input_blend_sha256':input_hash,'preexisting_object_count':len(original_objects),
+              'material_values_preserved':True,'hammers':hammers,
               'pending': ['Runtime and level selection implementation', 'Final LevelConfig mapping/freeze', 'Real contact and full route playtest']}
     assert sha(LAYOUT) == layout_hash, '制作期间布局变化，需复核当前资源'
     assert all(sha(ROOT / name) == digest for name, digest in protected.items())

@@ -77,8 +77,8 @@ synced = sha(layout_path) == report['layout_sha256']
 sweeps = []
 if synced:
     specs = [('turntable', layout['turntable']['reservedSweepBounds']),
-             ('crossing', layout['crossing']['sweepBounds']),
-             ('hammer', layout['hammer']['reservedHeadSweepBounds'])]
+             ('crossing', layout['crossing']['sweepBounds'])]
+    specs.extend((h['id'],h['reservedHeadSweepBounds']) for h in layout['hammers'])
     for instance in layout['lifts']['instances']:
         x,y,z = instance['center']
         w,h,d = layout['lifts']['bodySize']
