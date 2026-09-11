@@ -38,6 +38,6 @@ onMounted(load)
 watch(() => state.runId, () => { if (game) game.start(); else void load() })
 watch(() => state.phase, phase => game?.setPhase(phase))
 watch(() => state.settings, () => game?.applySettings(), { deep: true })
-onBeforeUnmount(() => { disposed = true; controller.abort(); game?.destroy(); state.ready = false })
+onBeforeUnmount(() => { disposed = true; game?.destroy(); controller.abort(); state.ready = false })
 </script>
 <template><div ref="host" class="game-canvas"/></template>

@@ -75,6 +75,26 @@ def intersects(triangle, low, high):
 assets = {entry['node']: load(entry) for entry in report['exports']}
 synced = sha(layout_path) == report['layout_sha256']
 sweeps = []
+turn_points=[p for triangle in assets['TurntableVisual'] for p in triangle]
+cross_radius=max(math.hypot(p[0],p[2]) for p in turn_points)
+assert cross_radius <= layout['turntable']['visualOuterRadiusLimit']+1e-5
+assert min(p[1] for p in turn_points)+report['turntable_origin'][1] >= 2.9-1e-5
+assert max(p[1] for p in turn_points)+report['turntable_origin'][1] <= 3.42+1e-5
+
+def covers_xz(point,triangle):
+    a,b,c=[(p[0],p[2]) for p in triangle]
+    x,z=point[0],point[2]
+    det=(b[1]-c[1])*(a[0]-c[0])+(c[0]-b[0])*(a[1]-c[1])
+    if abs(det)<1e-10:
+        return False
+    u=((b[1]-c[1])*(x-c[0])+(c[0]-b[0])*(z-c[1]))/det
+    v=((c[1]-a[1])*(x-c[0])+(a[0]-c[0])*(z-c[1]))/det
+    return u>=-1e-8 and v>=-1e-8 and u+v<=1+1e-8
+
+void_hits=[sum(covers_xz(p,t) for t in assets['TurntableVisual']) for p in layout['turntable']['voidProbesLocal']]
+assert not any(void_hits), '十字空角仍有显示面或底板'
+assert report['central_support_radius'] <= .55+1e-5
+assert report['central_support_top_y'] <= 2.84+1e-5
 if synced:
     specs = [('turntable', layout['turntable']['reservedSweepBounds']),
              ('crossing', layout['crossing']['sweepBounds'])]
@@ -93,6 +113,8 @@ if synced:
 result = {'status':'passed' if synced else 'assets-pass-layout-awaiting-rebuild',
           'layout_sha256':report['layout_sha256'], 'layout_synced':synced,
           'source_sha256':report['blend_sha256'], 'assets':report['exports'], 'sweeps':sweeps,
-          'first_level_unchanged':True, 'runtime_ready':False,
+          'first_level_unchanged':True, 'physics_playtest_verified_by_art':False,
+          'cross_radius':cross_radius,'cross_void_probe_hits':void_hits,
+          'central_support_radius':report['central_support_radius'],
           'limit':'Triangle/box and stem/sleeve geometry only; transfer, ramp and rotating contact need CODE playtest'}
 print(json.dumps(result,ensure_ascii=False,indent=2))

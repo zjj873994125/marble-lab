@@ -21,8 +21,9 @@ export async function attachTrackVisuals(app: pc.Application, platform: pc.Entit
     const staticAsset = await load(config.track)
     const platformAsset = await load(config.platform)
     const track = (staticAsset.resource as pc.ContainerResource).instantiateRenderEntity()
+    instances.push(track)
     const moving = (platformAsset.resource as pc.ContainerResource).instantiateRenderEntity()
-    instances.push(track, moving)
+    instances.push(moving)
     track.name = 'Detailed track visuals'; app.root.addChild(track)
     // 父实体的比例用于旧几何体显示，导出模型已是米制尺寸，需要抵消该比例。
     const scale = platform.getLocalScale()
@@ -33,7 +34,7 @@ export async function attachTrackVisuals(app: pc.Application, platform: pc.Entit
   } catch (error) {
     dispose()
     // 本地模型加载失败时保留原测试轨道，游戏仍可进入。
-    console.warn('轨道细节模型未加载，使用基础外观。', error)
+    if (!(error instanceof DOMException && error.name === 'AbortError')) console.warn('轨道细节模型未加载，使用基础外观。', error)
     return () => {}
   }
 }

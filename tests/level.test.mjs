@@ -98,3 +98,14 @@ test('模型加载使用显式资源配置，成功只隐藏外观，失败与�
     assert.equal(disposed.filter(item => item === 'asset').length, mode === 'success' ? 2 : mode === 'failure' ? 1 : 0)
   }
 })
+
+test('轨道第二个模型实例化失败时也释放先创建的实例', async () => {
+  const source=readFileSync(new URL('../src/game/track-visuals.ts',import.meta.url),'utf8')
+  const js=compile(source).replace(/^import .*;?$/gm,'').replaceAll('import.meta.env.BASE_URL',"'./'").replace('export async function','async function')
+  const attach=new Function(`${js}; return attachTrackVisuals`)()
+  let created=0,destroyed=0,unloaded=0
+  const app={assets:{loadFromUrl:(url,type,cb)=>cb(null,{unload:()=>unloaded++,resource:{instantiateRenderEntity:()=>{if(++created===2)throw Error('bad platform');return {destroy:()=>destroyed++}}}}),remove:()=>{}},root:{addChild:()=>{}}}
+  const render={enabled:true},warn=console.warn;console.warn=()=>{}
+  try {await attach(app,{}, {track:'track.glb',platform:'platform.glb'},[render])}finally{console.warn=warn}
+  assert.equal(destroyed,1);assert.equal(unloaded,2);assert.equal(render.enabled,true)
+})

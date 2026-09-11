@@ -52,7 +52,7 @@ export async function attachHammerVisuals(app: pc.Application, head: pc.Entity, 
     return dispose
   } catch (error) {
     dispose()
-    console.warn('机械锤模型未加载，使用基础锤形。', error)
+    if (!(error instanceof DOMException && error.name === 'AbortError')) console.warn('机械锤模型未加载，使用基础锤形。', error)
     return () => {}
   }
 }

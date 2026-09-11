@@ -1,15 +1,15 @@
 {
   "status": "passed",
-  "layout_sha256": "626307ecf24f077532570286358cc183a5cfbe09d1152fa68d3d8d88e5e4d25e",
+  "layout_sha256": "180d7ca0dafda9057fe043a429b7c0a0ac39832cb79cf66110e1adbff73d2855",
   "layout_synced": true,
-  "source_sha256": "dfe976274db9259dd5c636e627ba49dcc461d9f3e05ba388266a1645cd84cd25",
+  "source_sha256": "1bf0bad811f998ac50e11da38712989a56aee93571440323fff641fabb48755d",
   "assets": [
     {
       "file": "water-rush-track.glb",
       "node": "TrackStatic",
-      "sha256": "c62a3f649d15fb73062918a5e0a2fae372eaa4cacb2e422221598934217738e6",
-      "bytes": 1611376,
-      "triangles": 70293,
+      "sha256": "cadc68dfb2fc18009458f8219f70925312fb61b85ba2f6e80366a6113f161589",
+      "bytes": 1610872,
+      "triangles": 70313,
       "materials": 5,
       "bounds_min": [
         -32.040000915527344,
@@ -30,9 +30,9 @@
     {
       "file": "water-rush-turntable.glb",
       "node": "TurntableVisual",
-      "sha256": "57e92a3a73f3116f241f6b85cbd0ccb5be45ed99064a92f29f7edc1c975081d6",
-      "bytes": 58380,
-      "triangles": 3296,
+      "sha256": "edb71c6e97280f1236d776168e7a428d8697400d88abd90881397a74812fd4d9",
+      "bytes": 60360,
+      "triangles": 1764,
       "materials": 4,
       "bounds_min": [
         -4,
@@ -41,19 +41,19 @@
       ],
       "bounds_max": [
         4,
-        0.529999852180481,
+        0.25399985909461975,
         4
       ],
       "dimensions_xyz_m": [
         8,
-        0.7799999117851257,
+        0.5039999186992645,
         8
       ]
     },
     {
       "file": "water-rush-lift.glb",
       "node": "LiftVisual",
-      "sha256": "fe172c7a04c000175407c24d3696b783b07c610606900a338b1b1fe67dd70aae",
+      "sha256": "cbc2c00b323692f3e51013d5c4d16e6fb3408a0beec2c996ec7b63200ed254e5",
       "bytes": 20744,
       "triangles": 968,
       "materials": 4,
@@ -113,6 +113,14 @@
     }
   ],
   "first_level_unchanged": true,
-  "runtime_ready": false,
+  "physics_playtest_verified_by_art": false,
+  "cross_radius": 4.096733452779173,
+  "cross_void_probe_hits": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "central_support_radius": 0.5240048834639411,
   "limit": "Triangle/box and stem/sleeve geometry only; transfer, ramp and rotating contact need CODE playtest"
 }
