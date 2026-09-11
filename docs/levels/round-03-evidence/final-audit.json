@@ -1,0 +1,31 @@
+{
+  "configSha256": "2757513ea685075e339b2c69fac6de0a5a1994a69aa70df4c7ee172e6bbcc62c",
+  "rulesVersion": "flat-hammer",
+  "head": {
+    "type": "cylinder",
+    "collisionAxis": 2,
+    "size": [
+      0.9,
+      0.9,
+      1.36
+    ]
+  },
+  "protectedFieldsEqual": true,
+  "collisionCount": 13,
+  "poolObjectsWithoutCollision": 6,
+  "xCenterExtremes": [
+    4.6,
+    11.4
+  ],
+  "clearWindowPerEndSeconds": 0.7839317220059652,
+  "periodSeconds": 5.026548245743669,
+  "maxPlatformSpeed": 4.25,
+  "visuals": {
+    "track": "track-round-03.glb",
+    "platform": "platform-refined.glb"
+  },
+  "hammerVisuals": {
+    "head": "hammer-head-toy-round-03.glb",
+    "handle": "hammer-handle-toy-round-03.glb"
+  }
+}

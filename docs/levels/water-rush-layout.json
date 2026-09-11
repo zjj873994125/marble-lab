@@ -1,0 +1,924 @@
+{
+  "id": "water-rush",
+  "name": "水上冲关",
+  "status": "design-only-awaiting-code-contract-and-physics-playtest",
+  "schemaPurpose": "Design handoff in metres/Y-up, NOT a runtime LevelConfig; no new engine fields are claimed implemented.",
+  "revisionPolicy": "Maintain this single formal file; no candidate, version, or backup copies.",
+  "standardTopY": 3.4,
+  "fallY": -0.5,
+  "fixedPlayerFacts": {
+    "diameter": 0.85,
+    "mass": 1,
+    "gravity": 16,
+    "horizontalSpeedCap": 7,
+    "inputForceAtSensitivityOne": 12
+  },
+  "start": {
+    "ballCenter": [
+      -12,
+      3.95,
+      10
+    ],
+    "ringCenter": [
+      -12,
+      3.46,
+      10
+    ],
+    "ringRadius": 1
+  },
+  "staticDecks": [
+    {
+      "id": "start-pad",
+      "bodyCenter": [
+        -12,
+        3.2199999999999998,
+        10
+      ],
+      "bodySize": [
+        4,
+        0.36,
+        4
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream"
+    },
+    {
+      "id": "hammer-lane",
+      "bodyCenter": [
+        -6,
+        3.2199999999999998,
+        10
+      ],
+      "bodySize": [
+        12,
+        0.36,
+        3.2
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream"
+    },
+    {
+      "id": "turntable-approach-island",
+      "bodyCenter": [
+        0,
+        3.2199999999999998,
+        9.5
+      ],
+      "bodySize": [
+        4,
+        0.36,
+        4.7
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream"
+    },
+    {
+      "id": "turntable-entry-tongue",
+      "bodyCenter": [
+        0,
+        3.2199999999999998,
+        6.65
+      ],
+      "bodySize": [
+        1.6,
+        0.36,
+        1
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream"
+    },
+    {
+      "id": "turntable-exit-tongue",
+      "bodyCenter": [
+        0,
+        3.2199999999999998,
+        -2.65
+      ],
+      "bodySize": [
+        1.6,
+        0.36,
+        1
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream"
+    },
+    {
+      "id": "checkpoint-one-island",
+      "bodyCenter": [
+        0,
+        3.2199999999999998,
+        -5.5
+      ],
+      "bodySize": [
+        4,
+        0.36,
+        4.7
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream"
+    },
+    {
+      "id": "checkpoint-two-island",
+      "bodyCenter": [
+        0,
+        3.2199999999999998,
+        -22
+      ],
+      "bodySize": [
+        4,
+        0.36,
+        4.4
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream"
+    },
+    {
+      "id": "narrow-bridge",
+      "bodyCenter": [
+        0,
+        3.2199999999999998,
+        -28.2
+      ],
+      "bodySize": [
+        1.6,
+        0.36,
+        8
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream"
+    },
+    {
+      "id": "crossing-wait-island",
+      "bodyCenter": [
+        0,
+        3.2199999999999998,
+        -34.2
+      ],
+      "bodySize": [
+        3.6,
+        0.36,
+        4
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream"
+    },
+    {
+      "id": "checkpoint-three-island",
+      "bodyCenter": [
+        0,
+        3.2199999999999998,
+        -42
+      ],
+      "bodySize": [
+        4,
+        0.36,
+        4.8
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream"
+    },
+    {
+      "id": "runway",
+      "bodyCenter": [
+        0,
+        3.2199999999999998,
+        -50.4
+      ],
+      "bodySize": [
+        3.4,
+        0.36,
+        12
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream"
+    },
+    {
+      "id": "finish-deck",
+      "bodyCenter": [
+        0,
+        6.903477483060361,
+        -65.07765867671097
+      ],
+      "bodySize": [
+        4.4,
+        0.36,
+        7
+      ],
+      "topY": 7.083477483060361,
+      "collision": true,
+      "material": "cream"
+    }
+  ],
+  "ramps": [
+    {
+      "id": "ramp-entry",
+      "topStart": [
+        0,
+        3.4,
+        -56.4
+      ],
+      "topEnd": [
+        0,
+        3.8275251791570857,
+        -57.57461577598239
+      ],
+      "rotationEulerDegrees": [
+        20,
+        0,
+        0
+      ],
+      "bodyCenter": [
+        0,
+        3.4446179178370793,
+        -57.04887151378981
+      ],
+      "bodySize": [
+        3.4,
+        0.36,
+        1.25
+      ],
+      "slopeLength": 1.25,
+      "collision": true
+    },
+    {
+      "id": "ramp-climb",
+      "topStart": [
+        0,
+        3.8275251791570857,
+        -57.57461577598239
+      ],
+      "topEnd": [
+        0,
+        6.655952303903275,
+        -60.40304290072858
+      ],
+      "rotationEulerDegrees": [
+        45,
+        0,
+        0
+      ],
+      "bodyCenter": [
+        0,
+        5.1144595209166015,
+        -59.11610855896907
+      ],
+      "bodySize": [
+        3.4,
+        0.36,
+        4
+      ],
+      "slopeLength": 4,
+      "collision": true
+    },
+    {
+      "id": "ramp-crest",
+      "topStart": [
+        0,
+        6.655952303903275,
+        -60.40304290072858
+      ],
+      "topEnd": [
+        0,
+        7.083477483060361,
+        -61.57765867671097
+      ],
+      "rotationEulerDegrees": [
+        20,
+        0,
+        0
+      ],
+      "bodyCenter": [
+        0,
+        6.700570221740355,
+        -61.05191441451839
+      ],
+      "bodySize": [
+        3.4,
+        0.36,
+        1.25
+      ],
+      "slopeLength": 1.25,
+      "collision": true
+    }
+  ],
+  "staticRails": [
+    {
+      "id": "entry-rail-near",
+      "bodyCenter": [
+        -10.75,
+        3.53,
+        11.66
+      ],
+      "bodySize": [
+        4.5,
+        0.26,
+        0.12
+      ],
+      "collision": true,
+      "material": "orange"
+    },
+    {
+      "id": "entry-rail-far",
+      "bodyCenter": [
+        -10.75,
+        3.53,
+        8.34
+      ],
+      "bodySize": [
+        4.5,
+        0.26,
+        0.12
+      ],
+      "collision": true,
+      "material": "orange"
+    },
+    {
+      "id": "finish-rail-left",
+      "bodyCenter": [
+        -2.26,
+        7.213477483060361,
+        -65.32765867671097
+      ],
+      "bodySize": [
+        0.12,
+        0.26,
+        6.5
+      ],
+      "collision": true,
+      "material": "orange"
+    },
+    {
+      "id": "finish-rail-right",
+      "bodyCenter": [
+        2.26,
+        7.213477483060361,
+        -65.32765867671097
+      ],
+      "bodySize": [
+        0.12,
+        0.26,
+        6.5
+      ],
+      "collision": true,
+      "material": "orange"
+    },
+    {
+      "id": "finish-rail-end",
+      "bodyCenter": [
+        0,
+        7.213477483060361,
+        -68.63765867671097
+      ],
+      "bodySize": [
+        4.64,
+        0.26,
+        0.12
+      ],
+      "collision": true,
+      "material": "orange"
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "cp1",
+      "position": [
+        0,
+        3.95,
+        -5.5
+      ],
+      "ringCenter": [
+        0,
+        3.46,
+        -5.5
+      ],
+      "ringRadius": 0.8
+    },
+    {
+      "id": "cp2",
+      "position": [
+        0,
+        3.95,
+        -22
+      ],
+      "ringCenter": [
+        0,
+        3.46,
+        -22
+      ],
+      "ringRadius": 0.8
+    },
+    {
+      "id": "cp3",
+      "position": [
+        0,
+        3.95,
+        -42
+      ],
+      "ringCenter": [
+        0,
+        3.46,
+        -42
+      ],
+      "ringRadius": 0.8
+    }
+  ],
+  "checkpointTrigger": {
+    "radius": 1.35,
+    "heightTolerance": 1.2
+  },
+  "finish": {
+    "position": [
+      0,
+      7.583477483060361,
+      -66.37765867671096
+    ],
+    "ringCenter": [
+      0,
+      7.1434774830603605,
+      -66.37765867671096
+    ],
+    "ringRadius": 0.9,
+    "triggerRadius": 1.2,
+    "heightTolerance": 1
+  },
+  "hammer": {
+    "bodyCenter": [
+      -6,
+      4.3,
+      10
+    ],
+    "bodySize": [
+      0.9,
+      0.9,
+      1.36
+    ],
+    "shape": "cylinder",
+    "collisionAxis": 2,
+    "anchor": [
+      -6,
+      7.9,
+      8.4
+    ],
+    "angularSpeed": 1.8,
+    "amplitude": 1.65,
+    "lift": 0.16,
+    "rodWidth": 0.12,
+    "headAsset": "hammer-head-toy-round-03.glb",
+    "handleAsset": "hammer-handle-toy-round-03.glb",
+    "observationPoint": [
+      -8.5,
+      3.825,
+      10
+    ],
+    "standPosts": [
+      [
+        -6.8,
+        5.7,
+        8.4
+      ],
+      [
+        -5.2,
+        5.7,
+        8.4
+      ]
+    ],
+    "standPostSize": [
+      0.16,
+      4.6,
+      0.16
+    ],
+    "standCrossbar": {
+      "position": [
+        -6,
+        7.9,
+        8.4
+      ],
+      "size": [
+        2,
+        0.2,
+        0.3
+      ]
+    },
+    "reservedHeadSweepBounds": {
+      "min": [
+        -6.5,
+        3.6,
+        7.2
+      ],
+      "max": [
+        -5.5,
+        5.4,
+        12.8
+      ]
+    }
+  },
+  "turntable": {
+    "bodyCenter": [
+      0,
+      3.15,
+      2
+    ],
+    "radius": 4,
+    "thickness": 0.5,
+    "rotationAxis": "Y",
+    "angularSpeed": 0.55,
+    "phase": 0,
+    "visualAsset": "water-rush-turntable.glb",
+    "bodyShape": "closed Y cylinder",
+    "coMovingBar": {
+      "localCenter": [
+        2.1,
+        0.39,
+        0
+      ],
+      "bodySize": [
+        1.8,
+        0.28,
+        0.22
+      ],
+      "collision": true,
+      "radialExtent": [
+        1.2,
+        3
+      ]
+    },
+    "centralWaitingRadius": 0.65,
+    "reservedSweepBounds": {
+      "min": [
+        -4,
+        2.9,
+        -2
+      ],
+      "max": [
+        4,
+        3.68,
+        6
+      ]
+    },
+    "entryExitTongueGapAtCenter": 0.15,
+    "entryExitTongueMaxGap": 0.23081641154691557,
+    "supportTopMaxY": 2.84,
+    "centralAreaNote": "Radius 0.65 excludes bar contact for a centered ball, but it is not a fixed safe island; rotation contact still requires player control and testing."
+  },
+  "lifts": {
+    "visualAsset": "water-rush-lift.glb",
+    "bodySize": [
+      3.2,
+      0.32,
+      2.8
+    ],
+    "centerY": 3.24,
+    "amplitude": 0.45,
+    "angularSpeed": 0.7,
+    "centerPitch": 2.95,
+    "gap": 0.15,
+    "maxAdjacentHeightDifference": 0.9,
+    "phaseConvention": "topY=3.4+0.45*sin(0.7*t+phase)",
+    "instances": [
+      {
+        "id": "lift-1",
+        "center": [
+          0,
+          3.24,
+          -9.4
+        ],
+        "phase": 0
+      },
+      {
+        "id": "lift-2",
+        "center": [
+          0,
+          3.24,
+          -12.35
+        ],
+        "phase": 3.141592653589793
+      },
+      {
+        "id": "lift-3",
+        "center": [
+          0,
+          3.24,
+          -15.3
+        ],
+        "phase": 0
+      },
+      {
+        "id": "lift-4",
+        "center": [
+          0,
+          3.24,
+          -18.25
+        ],
+        "phase": 3.141592653589793
+      }
+    ],
+    "bodySweepMinY": 2.63,
+    "bodySweepMaxY": 3.85,
+    "visualUndersideEnvelopeMinY": 1.2,
+    "topEqualityWindowAt12cm": 0.38209025545697584,
+    "bankEqualityWindowAt12cm": 0.7712365595240099,
+    "period": 8.975979010256552,
+    "waitingIslands": [
+      "checkpoint-one-island",
+      "checkpoint-two-island"
+    ],
+    "notes": "Only deck top is walkable. Underslung stems/sleeves require explicit clearance checks; no unrelated supports enter the sweep."
+  },
+  "crossing": {
+    "bodyCenter": [
+      0,
+      3.22,
+      -37.9
+    ],
+    "bodySize": [
+      3,
+      0.36,
+      2.9
+    ],
+    "axis": "X",
+    "centerX": 0,
+    "centerZ": -37.9,
+    "amplitude": 3.6,
+    "angularSpeed": 1.25,
+    "asset": "platform-refined.glb",
+    "channelX": [
+      -1.8,
+      1.8
+    ],
+    "gapZ": [
+      -39.6,
+      -36.2
+    ],
+    "seams": [
+      0.25,
+      0.25
+    ],
+    "xCenterExtremes": [
+      -3.6,
+      3.6
+    ],
+    "completeClearMargin": 0.3,
+    "completeClearWindowPerEnd": 0.6578205797157566,
+    "sweepBounds": {
+      "min": [
+        -5.1,
+        2.8,
+        -39.35
+      ],
+      "max": [
+        5.1,
+        3.411,
+        -36.45
+      ]
+    },
+    "guides": [
+      {
+        "position": [
+          0,
+          2.95,
+          -39.45
+        ],
+        "size": [
+          10.6,
+          0.08,
+          0.08
+        ],
+        "collision": false
+      },
+      {
+        "position": [
+          0,
+          2.95,
+          -36.35
+        ],
+        "size": [
+          10.6,
+          0.08,
+          0.08
+        ],
+        "collision": false
+      }
+    ]
+  },
+  "runup": {
+    "length": 12,
+    "width": 3.4,
+    "startZ": -44.4,
+    "rampFootZ": -56.4,
+    "landingTopY": 7.083477483060361,
+    "landingLength": 7,
+    "mainAngleDegrees": 45,
+    "mainSlopeLength": 4,
+    "slowTest": "At sensitivity=1, stop naturally near toe z=-56.25 (+/-0.1) with measured speed<=0.5; release brake and hold same uphill input. Separately observe slow motion on the main slope. Do not inject velocity or position for a claimed playable run.",
+    "runTest": "Start CP3, accelerate along full runway with same settings, continue uphill without injected force/velocity.",
+    "modelLimit": "Ideal force/energy estimates do not prove rolling, slope transitions, or real damping behavior."
+  },
+  "routeWaypoints": [
+    [
+      -12,
+      3.4,
+      10
+    ],
+    [
+      -6,
+      3.4,
+      10
+    ],
+    [
+      0,
+      3.4,
+      10
+    ],
+    [
+      0,
+      3.4,
+      6.15
+    ],
+    [
+      0,
+      3.4,
+      2
+    ],
+    [
+      0,
+      3.4,
+      -2.15
+    ],
+    [
+      0,
+      3.4,
+      -5.5
+    ],
+    [
+      0,
+      3.4,
+      -22
+    ],
+    [
+      0,
+      3.4,
+      -34.2
+    ],
+    [
+      0,
+      3.4,
+      -42
+    ],
+    [
+      0,
+      3.4,
+      -56.4
+    ],
+    [
+      0,
+      3.8275251791570857,
+      -57.57461577598239
+    ],
+    [
+      0,
+      6.655952303903275,
+      -60.40304290072858
+    ],
+    [
+      0,
+      7.083477483060361,
+      -61.57765867671097
+    ],
+    [
+      0,
+      7.083477483060361,
+      -66.37765867671096
+    ]
+  ],
+  "modelOwnership": {
+    "static": "water-rush-track.glb",
+    "source": "art/water-rush.blend",
+    "dynamicOriginPendingCode": false,
+    "neverBake": [
+      "checkpoint rings",
+      "runtime dash markings",
+      "water surface",
+      "dynamic collision behavior"
+    ],
+    "runtimeReady": false,
+    "contract": "docs/integration/level-02-contract.md",
+    "rootNodes": {
+      "static": "TrackStatic",
+      "turntable": "TurntableVisual",
+      "lift": "LiftVisual"
+    },
+    "dynamicOrigins": "turntable disk body center including co-moving bar; each lift body center; Y-up and metres; implementation not yet ready"
+  },
+  "playtestStatus": "Not run; no claim of reachable ramp, lift transfer, turntable contact, or calibrated medals.",
+  "waitPoints": [
+    {
+      "id": "hammer-observe",
+      "position": [
+        -8.5,
+        3.825,
+        10
+      ],
+      "kind": "fixed deck"
+    },
+    {
+      "id": "turntable-observe",
+      "position": [
+        0,
+        3.825,
+        8.3
+      ],
+      "kind": "fixed island"
+    },
+    {
+      "id": "lifts-observe",
+      "position": [
+        0,
+        3.825,
+        -6.7
+      ],
+      "kind": "fixed checkpoint-one island"
+    },
+    {
+      "id": "narrow-reset",
+      "position": [
+        0,
+        3.825,
+        -22
+      ],
+      "kind": "fixed checkpoint-two island"
+    },
+    {
+      "id": "crossing-observe",
+      "position": [
+        0,
+        3.825,
+        -34.8
+      ],
+      "kind": "fixed island"
+    },
+    {
+      "id": "runway-start",
+      "position": [
+        0,
+        3.825,
+        -42
+      ],
+      "kind": "fixed checkpoint-three island"
+    }
+  ],
+  "runtimeMarkings": {
+    "narrowDashes": {
+      "x": [
+        -0.66,
+        0.66
+      ],
+      "z": [
+        -24.9,
+        -26.2,
+        -27.5,
+        -28.8,
+        -30.1,
+        -31.4
+      ],
+      "y": 3.413,
+      "size": [
+        0.1,
+        0.008,
+        0.65
+      ],
+      "material": "orange",
+      "collision": false,
+      "bakeIntoStaticGlb": false
+    }
+  },
+  "environment": {
+    "style": "Use the same track, rail, chassis, support and pool appearance as the first level; add only required obstacle geometry and functional cues.",
+    "firstLevelPoolReuse": true,
+    "createNewPoolModel": false,
+    "coverageReviewAtRuntimeIntegration": true,
+    "coverageNote": "The long second-level route extends beyond the current first-level pool bounds. Reuse the existing environment; assess only necessary display-plane coverage during integration, without a new pool design or changing first-level geometry.",
+    "trackAndObstacleBounds": {
+      "min": [
+        -14,
+        -0.4,
+        -68.69765867671097
+      ],
+      "max": [
+        5.3,
+        8,
+        12.8
+      ]
+    }
+  }
+}

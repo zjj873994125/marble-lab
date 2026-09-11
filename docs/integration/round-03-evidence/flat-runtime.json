@@ -1,0 +1,69 @@
+[
+  {
+    "label": "loaded-1920",
+    "at": "2026-09-11T06:33:58.002Z",
+    "archives": {},
+    "axis": 2,
+    "b": [
+      -10,
+      3.900000095367432,
+      7
+    ],
+    "cp": 0,
+    "current": {},
+    "falls": 0,
+    "head": [
+      -5.5,
+      4.300000190734863,
+      -4
+    ],
+    "headModel": true,
+    "headType": "cylinder",
+    "height": 1.36,
+    "p": [
+      8,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "phase": "menu",
+    "player": {
+      "friction": 0.55,
+      "mass": 1,
+      "radius": 0.425,
+      "reflection": "player-steel-studio",
+      "seam": false
+    },
+    "radius": 0.45,
+    "rail": {
+      "body": "static",
+      "material": "orange",
+      "name": "Safety rail",
+      "position": [
+        -8.45,
+        3.53,
+        2.25
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.12,
+        0.26,
+        9.5
+      ],
+      "type": "box"
+    },
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "t": 0,
+    "trackModel": true,
+    "velocity": [
+      0,
+      0,
+      0
+    ],
+    "version": "flat-hammer"
+  }
+]

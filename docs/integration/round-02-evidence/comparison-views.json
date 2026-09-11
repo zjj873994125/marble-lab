@@ -1,0 +1,29 @@
+{
+  "viewport": [
+    1280,
+    720
+  ],
+  "cameraRule": "position [x,20.825,z+13], lookAt [x,3.825,z-2]; temporary render-only inspection, restored afterward",
+  "views": {
+    "rail-overview": [
+      -6,
+      -1,
+      8
+    ],
+    "rail-junction": [
+      -8.45,
+      -0.45,
+      2.8
+    ],
+    "checkpoint-1": [
+      -1,
+      -2,
+      2.5
+    ],
+    "checkpoint-2": [
+      8,
+      7,
+      2.5
+    ]
+  }
+}

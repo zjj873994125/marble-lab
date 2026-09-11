@@ -1,0 +1,28 @@
+{
+  "v1Unchanged": true,
+  "v2": {
+    "runsByVersion": {
+      "classic": [
+        {
+          "date": "2026-09-11T02:21:15.509Z",
+          "falls": 2,
+          "time": 57.24639999999846
+        }
+      ],
+      "open-hammer": [
+        {
+          "date": "2026-09-11T04:25:05.284Z",
+          "falls": 2,
+          "time": 32.8324999999996
+        }
+      ]
+    },
+    "schemaVersion": 2,
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    }
+  }
+}

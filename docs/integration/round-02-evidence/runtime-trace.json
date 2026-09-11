@@ -1,0 +1,1601 @@
+[
+  {
+    "label": "final-model-loaded",
+    "at": "2026-09-11T03:38:16.179Z",
+    "ball": [
+      -10,
+      3.900000095367432,
+      7
+    ],
+    "checkpoint": 0,
+    "dashes": [
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      }
+    ],
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.300000190734863,
+      -4
+    ],
+    "phase": "menu",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -0.20000000298023224
+    ],
+    "progress": 0,
+    "proxyVisible": false,
+    "rings": [
+      {
+        "color": "#91b7c3",
+        "position": [
+          -1.5,
+          3.4600000381469727,
+          -3.5
+        ],
+        "radius": 0.55
+      },
+      {
+        "color": "#91b7c3",
+        "position": [
+          7.5,
+          3.4600000381469727,
+          4.5
+        ],
+        "radius": 0.55
+      }
+    ],
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 0,
+    "trackLoaded": true,
+    "url": "http://127.0.0.1:5179/#/",
+    "velocity": [
+      0,
+      0,
+      0
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-02.glb"
+    }
+  },
+  {
+    "label": "route-start-paused",
+    "at": "2026-09-11T03:39:12.864Z",
+    "ball": [
+      -10,
+      3.950000047683716,
+      7
+    ],
+    "checkpoint": 0,
+    "dashes": [
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      }
+    ],
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.30285120010376,
+      -3.98218035697937
+    ],
+    "phase": "paused",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -0.3406250774860382
+    ],
+    "progress": 0,
+    "proxyVisible": false,
+    "rings": [
+      {
+        "color": "#91b7c3",
+        "position": [
+          -1.5,
+          3.4600000381469727,
+          -3.5
+        ],
+        "radius": 0.55
+      },
+      {
+        "color": "#91b7c3",
+        "position": [
+          7.5,
+          3.4600000381469727,
+          4.5
+        ],
+        "radius": 0.55
+      }
+    ],
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 0.006,
+    "trackLoaded": true,
+    "url": "http://127.0.0.1:5179/#/",
+    "velocity": [
+      0,
+      0,
+      0
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-02.glb"
+    }
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "W"
+    ],
+    "ms": 1750,
+    "label": "straight-corner",
+    "at": "2026-09-11T03:39:12.872Z"
+  },
+  {
+    "label": "straight-corner-before-brake",
+    "at": "2026-09-11T03:39:14.658Z",
+    "ball": [
+      -10,
+      3.825000047683716,
+      -2.4286279678344727
+    ],
+    "checkpoint": 0,
+    "dashes": [
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      }
+    ],
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.322909355163574,
+      -4.143183708190918
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.6288420557975769
+    ],
+    "progress": 0.2773125872892492,
+    "proxyVisible": false,
+    "rings": [
+      {
+        "color": "#91b7c3",
+        "position": [
+          -1.5,
+          3.4600000381469727,
+          -3.5
+        ],
+        "radius": 0.55
+      },
+      {
+        "color": "#91b7c3",
+        "position": [
+          7.5,
+          3.4600000381469727,
+          4.5
+        ],
+        "radius": 0.55
+      }
+    ],
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 1.7936000000000034,
+    "trackLoaded": true,
+    "url": "http://127.0.0.1:5179/#/",
+    "velocity": [
+      -0.0000011638370551736443,
+      0.000004023313522338867,
+      -7
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-02.glb"
+    }
+  },
+  {
+    "label": "straight-corner",
+    "at": "2026-09-11T03:39:15.695Z",
+    "ball": [
+      -10.003314971923828,
+      3.825000047683716,
+      -3.9394452571868896
+    ],
+    "checkpoint": 0,
+    "dashes": [
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      }
+    ],
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.545970916748047,
+      -5.537316799163818
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -0.8241165280342102
+    ],
+    "progress": 0.32,
+    "proxyVisible": false,
+    "rings": [
+      {
+        "color": "#91b7c3",
+        "position": [
+          -1.5,
+          3.4600000381469727,
+          -3.5
+        ],
+        "radius": 0.55
+      },
+      {
+        "color": "#91b7c3",
+        "position": [
+          7.5,
+          3.4600000381469727,
+          4.5
+        ],
+        "radius": 0.55
+      }
+    ],
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 2.82449999999999,
+    "trackLoaded": true,
+    "url": "http://127.0.0.1:5179/#/",
+    "velocity": [
+      -0.0000801455753389746,
+      2.9802322387695312e-8,
+      -0.04093880206346512
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-02.glb"
+    }
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "D"
+    ],
+    "ms": 1450,
+    "label": "checkpoint-one",
+    "at": "2026-09-11T03:39:47.453Z"
+  },
+  {
+    "label": "checkpoint-one-before-brake",
+    "at": "2026-09-11T03:39:48.930Z",
+    "ball": [
+      -2.703289031982422,
+      3.825000047683716,
+      -3.957335948944092
+    ],
+    "checkpoint": 0,
+    "dashes": [
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      }
+    ],
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.53801155090332,
+      -2.5124287605285645
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -0.9692663550376892
+    ],
+    "progress": 0.32,
+    "proxyVisible": false,
+    "rings": [
+      {
+        "color": "#91b7c3",
+        "position": [
+          -1.5,
+          3.4600000381469727,
+          -3.5
+        ],
+        "radius": 0.55
+      },
+      {
+        "color": "#91b7c3",
+        "position": [
+          7.5,
+          3.4600000381469727,
+          4.5
+        ],
+        "radius": 0.55
+      }
+    ],
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 4.6118999999999835,
+    "trackLoaded": true,
+    "url": "http://127.0.0.1:5179/#/",
+    "velocity": [
+      6.999999046325684,
+      0.000007972121238708496,
+      -0.003978312946856022
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-02.glb"
+    }
+  },
+  {
+    "label": "checkpoint-one",
+    "at": "2026-09-11T03:39:49.751Z",
+    "ball": [
+      -1.2565957307815552,
+      3.825000047683716,
+      -3.9581491947174072
+    ],
+    "checkpoint": 1,
+    "dashes": [
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      }
+    ],
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.390019416809082,
+      -4.562621593475342
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.25305163860321045
+    ],
+    "progress": 0.3513950268427531,
+    "proxyVisible": false,
+    "rings": [
+      {
+        "color": "#e77442",
+        "position": [
+          -1.5,
+          3.4600000381469727,
+          -3.5
+        ],
+        "radius": 0.55
+      },
+      {
+        "color": "#91b7c3",
+        "position": [
+          7.5,
+          3.4600000381469727,
+          4.5
+        ],
+        "radius": 0.55
+      }
+    ],
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 5.429300000000004,
+    "trackLoaded": true,
+    "url": "http://127.0.0.1:5179/#/",
+    "velocity": [
+      0.11153217405080797,
+      1.788139343261719e-7,
+      -0.000053983258112566546
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-02.glb"
+    }
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "S"
+    ],
+    "ms": 1500,
+    "label": "narrow-exit",
+    "at": "2026-09-11T03:40:28.612Z"
+  },
+  {
+    "label": "narrow-exit-before-brake",
+    "at": "2026-09-11T03:40:30.143Z",
+    "ball": [
+      -1.2306841611862185,
+      3.825000047683716,
+      3.7159738540649414
+    ],
+    "checkpoint": 1,
+    "dashes": [
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      }
+    ],
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.559929847717285,
+      -2.375439405441284
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -0.6841334700584412
+    ],
+    "progress": 0.6071991284688314,
+    "proxyVisible": false,
+    "rings": [
+      {
+        "color": "#e77442",
+        "position": [
+          -1.5,
+          3.4600000381469727,
+          -3.5
+        ],
+        "radius": 0.55
+      },
+      {
+        "color": "#91b7c3",
+        "position": [
+          7.5,
+          3.4600000381469727,
+          4.5
+        ],
+        "radius": 0.55
+      }
+    ],
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 7.756300000000064,
+    "trackLoaded": true,
+    "url": "http://127.0.0.1:5179/#/",
+    "velocity": [
+      0.0009179263724945486,
+      0.000008001923561096191,
+      7
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-02.glb"
+    }
+  },
+  {
+    "label": "narrow-exit",
+    "at": "2026-09-11T03:40:30.975Z",
+    "ball": [
+      -1.3441132307052612,
+      3.6399197578430176,
+      5.34226655960083
+    ],
+    "checkpoint": 1,
+    "dashes": [
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      }
+    ],
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.365893363952637,
+      -3.5881662368774414
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.5571967363357544
+    ],
+    "progress": 0.6499999999999999,
+    "proxyVisible": false,
+    "rings": [
+      {
+        "color": "#e77442",
+        "position": [
+          -1.5,
+          3.4600000381469727,
+          -3.5
+        ],
+        "radius": 0.55
+      },
+      {
+        "color": "#91b7c3",
+        "position": [
+          7.5,
+          3.4600000381469727,
+          4.5
+        ],
+        "radius": 0.55
+      }
+    ],
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 8.586500000000026,
+    "trackLoaded": true,
+    "url": "http://127.0.0.1:5179/#/",
+    "velocity": [
+      -0.5855576395988464,
+      -0.916926920413971,
+      0.6087813973426819
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-02.glb"
+    }
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "D"
+    ],
+    "ms": 1500,
+    "label": "checkpoint-two",
+    "at": "2026-09-11T03:40:32.265Z"
+  },
+  {
+    "label": "checkpoint-two-before-brake",
+    "at": "2026-09-11T03:40:33.791Z",
+    "ball": [
+      -0.6522510051727295,
+      3.823784828186035,
+      -4.014809608459473
+    ],
+    "checkpoint": 1,
+    "dashes": [
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      }
+    ],
+    "falls": 2,
+    "pendulum": [
+      -5.5,
+      4.460793972015381,
+      -2.9950389862060547
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.6869919300079346
+    ],
+    "progress": 0.35,
+    "proxyVisible": false,
+    "rings": [
+      {
+        "color": "#e77442",
+        "position": [
+          -1.5,
+          3.4600000381469727,
+          -3.5
+        ],
+        "radius": 0.55
+      },
+      {
+        "color": "#91b7c3",
+        "position": [
+          7.5,
+          3.4600000381469727,
+          4.5
+        ],
+        "radius": 0.55
+      }
+    ],
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 10.835800000000104,
+    "trackLoaded": true,
+    "url": "http://127.0.0.1:5179/#/",
+    "velocity": [
+      2.314079761505127,
+      -0.01105470210313797,
+      -0.14933346211910248
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-02.glb"
+    }
+  },
+  {
+    "label": "checkpoint-two",
+    "at": "2026-09-11T03:40:34.616Z",
+    "ball": [
+      -0.14233331382274628,
+      3.475705862045288,
+      -4.416151523590088
+    ],
+    "checkpoint": 1,
+    "dashes": [
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      }
+    ],
+    "falls": 2,
+    "pendulum": [
+      -5.5,
+      4.522647380828857,
+      -2.6084535121917725
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.782223105430603
+    ],
+    "progress": 0.35,
+    "proxyVisible": false,
+    "rings": [
+      {
+        "color": "#e77442",
+        "position": [
+          -1.5,
+          3.4600000381469727,
+          -3.5
+        ],
+        "radius": 0.55
+      },
+      {
+        "color": "#91b7c3",
+        "position": [
+          7.5,
+          3.4600000381469727,
+          4.5
+        ],
+        "radius": 0.55
+      }
+    ],
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 11.659800000000129,
+    "trackLoaded": true,
+    "url": "http://127.0.0.1:5179/#/",
+    "velocity": [
+      0.0067417616955935955,
+      -2.4274613857269287,
+      -0.5885564088821411
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-02.glb"
+    }
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "Space"
+    ],
+    "ms": 1200,
+    "label": "checkpoint-one-respawn",
+    "at": "2026-09-11T03:41:15.519Z"
+  },
+  {
+    "label": "checkpoint-one-respawn-before-brake",
+    "at": "2026-09-11T03:41:16.743Z",
+    "ball": [
+      -0.9249228835105896,
+      3.8151137828826904,
+      -4.075110912322998
+    ],
+    "checkpoint": 1,
+    "dashes": [
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      }
+    ],
+    "falls": 3,
+    "pendulum": [
+      -5.5,
+      4.550784111022949,
+      -5.567399501800537
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.309558987617493
+    ],
+    "progress": 0.35,
+    "proxyVisible": false,
+    "rings": [
+      {
+        "color": "#e77442",
+        "position": [
+          -1.5,
+          3.4600000381469727,
+          -3.5
+        ],
+        "radius": 0.55
+      },
+      {
+        "color": "#91b7c3",
+        "position": [
+          7.5,
+          3.4600000381469727,
+          4.5
+        ],
+        "radius": 0.55
+      }
+    ],
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 13.266500000000162,
+    "trackLoaded": true,
+    "url": "http://127.0.0.1:5179/#/",
+    "velocity": [
+      0.17399699985980988,
+      -0.03909195959568024,
+      -0.1664699763059616
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-02.glb"
+    }
+  },
+  {
+    "label": "checkpoint-one-respawn",
+    "at": "2026-09-11T03:41:17.674Z",
+    "ball": [
+      -0.5528137683868408,
+      3.229167938232422,
+      -4.44719123840332
+    ],
+    "checkpoint": 1,
+    "dashes": [
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      }
+    ],
+    "falls": 3,
+    "pendulum": [
+      -5.5,
+      4.40644645690918,
+      -3.3347082138061523
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.4685406684875488
+    ],
+    "progress": 0.35,
+    "proxyVisible": false,
+    "rings": [
+      {
+        "color": "#e77442",
+        "position": [
+          -1.5,
+          3.4600000381469727,
+          -3.5
+        ],
+        "radius": 0.55
+      },
+      {
+        "color": "#91b7c3",
+        "position": [
+          7.5,
+          3.4600000381469727,
+          4.5
+        ],
+        "radius": 0.55
+      }
+    ],
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 14.193200000000184,
+    "trackLoaded": true,
+    "url": "http://127.0.0.1:5179/#/",
+    "velocity": [
+      0.24082273244857788,
+      -3.460457563400269,
+      -0.2408580631017685
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-02.glb"
+    }
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "S"
+    ],
+    "ms": 1400,
+    "label": "narrow-exit-retry",
+    "at": "2026-09-11T03:41:18.220Z"
+  },
+  {
+    "label": "narrow-exit-retry-before-brake",
+    "at": "2026-09-11T03:41:19.643Z",
+    "ball": [
+      -0.9780186414718628,
+      3.825000047683716,
+      1.6210365295410156
+    ],
+    "checkpoint": 1,
+    "dashes": [
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      }
+    ],
+    "falls": 4,
+    "pendulum": [
+      -5.5,
+      4.398948669433594,
+      -4.618427753448486
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.7356410622596741
+    ],
+    "progress": 0.5373678843180338,
+    "proxyVisible": false,
+    "rings": [
+      {
+        "color": "#e77442",
+        "position": [
+          -1.5,
+          3.4600000381469727,
+          -3.5
+        ],
+        "radius": 0.55
+      },
+      {
+        "color": "#91b7c3",
+        "position": [
+          7.5,
+          3.4600000381469727,
+          4.5
+        ],
+        "radius": 0.55
+      }
+    ],
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 15.921400000000167,
+    "trackLoaded": true,
+    "url": "http://127.0.0.1:5179/#/",
+    "velocity": [
+      0.013673567213118076,
+      0.0000196993350982666,
+      6.99998664855957
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-02.glb"
+    }
+  },
+  {
+    "label": "narrow-exit-retry",
+    "at": "2026-09-11T03:41:20.470Z",
+    "ball": [
+      -0.9751552939414978,
+      3.8249998092651367,
+      3.158139705657959
+    ],
+    "checkpoint": 1,
+    "dashes": [
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      }
+    ],
+    "falls": 4,
+    "pendulum": [
+      -5.5,
+      4.551582336425781,
+      -5.572389125823975
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.7352253794670105
+    ],
+    "progress": 0.5886046568552653,
+    "proxyVisible": false,
+    "rings": [
+      {
+        "color": "#e77442",
+        "position": [
+          -1.5,
+          3.4600000381469727,
+          -3.5
+        ],
+        "radius": 0.55
+      },
+      {
+        "color": "#91b7c3",
+        "position": [
+          7.5,
+          3.4600000381469727,
+          4.5
+        ],
+        "radius": 0.55
+      }
+    ],
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 16.751700000000124,
+    "trackLoaded": true,
+    "url": "http://127.0.0.1:5179/#/",
+    "velocity": [
+      0.0002891103795263916,
+      0.0000057220458984375,
+      0.11228116601705553
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-02.glb"
+    }
+  },
+  {
+    "label": "paused-for-round-03",
+    "at": "2026-09-11T03:43:21.557Z",
+    "ball": [
+      -0.9751065373420716,
+      3.8249998092651367,
+      3.177159309387207
+    ],
+    "checkpoint": 1,
+    "dashes": [
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      },
+      {
+        "collision": false,
+        "visible": true
+      }
+    ],
+    "falls": 4,
+    "pendulum": [
+      -5.5,
+      4.460177898406982,
+      -5.001112461090088
+    ],
+    "phase": "paused",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.3836744427680969
+    ],
+    "progress": 0.5892386436462402,
+    "proxyVisible": false,
+    "rings": [
+      {
+        "color": "#e77442",
+        "position": [
+          -1.5,
+          3.4600000381469727,
+          -3.5
+        ],
+        "radius": 0.55
+      },
+      {
+        "color": "#91b7c3",
+        "position": [
+          7.5,
+          3.4600000381469727,
+          4.5
+        ],
+        "radius": 0.55
+      }
+    ],
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 17.09110000000015,
+    "trackLoaded": true,
+    "url": "http://127.0.0.1:5179/#/",
+    "velocity": [
+      0.00005358990529202856,
+      0.000005707144737243652,
+      0.020807797089219093
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-02.glb"
+    }
+  }
+]

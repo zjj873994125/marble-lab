@@ -1,0 +1,40 @@
+<script setup lang="ts">
+import { onMounted, onBeforeUnmount, ref, watch } from 'vue'
+import { state, startRun, finishRun } from '../state'
+import type { MarbleGame } from '../game/runtime'
+const host = ref<HTMLDivElement>()
+let game: MarbleGame | undefined
+let disposed = false
+let loading = false
+async function load() {
+  if (loading || game || !host.value) return
+  loading = true
+  try {
+    const { createGame } = await import('../game/runtime')
+    // 配置热更新可能在动态导入期间卸载组件，避免创建脱离页面的引擎。
+    if (disposed || !host.value) return
+    const canvas = document.createElement('canvas')
+    canvas.setAttribute('aria-label', '重力弹珠 3D 场景')
+    host.value.append(canvas)
+    const instance = await createGame(canvas, {
+      settings: () => state.settings,
+      phase: () => state.phase,
+      tick: (time, falls, checkpoint, progress) => { state.elapsed = time; state.falls = falls; state.checkpoint = checkpoint; state.progress = progress },
+      finish: finishRun,
+      pause: () => { if (state.settingsOpen || state.helpOpen) return; if (state.phase === 'playing') state.phase = 'paused'; else if (state.phase === 'paused') state.phase = 'playing' },
+      restart: () => { if (!state.settingsOpen && state.phase !== 'menu') startRun() },
+    })
+    if (disposed) { instance.destroy(); return }
+    game = instance; state.ready = true
+  } catch (error) {
+    host.value?.replaceChildren()
+    state.error = `3D 场景未能启动：${error instanceof Error ? error.message : '请检查浏览器 WebGL 支持'}`
+  } finally { loading = false }
+}
+onMounted(load)
+watch(() => state.runId, () => { if (game) game.start(); else void load() })
+watch(() => state.phase, phase => game?.setPhase(phase))
+watch(() => state.settings, () => game?.applySettings(), { deep: true })
+onBeforeUnmount(() => { disposed = true; game?.destroy(); state.ready = false })
+</script>
+<template><div ref="host" class="game-canvas"/></template>

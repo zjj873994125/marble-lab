@@ -1,0 +1,20 @@
+{
+  "source": "public/models/track-round-02.glb",
+  "method": "triangle-AABB SAT over full X-sweep envelope of original platform GLB bounds; no node transforms",
+  "sweepBox": {
+    "center": [
+      8,
+      3.1055,
+      -0.35
+    ],
+    "half": [
+      4.9,
+      0.3055,
+      1.45
+    ]
+  },
+  "checkedTriangles": 33363,
+  "intersectingTriangles": 0,
+  "firstHits": [],
+  "limit": "Static GLB surfaces only; current runtime guide objects must be relocated; no dynamic physics proof"
+}

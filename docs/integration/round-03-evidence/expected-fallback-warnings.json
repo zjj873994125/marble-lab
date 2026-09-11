@@ -1,0 +1,26 @@
+[
+  {
+    "level": "error",
+    "message": "Failed to load resource [/models/track-round-03.glb-container]: Network error Network error",
+    "timestamp": "2026-09-11T04:30:44.077Z",
+    "url": "http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80"
+  },
+  {
+    "level": "warn",
+    "message": "轨道细节模型未加载，使用基础外观。 Error: Network error\n    at http://127.0.0.1:5179/src/game/track-visuals.ts:9:16\n    at Asset.<anonymous> (http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80:66143:9)\n    at Asset.fire (http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80:1105:20)\n    at Array._loaded (http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80:66044:15)\n    at _ResourceLoader._onFailure (http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80:67400:31)\n    at http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80:67330:19\n    at Object.callback (http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80:139615:9)\n    at _Http2._onError (http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80:31848:16)\n    at _Http2._onReadyStateChange (http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80:31791:18)\n    at xhr.onreadystatechange (http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80:31733:12)",
+    "timestamp": "2026-09-11T04:30:44.079Z",
+    "url": "http://127.0.0.1:5179/src/game/track-visuals.ts"
+  },
+  {
+    "level": "error",
+    "message": "Failed to load resource [/models/hammer-handle-toy-round-03.glb-container]: Network error Network error",
+    "timestamp": "2026-09-11T04:30:50.308Z",
+    "url": "http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80"
+  },
+  {
+    "level": "warn",
+    "message": "机械锤模型未加载，使用基础锤形。 Error: Network error\n    at http://127.0.0.1:5179/src/game/hammer-visuals.ts?t=1789099466817:34:16\n    at Asset.<anonymous> (http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80:66143:9)\n    at Asset.fire (http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80:1105:20)\n    at Array._loaded (http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80:66044:15)\n    at _ResourceLoader._onFailure (http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80:67400:31)\n    at http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80:67330:19\n    at Object.callback (http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80:139615:9)\n    at _Http2._onError (http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80:31848:16)\n    at _Http2._onReadyStateChange (http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80:31791:18)\n    at xhr.onreadystatechange (http://127.0.0.1:5179/node_modules/.vite/deps/playcanvas.js?v=39301c80:31733:12)",
+    "timestamp": "2026-09-11T04:30:50.308Z",
+    "url": "http://127.0.0.1:5179/src/game/hammer-visuals.ts?t=1789099466817"
+  }
+]

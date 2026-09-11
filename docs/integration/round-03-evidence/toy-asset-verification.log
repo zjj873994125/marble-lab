@@ -1,0 +1,54 @@
+{
+  "head": {
+    "sha256": "230829a8897dceee6b2ec7f9d0f414466c54097ebce9629d32368487b950e399",
+    "bounds_min": [
+      -0.44999998807907104,
+      -0.44999998807907104,
+      -0.6800000071525574
+    ],
+    "bounds_max": [
+      0.44999998807907104,
+      0.45000001788139343,
+      0.6800000071525574
+    ],
+    "dimensions_xyz_m": [
+      0.8999999761581421,
+      0.9000000059604645,
+      1.3600000143051147
+    ],
+    "materials": 2,
+    "triangles": 1916,
+    "bytes": 36528
+  },
+  "handle": {
+    "sha256": "3ec0b73b02fc079c6657165da3dc935195964a006caeaf7278427c11745bb5ad",
+    "bounds_min": [
+      -0.05999999865889549,
+      -0.5,
+      -0.05999999865889549
+    ],
+    "bounds_max": [
+      0.05999999865889549,
+      0.5,
+      0.05999999865889549
+    ],
+    "dimensions_xyz_m": [
+      0.11999999731779099,
+      1.0,
+      0.11999999731779099
+    ],
+    "materials": 1,
+    "triangles": 252,
+    "bytes": 5676
+  },
+  "status": "passed",
+  "source_sha256": "9e1496ce3f933abf11c04cfe989094cd145aa1579d4fb70fb30c134d8cea15b1",
+  "samples": 7200,
+  "capsule_shell_max_error_m": 2.8480851288481546e-08,
+  "sleeve_radial_excess_m": 0.009702388552720098,
+  "minimum_post_side_clearance_m": 0.26999999999999996,
+  "conservative_head_lowest_y": 3.6126106462045398,
+  "conservative_head_highest_y": 5.360839048184486,
+  "old_assets_unchanged": true,
+  "limit": "Mesh/analytic pose checks only; capsule contact and full motion checked by CODE-03"
+}

@@ -1,0 +1,64 @@
+{
+  "A": 3.4,
+  "angularSpeed": 1.25,
+  "period": 5.026548245743669,
+  "oldMaxSpeed": 1.5625,
+  "newMaxSpeed": 4.25,
+  "z": {
+    "center": -0.35,
+    "centerExtremes": [
+      -3.75,
+      3.05
+    ],
+    "negativePlatform": [
+      -5.2,
+      -2.3
+    ],
+    "positivePlatform": [
+      1.5999999999999999,
+      4.5
+    ],
+    "negativeClearance": 0.3,
+    "positiveClearance": 0.2,
+    "negativeClearWindow": 0.6771773783992107,
+    "positiveClearWindow": 0.5515218876778331
+  },
+  "xAlternative": {
+    "centerX": 8,
+    "fixedZ": -0.35,
+    "centerExtremes": [
+      4.6,
+      11.4
+    ],
+    "sweptX": [
+      3.0999999999999996,
+      12.9
+    ],
+    "zExtent": [
+      -1.7999999999999998,
+      1.1
+    ],
+    "clearanceAtExtremes": 0.4,
+    "eachClearWindow": 0.7839317220059652,
+    "fullBallProjectionAlignedWindow": 0.5147143756072916,
+    "eachCenterlineOverlapWindow": 0.7310547178585138,
+    "staticPrimitiveSweptAabbHits": [
+      {
+        "name": "Platform guide left",
+        "position": [
+          6.25,
+          2.9499999999999997,
+          -0.25
+        ]
+      },
+      {
+        "name": "Platform guide right",
+        "position": [
+          9.75,
+          2.9499999999999997,
+          -0.25
+        ]
+      }
+    ]
+  }
+}

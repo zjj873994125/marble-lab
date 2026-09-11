@@ -1,0 +1,21 @@
+{
+  "configSha256": "3480c22cebe47818a3072859926ce4c650343d29deb94081f7f432f1d5378b95",
+  "protectedFieldsEqual": true,
+  "collisionCount": 13,
+  "poolObjectsWithoutCollision": 6,
+  "xCenterExtremes": [
+    4.6,
+    11.4
+  ],
+  "clearWindowPerEndSeconds": 0.7839317220059652,
+  "periodSeconds": 5.026548245743669,
+  "maxPlatformSpeed": 4.25,
+  "visuals": {
+    "track": "track-round-03.glb",
+    "platform": "platform-refined.glb"
+  },
+  "hammerVisuals": {
+    "head": "hammer-head-toy-round-03.glb",
+    "handle": "hammer-handle-toy-round-03.glb"
+  }
+}

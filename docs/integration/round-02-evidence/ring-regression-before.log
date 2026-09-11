@@ -1,0 +1,29 @@
+TAP version 13
+# Subtest: 检查点圆环真实网格位于有效台面与检测区域内，保留倒角间距
+not ok 1 - 检查点圆环真实网格位于有效台面与检测区域内，保留倒角间距
+  ---
+  duration_ms: 2.600792
+  location: 'file:///Users/zhongjijie/study/%E7%90%83%E7%90%83%E5%A4%A7%E4%BD%9C%E6%88%98/marble-lab/tests/level-visual.test.mjs:12:1'
+  failureType: 'testCodeFailure'
+  error: '检查点 1 的圆环顶点 [0.04499999999999993, 3.4499999999999997, -4] 越出台面或倒角留白'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///Users/zhongjijie/study/%E7%90%83%E7%90%83%E5%A4%A7%E4%BD%9C%E6%88%98/marble-lab/tests/level-visual.test.mjs:27:14)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:631:25)
+    Test.start (node:internal/test_runner/test:542:17)
+    startSubtest (node:internal/test_runner/harness:214:17)
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 614.366375

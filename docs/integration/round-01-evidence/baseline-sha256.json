@@ -1,0 +1,23 @@
+{
+  "src/state.ts": "5c6ac3b98a91ed529b5f770a428cf1ae5a7679d0baf3494946a0322362b0840a",
+  "src/main.ts": "5734347f4b3a77cc115e54f97bb3b069a6f5a9b19218a7d4d5f1ba01b5eb867c",
+  "src/game/track-visuals.ts": "8afd3387579cdd06008ec8b0da7e36e4a7b6e363f5a23eaa95d2f10e6721eafe",
+  "src/game/level-types.ts": "cc2d8f10e494c8484c7ba1fe53b7269de24e350f5fca6bce94c6fa2d63304d1c",
+  "src/game/runtime.ts": "a29647a37fba42f250cc61be00553a8475128304139111488c6004b48f5b1333",
+  "src/levels/initial-gravity.ts": "fde23231e32481972724bd174a8880f76003d33e0353f018f54b0597cb5341b7",
+  "src/App.vue": "d17b44e586039ae6cb4c8b72f8acd056c20485a8c86c3264179a3e553e632c95",
+  "src/components/Records.vue": "673716378b054d9c71cfab6047876b7dca35a24e2f633d8098cf6616da7d8de3",
+  "src/components/Lobby.vue": "bdf9b9f81509fd5e27e63564bbdeb36e5b052d5c6cfec159fceb02c33f6147d3",
+  "src/components/SettingsPanel.vue": "36d6fc5181d465bb1cf199aec0d86f78d8ec119775af38e26093cff0fc7e1913",
+  "src/components/GameCanvas.vue": "49c633e170300327bb35751282239e48dc107ae50974badeb4885c0a612d711d",
+  "art/track-refined.blend": "ef1cb22fe826edefef8dc306396519d032c2e6293ada649e83d3e1be70d03830",
+  "art/track-report.json": "6a13b0fed5527acc1b9b40359717e8ff2b03acece483dc7ebefd7bd9ee53a9ab",
+  "art/build_track.py": "9d592e0c5bfc54c91aba042cdf827a313b3e872c0dbd8cf7988c7d4b808fd75b",
+  "public/models/track-refined.glb": "9d852032bf5e19106f1164ee9ab8750c08fe072a379d3b4e75d62dccf5676b45",
+  "public/models/platform-refined.glb": "8ea7ca31229e21f21ddfb57f88308362e9f0944dc2d0334aab1485586fb6ca12",
+  "package.json": "9d2611e566792e2dbea2471b3ba6feb6533e843b5bfaf146facf6c67cb76f026",
+  "package-lock.json": "8f90898738bde3bb8b7f366a33b9618051cdc01e157df91812b3a555172e5ef0",
+  "AGENTS.md": "92ad9ebae36a5fafbbd28113df5e316d877a5c9f7ff5b10a68c3e6980622e12d",
+  "README.md": "7f85996a474ed36d976d4d3053fc38a913866bbb4ff55dbacf1a6e153ffca91a",
+  "docs/COLLABORATION.md": "d5e2a09f76436a4abbf0fdd5e58db1c0994961d7826a2f5687f2d38c0390d9d1"
+}

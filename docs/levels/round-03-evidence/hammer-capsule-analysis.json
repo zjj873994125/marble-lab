@@ -1,0 +1,15 @@
+{
+  "status": "candidate_geometry_only_pending_code_capsule_contract",
+  "radius": 0.45,
+  "totalLength": 1.36,
+  "axis": "local Z",
+  "cylinderLength": 0.4600000000000001,
+  "supportInnerWidth": 1.44,
+  "headWidth": 0.9,
+  "sideClearanceEach": 0.26999999999999996,
+  "sampleCount": 7201,
+  "minimumHeadY": 3.7565881528077067,
+  "minimumTrackClearance": 0.35658815280770684,
+  "phaseAtMinimum": 0.0,
+  "limit": "Analytic capsule assuming head local +Y points to original anchor; rendered mesh, physical response and handle connection require final runtime validation"
+}

@@ -1,0 +1,236 @@
+[
+  {
+    "label": "lobby-1920",
+    "hudRatio": 0,
+    "lowerCenter": "SPAN",
+    "lowerCenterClass": "",
+    "panels": {
+      ".bottom-bar": {
+        "background": "rgba(0, 0, 0, 0)",
+        "height": 52,
+        "visible": true,
+        "width": 1728,
+        "x": 96,
+        "y": 878
+      },
+      ".control-hint": null,
+      ".course-strip": {
+        "background": "rgba(250, 249, 242, 0.94)",
+        "height": 125,
+        "visible": true,
+        "width": 860,
+        "x": 96,
+        "y": 735
+      },
+      ".game-summary": null,
+      ".pause-button": null,
+      ".restart-button": null,
+      ".topbar": {
+        "background": "rgba(0, 0, 0, 0)",
+        "height": 92,
+        "visible": true,
+        "width": 1728,
+        "x": 96,
+        "y": 0
+      }
+    },
+    "scroll": [
+      1920,
+      930
+    ],
+    "size": [
+      1920,
+      930
+    ]
+  },
+  {
+    "label": "hud-1920",
+    "hudRatio": 0.0372093764000896,
+    "lowerCenter": "CANVAS",
+    "lowerCenterClass": "",
+    "panels": {
+      ".bottom-bar": null,
+      ".control-hint": {
+        "background": "rgba(250, 249, 242, 0.94)",
+        "height": 46,
+        "visible": true,
+        "width": 269.59375,
+        "x": 28,
+        "y": 862
+      },
+      ".course-strip": null,
+      ".game-summary": {
+        "background": "rgba(250, 249, 242, 0.94)",
+        "height": 144.09375,
+        "visible": true,
+        "width": 300,
+        "x": 28,
+        "y": 24
+      },
+      ".pause-button": {
+        "background": "rgba(250, 249, 242, 0.94)",
+        "height": 44,
+        "visible": true,
+        "width": 113.421875,
+        "x": 1778.578125,
+        "y": 24
+      },
+      ".restart-button": {
+        "background": "rgba(250, 249, 242, 0.94)",
+        "height": 44,
+        "visible": true,
+        "width": 132.296875,
+        "x": 1759.703125,
+        "y": 864
+      },
+      ".topbar": null
+    },
+    "scroll": [
+      1920,
+      930
+    ],
+    "size": [
+      1920,
+      930
+    ]
+  },
+  {
+    "label": "lobby-1280",
+    "hudRatio": 0,
+    "lowerCenter": "SPAN",
+    "lowerCenterClass": "",
+    "panels": {
+      ".bottom-bar": {
+        "background": "rgba(0, 0, 0, 0)",
+        "height": 52,
+        "visible": true,
+        "width": 1152,
+        "x": 64,
+        "y": 668
+      },
+      ".control-hint": null,
+      ".course-strip": {
+        "background": "rgba(250, 249, 242, 0.94)",
+        "height": 125,
+        "visible": true,
+        "width": 860,
+        "x": 64,
+        "y": 531
+      },
+      ".game-summary": null,
+      ".pause-button": null,
+      ".restart-button": null,
+      ".topbar": {
+        "background": "rgba(0, 0, 0, 0)",
+        "height": 92,
+        "visible": true,
+        "width": 1152,
+        "x": 64,
+        "y": 0
+      }
+    },
+    "scroll": [
+      1280,
+      720
+    ],
+    "size": [
+      1280,
+      720
+    ]
+  },
+  {
+    "label": "levels-1280",
+    "hudRatio": 0,
+    "lowerCenter": "SPAN",
+    "lowerCenterClass": "",
+    "panels": {
+      ".bottom-bar": {
+        "background": "rgba(0, 0, 0, 0)",
+        "height": 52,
+        "visible": true,
+        "width": 1152,
+        "x": 64,
+        "y": 668
+      },
+      ".control-hint": null,
+      ".course-strip": {
+        "background": "rgba(250, 249, 242, 0.94)",
+        "height": 125,
+        "visible": true,
+        "width": 860,
+        "x": 64,
+        "y": 531
+      },
+      ".game-summary": null,
+      ".pause-button": null,
+      ".restart-button": null,
+      ".topbar": {
+        "background": "rgba(0, 0, 0, 0)",
+        "height": 92,
+        "visible": true,
+        "width": 1152,
+        "x": 64,
+        "y": 0
+      }
+    },
+    "scroll": [
+      1280,
+      720
+    ],
+    "size": [
+      1280,
+      720
+    ]
+  },
+  {
+    "label": "hud-1280",
+    "hudRatio": 0.0720931667751736,
+    "lowerCenter": "CANVAS",
+    "lowerCenterClass": "",
+    "panels": {
+      ".bottom-bar": null,
+      ".control-hint": {
+        "background": "rgba(250, 249, 242, 0.94)",
+        "height": 46,
+        "visible": true,
+        "width": 269.59375,
+        "x": 28,
+        "y": 652
+      },
+      ".course-strip": null,
+      ".game-summary": {
+        "background": "rgba(250, 249, 242, 0.94)",
+        "height": 144.09375,
+        "visible": true,
+        "width": 300,
+        "x": 28,
+        "y": 24
+      },
+      ".pause-button": {
+        "background": "rgba(250, 249, 242, 0.94)",
+        "height": 44,
+        "visible": true,
+        "width": 113.421875,
+        "x": 1138.578125,
+        "y": 24
+      },
+      ".restart-button": {
+        "background": "rgba(250, 249, 242, 0.94)",
+        "height": 44,
+        "visible": true,
+        "width": 132.296875,
+        "x": 1119.703125,
+        "y": 654
+      },
+      ".topbar": null
+    },
+    "scroll": [
+      1280,
+      720
+    ],
+    "size": [
+      1280,
+      720
+    ]
+  }
+]

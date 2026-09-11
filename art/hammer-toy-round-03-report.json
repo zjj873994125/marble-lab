@@ -1,0 +1,91 @@
+{
+  "source_sha256": "ea81ac51a9654eeedd60b33d04219b7c9a289a9a901bcdf9069ecaa233b19fe9",
+  "contract_sha256": "ac4d2131a7cac35471d09916a3702a49700d7114bc55138cecf51dee18386551",
+  "units": "meters",
+  "coordinates": "glTF Y-up; Blender (x,-z,y)",
+  "origins": [
+    0,
+    0,
+    0
+  ],
+  "head": {
+    "file": "hammer-head-toy-round-03.glb",
+    "node": "HammerHead",
+    "sha256": "bcdf44b2c476caa29b48fd21856d14844138d3b57b692e42c81298b8c20d50d9",
+    "bounds_min": [
+      -0.44999998807907104,
+      -0.45000001788139343,
+      -0.6800000071525574
+    ],
+    "bounds_max": [
+      0.44999998807907104,
+      0.45000001788139343,
+      0.6800000071525574
+    ],
+    "dimensions_xyz_m": [
+      0.8999999761581421,
+      0.9000000357627869,
+      1.3600000143051147
+    ],
+    "materials": 2,
+    "triangles": 1400,
+    "bytes": 39536
+  },
+  "handle": {
+    "file": "hammer-handle-toy-round-03.glb",
+    "node": "HammerHandle",
+    "sha256": "3ec0b73b02fc079c6657165da3dc935195964a006caeaf7278427c11745bb5ad",
+    "bounds_min": [
+      -0.05999999865889549,
+      -0.5,
+      -0.05999999865889549
+    ],
+    "bounds_max": [
+      0.05999999865889549,
+      0.5,
+      0.05999999865889549
+    ],
+    "dimensions_xyz_m": [
+      0.11999999731779099,
+      1.0,
+      0.11999999731779099
+    ],
+    "materials": 1,
+    "triangles": 252,
+    "bytes": 5676
+  },
+  "connection_previews": [
+    {
+      "phase_radians": 0,
+      "head_center": [
+        -5.5,
+        4.3,
+        -4.0
+      ],
+      "handle_length": 3.939542966999296
+    },
+    {
+      "phase_radians": 1.5707963267948966,
+      "head_center": [
+        -5.5,
+        4.564,
+        -2.35
+      ],
+      "handle_length": 4.657402254431382
+    },
+    {
+      "phase_radians": 4.71238898038469,
+      "head_center": [
+        -5.5,
+        4.564,
+        -5.65
+      ],
+      "handle_length": 3.336374646022049
+    }
+  ],
+  "limit": "Flat-ended Z cylinder; runtime cylinder contact and final game validation by CODE",
+  "head_shape": "Z cylinder; radius .45; total length 1.36; planar ends with .035 rim bevel",
+  "updates_in_place": true,
+  "config_sha256": "2757513ea685075e339b2c69fac6de0a5a1994a69aa70df4c7ee172e6bbcc62c",
+  "status": "Current assets and matching cylinder configuration delivered; game verification by CODE"
+}

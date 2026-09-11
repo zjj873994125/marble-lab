@@ -1,0 +1,21 @@
+
+> marble-lab@0.1.0 build
+> vue-tsc --noEmit && vite build
+
+vite v6.4.3 building for production...
+transforming...
+✓ 2854 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                      0.57 kB │ gzip:   0.36 kB
+dist/assets/index-Dtr8cZrA.css     374.82 kB │ gzip:  51.65 kB
+dist/assets/runtime-DiG8a54a.js      8.89 kB │ gzip:   4.13 kB
+dist/assets/index-BdPeYdZe.js       55.27 kB │ gzip:  19.94 kB
+dist/assets/ui-BGvLF7ZO.js       1,025.08 kB │ gzip: 334.51 kB
+dist/assets/engine-D7sW0hRL.js   2,011.45 kB │ gzip: 517.48 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 5.08s

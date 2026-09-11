@@ -1,0 +1,16 @@
+{
+  "static": {
+    "triangles": 33343,
+    "bytes": 627416,
+    "materials": 7
+  },
+  "platform": {
+    "triangles": 1287,
+    "bytes": 30248,
+    "materials": 6
+  },
+  "units": "meters",
+  "coordinateSystem": "glTF Y-up",
+  "topSurface": 3.4,
+  "collision": "Provided by existing PlayCanvas runtime; unchanged"
+}

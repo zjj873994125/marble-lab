@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "track_sha256": "82bace239f341888cd25ff6288c8b870e0dafd89083a15c2d931304a111891ff",
+  "track_triangles": 30615,
+  "static_triangle_intersections": 0,
+  "sweep_bounds_min": [
+    3.1,
+    2.7999999833106997,
+    -1.800000047683716
+  ],
+  "sweep_bounds_max": [
+    12.9,
+    3.4109999996423723,
+    1.1000000476837157
+  ],
+  "x_center_extremes": [
+    4.6,
+    11.4
+  ],
+  "clearance_at_extremes_m": 0.4,
+  "each_complete_clear_window_seconds": 0.7839317220059652,
+  "period_seconds": 5.026548245743669,
+  "max_speed_mps": 4.25,
+  "z_gaps_m": [
+    0.2,
+    0.3
+  ],
+  "limit": "Static GLB surfaces only; runtime guides and physical crossing require CODE-03 verification"
+}

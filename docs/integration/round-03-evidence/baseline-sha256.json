@@ -1,0 +1,21 @@
+{
+  "src/state.ts": "5c6ac3b98a91ed529b5f770a428cf1ae5a7679d0baf3494946a0322362b0840a",
+  "src/App.vue": "d17b44e586039ae6cb4c8b72f8acd056c20485a8c86c3264179a3e553e632c95",
+  "src/.DS_Store": "1d001455ccbb7a128eea311f5981b70abdea0e125dd398d527889e44b9b17d98",
+  "src/main.ts": "5734347f4b3a77cc115e54f97bb3b069a6f5a9b19218a7d4d5f1ba01b5eb867c",
+  "src/style.less": "755d53e28485138462045e265c4ccd4a41a1b1213572197d1bb14bf85f6072ca",
+  "src/game/track-visuals.ts": "8afd3387579cdd06008ec8b0da7e36e4a7b6e363f5a23eaa95d2f10e6721eafe",
+  "src/game/level-types.ts": "cc2d8f10e494c8484c7ba1fe53b7269de24e350f5fca6bce94c6fa2d63304d1c",
+  "src/game/runtime.ts": "a29647a37fba42f250cc61be00553a8475128304139111488c6004b48f5b1333",
+  "src/components/Records.vue": "673716378b054d9c71cfab6047876b7dca35a24e2f633d8098cf6616da7d8de3",
+  "src/components/Lobby.vue": "bdf9b9f81509fd5e27e63564bbdeb36e5b052d5c6cfec159fceb02c33f6147d3",
+  "src/components/SettingsPanel.vue": "36d6fc5181d465bb1cf199aec0d86f78d8ec119775af38e26093cff0fc7e1913",
+  "src/components/GameCanvas.vue": "49c633e170300327bb35751282239e48dc107ae50974badeb4885c0a612d711d",
+  "src/levels/initial-gravity.ts": "42d3d338b8bd6ecf8e8eb537fd194028f23b7f5310f4611a2af0a7829bb3abcf",
+  "tests/level-visual.test.mjs": "558143eea23f77782791afd18f799dba2d5c08cb2b6918249e12810b5d94acc6",
+  "tests/level.test.mjs": "f60b5bc3898248602b9ec4a242dfefa535f6199cac7e17248ac9c82d8fe971df",
+  "tests/state.test.mjs": "50d2cfaa707d987ba5540d581aff1b69363a567dadc9ccefbda9aba295730e27",
+  "README.md": "590927014dbc3c397e47466b95c1ebbf96a033112f01c43029e9aa97bf7afb4d",
+  "AGENTS.md": "9949578a2e13404d109d805ec65e98c04c9d222d877526c1fd55b490393045e2",
+  "docs/COLLABORATION.md": "068171d5856c791c6ff47b34fc50d5e808d2faf049c252e53a18fc3892b8d1f1"
+}

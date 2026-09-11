@@ -1,0 +1,10 @@
+{
+  "physics": true,
+  "controls": true,
+  "camera": true,
+  "keyboard": true,
+  "respawn": true,
+  "bodyMaterialAndDamping": true,
+  "formatTime": true,
+  "medal": true
+}

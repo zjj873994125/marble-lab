@@ -1,0 +1,87 @@
+{
+  "source_sha256": "1b35f4efb0c7be36882aaeeee0f53432b4f1dda28d5a927f8927f2502040d1ef",
+  "contract_sha256": "d977d3d75ad1092074aa9bd4c8d1e7042cf837735a3a3c0b8247104dccb9e53d",
+  "units": "meters",
+  "coordinates": "glTF Y-up; Blender (x,-z,y)",
+  "origins": [
+    0,
+    0,
+    0
+  ],
+  "head": {
+    "file": "hammer-head-round-03.glb",
+    "node": "HammerHead",
+    "sha256": "86d63ec245dad77b97fcce7784bba2592e44d28a36e7ce1a8b1c916b23acf6d7",
+    "bounds_min": [
+      -0.800000011920929,
+      -0.45000001788139343,
+      -0.550000011920929
+    ],
+    "bounds_max": [
+      0.800000011920929,
+      0.44999998807907104,
+      0.550000011920929
+    ],
+    "dimensions_xyz_m": [
+      1.600000023841858,
+      0.9000000059604645,
+      1.100000023841858
+    ],
+    "materials": 3,
+    "triangles": 1508,
+    "bytes": 30208
+  },
+  "handle": {
+    "file": "hammer-handle-round-03.glb",
+    "node": "HammerHandle",
+    "sha256": "298d3354eb1cd0c5e42c31d0015bfb30301c9bada97f57a4e4ed573dc9b4b503",
+    "bounds_min": [
+      -0.05999999865889549,
+      -0.5,
+      -0.05999999865889549
+    ],
+    "bounds_max": [
+      0.05999999865889549,
+      0.5,
+      0.05999999865889549
+    ],
+    "dimensions_xyz_m": [
+      0.11999999731779099,
+      1.0,
+      0.11999999731779099
+    ],
+    "materials": 2,
+    "triangles": 252,
+    "bytes": 6980
+  },
+  "connection_previews": [
+    {
+      "phase_radians": 0,
+      "head_center": [
+        -5.5,
+        4.3,
+        -4.0
+      ],
+      "handle_length": 3.939542966999296
+    },
+    {
+      "phase_radians": 1.5707963267948966,
+      "head_center": [
+        -5.5,
+        4.564,
+        -2.35
+      ],
+      "handle_length": 4.657402254431382
+    },
+    {
+      "phase_radians": 4.71238898038469,
+      "head_center": [
+        -5.5,
+        4.564,
+        -5.65
+      ],
+      "handle_length": 3.336374646022049
+    }
+  ],
+  "limit": "Blender previews and endpoint geometry; runtime loading, box collision and full-cycle verification by CODE-03"
+}

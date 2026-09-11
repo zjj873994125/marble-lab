@@ -1,0 +1,9 @@
+{
+  "art/track-round-02.blend": "fa87cde2b6f2347ec74ce5876af18f9ac6427b4e171a2421b54d1abb41fc86ed",
+  "public/models/track-round-02.glb": "2f28e781b243d40e00807ebc1d17fc0ff193f294c445b7e859bf1d448b7198a6",
+  "art/track-refined.blend": "ef1cb22fe826edefef8dc306396519d032c2e6293ada649e83d3e1be70d03830",
+  "public/models/track-refined.glb": "9d852032bf5e19106f1164ee9ab8750c08fe072a379d3b4e75d62dccf5676b45",
+  "public/models/platform-refined.glb": "8ea7ca31229e21f21ddfb57f88308362e9f0944dc2d0334aab1485586fb6ca12",
+  "art/round-02-report.json": "c0c05992190afbda6ab059e383d33757122322f49748b78869eed8e561eb7baa",
+  "liveBlender": "CUA: * track-refined.blend - Blender 5.1.2; unsaved flag observed; current GUI left untouched; round-03 based on round-02 disk asset"
+}

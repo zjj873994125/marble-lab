@@ -1,0 +1,2255 @@
+[
+  {
+    "label": "initial-empty-storage",
+    "at": "2026-09-11T02:13:37.681Z",
+    "ball": [
+      -10,
+      3.900000095367432,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.300000190734863,
+      -4
+    ],
+    "phase": "menu",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -0.20000000298023224
+    ],
+    "progress": 0,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 0,
+    "trackLoaded": true,
+    "velocity": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "label": "after-input-tool-error",
+    "at": "2026-09-11T02:14:19.111Z",
+    "ball": [
+      -10,
+      3.825000047683716,
+      6.999999523162842
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.549018383026123,
+      -2.4436354637145996
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.8517645597457886
+    ],
+    "progress": 1.4024622300091912e-8,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 11.532699999999984,
+    "trackLoaded": true,
+    "velocity": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "label": "single-w-input",
+    "at": "2026-09-11T02:14:59.213Z",
+    "ball": [
+      -10,
+      3.825000047683716,
+      6.999830722808838
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.55462646484375,
+      -5.591414451599121
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.8874229788780212
+    ],
+    "progress": 0.000004978740916532629,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 51.63570000000029,
+    "trackLoaded": true,
+    "velocity": [
+      -1.0251273607764233e-7,
+      8.940696716308595e-8,
+      -0.07142846286296844
+    ]
+  },
+  {
+    "label": "north-input-batch-paused",
+    "at": "2026-09-11T02:15:24.372Z",
+    "ball": [
+      -10,
+      3.825000047683716,
+      6.953061580657959
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.432004928588867,
+      -3.1749696731567383
+    ],
+    "phase": "paused",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.09458067268133163
+    ],
+    "progress": 0.0013805417453541474,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 0.29090000000002336,
+    "trackLoaded": true,
+    "velocity": [
+      -2.052445040590101e-7,
+      4.172325134277344e-7,
+      -0.18439427018165588
+    ]
+  },
+  {
+    "action": "repeat-keypress",
+    "key": "w",
+    "requestedMs": 2500,
+    "actualMs": 2503,
+    "count": 470,
+    "at": "2026-09-11T02:15:57.126Z"
+  },
+  {
+    "label": "start-straight-before-brake",
+    "at": "2026-09-11T02:15:57.135Z",
+    "ball": [
+      -10,
+      3.8249998092651367,
+      3.2631382942199707
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.549026966094971,
+      -5.556417465209961
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -0.7972459197044373
+    ],
+    "progress": 0.1099076972288244,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 2.806000000000021,
+    "trackLoaded": true,
+    "velocity": [
+      -0.000010306075637345202,
+      -0.00001329183578491211,
+      -2.8253068923950195
+    ]
+  },
+  {
+    "action": "repeat-keypress",
+    "key": "space",
+    "requestedMs": 1100,
+    "actualMs": 1102,
+    "count": 216,
+    "at": "2026-09-11T02:15:58.238Z"
+  },
+  {
+    "label": "start-straight",
+    "at": "2026-09-11T02:15:58.247Z",
+    "ball": [
+      -10,
+      3.8249998092651367,
+      1.2080729007720947
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.484720230102539,
+      -2.845498323440552
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.5777146816253662
+    ],
+    "progress": 0.17035079703611486,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 3.921200000000023,
+    "trackLoaded": true,
+    "velocity": [
+      -0.000009267721907235682,
+      0.00001195073127746582,
+      -0.9649153351783752
+    ]
+  },
+  {
+    "label": "pause-held-state",
+    "at": "2026-09-11T02:16:22.703Z",
+    "ball": [
+      -10,
+      3.8249998092651367,
+      0.8601928949356079
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.561753749847412,
+      -2.3640389442443848
+    ],
+    "phase": "paused",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.3442636728286743
+    ],
+    "progress": 0.1805825619136586,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 4.290800000000008,
+    "trackLoaded": true,
+    "velocity": [
+      -0.000008206091479223687,
+      0.000005990266799926758,
+      -0.9179804921150208
+    ]
+  },
+  {
+    "action": "repeat-keypress",
+    "key": "w",
+    "requestedMs": 1400,
+    "actualMs": 1401,
+    "count": 299,
+    "at": "2026-09-11T02:16:24.111Z"
+  },
+  {
+    "label": "first-corner-before-brake",
+    "at": "2026-09-11T02:16:24.118Z",
+    "ball": [
+      -9.999982833862305,
+      3.8249998092651367,
+      -1.7375388145446775
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.494781970977783,
+      -5.21738862991333
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.5791874527931213
+    ],
+    "progress": 0.2569864357219023,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 5.697000000000041,
+    "trackLoaded": true,
+    "velocity": [
+      -0.000006441835012083175,
+      0.000006452202796936035,
+      -2.563760280609131
+    ]
+  },
+  {
+    "action": "repeat-keypress",
+    "key": "space",
+    "requestedMs": 2500,
+    "actualMs": 2503,
+    "count": 555,
+    "at": "2026-09-11T02:16:26.621Z"
+  },
+  {
+    "label": "first-corner",
+    "at": "2026-09-11T02:16:26.630Z",
+    "ball": [
+      -10.001399040222168,
+      3.8249998092651367,
+      -4.763749599456787
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.511109352111816,
+      -2.6805665493011475
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.280780553817749
+    ],
+    "progress": 0.32,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 8.21180000000005,
+    "trackLoaded": true,
+    "velocity": [
+      -0.00023047828290145844,
+      0.000006094574928283691,
+      -0.3306894600391388
+    ]
+  },
+  {
+    "action": "repeat-keypress",
+    "key": "s",
+    "requestedMs": 900,
+    "actualMs": 901,
+    "count": 173,
+    "at": "2026-09-11T02:16:45.181Z"
+  },
+  {
+    "label": "corner-center-before-brake",
+    "at": "2026-09-11T02:16:45.189Z",
+    "ball": [
+      -10.001678466796877,
+      3.8249998092651367,
+      -4.81995964050293
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.551863193511963,
+      -5.5741448402404785
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.227872610092163
+    ],
+    "progress": 0.32,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 9.43020000000007,
+    "trackLoaded": true,
+    "velocity": [
+      -0.00019533673184923828,
+      0.0000057220458984375,
+      0.3914645314216614
+    ]
+  },
+  {
+    "action": "repeat-keypress",
+    "key": "space",
+    "requestedMs": 2500,
+    "actualMs": 2501,
+    "count": 450,
+    "at": "2026-09-11T02:16:47.692Z"
+  },
+  {
+    "label": "corner-center",
+    "at": "2026-09-11T02:16:47.702Z",
+    "ball": [
+      -10.00185775756836,
+      3.8249998092651367,
+      -4.417102813720703
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.42432165145874,
+      -3.222989082336426
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.5262852311134338
+    ],
+    "progress": 0.32,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 11.944900000000068,
+    "trackLoaded": true,
+    "velocity": [
+      -0.00001680905006651301,
+      0.000005692243576049805,
+      0.0337013341486454
+    ]
+  },
+  {
+    "action": "repeat-keypress",
+    "key": "d",
+    "requestedMs": 1900,
+    "actualMs": 1900,
+    "count": 414,
+    "at": "2026-09-11T02:16:49.956Z"
+  },
+  {
+    "label": "pendulum-crossing-before-brake",
+    "at": "2026-09-11T02:16:49.964Z",
+    "ball": [
+      -7.932354927062988,
+      3.8249998092651367,
+      -4.360260963439941
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.348308086395264,
+      -4.301924228668213
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.5986348390579224
+    ],
+    "progress": 0.32,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 13.860400000000071,
+    "trackLoaded": true,
+    "velocity": [
+      1.718409299850464,
+      0.0000057220458984375,
+      0.025963343679904934
+    ]
+  },
+  {
+    "action": "repeat-keypress",
+    "key": "space",
+    "requestedMs": 2500,
+    "actualMs": 2503,
+    "count": 545,
+    "at": "2026-09-11T02:16:52.467Z"
+  },
+  {
+    "label": "pendulum-crossing",
+    "at": "2026-09-11T02:16:52.475Z",
+    "ball": [
+      -7.0809550285339355,
+      3.825000047683716,
+      -5.100374221801758
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.545076370239258,
+      -5.531726837158203
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.8989547491073608
+    ],
+    "progress": 0.32,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 16.369000000000064,
+    "trackLoaded": true,
+    "velocity": [
+      -0.5775845646858215,
+      -6.407499313354492e-7,
+      7.966564794514852e-7
+    ]
+  },
+  {
+    "action": "repeat-keypress",
+    "key": "s",
+    "requestedMs": 1400,
+    "actualMs": 1406,
+    "count": 281,
+    "at": "2026-09-11T02:17:11.918Z"
+  },
+  {
+    "label": "pendulum-south-lane-before-brake",
+    "at": "2026-09-11T02:17:11.928Z",
+    "ball": [
+      -7.959294319152832,
+      3.825000047683716,
+      -3.9947221279144287
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.536956787109375,
+      -2.5190188884735107
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.0550048351287842
+    ],
+    "progress": 0.32,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 18.07230000000004,
+    "trackLoaded": true,
+    "velocity": [
+      -0.4582034349441528,
+      5.066394805908203e-7,
+      1.9931504726409912
+    ]
+  },
+  {
+    "action": "repeat-keypress",
+    "key": "space",
+    "requestedMs": 2500,
+    "actualMs": 2500,
+    "count": 416,
+    "at": "2026-09-11T02:17:14.428Z"
+  },
+  {
+    "label": "pendulum-south-lane",
+    "at": "2026-09-11T02:17:14.438Z",
+    "ball": [
+      -7.675431728363037,
+      3.8249998092651367,
+      -2.9313290119171143
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.4604268074035645,
+      -5.002666473388672
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.34922099113464355
+    ],
+    "progress": 0.29209791211520925,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 20.58110000000004,
+    "trackLoaded": true,
+    "velocity": [
+      0.044099465012550354,
+      0.000005707144737243652,
+      0.033312682062387466
+    ]
+  },
+  {
+    "action": "repeat-keypress",
+    "key": "d",
+    "requestedMs": 2400,
+    "actualMs": 2401,
+    "count": 251,
+    "at": "2026-09-11T02:17:17.091Z"
+  },
+  {
+    "label": "past-pendulum-before-brake",
+    "at": "2026-09-11T02:17:17.126Z",
+    "ball": [
+      -6.5491509437561035,
+      3.8249998092651367,
+      -5.0844244956970215
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.451755046844482,
+      -4.948468208312988
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -0.9629917740821838
+    ],
+    "progress": 0.32,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 23.02950000000006,
+    "trackLoaded": true,
+    "velocity": [
+      0.2095097303390503,
+      0.00000502169132232666,
+      -2.207801342010498
+    ]
+  },
+  {
+    "action": "repeat-keypress",
+    "key": "space",
+    "requestedMs": 2500,
+    "actualMs": 2502,
+    "count": 357,
+    "at": "2026-09-11T02:17:19.629Z"
+  },
+  {
+    "label": "past-pendulum",
+    "at": "2026-09-11T02:17:19.637Z",
+    "ball": [
+      -7.204738140106201,
+      3.825000047683716,
+      -3.8941171169281006
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.541385173797607,
+      -2.491342544555664
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.2577091157436371
+    ],
+    "progress": 0.32,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 25.53890000000001,
+    "trackLoaded": true,
+    "velocity": [
+      -0.2575013041496277,
+      0,
+      0.32921525835990906
+    ]
+  },
+  {
+    "action": "repeat-keypress",
+    "key": "d",
+    "requestedMs": 3000,
+    "actualMs": 3001,
+    "count": 629,
+    "at": "2026-09-11T02:17:47.217Z"
+  },
+  {
+    "label": "pendulum-pass-attempt-before-brake",
+    "at": "2026-09-11T02:17:47.227Z",
+    "ball": [
+      -5.2132744789123535,
+      1.244301676750183,
+      1.290747880935669
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.562950134277344,
+      -2.356563091278076
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.5970306396484375
+    ],
+    "progress": 0.16791917997248032,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 28.847500000000014,
+    "trackLoaded": true,
+    "velocity": [
+      1.1428492069244385,
+      -9.77846336364746,
+      4.392718315124512
+    ]
+  },
+  {
+    "action": "repeat-keypress",
+    "key": "space",
+    "requestedMs": 2500,
+    "actualMs": 2500,
+    "count": 496,
+    "at": "2026-09-11T02:17:49.728Z"
+  },
+  {
+    "label": "pendulum-pass-attempt",
+    "at": "2026-09-11T02:17:49.741Z",
+    "ball": [
+      -10,
+      3.825000047683716,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 1,
+    "pendulum": [
+      -5.5,
+      4.325254440307617,
+      -4.157841205596924
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.8972343802452087
+    ],
+    "progress": 0,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 31.3627,
+    "trackLoaded": true,
+    "velocity": [
+      -8.351151771428201e-18,
+      0,
+      -0.000017403837773599662
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "W"
+    ],
+    "ms": 1900,
+    "label": "second-approach",
+    "at": "2026-09-11T02:18:27.346Z"
+  },
+  {
+    "label": "second-approach-before-brake",
+    "at": "2026-09-11T02:18:29.272Z",
+    "ball": [
+      -10.002198219299316,
+      3.825000047683716,
+      -3.4609739780426025
+    ],
+    "checkpoint": 0,
+    "falls": 1,
+    "pendulum": [
+      -5.5,
+      4.483050346374512,
+      -5.1440653800964355
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.4873114824295044
+    ],
+    "progress": 0.30767570523654714,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 33.58689999999976,
+    "trackLoaded": true,
+    "velocity": [
+      -0.012386811897158624,
+      -0.000003978610038757324,
+      -6.999989032745361
+    ]
+  },
+  {
+    "label": "second-approach",
+    "at": "2026-09-11T02:18:30.104Z",
+    "ball": [
+      -10.004919052124023,
+      3.8249998092651367,
+      -5.002376556396484
+    ],
+    "checkpoint": 0,
+    "falls": 1,
+    "pendulum": [
+      -5.5,
+      4.503655433654785,
+      -5.272846698760986
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.3746501207351685
+    ],
+    "progress": 0.32,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 34.417099999999714,
+    "trackLoaded": true,
+    "velocity": [
+      -0.00012900189904030412,
+      0.000011429190635681152,
+      -0.11111849546432497
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "S"
+    ],
+    "ms": 350,
+    "label": "corner-centering",
+    "at": "2026-09-11T02:18:45.997Z"
+  },
+  {
+    "label": "corner-centering-before-brake",
+    "at": "2026-09-11T02:18:46.371Z",
+    "ball": [
+      -10.004864692687988,
+      3.8249998092651367,
+      -4.492703914642334
+    ],
+    "checkpoint": 0,
+    "falls": 1,
+    "pendulum": [
+      -5.5,
+      4.388276100158691,
+      -3.4482736587524414
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -0.49007660150527954
+    ],
+    "progress": 0.32,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 35.09599999999961,
+    "trackLoaded": true,
+    "velocity": [
+      0.0010677659884095192,
+      0.0000057220458984375,
+      2.974600076675415
+    ]
+  },
+  {
+    "label": "corner-centering",
+    "at": "2026-09-11T02:18:47.194Z",
+    "ball": [
+      -10.004847526550291,
+      3.8249998092651367,
+      -3.832446575164795
+    ],
+    "checkpoint": 0,
+    "falls": 1,
+    "pendulum": [
+      -5.5,
+      4.55558443069458,
+      -2.4025967121124268
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.6426648497581482
+    ],
+    "progress": 0.3186013698577881,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 35.9198999999996,
+    "trackLoaded": true,
+    "velocity": [
+      -0.000008138304110616446,
+      0.000005692243576049805,
+      0.049439117312431335
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "D"
+    ],
+    "ms": 1400,
+    "label": "pendulum-through",
+    "at": "2026-09-11T02:18:47.537Z"
+  },
+  {
+    "label": "pendulum-through-before-brake",
+    "at": "2026-09-11T02:18:48.956Z",
+    "ball": [
+      -3.06416916847229,
+      3.8249998092651367,
+      -3.7764036655426025
+    ],
+    "checkpoint": 0,
+    "falls": 1,
+    "pendulum": [
+      -5.5,
+      4.552080154418945,
+      -5.575502395629883
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.16840538382530212
+    ],
+    "progress": 0.31695304898654714,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 37.3569999999995,
+    "trackLoaded": true,
+    "velocity": [
+      6.999967098236084,
+      0.000009700655937194824,
+      0.021458862349390984
+    ]
+  },
+  {
+    "label": "pendulum-through",
+    "at": "2026-09-11T02:18:49.777Z",
+    "ball": [
+      -1.6158862113952637,
+      3.825000047683716,
+      -3.772037982940674
+    ],
+    "checkpoint": 1,
+    "falls": 1,
+    "pendulum": [
+      -5.5,
+      4.402771949768066,
+      -4.642324924468994
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.050620675086975
+    ],
+    "progress": 0.3575987339019775,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 38.175099999999475,
+    "trackLoaded": true,
+    "velocity": [
+      0.11125430464744568,
+      8.940696716308595e-8,
+      0.000375033327145502
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "D"
+    ],
+    "ms": 180,
+    "label": "checkpoint-one-centered",
+    "at": "2026-09-11T02:19:16.745Z"
+  },
+  {
+    "label": "checkpoint-one-centered-before-brake",
+    "at": "2026-09-11T02:19:16.949Z",
+    "ball": [
+      -1.4388978481292725,
+      3.825000047683716,
+      -3.771959781646729
+    ],
+    "checkpoint": 1,
+    "falls": 1,
+    "pendulum": [
+      -5.5,
+      4.4614458084106445,
+      -2.99096417427063
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.563819169998169
+    ],
+    "progress": 0.3576013406117757,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 38.76279999999945,
+    "trackLoaded": true,
+    "velocity": [
+      1.6384501457214355,
+      4.619359970092774e-7,
+      0.000053604373533744365
+    ]
+  },
+  {
+    "label": "checkpoint-one-centered",
+    "at": "2026-09-11T02:19:17.777Z",
+    "ball": [
+      -1.0635063648223877,
+      3.825000047683716,
+      -3.7719531059265137
+    ],
+    "checkpoint": 1,
+    "falls": 1,
+    "pendulum": [
+      -5.5,
+      4.522127151489258,
+      -2.611705780029297
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.230526566505432
+    ],
+    "progress": 0.35760156313578284,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 39.587099999999396,
+    "trackLoaded": true,
+    "velocity": [
+      0.028085783123970032,
+      2.9802322387695312e-8,
+      0.0000024722448870306835
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "S"
+    ],
+    "ms": 800,
+    "label": "narrow-bridge",
+    "at": "2026-09-11T02:19:18.096Z"
+  },
+  {
+    "label": "narrow-bridge-before-brake",
+    "at": "2026-09-11T02:19:18.922Z",
+    "ball": [
+      -1.0420451164245603,
+      3.825000047683716,
+      -1.0271950960159302
+    ],
+    "checkpoint": 1,
+    "falls": 1,
+    "pendulum": [
+      -5.5,
+      4.430366516113281,
+      -4.814791202545166
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -0.014908413402736189
+    ],
+    "progress": 0.44909349679946897,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 40.429499999999315,
+    "trackLoaded": true,
+    "velocity": [
+      0.024047786369919777,
+      -0.0000018477439880371096,
+      6.618588924407959
+    ]
+  },
+  {
+    "label": "narrow-bridge",
+    "at": "2026-09-11T02:19:19.751Z",
+    "ball": [
+      -1.0368176698684692,
+      3.825000047683716,
+      0.4581267833709717
+    ],
+    "checkpoint": 1,
+    "falls": 1,
+    "pendulum": [
+      -5.5,
+      4.5388102531433105,
+      -5.4925642013549805
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.857535183429718
+    ],
+    "progress": 0.4986042261123657,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 41.25989999999923,
+    "trackLoaded": true,
+    "velocity": [
+      0.0003686332202050835,
+      7.450580596923828e-8,
+      0.10735040158033372
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "A"
+    ],
+    "ms": 700,
+    "label": "checkpoint-one-fall",
+    "at": "2026-09-11T02:19:20.310Z"
+  },
+  {
+    "label": "checkpoint-one-fall-before-brake",
+    "at": "2026-09-11T02:19:21.035Z",
+    "ball": [
+      -3.140738010406494,
+      3.4778757095336914,
+      0.4925352036952973
+    ],
+    "checkpoint": 1,
+    "falls": 1,
+    "pendulum": [
+      -5.5,
+      4.4746832847595215,
+      -2.908229112625122
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.29810288548469543
+    ],
+    "progress": 0.4997511734565099,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 42.28959999999915,
+    "trackLoaded": true,
+    "velocity": [
+      -6.392400741577148,
+      -3.296252727508545,
+      0.022018900141119957
+    ]
+  },
+  {
+    "label": "checkpoint-one-fall",
+    "at": "2026-09-11T02:19:21.867Z",
+    "ball": [
+      -0.9931402206420898,
+      3.8244211673736577,
+      -4.004641532897949
+    ],
+    "checkpoint": 1,
+    "falls": 2,
+    "pendulum": [
+      -5.5,
+      4.510876655578613,
+      -2.682021141052246
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -0.9404042363166808
+    ],
+    "progress": 0.35,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 43.11919999999903,
+    "trackLoaded": true,
+    "velocity": [
+      0.026293920353055,
+      -0.002972334623336792,
+      -0.055472079664468765
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "S"
+    ],
+    "ms": 1450,
+    "label": "narrow-bridge-exit",
+    "at": "2026-09-11T02:19:40.617Z"
+  },
+  {
+    "label": "narrow-bridge-exit-before-brake",
+    "at": "2026-09-11T02:19:42.097Z",
+    "ball": [
+      -0.8367185592651367,
+      3.825000047683716,
+      3.10280442237854
+    ],
+    "checkpoint": 1,
+    "falls": 2,
+    "pendulum": [
+      -5.5,
+      4.488258361816406,
+      -5.176613807678223
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -0.8099251389503479
+    ],
+    "progress": 0.586760147412618,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 44.93749999999902,
+    "trackLoaded": true,
+    "velocity": [
+      0.049742717295885086,
+      0.000003993511199951172,
+      6.999823093414307
+    ]
+  },
+  {
+    "label": "narrow-bridge-exit",
+    "at": "2026-09-11T02:19:42.922Z",
+    "ball": [
+      -0.8262627720832825,
+      3.825000047683716,
+      4.5897979736328125
+    ],
+    "checkpoint": 1,
+    "falls": 2,
+    "pendulum": [
+      -5.5,
+      4.468194484710693,
+      -2.9487836360931396
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.4106629490852356
+    ],
+    "progress": 0.6363265991210938,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 45.76229999999904,
+    "trackLoaded": true,
+    "velocity": [
+      0.0008034833590500057,
+      0,
+      0.11171794682741164
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "D"
+    ],
+    "ms": 1450,
+    "label": "checkpoint-two-approach",
+    "at": "2026-09-11T02:19:43.526Z"
+  },
+  {
+    "label": "checkpoint-two-approach-before-brake",
+    "at": "2026-09-11T02:19:45.000Z",
+    "ball": [
+      6.412443161010742,
+      3.825000047683716,
+      4.639083385467529
+    ],
+    "checkpoint": 1,
+    "falls": 2,
+    "pendulum": [
+      -5.5,
+      4.476991653442383,
+      -5.106197357177734
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -0.010403419844806194
+    ],
+    "progress": 0.6379694461822509,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 47.53209999999889,
+    "trackLoaded": true,
+    "velocity": [
+      6.999990940093994,
+      -2.9802322387695312e-8,
+      0.011277975514531136
+    ]
+  },
+  {
+    "label": "checkpoint-two-approach",
+    "at": "2026-09-11T02:19:45.826Z",
+    "ball": [
+      7.906351566314697,
+      3.825000047683716,
+      4.64147424697876
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "pendulum": [
+      -5.5,
+      4.509000301361084,
+      -5.3062520027160645
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.2128397226333618
+    ],
+    "progress": 0.6908644167582194,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 48.36169999999889,
+    "trackLoaded": true,
+    "velocity": [
+      0.11155792325735092,
+      1.1920928955078125e-7,
+      0.00017775293963495642
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "W"
+    ],
+    "ms": 550,
+    "label": "platform-near-bank",
+    "at": "2026-09-11T02:20:09.264Z"
+  },
+  {
+    "label": "platform-near-bank-before-brake",
+    "at": "2026-09-11T02:20:09.834Z",
+    "ball": [
+      7.9374542236328125,
+      3.825000047683716,
+      3.3405115604400635
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "pendulum": [
+      -5.5,
+      4.466076374053955,
+      -2.962022304534912
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.5449278354644775
+    ],
+    "progress": 0.7302875284715132,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 49.247199999998855,
+    "trackLoaded": true,
+    "velocity": [
+      0.02149067260324955,
+      0,
+      -4.606346607208252
+    ]
+  },
+  {
+    "label": "platform-near-bank",
+    "at": "2026-09-11T02:20:10.659Z",
+    "ball": [
+      7.94201135635376,
+      3.8249998092651367,
+      2.337455987930298
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "pendulum": [
+      -5.5,
+      4.518880844116211,
+      -2.631993293762207
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -0.6501361727714539
+    ],
+    "progress": 0.7606831518809001,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 50.07149999999877,
+    "trackLoaded": true,
+    "velocity": [
+      0.0003416065592318773,
+      0.0000057220458984375,
+      -0.0750730037689209
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "W"
+    ],
+    "ms": 550,
+    "label": "on-moving-platform",
+    "at": "2026-09-11T02:20:24.094Z"
+  },
+  {
+    "label": "on-moving-platform-before-brake",
+    "at": "2026-09-11T02:20:24.668Z",
+    "ball": [
+      7.942101001739502,
+      3.825000047683716,
+      1.0652484893798828
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "pendulum": [
+      -5.5,
+      4.463615894317627,
+      -5.022599220275879
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.6295640468597412
+    ],
+    "progress": 0.7992348942612157,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 50.98589999999875,
+    "trackLoaded": true,
+    "velocity": [
+      0.00004412132693687454,
+      -0.000001430511474609375,
+      -4.390645503997803
+    ]
+  },
+  {
+    "label": "on-moving-platform",
+    "at": "2026-09-11T02:20:25.487Z",
+    "ball": [
+      7.942104816436768,
+      3.8249998092651367,
+      0.100511372089386
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "pendulum": [
+      -5.5,
+      4.5220770835876465,
+      -5.387980937957764
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.822881281375885
+    ],
+    "progress": 0.8284693523609278,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 51.80459999999865,
+    "trackLoaded": true,
+    "velocity": [
+      0.000002181942591050756,
+      0.000005662441253662109,
+      -0.1387874037027359
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "W"
+    ],
+    "ms": 600,
+    "label": "platform-far-bank",
+    "at": "2026-09-11T02:20:51.372Z"
+  },
+  {
+    "label": "platform-far-bank-before-brake",
+    "at": "2026-09-11T02:20:51.996Z",
+    "ball": [
+      7.942104816436768,
+      3.8249998092651367,
+      -1.6882485151290894
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "pendulum": [
+      -5.5,
+      4.563377380371094,
+      -2.3538904190063477
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.0711259841918943
+    ],
+    "progress": 0.8826741974281542,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 53.270699999998726,
+    "trackLoaded": true,
+    "velocity": [
+      -0.00001116925159294624,
+      0.000005632638931274414,
+      -5.231903553009033
+    ]
+  },
+  {
+    "label": "platform-far-bank",
+    "at": "2026-09-11T02:20:52.821Z",
+    "ball": [
+      7.942099094390869,
+      3.825000047683716,
+      -2.721972942352295
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "pendulum": [
+      -5.5,
+      4.305182456970215,
+      -3.96760892868042
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.5966129302978516
+    ],
+    "progress": 0.9139991800712816,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 54.09429999999867,
+    "trackLoaded": true,
+    "velocity": [
+      0.000001545608029118739,
+      -1.4901161193847656e-8,
+      -0.0755077600479126
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "W"
+    ],
+    "ms": 400,
+    "label": "finish-corner",
+    "at": "2026-09-11T02:20:53.375Z"
+  },
+  {
+    "label": "finish-corner-before-brake",
+    "at": "2026-09-11T02:20:53.798Z",
+    "ball": [
+      7.942099094390869,
+      3.825000047683716,
+      -3.4440107345581055
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "pendulum": [
+      -5.5,
+      4.555877208709717,
+      -5.599231243133545
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -1.019706130027771
+    ],
+    "progress": 0.9358791131684274,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 54.83969999999864,
+    "trackLoaded": true,
+    "velocity": [
+      -0.000013815523743687663,
+      0,
+      -3.4187705516815186
+    ]
+  },
+  {
+    "label": "finish-corner",
+    "at": "2026-09-11T02:20:54.627Z",
+    "ball": [
+      7.942098617553711,
+      3.8249998092651367,
+      -4.200281620025635
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "pendulum": [
+      -5.5,
+      4.384018421173096,
+      -4.525115489959717
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.2196841537952423
+    ],
+    "progress": 0.9587964127280496,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 55.67059999999858,
+    "trackLoaded": true,
+    "velocity": [
+      1.3620513072964968e-7,
+      0,
+      -0.05465301871299744
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "D"
+    ],
+    "ms": 1200,
+    "label": "first-full-route-finish",
+    "at": "2026-09-11T02:21:14.251Z"
+  },
+  {
+    "label": "first-full-route-finish-before-brake",
+    "at": "2026-09-11T02:21:15.476Z",
+    "ball": [
+      13.48388385772705,
+      3.825012445449829,
+      -4.221654415130615
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "pendulum": [
+      -5.5,
+      4.468972206115723,
+      -2.943924903869629
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.49666598439216614
+    ],
+    "progress": 0.9594440731857764,
+    "proxyVisible": false,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 57.20999999999848,
+    "trackLoaded": true,
+    "velocity": [
+      6.999996662139893,
+      0.00027094781398773193,
+      -0.006745915859937668
+    ]
+  },
+  {
+    "label": "first-full-route-finish",
+    "at": "2026-09-11T02:21:16.309Z",
+    "ball": [
+      13.734423637390137,
+      3.825000047683716,
+      -4.221892356872559
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "pendulum": [
+      -5.5,
+      4.455328941345215,
+      -3.0291948318481445
+    ],
+    "phase": "finished",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.4539625644683838
+    ],
+    "progress": 1,
+    "proxyVisible": false,
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 57.24639999999846,
+    "trackLoaded": true,
+    "velocity": [
+      6.00264835357666,
+      -1.4901161193847656e-7,
+      -0.0056426990777254105
+    ]
+  },
+  {
+    "label": "menu-after-completion",
+    "at": "2026-09-11T02:22:25.498Z",
+    "ball": [
+      8,
+      3.950000047683716,
+      5
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "pendulum": [
+      -5.5,
+      4.455328941345215,
+      -3.0291948318481445
+    ],
+    "phase": "menu",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.4539625644683838
+    ],
+    "progress": 1,
+    "proxyVisible": false,
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 57.24639999999846,
+    "trackLoaded": true,
+    "velocity": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "label": "records-after-reload",
+    "at": "2026-09-11T02:23:41.506Z",
+    "ball": [
+      -10,
+      3.900000095367432,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.300000190734863,
+      -4
+    ],
+    "phase": "menu",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -0.20000000298023224
+    ],
+    "progress": 0,
+    "proxyVisible": false,
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 0,
+    "trackLoaded": true,
+    "velocity": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "label": "before-restart",
+    "at": "2026-09-11T02:24:23.746Z",
+    "ball": [
+      -10,
+      3.825000047683716,
+      6.394562721252441
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.471851825714111,
+      -2.925926446914673
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.2407624274492264
+    ],
+    "progress": 0.0178069787866929,
+    "proxyVisible": false,
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 0.3937999999999886,
+    "trackLoaded": true,
+    "velocity": [
+      -0.000003379392865099362,
+      0,
+      -3.038235902786255
+    ]
+  },
+  {
+    "label": "after-restart",
+    "at": "2026-09-11T02:24:23.764Z",
+    "ball": [
+      -10,
+      3.947885274887085,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.3059868812561035,
+      -3.962581157684326
+    ],
+    "phase": "playing",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -0.3303133249282837
+    ],
+    "progress": 0,
+    "proxyVisible": false,
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 0.01259999999999127,
+    "trackLoaded": true,
+    "velocity": [
+      0,
+      -0.26651203632354736,
+      0
+    ]
+  },
+  {
+    "label": "pause-sample-a",
+    "at": "2026-09-11T02:24:24.086Z",
+    "ball": [
+      -10,
+      3.825000047683716,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.441795349121094,
+      -3.113778591156006
+    ],
+    "phase": "paused",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.1295676827430725
+    ],
+    "progress": 0,
+    "proxyVisible": false,
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 0.31500000000000017,
+    "trackLoaded": true,
+    "velocity": [
+      -6.091213399964752e-15,
+      0,
+      -0.000002343087089684559
+    ]
+  },
+  {
+    "label": "pause-sample-b",
+    "at": "2026-09-11T02:24:55.722Z",
+    "ball": [
+      -10,
+      3.825000047683716,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.441795349121094,
+      -3.113778591156006
+    ],
+    "phase": "paused",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.1295676827430725
+    ],
+    "progress": 0,
+    "proxyVisible": false,
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 0.31500000000000017,
+    "trackLoaded": true,
+    "velocity": [
+      -6.091213399964752e-15,
+      0,
+      -0.000002343087089684559
+    ]
+  },
+  {
+    "label": "final-test-state",
+    "at": "2026-09-11T02:26:25.178Z",
+    "ball": [
+      -10,
+      3.950000047683716,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "pendulum": [
+      -5.5,
+      4.441795349121094,
+      -3.113778591156006
+    ],
+    "phase": "menu",
+    "platform": [
+      8,
+      3.2200000286102295,
+      0.1295676827430725
+    ],
+    "progress": 0,
+    "proxyVisible": false,
+    "runs": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 0.31500000000000017,
+    "trackLoaded": true,
+    "velocity": [
+      0,
+      0,
+      0
+    ]
+  }
+]

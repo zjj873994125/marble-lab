@@ -1,0 +1,99 @@
+{
+  "blend_sha256": "4f01d586c2dece082025c9b5d8cae8f0d052845fc6bc745ee3e01de6b5a47c42",
+  "layout_sha256": "0cb9c93e5cef83280d48ba13f95bc1232239db2ab28c8166669d60db0c64affc",
+  "contract_sha256": "3394e72ba5299b42bbee92fa0cfc3ff7aef1da0157d873754d2aa3999bc9a109",
+  "stage": "Assets from design handoff; runtime implementation and physics playtest pending",
+  "units": "meters",
+  "coordinates": "glTF Y-up; Blender (x,-z,y)",
+  "static_controls": 15,
+  "static_parts": 73,
+  "exports": [
+    {
+      "file": "water-rush-track.glb",
+      "node": "TrackStatic",
+      "sha256": "a23cdefe1d84780febef88d2254d235d28cccd14666d9b4fb822e39b43538cff",
+      "bytes": 266780,
+      "triangles": 14064,
+      "materials": 5,
+      "bounds_min": [
+        -14,
+        -0.39999985694885254,
+        -68.73765563964844
+      ],
+      "bounds_max": [
+        2.3600006103515625,
+        8,
+        12
+      ],
+      "dimensions_xyz_m": [
+        16.360000610351562,
+        8.399999856948853,
+        80.73765563964844
+      ]
+    },
+    {
+      "file": "water-rush-turntable.glb",
+      "node": "TurntableVisual",
+      "sha256": "162e7b71dcc7c58d58d03bc3f5b1dd38afc7e4e6f29d1b873cd2d1845e257c25",
+      "bytes": 27016,
+      "triangles": 1256,
+      "materials": 3,
+      "bounds_min": [
+        -4,
+        -0.25,
+        -4
+      ],
+      "bounds_max": [
+        4,
+        0.529999852180481,
+        4
+      ],
+      "dimensions_xyz_m": [
+        8,
+        0.779999852180481,
+        8
+      ]
+    },
+    {
+      "file": "water-rush-lift.glb",
+      "node": "LiftVisual",
+      "sha256": "a48c873fae32bb71833f5e81265bf1121ede7ad93091c18bc81cfd448f96f372",
+      "bytes": 25836,
+      "triangles": 1232,
+      "materials": 3,
+      "bounds_min": [
+        -1.600000023841858,
+        -1.459999918937683,
+        -1.399999976158142
+      ],
+      "bounds_max": [
+        1.600000023841858,
+        0.16399994492530823,
+        1.399999976158142
+      ],
+      "dimensions_xyz_m": [
+        3.200000047683716,
+        1.6239998638629913,
+        2.799999952316284
+      ]
+    }
+  ],
+  "lift_stem_min_world_y": 1.3299999999999998,
+  "lift_sleeve_top_y": 2.43,
+  "lift_stem_radius": 0.075,
+  "lift_sleeve_inner_radius": 0.095,
+  "protected_first_level": {
+    "art/track-round-03.blend": "661b9275375dedf1ca82f28d3c507fe30a68246803f4df5715bf53749497a234",
+    "art/hammer-toy-round-03.blend": "ea81ac51a9654eeedd60b33d04219b7c9a289a9a901bcdf9069ecaa233b19fe9",
+    "public/models/track-round-03.glb": "82bace239f341888cd25ff6288c8b870e0dafd89083a15c2d931304a111891ff",
+    "public/models/platform-refined.glb": "8ea7ca31229e21f21ddfb57f88308362e9f0944dc2d0334aab1485586fb6ca12",
+    "public/models/hammer-head-toy-round-03.glb": "bcdf44b2c476caa29b48fd21856d14844138d3b57b692e42c81298b8c20d50d9",
+    "public/models/hammer-handle-toy-round-03.glb": "3ec0b73b02fc079c6657165da3dc935195964a006caeaf7278427c11745bb5ad"
+  },
+  "preview_note": "Lifts manually posed at alternating extremes for display only; no gameplay animation exported",
+  "pending": [
+    "Runtime and level selection implementation",
+    "Final LevelConfig mapping/freeze",
+    "Real contact and full route playtest"
+  ]
+}

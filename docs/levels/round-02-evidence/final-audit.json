@@ -1,0 +1,11 @@
+{
+  "configSha256": "42d3d338b8bd6ecf8e8eb537fd194028f23b7f5310f4611a2af0a7829bb3abcf",
+  "protectedFieldsEqual": true,
+  "collisionCount": 15,
+  "ringCoveragePassed": true,
+  "dashCount": 8,
+  "visuals": {
+    "track": "track-round-02.glb",
+    "platform": "platform-refined.glb"
+  }
+}

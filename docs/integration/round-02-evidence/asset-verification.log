@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "triangles": 33363,
+  "materials": 6,
+  "primitives": 6,
+  "bytes": 623408,
+  "bounds_min": [
+    -12.039999961853027,
+    -0.40000057220458984,
+    -7.039999961853027
+  ],
+  "bounds_max": [
+    17.040000915527344,
+    8.140000343322754,
+    9.039999008178711
+  ],
+  "dimensions_xyz_m": [
+    29.08000087738037,
+    8.540000915527344,
+    16.07999897003174
+  ],
+  "origin": [
+    0,
+    0,
+    0
+  ],
+  "coordinates": "glTF Y-up",
+  "units": "meters",
+  "level_sha256": "7a5428efde261b928adf6ce5c62cdb26602ba612468ea86d1d58e15635125827",
+  "blend_sha256": "fa87cde2b6f2347ec74ce5876af18f9ac6427b4e171a2421b54d1abb41fc86ed",
+  "glb_sha256": "2f28e781b243d40e00807ebc1d17fc0ff193f294c445b7e859bf1d448b7198a6",
+  "preserved_source_objects": 176,
+  "old_assets_unchanged": true,
+  "generator_sha256": "467c870b71456fdfdbbd1affc3cf1f460e450633657e63c2de844cf7697ad103"
+}

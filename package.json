@@ -1,0 +1,9 @@
+{
+  "name": "marble-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "dev": "vite --host 127.0.0.1", "test": "node --test tests/*.test.mjs", "build": "vue-tsc --noEmit && vite build", "preview": "vite preview --host 127.0.0.1" },
+  "dependencies": { "@element-plus/icons-vue": "^2.3.1", "element-plus": "^2.11.0", "playcanvas": "2.22.1", "vue": "^3.5.0", "vue-router": "^4.5.0" },
+  "devDependencies": { "@vitejs/plugin-vue": "^5.2.0", "less": "^4.2.0", "typescript": "~5.7.0", "vite": "^6.1.0", "vue-tsc": "^2.2.0" }
+}

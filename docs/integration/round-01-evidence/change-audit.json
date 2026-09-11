@@ -1,0 +1,28 @@
+{
+  "checkedFiles": 21,
+  "changed": [
+    "AGENTS.md",
+    "README.md",
+    "docs/COLLABORATION.md"
+  ],
+  "protectedUnchanged": [
+    "src/state.ts",
+    "src/main.ts",
+    "src/game/track-visuals.ts",
+    "src/game/level-types.ts",
+    "src/game/runtime.ts",
+    "src/levels/initial-gravity.ts",
+    "src/App.vue",
+    "src/components/Records.vue",
+    "src/components/Lobby.vue",
+    "src/components/SettingsPanel.vue",
+    "src/components/GameCanvas.vue",
+    "art/track-refined.blend",
+    "art/track-report.json",
+    "art/build_track.py",
+    "public/models/track-refined.glb",
+    "public/models/platform-refined.glb",
+    "package.json",
+    "package-lock.json"
+  ]
+}

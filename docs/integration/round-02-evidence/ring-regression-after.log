@@ -1,0 +1,15 @@
+TAP version 13
+# Subtest: 检查点圆环真实网格位于有效台面与检测区域内，保留倒角间距
+ok 1 - 检查点圆环真实网格位于有效台面与检测区域内，保留倒角间距
+  ---
+  duration_ms: 3.492875
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 646.910958

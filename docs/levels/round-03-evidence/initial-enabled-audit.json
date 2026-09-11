@@ -1,0 +1,15 @@
+{
+  "configSha256": "e67a3df2e9acb38eb88e61e39dc4fb38e9229a05c500238118c7ea96d0f22628",
+  "protectedFieldsEqual": true,
+  "collisionCount": 13,
+  "poolObjectsWithoutCollision": 6,
+  "xCenterExtremes": [
+    4.6,
+    11.4
+  ],
+  "clearWindowPerEndSeconds": 0.7839317220059652,
+  "periodSeconds": 5.026548245743669,
+  "maxPlatformSpeed": 4.25,
+  "visuals": null,
+  "hammerVisuals": null
+}

@@ -1,0 +1,58 @@
+{
+  "head": {
+    "sha256": "bcdf44b2c476caa29b48fd21856d14844138d3b57b692e42c81298b8c20d50d9",
+    "bounds_min": [
+      -0.44999998807907104,
+      -0.45000001788139343,
+      -0.6800000071525574
+    ],
+    "bounds_max": [
+      0.44999998807907104,
+      0.45000001788139343,
+      0.6800000071525574
+    ],
+    "dimensions_xyz_m": [
+      0.8999999761581421,
+      0.9000000357627869,
+      1.3600000143051147
+    ],
+    "materials": 2,
+    "triangles": 1400,
+    "bytes": 39536
+  },
+  "handle": {
+    "sha256": "3ec0b73b02fc079c6657165da3dc935195964a006caeaf7278427c11745bb5ad",
+    "bounds_min": [
+      -0.05999999865889549,
+      -0.5,
+      -0.05999999865889549
+    ],
+    "bounds_max": [
+      0.05999999865889549,
+      0.5,
+      0.05999999865889549
+    ],
+    "dimensions_xyz_m": [
+      0.11999999731779099,
+      1.0,
+      0.11999999731779099
+    ],
+    "materials": 1,
+    "triangles": 252,
+    "bytes": 5676
+  },
+  "status": "passed",
+  "source_sha256": "ea81ac51a9654eeedd60b33d04219b7c9a289a9a901bcdf9069ecaa233b19fe9",
+  "samples": 7200,
+  "cylinder_shell_max_outside_m": 2.3475367372238765e-08,
+  "flat_striking_face_area_m2": {
+    "-1": 0.5400821270572558,
+    "1": 0.5400821270572558
+  },
+  "sleeve_radial_excess_m": 0.009702388552720098,
+  "minimum_post_side_clearance_m": 0.26999999999999996,
+  "conservative_head_lowest_y": 3.6126106462045398,
+  "conservative_head_highest_y": 5.360839048184486,
+  "old_assets_unchanged": true,
+  "limit": "Mesh/analytic pose checks only; cylinder contact and full motion checked by CODE"
+}

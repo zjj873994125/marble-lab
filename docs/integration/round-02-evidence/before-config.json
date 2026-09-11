@@ -1,0 +1,1281 @@
+{
+  "checkpointTrigger": {
+    "heightTolerance": 1.2,
+    "radius": 1.35
+  },
+  "checkpoints": [
+    {
+      "position": [
+        -1,
+        3.95,
+        -4
+      ],
+      "ring": {
+        "position": [
+          -1,
+          3.4499999999999997,
+          -4
+        ],
+        "radius": 1
+      }
+    },
+    {
+      "position": [
+        8,
+        3.95,
+        5
+      ],
+      "ring": {
+        "position": [
+          8,
+          3.4499999999999997,
+          5
+        ],
+        "radius": 1
+      }
+    }
+  ],
+  "fallY": -0.5,
+  "finish": {
+    "heightTolerance": 1,
+    "position": [
+      15,
+      3.9,
+      -5
+    ],
+    "radius": 1.5,
+    "ring": {
+      "position": [
+        15,
+        3.46,
+        -5
+      ],
+      "radius": 1.35
+    }
+  },
+  "id": "initial-gravity",
+  "pendulum": {
+    "amplitude": 1.65,
+    "anchor": [
+      -5.5,
+      7.9,
+      -5.6
+    ],
+    "angularSpeed": 1.8,
+    "ball": {
+      "material": "orange",
+      "name": "Pendulum",
+      "position": [
+        -5.5,
+        4.3,
+        -4
+      ],
+      "size": [
+        1.45,
+        1.45,
+        1.45
+      ],
+      "type": "sphere"
+    },
+    "lift": 0.16,
+    "rod": {
+      "material": "dark",
+      "name": "Pendulum arm",
+      "position": [
+        -5.5,
+        5.9,
+        -4
+      ],
+      "size": [
+        0.12,
+        3,
+        0.12
+      ],
+      "type": "cylinder"
+    },
+    "rodWidth": 0.12
+  },
+  "platform": {
+    "amplitude": 1.25,
+    "angularSpeed": 1.25,
+    "body": {
+      "material": "blue",
+      "name": "Moving platform",
+      "position": [
+        8,
+        3.22,
+        -0.2
+      ],
+      "size": [
+        3,
+        0.36,
+        2.9
+      ],
+      "type": "box"
+    },
+    "centerZ": -0.35,
+    "stripe": {
+      "material": "cream",
+      "name": "Platform stripe",
+      "position": [
+        8,
+        3.4099999999999997,
+        -0.2
+      ],
+      "size": [
+        2.6,
+        0.035,
+        0.17
+      ],
+      "type": "box"
+    },
+    "stripeY": 3.413
+  },
+  "progress": [
+    {
+      "base": 0,
+      "direction": -1,
+      "divisor": 34,
+      "max": 0.32,
+      "originZ": 7
+    },
+    {
+      "base": 0.35,
+      "direction": 1,
+      "divisor": 30,
+      "max": 0.3,
+      "originZ": -4
+    },
+    {
+      "base": 0.68,
+      "direction": -1,
+      "divisor": 33,
+      "max": 0.3,
+      "originZ": 5
+    }
+  ],
+  "start": {
+    "position": [
+      -10,
+      3.95,
+      7
+    ],
+    "previewPosition": [
+      -10,
+      3.9,
+      7
+    ],
+    "ring": {
+      "position": [
+        -10,
+        3.46,
+        7
+      ],
+      "radius": 1.2
+    }
+  },
+  "staticObjects": [
+    {
+      "material": "floorMat",
+      "name": "Ground",
+      "position": [
+        1,
+        -0.65,
+        0
+      ],
+      "size": [
+        130,
+        0.5,
+        130
+      ],
+      "type": "box"
+    },
+    {
+      "body": "static",
+      "material": "cream",
+      "name": "Track surface",
+      "position": [
+        -10,
+        3.22,
+        1.5
+      ],
+      "refinedVisual": true,
+      "size": [
+        3,
+        0.36,
+        14
+      ],
+      "type": "box"
+    },
+    {
+      "material": "edge",
+      "name": "Track chassis",
+      "position": [
+        -10,
+        2.94,
+        1.5
+      ],
+      "refinedVisual": true,
+      "size": [
+        3.08,
+        0.22,
+        14.08
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Support",
+      "position": [
+        -10,
+        1.35,
+        -4.75
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.28,
+        3.2,
+        0.28
+      ],
+      "type": "cylinder"
+    },
+    {
+      "material": "dark",
+      "name": "Support",
+      "position": [
+        -10,
+        1.35,
+        7.75
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.28,
+        3.2,
+        0.28
+      ],
+      "type": "cylinder"
+    },
+    {
+      "body": "static",
+      "material": "cream",
+      "name": "Track surface",
+      "position": [
+        -5.5,
+        3.22,
+        -4
+      ],
+      "refinedVisual": true,
+      "size": [
+        9,
+        0.36,
+        3
+      ],
+      "type": "box"
+    },
+    {
+      "material": "edge",
+      "name": "Track chassis",
+      "position": [
+        -5.5,
+        2.94,
+        -4
+      ],
+      "refinedVisual": true,
+      "size": [
+        9.08,
+        0.22,
+        3.08
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Support",
+      "position": [
+        -5.5,
+        1.35,
+        -4.75
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.28,
+        3.2,
+        0.28
+      ],
+      "type": "cylinder"
+    },
+    {
+      "material": "dark",
+      "name": "Support",
+      "position": [
+        -5.5,
+        1.35,
+        -3.25
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.28,
+        3.2,
+        0.28
+      ],
+      "type": "cylinder"
+    },
+    {
+      "body": "static",
+      "material": "cream",
+      "name": "Track surface",
+      "position": [
+        -1,
+        3.22,
+        0.5
+      ],
+      "refinedVisual": true,
+      "size": [
+        2.1,
+        0.36,
+        9
+      ],
+      "type": "box"
+    },
+    {
+      "material": "edge",
+      "name": "Track chassis",
+      "position": [
+        -1,
+        2.94,
+        0.5
+      ],
+      "refinedVisual": true,
+      "size": [
+        2.18,
+        0.22,
+        9.08
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Support",
+      "position": [
+        -1,
+        1.35,
+        -3.25
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.28,
+        3.2,
+        0.28
+      ],
+      "type": "cylinder"
+    },
+    {
+      "material": "dark",
+      "name": "Support",
+      "position": [
+        -1,
+        1.35,
+        4.25
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.28,
+        3.2,
+        0.28
+      ],
+      "type": "cylinder"
+    },
+    {
+      "body": "static",
+      "material": "cream",
+      "name": "Track surface",
+      "position": [
+        3.5,
+        3.22,
+        5
+      ],
+      "refinedVisual": true,
+      "size": [
+        9,
+        0.36,
+        3
+      ],
+      "type": "box"
+    },
+    {
+      "material": "edge",
+      "name": "Track chassis",
+      "position": [
+        3.5,
+        2.94,
+        5
+      ],
+      "refinedVisual": true,
+      "size": [
+        9.08,
+        0.22,
+        3.08
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Support",
+      "position": [
+        3.5,
+        1.35,
+        4.25
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.28,
+        3.2,
+        0.28
+      ],
+      "type": "cylinder"
+    },
+    {
+      "material": "dark",
+      "name": "Support",
+      "position": [
+        3.5,
+        1.35,
+        5.75
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.28,
+        3.2,
+        0.28
+      ],
+      "type": "cylinder"
+    },
+    {
+      "body": "static",
+      "material": "cream",
+      "name": "Track surface",
+      "position": [
+        8,
+        3.22,
+        3.2
+      ],
+      "refinedVisual": true,
+      "size": [
+        3,
+        0.36,
+        3.6
+      ],
+      "type": "box"
+    },
+    {
+      "material": "edge",
+      "name": "Track chassis",
+      "position": [
+        8,
+        2.94,
+        3.2
+      ],
+      "refinedVisual": true,
+      "size": [
+        3.08,
+        0.22,
+        3.68
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Support",
+      "position": [
+        8,
+        1.35,
+        2.1500000000000004
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.28,
+        3.2,
+        0.28
+      ],
+      "type": "cylinder"
+    },
+    {
+      "material": "dark",
+      "name": "Support",
+      "position": [
+        8,
+        1.35,
+        4.25
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.28,
+        3.2,
+        0.28
+      ],
+      "type": "cylinder"
+    },
+    {
+      "body": "static",
+      "material": "cream",
+      "name": "Track surface",
+      "position": [
+        8,
+        3.22,
+        -3.5
+      ],
+      "refinedVisual": true,
+      "size": [
+        3,
+        0.36,
+        3
+      ],
+      "type": "box"
+    },
+    {
+      "material": "edge",
+      "name": "Track chassis",
+      "position": [
+        8,
+        2.94,
+        -3.5
+      ],
+      "refinedVisual": true,
+      "size": [
+        3.08,
+        0.22,
+        3.08
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Support",
+      "position": [
+        8,
+        1.35,
+        -4.25
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.28,
+        3.2,
+        0.28
+      ],
+      "type": "cylinder"
+    },
+    {
+      "material": "dark",
+      "name": "Support",
+      "position": [
+        8,
+        1.35,
+        -2.75
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.28,
+        3.2,
+        0.28
+      ],
+      "type": "cylinder"
+    },
+    {
+      "body": "static",
+      "material": "cream",
+      "name": "Track surface",
+      "position": [
+        11.5,
+        3.22,
+        -5
+      ],
+      "refinedVisual": true,
+      "size": [
+        7,
+        0.36,
+        3
+      ],
+      "type": "box"
+    },
+    {
+      "material": "edge",
+      "name": "Track chassis",
+      "position": [
+        11.5,
+        2.94,
+        -5
+      ],
+      "refinedVisual": true,
+      "size": [
+        7.08,
+        0.22,
+        3.08
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Support",
+      "position": [
+        11.5,
+        1.35,
+        -5.75
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.28,
+        3.2,
+        0.28
+      ],
+      "type": "cylinder"
+    },
+    {
+      "material": "dark",
+      "name": "Support",
+      "position": [
+        11.5,
+        1.35,
+        -4.25
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.28,
+        3.2,
+        0.28
+      ],
+      "type": "cylinder"
+    },
+    {
+      "body": "static",
+      "material": "cream",
+      "name": "Track surface",
+      "position": [
+        15,
+        3.22,
+        -5
+      ],
+      "refinedVisual": true,
+      "size": [
+        4,
+        0.36,
+        4
+      ],
+      "type": "box"
+    },
+    {
+      "material": "edge",
+      "name": "Track chassis",
+      "position": [
+        15,
+        2.94,
+        -5
+      ],
+      "refinedVisual": true,
+      "size": [
+        4.08,
+        0.22,
+        4.08
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Support",
+      "position": [
+        15,
+        1.35,
+        -6.25
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.28,
+        3.2,
+        0.28
+      ],
+      "type": "cylinder"
+    },
+    {
+      "material": "dark",
+      "name": "Support",
+      "position": [
+        15,
+        1.35,
+        -3.75
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.28,
+        3.2,
+        0.28
+      ],
+      "type": "cylinder"
+    },
+    {
+      "body": "static",
+      "material": "cream",
+      "name": "Track surface",
+      "position": [
+        -10,
+        3.22,
+        7
+      ],
+      "refinedVisual": true,
+      "size": [
+        4,
+        0.36,
+        4
+      ],
+      "type": "box"
+    },
+    {
+      "material": "edge",
+      "name": "Track chassis",
+      "position": [
+        -10,
+        2.94,
+        7
+      ],
+      "refinedVisual": true,
+      "size": [
+        4.08,
+        0.22,
+        4.08
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Support",
+      "position": [
+        -10,
+        1.35,
+        5.75
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.28,
+        3.2,
+        0.28
+      ],
+      "type": "cylinder"
+    },
+    {
+      "material": "dark",
+      "name": "Support",
+      "position": [
+        -10,
+        1.35,
+        8.25
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.28,
+        3.2,
+        0.28
+      ],
+      "type": "cylinder"
+    },
+    {
+      "body": "static",
+      "material": "orange",
+      "name": "Safety rail",
+      "position": [
+        -11.55,
+        3.53,
+        2
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.12,
+        0.26,
+        10
+      ],
+      "type": "box"
+    },
+    {
+      "body": "static",
+      "material": "orange",
+      "name": "Safety rail",
+      "position": [
+        -8.45,
+        3.53,
+        2
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.12,
+        0.26,
+        10
+      ],
+      "type": "box"
+    },
+    {
+      "body": "static",
+      "material": "orange",
+      "name": "Corner rail",
+      "position": [
+        -5.8,
+        3.53,
+        -5.55
+      ],
+      "refinedVisual": true,
+      "size": [
+        5.8,
+        0.26,
+        0.12
+      ],
+      "type": "box"
+    },
+    {
+      "body": "static",
+      "material": "orange",
+      "name": "Corner rail",
+      "position": [
+        -5.8,
+        3.53,
+        -2.45
+      ],
+      "refinedVisual": true,
+      "size": [
+        5.8,
+        0.26,
+        0.12
+      ],
+      "type": "box"
+    },
+    {
+      "body": "static",
+      "material": "blue",
+      "name": "Bridge rail",
+      "position": [
+        3.5,
+        3.53,
+        3.45
+      ],
+      "refinedVisual": true,
+      "size": [
+        5.8,
+        0.26,
+        0.12
+      ],
+      "type": "box"
+    },
+    {
+      "body": "static",
+      "material": "blue",
+      "name": "Bridge rail",
+      "position": [
+        3.5,
+        3.53,
+        6.55
+      ],
+      "refinedVisual": true,
+      "size": [
+        5.8,
+        0.26,
+        0.12
+      ],
+      "type": "box"
+    },
+    {
+      "material": "orange",
+      "name": "Bridge edge stripe",
+      "position": [
+        -1.94,
+        3.4139999999999997,
+        0.5
+      ],
+      "size": [
+        0.07,
+        0.025,
+        7.8
+      ],
+      "type": "box"
+    },
+    {
+      "material": "orange",
+      "name": "Bridge edge stripe",
+      "position": [
+        -0.06,
+        3.4139999999999997,
+        0.5
+      ],
+      "size": [
+        0.07,
+        0.025,
+        7.8
+      ],
+      "type": "box"
+    },
+    {
+      "material": "blue",
+      "name": "Approach marking",
+      "position": [
+        -10,
+        3.412,
+        6
+      ],
+      "size": [
+        2.4,
+        0.025,
+        0.08
+      ],
+      "type": "box"
+    },
+    {
+      "material": "blue",
+      "name": "Approach marking",
+      "position": [
+        -10,
+        3.412,
+        5.72
+      ],
+      "size": [
+        2.4,
+        0.025,
+        0.08
+      ],
+      "type": "box"
+    },
+    {
+      "material": "blue",
+      "name": "Approach marking",
+      "position": [
+        -10,
+        3.412,
+        5.4399999999999995
+      ],
+      "size": [
+        2.4,
+        0.025,
+        0.08
+      ],
+      "type": "box"
+    },
+    {
+      "material": "blue",
+      "name": "Approach marking",
+      "position": [
+        -10,
+        3.412,
+        5.16
+      ],
+      "size": [
+        2.4,
+        0.025,
+        0.08
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Finish checker",
+      "position": [
+        13.9,
+        3.4179999999999997,
+        -5.2
+      ],
+      "size": [
+        0.42,
+        0.035,
+        0.42
+      ],
+      "type": "box"
+    },
+    {
+      "material": "cream",
+      "name": "Finish checker",
+      "position": [
+        13.9,
+        3.4179999999999997,
+        -4.76
+      ],
+      "size": [
+        0.42,
+        0.035,
+        0.42
+      ],
+      "type": "box"
+    },
+    {
+      "material": "cream",
+      "name": "Finish checker",
+      "position": [
+        14.34,
+        3.4179999999999997,
+        -5.2
+      ],
+      "size": [
+        0.42,
+        0.035,
+        0.42
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Finish checker",
+      "position": [
+        14.34,
+        3.4179999999999997,
+        -4.76
+      ],
+      "size": [
+        0.42,
+        0.035,
+        0.42
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Finish checker",
+      "position": [
+        14.78,
+        3.4179999999999997,
+        -5.2
+      ],
+      "size": [
+        0.42,
+        0.035,
+        0.42
+      ],
+      "type": "box"
+    },
+    {
+      "material": "cream",
+      "name": "Finish checker",
+      "position": [
+        14.78,
+        3.4179999999999997,
+        -4.76
+      ],
+      "size": [
+        0.42,
+        0.035,
+        0.42
+      ],
+      "type": "box"
+    },
+    {
+      "material": "cream",
+      "name": "Finish checker",
+      "position": [
+        15.22,
+        3.4179999999999997,
+        -5.2
+      ],
+      "size": [
+        0.42,
+        0.035,
+        0.42
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Finish checker",
+      "position": [
+        15.22,
+        3.4179999999999997,
+        -4.76
+      ],
+      "size": [
+        0.42,
+        0.035,
+        0.42
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Finish checker",
+      "position": [
+        15.66,
+        3.4179999999999997,
+        -5.2
+      ],
+      "size": [
+        0.42,
+        0.035,
+        0.42
+      ],
+      "type": "box"
+    },
+    {
+      "material": "cream",
+      "name": "Finish checker",
+      "position": [
+        15.66,
+        3.4179999999999997,
+        -4.76
+      ],
+      "size": [
+        0.42,
+        0.035,
+        0.42
+      ],
+      "type": "box"
+    },
+    {
+      "material": "cream",
+      "name": "Finish checker",
+      "position": [
+        16.1,
+        3.4179999999999997,
+        -5.2
+      ],
+      "size": [
+        0.42,
+        0.035,
+        0.42
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Finish checker",
+      "position": [
+        16.1,
+        3.4179999999999997,
+        -4.76
+      ],
+      "size": [
+        0.42,
+        0.035,
+        0.42
+      ],
+      "type": "box"
+    },
+    {
+      "material": "orange",
+      "name": "Finish left",
+      "position": [
+        15,
+        4.9,
+        -6.65
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.12,
+        3,
+        0.12
+      ],
+      "type": "box"
+    },
+    {
+      "material": "orange",
+      "name": "Finish right",
+      "position": [
+        15,
+        4.9,
+        -3.35
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.12,
+        3,
+        0.12
+      ],
+      "type": "box"
+    },
+    {
+      "material": "orange",
+      "name": "Finish gantry",
+      "position": [
+        15,
+        6.4,
+        -5
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.18,
+        0.25,
+        3.6
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Pendulum bracket",
+      "position": [
+        -6.3,
+        5.699999999999999,
+        -5.6
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.16,
+        4.6,
+        0.16
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Pendulum bracket",
+      "position": [
+        -4.7,
+        5.699999999999999,
+        -5.6
+      ],
+      "refinedVisual": true,
+      "size": [
+        0.16,
+        4.6,
+        0.16
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Pendulum crossbar",
+      "position": [
+        -5.5,
+        7.9,
+        -5.6
+      ],
+      "refinedVisual": true,
+      "size": [
+        2,
+        0.2,
+        0.3
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Platform guide left",
+      "position": [
+        6.25,
+        2.9499999999999997,
+        -0.25
+      ],
+      "size": [
+        0.08,
+        0.08,
+        5.8
+      ],
+      "type": "box"
+    },
+    {
+      "material": "dark",
+      "name": "Platform guide right",
+      "position": [
+        9.75,
+        2.9499999999999997,
+        -0.25
+      ],
+      "size": [
+        0.08,
+        0.08,
+        5.8
+      ],
+      "type": "box"
+    }
+  ],
+  "visuals": {
+    "platform": "platform-refined.glb",
+    "track": "track-refined.glb"
+  }
+}

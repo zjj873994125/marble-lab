@@ -1,0 +1,156 @@
+{
+  "beforeConfigSha256": "fde23231e32481972724bd174a8880f76003d33e0353f018f54b0597cb5341b7",
+  "frozenConfigSha256": "7a5428efde261b928adf6ce5c62cdb26602ba612468ea86d1d58e15635125827",
+  "protectedFieldsEqual": true,
+  "protectedDataSha256": "61707f6f8022f92e350c1229523815f5b7ebc29761d5eb69881298c87a00e47f",
+  "collisionCount": 15,
+  "rings": [
+    {
+      "position": [
+        -1.5,
+        3.46,
+        -3.5
+      ],
+      "radius": 0.55,
+      "outerRadius": 0.5950000000000001,
+      "triggerMargin": 0.04789321881345243,
+      "notchMargin": 0.11210678118654749,
+      "floorClearance": 0.015000000000000124
+    },
+    {
+      "position": [
+        7.5,
+        3.46,
+        4.5
+      ],
+      "radius": 0.55,
+      "outerRadius": 0.5950000000000001,
+      "triggerMargin": 0.04789321881345243,
+      "notchMargin": 0.11210678118654749,
+      "floorClearance": 0.015000000000000124
+    }
+  ],
+  "dashCount": 8,
+  "dashes": [
+    {
+      "name": "Bridge edge dash",
+      "type": "box",
+      "position": [
+        -1.89,
+        3.413,
+        -1.8
+      ],
+      "size": [
+        0.12,
+        0.008,
+        0.7
+      ],
+      "material": "orange"
+    },
+    {
+      "name": "Bridge edge dash",
+      "type": "box",
+      "position": [
+        -0.11,
+        3.413,
+        -1.8
+      ],
+      "size": [
+        0.12,
+        0.008,
+        0.7
+      ],
+      "material": "orange"
+    },
+    {
+      "name": "Bridge edge dash",
+      "type": "box",
+      "position": [
+        -1.89,
+        3.413,
+        0
+      ],
+      "size": [
+        0.12,
+        0.008,
+        0.7
+      ],
+      "material": "orange"
+    },
+    {
+      "name": "Bridge edge dash",
+      "type": "box",
+      "position": [
+        -0.11,
+        3.413,
+        0
+      ],
+      "size": [
+        0.12,
+        0.008,
+        0.7
+      ],
+      "material": "orange"
+    },
+    {
+      "name": "Bridge edge dash",
+      "type": "box",
+      "position": [
+        -1.89,
+        3.413,
+        1.8
+      ],
+      "size": [
+        0.12,
+        0.008,
+        0.7
+      ],
+      "material": "orange"
+    },
+    {
+      "name": "Bridge edge dash",
+      "type": "box",
+      "position": [
+        -0.11,
+        3.413,
+        1.8
+      ],
+      "size": [
+        0.12,
+        0.008,
+        0.7
+      ],
+      "material": "orange"
+    },
+    {
+      "name": "Bridge edge dash",
+      "type": "box",
+      "position": [
+        -1.89,
+        3.413,
+        3.6
+      ],
+      "size": [
+        0.12,
+        0.008,
+        0.7
+      ],
+      "material": "orange"
+    },
+    {
+      "name": "Bridge edge dash",
+      "type": "box",
+      "position": [
+        -0.11,
+        3.413,
+        3.6
+      ],
+      "size": [
+        0.12,
+        0.008,
+        0.7
+      ],
+      "material": "orange"
+    }
+  ]
+}

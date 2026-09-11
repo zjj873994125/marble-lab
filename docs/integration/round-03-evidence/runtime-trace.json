@@ -1,0 +1,3248 @@
+[
+  {
+    "label": "final-loaded",
+    "at": "2026-09-11T04:13:46.176Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10,
+      3.900000095367432,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.300000190734863,
+      -4
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "menu",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 0,
+    "trackModel": true,
+    "velocity": [
+      0,
+      0,
+      0
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0,
+      0
+    ]
+  },
+  {
+    "label": "platform-right-extreme-1",
+    "at": "2026-09-11T04:16:43.145Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10,
+      3.825000047683716,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.496541976928711,
+      -2.771611213684082
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      11.39869499206543,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 1.2788000000000006,
+    "trackModel": true,
+    "velocity": [
+      -2.1997035668803083e-19,
+      0,
+      -0.000002369900585108553
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.010230400000000006,
+      0.005115200000000003
+    ]
+  },
+  {
+    "label": "platform-left-extreme-1",
+    "at": "2026-09-11T04:16:45.662Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10,
+      3.825000047683716,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.437010288238525,
+      -3.143686532974243
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      4.601515769958496,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 3.793799999999983,
+    "trackModel": true,
+    "velocity": [
+      -2.734943448435874e-20,
+      0,
+      -0.0000023942407096910756
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.030350399999999868,
+      0.015175199999999934
+    ]
+  },
+  {
+    "label": "platform-right-extreme-2",
+    "at": "2026-09-11T04:16:48.189Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10,
+      3.825000047683716,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.544949054718018,
+      -5.530930519104004
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      11.396202087402344,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 6.3209999999999615,
+    "trackModel": true,
+    "velocity": [
+      -2.6919389423123536e-20,
+      0,
+      -0.0000023621059881406836
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.050567999999999697,
+      0.025283999999999848
+    ]
+  },
+  {
+    "label": "platform-left-extreme-2",
+    "at": "2026-09-11T04:16:50.686Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10,
+      3.825000047683716,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.345511436462402,
+      -4.284445762634277
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      4.601856708526611,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 8.82289999999996,
+    "trackModel": true,
+    "velocity": [
+      -2.6453580109505344e-20,
+      0,
+      -0.000002329695462321979
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.07058319999999968,
+      0.03529159999999984
+    ]
+  },
+  {
+    "label": "restart-zero",
+    "at": "2026-09-11T04:18:32.286Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10,
+      3.825000047683716,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.423984050750732,
+      -3.2250983715057373
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      9.132253646850586,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 0.2716000000000059,
+    "trackModel": true,
+    "velocity": [
+      -3.302364740024028e-17,
+      0,
+      -0.000004149596861680038
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.002172800000000047,
+      0.0010864000000000236
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "W"
+    ],
+    "ms": 1750,
+    "label": "hammer-lane-approach",
+    "at": "2026-09-11T04:18:32.549Z"
+  },
+  {
+    "label": "hammer-lane-approach-before-brake",
+    "at": "2026-09-11T04:18:34.335Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10.000041961669922,
+      3.8278648853302,
+      -2.496283054351806
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.446955680847168,
+      -4.918471813201904
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      9.777042388916016,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 2.073299999999984,
+    "trackModel": true,
+    "velocity": [
+      -0.005743882153183222,
+      0.3906965851783752,
+      -6.999997615814209
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.016586399999999873,
+      0.008293199999999936
+    ]
+  },
+  {
+    "label": "hammer-lane-approach",
+    "at": "2026-09-11T04:18:35.173Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10.003188133239746,
+      3.825000047683716,
+      -3.99556827545166
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.528578758239746,
+      -5.428618431091309
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      6.3855438232421875,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 2.9090999999999956,
+    "trackModel": true,
+    "velocity": [
+      -0.00018551289394963533,
+      -5.960464477539064e-8,
+      -0.10671989619731904
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.023272799999999965,
+      0.011636399999999984
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "D"
+    ],
+    "ms": 800,
+    "label": "hammer-contact-position",
+    "at": "2026-09-11T04:18:35.887Z"
+  },
+  {
+    "label": "hammer-contact-position-before-brake",
+    "at": "2026-09-11T04:18:36.715Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -7.2628703117370605,
+      3.825000047683716,
+      -4.025622367858887
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.5450239181518555,
+      -2.468599557876587
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      4.97930383682251,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 4.151400000000004,
+    "trackModel": true,
+    "velocity": [
+      6.6186723709106445,
+      2.9802322387695312e-8,
+      -0.0122298002243042
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.03321120000000003,
+      0.016605600000000015
+    ]
+  },
+  {
+    "label": "hammer-contact-position",
+    "at": "2026-09-11T04:18:37.544Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -5.849463939666748,
+      3.825000047683716,
+      -4.091411113739014
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.41891622543335,
+      -3.2567741870880127
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      7.787009716033936,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 4.976400000000031,
+    "trackModel": true,
+    "velocity": [
+      -1.1981534957885742,
+      0.000004589557647705078,
+      -3.0984156131744385
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.03981120000000025,
+      0.019905600000000124
+    ]
+  },
+  {
+    "label": "hammer-knocked-off",
+    "at": "2026-09-11T04:19:03.040Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -6.7116851806640625,
+      2.3969786167144775,
+      -6.510384559631348
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.55180025100708,
+      -5.573750972747803
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      11.09033203125,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 5.939100000000028,
+    "trackModel": true,
+    "velocity": [
+      -0.8433241248130798,
+      -6.5927629470825195,
+      -2.3077988624572754
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.04751280000000023,
+      0.023756400000000115
+    ]
+  },
+  {
+    "label": "hammer-fall-respawn",
+    "at": "2026-09-11T04:19:03.766Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10,
+      3.825000047683716,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 1,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.441922664642334,
+      -4.887015342712402
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      11.018105506896973,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 6.66600000000004,
+    "trackModel": true,
+    "velocity": [
+      -1.1554955881010187e-9,
+      0,
+      1.950690347030104e-7
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.053328000000000327,
+      0.026664000000000163
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "W"
+    ],
+    "ms": 1750,
+    "label": "route-corner",
+    "at": "2026-09-11T04:19:49.812Z"
+  },
+  {
+    "label": "route-corner-before-brake",
+    "at": "2026-09-11T04:19:51.590Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10,
+      3.825000047683716,
+      -2.43204665184021
+    ],
+    "checkpoint": 0,
+    "falls": 1,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.317831993103027,
+      -4.111449718475342
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      4.602764129638672,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 8.764200000000045,
+    "trackModel": true,
+    "velocity": [
+      -0.000001373830968987022,
+      -0.000003978610038757324,
+      -7
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.07011360000000036,
+      0.03505680000000018
+    ]
+  },
+  {
+    "label": "route-corner",
+    "at": "2026-09-11T04:19:52.419Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10.003087043762209,
+      3.825000047683716,
+      -3.925042152404785
+    ],
+    "checkpoint": 0,
+    "falls": 1,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.563991069793701,
+      -5.6499457359313965
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      6.157041549682617,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 9.594800000000046,
+    "trackModel": true,
+    "velocity": [
+      -0.00021119830489624292,
+      -5.960464477539064e-8,
+      -0.11005916446447372
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.07675840000000037,
+      0.03837920000000018
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "Space"
+    ],
+    "ms": 10,
+    "label": "wait-hammer-gap",
+    "at": "2026-09-11T04:20:12.738Z"
+  },
+  {
+    "label": "wait-hammer-gap-before-brake",
+    "at": "2026-09-11T04:20:12.768Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10.00309944152832,
+      3.825000047683716,
+      -3.9305942058563232
+    ],
+    "checkpoint": 0,
+    "falls": 1,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.563011646270752,
+      -5.643822193145752
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      6.348748207092285,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 9.647400000000024,
+    "trackModel": true,
+    "velocity": [
+      -0.00017357397882733494,
+      -1.6391277313232425e-7,
+      -0.0904385820031166
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.0771792000000002,
+      0.0385896000000001
+    ]
+  },
+  {
+    "label": "wait-hammer-gap",
+    "at": "2026-09-11T04:20:13.595Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10.00312614440918,
+      3.825000047683716,
+      -3.949158191680908
+    ],
+    "checkpoint": 0,
+    "falls": 1,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.300154209136963,
+      -3.999036312103271
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      9.701193809509276,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 10.472300000000034,
+    "trackModel": true,
+    "velocity": [
+      -0.0000026040706870844588,
+      0,
+      -0.001367834280245006
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.08377840000000028,
+      0.04188920000000014
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "D"
+    ],
+    "ms": 1450,
+    "label": "checkpoint-one",
+    "at": "2026-09-11T04:20:13.866Z"
+  },
+  {
+    "label": "checkpoint-one-before-brake",
+    "at": "2026-09-11T04:20:15.348Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -2.7108514308929443,
+      3.825000047683716,
+      -3.950849771499634
+    ],
+    "checkpoint": 0,
+    "falls": 1,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.4097580909729,
+      -3.3140106201171875
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      10.277695655822754,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 11.979100000000011,
+    "trackModel": true,
+    "velocity": [
+      7,
+      0.000003978610038757324,
+      -0.0005872391047887504
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.09583280000000008,
+      0.047916400000000046
+    ]
+  },
+  {
+    "label": "checkpoint-one",
+    "at": "2026-09-11T04:20:16.182Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -1.1707203388214111,
+      3.825000047683716,
+      -3.9509778022766113
+    ],
+    "checkpoint": 1,
+    "falls": 1,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.532678604125977,
+      -5.454242706298828
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      6.953781604766846,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 12.816600000000022,
+    "trackModel": true,
+    "velocity": [
+      0.10853896290063858,
+      5.960464477539064e-8,
+      -0.000007379119779216126
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.1025328000000002,
+      0.051266400000000094
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "S"
+    ],
+    "ms": 1400,
+    "label": "narrow-bridge-exit",
+    "at": "2026-09-11T04:20:41.702Z"
+  },
+  {
+    "label": "narrow-bridge-exit-before-brake",
+    "at": "2026-09-11T04:20:43.133Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -1.127535700798035,
+      3.825000047683716,
+      3.014812469482422
+    ],
+    "checkpoint": 1,
+    "falls": 1,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.538944721221924,
+      -2.506596326828003
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      6.051049709320068,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 14.591300000000098,
+    "trackModel": true,
+    "velocity": [
+      0.009405811317265034,
+      -0.000003978610038757324,
+      6.999993801116943
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.1167304000000008,
+      0.058365200000000395
+    ]
+  },
+  {
+    "label": "narrow-bridge-exit",
+    "at": "2026-09-11T04:20:43.963Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -1.1255531311035156,
+      3.825000047683716,
+      4.515707969665527
+    ],
+    "checkpoint": 1,
+    "falls": 1,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.429719924926758,
+      -3.189251184463501
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      9.413323402404783,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 15.4226000000001,
+    "trackModel": true,
+    "velocity": [
+      0.00014557718532159925,
+      0,
+      0.1091400682926178
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.1233808000000008,
+      0.0616904000000004
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "D"
+    ],
+    "ms": 1500,
+    "label": "checkpoint-two",
+    "at": "2026-09-11T04:20:44.663Z"
+  },
+  {
+    "label": "checkpoint-two-before-brake",
+    "at": "2026-09-11T04:20:46.190Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      6.5167670249938965,
+      3.828245162963867,
+      4.561349391937256
+    ],
+    "checkpoint": 1,
+    "falls": 1,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.385214328765869,
+      -4.532588958740234
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      9.33270263671875,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 17.27070000000005,
+    "trackModel": true,
+    "velocity": [
+      6.999993801116943,
+      0.16104377806186676,
+      0.0092032914981246
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.13816560000000042,
+      0.06908280000000021
+    ]
+  },
+  {
+    "label": "checkpoint-two",
+    "at": "2026-09-11T04:20:47.023Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      8.021613121032715,
+      3.8249998092651367,
+      4.563284397125244
+    ],
+    "checkpoint": 2,
+    "falls": 1,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.543778419494629,
+      -2.4763853549957275
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      5.9621076583862305,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 18.107100000000056,
+    "trackModel": true,
+    "velocity": [
+      0.10509064793586732,
+      0.0000057220458984375,
+      0.00013685738667845726
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.14485680000000045,
+      0.07242840000000023
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "W"
+    ],
+    "ms": 500,
+    "label": "platform-approach",
+    "at": "2026-09-11T04:21:17.757Z"
+  },
+  {
+    "label": "platform-approach-before-brake",
+    "at": "2026-09-11T04:21:18.287Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      8.048468589782715,
+      3.8249998092651367,
+      3.45958948135376
+    ],
+    "checkpoint": 2,
+    "falls": 1,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.377315521240234,
+      -3.5167770385742188
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      4.689480304718018,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 19.033500000000075,
+    "trackModel": true,
+    "velocity": [
+      0.014242337085306644,
+      0.0000057220458984375,
+      -4.274925708770752
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.1522680000000006,
+      0.0761340000000003
+    ]
+  },
+  {
+    "label": "platform-approach",
+    "at": "2026-09-11T04:21:19.122Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      8.051593780517578,
+      3.8249998092651367,
+      2.4810798168182373
+    ],
+    "checkpoint": 2,
+    "falls": 1,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.546844005584717,
+      -5.542774200439453
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      7.010293006896973,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 19.869900000000033,
+    "trackModel": true,
+    "velocity": [
+      0.00022114695457275957,
+      0.000005766749382019043,
+      -0.06908217072486877
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.15895920000000027,
+      0.07947960000000014
+    ]
+  },
+  {
+    "label": "ready-to-test-gap",
+    "at": "2026-09-11T04:21:20.802Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      8.05163288116455,
+      3.8249998092651367,
+      2.4666545391082764
+    ],
+    "checkpoint": 2,
+    "falls": 1,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.3184943199157715,
+      -4.115589618682861
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "paused",
+    "platform": [
+      10.858259201049805,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 20.90499999999997,
+    "trackModel": true,
+    "velocity": [
+      0.0000012996699751965934,
+      0.0000057220458984375,
+      -0.0004431780835147947
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.16723999999999975,
+      0.08361999999999987
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "W"
+    ],
+    "ms": 650,
+    "label": "empty-gap-fall",
+    "at": "2026-09-11T04:22:17.222Z"
+  },
+  {
+    "label": "empty-gap-fall-before-brake",
+    "at": "2026-09-11T04:22:17.901Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      8.05163288116455,
+      3.598036050796509,
+      0.5600638389587402
+    ],
+    "checkpoint": 2,
+    "falls": 1,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.54218864440918,
+      -2.4863221645355225
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      11.264790534973145,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 21.589199999999956,
+    "trackModel": true,
+    "velocity": [
+      -0.0000331545525114052,
+      -2.6374824047088623,
+      -6.002512454986572
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.17271359999999963,
+      0.08635679999999982
+    ]
+  },
+  {
+    "label": "empty-gap-fall",
+    "at": "2026-09-11T04:22:18.737Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      8.003006935119629,
+      3.8245017528533936,
+      5.005964279174805
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.420395374298096,
+      -3.247528076171875
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      8.8134183883667,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 22.426199999999927,
+    "trackModel": true,
+    "velocity": [
+      0.04496857151389122,
+      -0.002222791314125061,
+      0.03141264244914055
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.17940959999999942,
+      0.08970479999999971
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "W"
+    ],
+    "ms": 570,
+    "label": "after-cp2-respawn-approach",
+    "at": "2026-09-11T04:23:36.545Z"
+  },
+  {
+    "label": "after-cp2-respawn-approach-before-brake",
+    "at": "2026-09-11T04:23:37.144Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      8.078794479370117,
+      3.825000047683716,
+      3.6789839267730713
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.544414043426514,
+      -5.527587890625
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      5.31795072555542,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 23.34659999999987,
+    "trackModel": true,
+    "velocity": [
+      0.09046298265457152,
+      0.0000026226043701171875,
+      -4.6623430252075195
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.18677279999999896,
+      0.09338639999999948
+    ]
+  },
+  {
+    "label": "after-cp2-respawn-approach",
+    "at": "2026-09-11T04:23:37.979Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      8.098456382751465,
+      3.825000047683716,
+      2.6223361492156982
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.4155192375183105,
+      -4.721994400024414
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      4.847126007080078,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 24.18299999999988,
+    "trackModel": true,
+    "velocity": [
+      0.0013903494691476226,
+      0,
+      -0.07454979419708252
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.19346399999999905,
+      0.09673199999999953
+    ]
+  },
+  {
+    "action": "platform-crossing-W",
+    "at": "2026-09-11T04:24:31.955Z",
+    "departT": 29.284289474462014,
+    "alignT": 30.159289474462014
+  },
+  {
+    "label": "platform-entry",
+    "at": "2026-09-11T04:24:32.688Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      8.193594932556152,
+      3.834229469299317,
+      0.5463187098503113
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.459425449371338,
+      -4.996408462524414
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      7.456264495849609,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 30.030799999999697,
+    "trackModel": true,
+    "velocity": [
+      0.6909587383270264,
+      -0.8174817562103271,
+      -5.710659980773926
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.2402463999999976,
+      0.1201231999999988
+    ]
+  },
+  {
+    "label": "platform-exit-before-brake",
+    "at": "2026-09-11T04:24:33.145Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      8.533474922180176,
+      3.837593317031861,
+      -2.529390573501587
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.562841415405273,
+      -5.642760276794434
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      9.370497703552246,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 30.49119999999965,
+    "trackModel": true,
+    "velocity": [
+      -0.1881760060787201,
+      -0.5411919951438904,
+      -6.997470378875732
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.2439295999999972,
+      0.1219647999999986
+    ]
+  },
+  {
+    "label": "platform-far-bank",
+    "at": "2026-09-11T04:24:33.973Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      8.508399963378906,
+      3.8249998092651367,
+      -3.9779579639434814
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.346949100494385,
+      -4.293430805206299
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      11.373827934265137,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 31.31659999999964,
+    "trackModel": true,
+    "velocity": [
+      -0.002290641190484166,
+      0.0000057220458984375,
+      -0.10717619955539703
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.2505327999999971,
+      0.12526639999999856
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "D"
+    ],
+    "ms": 1150,
+    "label": "new-rules-finish",
+    "at": "2026-09-11T04:25:04.080Z"
+  },
+  {
+    "label": "new-rules-finish-before-brake",
+    "at": "2026-09-11T04:25:05.261Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      13.70090675354004,
+      3.825000047683716,
+      -4.016551971435547
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.456743240356445,
+      -3.0203535556793213
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      7.426722049713135,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 32.80809999999957,
+    "trackModel": true,
+    "velocity": [
+      6.999988079071045,
+      -1.4901161193847656e-8,
+      -0.012989590875804424
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.26246479999999656,
+      0.13123239999999828
+    ]
+  },
+  {
+    "label": "new-rules-finish",
+    "at": "2026-09-11T04:25:06.100Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      13.873873710632324,
+      3.825000047683716,
+      -4.016874313354492
+    ],
+    "checkpoint": 2,
+    "falls": 2,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.447265148162842,
+      -3.079592227935791
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "finished",
+    "platform": [
+      7.324789047241211,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [
+      {
+        "date": "2026-09-11T04:25:05.284Z",
+        "falls": 2,
+        "time": 32.8324999999996
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 32.8324999999996,
+    "trackModel": true,
+    "velocity": [
+      6.436007976531982,
+      0,
+      -0.01171529944986105
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.2626599999999968,
+      0.1313299999999984
+    ]
+  },
+  {
+    "label": "low-quality-water-a",
+    "at": "2026-09-11T04:28:53.825Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10,
+      3.825000047683716,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.460294246673584,
+      -2.998161792755127
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      9.488442420959473,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [
+      {
+        "date": "2026-09-11T04:25:05.284Z",
+        "falls": 2,
+        "time": 32.8324999999996
+      }
+    ],
+    "settings": {
+      "quality": "low",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 0.3625000000000002,
+    "trackModel": true,
+    "velocity": [
+      -2.0199805152465364e-17,
+      0,
+      -0.000003204647555321571
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0,
+      0
+    ]
+  },
+  {
+    "label": "low-quality-water-b",
+    "at": "2026-09-11T04:28:53.933Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10,
+      3.825000047683716,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.498487949371338,
+      -2.759451389312744
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      9.894099235534668,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [
+      {
+        "date": "2026-09-11T04:25:05.284Z",
+        "falls": 2,
+        "time": 32.8324999999996
+      }
+    ],
+    "settings": {
+      "quality": "low",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 0.4726999999999974,
+    "trackModel": true,
+    "velocity": [
+      -1.1365342502470393e-17,
+      0,
+      -0.000002712573632379645
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0,
+      0
+    ]
+  },
+  {
+    "label": "reduced-motion-water-a",
+    "at": "2026-09-11T04:29:29.841Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10,
+      3.825000047683716,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.559437274932861,
+      -2.3785154819488525
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      11.19308376312256,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [
+      {
+        "date": "2026-09-11T04:25:05.284Z",
+        "falls": 2,
+        "time": 32.8324999999996
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": true,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 0.976100000000004,
+    "trackModel": true,
+    "velocity": [
+      -3.2411221486269802e-18,
+      0,
+      -0.0000033455512493674178
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0,
+      0
+    ]
+  },
+  {
+    "label": "reduced-motion-water-b",
+    "at": "2026-09-11T04:29:29.951Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10,
+      3.825000047683716,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.544968605041504,
+      -2.468945026397705
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "playing",
+    "platform": [
+      11.3219575881958,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [
+      {
+        "date": "2026-09-11T04:25:05.284Z",
+        "falls": 2,
+        "time": 32.8324999999996
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": true,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 1.0848999999999924,
+    "trackModel": true,
+    "velocity": [
+      -1.8808529961952722e-18,
+      0,
+      -0.0000028289075544307707
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0,
+      0
+    ]
+  },
+  {
+    "label": "blocked-resources-fallback-ready",
+    "at": "2026-09-11T04:31:38.123Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10,
+      3.900000095367432,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.300000190734863,
+      -4
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": false,
+    "phase": "menu",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": false,
+    "runs": [
+      {
+        "date": "2026-09-11T04:25:05.284Z",
+        "falls": 2,
+        "time": 32.8324999999996
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 0,
+    "trackModel": false,
+    "velocity": [
+      0,
+      0,
+      0
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0,
+      0
+    ]
+  },
+  {
+    "action": "keyboard-events-held",
+    "keys": [
+      "W"
+    ],
+    "ms": 300,
+    "label": "fallback-playable",
+    "at": "2026-09-11T04:31:39.325Z"
+  },
+  {
+    "label": "fallback-playable-before-brake",
+    "at": "2026-09-11T04:31:39.657Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10,
+      3.825000047683716,
+      6.567810535430908
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.530101776123047,
+      -2.561863422393799
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": false,
+    "phase": "playing",
+    "platform": [
+      11.373822212219238,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": false,
+    "runs": [
+      {
+        "date": "2026-09-11T04:25:05.284Z",
+        "falls": 2,
+        "time": 32.8324999999996
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 1.1573000000000009,
+    "trackModel": false,
+    "velocity": [
+      -0.0000010269621952829766,
+      0.000002995133399963379,
+      -2.6573612689971924
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.009258400000000003,
+      0.004629200000000003
+    ]
+  },
+  {
+    "label": "fallback-playable",
+    "at": "2026-09-11T04:31:40.491Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10,
+      3.825000047683716,
+      5.9631757736206055
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.4111247062683105,
+      -4.694530010223389
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": false,
+    "phase": "playing",
+    "platform": [
+      10.079806327819824,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": false,
+    "runs": [
+      {
+        "date": "2026-09-11T04:25:05.284Z",
+        "falls": 2,
+        "time": 32.8324999999996
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 1.9866999999999972,
+    "trackModel": false,
+    "velocity": [
+      -0.000001786001348591526,
+      0,
+      -0.044107090681791306
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.01589359999999998,
+      0.00794679999999999
+    ]
+  },
+  {
+    "label": "normal-assets-restored",
+    "at": "2026-09-11T04:33:31.590Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10,
+      3.900000095367432,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.300000190734863,
+      -4
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "menu",
+    "platform": [
+      8,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [
+      {
+        "date": "2026-09-11T04:25:05.284Z",
+        "falls": 2,
+        "time": 32.8324999999996
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 0,
+    "trackModel": true,
+    "velocity": [
+      0,
+      0,
+      0
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0,
+      0
+    ]
+  },
+  {
+    "label": "pause-a",
+    "at": "2026-09-11T04:33:32.754Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10,
+      3.825000047683716,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.561751365661621,
+      -2.364054918289185
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "paused",
+    "platform": [
+      10.861230850219728,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [
+      {
+        "date": "2026-09-11T04:25:05.284Z",
+        "falls": 2,
+        "time": 32.8324999999996
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 0.800100000000005,
+    "trackModel": true,
+    "velocity": [
+      -2.3640735052801213e-18,
+      0,
+      -0.0000025865201678243466
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.006400800000000041,
+      0.0032004000000000203
+    ]
+  },
+  {
+    "label": "pause-b",
+    "at": "2026-09-11T04:42:34.216Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10,
+      3.825000047683716,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.561751365661621,
+      -2.364054918289185
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "paused",
+    "platform": [
+      10.861230850219728,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [
+      {
+        "date": "2026-09-11T04:25:05.284Z",
+        "falls": 2,
+        "time": 32.8324999999996
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 0.800100000000005,
+    "trackModel": true,
+    "velocity": [
+      -2.3640735052801213e-18,
+      0,
+      -0.0000025865201678243466
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.006400800000000041,
+      0.0032004000000000203
+    ]
+  },
+  {
+    "label": "final-ready-for-handoff",
+    "at": "2026-09-11T04:42:36.745Z",
+    "archived": [
+      {
+        "date": "2026-09-11T02:21:15.509Z",
+        "falls": 2,
+        "time": 57.24639999999846
+      }
+    ],
+    "ball": [
+      -10,
+      3.825000047683716,
+      7
+    ],
+    "checkpoint": 0,
+    "falls": 0,
+    "hammer": {
+      "handle": "hammer-handle-toy-round-03.glb",
+      "head": "hammer-head-toy-round-03.glb"
+    },
+    "head": [
+      -5.5,
+      4.498537540435791,
+      -5.240859031677246
+    ],
+    "headCollision": {
+      "axis": 2,
+      "height": 1.36,
+      "radius": 0.45,
+      "type": "capsule"
+    },
+    "headModel": true,
+    "phase": "paused",
+    "platform": [
+      5.995102405548096,
+      3.2200000286102295,
+      -0.3499999940395355
+    ],
+    "rodModel": true,
+    "runs": [
+      {
+        "date": "2026-09-11T04:25:05.284Z",
+        "falls": 2,
+        "time": 32.8324999999996
+      }
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "time": 3.01780000000007,
+    "trackModel": true,
+    "velocity": [
+      -2.9480296978735094e-20,
+      0,
+      -0.000002633372332638828
+    ],
+    "version": "open-hammer",
+    "viewport": [
+      1280,
+      720
+    ],
+    "visuals": {
+      "platform": "platform-refined.glb",
+      "track": "track-round-03.glb"
+    },
+    "waterOffset": [
+      0.02414240000000056,
+      0.01207120000000028
+    ]
+  }
+]
