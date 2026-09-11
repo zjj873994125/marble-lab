@@ -3,10 +3,10 @@ import { computed, nextTick, watch } from 'vue'
 import { Setting, QuestionFilled, VideoPause, RefreshRight, ArrowRight, Close } from '@element-plus/icons-vue'
 import GameCanvas from './components/GameCanvas.vue'
 import SettingsPanel from './components/SettingsPanel.vue'
-import { state, startRun, formatTime, medal } from './state'
-import level from './levels/initial-gravity'
-const hasWater = level.staticObjects.some(object => object.material === 'water')
-const checkpointLabel = level.checkpoints.length === 2 ? '两个' : `${level.checkpoints.length}个`
+import { state, startRun, formatTime, medal, activeLevel } from './state'
+const level = computed(() => activeLevel.value.config)
+const hasWater = computed(() => level.value.staticObjects.some(object => object.material === 'water'))
+const checkpointLabel = computed(() => level.value.checkpoints.length === 2 ? '两个' : `${level.value.checkpoints.length}个`)
 const inGame = computed(() => state.phase !== 'menu')
 watch(inGame, async () => { await nextTick(); window.scrollTo(0, 0) })
 function settings() { if (state.phase === 'playing') state.phase = 'paused'; state.settingsOpen = true }
@@ -15,7 +15,7 @@ watch(() => state.settings.reducedMotion, value => document.documentElement.clas
 
 <template>
   <main class="app-shell" :class="{ 'in-game': inGame, 'water-scene': hasWater }">
-    <GameCanvas />
+    <GameCanvas :key="state.levelId" />
     <header v-if="!inGame" class="topbar">
       <RouterLink to="/" class="brand" aria-label="杰哥让你滚首页"><span class="brand-orbit"><i/></span><span>杰哥让你滚<small>MARBLE LAB</small></span></RouterLink>
       <nav aria-label="主导航"><RouterLink to="/" exact-active-class="active">开始</RouterLink><RouterLink to="/levels" exact-active-class="active">挑战关卡</RouterLink><RouterLink to="/records" exact-active-class="active">我的纪录</RouterLink></nav>
@@ -25,7 +25,7 @@ watch(() => state.settings.reducedMotion, value => document.documentElement.clas
     <template v-else>
       <div class="game-top">
         <div class="game-summary">
-          <div class="course-heading"><span class="course-number">01</span><div>教学关卡<small>到达橙色终点 · 经过{{ checkpointLabel }}检查点</small></div></div>
+          <div class="course-heading"><span class="course-number">{{ activeLevel.number }}</span><div>{{ activeLevel.title }}<small>到达橙色终点 · 经过{{ checkpointLabel }}检查点</small></div></div>
           <div class="timer-panel"><span>本次用时</span><strong>{{ formatTime(state.elapsed) }}</strong><div>检查点 {{ state.checkpoint }} / {{ level.checkpoints.length }} <i/> 掉落 {{ state.falls }} 次</div></div>
         </div>
         <el-button class="pause-button" :icon="VideoPause" @click="state.phase = 'paused'">暂停 <kbd>Esc</kbd></el-button>

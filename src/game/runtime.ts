@@ -4,8 +4,9 @@ import { attachTrackVisuals } from './track-visuals'
 import { attachHammerVisuals, createHammerCapsuleGeometry, createHammerCylinderGeometry } from './hammer-visuals'
 import { createWaterMaterial } from './water-material'
 import { createSteelMaterial } from './steel-material'
-import level from '../levels/initial-gravity'
-import type { PrimitiveConfig, RingConfig } from './level-types'
+import { createModelAssets, attachMovingVisual } from './model-assets'
+import { arcHammerPose, liftPosition, turntablePose } from './mechanism-motion'
+import type { LevelConfig, Position, PrimitiveConfig, RingConfig } from './level-types'
 
 interface Hooks {
   settings: () => Settings; phase: () => Phase
@@ -15,13 +16,14 @@ interface Hooks {
 export interface MarbleGame { start: () => void; setPhase: (phase: Phase) => void; applySettings: () => void; destroy: () => void }
 let physics: Promise<unknown> | undefined
 
-export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks): Promise<MarbleGame> {
+export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level: LevelConfig, signal?: AbortSignal): Promise<MarbleGame> {
   // Ammo 只初始化一次，Vue 页面切换不会重复加载物理模块。
   physics ??= new Promise((resolve, reject) => {
     pc.WasmModule.setConfig('Ammo', { glueUrl: `${import.meta.env.BASE_URL}vendor/ammo.wasm.js`, wasmUrl: `${import.meta.env.BASE_URL}vendor/ammo.wasm.wasm`, errorHandler: reject })
     pc.WasmModule.getInstance('Ammo', resolve)
   }).catch(error => { physics = undefined; throw error })
   await physics
+  if (signal?.aborted) throw new DOMException('关卡已卸载', 'AbortError')
   const app = new pc.Application(canvas, { graphicsDeviceOptions: { antialias: true, alpha: true, powerPreference: 'high-performance' } })
   app.setCanvasFillMode(pc.FILLMODE_NONE)
   app.setCanvasResolution(pc.RESOLUTION_AUTO)
@@ -44,7 +46,7 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks): Promi
   }
   const cream = mat('#fff9e7'), edge = mat('#c9d3ce'), orange = mat('#e77442'), dark = mat('#465d64'), blue = mat('#91b7c3'), floorMat = mat('#dce2d8')
   const steel = createSteelMaterial(app)
-  function primitive(name: string, type: PrimitiveConfig['type'], pos: number[], scale: number[], material: pc.StandardMaterial, body?: 'static' | 'dynamic' | 'kinematic', collisionAxis: 1 | 2 = 1) {
+  function primitive(name: string, type: PrimitiveConfig['type'], pos: number[], scale: number[], material: pc.StandardMaterial, body?: 'static' | 'dynamic' | 'kinematic', collisionAxis: 1 | 2 = 1, rotation: Position = [0,0,0]) {
     const e = new pc.Entity(name)
     if (type === 'capsule' || (type === 'cylinder' && collisionAxis === 2)) {
       const geometry = type === 'capsule' ? createHammerCapsuleGeometry : createHammerCylinderGeometry
@@ -55,7 +57,7 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks): Promi
       e.addComponent('render', { type, material, castShadows: true, receiveShadows: true })
       e.setLocalScale(scale[0]!,scale[1]!,scale[2]!)
     }
-    e.setPosition(pos[0]!,pos[1]!,pos[2]!); app.root.addChild(e)
+    e.setPosition(pos[0]!,pos[1]!,pos[2]!); e.setEulerAngles(...rotation); app.root.addChild(e)
     if (body) {
       // 碰撞形状使用基本几何体，避免把视觉细节带入物理计算。
       if (type === 'sphere') e.addComponent('collision', { type, radius: scale[0]! / 2 })
@@ -82,7 +84,7 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks): Promi
   const palette = { cream, edge, orange, dark, blue, floorMat, water: water?.material ?? floorMat, poolEdge }
   const replaced: pc.RenderComponent[] = []
   function addObject(config: PrimitiveConfig, body: 'static' | 'kinematic' | undefined = config.body) {
-    const entity = primitive(config.name, config.type, config.position, config.size, palette[config.material], body, config.collisionAxis)
+    const entity = primitive(config.name, config.type, config.position, config.size, palette[config.material], body, config.collisionAxis, config.rotation)
     if (config.refinedVisual) replaced.push(entity.render!)
     return entity
   }
@@ -96,8 +98,12 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks): Promi
   addRing('Start ring', level.start.ring, orange)
   addRing('Finish ring', level.finish.ring, orange)
   const pendulumConfig = level.pendulum, platformConfig = level.platform
-  const pendulum = addObject(pendulumConfig.ball, 'kinematic')
-  const rod = addObject(pendulumConfig.rod)
+  const pendulum = pendulumConfig ? addObject(pendulumConfig.ball, 'kinematic') : undefined
+  const rod = pendulumConfig ? addObject(pendulumConfig.rod) : undefined
+  const hammers = (level.hammers ?? []).map(config => ({ config, head: addObject(config.ball, 'kinematic'), rod: addObject(config.rod) }))
+  const lifts = (level.lifts ?? []).map(config => ({ config, entity: addObject(config.body, 'kinematic') }))
+  const turntable = level.turntable ? { config: level.turntable, root: new pc.Entity('Turntable visuals'), parts: level.turntable.parts.map(part => addObject(part, 'kinematic')) } : undefined
+  if (turntable) app.root.addChild(turntable.root)
   const platform = addObject(platformConfig.body, 'kinematic')
   const platformStripe = addObject(platformConfig.stripe)
   replaced.push(platform.render!)
@@ -108,8 +114,16 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks): Promi
   const rigid = ball.rigidbody!
   const ammoBody = rigid.body as { setCcdMotionThreshold?: (v:number)=>void; setCcdSweptSphereRadius?: (v:number)=>void }
   ammoBody.setCcdMotionThreshold?.(.15); ammoBody.setCcdSweptSphereRadius?.(.3)
-  const disposeTrackVisuals = await attachTrackVisuals(app, platform, level.visuals, replaced)
-  const disposeHammerVisuals = await attachHammerVisuals(app, pendulum, rod, pendulumConfig.visuals)
+  const modelAssets = createModelAssets(app, signal)
+  const visualDisposers = await Promise.all([
+    attachTrackVisuals(app, platform, level.visuals, replaced, modelAssets.load),
+    ...(pendulum && rod ? [attachHammerVisuals(app, pendulum, rod, pendulumConfig!.visuals, modelAssets.load)] : []),
+    ...hammers.map(hammer => attachHammerVisuals(app, hammer.head, hammer.rod, hammer.config.visuals, modelAssets.load)),
+    ...lifts.map(lift => attachMovingVisual(modelAssets.load, lift.config.visual, lift.entity, [lift.entity.render!])),
+    ...(turntable ? [attachMovingVisual(modelAssets.load, turntable.config.visual, turntable.root, turntable.parts.map(part => part.render!))] : []),
+  ])
+  function disposeScene() { visualDisposers.forEach(dispose => dispose()); modelAssets.destroy(); water?.destroy(); steel.destroy(); app.destroy(); materials.forEach(m=>m.destroy()); meshes.forEach(m=>m.destroy()) }
+  if (signal?.aborted) { disposeScene(); throw new DOMException('关卡已卸载', 'AbortError') }
 
   let audio: AudioContext | undefined
   function tone(frequency: number, duration = .09) {
@@ -126,12 +140,25 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks): Promi
   const pos = new pc.Vec3(), cameraTarget = new pc.Vec3(), cameraPosition = new pc.Vec3()
   const initial = new pc.Vec3(...level.start.position)
   function updateMechanisms() {
+    if (pendulumConfig && pendulum && rod) {
       const px=Math.sin(time*pendulumConfig.angularSpeed)*pendulumConfig.amplitude
       pendulum.setPosition(pendulumConfig.ball.position[0],pendulumConfig.ball.position[1]+Math.abs(px)*pendulumConfig.lift,pendulumConfig.ball.position[2]+px)
       const a = new pc.Vec3(...pendulumConfig.anchor), b=pendulum.getPosition()
       rod.setPosition(new pc.Vec3().lerp(a,b,.5)); rod.setLocalScale(pendulumConfig.rodWidth,a.distance(b),pendulumConfig.rodWidth)
       const direction = (level.rulesVersion ?? 'classic') !== 'classic' ? new pc.Vec3().sub2(a,b).normalize() : new pc.Vec3().sub2(b,a).normalize(); const rotation = new pc.Quat().setFromDirections(pc.Vec3.UP,direction); rod.setRotation(rotation)
       if ((level.rulesVersion ?? 'classic') !== 'classic') pendulum.setRotation(rotation)
+    }
+      hammers.forEach(({ config, head, rod }) => {
+        const pose = arcHammerPose(config, time)
+        head.setPosition(...pose.head); head.setEulerAngles(...pose.rotation)
+        rod.setPosition(...pose.rod); rod.setEulerAngles(...pose.rotation); rod.setLocalScale(config.rodWidth, config.rodLength, config.rodWidth)
+      })
+      lifts.forEach(({ config, entity }) => entity.setPosition(...liftPosition(config, time)))
+      if (turntable) {
+        const pose = turntablePose(turntable.config, time)
+        turntable.root.setPosition(...turntable.config.position); turntable.root.setEulerAngles(...pose.rotation)
+        turntable.parts.forEach((part, index) => { part.setPosition(...pose.parts[index]!); part.setEulerAngles(...pose.rotation) })
+      }
       const offset = Math.sin(time*platformConfig.angularSpeed)*platformConfig.amplitude
       const xPlatform = platformConfig.axis === 'x' ? (platformConfig.centerX ?? platformConfig.body.position[0]) + offset : platformConfig.body.position[0]
       const zPlatform = platformConfig.axis === 'x' ? platformConfig.centerZ : platformConfig.centerZ + offset
@@ -189,7 +216,7 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks): Promi
         checkpointRings[checkpoint]!.render!.meshInstances.forEach(m=>m.material=orange); checkpoint++; tone(650+checkpoint*140,.18)
       }
       const segment=level.progress[checkpoint]!
-      const progress=segment.base+Math.max(0,Math.min(segment.max,(pos.z-segment.originZ)*segment.direction/segment.divisor))
+      const progress=segment.base+Math.max(0,Math.min(segment.max,((segment.axis === 'x' ? pos.x : pos.z)-(segment.origin ?? segment.originZ))*segment.direction/segment.divisor))
       hooks.tick(elapsed,falls,checkpoint,progress)
       if(checkpoint===checkpoints.length && Math.hypot(pos.x-level.finish.position[0],pos.z-level.finish.position[2])<level.finish.radius && Math.abs(pos.y-level.finish.position[1])<level.finish.heightTolerance) { hooks.tick(elapsed,falls,checkpoint,1); tone(1100,.35); hooks.finish(); app.timeScale=0; keys.clear() }
     }
@@ -205,5 +232,5 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks): Promi
     }
   })
   app.start()
-  return { start,setPhase,applySettings,destroy() { observer.disconnect(); window.removeEventListener('keydown',down); window.removeEventListener('keyup',up); window.removeEventListener('blur',blur); document.removeEventListener('visibilitychange',hidden); void audio?.close(); disposeHammerVisuals(); disposeTrackVisuals(); water?.destroy(); steel.destroy(); app.destroy(); materials.forEach(m=>m.destroy()); meshes.forEach(m=>m.destroy()) } }
+  return { start,setPhase,applySettings,destroy() { observer.disconnect(); window.removeEventListener('keydown',down); window.removeEventListener('keyup',up); window.removeEventListener('blur',blur); document.removeEventListener('visibilitychange',hidden); void audio?.close(); disposeScene() } }
 }

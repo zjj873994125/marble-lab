@@ -1,7 +1,7 @@
 // 由代码对话维护格式；关卡对话只填写 src/levels 下的数据。
 export type Position = [number, number, number]
 export type MaterialName = 'cream' | 'edge' | 'orange' | 'dark' | 'blue' | 'floorMat' | 'water' | 'poolEdge'
-export type RulesVersion = 'classic' | 'open-hammer' | 'flat-hammer'
+export type RulesVersion = 'classic' | 'open-hammer' | 'flat-hammer' | 'standard'
 
 export interface PrimitiveConfig {
   name: string
@@ -11,12 +11,39 @@ export interface PrimitiveConfig {
   material: MaterialName
   body?: 'static'
   collisionAxis?: 1 | 2
+  rotation?: Position
   refinedVisual?: boolean
 }
 
 export interface RingConfig { position: Position; radius: number }
 export interface TrackVisualsConfig { track: string; platform: string }
 export interface HammerVisualsConfig { head: string; handle: string }
+
+export interface ArcHammerConfig {
+  ball: PrimitiveConfig
+  rod: PrimitiveConfig
+  visuals?: HammerVisualsConfig | null
+  anchor: Position
+  rodLength: number
+  maxAngle: number
+  angularSpeed: number
+  phase: number
+  rodWidth: number
+}
+export interface LiftConfig {
+  body: PrimitiveConfig
+  amplitude: number
+  angularSpeed: number
+  phase: number
+  visual?: string
+}
+export interface TurntableConfig {
+  position: Position
+  parts: PrimitiveConfig[]
+  angularSpeed: number
+  phase: number
+  visual?: string
+}
 
 export interface LevelConfig {
   id: string
@@ -29,7 +56,7 @@ export interface LevelConfig {
   checkpointTrigger: { radius: number; heightTolerance: number }
   finish: { position: Position; radius: number; heightTolerance: number; ring: RingConfig }
   fallY: number
-  pendulum: {
+  pendulum?: {
     visuals?: HammerVisualsConfig | null
     ball: PrimitiveConfig
     rod: PrimitiveConfig
@@ -39,6 +66,9 @@ export interface LevelConfig {
     lift: number
     rodWidth: number
   }
+  hammers?: ArcHammerConfig[]
+  lifts?: LiftConfig[]
+  turntable?: TurntableConfig
   platform: {
     axis?: 'x' | 'z'
     centerX?: number
@@ -50,5 +80,5 @@ export interface LevelConfig {
     stripeY: number
   }
   // 第 n 段对应已通过 n 个检查点；沿 Z 轴估算进度，保留当前赛道的计算方式。
-  progress: { originZ: number; direction: number; divisor: number; base: number; max: number }[]
+  progress: { axis?: 'x' | 'z'; origin?: number; originZ: number; direction: number; divisor: number; base: number; max: number }[]
 }

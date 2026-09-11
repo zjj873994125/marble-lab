@@ -1,0 +1,1069 @@
+[
+  {
+    "b": [
+      -10,
+      3.825000047683716,
+      6.8427276611328125
+    ],
+    "cp": 0,
+    "dialogs": [
+      {
+        "bottom": 531.1364288330078,
+        "height": 380.390625,
+        "left": 430,
+        "right": 850,
+        "top": 150.7458038330078,
+        "width": 420,
+        "x": 430,
+        "y": 150.7458038330078
+      }
+    ],
+    "falls": 0,
+    "label": "motion-0",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 0.23029999999993012,
+    "v": [
+      -2.559155198866847e-8,
+      0,
+      -1.5527931451797483
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.825000047683716,
+      6.364901542663574
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-1",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 0.4295999999999768,
+    "v": [
+      -5.186603857509908e-7,
+      0,
+      -3.2014780044555664
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.825000047683716,
+      5.531896114349365
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-2",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 0.6355999999999769,
+    "v": [
+      -0.0000022306271603156347,
+      0,
+      -4.8703932762146
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.825000047683716,
+      4.551249027252197
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-3",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 0.8120999999999767,
+    "v": [
+      -0.0000032893156003410695,
+      0.000014066696166992188,
+      -6.23539400100708
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.825000286102295,
+      3.698166608810425
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-4",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 1.0053999999999068,
+    "v": [
+      -0.000002148438625226845,
+      0.000018149614334106445,
+      -2.469058036804199
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.825000047683716,
+      3.341329574584961
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-5",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 1.2362999999999305,
+    "v": [
+      -0.0000011037632248189766,
+      0.0000027418136596679688,
+      -0.7723245024681091
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.8249998092651367,
+      3.2471120357513428
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-6",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 1.412,
+    "v": [
+      -5.229653083915764e-7,
+      0.000006943941116333008,
+      -0.31620022654533386
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.8249998092651367,
+      3.2041373252868652
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-7",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 1.624099999999977,
+    "v": [
+      3.995082309415921e-8,
+      0.000005781650543212891,
+      -0.10735229402780531
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.8249998092651367,
+      3.1913013458251953
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-8",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 1.7938999999999066,
+    "v": [
+      1.3177973379185914e-8,
+      0.0000054836273193359375,
+      -0.04522816091775894
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.8249998092651367,
+      3.1852285861968994
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-9",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 1.9998999999999063,
+    "v": [
+      -4.019492791940138e-7,
+      0.000005707144737243652,
+      -0.01586252637207508
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.8249998092651367,
+      3.1834235191345215
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-10",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 2.1574999999999993,
+    "v": [
+      -2.2162426205341037e-7,
+      0.000005736947059631348,
+      -0.007114163134247065
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.8249998092651367,
+      3.2697057723999023
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-11",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 2.3211999999999526,
+    "v": [
+      -8.90469948444661e-7,
+      0.000013113021850585938,
+      1.1966910362243652
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.825000047683716,
+      3.5638279914855957
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-12",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 2.4786999999999524,
+    "v": [
+      -0.0000016890911638256512,
+      -0.000011295080184936523,
+      2.5138416290283203
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.825000047683716,
+      4.229439735412598
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-13",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 2.6783999999999057,
+    "v": [
+      -2.2274339528394194e-7,
+      0.000004678964614868164,
+      4.13541316986084
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.825000047683716,
+      4.745453834533691
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-14",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 2.8416999999999524,
+    "v": [
+      3.861069330923783e-7,
+      -0.0000045746564865112305,
+      1.9596850872039795
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.825000047683716,
+      4.969064235687256
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-15",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 2.9998999999999048,
+    "v": [
+      -6.378923700367524e-8,
+      -0.0000010132789611816406,
+      0.876180112361908
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.825000047683716,
+      5.084214687347412
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-16",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 3.1992999999999268,
+    "v": [
+      -5.424962523647991e-7,
+      -7.450580596923828e-7,
+      0.3171638548374176
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.825000047683716,
+      5.1260504722595215
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-17",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 3.399299999999925,
+    "v": [
+      -2.0190442739931314e-7,
+      0,
+      0.11470065265893936
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.825000047683716,
+      5.1414265632629395
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-18",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 3.605799999999923,
+    "v": [
+      -5.717840778629579e-8,
+      4.4703483581542975e-8,
+      0.03960983827710152
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.825000047683716,
+      5.14687967300415
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-19",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 3.817499999999992,
+    "v": [
+      -2.446174640624577e-8,
+      0,
+      0.013650750741362572
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.825000047683716,
+      5.148614406585693
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-20",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 4.005799999999922,
+    "v": [
+      -2.027196366327644e-8,
+      0,
+      0.00519003439694643
+    ]
+  },
+  {
+    "b": [
+      -10,
+      3.825000047683716,
+      5.149313449859619
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-21",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 4.211899999999899,
+    "v": [
+      5.133494740405807e-10,
+      0,
+      0.00178761372808367
+    ]
+  },
+  {
+    "b": [
+      -9.815815925598145,
+      3.825000047683716,
+      5.149707317352295
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-22",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 4.436199999999949,
+    "v": [
+      1.7616524696350098,
+      0,
+      0.0017243882175534964
+    ]
+  },
+  {
+    "b": [
+      -9.359210968017578,
+      3.825000047683716,
+      5.150017261505127
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-23",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 4.6179999999999986,
+    "v": [
+      3.2692575454711914,
+      -0.0000073462724685668945,
+      0.0016788903158158064
+    ]
+  },
+  {
+    "b": [
+      -8.898538589477539,
+      3.8276305198669434,
+      5.1502461433410645
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-24",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 4.817399999999906,
+    "v": [
+      0.24139052629470825,
+      0.5627391338348389,
+      0.0005430885939858854
+    ]
+  },
+  {
+    "b": [
+      -8.90718936920166,
+      3.825000047683716,
+      5.150370121002197
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-25",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 4.999799999999932,
+    "v": [
+      -0.07057415693998337,
+      0,
+      -0.00012640398927032948
+    ]
+  },
+  {
+    "b": [
+      -8.916062355041504,
+      3.825000047683716,
+      5.150461196899414
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-26",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 5.217500000000007,
+    "v": [
+      -0.020263999700546265,
+      0,
+      0.0002094982919516042
+    ]
+  },
+  {
+    "b": [
+      -8.918776512145996,
+      3.825000047683716,
+      5.150489330291748
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-27",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 5.423699999999963,
+    "v": [
+      -0.007010253611952066,
+      0,
+      0.00007156962965382263
+    ]
+  },
+  {
+    "b": [
+      -8.91985034942627,
+      3.825000047683716,
+      5.15049934387207
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-28",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 5.684500000000014,
+    "v": [
+      -0.0018819121178239584,
+      0,
+      0.000014823818673903588
+    ]
+  },
+  {
+    "b": [
+      -8.92008113861084,
+      3.825000047683716,
+      5.15049934387207
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-29",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 5.86019999999997,
+    "v": [
+      -0.0007699920097365975,
+      0,
+      0.000004274050297681242
+    ]
+  },
+  {
+    "b": [
+      -8.920169830322266,
+      3.825000047683716,
+      5.15049934387207
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-30",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 6.0240999999999945,
+    "v": [
+      -0.00033385897404514253,
+      0,
+      0.0000013886700571674735
+    ]
+  },
+  {
+    "b": [
+      -8.920208930969238,
+      3.825000047683716,
+      5.15049934387207
+    ],
+    "cp": 0,
+    "dialogs": [],
+    "falls": 0,
+    "label": "motion-31",
+    "phase": "playing",
+    "ready": true,
+    "scroll": [
+      1280,
+      720
+    ],
+    "settings": {
+      "quality": "high",
+      "reducedMotion": false,
+      "sensitivity": 1,
+      "volume": 45
+    },
+    "size": [
+      1280,
+      720
+    ],
+    "t": 6.1870999999999965,
+    "v": [
+      -0.00014601901057176292,
+      0,
+      5.466612265081494e-7
+    ]
+  }
+]

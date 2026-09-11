@@ -22,7 +22,7 @@ export function createHammerCylinderGeometry(size: Position) {
 }
 
 // 锤头和柄必须一起就绪，避免半个模型与基础几何叠在一起。
-export async function attachHammerVisuals(app: pc.Application, head: pc.Entity, rod: pc.Entity, config?: HammerVisualsConfig | null): Promise<() => void> {
+export async function attachHammerVisuals(app: pc.Application, head: pc.Entity, rod: pc.Entity, config?: HammerVisualsConfig | null, sharedLoad?: (file: string) => Promise<pc.Asset>): Promise<() => void> {
   if (!config) return () => {}
   const assets: pc.Asset[] = []
   const instances: pc.Entity[] = []
@@ -31,12 +31,12 @@ export async function attachHammerVisuals(app: pc.Application, head: pc.Entity, 
     head.render!.enabled = true; rod.render!.enabled = true
     assets.forEach(asset => { asset.unload(); app.assets.remove(asset) })
   }
-  const load = (file: string) => new Promise<pc.Asset>((resolve, reject) => {
+  const load = sharedLoad ?? ((file: string) => new Promise<pc.Asset>((resolve, reject) => {
     app.assets.loadFromUrl(`${import.meta.env.BASE_URL}models/${file}`, 'container', (error, asset) => {
       if (error || !asset) { reject(new Error(String(error || `缺少模型 ${file}`))); return }
       assets.push(asset); resolve(asset)
     })
-  })
+  }))
   try {
     const headAsset = await load(config.head), rodAsset = await load(config.handle)
     const headVisual = (headAsset.resource as pc.ContainerResource).instantiateRenderEntity()

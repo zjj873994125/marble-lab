@@ -1,7 +1,7 @@
 {
-  "blend_sha256": "dfe976274db9259dd5c636e627ba49dcc461d9f3e05ba388266a1645cd84cd25",
-  "layout_sha256": "626307ecf24f077532570286358cc183a5cfbe09d1152fa68d3d8d88e5e4d25e",
-  "contract_sha256": "3394e72ba5299b42bbee92fa0cfc3ff7aef1da0157d873754d2aa3999bc9a109",
+  "blend_sha256": "1bf0bad811f998ac50e11da38712989a56aee93571440323fff641fabb48755d",
+  "layout_sha256": "180d7ca0dafda9057fe043a429b7c0a0ac39832cb79cf66110e1adbff73d2855",
+  "contract_sha256": "38dfbf5f8bdd81debee38c785078d75b2952041884b4945d5293099eceeac49b",
   "stage": "Assets from design handoff; runtime implementation and physics playtest pending",
   "units": "meters",
   "coordinates": "glTF Y-up; Blender (x,-z,y)",
@@ -11,9 +11,9 @@
     {
       "file": "water-rush-track.glb",
       "node": "TrackStatic",
-      "sha256": "c62a3f649d15fb73062918a5e0a2fae372eaa4cacb2e422221598934217738e6",
-      "bytes": 1611376,
-      "triangles": 70293,
+      "sha256": "cadc68dfb2fc18009458f8219f70925312fb61b85ba2f6e80366a6113f161589",
+      "bytes": 1610872,
+      "triangles": 70313,
       "materials": 5,
       "bounds_min": [
         -32.040000915527344,
@@ -34,9 +34,9 @@
     {
       "file": "water-rush-turntable.glb",
       "node": "TurntableVisual",
-      "sha256": "57e92a3a73f3116f241f6b85cbd0ccb5be45ed99064a92f29f7edc1c975081d6",
-      "bytes": 58380,
-      "triangles": 3296,
+      "sha256": "edb71c6e97280f1236d776168e7a428d8697400d88abd90881397a74812fd4d9",
+      "bytes": 60360,
+      "triangles": 1764,
       "materials": 4,
       "bounds_min": [
         -4,
@@ -45,19 +45,19 @@
       ],
       "bounds_max": [
         4,
-        0.529999852180481,
+        0.25399985909461975,
         4
       ],
       "dimensions_xyz_m": [
         8,
-        0.7799999117851257,
+        0.5039999186992645,
         8
       ]
     },
     {
       "file": "water-rush-lift.glb",
       "node": "LiftVisual",
-      "sha256": "fe172c7a04c000175407c24d3696b783b07c610606900a338b1b1fe67dd70aae",
+      "sha256": "cbc2c00b323692f3e51013d5c4d16e6fb3408a0beec2c996ec7b63200ed254e5",
       "bytes": 20744,
       "triangles": 968,
       "materials": 4,
@@ -83,6 +83,12 @@
     3.15,
     10
   ],
+  "cross_geometry": {
+    "span": 8,
+    "armWidth": 1.8,
+    "thickness": 0.5
+  },
+  "ports_forced_to_centerline": true,
   "lift_centers": [
     [
       8,
@@ -118,8 +124,8 @@
     "public/models/hammer-handle-toy-round-03.glb": "3ec0b73b02fc079c6657165da3dc935195964a006caeaf7278427c11745bb5ad"
   },
   "preview_note": "Lifts manually posed at alternating extremes for display only; no gameplay animation exported",
-  "input_blend_sha256": "f2123cb6721a1ef80a85342a5948f64513dee787f3acf31fec13ca46065df89e",
-  "preexisting_object_count": 398,
+  "input_blend_sha256": "1f5a8e91354938efe94ef3259a5f8a85d48ac5e743d0eee19a20c44d4f4704fb",
+  "preexisting_object_count": 416,
   "material_values_preserved": true,
   "hammers": [
     {
@@ -985,5 +991,10 @@
     "Runtime and level selection implementation",
     "Final LevelConfig mapping/freeze",
     "Real contact and full route playtest"
-  ]
+  ],
+  "build_layout_sha256": "b308f1fa981181a34b205525a4fe6be905d7f7908f1ca9dcf2e0d568e366cc00",
+  "latest_layout_geometry_verified": true,
+  "central_support_radius": 0.5240048834639411,
+  "central_support_top_y": 2.8400001525878906,
+  "controller_max_position_error": 0.0
 }

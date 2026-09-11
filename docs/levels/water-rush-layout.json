@@ -79,13 +79,13 @@
       "id": "turntable-entry-tongue",
       "bodyCenter": [
         -6,
-        3.2199999999999998,
-        14.65
+        3.22,
+        14.725
       ],
       "bodySize": [
         1.6,
         0.36,
-        1
+        0.85
       ],
       "topY": 3.4,
       "collision": true,
@@ -95,13 +95,13 @@
       "id": "turntable-exit-tongue",
       "bodyCenter": [
         -6,
-        3.2199999999999998,
-        5.35
+        3.22,
+        5.275
       ],
       "bodySize": [
         1.6,
         0.36,
-        1
+        0.85
       ],
       "topY": 3.4,
       "collision": true,
@@ -549,53 +549,485 @@
     "heightTolerance": 1
   },
   "turntable": {
+    "id": "rotating-cross",
     "bodyCenter": [
       -6,
       3.15,
       10
     ],
-    "radius": 4,
+    "bodyShape": "non-overlapping hub plus four arm box union",
+    "span": 8,
+    "armWidth": 1.8,
     "thickness": 0.5,
     "rotationAxis": "Y",
     "angularSpeed": 0.55,
     "phase": 0,
-    "visualAsset": "water-rush-turntable.glb",
-    "bodyShape": "closed Y cylinder",
-    "coMovingBar": {
-      "localCenter": [
-        2.1,
-        0.39,
-        0
+    "runtimeSupported": false,
+    "collisionParts": [
+      {
+        "id": "hub",
+        "localCenter": [
+          0,
+          0,
+          0
+        ],
+        "bodySize": [
+          1.8,
+          0.5,
+          1.8
+        ],
+        "shape": "box"
+      },
+      {
+        "id": "arm-positive-z",
+        "localCenter": [
+          0,
+          0,
+          2.45
+        ],
+        "bodySize": [
+          1.8,
+          0.5,
+          3.1
+        ],
+        "shape": "box"
+      },
+      {
+        "id": "arm-negative-z",
+        "localCenter": [
+          0,
+          0,
+          -2.45
+        ],
+        "bodySize": [
+          1.8,
+          0.5,
+          3.1
+        ],
+        "shape": "box"
+      },
+      {
+        "id": "arm-positive-x",
+        "localCenter": [
+          2.45,
+          0,
+          0
+        ],
+        "bodySize": [
+          3.1,
+          0.5,
+          1.8
+        ],
+        "shape": "box"
+      },
+      {
+        "id": "arm-negative-x",
+        "localCenter": [
+          -2.45,
+          0,
+          0
+        ],
+        "bodySize": [
+          3.1,
+          0.5,
+          1.8
+        ],
+        "shape": "box"
+      }
+    ],
+    "walkingOutlineLocalXZ": [
+      [
+        -0.9,
+        -4
       ],
-      "bodySize": [
-        1.8,
-        0.28,
-        0.22
+      [
+        0.9,
+        -4
       ],
-      "collision": true,
-      "radialExtent": [
-        1.2,
-        3
+      [
+        0.9,
+        -0.9
+      ],
+      [
+        4,
+        -0.9
+      ],
+      [
+        4,
+        0.9
+      ],
+      [
+        0.9,
+        0.9
+      ],
+      [
+        0.9,
+        4
+      ],
+      [
+        -0.9,
+        4
+      ],
+      [
+        -0.9,
+        0.9
+      ],
+      [
+        -4,
+        0.9
+      ],
+      [
+        -4,
+        -0.9
+      ],
+      [
+        -0.9,
+        -0.9
       ]
-    },
-    "centralWaitingRadius": 0.65,
+    ],
+    "visualAsset": "water-rush-turntable.glb",
+    "rootNode": "TurntableVisual",
+    "topY": 3.4,
+    "topArea": 25.56,
+    "outerCornerRadius": 4.1,
+    "visualOuterRadiusLimit": 4.15,
+    "visualVerticalBounds": [
+      2.9,
+      3.42
+    ],
+    "supportTopMaxY": 2.84,
+    "centralSupportMaxRadius": 0.55,
+    "visualLayerNote": "Every layer follows the cross cutouts. Keep all moving geometry above Y2.90 and within radius4.15; no round under-deck or full-square slab. A .36 top plus .14 base fits the .50 body.",
     "reservedSweepBounds": {
       "min": [
-        -10,
+        -10.15,
         2.9,
-        6
+        5.85
       ],
       "max": [
-        -2,
-        3.68,
-        14
+        -1.85,
+        3.42,
+        14.15
       ]
     },
-    "entryExitTongueGapAtCenter": 0.15,
-    "entryExitTongueMaxGap": 0.23081641154691557,
-    "supportTopMaxY": 2.84,
-    "centralAreaNote": "Radius 0.65 excludes bar contact for a centered ball, but it is not a fixed safe island; rotation contact still requires player control and testing.",
-    "travelDirection": "-Z"
+    "voidProbesLocal": [
+      [
+        -2,
+        0.25,
+        -2
+      ],
+      [
+        2,
+        0.25,
+        -2
+      ],
+      [
+        -2,
+        0.25,
+        2
+      ],
+      [
+        2,
+        0.25,
+        2
+      ]
+    ],
+    "noCornerSupport": true,
+    "noCoMovingBarrier": true,
+    "centerHubNote": "Hub width equals arm width1.8; do not enlarge into a waiting island. Center/arm switching may remain a skilled route, not forbidden by a hidden timer.",
+    "ports": {
+      "entry": {
+        "tongueId": "turntable-entry-tongue",
+        "mouthCenter": [
+          -6,
+          3.4,
+          14.3
+        ],
+        "tongueWidth": 1.6,
+        "tongueLength": 0.85,
+        "referenceYaw": 0
+      },
+      "exit": {
+        "tongueId": "turntable-exit-tongue",
+        "mouthCenter": [
+          -6,
+          3.4,
+          5.7
+        ],
+        "tongueWidth": 1.6,
+        "tongueLength": 0.85,
+        "referenceYaw": 3.141592653589793
+      },
+      "facingEdgeDistanceFromCenterZ": 4.3,
+      "offsetXEach": 0,
+      "bodyToTongueSweepClearanceLowerBound": 0.20000000000000018,
+      "visualToTongueCollisionClearanceLowerBound": 0.14999999999999947,
+      "visualToExpandedStaticBaseClearanceLowerBound": 0.10999999999999943,
+      "nominalArmTipToMouthCenterGap": 0.3,
+      "projectedEntryAngleRangeRadians": [
+        -0.09388787510751649,
+        0.09388787510751649
+      ],
+      "projectedEntryAngleRangeDegrees": [
+        -5.379378991112075,
+        5.379378991112075
+      ],
+      "projectedExitAngleRangeRadians": [
+        3.047704778482277,
+        3.2354805286973094
+      ],
+      "projectedWindowSeconds": 0.3414104549364236,
+      "windowDefinition": "Centered ports: necessary projection band where a radius .425 rider following arm center at radius4 (and inner radius3.5) fits the fixed 1.6m tongue. Contact across the .3m gap still needs physical validation; not a hidden gate.",
+      "alignmentRepeatsEveryRadians": 1.5707963267948966,
+      "alignmentRepeatsEverySeconds": 2.855993321445266
+    },
+    "carryReference": {
+      "arm": "arm-positive-z (other arms equivalent)",
+      "localRiderCenter": [
+        0,
+        0.675,
+        3.2
+      ],
+      "entryYaw": 0,
+      "exitYaw": 3.141592653589793,
+      "halfTurnSeconds": 5.711986642890532,
+      "localLateralMarginAfterBallRadius": 0.475,
+      "localTipMarginAfterBallRadius": 0.375,
+      "worldSurfaceWaypoints": [
+        [
+          -6,
+          3.4,
+          13.2
+        ],
+        [
+          -5.721101623207494,
+          3.4,
+          13.187823033893586
+        ],
+        [
+          -5.444325831465823,
+          3.4,
+          13.151384809639065
+        ],
+        [
+          -5.171779055671934,
+          3.4,
+          13.09096264412502
+        ],
+        [
+          -4.90553554135786,
+          3.4,
+          13.007016386514907
+        ],
+        [
+          -4.647621562429761,
+          3.4,
+          12.90018491851728
+        ],
+        [
+          -4.4,
+          3.4,
+          12.771281292110205
+        ],
+        [
+          -4.164555403676653,
+          3.4,
+          12.621286541724775
+        ],
+        [
+          -3.9430796490030744,
+          3.4,
+          12.45134221798073
+        ],
+        [
+          -3.737258300203048,
+          3.4,
+          12.262741699796953
+        ],
+        [
+          -3.54865778201927,
+          3.4,
+          12.056920350996926
+        ],
+        [
+          -3.3787134582752265,
+          3.4,
+          11.835444596323349
+        ],
+        [
+          -3.2287187078897963,
+          3.4,
+          11.600000000000001
+        ],
+        [
+          -3.09981508148272,
+          3.4,
+          11.352378437570238
+        ],
+        [
+          -2.992983613485093,
+          3.4,
+          11.09446445864214
+        ],
+        [
+          -2.9090373558749816,
+          3.4,
+          10.828220944328066
+        ],
+        [
+          -2.8486151903609342,
+          3.4,
+          10.555674168534177
+        ],
+        [
+          -2.812176966106414,
+          3.4,
+          10.278898376792506
+        ],
+        [
+          -2.8,
+          3.4,
+          10
+        ],
+        [
+          -2.812176966106414,
+          3.4,
+          9.721101623207494
+        ],
+        [
+          -2.8486151903609342,
+          3.4,
+          9.444325831465823
+        ],
+        [
+          -2.909037355874981,
+          3.4,
+          9.171779055671934
+        ],
+        [
+          -2.9929836134850927,
+          3.4,
+          8.90553554135786
+        ],
+        [
+          -3.0998150814827197,
+          3.4,
+          8.647621562429762
+        ],
+        [
+          -3.228718707889796,
+          3.4,
+          8.4
+        ],
+        [
+          -3.3787134582752265,
+          3.4,
+          8.164555403676651
+        ],
+        [
+          -3.54865778201927,
+          3.4,
+          7.943079649003074
+        ],
+        [
+          -3.7372583002030475,
+          3.4,
+          7.737258300203048
+        ],
+        [
+          -3.9430796490030735,
+          3.4,
+          7.548657782019271
+        ],
+        [
+          -4.164555403676653,
+          3.4,
+          7.378713458275225
+        ],
+        [
+          -4.399999999999999,
+          3.4,
+          7.228718707889797
+        ],
+        [
+          -4.647621562429761,
+          3.4,
+          7.099815081482721
+        ],
+        [
+          -4.905535541357859,
+          3.4,
+          6.992983613485093
+        ],
+        [
+          -5.171779055671934,
+          3.4,
+          6.909037355874981
+        ],
+        [
+          -5.444325831465823,
+          3.4,
+          6.848615190360935
+        ],
+        [
+          -5.721101623207494,
+          3.4,
+          6.8121769661064135
+        ],
+        [
+          -6,
+          3.4,
+          6.8
+        ]
+      ],
+      "exactArcLength": 10.053096491487338,
+      "routeMeaning": "Points at successive times on one moving arm, not a fixed arc walkway. Geometry does not force this route; skilled active arm switching can be allowed.",
+      "noPlayerAttachment": true
+    },
+    "phaseSnapshots": [
+      {
+        "id": "entry-alignment",
+        "yawRadians": 0,
+        "yawDegrees": 0,
+        "highlightArm": "arm-positive-z",
+        "riderReferenceCenter": [
+          -6,
+          3.825,
+          13.2
+        ]
+      },
+      {
+        "id": "open-corners-45-degrees",
+        "yawRadians": 0.7853981633974483,
+        "yawDegrees": 45,
+        "highlightArm": "arm-positive-z",
+        "riderReferenceCenter": [
+          -3.737258300203048,
+          3.825,
+          12.262741699796953
+        ]
+      },
+      {
+        "id": "same-arm-exit",
+        "yawRadians": 3.141592653589793,
+        "yawDegrees": 180,
+        "highlightArm": "arm-positive-z",
+        "riderReferenceCenter": [
+          -6,
+          3.825,
+          6.8
+        ]
+      }
+    ],
+    "futureImplementation": "One kinematic compound made of five box children, or rigorously synchronized kinematic parts with flush seams. No cylinder, encompassing box, or convex hull that fills corners. Native contact, pose/velocity and player control require CODE implementation.",
+    "replaces": "Old closed Y cylinder, radius-only sweep, coMovingBar, enlarged central waiting area and circular rim seam formulas.",
+    "routeAssessment": {
+      "portsCentered": true,
+      "primary": "wait for aligned arm, board, control while rotating, leave at opposite aligned port",
+      "centerSwitchingSkillRouteAllowed": true,
+      "noHiddenMinimumWait": true,
+      "note": "Do not offset ports to prevent skilled fast passage. Record center-switch shortcuts as techniques if physically valid; actual carried contact and corner falls still require tests."
+    }
   },
   "lifts": {
     "visualAsset": "water-rush-lift.glb",
@@ -789,17 +1221,197 @@
     [
       -6,
       3.4,
-      14.15
+      14.3
     ],
     [
       -6,
+      3.4,
+      13.2
+    ],
+    [
+      -5.721101623207494,
+      3.4,
+      13.187823033893586
+    ],
+    [
+      -5.444325831465823,
+      3.4,
+      13.151384809639065
+    ],
+    [
+      -5.171779055671934,
+      3.4,
+      13.09096264412502
+    ],
+    [
+      -4.90553554135786,
+      3.4,
+      13.007016386514907
+    ],
+    [
+      -4.647621562429761,
+      3.4,
+      12.90018491851728
+    ],
+    [
+      -4.4,
+      3.4,
+      12.771281292110205
+    ],
+    [
+      -4.164555403676653,
+      3.4,
+      12.621286541724775
+    ],
+    [
+      -3.9430796490030744,
+      3.4,
+      12.45134221798073
+    ],
+    [
+      -3.737258300203048,
+      3.4,
+      12.262741699796953
+    ],
+    [
+      -3.54865778201927,
+      3.4,
+      12.056920350996926
+    ],
+    [
+      -3.3787134582752265,
+      3.4,
+      11.835444596323349
+    ],
+    [
+      -3.2287187078897963,
+      3.4,
+      11.600000000000001
+    ],
+    [
+      -3.09981508148272,
+      3.4,
+      11.352378437570238
+    ],
+    [
+      -2.992983613485093,
+      3.4,
+      11.09446445864214
+    ],
+    [
+      -2.9090373558749816,
+      3.4,
+      10.828220944328066
+    ],
+    [
+      -2.8486151903609342,
+      3.4,
+      10.555674168534177
+    ],
+    [
+      -2.812176966106414,
+      3.4,
+      10.278898376792506
+    ],
+    [
+      -2.8,
       3.4,
       10
     ],
     [
+      -2.812176966106414,
+      3.4,
+      9.721101623207494
+    ],
+    [
+      -2.8486151903609342,
+      3.4,
+      9.444325831465823
+    ],
+    [
+      -2.909037355874981,
+      3.4,
+      9.171779055671934
+    ],
+    [
+      -2.9929836134850927,
+      3.4,
+      8.90553554135786
+    ],
+    [
+      -3.0998150814827197,
+      3.4,
+      8.647621562429762
+    ],
+    [
+      -3.228718707889796,
+      3.4,
+      8.4
+    ],
+    [
+      -3.3787134582752265,
+      3.4,
+      8.164555403676651
+    ],
+    [
+      -3.54865778201927,
+      3.4,
+      7.943079649003074
+    ],
+    [
+      -3.7372583002030475,
+      3.4,
+      7.737258300203048
+    ],
+    [
+      -3.9430796490030735,
+      3.4,
+      7.548657782019271
+    ],
+    [
+      -4.164555403676653,
+      3.4,
+      7.378713458275225
+    ],
+    [
+      -4.399999999999999,
+      3.4,
+      7.228718707889797
+    ],
+    [
+      -4.647621562429761,
+      3.4,
+      7.099815081482721
+    ],
+    [
+      -4.905535541357859,
+      3.4,
+      6.992983613485093
+    ],
+    [
+      -5.171779055671934,
+      3.4,
+      6.909037355874981
+    ],
+    [
+      -5.444325831465823,
+      3.4,
+      6.848615190360935
+    ],
+    [
+      -5.721101623207494,
+      3.4,
+      6.8121769661064135
+    ],
+    [
       -6,
       3.4,
-      5.85
+      6.8
+    ],
+    [
+      -6,
+      3.4,
+      5.7
     ],
     [
       -6,
@@ -895,7 +1507,8 @@
       "checkpoint rings",
       "runtime dash markings",
       "water surface",
-      "dynamic collision behavior"
+      "dynamic collision behavior",
+      "carry-reference arc (not fixed geometry)"
     ],
     "runtimeReady": false,
     "contract": "docs/integration/level-02-contract.md",
@@ -904,7 +1517,8 @@
       "turntable": "TurntableVisual",
       "lift": "LiftVisual"
     },
-    "dynamicOrigins": "turntable disk body center including co-moving bar; each lift body center; Y-up and metres; implementation not yet ready"
+    "dynamicOrigins": "cross rotation centre with non-overlapping five-box union; each lift body centre; three hammer heads at their own centre and handles at midpoint. Metres/Y-up; runtime implementation pending.",
+    "turntableCollisionProtocol": "Updated cross compound requirement supersedes the initial CODE circular-disk/barrier draft; runtime not yet ready."
   },
   "playtestStatus": "Not run; no claim of reachable ramp, lift transfer, turntable contact, or calibrated medals.",
   "waitPoints": [
@@ -1101,14 +1715,16 @@
     },
     "topViewArtifact": "docs/levels/water-rush-top-view.png",
     "progressNote": "A future per-stage axis estimate can use x/z/z/x; the first two stages still contain secondary-axis transitions. routeWaypoints retain the ordered full route; no precise path progress is claimed.",
-    "supersedes": "All earlier single-column/89.7m and one-hammer/124.7m plans. This is the current six-turn, three-hammer design.",
-    "routePolylineLengthMetres": 136.70000000000002,
+    "supersedes": "Older single-column/one-hammer/closed-disk routes and the withdrawn offset-port design. Current cross ports are centered and aligned.",
+    "routePolylineLengthMetres": 140.3499068489734,
     "checkpointProgressAxes": [
       "x",
       "z",
       "z",
       "x"
-    ]
+    ],
+    "recommendedRouteDistanceIncludingRide": 140.35309649148732,
+    "routeMeaning": "Ports are centered on X=-6. Reference includes time-dependent same-arm half-turn, not a fixed arc walkway; main six-turn layout remains."
   },
   "hammers": [
     {

@@ -2,16 +2,16 @@ import * as pc from 'playcanvas'
 import type { TrackVisualsConfig } from './level-types'
 
 // 显示网格与物理代理分离：美术更换不改变用户已经认可的手感。
-export async function attachTrackVisuals(app: pc.Application, platform: pc.Entity, config: TrackVisualsConfig | null, replaced: pc.RenderComponent[]): Promise<() => void> {
+export async function attachTrackVisuals(app: pc.Application, platform: pc.Entity, config: TrackVisualsConfig | null, replaced: pc.RenderComponent[], sharedLoad?: (file: string) => Promise<pc.Asset>): Promise<() => void> {
   if (!config) return () => {}
   const assets: pc.Asset[] = []
   const instances: pc.Entity[] = []
-  const load = (file: string) => new Promise<pc.Asset>((resolve, reject) => {
+  const load = sharedLoad ?? ((file: string) => new Promise<pc.Asset>((resolve, reject) => {
     app.assets.loadFromUrl(`${import.meta.env.BASE_URL}models/${file}`, 'container', (error, asset) => {
       if (error || !asset) { reject(new Error(String(error || `缺少模型 ${file}`))); return }
       assets.push(asset); resolve(asset)
     })
-  })
+  }))
   const dispose = () => {
     instances.forEach(entity => entity.destroy())
     replaced.forEach(render => { render.enabled = true })

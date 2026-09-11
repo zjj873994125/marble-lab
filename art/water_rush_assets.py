@@ -116,6 +116,7 @@ def cross_prism(name, position, length, width, height, material, edge):
         obj=bpy.data.objects.new(name,mesh)
         bpy.context.scene.collection.objects.link(obj)
         rounded(obj,name,material,edge)
+    mesh.name=name+' cross profile'
     obj.location=game_position(position)
     obj.rotation_mode='QUATERNION'
     obj.rotation_quaternion=(1,0,0,0)
@@ -220,6 +221,14 @@ def prepare_scene():
     input_hash = sha(BLEND) if BLEND.exists() else None
     layout_hash = sha(LAYOUT)
     layout = json.loads(LAYOUT.read_text())
+    # 用户要求接驳口与中心共线；关卡JSON同步过程中也不保留已被否定的偏移。
+    cross_spec = {key:layout['turntable'][key] for key in ('span','armWidth','thickness')}
+    assert layout['turntable']['noCornerSupport'] and layout['turntable']['noCoMovingBarrier']
+    port_override=False
+    for deck in layout['staticDecks']:
+        if deck['id'] in ('turntable-entry-tongue','turntable-exit-tongue'):
+            port_override |= deck['bodyCenter'][0] != layout['turntable']['bodyCenter'][0]
+            deck['bodyCenter'][0]=layout['turntable']['bodyCenter'][0]
     contract = ROOT / 'docs/integration/level-02-contract.md'
     contract_hash = sha(contract)
     protected = {name: sha(ROOT / name) for name in (
@@ -269,15 +278,20 @@ def prepare_scene():
         return add(obj, group, target)
 
     def support(name, x, z, top, width=.36):
-        add(box(name+' rubber foot', [x, -.34, z], [.95, .12, .95], rubber, .05), 'Static structure', static)
-        add(box(name+' alloy foot', [x, -.23, z], [.8, .12, .8], alloy, .035), 'Static structure', static)
+        bearing=name=='Turntable spindle'
+        foot=.76 if bearing else .95
+        plate=.70 if bearing else .8
+        add(box(name+' rubber foot', [x, -.34, z], [foot, .12, foot], rubber, .05), 'Static structure', static)
+        add(box(name+' alloy foot', [x, -.23, z], [plate, .12, plate], alloy, .035), 'Static structure', static)
         height = top+.125
         add(box(name+' leg', [x, -.2+height/2, z], [width, height, width], graphite, .06), 'Static structure', static)
-        add(box(name+' mounting flange', [x, top-.075, z], [1, .15, .7], alloy, .035), 'Static structure', static)
+        flange=[.76,.15,.76] if bearing else [1,.15,.7]
+        add(box(name+' mounting flange', [x, top-.075, z], flange, alloy, .035), 'Static structure', static)
         add(box(name+' orange collar', [x, .02, z], [width+.04, .13, width+.04], orange, .03), 'Static structure', static)
         for dx in (-.27, .27):
             add(cylinder(name+' anchor', [x+dx, -.155, z], .055, .04, graphite, .008, 16), 'Static structure', static)
-        start, end = Vector(game_position([x, top-.75, z])), Vector(game_position([x+.62, top-.075, z]))
+        brace_offset=.32 if bearing else .62
+        start, end = Vector(game_position([x, top-.75, z])), Vector(game_position([x+brace_offset, top-.075, z]))
         brace = box(name+' diagonal brace', [0,0,0], [.1, (end-start).length, .1], alloy, .02)
         brace.location = (start+end)/2
         brace.rotation_mode = 'XYZ'
@@ -390,21 +404,23 @@ def prepare_scene():
             add(box(f'{hid} foot {i+1}',pad['position'],pad['size'],material,.035), 'Static structure',static)
 
     turn = layout['turntable']
-    tc, radius, thickness = turn['bodyCenter'], turn['radius'], turn['thickness']
-    disk_center = [tc[0], tc[1]+.08, tc[2]]
-    disk = add(cylinder('Turntable deck', disk_center, radius, thickness-.16, ivory, .045), 'Turntable', rotating)
-    add(cylinder('Turntable dark base', [tc[0],tc[1]-.17,tc[2]], radius, .16, graphite, .015), 'Turntable', rotating)
-    add(cylinder('Turntable orange gasket', [tc[0],tc[1]-.09,tc[2]], radius-.005, .045, orange, .008), 'Turntable', rotating)
-    disk['mount_origin_game'] = tc
-    top = tc[1]+thickness/2
-    for angle in (0, math.pi/2, math.pi, math.pi*1.5):
-        position = [tc[0]+math.sin(angle)*radius*.5, top+.002, tc[2]+math.cos(angle)*radius*.5]
-        strip = flat_box('Turntable radial paint', position, [.12, .004, radius*.65], ink, 'Turntable', rotating)
-        strip.rotation_mode = 'XYZ'
-        strip.rotation_euler.z = -angle
-    bar = turn['coMovingBar']
-    bar_pos = [tc[i]+bar['localCenter'][i] for i in range(3)]
-    add(box('Turntable collision-matched barrier', bar_pos, bar['bodySize'], orange, .025), 'Turntable', rotating)
+    tc = turn['bodyCenter']
+    span,width,thickness = cross_spec['span'],cross_spec['armWidth'],cross_spec['thickness']
+    disk_center = [tc[0],tc[1]+.08,tc[2]]
+    disk=add(cross_prism('Turntable deck',disk_center,span,width,thickness-.16,ivory,.045),'Turntable',rotating)
+    add(cross_prism('Turntable dark base',[tc[0],tc[1]-.17,tc[2]],span,width,.16,graphite,.015),'Turntable',rotating)
+    add(cross_prism('Turntable orange gasket',[tc[0],tc[1]-.09,tc[2]],span-.01,width-.01,.045,orange,.008),'Turntable',rotating)
+    disk['mount_origin_game']=tc
+    disk['shape']='cross; four open quadrants'
+    top=tc[1]+thickness/2
+    for angle in (0,math.pi/2,math.pi,math.pi*1.5):
+        position=[tc[0]+math.sin(angle)*2,top+.002,tc[2]+math.cos(angle)*2]
+        strip=flat_box('Turntable radial paint',position,[.12,.004,2.6],ink,'Turntable',rotating)
+        strip.rotation_mode='XYZ'
+        strip.rotation_euler.z=-angle
+    barrier=bpy.data.objects.get('Turntable collision-matched barrier')
+    if barrier:
+        bpy.data.objects.remove(barrier,do_unlink=True)
     support('Turntable spindle', tc[0], tc[2], turn['supportTopMaxY'], .7)
 
     lift = layout['lifts']
@@ -459,6 +475,30 @@ def prepare_scene():
     delta = Vector(game_position(layout['crossing']['bodyCenter']))-platform_body.location
     for obj in platform_parts:
         obj.location += delta
+    for i,guide in enumerate(layout['crossing']['guides']):
+        obj=box(f'Reference crossing guide {i+1}',guide['position'],guide['size'],graphite,.012)
+        add(obj,'Runtime references')
+        obj['reference_only']=True
+    dashes=layout['runtimeMarkings']['narrowDashes']
+    for i,(x,z) in enumerate((x,z) for x in dashes['x'] for z in dashes['z']):
+        obj=flat_box(f'Reference narrow dash {i+1}',[x,dashes['y'],z],dashes['size'],orange,'Runtime references')
+        obj['reference_only']=True
+    rings=[('start',layout['start']['ringCenter'],layout['start']['ringRadius'],orange)]
+    rings.extend((cp['id'],cp['ringCenter'],cp['ringRadius'],blue) for cp in layout['checkpoints'])
+    rings.append(('finish',layout['finish']['ringCenter'],layout['finish']['ringRadius'],orange))
+    for label,position,radius,material in rings:
+        name='Reference ring '+label
+        obj=bpy.data.objects.get(name)
+        if not obj:
+            bpy.ops.mesh.primitive_torus_add(major_segments=48,minor_segments=10,major_radius=radius,minor_radius=.045)
+            obj=bpy.context.object
+            obj.name=name
+            obj.data.materials.append(material)
+            for face in obj.data.polygons:
+                face.use_smooth=True
+            add(obj,'Runtime references')
+        obj.location=game_position(position)
+        obj['reference_only']=True
     templates = {}
     for role, legacy in [('head','Toy flat-faced head'),('socket','Inset toy handle socket'),('handle','Normalized toy handle')]:
         name = hammers[0]['id']+' '+role+' reference'
@@ -557,6 +597,18 @@ def prepare_scene():
     width, depth = hi[0]-lo[0], hi[1]-lo[1]
     render_preview(target, math.hypot(width,depth)*1.25)
     render_preview(target, max(width,depth*1.6)*1.12, ROOT/'docs/art/water-rush-top.png', (0,0,100))
+    turn_matrices={obj:obj.matrix_world.copy() for obj in rotating}
+    pivot=Vector(game_position(tc))
+    entry_angle=0
+    for label,angle in [('entry',entry_angle),('diagonal',math.pi/4),('exit',entry_angle+math.pi)]:
+        transform=Matrix.Translation(pivot)@game_rotation([0,math.degrees(angle),0]).to_matrix().to_4x4()@Matrix.Translation(-pivot)
+        for obj,matrix in turn_matrices.items():
+            obj.matrix_world=transform@matrix
+        bpy.context.view_layer.update()
+        render_preview([tc[0],3.2,tc[2]],13,ROOT/f'docs/art/water-rush-cross-{label}.png',(10,-14,16))
+    for obj,matrix in turn_matrices.items():
+        obj.matrix_world=matrix
+    bpy.context.view_layer.update()
     center = hammers[1]['anchor']
     front_target = [center[0],3.81,center[2]]
     max_angle = hammers[1]['motion']['maxAngleRadians']
@@ -595,7 +647,7 @@ def prepare_scene():
     report = {'blend_sha256': sha(BLEND), 'layout_sha256': layout_hash, 'contract_sha256': contract_hash,
               'stage': scene['stage'], 'units': 'meters', 'coordinates': 'glTF Y-up; Blender (x,-z,y)',
               'static_controls': len(deck_controls), 'static_parts': len(static), 'exports': exports,
-              'turntable_origin': tc, 'lift_centers': [i['center'] for i in lift['instances']],
+              'turntable_origin': tc, 'cross_geometry':cross_spec, 'ports_forced_to_centerline':port_override, 'lift_centers': [i['center'] for i in lift['instances']],
               'lift_stem_min_world_y': lift['centerY']-lift['amplitude']-1.58,
               'lift_sleeve_top_y': 2.30, 'lift_stem_radius': .075, 'lift_sleeve_inner_radius': .095,
               'protected_first_level': protected,
