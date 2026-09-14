@@ -170,9 +170,10 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
   }
   if ((level.rulesVersion ?? 'classic') !== 'classic') updateMechanisms()
   function respawn() { rigid.teleport(checkpoint ? checkpoints[checkpoint-1]! : initial, pc.Vec3.ZERO); rigid.linearVelocity=pc.Vec3.ZERO; rigid.angularVelocity=pc.Vec3.ZERO }
-  function setPhase(phase: Phase) { keys.clear(); app.timeScale = phase==='playing' ? 1 : 0; if (phase==='menu') respawn() }
+  function setPhase(phase: Phase) { keys.clear(); water?.resetClock(); app.timeScale = phase==='playing' ? 1 : 0; if (phase==='menu') respawn() }
   function start() {
     elapsed=0; falls=0; checkpoint=0; time=0; keys.clear()
+    water?.resetClock()
     if ((level.rulesVersion ?? 'classic') !== 'classic') updateMechanisms()
     checkpointRings.forEach(e=>e.render!.meshInstances.forEach(m=>m.material=blue))
     respawn(); cameraTarget.copy(initial); cameraPosition.set(initial.x,initial.y+17,initial.z+13)
@@ -190,20 +191,21 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
     if (hooks.phase()==='playing') keys.add(e.code)
   }
   function up(e: KeyboardEvent) { keys.delete(e.code) }
-  function blur() { keys.clear(); if (hooks.phase()==='playing') hooks.pause() }
+  function blur() { keys.clear(); water?.resetClock(); if (hooks.phase()==='playing') hooks.pause() }
   function hidden() { if (document.hidden) blur() }
   window.addEventListener('keydown',down); window.addEventListener('keyup',up); window.addEventListener('blur',blur); document.addEventListener('visibilitychange',hidden)
   function resize() { const r=canvas.parentElement!.getBoundingClientRect(); app.resizeCanvas(Math.max(1,r.width),Math.max(1,r.height)) }
   const observer = new ResizeObserver(resize); observer.observe(canvas.parentElement!)
-  function applySettings() { app.graphicsDevice.maxPixelRatio=hooks.settings().quality==='high' ? Math.min(devicePixelRatio,1.7) : 1; sun.light!.castShadows=hooks.settings().quality==='high'; if (water && (hooks.settings().quality==='low' || hooks.settings().reducedMotion || matchMedia('(prefers-reduced-motion: reduce)').matches)) water.update(0); resize() }
+  function applySettings() { app.graphicsDevice.maxPixelRatio=hooks.settings().quality==='high' ? Math.min(devicePixelRatio,1.7) : 1; sun.light!.castShadows=hooks.settings().quality==='high'; water?.configure(hooks.settings().quality==='high'); water?.resetClock(); resize() }
   applySettings()
   app.on('update',(delta: number)=>{
     const phase = hooks.phase()
+    // update在timeScale=0时仍触发；水用自己的时钟，不推进菜单物理或游戏计时。
+    water?.update((phase === 'menu' || phase === 'playing') && hooks.settings().quality === 'high' && !hooks.settings().reducedMotion && !matchMedia('(prefers-reduced-motion: reduce)').matches && !document.hidden && document.hasFocus())
     if (phase==='playing') {
       const dt=Math.min(delta,.075)
       elapsed+=dt; time+=dt
       updateMechanisms()
-      if (water) water.update(hooks.settings().quality === 'high' && !hooks.settings().reducedMotion && !matchMedia('(prefers-reduced-motion: reduce)').matches ? time : 0)
       const input=resolveInput(keys,hooks.input?.())
       if(input.x || input.z) rigid.applyForce(input.x*12*hooks.settings().sensitivity,0,input.z*12*hooks.settings().sensitivity)
       const v=rigid.linearVelocity
