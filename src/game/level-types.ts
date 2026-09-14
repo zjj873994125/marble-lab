@@ -1,7 +1,8 @@
 // 由代码对话维护格式；关卡对话只填写 src/levels 下的数据。
+import type { LibraryMechanismConfig } from './library-types'
 export type Position = [number, number, number]
 export type MaterialName = 'cream' | 'edge' | 'orange' | 'dark' | 'blue' | 'floorMat' | 'water' | 'poolEdge'
-export type RulesVersion = 'classic' | 'open-hammer' | 'flat-hammer' | 'standard' | 'challenge' | 'serpentine'
+export type RulesVersion = 'classic' | 'open-hammer' | 'flat-hammer' | 'standard' | 'challenge' | 'serpentine' | 'intense' | 'intense-v2'
 
 export interface PrimitiveConfig {
   name: string
@@ -16,7 +17,7 @@ export interface PrimitiveConfig {
 }
 
 export interface RingConfig { position: Position; radius: number }
-export interface TrackVisualsConfig { track: string; platform: string }
+export interface TrackVisualsConfig { track: string; platform?: string }
 export interface HammerVisualsConfig { head: string; handle: string }
 
 export interface ArcHammerConfig {
@@ -69,7 +70,8 @@ export interface LevelConfig {
   hammers?: ArcHammerConfig[]
   lifts?: LiftConfig[]
   turntable?: TurntableConfig
-  platform: {
+  mechanisms?: LibraryMechanismConfig[]
+  platform?: {
     axis?: 'x' | 'z'
     centerX?: number
     body: PrimitiveConfig

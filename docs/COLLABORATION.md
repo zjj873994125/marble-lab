@@ -19,7 +19,9 @@
 
 数据入口为 `src/levels/initial-gravity.ts`，类型定义为 `src/game/level-types.ts`。使用普通 TypeScript 对象、数组和数值，允许简单坐标算术；不导入 Vue 或 PlayCanvas，不创建实体，不写回调、存储或资源请求。类型导入不产生运行时代码。
 
-运行时和 HUD 读取同一份配置。当前已注册“教学关卡”和“水上冲关”，目录由代码维护于 `src/game/levels.ts`；单独增加配置文件不会自动注册。第一关 `rulesVersion` 为 classic/open-hammer/flat-hammer（省略为classic），第二关区分standard/challenge/serpentine。`marble-lab-v3` 按关卡和规则分桶，v1/v2原文只读保留，旧成绩不参与新难度最佳。后续改变真实规则仍需先确认版本归属，不能清空记录。
+运行时和 HUD 读取同一份配置。当前已注册“教学关卡”“水上冲关”和“机关试炼”，目录由代码维护于 `src/game/levels.ts`；单独增加配置文件不会自动注册。第一关 `rulesVersion` 为 classic/open-hammer/flat-hammer（省略为classic），第二关区分standard/challenge/serpentine，第三关mechanism-trial当前为intense-v2、保留standard/challenge/intense历史桶、暂无奖牌阈值。第三关已开发，尚未测试、构建或试玩。`marble-lab-v3` 按关卡和规则分桶，v1/v2原文只读保留，旧成绩不参与新难度最佳。后续改变真实规则仍需先确认版本归属，不能清空记录。
+
+首页左侧合并开始/继续与选关，旧 `/#/levels` 跳回首页并打开选关。v3的lastStartedLevelId/hasPlayedBeyondFirst只在有效startRun时记入，旧成绩可用于迁移，预览选择不算游玩。继续表示新开上次实际开始的关卡，显式选关优先，不伪造跨刷新局内续玩；详见 [首页入口说明](integration/home-level-entry.md)。
 
 - `staticObjects`：完整的静态场景和基础外观，每项包含 `name`、`type`、`position`、`size`、`material`。`name` 是调试名称，可重复；不作为模型替换查找键。
 - `body: 'static'`：创建静态碰撞代理；省略 `body` 的对象仅显示，没有碰撞。增加螺栓、拼缝等外观时不要增加 `body`。
@@ -30,7 +32,8 @@
 - `ring`：独立的外观位置与半径，没有碰撞；其高度通常接近轨道表面，不能拿它替代弹珠中心高度。
 - `fallY`：弹珠中心低于此世界坐标高度时重生，保留掉落计数与持续计时。
 - `pendulum`：第一关保留一个沿 Z 方向运动的摆锤，`ball` 为当前玩具锤的 Z 向平端圆柱运动学代理（旧版球/胶囊成绩单独归档），`rod` 为独立锤柄，`anchor` 为杆上端。偏移为 `sin(time * angularSpeed) * amplitude`；Y 额外增加 `abs(偏移) * lift`；杆宽为 `rodWidth`。
-- `platform`：固定一个盒形运动学平台，`axis` 选择 x/z（省略 z）；当前 x=8+3.4sin(1.25t)、z=-.35，模型和 stripe 同步。centerX 默认 body.position[0]，Y 来自 body.position，条纹 Y 来自 stripeY。角频率为弧度/秒、振幅为米；时间从开局累计，暂停不推进。
+- `platform`：可选的一个盒形运动学平台，`axis` 选择 x/z（省略 z）；第一关当前 x=8+3.4sin(1.25t)、z=-.35，模型和 stripe 同步。centerX 默认 body.position[0]，Y 来自 body.position，条纹 Y 来自 stripeY。角频率为弧度/秒、振幅为米；时间从开局累计，暂停不推进。
+- `mechanisms`：可选的共享库五机关实例数组，根position/yaw与具体机关参数由LEVEL填写；主体尺寸/枢轴读取共享manifest，staticColliders与frameColliders只使用明确分件代理。跷跷板为动态单铰链，其余为运动学刚体，见 [第三关接口](integration/level-03-contract.md)。图鉴预置姿态不是游戏负载响应。
 - `progress`：第 n 项对应已通过 n 个检查点。公式为 `base + clamp((z - originZ) * direction / divisor, 0, max)`；`direction` 为 `-1` 或 `1`，`divisor > 0`。必须有“检查点数量 + 1”项；每项 `base + max <= 1`，完赛时设为 1。第一关默认沿Z；第二关可用axis=x/z和origin，仍不是自动测算路径长度。
 
 支持的基础材质键为 `cream`、`edge`、`orange`、`dark`、`blue`、`floorMat`、`water`、`poolEdge`。材质具体参数由代码对话维护；GLB 的 PBR 材质由建模对话维护。球体质量、重力、步长、摩擦、控制力度、刹车、速度上限和镜头仍由代码对话管理，本次没有改动。
@@ -54,9 +57,9 @@
 
 ## 资源加载与布局变更
 
-`visuals` 指定两个 `public/models/` 下的文件名，运行时统一使用 `import.meta.env.BASE_URL + 'models/' + 文件名` 加载。不得在关卡数据或建模脚本中引入外部 CDN、账号、云端项目 URL 或新的加载器。
+`visuals.track` 指定静态轨道，`visuals.platform` 为旧移动平台的可选外观文件，均位于 `public/models/`。第三关仅填写track；五机关另由共享库加载器取用。运行时统一使用 `import.meta.env.BASE_URL + 'models/' + 文件名` 加载。不得在关卡数据或建模脚本中引入外部 CDN、账号、云端项目 URL 或新的加载器。
 
-两个 GLB 全部成功后，才隐藏标记的基础外观和平台外观；任意一个加载失败会释放已加载资源，保留基础场景，游戏仍可进入。运行时销毁时统一释放模型实例和资源。
+本关要求的轨道/平台GLB全部成功后，才隐藏标记的基础外观；任意一个加载失败会保留基础场景。共享库成功时只隐藏对应机关的基础Render，不移除真实碰撞；固定结构不能用整个Static包围盒生成碰撞。单个Application内模板和资产复用，退出时先释放约束、模型实例/模板，再释放资源池。
 
 当前静态 GLB 是整关烘焙外观，**修改关卡配置不会自动重建 GLB**。关卡对话改变轨道布局时，先将 `visuals` 设为 `null`，使用基础外观验证真实碰撞和通关路径；待建模对话交付匹配模型并由代码对话完成接入验证，再恢复两个文件名。禁用精细外观不会禁用碰撞。
 
@@ -81,8 +84,12 @@ npm run build
 
 代码对话统一进行浏览器接入验证，复用 `http://127.0.0.1:5177/`，确认服务工作目录是本项目。布局或模型变更还要检查：加载、外观与碰撞对齐、开局、刹车、暂停、重开、机关运动、按序检查点、掉落重生和终点结算。需要写入测试成绩时使用隔离测试浏览器，不清空或覆盖用户当前浏览器的设置与成绩。
 
-当前两关通过独立配置加载；第二关新增三圆弧锤、五盒十字、四升降及旋转坡面，具体字段见 [第二关接入协议](integration/level-02-contract.md)，不是通用关卡编辑器。Vue 与运行时的 `start / setPhase / applySettings / destroy`、`tick / finish / pause / restart` 边界保留。本地选关与卸载已经实现，PlayCanvas Editor 场景导入仍未实现。
+当前三关通过独立配置加载；第二关三圆弧锤、五盒十字、四升降及旋转坡面的字段见 [第二关接入协议](integration/level-02-contract.md)，第三关五机关见 [第三关接入协议](integration/level-03-contract.md)，不是通用关卡编辑器。Vue 与运行时的 `start / setPhase / applySettings / destroy`、`tick / finish / pause / restart` 边界保留。本地选关与卸载已经实现，PlayCanvas Editor 场景导入仍未实现。
 
 ## 手机瞬时输入
 
 `src/game/input.ts` 定义 GameInput（x/z/brake），App局部持有，通过GameCanvas hook进入原施力和刹车。输入不写存档；键盘方向优先，触控向量最多1，刹车取两来源实际按下状态。TouchControls分别捕获摇杆和踏板指针，暂停、旋屏、重开、切关及卸载清零。手机游戏使用精简横屏HUD，竖屏暂停，返回横屏需明确继续；小踏板仅显示图标，可点击区保留88px。
+
+## 障碍物图鉴
+
+代码维护 `src/game/obstacles.ts` 的障碍资料和搭配关系；`/#/obstacles` 收录13类，以三列“名称＋模型”卡片和独立PlayCanvas预览呈现，弹窗只有名称、大预览及图标控制。图鉴不启动Ammo或挑战，不写成绩；静态结构的小球和跷跷板姿态均为示意，不能作为可通性证据。共享库在当前图鉴页复用模板，关闭弹窗释放实例，离页释放资源。新增机关先实现行为，再补图鉴类型/预览及推荐用途，不在关卡数据或GLB中混入UI代码。具体边界见 [图鉴说明](integration/obstacle-atlas.md)。

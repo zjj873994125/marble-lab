@@ -96,7 +96,7 @@ export function createWaterMaterial(app: pc.Application) {
   material.shaderChunksVersion = '2.22'
   material.getShaderChunks(pc.SHADERLANGUAGE_GLSL).set('normalMapPS', waterNormal)
   const offsets = new Float32Array([0, 0, .31, .67])
-  const phases = [0, 0, .31, .67], speeds = [.006, .0035, -.0045, .0055]
+  const phases = [0, 0, .31, .67], speeds = [.024, .014, -.018, .022]
   material.setParameter('water_offsets', offsets)
   material.setParameter('water_detail', 1)
   material.update()
@@ -108,12 +108,12 @@ export function createWaterMaterial(app: pc.Application) {
       if (highQuality === high) return
       highQuality = high; material.setParameter('water_detail', high ? 1 : 0)
     },
-    update(animate: boolean) {
+    update(animate: boolean, speed = 1) {
       const now = performance.now(), delta = (now - lastFrame) / 1000
       lastFrame = now
       // 冻结相位，不积累后台或长帧时间；恢复首帧仅重新接上时钟。
-      if (animate && wasAnimating && delta > 0 && delta < .25) {
-        for (let i = 0; i < 4; i++) { phases[i] = (phases[i]! + speeds[i]! * delta + 1) % 1; offsets[i] = phases[i]! }
+      if (animate && wasAnimating && speed > 0 && delta > 0 && delta < .25) {
+        for (let i = 0; i < 4; i++) { phases[i] = (phases[i]! + speeds[i]! * delta * speed + 1) % 1; offsets[i] = phases[i]! }
         material.setParameter('water_offsets', offsets)
       }
       wasAnimating = animate

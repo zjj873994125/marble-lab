@@ -323,6 +323,11 @@ def prepare_scene():
             obj.name = name
             groups['Static structure'].objects.link(obj)
         obj.matrix_world = controls[0].matrix_world.copy()
+        if name == 'Continuous walkable surface':
+            from repair_water_rush_surface import replace_white_surface
+            replace_white_surface(obj, controls)
+            static.append(obj)
+            return obj
         desired = {c.name for c in controls[1:]}
         for modifier in list(obj.modifiers):
             if modifier.type == 'BOOLEAN' and modifier.name.startswith(('Union ', 'Layer union ')):

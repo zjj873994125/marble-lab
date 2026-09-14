@@ -1,0 +1,3105 @@
+{
+  "id": "mechanism-trial",
+  "name": "机关试炼",
+  "rulesVersion": "intense-v2",
+  "status": "intense-v2-development-complete-models-paired-unverified",
+  "schemaPurpose": "Design handoff only. Not loaded by runtime; supported CODE fields must precede formal TS.",
+  "units": "m",
+  "upAxis": "+Y",
+  "forwardConvention": "library -Z rotated by instance EulerY",
+  "standardTopY": 3.4,
+  "fallY": -0.5,
+  "playerChanges": false,
+  "sourceLibrary": {
+    "asset": "obstacle-library.glb",
+    "manifest": "public/models/obstacle-library.json",
+    "glbSha256": "8281551e662b13d240a1f5ffa64bcfb43d3687cc37ddd0ae605e28f8575f4b68",
+    "runtimeSupportedInOriginalManifest": false,
+    "blendSha256": "43c336afd41f47bceaa1046d68e73fd335afe932d48e069b9b6a0eac8a40fd91",
+    "manifestSha256": "666c571b08e2d972756fbc46c6124432ab34a88b007893b6dd73fdf3e7fbf2a7"
+  },
+  "staticAsset": {
+    "blend": "art/mechanism-trial.blend",
+    "file": "mechanism-trial-track.glb",
+    "rootNode": "TrackStatic",
+    "position": [
+      0,
+      0,
+      0
+    ],
+    "rotationDegrees": [
+      0,
+      0,
+      0
+    ],
+    "scale": [
+      1,
+      1,
+      1
+    ],
+    "status": "intense-v2 same-name static delivered and referenced; unverified",
+    "geometrySourceSha256": "3e3e7b8681b2ee066c42d76bd2454a4fee03010bb34904d1e0909e8e7256c44a",
+    "glbSha256": "5d56e7739479d8ba62b89e0c926421ff368ed53976ad3938c92b68946e4f8a5f",
+    "blendSha256": "02c615c12777f8c9ab3cd629db1b4a6888d3df9eb151df15854799bf3d94a3b0",
+    "triangles": 42792,
+    "materials": 5,
+    "bytes": 794956,
+    "geometryValidationRun": false
+  },
+  "start": {
+    "position": [
+      -14,
+      3.95,
+      16
+    ],
+    "previewPosition": [
+      -14,
+      3.95,
+      16
+    ],
+    "ringCenter": [
+      -14,
+      3.46,
+      16
+    ],
+    "ringRadius": 0.9
+  },
+  "checkpoints": [
+    {
+      "id": "cp1",
+      "position": [
+        -14,
+        3.95,
+        -5.2
+      ],
+      "ringCenter": [
+        -14,
+        3.46,
+        -5.2
+      ],
+      "ringRadius": 0.8,
+      "after": [
+        "piston-wall",
+        "timed-trapdoor"
+      ]
+    },
+    {
+      "id": "cp2",
+      "position": [
+        0,
+        3.95,
+        7
+      ],
+      "ringCenter": [
+        0,
+        3.46,
+        7
+      ],
+      "ringRadius": 0.8,
+      "after": [
+        "weight-seesaw"
+      ]
+    },
+    {
+      "id": "cp3",
+      "position": [
+        14,
+        3.95,
+        -5
+      ],
+      "ringCenter": [
+        14,
+        3.46,
+        -5
+      ],
+      "ringRadius": 0.8,
+      "after": [
+        "axial-roller"
+      ]
+    }
+  ],
+  "checkpointTrigger": {
+    "radius": 1.35,
+    "heightTolerance": 1.2
+  },
+  "finish": {
+    "position": [
+      -11.2,
+      3.95,
+      -11
+    ],
+    "ringCenter": [
+      -11.2,
+      3.46,
+      -11
+    ],
+    "ringRadius": 0.9,
+    "triggerRadius": 1.2,
+    "heightTolerance": 1
+  },
+  "medals": {
+    "status": "not-calibrated",
+    "goldSeconds": null,
+    "silverSeconds": null,
+    "bronzeSeconds": null,
+    "note": "No fixed thresholds requested before first playtest; CODE to expose presentation of uncalibrated medal goals."
+  },
+  "staticDecks": [
+    {
+      "id": "start-pad",
+      "bodyCenter": [
+        -14,
+        3.22,
+        16
+      ],
+      "bodySize": [
+        4,
+        0.36,
+        4
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "piston-lane",
+      "bodyCenter": [
+        -14,
+        3.22,
+        10
+      ],
+      "bodySize": [
+        3.2,
+        0.36,
+        8
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "piston-front-pocket",
+      "bodyCenter": [
+        -11.5,
+        3.22,
+        12.9
+      ],
+      "bodySize": [
+        1.8,
+        0.36,
+        2.2
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "piston-rear-pocket",
+      "bodyCenter": [
+        -11.5,
+        3.22,
+        7.1
+      ],
+      "bodySize": [
+        1.8,
+        0.36,
+        2.2
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "trapdoor-observation-island",
+      "bodyCenter": [
+        -14,
+        3.22,
+        4.6
+      ],
+      "bodySize": [
+        4,
+        0.36,
+        2.8
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "trapdoor-entry-tongue",
+      "bodyCenter": [
+        -13.7,
+        3.22,
+        2.41
+      ],
+      "bodySize": [
+        1.4,
+        0.36,
+        1.58
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "trapdoor-exit-tongue",
+      "bodyCenter": [
+        -13.7,
+        3.22,
+        -2.41
+      ],
+      "bodySize": [
+        1.4,
+        0.36,
+        1.58
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "checkpoint-one-island",
+      "bodyCenter": [
+        -14,
+        3.22,
+        -5.2
+      ],
+      "bodySize": [
+        4,
+        0.36,
+        4
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "trapdoor-to-seesaw-link",
+      "bodyCenter": [
+        -7,
+        3.22,
+        -4
+      ],
+      "bodySize": [
+        10,
+        0.36,
+        3.2
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "seesaw-entry-island",
+      "bodyCenter": [
+        0,
+        3.22,
+        -3.62
+      ],
+      "bodySize": [
+        4,
+        0.36,
+        4.46
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "checkpoint-two-island",
+      "bodyCenter": [
+        0,
+        3.22,
+        7.37
+      ],
+      "bodySize": [
+        4,
+        0.36,
+        3.96
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "seesaw-to-roller-link",
+      "bodyCenter": [
+        7,
+        3.22,
+        7
+      ],
+      "bodySize": [
+        10,
+        0.36,
+        3.2
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "roller-entry-island",
+      "bodyCenter": [
+        14,
+        3.22,
+        5.81
+      ],
+      "bodySize": [
+        4,
+        0.36,
+        6.38
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "checkpoint-three-island",
+      "bodyCenter": [
+        14,
+        3.22,
+        -4.71
+      ],
+      "bodySize": [
+        4,
+        0.36,
+        4.18
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "roller-north-link",
+      "bodyCenter": [
+        14,
+        3.22,
+        -8.05
+      ],
+      "bodySize": [
+        3.2,
+        0.36,
+        2.5
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "north-turn-island",
+      "bodyCenter": [
+        14,
+        3.22,
+        -11
+      ],
+      "bodySize": [
+        4,
+        0.36,
+        3.4
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "roller-to-cradle-link",
+      "bodyCenter": [
+        7.675,
+        3.22,
+        -11
+      ],
+      "bodySize": [
+        8.65,
+        0.36,
+        3.2
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "cradle-entry-island",
+      "bodyCenter": [
+        1.5,
+        3.22,
+        -11
+      ],
+      "bodySize": [
+        3.7,
+        0.36,
+        6.8
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "finish-island",
+      "bodyCenter": [
+        -9.65,
+        3.22,
+        -11
+      ],
+      "bodySize": [
+        8,
+        0.36,
+        4
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "cradle-exit-wing-north",
+      "bodyCenter": [
+        -6.65,
+        3.22,
+        -13.7
+      ],
+      "bodySize": [
+        2,
+        0.36,
+        1.4
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    },
+    {
+      "id": "cradle-exit-wing-south",
+      "bodyCenter": [
+        -6.65,
+        3.22,
+        -8.3
+      ],
+      "bodySize": [
+        2,
+        0.36,
+        1.4
+      ],
+      "topY": 3.4,
+      "collision": true,
+      "material": "cream",
+      "refinedVisual": true
+    }
+  ],
+  "staticRails": [
+    {
+      "id": "start-rail-west",
+      "bodyCenter": [
+        -16.06,
+        3.53,
+        16
+      ],
+      "bodySize": [
+        0.12,
+        0.26,
+        2.5
+      ],
+      "collision": true,
+      "material": "orange",
+      "refinedVisual": true
+    },
+    {
+      "id": "start-rail-east",
+      "bodyCenter": [
+        -11.94,
+        3.53,
+        16
+      ],
+      "bodySize": [
+        0.12,
+        0.26,
+        2.5
+      ],
+      "collision": true,
+      "material": "orange",
+      "refinedVisual": true
+    },
+    {
+      "id": "finish-rail-north",
+      "bodyCenter": [
+        -10.65,
+        3.53,
+        -13.06
+      ],
+      "bodySize": [
+        6,
+        0.26,
+        0.12
+      ],
+      "collision": true,
+      "material": "orange",
+      "refinedVisual": true
+    },
+    {
+      "id": "finish-rail-south",
+      "bodyCenter": [
+        -10.65,
+        3.53,
+        -8.94
+      ],
+      "bodySize": [
+        6,
+        0.26,
+        0.12
+      ],
+      "collision": true,
+      "material": "orange",
+      "refinedVisual": true
+    },
+    {
+      "id": "finish-rail-end",
+      "bodyCenter": [
+        -13.71,
+        3.53,
+        -11
+      ],
+      "bodySize": [
+        0.12,
+        0.26,
+        4.24
+      ],
+      "collision": true,
+      "material": "orange",
+      "refinedVisual": true
+    }
+  ],
+  "supportPoints": [
+    {
+      "id": "start-pad-support-1",
+      "deckId": "start-pad",
+      "positionXZ": [
+        -15,
+        16.5
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "start-pad-support-2",
+      "deckId": "start-pad",
+      "positionXZ": [
+        -13,
+        16.5
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "piston-lane-support-1",
+      "deckId": "piston-lane",
+      "positionXZ": [
+        -14,
+        12.8
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "piston-lane-support-2",
+      "deckId": "piston-lane",
+      "positionXZ": [
+        -14,
+        7.2
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "piston-front-pocket-support-1",
+      "deckId": "piston-front-pocket",
+      "positionXZ": [
+        -11.5,
+        13.1
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "piston-rear-pocket-support-1",
+      "deckId": "piston-rear-pocket",
+      "positionXZ": [
+        -11.5,
+        6.9
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "trapdoor-observation-island-support-1",
+      "deckId": "trapdoor-observation-island",
+      "positionXZ": [
+        -15,
+        4.8
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "trapdoor-observation-island-support-2",
+      "deckId": "trapdoor-observation-island",
+      "positionXZ": [
+        -13,
+        4.8
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "trapdoor-entry-tongue-support-1",
+      "deckId": "trapdoor-entry-tongue",
+      "positionXZ": [
+        -13.4,
+        2.8
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "trapdoor-exit-tongue-support-1",
+      "deckId": "trapdoor-exit-tongue",
+      "positionXZ": [
+        -13.4,
+        -2.8
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "checkpoint-one-island-support-1",
+      "deckId": "checkpoint-one-island",
+      "positionXZ": [
+        -15,
+        -5.4
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "checkpoint-one-island-support-2",
+      "deckId": "checkpoint-one-island",
+      "positionXZ": [
+        -13,
+        -5.4
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "trapdoor-to-seesaw-link-support-1",
+      "deckId": "trapdoor-to-seesaw-link",
+      "positionXZ": [
+        -9,
+        -4
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "trapdoor-to-seesaw-link-support-2",
+      "deckId": "trapdoor-to-seesaw-link",
+      "positionXZ": [
+        -5,
+        -4
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "seesaw-entry-island-support-1",
+      "deckId": "seesaw-entry-island",
+      "positionXZ": [
+        -1,
+        -3.8
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "seesaw-entry-island-support-2",
+      "deckId": "seesaw-entry-island",
+      "positionXZ": [
+        1,
+        -3.8
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "checkpoint-two-island-support-1",
+      "deckId": "checkpoint-two-island",
+      "positionXZ": [
+        -1,
+        7.8
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "checkpoint-two-island-support-2",
+      "deckId": "checkpoint-two-island",
+      "positionXZ": [
+        1,
+        7.8
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "seesaw-to-roller-link-support-1",
+      "deckId": "seesaw-to-roller-link",
+      "positionXZ": [
+        5,
+        7
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "seesaw-to-roller-link-support-2",
+      "deckId": "seesaw-to-roller-link",
+      "positionXZ": [
+        9,
+        7
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "roller-entry-island-support-1",
+      "deckId": "roller-entry-island",
+      "positionXZ": [
+        13,
+        5.8
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "roller-entry-island-support-2",
+      "deckId": "roller-entry-island",
+      "positionXZ": [
+        15,
+        7.5
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "checkpoint-three-island-support-1",
+      "deckId": "checkpoint-three-island",
+      "positionXZ": [
+        13,
+        -5.3
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "checkpoint-three-island-support-2",
+      "deckId": "checkpoint-three-island",
+      "positionXZ": [
+        15,
+        -5.3
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "roller-north-link-support-1",
+      "deckId": "roller-north-link",
+      "positionXZ": [
+        14,
+        -8
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "north-turn-island-support-1",
+      "deckId": "north-turn-island",
+      "positionXZ": [
+        14,
+        -11
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "roller-to-cradle-link-support-1",
+      "deckId": "roller-to-cradle-link",
+      "positionXZ": [
+        10,
+        -11
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "roller-to-cradle-link-support-2",
+      "deckId": "roller-to-cradle-link",
+      "positionXZ": [
+        6,
+        -11
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "cradle-entry-island-support-1",
+      "deckId": "cradle-entry-island",
+      "positionXZ": [
+        2,
+        -11
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "finish-island-support-1",
+      "deckId": "finish-island",
+      "positionXZ": [
+        -8,
+        -11
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "finish-island-support-2",
+      "deckId": "finish-island",
+      "positionXZ": [
+        -11.5,
+        -11
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "ART may adjust only within this deck to avoid exact library support meshes; do not add walkable ledges."
+    },
+    {
+      "id": "cradle-exit-wing-north-support",
+      "deckId": "cradle-exit-wing-north",
+      "positionXZ": [
+        -6.6,
+        -13.55
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "New wing support outside moving localZ±2.5; stop under island, no lateral tie across gap."
+    },
+    {
+      "id": "cradle-exit-wing-south-support",
+      "deckId": "cradle-exit-wing-south",
+      "positionXZ": [
+        -6.6,
+        -8.45
+      ],
+      "topLimitY": 2.83,
+      "footBottomY": -0.4,
+      "collision": false,
+      "note": "New wing support outside moving localZ±2.5; stop under island, no lateral tie across gap."
+    }
+  ],
+  "instances": [
+    {
+      "id": "piston-01",
+      "mechanismId": "piston-wall",
+      "asset": "obstacle-library.glb",
+      "rootNode": "PistonWall",
+      "position": [
+        -14,
+        0,
+        10
+      ],
+      "rotationEulerDegrees": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "libraryRestBounds": {
+        "min": [
+          -6.800000190734863,
+          0.0,
+          -0.800000011920929
+        ],
+        "max": [
+          -1.8420000076293945,
+          4.5,
+          0.800000011920929
+        ]
+      },
+      "designReservedBoundsWorld": {
+        "min": [
+          -20.9,
+          0,
+          9.1
+        ],
+        "max": [
+          -12.0,
+          4.6,
+          10.9
+        ]
+      },
+      "reservationMeaning": "Design keep-out envelope, not certified swept collision. Planned bank decks may overlap low support envelope only if vertical clearance is retained.",
+      "entryPortWorld": [
+        -14.0,
+        3.4,
+        14.0
+      ],
+      "exitPortWorld": [
+        -14.0,
+        3.4,
+        6.0
+      ],
+      "candidateParameters": {
+        "headSize": [
+          0.35,
+          1.1,
+          1.6
+        ],
+        "travel": 3.7,
+        "outlet": [
+          -2.5,
+          3.95,
+          0
+        ],
+        "rodReferenceLength": 0.3,
+        "stagesSeconds": [
+          0.9,
+          0.45,
+          0.22,
+          0.65,
+          0.25
+        ],
+        "phaseSeconds": 0
+      },
+      "gameplayStatus": "intense-v2 formal parameters/models configured; no playtest",
+      "hasBeenPlaytested": false,
+      "staticColliders": [
+        {
+          "name": "piston-shell",
+          "type": "cylinder",
+          "collisionAxis": 2,
+          "position": [
+            -4.6,
+            3.95,
+            0
+          ],
+          "size": [
+            0.32,
+            0.32,
+            4.2
+          ],
+          "material": "edge",
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        },
+        {
+          "name": "piston-rear-cap",
+          "type": "cylinder",
+          "collisionAxis": 2,
+          "position": [
+            -6.74,
+            3.95,
+            0
+          ],
+          "size": [
+            0.41,
+            0.41,
+            0.12
+          ],
+          "material": "edge",
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        },
+        {
+          "name": "piston-front-gland",
+          "type": "cylinder",
+          "collisionAxis": 2,
+          "position": [
+            -2.55,
+            3.95,
+            0
+          ],
+          "size": [
+            0.41,
+            0.41,
+            0.14
+          ],
+          "material": "edge",
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        },
+        {
+          "name": "piston-support--6.4",
+          "type": "box",
+          "position": [
+            -6.4,
+            1.975,
+            0
+          ],
+          "size": [
+            0.26,
+            3.51,
+            0.26
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "piston-support--2.8",
+          "type": "box",
+          "position": [
+            -2.8,
+            1.975,
+            0
+          ],
+          "size": [
+            0.26,
+            3.51,
+            0.26
+          ],
+          "material": "dark"
+        }
+      ],
+      "colliderSource": "Specific box/cylinder dimensions read from art/obstacle_library_assets.py and current manifest. No whole-root AABB collider. Simplified tube outer cylinders have bores smaller than ball; no geometry/playtest validation performed.",
+      "libraryRestBoundsStatus": "current intense-v2 ART manifest rest bounds; no motion validation"
+    },
+    {
+      "id": "trapdoor-01",
+      "mechanismId": "timed-trapdoor",
+      "asset": "obstacle-library.glb",
+      "rootNode": "TimedTrapdoor",
+      "position": [
+        -14,
+        0,
+        0
+      ],
+      "rotationEulerDegrees": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "libraryRestBounds": {
+        "min": [
+          -1.7799999713897705,
+          0.0,
+          -2.509999990463257
+        ],
+        "max": [
+          1.100000023841858,
+          3.700000286102295,
+          2.2200000286102295
+        ]
+      },
+      "designReservedBoundsWorld": {
+        "min": [
+          -15.9,
+          0,
+          -2.6
+        ],
+        "max": [
+          -12.85,
+          3.8,
+          2.3
+        ]
+      },
+      "reservationMeaning": "Design keep-out envelope, not certified swept collision. Planned bank decks may overlap low support envelope only if vertical clearance is retained.",
+      "entryPortWorld": [
+        -13.7,
+        3.4,
+        1.62
+      ],
+      "exitPortWorld": [
+        -13.7,
+        3.4,
+        -1.62
+      ],
+      "candidateParameters": {
+        "pivot": [
+          -1.1,
+          3.4,
+          0
+        ],
+        "bodyCenterOffset": [
+          1.1,
+          -0.12,
+          0
+        ],
+        "bodySize": [
+          2.2,
+          0.24,
+          3
+        ],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "openAngleDegrees": -90,
+        "closedSeconds": 1.5,
+        "warningIncludedSeconds": 0.45,
+        "openingSeconds": 0.2,
+        "openSeconds": 0.45,
+        "closingSeconds": 0.22,
+        "phaseSeconds": 0
+      },
+      "gameplayStatus": "intense-v2 formal parameters/models configured; no playtest",
+      "hasBeenPlaytested": false,
+      "staticColliders": [
+        {
+          "name": "trapdoor-post--1.82",
+          "type": "box",
+          "position": [
+            -1.38,
+            1.6600000000000001,
+            -1.82
+          ],
+          "size": [
+            0.22,
+            2.88,
+            0.22
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "trapdoor-bearing--1.82",
+          "type": "cylinder",
+          "collisionAxis": 2,
+          "position": [
+            -1.1,
+            3.4,
+            -1.82
+          ],
+          "size": [
+            0.36,
+            0.36,
+            0.2
+          ],
+          "material": "edge"
+        },
+        {
+          "name": "trapdoor-post-1.82",
+          "type": "box",
+          "position": [
+            -1.38,
+            1.6600000000000001,
+            1.82
+          ],
+          "size": [
+            0.22,
+            2.88,
+            0.22
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "trapdoor-bearing-1.82",
+          "type": "cylinder",
+          "collisionAxis": 2,
+          "position": [
+            -1.1,
+            3.4,
+            1.82
+          ],
+          "size": [
+            0.36,
+            0.36,
+            0.2
+          ],
+          "material": "edge"
+        },
+        {
+          "name": "trapdoor-gear",
+          "type": "cylinder",
+          "collisionAxis": 2,
+          "position": [
+            -1.1,
+            3.4,
+            -2.1
+          ],
+          "size": [
+            0.6,
+            0.6,
+            0.26
+          ],
+          "material": "orange"
+        },
+        {
+          "name": "trapdoor-motor",
+          "type": "cylinder",
+          "collisionAxis": 2,
+          "position": [
+            -1.1,
+            3.4,
+            -2.36
+          ],
+          "size": [
+            0.34,
+            0.34,
+            0.3
+          ],
+          "material": "edge"
+        }
+      ],
+      "colliderSource": "Specific box/cylinder dimensions read from art/obstacle_library_assets.py and current manifest. No whole-root AABB collider. Simplified tube outer cylinders have bores smaller than ball; no geometry/playtest validation performed.",
+      "libraryRestBoundsStatus": "current intense-v2 ART manifest rest bounds; no motion validation"
+    },
+    {
+      "id": "seesaw-01",
+      "mechanismId": "weight-seesaw",
+      "asset": "obstacle-library.glb",
+      "rootNode": "WeightSeesaw",
+      "position": [
+        0,
+        0,
+        2
+      ],
+      "rotationEulerDegrees": [
+        0,
+        180,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "libraryRestBounds": {
+        "min": [
+          -1.0199999809265137,
+          0.0,
+          -3.5
+        ],
+        "max": [
+          1.0199999809265137,
+          4.983217716217041,
+          3.5
+        ]
+      },
+      "designReservedBoundsWorld": {
+        "min": [
+          -1.15,
+          -0.4,
+          -1.61
+        ],
+        "max": [
+          1.15,
+          6.5,
+          5.61
+        ]
+      },
+      "reservationMeaning": "Design keep-out envelope, not certified swept collision. Planned bank decks may overlap low support envelope only if vertical clearance is retained.",
+      "entryPortWorld": [
+        0,
+        3.4,
+        -1.39
+      ],
+      "exitPortWorld": [
+        0,
+        3.4,
+        5.39
+      ],
+      "candidateParameters": {
+        "pivot": [
+          0,
+          4.743217748036951,
+          0
+        ],
+        "bodySize": [
+          0.7,
+          0.3,
+          7
+        ],
+        "axis": [
+          1,
+          0,
+          0
+        ],
+        "initialAngleDegrees": 25,
+        "restAngleDegrees": 25,
+        "limitAngleDegrees": 25,
+        "mass": 0.65,
+        "springNmPerRad": 4,
+        "dampingNmsPerRad": 3,
+        "timedAnimation": false
+      },
+      "gameplayStatus": "intense-v2 formal parameters/models configured; no playtest",
+      "hasBeenPlaytested": false,
+      "staticColliders": [
+        {
+          "name": "seesaw-column--1.48",
+          "type": "box",
+          "position": [
+            -0.75,
+            2.3866088740184757,
+            0
+          ],
+          "size": [
+            0.2,
+            4.333217748036951,
+            0.5
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "seesaw-bearing--1.48",
+          "type": "cylinder",
+          "collisionAxis": 2,
+          "position": [
+            -0.75,
+            4.743217748036951,
+            0
+          ],
+          "size": [
+            0.4,
+            0.4,
+            0.18
+          ],
+          "material": "edge",
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        },
+        {
+          "name": "seesaw-spring--1.48",
+          "type": "cylinder",
+          "collisionAxis": 2,
+          "position": [
+            -0.93,
+            4.743217748036951,
+            0
+          ],
+          "size": [
+            0.48,
+            0.48,
+            0.14
+          ],
+          "material": "orange",
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        },
+        {
+          "name": "seesaw-column-1.48",
+          "type": "box",
+          "position": [
+            0.75,
+            2.3866088740184757,
+            0
+          ],
+          "size": [
+            0.2,
+            4.333217748036951,
+            0.5
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "seesaw-bearing-1.48",
+          "type": "cylinder",
+          "collisionAxis": 2,
+          "position": [
+            0.75,
+            4.743217748036951,
+            0
+          ],
+          "size": [
+            0.4,
+            0.4,
+            0.18
+          ],
+          "material": "edge",
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        },
+        {
+          "name": "seesaw-spring-1.48",
+          "type": "cylinder",
+          "collisionAxis": 2,
+          "position": [
+            0.93,
+            4.743217748036951,
+            0
+          ],
+          "size": [
+            0.48,
+            0.48,
+            0.14
+          ],
+          "material": "orange",
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        },
+        {
+          "name": "seesaw-stop--0.32--1",
+          "type": "box",
+          "position": [
+            -0.22,
+            4.287254320498167,
+            -0.5045764092256826
+          ],
+          "size": [
+            0.1,
+            0.1,
+            0.16
+          ],
+          "rotation": [
+            -25,
+            0,
+            0
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "seesaw-stop--0.32-1",
+          "type": "box",
+          "position": [
+            -0.22,
+            4.287254320498167,
+            0.5045764092256826
+          ],
+          "size": [
+            0.1,
+            0.1,
+            0.16
+          ],
+          "rotation": [
+            25,
+            0,
+            0
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "seesaw-stop-0.32--1",
+          "type": "box",
+          "position": [
+            0.22,
+            4.287254320498167,
+            -0.5045764092256826
+          ],
+          "size": [
+            0.1,
+            0.1,
+            0.16
+          ],
+          "rotation": [
+            -25,
+            0,
+            0
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "seesaw-stop-0.32-1",
+          "type": "box",
+          "position": [
+            0.22,
+            4.287254320498167,
+            0.5045764092256826
+          ],
+          "size": [
+            0.1,
+            0.1,
+            0.16
+          ],
+          "rotation": [
+            25,
+            0,
+            0
+          ],
+          "material": "dark"
+        }
+      ],
+      "colliderSource": "Specific box/cylinder dimensions read from art/obstacle_library_assets.py and current manifest. No whole-root AABB collider. Simplified tube outer cylinders have bores smaller than ball; no geometry/playtest validation performed.",
+      "intenseAssetRequirements": {
+        "bodySize": [
+          0.7,
+          0.3,
+          7
+        ],
+        "pivot": [
+          0,
+          4.743217748036951,
+          0
+        ],
+        "bodyCenterOffset": [
+          0,
+          0,
+          0
+        ],
+        "axis": [
+          1,
+          0,
+          0
+        ],
+        "exportRestAngleDegrees": 0,
+        "runtimeRestAngleDegrees": 25,
+        "runtimeLimitAngleDegrees": 25,
+        "boardLayersMaxWidth": 0.7,
+        "columnsX": [
+          -0.75,
+          0.75
+        ],
+        "columnWidth": 0.2,
+        "bearingRadius": 0.2,
+        "bearingLength": 0.18,
+        "springCaseCentersX": [
+          -0.93,
+          0.93
+        ],
+        "springCaseRadius": 0.24,
+        "springCaseLength": 0.14,
+        "movingSpindleLength": 1.98,
+        "movingPointerCentersX": [
+          -0.53,
+          0.53
+        ],
+        "footCentersXZ": [
+          [
+            -0.75,
+            0
+          ],
+          [
+            0.75,
+            0
+          ]
+        ],
+        "footSizeXZ": [
+          0.54,
+          1
+        ],
+        "footBaseY": 0,
+        "rubberStops": [
+          {
+            "name": "seesaw-stop--0.32--1",
+            "type": "box",
+            "position": [
+              -0.22,
+              4.287254320498167,
+              -0.5045764092256826
+            ],
+            "size": [
+              0.1,
+              0.1,
+              0.16
+            ],
+            "rotation": [
+              -25,
+              0,
+              0
+            ],
+            "material": "dark"
+          },
+          {
+            "name": "seesaw-stop--0.32-1",
+            "type": "box",
+            "position": [
+              -0.22,
+              4.287254320498167,
+              0.5045764092256826
+            ],
+            "size": [
+              0.1,
+              0.1,
+              0.16
+            ],
+            "rotation": [
+              25,
+              0,
+              0
+            ],
+            "material": "dark"
+          },
+          {
+            "name": "seesaw-stop-0.32--1",
+            "type": "box",
+            "position": [
+              0.22,
+              4.287254320498167,
+              -0.5045764092256826
+            ],
+            "size": [
+              0.1,
+              0.1,
+              0.16
+            ],
+            "rotation": [
+              -25,
+              0,
+              0
+            ],
+            "material": "dark"
+          },
+          {
+            "name": "seesaw-stop-0.32-1",
+            "type": "box",
+            "position": [
+              0.22,
+              4.287254320498167,
+              0.5045764092256826
+            ],
+            "size": [
+              0.1,
+              0.1,
+              0.16
+            ],
+            "rotation": [
+              25,
+              0,
+              0
+            ],
+            "material": "dark"
+          }
+        ],
+        "stopCarrierTopMaxY": 4.043217748036951,
+        "stopCarrierSize": [
+          1.25,
+          0.16,
+          0.25
+        ],
+        "removeOldStopsAndBrackets": true,
+        "lowEndTopY": 3.4,
+        "lowEndTopProjectionAbsZ": 3.23546999388938,
+        "bankEdgeAbsZ": 3.39,
+        "nominalLowEndGap": 0.1545300061106203,
+        "bodySweepY": [
+          3.128107663889006,
+          6.358327832184896
+        ],
+        "bodySweepAbsZ": 3.503212811120672,
+        "notes": "Current intense-v2 values supersede prior intense geometry.7m long/.7m wide, mass.65, centered X hinge±25. At low end topY3.4/gap.15453. Banks cut back to±3.39 while CP unchanged."
+      },
+      "libraryRestBoundsStatus": "current intense-v2 ART manifest rest bounds; no motion validation",
+      "refinementAssetRequirements": {
+        "bodySize": [
+          0.7,
+          0.3,
+          7
+        ],
+        "pivot": [
+          0,
+          4.743217748036951,
+          0
+        ],
+        "bodyCenterOffset": [
+          0,
+          0,
+          0
+        ],
+        "axis": [
+          1,
+          0,
+          0
+        ],
+        "exportRestAngleDegrees": 0,
+        "runtimeRestAngleDegrees": 25,
+        "runtimeLimitAngleDegrees": 25,
+        "boardLayersMaxWidth": 0.7,
+        "columnsX": [
+          -0.75,
+          0.75
+        ],
+        "columnWidth": 0.2,
+        "bearingRadius": 0.2,
+        "bearingLength": 0.18,
+        "springCaseCentersX": [
+          -0.93,
+          0.93
+        ],
+        "springCaseRadius": 0.24,
+        "springCaseLength": 0.14,
+        "movingSpindleLength": 1.98,
+        "movingPointerCentersX": [
+          -0.53,
+          0.53
+        ],
+        "footCentersXZ": [
+          [
+            -0.75,
+            0
+          ],
+          [
+            0.75,
+            0
+          ]
+        ],
+        "footSizeXZ": [
+          0.54,
+          1
+        ],
+        "footBaseY": 0,
+        "rubberStops": [
+          {
+            "name": "seesaw-stop--0.32--1",
+            "type": "box",
+            "position": [
+              -0.22,
+              4.287254320498167,
+              -0.5045764092256826
+            ],
+            "size": [
+              0.1,
+              0.1,
+              0.16
+            ],
+            "rotation": [
+              -25,
+              0,
+              0
+            ],
+            "material": "dark"
+          },
+          {
+            "name": "seesaw-stop--0.32-1",
+            "type": "box",
+            "position": [
+              -0.22,
+              4.287254320498167,
+              0.5045764092256826
+            ],
+            "size": [
+              0.1,
+              0.1,
+              0.16
+            ],
+            "rotation": [
+              25,
+              0,
+              0
+            ],
+            "material": "dark"
+          },
+          {
+            "name": "seesaw-stop-0.32--1",
+            "type": "box",
+            "position": [
+              0.22,
+              4.287254320498167,
+              -0.5045764092256826
+            ],
+            "size": [
+              0.1,
+              0.1,
+              0.16
+            ],
+            "rotation": [
+              -25,
+              0,
+              0
+            ],
+            "material": "dark"
+          },
+          {
+            "name": "seesaw-stop-0.32-1",
+            "type": "box",
+            "position": [
+              0.22,
+              4.287254320498167,
+              0.5045764092256826
+            ],
+            "size": [
+              0.1,
+              0.1,
+              0.16
+            ],
+            "rotation": [
+              25,
+              0,
+              0
+            ],
+            "material": "dark"
+          }
+        ],
+        "stopCarrierTopMaxY": 4.043217748036951,
+        "stopCarrierSize": [
+          1.25,
+          0.16,
+          0.25
+        ],
+        "removeOldStopsAndBrackets": true,
+        "lowEndTopY": 3.4,
+        "lowEndTopProjectionAbsZ": 3.23546999388938,
+        "bankEdgeAbsZ": 3.39,
+        "nominalLowEndGap": 0.1545300061106203,
+        "bodySweepY": [
+          3.128107663889006,
+          6.358327832184896
+        ],
+        "bodySweepAbsZ": 3.503212811120672,
+        "notes": "Current intense-v2 values supersede prior intense geometry.7m long/.7m wide, mass.65, centered X hinge±25. At low end topY3.4/gap.15453. Banks cut back to±3.39 while CP unchanged."
+      }
+    },
+    {
+      "id": "roller-01",
+      "mechanismId": "axial-roller",
+      "asset": "obstacle-library.glb",
+      "rootNode": "AxialRoller",
+      "position": [
+        14,
+        0,
+        0
+      ],
+      "rotationEulerDegrees": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "libraryRestBounds": {
+        "min": [
+          -1.0,
+          0.0,
+          -3.125
+        ],
+        "max": [
+          1.0,
+          3.40000057220459,
+          3.125
+        ]
+      },
+      "designReservedBoundsWorld": {
+        "min": [
+          12.9,
+          0,
+          -3.23
+        ],
+        "max": [
+          15.1,
+          3.5,
+          3.23
+        ]
+      },
+      "reservationMeaning": "Design keep-out envelope, not certified swept collision. Planned bank decks may overlap low support envelope only if vertical clearance is retained.",
+      "entryPortWorld": [
+        14.0,
+        3.4,
+        2.62
+      ],
+      "exitPortWorld": [
+        14.0,
+        3.4,
+        -2.62
+      ],
+      "candidateParameters": {
+        "center": [
+          0,
+          2.4,
+          0
+        ],
+        "bodySize": [
+          2,
+          2,
+          5
+        ],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "angularSpeed": -4.5,
+        "phaseRadians": 0
+      },
+      "gameplayStatus": "intense-v2 formal parameters/models configured; no playtest",
+      "hasBeenPlaytested": false,
+      "staticColliders": [
+        {
+          "name": "roller-pedestal--2.8",
+          "type": "box",
+          "position": [
+            0,
+            1.22,
+            -2.8
+          ],
+          "size": [
+            0.65,
+            2,
+            0.4
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "roller-bearing--2.8",
+          "type": "cylinder",
+          "collisionAxis": 2,
+          "position": [
+            0,
+            2.4,
+            -2.8
+          ],
+          "size": [
+            0.62,
+            0.62,
+            0.25
+          ],
+          "material": "edge"
+        },
+        {
+          "name": "roller-pedestal-2.8",
+          "type": "box",
+          "position": [
+            0,
+            1.22,
+            2.8
+          ],
+          "size": [
+            0.65,
+            2,
+            0.4
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "roller-bearing-2.8",
+          "type": "cylinder",
+          "collisionAxis": 2,
+          "position": [
+            0,
+            2.4,
+            2.8
+          ],
+          "size": [
+            0.62,
+            0.62,
+            0.25
+          ],
+          "material": "edge"
+        }
+      ],
+      "colliderSource": "Specific box/cylinder dimensions read from art/obstacle_library_assets.py and current manifest. No whole-root AABB collider. Simplified tube outer cylinders have bores smaller than ball; no geometry/playtest validation performed.",
+      "libraryRestBoundsStatus": "current intense-v2 ART manifest rest bounds; no motion validation"
+    },
+    {
+      "id": "cradle-01",
+      "mechanismId": "sway-cradle-bridge",
+      "asset": "obstacle-library.glb",
+      "rootNode": "SwayCradleBridge",
+      "position": [
+        -3,
+        0,
+        -11
+      ],
+      "rotationEulerDegrees": [
+        0,
+        90,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "libraryRestBounds": {
+        "min": [
+          -4.75,
+          0.0,
+          -3.5400002002716064
+        ],
+        "max": [
+          4.75,
+          6.400000095367432,
+          3.259999990463257
+        ]
+      },
+      "designReservedBoundsWorld": {
+        "min": [
+          -6.65,
+          -0.4,
+          -15.85
+        ],
+        "max": [
+          0.4,
+          7.8,
+          -6.15
+        ]
+      },
+      "reservationMeaning": "Design keep-out envelope, not certified swept collision. Planned bank decks may overlap low support envelope only if vertical clearance is retained.",
+      "entryPortWorld": [
+        -0.35,
+        3.4,
+        -11.0
+      ],
+      "exitPortWorld": [
+        -5.65,
+        3.4,
+        -11.0
+      ],
+      "candidateParameters": {
+        "pivot": [
+          0,
+          6.08,
+          0
+        ],
+        "bodyCenterOffset": [
+          0,
+          -2.8,
+          0
+        ],
+        "bodySize": [
+          2.4,
+          0.24,
+          5
+        ],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "amplitudeDegrees": 45,
+        "periodSeconds": 3,
+        "phaseRadians": 0
+      },
+      "gameplayStatus": "intense-v2 formal parameters/models configured; no playtest",
+      "hasBeenPlaytested": false,
+      "frameColliders": [
+        {
+          "name": "cradle-side--1.95--2.22",
+          "type": "box",
+          "position": [
+            -1.95,
+            -1.83,
+            -2.22
+          ],
+          "size": [
+            0.115,
+            2.74,
+            0.115
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "cradle-clamp--1.95--2.22",
+          "type": "box",
+          "position": [
+            -1.95,
+            -3.18,
+            -2.22
+          ],
+          "size": [
+            0.22,
+            0.2,
+            0.22
+          ],
+          "material": "orange"
+        },
+        {
+          "name": "cradle-side-1.95--2.22",
+          "type": "box",
+          "position": [
+            1.95,
+            -1.83,
+            -2.22
+          ],
+          "size": [
+            0.115,
+            2.74,
+            0.115
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "cradle-clamp-1.95--2.22",
+          "type": "box",
+          "position": [
+            1.95,
+            -3.18,
+            -2.22
+          ],
+          "size": [
+            0.22,
+            0.2,
+            0.22
+          ],
+          "material": "orange"
+        },
+        {
+          "name": "cradle-under-tie--2.22",
+          "type": "box",
+          "position": [
+            0,
+            -3.2,
+            -2.22
+          ],
+          "size": [
+            4.02,
+            0.18,
+            0.16
+          ],
+          "material": "edge"
+        },
+        {
+          "name": "cradle-side--1.95-2.22",
+          "type": "box",
+          "position": [
+            -1.95,
+            -1.83,
+            2.22
+          ],
+          "size": [
+            0.115,
+            2.74,
+            0.115
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "cradle-clamp--1.95-2.22",
+          "type": "box",
+          "position": [
+            -1.95,
+            -3.18,
+            2.22
+          ],
+          "size": [
+            0.22,
+            0.2,
+            0.22
+          ],
+          "material": "orange"
+        },
+        {
+          "name": "cradle-side-1.95-2.22",
+          "type": "box",
+          "position": [
+            1.95,
+            -1.83,
+            2.22
+          ],
+          "size": [
+            0.115,
+            2.74,
+            0.115
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "cradle-clamp-1.95-2.22",
+          "type": "box",
+          "position": [
+            1.95,
+            -3.18,
+            2.22
+          ],
+          "size": [
+            0.22,
+            0.2,
+            0.22
+          ],
+          "material": "orange"
+        },
+        {
+          "name": "cradle-under-tie-2.22",
+          "type": "box",
+          "position": [
+            0,
+            -3.2,
+            2.22
+          ],
+          "size": [
+            4.02,
+            0.18,
+            0.16
+          ],
+          "material": "edge"
+        }
+      ],
+      "staticColliders": [
+        {
+          "name": "cradle-tower--2.45--2.86",
+          "type": "box",
+          "position": [
+            -4.35,
+            3.25,
+            -2.86
+          ],
+          "size": [
+            0.24,
+            6.0600000000000005,
+            0.24
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "cradle-tower-2.45--2.86",
+          "type": "box",
+          "position": [
+            4.35,
+            3.25,
+            -2.86
+          ],
+          "size": [
+            0.24,
+            6.0600000000000005,
+            0.24
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "cradle-portal--2.86",
+          "type": "box",
+          "position": [
+            0,
+            6.28,
+            -2.86
+          ],
+          "size": [
+            8.94,
+            0.24,
+            0.26
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "cradle-tower--2.45-2.86",
+          "type": "box",
+          "position": [
+            -4.35,
+            3.25,
+            2.86
+          ],
+          "size": [
+            0.24,
+            6.0600000000000005,
+            0.24
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "cradle-tower-2.45-2.86",
+          "type": "box",
+          "position": [
+            4.35,
+            3.25,
+            2.86
+          ],
+          "size": [
+            0.24,
+            6.0600000000000005,
+            0.24
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "cradle-portal-2.86",
+          "type": "box",
+          "position": [
+            0,
+            6.28,
+            2.86
+          ],
+          "size": [
+            8.94,
+            0.24,
+            0.26
+          ],
+          "material": "dark"
+        },
+        {
+          "name": "cradle-upper-axle",
+          "type": "cylinder",
+          "collisionAxis": 2,
+          "position": [
+            0,
+            6.08,
+            0
+          ],
+          "size": [
+            0.2,
+            0.2,
+            6.08
+          ],
+          "material": "edge"
+        }
+      ],
+      "colliderSource": "Specific box/cylinder dimensions read from art/obstacle_library_assets.py and current manifest. No whole-root AABB collider. Simplified tube outer cylinders have bores smaller than ball; no geometry/playtest validation performed.",
+      "intenseAssetRequirements": {
+        "bodySizeUnchanged": [
+          2.4,
+          0.24,
+          5
+        ],
+        "pivotUnchanged": [
+          0,
+          6.08,
+          0
+        ],
+        "bodyCenterOffsetUnchanged": [
+          0,
+          -2.8,
+          0
+        ],
+        "hangerGeometryUnchanged": true,
+        "amplitudeDegrees": 45,
+        "periodSeconds": 3,
+        "towerCentersX": [
+          -4.35,
+          4.35
+        ],
+        "towerWidth": 0.24,
+        "towerCentersZ": [
+          -2.86,
+          2.86
+        ],
+        "portalSize": [
+          8.94,
+          0.24,
+          0.26
+        ],
+        "portalCenterY": 6.28,
+        "moveCornerBracesWithTowers": true,
+        "footSizeXZ": [
+          0.8,
+          0.8
+        ],
+        "footCentersXZ": [
+          [
+            -4.35,
+            -2.86
+          ],
+          [
+            -4.35,
+            2.86
+          ],
+          [
+            4.35,
+            -2.86
+          ],
+          [
+            4.35,
+            2.86
+          ]
+        ],
+        "fixedRootHalfWidthBudget": 4.85,
+        "movingGroupHalfWidthBudget": 3.9,
+        "bankWidth": 6.8,
+        "bankHalfWidthMargin": 0.48672006151142444,
+        "bankEdgeAbsZ": 2.65,
+        "towerInnerFaceX": 4.23,
+        "movingGroupToTowerXBudgetGap": 0.33,
+        "notes": "45degrees fixed requirement. Gantry towers±4.35 and bank6.8; CP1-to-seesaw link shifts only fromZ-5.2to-4 to clear south tower. CP, root/Pivot/body/U frame unchanged. Bounds are design envelopes, not tested mesh sweeps.",
+        "movingGroupConservativeXAt45": 3.783021279348029,
+        "deckOuterXAt45": 2.9132799384885755,
+        "movingGroupConservativeY": [
+          2.1982864608526302,
+          7.670990257669732
+        ],
+        "neighborLinkZ": -4
+      },
+      "libraryRestBoundsStatus": "current intense-v2 ART manifest rest bounds; no motion validation",
+      "refinementAssetRequirements": {
+        "bodySizeUnchanged": [
+          2.4,
+          0.24,
+          5
+        ],
+        "pivotUnchanged": [
+          0,
+          6.08,
+          0
+        ],
+        "bodyCenterOffsetUnchanged": [
+          0,
+          -2.8,
+          0
+        ],
+        "hangerGeometryUnchanged": true,
+        "amplitudeDegrees": 45,
+        "periodSeconds": 3,
+        "towerCentersX": [
+          -4.35,
+          4.35
+        ],
+        "towerWidth": 0.24,
+        "towerCentersZ": [
+          -2.86,
+          2.86
+        ],
+        "portalSize": [
+          8.94,
+          0.24,
+          0.26
+        ],
+        "portalCenterY": 6.28,
+        "moveCornerBracesWithTowers": true,
+        "footSizeXZ": [
+          0.8,
+          0.8
+        ],
+        "footCentersXZ": [
+          [
+            -4.35,
+            -2.86
+          ],
+          [
+            -4.35,
+            2.86
+          ],
+          [
+            4.35,
+            -2.86
+          ],
+          [
+            4.35,
+            2.86
+          ]
+        ],
+        "fixedRootHalfWidthBudget": 4.85,
+        "movingGroupHalfWidthBudget": 3.9,
+        "bankWidth": 6.8,
+        "bankHalfWidthMargin": 0.48672006151142444,
+        "bankEdgeAbsZ": 2.65,
+        "towerInnerFaceX": 4.23,
+        "movingGroupToTowerXBudgetGap": 0.33,
+        "notes": "45degrees fixed requirement. Gantry towers±4.35 and bank6.8; CP1-to-seesaw link shifts only fromZ-5.2to-4 to clear south tower. CP, root/Pivot/body/U frame unchanged. Bounds are design envelopes, not tested mesh sweeps.",
+        "movingGroupConservativeXAt45": 3.783021279348029,
+        "deckOuterXAt45": 2.9132799384885755,
+        "movingGroupConservativeY": [
+          2.1982864608526302,
+          7.670990257669732
+        ],
+        "neighborLinkZ": -4
+      }
+    }
+  ],
+  "waitPoints": [
+    {
+      "id": "piston-front",
+      "position": [
+        -11.5,
+        3.95,
+        12.9
+      ],
+      "safeWhen": "all piston phases; outside localZ sweep"
+    },
+    {
+      "id": "piston-rear",
+      "position": [
+        -11.5,
+        3.95,
+        7.1
+      ],
+      "safeWhen": "all piston phases; outside localZ sweep"
+    },
+    {
+      "id": "trapdoor-before",
+      "position": [
+        -13.7,
+        3.95,
+        4.6
+      ],
+      "safeWhen": "fixed island, not tongue or flap"
+    },
+    {
+      "id": "seesaw-before",
+      "position": [
+        0,
+        3.95,
+        -3.2
+      ],
+      "safeWhen": "fixed approach, outside board end"
+    },
+    {
+      "id": "roller-before",
+      "position": [
+        14,
+        3.95,
+        5.5
+      ],
+      "safeWhen": "fixed entry, not rotating crown"
+    },
+    {
+      "id": "cradle-before",
+      "position": [
+        1.6,
+        3.95,
+        -11
+      ],
+      "safeWhen": "fixed entry; wait for bridge near neutral"
+    }
+  ],
+  "routeWaypoints": [
+    [
+      -14,
+      3.4,
+      16
+    ],
+    [
+      -14,
+      3.4,
+      12.9
+    ],
+    [
+      -14,
+      3.4,
+      10
+    ],
+    [
+      -14,
+      3.4,
+      7.1
+    ],
+    [
+      -13.7,
+      3.4,
+      4.6
+    ],
+    [
+      -13.7,
+      3.4,
+      1.62
+    ],
+    [
+      -13.7,
+      3.4,
+      -1.62
+    ],
+    [
+      -14,
+      3.4,
+      -5.2
+    ],
+    [
+      -14,
+      3.4,
+      -4
+    ],
+    [
+      0,
+      3.4,
+      -4
+    ],
+    [
+      0,
+      3.4,
+      -1.39
+    ],
+    [
+      0,
+      3.4,
+      5.39
+    ],
+    [
+      0,
+      3.4,
+      7
+    ],
+    [
+      14,
+      3.4,
+      7
+    ],
+    [
+      14,
+      3.4,
+      2.62
+    ],
+    [
+      14,
+      3.4,
+      -2.62
+    ],
+    [
+      14,
+      3.4,
+      -5
+    ],
+    [
+      14,
+      3.4,
+      -11
+    ],
+    [
+      1.6,
+      3.4,
+      -11
+    ],
+    [
+      -0.35,
+      3.4,
+      -11
+    ],
+    [
+      -5.65,
+      3.4,
+      -11
+    ],
+    [
+      -11.2,
+      3.4,
+      -11
+    ]
+  ],
+  "progressIntent": [
+    {
+      "afterCheckpoint": 0,
+      "axis": "z",
+      "origin": 16,
+      "direction": -1,
+      "base": 0,
+      "max": 0.24,
+      "divisor": 88.33333333333333
+    },
+    {
+      "afterCheckpoint": 1,
+      "axis": "z",
+      "origin": -5.2,
+      "direction": 1,
+      "base": 0.25,
+      "max": 0.24,
+      "divisor": 50.833333333333336
+    },
+    {
+      "afterCheckpoint": 2,
+      "axis": "z",
+      "origin": 7,
+      "direction": -1,
+      "base": 0.5,
+      "max": 0.24,
+      "divisor": 50.0
+    },
+    {
+      "afterCheckpoint": 3,
+      "axis": "x",
+      "origin": 14,
+      "direction": -1,
+      "base": 0.75,
+      "max": 0.23,
+      "divisor": 109.56521739130434
+    }
+  ],
+  "progressMeaning": "Coarse phase estimate; includes turns and wait periods and is not actual travelled length.",
+  "artConstraints": [
+    "Reuse five library roots, no copying dynamic meshes into track GLB.",
+    "TrackStatic world origin0, identity scale; pool/rings excluded.",
+    "Trapdoor tongues localX[-.4,1.0],localabsZ[1.62,3.2]; broad banks startabsZ3.2 to avoid existing side axle and drive.",
+    "Keep roller bank undersides aboveY2.83 withinlocalabsZ2.475..3.125 and absX.6; existing bearings topY2.71 and end shaft must stay visible beneath bank, do not add supports there.",
+    "Cradle bank underframes stop before localabsZ2.65; no horizontal plates fill bridge gap.",
+    "Library feet atY0 may receive small static plinths fromY-.4to0, restricted to footprint of actual stationary foot; never continuous plates under mechanisms.",
+    "Design reserves are not performed geometry checks; exact assembly concerns must be reported, not hidden by wide collision or moving root heights."
+  ],
+  "environment": {
+    "style": "same first-level pool/track materials, no new theme",
+    "runtimeObjects": [
+      {
+        "name": "Pool basin",
+        "type": "box",
+        "position": [
+          -2,
+          -0.65,
+          1
+        ],
+        "size": [
+          76,
+          0.5,
+          72
+        ],
+        "material": "dark"
+      },
+      {
+        "name": "Pool water",
+        "type": "box",
+        "position": [
+          -2,
+          -0.11,
+          1
+        ],
+        "size": [
+          74.4,
+          0.02,
+          70.4
+        ],
+        "material": "water"
+      },
+      {
+        "name": "Pool rim left",
+        "type": "box",
+        "position": [
+          -39.6,
+          -0.11,
+          1
+        ],
+        "size": [
+          0.8,
+          0.58,
+          70.4
+        ],
+        "material": "poolEdge"
+      },
+      {
+        "name": "Pool rim right",
+        "type": "box",
+        "position": [
+          35.6,
+          -0.11,
+          1
+        ],
+        "size": [
+          0.8,
+          0.58,
+          70.4
+        ],
+        "material": "poolEdge"
+      },
+      {
+        "name": "Pool rim near",
+        "type": "box",
+        "position": [
+          -2,
+          -0.11,
+          36.6
+        ],
+        "size": [
+          76,
+          0.58,
+          0.8
+        ],
+        "material": "poolEdge"
+      },
+      {
+        "name": "Pool rim far",
+        "type": "box",
+        "position": [
+          -2,
+          -0.11,
+          -34.6
+        ],
+        "size": [
+          76,
+          0.58,
+          0.8
+        ],
+        "material": "poolEdge"
+      }
+    ],
+    "collision": false,
+    "bakeIntoStaticGlb": false,
+    "coverageStatus": "design coverage only, camera not tested"
+  },
+  "validation": {
+    "testsRun": false,
+    "buildRun": false,
+    "playtestRun": false,
+    "geometryAuditRun": false,
+    "reason": "User requested development without automatic checks. Candidate layout/physics not certified."
+  },
+  "runtimeMapping": {
+    "contract": "docs/integration/level-03-contract.md",
+    "typeFile": "src/game/library-types.ts",
+    "implementationStatus": "CODE supports intense-v2 and actual rod collision; current parameters/colliders/shores and assets mapped; unverified",
+    "staticCollidersSpace": "library root local; instance yaw/position applied by runtime",
+    "frameCollidersSpace": "cradle pivot local before instance yaw; original board body automatic from manifest",
+    "medals": "omit uncalibrated thresholds in runtime/catalog",
+    "platformRequired": false,
+    "configPath": "src/levels/mechanism-trial.ts",
+    "configSha256": "4e2f616d2c3ad2497c8a8e4eb227ad2ca931de92b093a6a9182a2fa4a16d2c3d",
+    "catalogRegistrationStatus": "03 uses intense-v2; standard/challenge/intense historical buckets retained",
+    "schemaSupported": true
+  },
+  "difficultyAdjustment": {
+    "source": "docs/product/level-03-difficulty.md",
+    "previousRule": "standard",
+    "currentRule": "challenge",
+    "previousConfigSha256": "9cc37be109d846a81410ce91ac15d105af176a122c4d0eef4b291342681f60bb",
+    "standardRecordsPreservedByExistingBucketDesign": true,
+    "status": "historical challenge parameters superseded by intenseAdjustment",
+    "geometryAndModelChanges": false,
+    "playerChanges": false,
+    "checkpointChanges": false,
+    "piston": {
+      "previousStages": [
+        3,
+        1,
+        1.6,
+        0.8,
+        1.6
+      ],
+      "stages": [
+        0.9,
+        0.45,
+        0.45,
+        0.65,
+        0.65
+      ],
+      "cycleSeconds": 3.1,
+      "fullyRetractedIncludingWarningSeconds": 1.35,
+      "pushSmoothstepPeakSpeed": 12.333333333333334
+    },
+    "trapdoor": {
+      "previousStages": [
+        4.5,
+        1,
+        1.5,
+        1.5
+      ],
+      "stages": [
+        1.5,
+        0.35,
+        1.5,
+        0.6
+      ],
+      "warningSeconds": 0.45,
+      "warningIncludedInClosed": true,
+      "cycleSeconds": 3.95
+    },
+    "seesaw": {
+      "previousSpring": 25,
+      "spring": 10,
+      "previousDamping": 55,
+      "damping": 15,
+      "mass": 4,
+      "limitAngleDegrees": 8,
+      "restAngleDegrees": 8
+    },
+    "roller": {
+      "previousAngularSpeed": -0.45,
+      "angularSpeed": -1.8,
+      "speedMultiplier": 4
+    },
+    "cradle": {
+      "previousAmplitudeDegrees": 9,
+      "amplitudeDegrees": 10,
+      "previousPeriodSeconds": 10,
+      "periodSeconds": 3.6,
+      "bankHalfWidth": 1.8,
+      "deckOuterXFormula": "1.2*cos(A)+2.92*sin(A)",
+      "outerXAt10": 1.688822,
+      "bankMarginAt10": 0.111178,
+      "outerXAt14": 1.870767,
+      "outerXAt16": 1.958375,
+      "reason": "Keep deck projection within existing bank mouth with clearance; increase frequency mainly. Angle candidates14/16 exceed bank halfwidth. No port/model changes.",
+      "gantryCaveat": "Stationary towers localZ intervals startabsZ2.74; moving clamp endsabsZ2.33 and boardends2.5, so X projection overlap alone is not proof of collision. No full mesh sweep or physics verification performed."
+    },
+    "codeStatus": "CODE source tracing found no explicit kinematic/hinge defect; physics unchanged. Fixed atlas preview to read formal level parameters instead of defaults. No executed validation.",
+    "testsRun": false,
+    "buildRun": false,
+    "typecheckRun": false,
+    "playtestRun": false
+  },
+  "intenseAdjustment": {
+    "status": "historical intense development superseded by refinements",
+    "pistonStages": [
+      0.9,
+      0.45,
+      0.22,
+      0.65,
+      0.25
+    ],
+    "trapdoorStages": [
+      1.5,
+      0.2,
+      1.5,
+      0.22
+    ],
+    "trapdoorWarningSeconds": 0.45,
+    "rollerAngularSpeed": -4.5,
+    "testsRun": false,
+    "playtestRun": false,
+    "previousRule": "challenge",
+    "currentRule": "intense",
+    "geometryChanges": [
+      "seesaw narrow board/new pivot/stops/shore tips",
+      "cradle wider gantry/entry bank/exit wings"
+    ],
+    "preserved": [
+      "all three CP",
+      "old two levels",
+      "library root names and yaw/position",
+      "player physics",
+      "other three model roots"
+    ],
+    "seesaw": {
+      "bodySize": [
+        1,
+        0.3,
+        5
+      ],
+      "mass": 1.2,
+      "restAngle": 25,
+      "limitAngle": 25,
+      "spring": 4,
+      "damping": 3,
+      "pivotY": 4.320599486296251,
+      "inertiaXBoxModel": 2.509
+    },
+    "cradle": {
+      "amplitude": 25,
+      "period": 3,
+      "bankWidth": 6
+    },
+    "fastMotionCaveat": "Kinematic targets update per render frame, not per1/120 substep; .22 push peak25.23m/s =>~.841m at30fps and1.261m at20fps vs1.2 combined ball+head extent. No guaranteed collision/CCD claim. No hidden push force.",
+    "geometrySourceSha256": "ea6685ae3accc0aa364eb6b56fad657208388e917f5c5062cf5ec7c634089969",
+    "codeStatus": "No specific physical path defect established; no world timestep/player CCD/hidden force change. CODE updated fallback and new preview assets; tests written but not run."
+  },
+  "refinements": {
+    "status": "development complete; new same-name library/track and final TS paired; unverified",
+    "source": "docs/product/level-03-refinements.md",
+    "trapdoorStages": [
+      1.5,
+      0.2,
+      0.45,
+      0.22
+    ],
+    "testsRun": false,
+    "playtestRun": false,
+    "geometrySource": "docs/product/level-03-refinements.md",
+    "seesaw": {
+      "bodySize": [
+        0.7,
+        0.3,
+        7
+      ],
+      "pivotY": 4.743217748036951,
+      "mass": 0.65,
+      "restAngle": 25,
+      "limitAngle": 25,
+      "spring": 4,
+      "damping": 3,
+      "inertiaX": 2.659041666666667,
+      "bankEdgeAbsZ": 3.39
+    },
+    "cradle": {
+      "amplitude": 45,
+      "period": 3,
+      "towerCentersX": [
+        -4.35,
+        4.35
+      ],
+      "portalWidth": 8.94,
+      "bankWidth": 6.8,
+      "neighborLinkZ": -4
+    },
+    "rodCollision": {
+      "owner": "CODE",
+      "status": "CODE confirmed real rod collision implemented from manifest; lifecycle/endpoint test cases written but not run",
+      "radiusFromManifest": 0.08,
+      "noLevelHardcodedRodCollider": true
+    },
+    "preserved": [
+      "three CP positions/rings",
+      "old two levels",
+      "player physics",
+      "piston stages",
+      "roller angularSpeed",
+      "root names/positions/yaw"
+    ],
+    "geometrySourceSha256": "3e3e7b8681b2ee066c42d76bd2454a4fee03010bb34904d1e0909e8e7256c44a",
+    "currentRule": "intense-v2",
+    "previousRule": "intense"
+  }
+}

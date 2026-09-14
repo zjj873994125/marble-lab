@@ -1,5 +1,5 @@
 {
-  "blend_sha256": "23ff6837e9ede1f2c5aadd4d5f87e4b371c258e52a3387d0e4102e6126092449",
+  "blend_sha256": "7189c6bb95349a4ae79444ebd72b3d46822607ba165164a0973f026d5390da47",
   "layout_sha256": "62525d6c3a6dc0fc9d41a4032e4ca994e074398ad1150c1f9ef69bf8e7f764f0",
   "contract_sha256": "a446dc2c0ba6de23857b3ae8dcf2c748657937a148fdb1babc18988e0ccf197a",
   "stage": "serpentine geometry exported; current gameplay not tested",
@@ -11,13 +11,13 @@
     {
       "file": "water-rush-track.glb",
       "node": "TrackStatic",
-      "sha256": "81ceb56321a53c7b97932fa2b69019df82b7f815598744c4e42ee7a6f631d6fc",
-      "bytes": 7710160,
-      "triangles": 198453,
+      "sha256": "3c1698f1671cc0428a93b5bea0c865858b0fe3a2fec4e0f9d44ee64b368a0221",
+      "bytes": 7764800,
+      "triangles": 217988,
       "materials": 5,
       "bounds_min": [
         -32.040000915527344,
-        -0.39999985694885254,
+        -0.4000000059604645,
         -26.447498321533203
       ],
       "bounds_max": [
@@ -27,7 +27,7 @@
       ],
       "dimensions_xyz_m": [
         54.47999954223633,
-        8.420000314712524,
+        8.420000463724136,
         47.772499084472656
       ]
     },
@@ -1025,5 +1025,28 @@
     "layout_metadata_sha256": "495f64546da3cc62b5a978a28563426d3ee3944d0c1110b9f35afae163a6a691",
     "static_reference_restored_by": "LEVEL",
     "geometry_source_sha256": "62525d6c3a6dc0fc9d41a4032e4ca994e074398ad1150c1f9ef69bf8e7f764f0"
+  },
+  "white_surface_repair": {
+    "inputSourceSha256": "23ff6837e9ede1f2c5aadd4d5f87e4b371c258e52a3387d0e4102e6126092449",
+    "method": "planar_cdt_polygon_union",
+    "sections": [
+      {
+        "topY": 3.4,
+        "controlPolygons": 184,
+        "surfaceTriangles": 1739
+      },
+      {
+        "topY": 7.62565,
+        "controlPolygons": 1,
+        "surfaceTriangles": 2
+      }
+    ],
+    "slopedControlsPreserved": [
+      "ramp-entry",
+      "ramp-climb",
+      "ramp-crest"
+    ],
+    "otherLayersUnchanged": true,
+    "status": "Model repair exported; no tests or playtest run"
   }
 }

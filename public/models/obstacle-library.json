@@ -1,0 +1,1754 @@
+{
+  "schemaVersion": 1,
+  "asset": "obstacle-library.glb",
+  "units": "m",
+  "upAxis": "+Y",
+  "forwardAxis": "-Z",
+  "referenceDeckY": 3.4,
+  "glbSha256": "8281551e662b13d240a1f5ffa64bcfb43d3687cc37ddd0ae605e28f8575f4b68",
+  "source": "art/obstacle-library.blend",
+  "sourceSha256": "43c336afd41f47bceaa1046d68e73fd335afe932d48e069b9b6a0eac8a40fd91",
+  "contractSha256": "ac0a087bac85070ffd3f5edcf8ee12600fffc9ff9cf2aae29daeeaeffa842396",
+  "designSourceSha256": "426f36479646b79a726a2b928488ecc2c2337b7593384d64e976e6d3354bd50d",
+  "runtimeSupported": false,
+  "statistics": {
+    "bytes": 619092,
+    "triangles": 31860,
+    "materials": 6,
+    "meshCount": 18,
+    "materialNames": [
+      "Safety terracotta",
+      "Graphite chassis",
+      "Ivory polymer",
+      "Brushed alloy",
+      "Printed markings",
+      "Rubber pads"
+    ]
+  },
+  "entries": [
+    {
+      "id": "weight-seesaw",
+      "rootNode": "WeightSeesaw",
+      "restPose": "neutral-horizontal",
+      "design": {
+        "implemented": false,
+        "limitAngleDegrees": 25,
+        "restAngleDegrees": 25,
+        "candidateMass": 0.65,
+        "springNmPerRad": 4,
+        "dampingNmsPerRad": 3,
+        "assemblyRequirements": {
+          "bodySize": [
+            0.7,
+            0.3,
+            7
+          ],
+          "pivot": [
+            0,
+            4.743217748036951,
+            0
+          ],
+          "bodyCenterOffset": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "exportRestAngleDegrees": 0,
+          "runtimeRestAngleDegrees": 25,
+          "runtimeLimitAngleDegrees": 25,
+          "boardLayersMaxWidth": 0.7,
+          "columnsX": [
+            -0.75,
+            0.75
+          ],
+          "columnWidth": 0.2,
+          "bearingRadius": 0.2,
+          "bearingLength": 0.18,
+          "springCaseCentersX": [
+            -0.93,
+            0.93
+          ],
+          "springCaseRadius": 0.24,
+          "springCaseLength": 0.14,
+          "movingSpindleLength": 1.98,
+          "movingPointerCentersX": [
+            -0.53,
+            0.53
+          ],
+          "footCentersXZ": [
+            [
+              -0.75,
+              0
+            ],
+            [
+              0.75,
+              0
+            ]
+          ],
+          "footSizeXZ": [
+            0.54,
+            1
+          ],
+          "footBaseY": 0,
+          "rubberStops": [
+            {
+              "name": "seesaw-stop--0.32--1",
+              "type": "box",
+              "position": [
+                -0.22,
+                4.287254320498167,
+                -0.5045764092256826
+              ],
+              "size": [
+                0.1,
+                0.1,
+                0.16
+              ],
+              "rotation": [
+                -25,
+                0,
+                0
+              ],
+              "material": "dark"
+            },
+            {
+              "name": "seesaw-stop--0.32-1",
+              "type": "box",
+              "position": [
+                -0.22,
+                4.287254320498167,
+                0.5045764092256826
+              ],
+              "size": [
+                0.1,
+                0.1,
+                0.16
+              ],
+              "rotation": [
+                25,
+                0,
+                0
+              ],
+              "material": "dark"
+            },
+            {
+              "name": "seesaw-stop-0.32--1",
+              "type": "box",
+              "position": [
+                0.22,
+                4.287254320498167,
+                -0.5045764092256826
+              ],
+              "size": [
+                0.1,
+                0.1,
+                0.16
+              ],
+              "rotation": [
+                -25,
+                0,
+                0
+              ],
+              "material": "dark"
+            },
+            {
+              "name": "seesaw-stop-0.32-1",
+              "type": "box",
+              "position": [
+                0.22,
+                4.287254320498167,
+                0.5045764092256826
+              ],
+              "size": [
+                0.1,
+                0.1,
+                0.16
+              ],
+              "rotation": [
+                25,
+                0,
+                0
+              ],
+              "material": "dark"
+            }
+          ],
+          "stopCarrierTopMaxY": 4.043217748036951,
+          "stopCarrierSize": [
+            1.25,
+            0.16,
+            0.25
+          ],
+          "removeOldStopsAndBrackets": true,
+          "lowEndTopY": 3.4,
+          "lowEndTopProjectionAbsZ": 3.23546999388938,
+          "bankEdgeAbsZ": 3.39,
+          "nominalLowEndGap": 0.1545300061106203,
+          "bodySweepY": [
+            3.128107663889006,
+            6.358327832184896
+          ],
+          "bodySweepAbsZ": 3.503212811120672,
+          "notes": "Current intense-v2 values supersede prior intense geometry.7m long/.7m wide, mass.65, centered X hinge±25. At low end topY3.4/gap.15453. Banks cut back to±3.39 while CP unchanged."
+        }
+      },
+      "rootBounds": {
+        "min": [
+          -1.0199999809265137,
+          0.0,
+          -3.5
+        ],
+        "max": [
+          1.0199999809265137,
+          4.983217716217041,
+          3.5
+        ]
+      },
+      "statistics": {
+        "dimensions": [
+          2.0399999618530273,
+          4.983217716217041,
+          7.0
+        ],
+        "triangles": 6088,
+        "materials": 6,
+        "geometryBufferBytes": 151872
+      },
+      "parts": [
+        {
+          "nodePath": "WeightSeesaw_Pivot",
+          "role": "pivot",
+          "position": [
+            0,
+            4.743217945098877,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "bodySize": [
+            0.7,
+            0.3,
+            7
+          ],
+          "bodyCenterOffset": [
+            0,
+            0,
+            0
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -0.9900000095367432,
+                -0.4100002646446228,
+                -3.5
+              ],
+              "max": [
+                0.9900000095367432,
+                0.17549999058246613,
+                3.5
+              ]
+            },
+            "dimensions": [
+              1.9800000190734863,
+              0.5855002552270889,
+              7.0
+            ],
+            "triangles": 1696,
+            "materials": 4,
+            "geometryBufferBytes": 31104
+          }
+        },
+        {
+          "nodePath": "WeightSeesaw_Pivot/WeightSeesaw_DeckVisual",
+          "role": "visual",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -0.9900000095367432,
+                -0.4100002646446228,
+                -3.5
+              ],
+              "max": [
+                0.9900000095367432,
+                0.17549999058246613,
+                3.5
+              ]
+            },
+            "dimensions": [
+              1.9800000190734863,
+              0.5855002552270889,
+              7.0
+            ],
+            "triangles": 1696,
+            "materials": 4,
+            "geometryBufferBytes": 31104
+          }
+        },
+        {
+          "nodePath": "WeightSeesaw_Static",
+          "role": "static",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -1.0199999809265137,
+                0.0,
+                -0.5923734307289124
+              ],
+              "max": [
+                1.0199999809265137,
+                4.983217716217041,
+                0.5923734307289124
+              ]
+            },
+            "dimensions": [
+              2.0399999618530273,
+              4.983217716217041,
+              1.1847468614578247
+            ],
+            "triangles": 4392,
+            "materials": 5,
+            "geometryBufferBytes": 120768
+          }
+        },
+        {
+          "nodePath": "WeightSeesaw_Static/WeightSeesaw_AxleFrame",
+          "role": "visual",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -1.0175000429153442,
+                0.2200000286102295,
+                -0.5923734307289124
+              ],
+              "max": [
+                1.0175000429153442,
+                4.983217716217041,
+                0.5923734307289124
+              ]
+            },
+            "dimensions": [
+              2.0350000858306885,
+              4.7632176876068115,
+              1.1847468614578247
+            ],
+            "triangles": 3292,
+            "materials": 5,
+            "geometryBufferBytes": 101832
+          }
+        },
+        {
+          "nodePath": "WeightSeesaw_Static/WeightSeesaw_Base",
+          "role": "visual",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -1.0199999809265137,
+                0.0,
+                -0.5
+              ],
+              "max": [
+                1.0199999809265137,
+                0.4399999976158142,
+                0.5
+              ]
+            },
+            "dimensions": [
+              2.0399999618530273,
+              0.4399999976158142,
+              1.0
+            ],
+            "triangles": 1100,
+            "materials": 3,
+            "geometryBufferBytes": 18936
+          }
+        }
+      ]
+    },
+    {
+      "id": "axial-roller",
+      "rootNode": "AxialRoller",
+      "restPose": "rotation-zero",
+      "design": {
+        "implemented": false,
+        "angularSpeedRadiansPerSecond": -0.45,
+        "rotationAxis": [
+          0,
+          0,
+          1
+        ],
+        "radius": 1,
+        "surfaceTopVelocityDirection": "+X"
+      },
+      "rootBounds": {
+        "min": [
+          -1.0,
+          0.0,
+          -3.125
+        ],
+        "max": [
+          1.0,
+          3.40000057220459,
+          3.125
+        ]
+      },
+      "statistics": {
+        "dimensions": [
+          2.0,
+          3.40000057220459,
+          6.25
+        ],
+        "triangles": 6580,
+        "materials": 5,
+        "geometryBufferBytes": 114288
+      },
+      "parts": [
+        {
+          "nodePath": "AxialRoller_Rotor",
+          "role": "pivot",
+          "position": [
+            0,
+            2.4000000953674316,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "bodySize": [
+            2,
+            2,
+            5
+          ],
+          "bodyCenterOffset": [
+            0,
+            0,
+            0
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -1.0,
+                -1.0000004768371582,
+                -2.950000047683716
+              ],
+              "max": [
+                1.0,
+                1.0000004768371582,
+                2.950000047683716
+              ]
+            },
+            "dimensions": [
+              2.0,
+              2.0000009536743164,
+              5.900000095367432
+            ],
+            "triangles": 4348,
+            "materials": 4,
+            "geometryBufferBytes": 80328
+          }
+        },
+        {
+          "nodePath": "AxialRoller_Rotor/AxialRoller_DrumVisual",
+          "role": "visual",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -1.0,
+                -1.0000004768371582,
+                -2.950000047683716
+              ],
+              "max": [
+                1.0,
+                1.0000004768371582,
+                2.950000047683716
+              ]
+            },
+            "dimensions": [
+              2.0,
+              2.0000009536743164,
+              5.900000095367432
+            ],
+            "triangles": 4348,
+            "materials": 4,
+            "geometryBufferBytes": 80328
+          }
+        },
+        {
+          "nodePath": "AxialRoller_Static",
+          "role": "static",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -0.6000000238418579,
+                0.0,
+                -3.125
+              ],
+              "max": [
+                0.6000000238418579,
+                2.7100000381469727,
+                3.125
+              ]
+            },
+            "dimensions": [
+              1.2000000476837158,
+              2.7100000381469727,
+              6.25
+            ],
+            "triangles": 2232,
+            "materials": 4,
+            "geometryBufferBytes": 33960
+          }
+        },
+        {
+          "nodePath": "AxialRoller_Static/AxialRoller_BearingFar",
+          "role": "visual",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -0.6000000238418579,
+                0.0,
+                -3.125
+              ],
+              "max": [
+                0.6000000238418579,
+                2.7100000381469727,
+                -2.4749999046325684
+              ]
+            },
+            "dimensions": [
+              1.2000000476837158,
+              2.7100000381469727,
+              0.6500000953674316
+            ],
+            "triangles": 1116,
+            "materials": 4,
+            "geometryBufferBytes": 20328
+          }
+        },
+        {
+          "nodePath": "AxialRoller_Static/AxialRoller_BearingNear",
+          "role": "visual",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -0.6000000238418579,
+                0.0,
+                2.4749999046325684
+              ],
+              "max": [
+                0.6000000238418579,
+                2.7100000381469727,
+                3.125
+              ]
+            },
+            "dimensions": [
+              1.2000000476837158,
+              2.7100000381469727,
+              0.6500000953674316
+            ],
+            "triangles": 1116,
+            "materials": 4,
+            "geometryBufferBytes": 20328
+          }
+        }
+      ]
+    },
+    {
+      "id": "piston-wall",
+      "rootNode": "PistonWall",
+      "restPose": "fully-retracted",
+      "design": {
+        "implemented": false,
+        "travel": 3.7,
+        "headEndCenter": [
+          1.675,
+          3.95,
+          0
+        ],
+        "outlet": [
+          -2.5,
+          3.95,
+          0
+        ],
+        "referenceLength": 0.3,
+        "rodLengthAtFullExtension": 4.0,
+        "rodRadius": 0.08,
+        "cylinderInnerRadius": 0.1,
+        "cylinderOuterRadius": 0.16,
+        "cycleSeconds": 8,
+        "stagesSeconds": [
+          3,
+          1,
+          1.6,
+          0.8,
+          1.6
+        ]
+      },
+      "rootBounds": {
+        "min": [
+          -6.800000190734863,
+          0.0,
+          -0.800000011920929
+        ],
+        "max": [
+          -1.8420000076293945,
+          4.5,
+          0.800000011920929
+        ]
+      },
+      "statistics": {
+        "dimensions": [
+          4.958000183105469,
+          4.5,
+          1.600000023841858
+        ],
+        "triangles": 5556,
+        "materials": 6,
+        "geometryBufferBytes": 97800
+      },
+      "parts": [
+        {
+          "nodePath": "PistonWall_Head",
+          "role": "moving",
+          "position": [
+            -2.0250000953674316,
+            3.950000047683716,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "bodySize": [
+            0.35,
+            1.1,
+            1.6
+          ],
+          "bodyCenterOffset": [
+            0,
+            0,
+            0
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -0.20499981939792633,
+                -0.550000011920929,
+                -0.800000011920929
+              ],
+              "max": [
+                0.1830001324415207,
+                0.550000011920929,
+                0.800000011920929
+              ]
+            },
+            "dimensions": [
+              0.387999951839447,
+              1.100000023841858,
+              1.600000023841858
+            ],
+            "triangles": 812,
+            "materials": 4,
+            "geometryBufferBytes": 14208
+          }
+        },
+        {
+          "nodePath": "PistonWall_Head/PistonWall_HeadVisual",
+          "role": "visual",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -0.20499981939792633,
+                -0.550000011920929,
+                -0.800000011920929
+              ],
+              "max": [
+                0.1830001324415207,
+                0.550000011920929,
+                0.800000011920929
+              ]
+            },
+            "dimensions": [
+              0.387999951839447,
+              1.100000023841858,
+              1.600000023841858
+            ],
+            "triangles": 812,
+            "materials": 4,
+            "geometryBufferBytes": 14208
+          }
+        },
+        {
+          "nodePath": "PistonWall_Rod",
+          "role": "moving",
+          "position": [
+            -2.5,
+            3.950000047683716,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "extensionAxis": [
+            1,
+            0,
+            0
+          ],
+          "referenceLength": 0.3,
+          "collisionRadius": 0.08,
+          "statistics": {
+            "bounds": {
+              "min": [
+                8.940696716308594e-08,
+                -0.07999999821186066,
+                -0.07999999821186066
+              ],
+              "max": [
+                0.3000001013278961,
+                0.07999999821186066,
+                0.07999999821186066
+              ]
+            },
+            "dimensions": [
+              0.30000001192092896,
+              0.1599999964237213,
+              0.1599999964237213
+            ],
+            "triangles": 124,
+            "materials": 1,
+            "geometryBufferBytes": 2280
+          }
+        },
+        {
+          "nodePath": "PistonWall_Rod/PistonWall_RodShaft",
+          "role": "visual",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "extensionAxis": [
+            1,
+            0,
+            0
+          ],
+          "referenceLength": 0.3,
+          "statistics": {
+            "bounds": {
+              "min": [
+                8.940696716308594e-08,
+                -0.07999999821186066,
+                -0.07999999821186066
+              ],
+              "max": [
+                0.3000001013278961,
+                0.07999999821186066,
+                0.07999999821186066
+              ]
+            },
+            "dimensions": [
+              0.30000001192092896,
+              0.1599999964237213,
+              0.1599999964237213
+            ],
+            "triangles": 124,
+            "materials": 1,
+            "geometryBufferBytes": 2280
+          }
+        },
+        {
+          "nodePath": "PistonWall_Static",
+          "role": "static",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -6.800000190734863,
+                0.0,
+                -0.4375
+              ],
+              "max": [
+                -2.3999998569488525,
+                4.167999744415283,
+                0.4375
+              ]
+            },
+            "dimensions": [
+              4.400000333786011,
+              4.167999744415283,
+              0.875
+            ],
+            "triangles": 4620,
+            "materials": 5,
+            "geometryBufferBytes": 83256
+          }
+        },
+        {
+          "nodePath": "PistonWall_Static/PistonWall_CylinderBody",
+          "role": "visual",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -6.800000190734863,
+                0.0,
+                -0.4000000059604645
+              ],
+              "max": [
+                -2.3999998569488525,
+                4.159999847412109,
+                0.4000000059604645
+              ]
+            },
+            "dimensions": [
+              4.400000333786011,
+              4.159999847412109,
+              0.800000011920929
+            ],
+            "triangles": 2892,
+            "materials": 4,
+            "geometryBufferBytes": 52680
+          }
+        },
+        {
+          "nodePath": "PistonWall_Static/PistonWall_Guide",
+          "role": "visual",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -6.432499885559082,
+                3.6025002002716064,
+                -0.4375
+              ],
+              "max": [
+                -2.6500000953674316,
+                4.167999744415283,
+                0.4375
+              ]
+            },
+            "dimensions": [
+              3.7824997901916504,
+              0.5654995441436768,
+              0.875
+            ],
+            "triangles": 1728,
+            "materials": 4,
+            "geometryBufferBytes": 31872
+          }
+        }
+      ]
+    },
+    {
+      "id": "timed-trapdoor",
+      "rootNode": "TimedTrapdoor",
+      "restPose": "closed-horizontal",
+      "design": {
+        "implemented": false,
+        "openAngleDegrees": -90,
+        "cycleSeconds": 8.5,
+        "closedSeconds": 4.5,
+        "warningIncludedInClosedSeconds": 0.9,
+        "openingSeconds": 1,
+        "openSeconds": 1.5,
+        "closingSeconds": 1.5
+      },
+      "rootBounds": {
+        "min": [
+          -1.7799999713897705,
+          0.0,
+          -2.509999990463257
+        ],
+        "max": [
+          1.100000023841858,
+          3.700000286102295,
+          2.2200000286102295
+        ]
+      },
+      "statistics": {
+        "dimensions": [
+          2.8799999952316284,
+          3.700000286102295,
+          4.730000019073486
+        ],
+        "triangles": 4932,
+        "materials": 5,
+        "geometryBufferBytes": 84408
+      },
+      "parts": [
+        {
+          "nodePath": "TimedTrapdoor_Pivot",
+          "role": "pivot",
+          "position": [
+            -1.100000023841858,
+            3.4000000953674316,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "bodySize": [
+            2.2,
+            0.24,
+            3
+          ],
+          "bodyCenterOffset": [
+            1.1,
+            -0.12,
+            0
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -0.06499993801116943,
+                -0.24000006914138794,
+                -1.9900002479553223
+              ],
+              "max": [
+                2.200000047683716,
+                0.0650002658367157,
+                1.9900002479553223
+              ]
+            },
+            "dimensions": [
+              2.2649999856948853,
+              0.30500033497810364,
+              3.9800004959106445
+            ],
+            "triangles": 1480,
+            "materials": 4,
+            "geometryBufferBytes": 27120
+          }
+        },
+        {
+          "nodePath": "TimedTrapdoor_Pivot/TimedTrapdoor_DeckVisual",
+          "role": "visual",
+          "position": [
+            1.100000023841858,
+            -0.11999988555908203,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -1.1649999618530273,
+                -0.1200001910328865,
+                -1.9900002479553223
+              ],
+              "max": [
+                1.100000023841858,
+                0.18500015139579773,
+                1.9900002479553223
+              ]
+            },
+            "dimensions": [
+              2.2649999856948853,
+              0.30500034242868423,
+              3.9800004959106445
+            ],
+            "triangles": 1480,
+            "materials": 4,
+            "geometryBufferBytes": 27120
+          }
+        },
+        {
+          "nodePath": "TimedTrapdoor_Static",
+          "role": "static",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -1.7799999713897705,
+                0.0,
+                -2.509999990463257
+              ],
+              "max": [
+                -0.800000011920929,
+                3.700000286102295,
+                2.2200000286102295
+              ]
+            },
+            "dimensions": [
+              0.9799999594688416,
+              3.700000286102295,
+              4.730000019073486
+            ],
+            "triangles": 3452,
+            "materials": 5,
+            "geometryBufferBytes": 59568
+          }
+        },
+        {
+          "nodePath": "TimedTrapdoor_Static/TimedTrapdoor_AxleFrame",
+          "role": "visual",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -1.7799999713897705,
+                0.0,
+                -2.2200000286102295
+              ],
+              "max": [
+                -0.9200000166893005,
+                3.580000162124634,
+                2.2200000286102295
+              ]
+            },
+            "dimensions": [
+              0.85999995470047,
+              3.580000162124634,
+              4.440000057220459
+            ],
+            "triangles": 2152,
+            "materials": 4,
+            "geometryBufferBytes": 38112
+          }
+        },
+        {
+          "nodePath": "TimedTrapdoor_Static/TimedTrapdoor_Drive",
+          "role": "visual",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -1.4000000953674316,
+                3.0999999046325684,
+                -2.509999990463257
+              ],
+              "max": [
+                -0.800000011920929,
+                3.700000286102295,
+                -1.9699997901916504
+              ]
+            },
+            "dimensions": [
+              0.6000000834465027,
+              0.6000003814697266,
+              0.5400002002716064
+            ],
+            "triangles": 1300,
+            "materials": 3,
+            "geometryBufferBytes": 21456
+          }
+        }
+      ]
+    },
+    {
+      "id": "sway-cradle-bridge",
+      "rootNode": "SwayCradleBridge",
+      "restPose": "neutral-horizontal",
+      "design": {
+        "implemented": false,
+        "amplitudeDegrees": 45,
+        "periodSeconds": 3,
+        "centerDistance": 2.8,
+        "rigidBodyAssembly": true,
+        "sideArmX": 1.95,
+        "underDeckTieTopYRelativePivot": -3.11,
+        "towerX": 4.35,
+        "movingFrameReservedHalfWidth": 3.9,
+        "assemblyRequirements": {
+          "bodySizeUnchanged": [
+            2.4,
+            0.24,
+            5
+          ],
+          "pivotUnchanged": [
+            0,
+            6.08,
+            0
+          ],
+          "bodyCenterOffsetUnchanged": [
+            0,
+            -2.8,
+            0
+          ],
+          "hangerGeometryUnchanged": true,
+          "amplitudeDegrees": 45,
+          "periodSeconds": 3,
+          "towerCentersX": [
+            -4.35,
+            4.35
+          ],
+          "towerWidth": 0.24,
+          "towerCentersZ": [
+            -2.86,
+            2.86
+          ],
+          "portalSize": [
+            8.94,
+            0.24,
+            0.26
+          ],
+          "portalCenterY": 6.28,
+          "moveCornerBracesWithTowers": true,
+          "footSizeXZ": [
+            0.8,
+            0.8
+          ],
+          "footCentersXZ": [
+            [
+              -4.35,
+              -2.86
+            ],
+            [
+              -4.35,
+              2.86
+            ],
+            [
+              4.35,
+              -2.86
+            ],
+            [
+              4.35,
+              2.86
+            ]
+          ],
+          "fixedRootHalfWidthBudget": 4.85,
+          "movingGroupHalfWidthBudget": 3.9,
+          "bankWidth": 6.8,
+          "bankHalfWidthMargin": 0.48672006151142444,
+          "bankEdgeAbsZ": 2.65,
+          "towerInnerFaceX": 4.23,
+          "movingGroupToTowerXBudgetGap": 0.33,
+          "notes": "45degrees fixed requirement. Gantry towers±4.35 and bank6.8; CP1-to-seesaw link shifts only fromZ-5.2to-4 to clear south tower. CP, root/Pivot/body/U frame unchanged. Bounds are design envelopes, not tested mesh sweeps.",
+          "movingGroupConservativeXAt45": 3.783021279348029,
+          "deckOuterXAt45": 2.9132799384885755,
+          "movingGroupConservativeY": [
+            2.1982864608526302,
+            7.670990257669732
+          ],
+          "neighborLinkZ": -4
+        }
+      },
+      "rootBounds": {
+        "min": [
+          -4.75,
+          0.0,
+          -3.5400002002716064
+        ],
+        "max": [
+          4.75,
+          6.400000095367432,
+          3.259999990463257
+        ]
+      },
+      "statistics": {
+        "dimensions": [
+          9.5,
+          6.400000095367432,
+          6.800000190734863
+        ],
+        "triangles": 8704,
+        "materials": 5,
+        "geometryBufferBytes": 167688
+      },
+      "parts": [
+        {
+          "nodePath": "SwayCradleBridge_Pivot",
+          "role": "pivot",
+          "position": [
+            0,
+            6.079999923706055,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "bodySize": [
+            2.4,
+            0.24,
+            5
+          ],
+          "bodyCenterOffset": [
+            0,
+            -2.8,
+            0
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -2.059999942779541,
+                -3.2899997234344482,
+                -2.5
+              ],
+              "max": [
+                2.059999942779541,
+                0.19000005722045898,
+                2.5
+              ]
+            },
+            "dimensions": [
+              4.119999885559082,
+              3.4799997806549072,
+              5.0
+            ],
+            "triangles": 3556,
+            "materials": 4,
+            "geometryBufferBytes": 65304
+          }
+        },
+        {
+          "nodePath": "SwayCradleBridge_Pivot/SwayCradleBridge_DeckVisual",
+          "role": "visual",
+          "position": [
+            0,
+            -2.799999952316284,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -1.2000000476837158,
+                -0.1199999526143074,
+                -2.5
+              ],
+              "max": [
+                1.2000000476837158,
+                0.14550001919269562,
+                2.5
+              ]
+            },
+            "dimensions": [
+              2.4000000953674316,
+              0.265499971807003,
+              5.0
+            ],
+            "triangles": 1100,
+            "materials": 3,
+            "geometryBufferBytes": 20232
+          }
+        },
+        {
+          "nodePath": "SwayCradleBridge_Pivot/SwayCradleBridge_HangerVisual",
+          "role": "visual",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -2.059999942779541,
+                -3.2899997234344482,
+                -2.3299999237060547
+              ],
+              "max": [
+                2.059999942779541,
+                0.19000005722045898,
+                2.3299999237060547
+              ]
+            },
+            "dimensions": [
+              4.119999885559082,
+              3.4799997806549072,
+              4.659999847412109
+            ],
+            "triangles": 2456,
+            "materials": 3,
+            "geometryBufferBytes": 45072
+          }
+        },
+        {
+          "nodePath": "SwayCradleBridge_Static",
+          "role": "static",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -4.75,
+                0.0,
+                -3.5400002002716064
+              ],
+              "max": [
+                4.75,
+                6.400000095367432,
+                3.259999990463257
+              ]
+            },
+            "dimensions": [
+              9.5,
+              6.400000095367432,
+              6.800000190734863
+            ],
+            "triangles": 5148,
+            "materials": 4,
+            "geometryBufferBytes": 102384
+          }
+        },
+        {
+          "nodePath": "SwayCradleBridge_Static/SwayCradleBridge_GantryFar",
+          "role": "visual",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -4.75,
+                0.0,
+                -3.259999990463257
+              ],
+              "max": [
+                4.75,
+                6.400000095367432,
+                -2.4599997997283936
+              ]
+            },
+            "dimensions": [
+              9.5,
+              6.400000095367432,
+              0.8000001907348633
+            ],
+            "triangles": 2004,
+            "materials": 4,
+            "geometryBufferBytes": 46440
+          }
+        },
+        {
+          "nodePath": "SwayCradleBridge_Static/SwayCradleBridge_GantryNear",
+          "role": "visual",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -4.75,
+                0.0,
+                2.4599997997283936
+              ],
+              "max": [
+                4.75,
+                6.400000095367432,
+                3.259999990463257
+              ]
+            },
+            "dimensions": [
+              9.5,
+              6.400000095367432,
+              0.8000001907348633
+            ],
+            "triangles": 2004,
+            "materials": 4,
+            "geometryBufferBytes": 46440
+          }
+        },
+        {
+          "nodePath": "SwayCradleBridge_Static/SwayCradleBridge_UpperAxle",
+          "role": "visual",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotationDegrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "statistics": {
+            "bounds": {
+              "min": [
+                -0.28999999165534973,
+                5.789999961853027,
+                -3.5400002002716064
+              ],
+              "max": [
+                0.28999999165534973,
+                6.369999885559082,
+                3.0400004386901855
+              ]
+            },
+            "dimensions": [
+              0.5799999833106995,
+              0.5799999237060547,
+              6.580000638961792
+            ],
+            "triangles": 1140,
+            "materials": 3,
+            "geometryBufferBytes": 16104
+          }
+        }
+      ]
+    }
+  ],
+  "validation": "Model/export statistics only; no automatic tests, runtime loading or physics playtest.",
+  "revision": "intense-v2",
+  "geometrySource": "docs/levels/mechanism-trial-layout.json",
+  "geometrySourceSha256": "3e3e7b8681b2ee066c42d76bd2454a4fee03010bb34904d1e0909e8e7256c44a"
+}

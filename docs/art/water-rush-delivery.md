@@ -2,14 +2,20 @@
 
 状态：用户手绘对应的四次回头弯、0.5米细梁与50°×4.4米主坡已在当前Blender文件原位配套，静态同名GLB已导出，LEVEL已恢复引用并交CODE收口。**本轮按用户“不用检查，继续开发”要求未运行自动测试、独立几何验证或试玩；新路线可玩性和难度均未实测。** 不以旧R8线形的通过结果作本轮结论。
 
+## 2026-09-14 白台面缺面修复
+
+已按明确授权修复原文件的蛇形白层。原188控制体串联EXACT布尔产生缺面，露出下方橙层；橙层实际顶Y3.0975，白面Y3.4，问题不是夹层位置或配色。白层现改为按当前控制面进行平面约束三角化、保留原面覆盖范围后挤出；斜坡沿用当前控制体，回头间空区保留，不使用凸包铺满。原Boolean链仅从白层撤去，倒角/材质保留，橙层、深灰底座和其余场景不改。源文件与同名GLB哈希/统计已更新如下。
+
+[当前修复制作预览](water-rush-surface-repair.png)显示连续白台面。旧整体预览保留历史；本次只生成这一张制作图，未做自动测试、构建或试玩。修复入口为[repair_water_rush_surface.py](../../art/repair_water_rush_surface.py)，正常制作脚本同步调用此方法，避免再回到失效的长布尔链。当前GUI未保存water-rush内容未重载或保存；修复仅基于与交付校验值一致的磁盘源做定向编辑。
+
 ## 源文件、坐标与统计
 
 - [water-rush.blend](../../art/water-rush.blend)：继续修改当前已保存场景，没有清空重建、另建版本或创建备份；旧历史文件未删除。源场景保留188个台面/坡/蛇形可编辑控制体、对应底座/夹层控制体和16组蛇形支撑。
-- [water-rush-track.glb](../../public/models/water-rush-track.glb)：节点 **TrackStatic**，世界原点 **[0,0,0]**，尺寸 **54.480×8.420×47.7725米**；min=[-32.040,-.400,-26.4475]，max=[22.440,8.020,21.325]。**198,453三角面 / 5材质 / 7,710,160字节**。
+- [water-rush-track.glb](../../public/models/water-rush-track.glb)：节点 **TrackStatic**，世界原点 **[0,0,0]**，尺寸 **54.480×8.420×47.7725米**；min=[-32.040,-.400,-26.4475]，max=[22.440,8.020,21.325]。**217,988三角面 / 5材质 / 7,764,800字节**。
 - [water-rush-turntable.glb](../../public/models/water-rush-turntable.glb)：本轮复用，节点 **TurntableVisual**，原点为转台刚体中心，世界位置[-6,3.15,10]。完整尺寸 **8×.504×8米**，臂宽1.4、主体厚.5。**1,764三角面 / 4材质 / 60,360字节**。
 - [water-rush-lift.glb](../../public/models/water-rush-lift.glb)：本轮复用，节点 **LiftVisual**，原点为平台盒体中心，四实例共用。完整尺寸 **3.2×2.614×2.8米**，含活动杆；可行走主体仍为 **3.2×.32×2.8米**。**968三角面 / 4材质 / 20,744字节**。完整模型高度不能替代碰撞厚度。
 
-尺寸均按完整X/Y/Z，单位米；glTF/游戏 **Y-up**，Blender **Z-up**，游戏(x,y,z)对应Blender(x,-z,y)。静态模型直接挂世界根节点；动态模型按各自刚体中心挂载。三份GLB合计 **201,185三角面、7,791,264字节**；材质数分别按各文件统计，不能相加当作全场景独立材质数。
+尺寸均按完整X/Y/Z，单位米；glTF/游戏 **Y-up**，Blender **Z-up**，游戏(x,y,z)对应Blender(x,-z,y)。静态模型直接挂世界根节点；动态模型按各自刚体中心挂载。三份GLB合计 **220,720三角面、7,845,904字节**；材质数分别按各文件统计，不能相加当作全场景独立材质数。
 
 ## 手绘路线与细梁
 
@@ -35,8 +41,8 @@
 几何制作来源 [water-rush-layout.json](../levels/water-rush-layout.json)：`62525d6c3a6dc0fc9d41a4032e4ca994e074398ad1150c1f9ef69bf8e7f764f0`。
 恢复静态引用前的 [water-rush.ts](../../src/levels/water-rush.ts)：`947b407f71d7cd107c71501893951468d904884bbab689ad57ed00dc2f65a66e`，规则为serpentine。LEVEL恢复静态引用后的最终TS为 `a31ce222807ac355893f65d62c35a1ebcaee893775fea0c0cd1e47990d8447b6`，最终JSON为 `495f64546da3cc62b5a978a28563426d3ee3944d0c1110b9f35afae163a6a691`。仅更新启用状态和配置哈希，制作几何来源仍为62525d6c，未因此重导。
 
-- water-rush.blend：`23ff6837e9ede1f2c5aadd4d5f87e4b371c258e52a3387d0e4102e6126092449`
-- water-rush-track.glb：`81ceb56321a53c7b97932fa2b69019df82b7f815598744c4e42ee7a6f631d6fc`
+- water-rush.blend：`7189c6bb95349a4ae79444ebd72b3d46822607ba165164a0973f026d5390da47`
+- water-rush-track.glb：`3c1698f1671cc0428a93b5bea0c865858b0fe3a2fec4e0f9d44ee64b368a0221`
 - water-rush-turntable.glb：`9333a0f8277158ade0c72f1089fc2c6586fefc75ab865f9e19bf82c706db1fed`
 - water-rush-lift.glb：`70cd31683b429b47553d3f534170fc877931c2652de033387b7e9dfaf59d0ff1`
 

@@ -7,8 +7,9 @@ import { nextTick } from 'vue'
 // 在 Node 中检查游戏状态与持久化边界，不依赖 WebGL 或浏览器插件。
 const source = readFileSync(new URL('../src/state.ts', import.meta.url), 'utf8')
 let counter = 0
-async function load(saved, { version, v2, v3, waterVersion = 'standard' } = {}) {
-  const compiled = ts.transpileModule(source.replace("from 'vue'", `from '${import.meta.resolve('vue')}'`).replace("import { levelCatalog } from './game/levels'", `const levelCatalog = ${JSON.stringify([{config:{id:'initial-gravity',rulesVersion:version ?? 'classic'},medals:[35,55,90]},{config:{id:'water-rush',rulesVersion:waterVersion}}])}`), { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext } }).outputText
+async function load(saved, { version, v2, v3, waterVersion = 'standard', trialVersion } = {}) {
+  const catalog = [{config:{id:'initial-gravity',rulesVersion:version ?? 'classic'},medals:[35,55,90]},{config:{id:'water-rush',rulesVersion:waterVersion}},...(trialVersion ? [{config:{id:'mechanism-trial',rulesVersion:trialVersion}}] : [])]
+  const compiled = ts.transpileModule(source.replace("from 'vue'", `from '${import.meta.resolve('vue')}'`).replace("import { levelCatalog } from './game/levels'", `const levelCatalog = ${JSON.stringify(catalog)}`), { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext } }).outputText
   const storage = new Map([['marble-lab-v1', saved], ['marble-lab-v2', v2], ['marble-lab-v3', v3]])
   globalThis.localStorage = { getItem: key => storage.get(key) ?? null, setItem: (key,value) => storage.set(key,value) }
   globalThis.HTMLElement = class {}
@@ -45,6 +46,29 @@ test('浏览器拒绝存储时保留可用状态并提示', async () => {
   state.settings.volume=10; await nextTick()
   assert.equal(state.settings.volume,10)
   assert.equal(state.storageWarning,true)
+})
+
+test('纯净模式兼容旧值、保存手动偏好，恢复默认保留所有成绩与旧存储', async () => {
+  const buckets={'initial-gravity':{classic:[{time:30,falls:1,date:'2026-09-14'}]},'mechanism-trial':{standard:[{time:60,falls:2,date:'2026-09-14'}],intense:[{time:70,falls:3,date:'2026-09-14'}]}}
+  const v1='{"runs":[]}',v2='{"schemaVersion":2,"runsByVersion":{}}'
+  for(const value of [undefined,null,true,'invalid','auto','on','off']) {
+    const current=await load(v1,{v2,v3:JSON.stringify({schemaVersion:3,settings:{cleanMode:value,waterSpeed:2.5},runsByLevel:buckets})})
+    assert.equal(current.state.settings.cleanMode,value==='on'||value==='off'?value:'auto')
+    assert.equal(current.state.settings.waterSpeed,2.5)
+  }
+  let current=await load(v1,{v2,v3:JSON.stringify({schemaVersion:3,runsByLevel:buckets})})
+  for(const mode of ['on','off']) {
+    current.state.settings.cleanMode=mode;await nextTick()
+    const written=current.storage.get('marble-lab-v3')
+    assert.deepEqual(JSON.parse(written).runsByLevel,buckets)
+    const refreshed=await load(v1,{v2,v3:written})
+    assert.equal(refreshed.state.settings.cleanMode,mode)
+    current=refreshed
+  }
+  Object.assign(current.state.settings,current.defaults);await nextTick()
+  const restored=JSON.parse(current.storage.get('marble-lab-v3'))
+  assert.equal(restored.settings.cleanMode,'auto');assert.deepEqual(restored.runsByLevel,buckets)
+  assert.equal(current.storage.get('marble-lab-v1'),v1);assert.equal(current.storage.get('marble-lab-v2'),v2)
 })
 
 
@@ -109,7 +133,7 @@ test('平端规则独立计分，重复保存和切回旧规则都保留已有�
   first.state.ready = true; first.startRun(); first.state.elapsed = 31; first.finishRun(); await nextTick()
   const written = first.storage.get('marble-lab-v3')
   const data = JSON.parse(written)
-  assert.deepEqual(data.settings, settings)
+  assert.deepEqual(data.settings, { ...settings, waterSpeed: 1, cleanMode: 'auto' })
   for (const version of Object.keys(oldBuckets)) assert.deepEqual(data.runsByLevel['initial-gravity'][version], oldBuckets[version])
   assert.deepEqual(data.runsByLevel['initial-gravity']['flat-hammer'].map(run => run.time), [31])
   assert.equal(first.storage.get('marble-lab-v1'), legacy)
@@ -175,4 +199,30 @@ test('调难challenge不混入standard，往返第一关及刷新保留所有旧
   assert.equal(saved.runsByLevel['water-rush'].challenge[0].time,120)
   const refreshed=await load('{}',{version:'flat-hammer',waterVersion:'challenge',v3:written})
   assert.equal(refreshed.state.runs[0].time,120);assert.equal(refreshed.archivedGroups.value[0].runs[0].time,88.1256)
+})
+
+for (const targetVersion of ['intense','intense-v2']) test(`第三关${targetVersion}独立保存，所有历史及设置往返刷新均保留`, async () => {
+  const old = { standard: [{time:50,falls:1,date:'2026-09-14'}], challenge: [{time:60,falls:2,date:'2026-09-14'}], ...(targetVersion==='intense-v2'?{intense:[{time:70,falls:3,date:'2026-09-14'}]}:{}) }
+  const other = { classic: [{time:30,falls:0,date:'2026-09-13'}] }
+  const settings = { quality:'low',volume:23,sensitivity:1.1,reducedMotion:true,waterSpeed:2.5,cleanMode:'off' }
+  const v1='{"runs":[]}',v2='{"schemaVersion":2,"runsByVersion":{}}'
+  const v3=JSON.stringify({schemaVersion:3,settings,lastStartedLevelId:'mechanism-trial',hasPlayedBeyondFirst:true,runsByLevel:{'initial-gravity':other,'mechanism-trial':old}})
+  const current=await load(v1,{v2,v3,trialVersion:targetVersion})
+  assert.equal(current.rulesVersion.value,targetVersion);assert.equal(current.state.runs.length,0)
+  assert.deepEqual(current.state.archivedByVersion,old)
+  current.state.ready=true;current.startRun();current.state.elapsed=75;current.finishRun()
+  current.state.phase='menu';current.selectLevel('initial-gravity');current.selectLevel('mechanism-trial');await nextTick()
+  const written=current.storage.get('marble-lab-v3'),saved=JSON.parse(written)
+  assert.deepEqual(saved.runsByLevel['initial-gravity'],other)
+  assert.deepEqual(saved.runsByLevel['mechanism-trial'].standard,old.standard)
+  assert.deepEqual(saved.runsByLevel['mechanism-trial'].challenge,old.challenge)
+  if(old.intense)assert.deepEqual(saved.runsByLevel['mechanism-trial'].intense,old.intense)
+  assert.equal(saved.runsByLevel['mechanism-trial'][targetVersion][0].time,75)
+  assert.deepEqual(saved.settings,settings)
+  assert.equal(current.storage.get('marble-lab-v1'),v1);assert.equal(current.storage.get('marble-lab-v2'),v2)
+  const refreshed=await load(v1,{v2,v3:written,trialVersion:targetVersion})
+  assert.equal(refreshed.state.runs[0].time,75);assert.deepEqual(refreshed.state.archivedByVersion,old)
+  assert.equal(refreshed.state.lastStartedLevelId,'mechanism-trial');assert.equal(refreshed.state.hasPlayedBeyondFirst,true)
+  const olderRule=await load(v1,{v2,v3:written,trialVersion:'challenge'})
+  assert.equal(olderRule.archivedGroups.value.find(group=>group.version===targetVersion).label,targetVersion==='intense'?'极限挑战':'极限挑战Ⅱ')
 })

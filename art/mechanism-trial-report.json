@@ -1,0 +1,356 @@
+{
+  "source": "art/mechanism-trial.blend",
+  "sourceSha256": "02c615c12777f8c9ab3cd629db1b4a6888d3df9eb151df15854799bf3d94a3b0",
+  "layoutSha256": "3e3e7b8681b2ee066c42d76bd2454a4fee03010bb34904d1e0909e8e7256c44a",
+  "libraryAsset": "obstacle-library.glb",
+  "librarySha256": "8281551e662b13d240a1f5ffa64bcfb43d3687cc37ddd0ae605e28f8575f4b68",
+  "units": "m",
+  "upAxis": "+Y",
+  "origin": [
+    0,
+    0,
+    0
+  ],
+  "rootNode": "TrackStatic",
+  "export": {
+    "file": "mechanism-trial-track.glb",
+    "node": "TrackStatic",
+    "sha256": "5d56e7739479d8ba62b89e0c926421ff368ed53976ad3938c92b68946e4f8a5f",
+    "bytes": 794956,
+    "triangles": 42792,
+    "materials": 5,
+    "bounds_min": [
+      -20.799999237060547,
+      -0.4000000059604645,
+      -15.750000953674316
+    ],
+    "bounds_max": [
+      16.000001907348633,
+      3.68149995803833,
+      18
+    ],
+    "dimensions_xyz_m": [
+      36.80000114440918,
+      4.0814999639987946,
+      33.750000953674316
+    ]
+  },
+  "staticDeckCount": 21,
+  "railCount": 5,
+  "supportPointCount": 33,
+  "libraryFootPlinths": [
+    {
+      "instance": "piston-01",
+      "foot": "Pusher mount -6.4 rubber",
+      "center": [
+        -20.399999618530273,
+        -0.2,
+        10.0
+      ],
+      "size": [
+        0.7999992370605469,
+        0.4,
+        0.7999992370605469
+      ]
+    },
+    {
+      "instance": "piston-01",
+      "foot": "Pusher mount -2.8 rubber",
+      "center": [
+        -16.799999237060547,
+        -0.2,
+        10.0
+      ],
+      "size": [
+        0.7999992370605469,
+        0.4,
+        0.7999992370605469
+      ]
+    },
+    {
+      "instance": "trapdoor-01",
+      "foot": "Trapdoor post -1.82 rubber",
+      "center": [
+        -15.380000114440918,
+        -0.2,
+        -1.8200000524520874
+      ],
+      "size": [
+        0.7999992370605469,
+        0.4,
+        0.7999999523162842
+      ]
+    },
+    {
+      "instance": "trapdoor-01",
+      "foot": "Trapdoor post 1.82 rubber",
+      "center": [
+        -15.380000114440918,
+        -0.2,
+        1.8200000524520874
+      ],
+      "size": [
+        0.7999992370605469,
+        0.4,
+        0.7999999523162842
+      ]
+    },
+    {
+      "instance": "seesaw-01",
+      "foot": "Seesaw shoe -1.48 rubber",
+      "center": [
+        0.7500000298023224,
+        -0.2,
+        1.9999999403953552
+      ],
+      "size": [
+        0.5400001406669617,
+        0.4,
+        1.0000001192092896
+      ]
+    },
+    {
+      "instance": "seesaw-01",
+      "foot": "Seesaw shoe 1.48 rubber",
+      "center": [
+        -0.7500000298023224,
+        -0.2,
+        2.0
+      ],
+      "size": [
+        0.5400001406669617,
+        0.4,
+        1.0
+      ]
+    },
+    {
+      "instance": "roller-01",
+      "foot": "Roller Near rubber",
+      "center": [
+        14.0,
+        -0.2,
+        2.799999952316284
+      ],
+      "size": [
+        1.2000007629394531,
+        0.4,
+        0.6500000953674316
+      ]
+    },
+    {
+      "instance": "roller-01",
+      "foot": "Roller Far rubber",
+      "center": [
+        14.0,
+        -0.2,
+        -2.799999952316284
+      ],
+      "size": [
+        1.2000007629394531,
+        0.4,
+        0.6500000953674316
+      ]
+    },
+    {
+      "instance": "cradle-01",
+      "foot": "Cradle tower Near-2.45 rubber",
+      "center": [
+        -0.13999930024147034,
+        -0.2,
+        -6.650000095367432
+      ],
+      "size": [
+        0.8000002503395081,
+        0.4,
+        0.8000001907348633
+      ]
+    },
+    {
+      "instance": "cradle-01",
+      "foot": "Cradle tower Near2.45 rubber",
+      "center": [
+        -0.14000044763088226,
+        -0.2,
+        -15.350000381469727
+      ],
+      "size": [
+        0.8000002205371857,
+        0.4,
+        0.8000011444091797
+      ]
+    },
+    {
+      "instance": "cradle-01",
+      "foot": "Cradle tower Far-2.45 rubber",
+      "center": [
+        -5.859999656677246,
+        -0.2,
+        -6.649999141693115
+      ],
+      "size": [
+        0.8000001907348633,
+        0.4,
+        0.8000001907348633
+      ]
+    },
+    {
+      "instance": "cradle-01",
+      "foot": "Cradle tower Far2.45 rubber",
+      "center": [
+        -5.8600006103515625,
+        -0.2,
+        -15.350000381469727
+      ],
+      "size": [
+        0.8000001907348633,
+        0.4,
+        0.8000011444091797
+      ]
+    }
+  ],
+  "layerConstruction": [
+    {
+      "name": "Ivory continuous deck",
+      "sections": [
+        {
+          "topY": 3.4,
+          "controlPolygons": 21,
+          "surfaceTriangles": 74
+        }
+      ]
+    },
+    {
+      "name": "Orange seam",
+      "sections": [
+        {
+          "topY": 3.1075,
+          "controlPolygons": 21,
+          "surfaceTriangles": 74
+        }
+      ]
+    },
+    {
+      "name": "Graphite underframe",
+      "sections": [
+        {
+          "topY": 3.07,
+          "controlPolygons": 21,
+          "surfaceTriangles": 74
+        }
+      ]
+    }
+  ],
+  "instances": [
+    {
+      "id": "piston-01",
+      "rootNode": "PistonWall",
+      "position": [
+        -14,
+        0,
+        10
+      ],
+      "rotationEulerDegrees": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "trapdoor-01",
+      "rootNode": "TimedTrapdoor",
+      "position": [
+        -14,
+        0,
+        0
+      ],
+      "rotationEulerDegrees": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "seesaw-01",
+      "rootNode": "WeightSeesaw",
+      "position": [
+        0,
+        0,
+        2
+      ],
+      "rotationEulerDegrees": [
+        0,
+        180,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "roller-01",
+      "rootNode": "AxialRoller",
+      "position": [
+        14,
+        0,
+        0
+      ],
+      "rotationEulerDegrees": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "cradle-01",
+      "rootNode": "SwayCradleBridge",
+      "position": [
+        -3,
+        0,
+        -11
+      ],
+      "rotationEulerDegrees": [
+        0,
+        90,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    }
+  ],
+  "protectedInputs": {
+    "art/obstacle-library.blend": "e27970391f9a72d3a0e8830a85063aae82a6e703d3fffc162986da55dea8de37",
+    "public/models/obstacle-library.glb": "b4676ab48024f7f579ecc0ff9177076021d7098477716df07f8af46a04ef57b7",
+    "public/models/obstacle-library.json": "295f817b5a36a665ea210092241ba6063e1d2e6c2736673526fa69c5ba2e9e0a",
+    "art/water-rush.blend": "7189c6bb95349a4ae79444ebd72b3d46822607ba165164a0973f026d5390da47",
+    "public/models/water-rush-track.glb": "3c1698f1671cc0428a93b5bea0c865858b0fe3a2fec4e0f9d44ee64b368a0221",
+    "art/track-round-03.blend": "661b9275375dedf1ca82f28d3c507fe30a68246803f4df5715bf53749497a234",
+    "public/models/track-round-03.glb": "82bace239f341888cd25ff6288c8b870e0dafd89083a15c2d931304a111891ff"
+  },
+  "status": "Modeling and export complete; not tested or playtested per user instruction.",
+  "currentLayoutMetadataSha256": "ef42244e2ca0569873a6e72b4b9efebc201fb136e1ac90860ff7715309d6fded",
+  "firstGeometryHandoffSha256": "0a378e8b4dd0b9f603eb2e836ed1c7e17f135beb6cacaae37583802adf6d6e69",
+  "configurationStatus": "LEVEL intense-v2 paired with current library and static asset; not tested or playtested.",
+  "formalConfigSha256": "4e2f616d2c3ad2497c8a8e4eb227ad2ca931de92b093a6a9182a2fa4a16d2c3d",
+  "revision": "intense-v2: 7m x .7m seesaw, 45deg cradle, adjusted shores; no tests/playtest",
+  "protectedInputsNote": "protectedInputs records the previous source inputs; library source/GLB/manifest intentionally updated this intense revision, old two levels unchanged."
+}

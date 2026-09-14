@@ -1,5 +1,6 @@
 import initialGravity from '../levels/initial-gravity'
 import waterRush from '../levels/water-rush'
+import mechanismTrial from '../levels/mechanism-trial'
 import type { LevelConfig } from './level-types'
 
 export interface LevelEntry {
@@ -14,4 +15,5 @@ export interface LevelEntry {
 export const levelCatalog: LevelEntry[] = [
   { config: initialGravity, number: '01', title: '教学关卡', description: '弯道 · 摆锤 · 移动平台', medals: [35, 55, 90] },
   { config: waterRush, number: '02', title: '水上冲关', description: '三锤 · 十字台 · 蛇形回头弯 · 细梁冲坡' },
+  { config: mechanismTrial, number: '03', title: '机关试炼', description: '推墙 · 翻板 · 跷跷板 · 滚筒 · 吊桥' },
 ]

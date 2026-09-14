@@ -12,6 +12,6 @@
 - 现有文件和用户手动修改均为用户所有。编辑前重读；发现与其他对话或用户修改重叠，先说明并获用户确认，不按旧副本覆盖。
 - 重新运行模型生成脚本前，检查 Blender 中的未保存编辑、磁盘文件和交付校验值；仅凭时间戳不能判定未被手改。用户已要求建模直接修改当前 `.blend`/GLB，不另建版本文件或备份；修改前仍需核对未保存编辑及具体并发冲突，不能覆盖无关手改。
 - 优先复用 `http://127.0.0.1:5177/`；5173 为其他项目。不要清空浏览器设置和成绩。统一验证入口为 `npm test`、`npm run build`。
-- 本项目已接入本地双关选择与按关卡/规则保存，PlayCanvas Editor 导入仍未实现。GitHub Actions/GHCR 已配置，服务器状态以实际部署证据为准；不得把规划写成已有能力。
+- 本项目已注册本地三关选择与按关卡/规则保存，第三关“机关试炼”和13类图鉴已开发但未做本轮测试、构建或试玩。PlayCanvas Editor 导入仍未实现。GitHub Actions/GHCR 已配置，服务器状态以实际部署证据为准；不得把代码完成写成验收通过。
 
-成绩由关卡 id + rulesVersion 区分：第一关 classic/open-hammer/flat-hammer，第二关 standard/challenge/serpentine。v3 为当前存储，v1/v2 原文只读保留。新难度变更先核对 docs/integration/level-02-contract.md 和当前产品要求，不把旧成绩记入新规则。
+成绩由关卡 id + rulesVersion 区分：第一关 classic/open-hammer/flat-hammer，第二关 standard/challenge/serpentine，第三关 mechanism-trial 当前intense-v2、standard/challenge/intense历史桶保留、暂无奖牌阈值。v3 为当前存储，v1/v2 原文只读保留。新难度变更先核对对应关卡接入协议和当前产品要求，不把旧成绩记入新规则。五机关共享库与第三关接口见 docs/integration/level-03-contract.md；ART manifest的初始制作状态不当作运行时能力开关。

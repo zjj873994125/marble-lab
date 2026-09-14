@@ -73,6 +73,7 @@ kbd { display: inline-block; border: 1px solid #c6ccc6; border-bottom-width: 2px
   --ui-footer-height: 52px;
 }
 .app-shell { min-height: 640px; }
+.app-shell.atlas-open { height:auto; min-height:100svh; overflow:visible; background:#f0f3e9; }
 .app-shell:not(.in-game)::before {
   content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background: linear-gradient(to bottom, rgba(247, 246, 240, .92), transparent 170px);
@@ -182,8 +183,35 @@ kbd { background: #f5f6ef; color: #485e53; border-color: #c8d2c8; }
 .touch-layout .pause-button.el-button { height: 44px; min-width: 76px; font-size: 13px; padding: 0 12px; }
 .touch-layout .progress-rail { bottom: 0; }
 .mobile-pause-detail { display: block; margin-top: 8px; font-size: 12px; }
+.clean-timer { position:fixed; z-index:3; left:calc(var(--clean-viewport-x,0px) + max(12px,env(safe-area-inset-left,0px))); top:calc(var(--clean-viewport-y,0px) + max(10px,env(safe-area-inset-top,0px))); min-height:44px; min-width:44px; padding:0 12px; border:1px solid var(--ui-line); border-radius:10px; background:#faf9f2e8; color:#40534a; font-size:22px; font-weight:600; line-height:1; font-variant-numeric:tabular-nums; letter-spacing:-.3px; box-shadow:0 2px 8px #15333814; cursor:pointer; touch-action:manipulation; }
+@media (min-width:681px) and (max-width:1100px) {
+  .topbar { gap:12px; nav a { min-width:0; padding:12px 10px; font-size:12px; } }
+}
+@media (max-width:380px) {
+  .topbar nav { width:100%; } .topbar nav a { min-width:0; flex:1; padding-inline:8px; }
+}
 .portrait-prompt { position: absolute; inset: 0; z-index: 20; display: grid; place-items: center; padding: 28px; background: #143e43bf; text-align: center; >div { width: 100%; max-width: 340px; border-radius: 20px; background: #faf9f2; padding: 28px 20px; } h2 { font-size: 21px; } p { color: #65756b; margin: 16px 0 24px; font-size: 14px; } .el-button { min-height: 44px; } }
 .rotate-phone { display: block; color: #d96d3e; font-size: 44px; line-height: 1; margin-bottom: 16px; }
+.app-shell.home-menu { --ui-footer-height:0px; height:auto; min-height:100svh; }
+.home-menu .lobby-home { display:flex; flex-direction:column; gap:32px; height:auto; min-height:calc(100svh - var(--ui-header-height)); margin-left:max(var(--ui-gutter),env(safe-area-inset-left,0px)); margin-right:max(var(--ui-gutter),env(safe-area-inset-right,0px)); padding:clamp(14px,4vh,40px) 0 calc(clamp(64px,8svh,88px) + env(safe-area-inset-bottom,0px)); }
+.home-menu .lobby-copy { position:relative; top:auto; flex-shrink:0; }
+.home-menu .lobby-copy .course-facts { margin-bottom:0; }
+.home-menu .top-actions { align-items:center; flex-shrink:0; }
+.home-ready-status { display:inline-flex; align-items:center; gap:6px; min-height:30px; padding:7px 10px; border:1px solid #ffffff8c; border-radius:999px; background:#f8f5e9ed; color:#7d8978; box-shadow:0 2px 8px #183b3410; font-size:11px; white-space:nowrap; >i { width:6px; height:6px; border-radius:50%; background:#a99c80; flex-shrink:0; } &.ready { color:#39763e; background:#e9f3e2f2; >i { background:#55965c; } } &.failed { color:#ac5943; background:#f9ede5f2; >i { background:#c27656; } } }
+@media(min-width:681px) and (max-height:700px) {
+  .home-menu .lobby-home { gap:20px; padding:16px 0 calc(32px + env(safe-area-inset-bottom,0px)); }
+}
+@media(max-width:680px) {
+  .home-menu .lobby-home { min-height:0; gap:20px; padding:24px 0 calc(284px + env(safe-area-inset-bottom,0px)); }
+  .home-menu .lobby-copy { padding-top:0; }
+  .app-shell.home-menu .game-canvas { inset:auto 0 24px; height:240px; }
+  .home-menu .top-actions { gap:7px; }
+  .home-ready-status { font-size:10px; gap:4px; padding:6px 8px; }
+}
+@media(max-width:380px) {
+  .home-menu .brand { font-size:14px; gap:6px; letter-spacing:0; }
+  .home-menu .top-actions { gap:5px; }
+}
 @media (pointer: coarse) and (max-width: 1100px) {
   // 恢复游戏后立即接收触摸，避免退场遮罩挡住第一下刹车。
   .dialog-fade-enter-active, .dialog-fade-leave-active { &, .el-overlay-dialog { animation-duration: .01ms !important; transition-duration: .01ms !important; } }

@@ -7,6 +7,7 @@ import { createSteelMaterial } from './steel-material'
 import { createModelAssets, attachMovingVisual } from './model-assets'
 import { arcHammerPose, liftPosition, turntablePose } from './mechanism-motion'
 import { resolveInput, type GameInput } from './input'
+import { createLibraryMechanisms } from './library-mechanisms'
 import type { LevelConfig, Position, PrimitiveConfig, RingConfig } from './level-types'
 
 interface Hooks {
@@ -85,7 +86,7 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
   const poolEdge = mat('#617b80')
   const palette = { cream, edge, orange, dark, blue, floorMat, water: water?.material ?? floorMat, poolEdge }
   const replaced: pc.RenderComponent[] = []
-  function addObject(config: PrimitiveConfig, body: 'static' | 'kinematic' | undefined = config.body) {
+  function addObject(config: PrimitiveConfig, body: 'static' | 'dynamic' | 'kinematic' | undefined = config.body) {
     const entity = primitive(config.name, config.type, config.position, config.size, palette[config.material], body, config.collisionAxis, config.rotation)
     if (config.refinedVisual) replaced.push(entity.render!)
     return entity
@@ -106,9 +107,9 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
   const lifts = (level.lifts ?? []).map(config => ({ config, entity: addObject(config.body, 'kinematic') }))
   const turntable = level.turntable ? { config: level.turntable, root: new pc.Entity('Turntable visuals'), parts: level.turntable.parts.map(part => addObject(part, 'kinematic')) } : undefined
   if (turntable) app.root.addChild(turntable.root)
-  const platform = addObject(platformConfig.body, 'kinematic')
-  const platformStripe = addObject(platformConfig.stripe)
-  replaced.push(platform.render!)
+  const platform = platformConfig ? addObject(platformConfig.body, 'kinematic') : undefined
+  const platformStripe = platformConfig ? addObject(platformConfig.stripe) : undefined
+  if (platform) replaced.push(platform.render!)
   const ball = primitive('Player marble','sphere',level.start.previewPosition,[.85,.85,.85],steel.material,'dynamic')
   const ballMesh = pc.Mesh.fromGeometry(app.graphicsDevice, new pc.SphereGeometry({ radius: .5, latitudeBands: 32, longitudeBands: 48, calculateTangents: true }))
   meshes.push(ballMesh)
@@ -116,7 +117,14 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
   const rigid = ball.rigidbody!
   const ammoBody = rigid.body as { setCcdMotionThreshold?: (v:number)=>void; setCcdSweptSphereRadius?: (v:number)=>void }
   ammoBody.setCcdMotionThreshold?.(.15); ammoBody.setCcdSweptSphereRadius?.(.3)
-  const modelAssets = createModelAssets(app, signal)
+  const modelAssets = createModelAssets(app)
+  let libraryMechanisms: ReturnType<typeof createLibraryMechanisms>
+  try { libraryMechanisms = createLibraryMechanisms(app, level.mechanisms ?? [], addObject, modelAssets.load) }
+  catch (error) { modelAssets.destroy(); water?.destroy(); steel.destroy(); app.destroy(); materials.forEach(m=>m.destroy()); meshes.forEach(m=>m.destroy()); throw error }
+  // 先释放库实例/模板，再取消资源池，避免迟到模型使用已卸载资源。
+  const cancelLoading = () => { libraryMechanisms.destroy(); modelAssets.destroy() }
+  signal?.addEventListener('abort', cancelLoading, { once: true })
+  if (signal?.aborted) cancelLoading()
   const visualDisposers = await Promise.all([
     attachTrackVisuals(app, platform, level.visuals, replaced, modelAssets.load),
     ...(pendulum && rod ? [attachHammerVisuals(app, pendulum, rod, pendulumConfig!.visuals, modelAssets.load)] : []),
@@ -124,8 +132,10 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
     ...lifts.map(lift => attachMovingVisual(modelAssets.load, lift.config.visual, lift.entity, [lift.entity.render!])),
     ...(turntable ? [attachMovingVisual(modelAssets.load, turntable.config.visual, turntable.root, turntable.parts.map(part => part.render!))] : []),
   ])
+  await libraryMechanisms.ready
+  signal?.removeEventListener('abort', cancelLoading)
   let sceneDisposed = false
-  function disposeScene() { if (sceneDisposed) return; sceneDisposed = true; visualDisposers.forEach(dispose => dispose()); modelAssets.destroy(); water?.destroy(); steel.destroy(); app.destroy(); materials.forEach(m=>m.destroy()); meshes.forEach(m=>m.destroy()) }
+  function disposeScene() { if (sceneDisposed) return; sceneDisposed = true; libraryMechanisms.destroy(); visualDisposers.forEach(dispose => dispose()); modelAssets.destroy(); water?.destroy(); steel.destroy(); app.destroy(); materials.forEach(m=>m.destroy()); meshes.forEach(m=>m.destroy()) }
   if (signal?.aborted) { disposeScene(); throw new DOMException('关卡已卸载', 'AbortError') }
 
   let audio: AudioContext | undefined
@@ -162,11 +172,13 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
         turntable.root.setPosition(...turntable.config.position); turntable.root.setEulerAngles(...pose.rotation)
         turntable.parts.forEach((part, index) => { part.setPosition(...pose.parts[index]!); part.setEulerAngles(...pose.rotation) })
       }
+    if (platformConfig && platform && platformStripe) {
       const offset = Math.sin(time*platformConfig.angularSpeed)*platformConfig.amplitude
       const xPlatform = platformConfig.axis === 'x' ? (platformConfig.centerX ?? platformConfig.body.position[0]) + offset : platformConfig.body.position[0]
       const zPlatform = platformConfig.axis === 'x' ? platformConfig.centerZ : platformConfig.centerZ + offset
       platform.setPosition(xPlatform,platformConfig.body.position[1],zPlatform)
       platformStripe.setPosition(platformConfig.axis === 'x' ? xPlatform : platformConfig.stripe.position[0],platformConfig.stripeY,zPlatform)
+    }
   }
   if ((level.rulesVersion ?? 'classic') !== 'classic') updateMechanisms()
   function respawn() { rigid.teleport(checkpoint ? checkpoints[checkpoint-1]! : initial, pc.Vec3.ZERO); rigid.linearVelocity=pc.Vec3.ZERO; rigid.angularVelocity=pc.Vec3.ZERO }
@@ -174,6 +186,7 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
   function start() {
     elapsed=0; falls=0; checkpoint=0; time=0; keys.clear()
     water?.resetClock()
+    libraryMechanisms.reset()
     if ((level.rulesVersion ?? 'classic') !== 'classic') updateMechanisms()
     checkpointRings.forEach(e=>e.render!.meshInstances.forEach(m=>m.material=blue))
     respawn(); cameraTarget.copy(initial); cameraPosition.set(initial.x,initial.y+17,initial.z+13)
@@ -201,11 +214,13 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
   app.on('update',(delta: number)=>{
     const phase = hooks.phase()
     // update在timeScale=0时仍触发；水用自己的时钟，不推进菜单物理或游戏计时。
-    water?.update((phase === 'menu' || phase === 'playing') && hooks.settings().quality === 'high' && !hooks.settings().reducedMotion && !matchMedia('(prefers-reduced-motion: reduce)').matches && !document.hidden && document.hasFocus())
+    water?.update((phase === 'menu' || phase === 'playing') && hooks.settings().quality === 'high' && !hooks.settings().reducedMotion && !matchMedia('(prefers-reduced-motion: reduce)').matches && !document.hidden && document.hasFocus(), hooks.settings().waterSpeed)
     if (phase==='playing') {
       const dt=Math.min(delta,.075)
       elapsed+=dt; time+=dt
       updateMechanisms()
+      libraryMechanisms.update(time)
+      if (dt > 0) libraryMechanisms.applyForces()
       const input=resolveInput(keys,hooks.input?.())
       if(input.x || input.z) rigid.applyForce(input.x*12*hooks.settings().sensitivity,0,input.z*12*hooks.settings().sensitivity)
       const v=rigid.linearVelocity

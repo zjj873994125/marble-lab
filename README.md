@@ -24,9 +24,12 @@ npm run preview
 ## 当前功能
 
 - Vue 主界面、关卡入口、本地纪录页、操作说明。
-- Element Plus 设置抽屉、画质切换、音效音量、控制灵敏度、减少动态效果。
+- 首页左侧合并开始／继续与选关：继续会新开上次实际开始的关卡，旧关卡页链接兼容跳转；进展保存在当前浏览器，见 [首页入口说明](docs/integration/home-level-entry.md)。
+- 障碍物图鉴：13类障碍、仅名字与模型的三列卡片、分类搜索、点击放大的动态预览；新增五机关复用共享模型库，本轮尚未做本地验证，见 [图鉴说明](docs/integration/obstacle-atlas.md)。
+- Element Plus 设置抽屉、画质切换、水波速度（0–10倍，自动保存）、音效音量、控制灵敏度、减少动态效果。
 - 教学关卡：开放的玩具锤路段、窄桥、左右横移并完整让空的平台、两个检查点和终点。
 - 第二关“水上冲关”已接入本地选关、三圆弧锤、十字旋转台、四升降板及惯性坡；旧standard已真实通关，R8版challenge已接入；当前已接入serpentine连续回头弯与0.5米细梁，最新几何未做本轮验证，旧证据不作为新几何结果。
+- 第三关“机关试炼”已注册03入口，使用伸缩推墙、定时翻板、压重跷跷板、轴向滚筒桥和摆动吊桥。真实刚体行为代码与模型已接入，当前intense-v2独立成绩桶、保留standard/challenge/intense历史成绩、暂无奖牌阈值；未运行本轮测试、构建或试玩，不代表物理与可通性验收通过，见 [第三关交付](docs/integration/level-03-delivery.md)。
 - WASD / 方向键移动，空格刹车，R 重开，Esc 暂停或继续。
 - 掉落从最近检查点重生，计时继续；切换标签页或失去窗口焦点自动暂停。
 - 完赛结算、目标奖牌、每关每种玩法最快 20 次成绩；新版与旧版分开比较，旧纪录和设置保留。
@@ -57,10 +60,11 @@ npm run preview
 - `public/models/`：静态轨道与移动平台的 GLB。
 - `src/state.ts`：游戏状态与 `marble-lab-v3` 按关卡/规则分桶保存；v1/v2 均只读保留原文。
 - `src/game/levels.ts`：本地关卡目录，`src/levels/water-rush.ts` 为第二关正式配置。第二关当前证据与未完成项见 [技术验证](docs/integration/level-02-validation.md)。
+- `src/levels/mechanism-trial.ts`：第三关正式配置；`src/game/library-types.ts`、`library-data.ts`、`library-mechanisms.ts` 定义共享机关配置、姿态和物理，`obstacle-library.ts`、`library-visuals.ts` 管理分件模型取用与运动。
 
 ### 轨道外观资源
 
-关卡配置与运行时代码已分离。当前为本地双关，场景布局通过配置传给运行时。精细 GLB 仍是整关模型，布局变化不会自动更新外观；可将配置的 `visuals` 设为 `null`，用基础几何体验证碰撞。Blender 生成脚本尚未自动读取关卡配置。
+关卡配置与运行时代码已分离。当前已注册本地三关，第三关尚未验收，场景布局通过配置传给运行时。精细轨道 GLB 仍是整关模型，布局变化不会自动更新外观；可将配置的 `visuals` 设为 `null`，用基础几何体验证碰撞。五机关独立复用 `obstacle-library.glb`，模型仅供显示，碰撞由明确代理创建。Blender 生成脚本尚未自动读取关卡配置。
 
 当前静态 `track-round-03.glb`：30,615 三角面 / 6 材质 / 573,320 字节；继续使用原 `platform-refined.glb`。玩具锤采用 `hammer-head-toy-round-03.glb` 与 `hammer-handle-toy-round-03.glb`，与 [.9,.9,1.36] 的 Z 向平端圆柱主体匹配。完整资源统计、原点与哈希见 [ART-03 交付](docs/art/round-03-delivery.md)。
 

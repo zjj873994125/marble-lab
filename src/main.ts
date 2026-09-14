@@ -10,8 +10,9 @@ import './style.less'
 
 const router = createRouter({ history: createWebHashHistory(), routes: [
   { path: '/', component: Lobby },
-  { path: '/levels', component: Lobby },
+  { path: '/levels', redirect: { path: '/', query: { choose: '1' } } },
   { path: '/records', component: Records },
+  { path: '/obstacles', component: () => import('./components/Obstacles.vue') },
   { path: '/:pathMatch(.*)*', redirect: '/' },
 ] })
 createApp(App).use(router).use(ElementPlus, { locale: zhCn }).mount('#app')
