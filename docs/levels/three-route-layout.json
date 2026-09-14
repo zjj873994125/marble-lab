@@ -1,0 +1,8922 @@
+{
+  "schema": "three-route-design/1",
+  "status": "design-only",
+  "title": "第四关 · 三路分流",
+  "designId": "three-route",
+  "registeredLevelId": null,
+  "currentTopology": "two opening obstacles -> one physical four-port cross selector -> choose A or B or C -> real geometric merge -> two closing obstacles -> finish",
+  "scope": "Separate fourth-level design only. Preserve all top-difficulty originals and existing levels/models/themes. No runtime implementation dispatched.",
+  "units": "metres",
+  "coordinates": "+Y up; headingXZ0=+X,90=+Z. Shared-library forward-Z rotated by placement.yaw.",
+  "opening": {
+    "unitIds": [
+      "P-01",
+      "P-02"
+    ],
+    "pieceIds": [
+      "P-G01",
+      "P-G02",
+      "P-G03",
+      "P-G04",
+      "P-G05"
+    ],
+    "length": 12.15,
+    "exactObstacleCount": 2
+  },
+  "selector": {
+    "id": "D-01",
+    "kind": "cross",
+    "name": "十字分流台",
+    "center": [
+      0,
+      3.15,
+      0
+    ],
+    "topY": 3.4,
+    "span": 8,
+    "armWidth": 1.4,
+    "thickness": 0.5,
+    "cornerRadius": 4.060788100849391,
+    "shoreRadius": 4.18,
+    "airGapAtAlignment": 0.18,
+    "fullPeriod": 12,
+    "angularSpeed": 0.5235987755982988,
+    "phase": 0,
+    "rotationSense": "positive worldY: south→east→north→west",
+    "ports": {
+      "entry": [
+        0,
+        3.4,
+        4.18
+      ],
+      "A": [
+        -4.18,
+        3.4,
+        0
+      ],
+      "B": [
+        0,
+        3.4,
+        -4.18
+      ],
+      "C": [
+        4.18,
+        3.4,
+        0
+      ]
+    },
+    "sameArmFirstExitSeconds": {
+      "A": 9,
+      "B": 6,
+      "C": 3
+    },
+    "allFourArmsAlignEverySeconds": 3,
+    "allThreeExitsExistSimultaneously": true,
+    "riderRadius": 3.2,
+    "referenceRideLength": {
+      "A": 17.039644737231008,
+      "B": 12.013096491487339,
+      "C": 6.986548245743669
+    },
+    "viaHubReferenceLength": 8.36,
+    "uniqueGeometryLength": 16.72,
+    "geometryMeaning": "four radial4m centerline arms+four.18m seams counted once; reference passenger arcs are not physical pathways",
+    "selectionMethod": "walk/steer onto chosen aligned arm; same arm ride optional, active hub/arm change allowed",
+    "notMenuOrTeleport": true,
+    "status": "design-only",
+    "mouthWidth": 1.6,
+    "observationPadWidth": 3.2,
+    "armProjectionAngleWindowDegrees": 4.506456128479899,
+    "alignmentWindowHalfSeconds": 0.1502152042826633,
+    "supportClearanceNote": "Four shores all have.18 nominal tip seam. Corner radius4.060788<shore4.18; visual radius<=4.11, no outward chassis expansion into sweep."
+  },
+  "branches": {
+    "A": {
+      "id": "A",
+      "theme": "节奏压迫",
+      "entry": [
+        -4.18,
+        3.4,
+        0
+      ],
+      "exit": [
+        -6.0,
+        3.4,
+        -106.0
+      ],
+      "unitIds": [
+        "A-01",
+        "A-02",
+        "A-03",
+        "A-04",
+        "A-05",
+        "A-06",
+        "A-07",
+        "A-08",
+        "A-09",
+        "A-10",
+        "A-11"
+      ],
+      "pieceIds": [
+        "A-G01",
+        "A-G02",
+        "A-G03",
+        "A-G04",
+        "A-G05",
+        "A-G06",
+        "A-G07",
+        "A-G08",
+        "A-G09",
+        "A-G10",
+        "A-G11",
+        "A-G12",
+        "A-G13",
+        "A-G14",
+        "A-G15",
+        "A-G16",
+        "A-G17",
+        "A-G18",
+        "A-G19",
+        "A-G20",
+        "A-G21",
+        "A-G22",
+        "A-G23",
+        "A-G24",
+        "A-G25"
+      ],
+      "connectionIds": [
+        "A-J01",
+        "A-J02",
+        "A-J03",
+        "A-J04",
+        "A-J05",
+        "A-J06",
+        "A-J07",
+        "A-J08",
+        "A-J09"
+      ],
+      "referencePathLength": 141.2897335529233,
+      "uniqueGeometryLength": 150.66318530717965,
+      "checkpointIds": [
+        "CP-A-ENTRY",
+        "CP-A-MID"
+      ],
+      "sameHeightAtMerge": true
+    },
+    "B": {
+      "id": "B",
+      "theme": "窄线平衡",
+      "entry": [
+        0,
+        3.4,
+        -4.18
+      ],
+      "exit": [
+        3.1305133661759438e-15,
+        3.4,
+        -100.0
+      ],
+      "unitIds": [
+        "B-01",
+        "B-02",
+        "B-03",
+        "B-04",
+        "B-05",
+        "B-06",
+        "B-07",
+        "B-08",
+        "B-09",
+        "B-10",
+        "B-11"
+      ],
+      "pieceIds": [
+        "B-G01",
+        "B-G02",
+        "B-G03",
+        "B-G04",
+        "B-G05",
+        "B-G06",
+        "B-G07",
+        "B-G08",
+        "B-G09",
+        "B-G10",
+        "B-G11",
+        "B-G12",
+        "B-G13",
+        "B-G14",
+        "B-G15",
+        "B-G16",
+        "B-G17",
+        "B-G18",
+        "B-G19",
+        "B-G20",
+        "B-G21",
+        "B-G22",
+        "B-G23",
+        "B-G24",
+        "B-G25",
+        "B-G26",
+        "B-G27",
+        "B-G28",
+        "B-G29",
+        "B-G30",
+        "B-G31",
+        "B-G32",
+        "B-G33",
+        "B-G34",
+        "B-G35"
+      ],
+      "connectionIds": [
+        "B-J01",
+        "B-J02",
+        "B-J03",
+        "B-J04",
+        "B-J05",
+        "B-J06",
+        "B-J07",
+        "B-J08",
+        "B-J09"
+      ],
+      "referencePathLength": 143.91705423613553,
+      "uniqueGeometryLength": 143.91705423613553,
+      "checkpointIds": [
+        "CP-B-ENTRY",
+        "CP-B-MID"
+      ],
+      "sameHeightAtMerge": true
+    },
+    "C": {
+      "id": "C",
+      "theme": "走线保速",
+      "entry": [
+        4.18,
+        3.4,
+        0
+      ],
+      "exit": [
+        6.000000000000003,
+        3.4,
+        -106.0
+      ],
+      "unitIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "C-07",
+        "C-08",
+        "C-09",
+        "C-10"
+      ],
+      "pieceIds": [
+        "C-G01",
+        "C-G02",
+        "C-G03",
+        "C-G04",
+        "C-G05",
+        "C-G06",
+        "C-G07",
+        "C-G08",
+        "C-G09",
+        "C-G10",
+        "C-G11",
+        "C-G12",
+        "C-G13",
+        "C-G14",
+        "C-G15",
+        "C-G16",
+        "C-G17",
+        "C-G18",
+        "C-G19",
+        "C-G20",
+        "C-G21",
+        "C-G22",
+        "C-G23",
+        "C-G24",
+        "C-G25",
+        "C-G26",
+        "C-G27",
+        "C-G28"
+      ],
+      "connectionIds": [
+        "C-J01",
+        "C-J02",
+        "C-J03",
+        "C-J04",
+        "C-J05",
+        "C-J06",
+        "C-J07"
+      ],
+      "referencePathLength": 158.5374571817766,
+      "uniqueGeometryLength": 158.5374571817766,
+      "checkpointIds": [
+        "CP-C-ENTRY",
+        "CP-C-MID"
+      ],
+      "sameHeightAtMerge": true
+    }
+  },
+  "merge": {
+    "id": "M-01",
+    "name": "三路汇合",
+    "status": "design-only",
+    "topY": 3.4,
+    "inputs": {
+      "A": [
+        -6,
+        3.4,
+        -106
+      ],
+      "B": [
+        0,
+        3.4,
+        -100
+      ],
+      "C": [
+        6,
+        3.4,
+        -106
+      ]
+    },
+    "output": [
+      0,
+      3.4,
+      -112
+    ],
+    "sharedJoin": [
+      0,
+      3.4,
+      -108
+    ],
+    "width": 1.6,
+    "commonExitWidth": 3.2,
+    "noNewObstacle": true,
+    "paths": {
+      "A": {
+        "pieceIds": [
+          "merge-A-G01",
+          "merge-A-G02"
+        ],
+        "lengthToSharedJoin": 7.141592653589793
+      },
+      "C": {
+        "pieceIds": [
+          "merge-C-G01",
+          "merge-C-G02"
+        ],
+        "lengthToSharedJoin": 7.141592653589793
+      },
+      "B": {
+        "pieceIds": [
+          "merge-B-G01"
+        ],
+        "lengthToSharedJoin": 8.0
+      }
+    },
+    "geometryPieces": [
+      "merge-A-G01",
+      "merge-A-G02",
+      "merge-C-G01",
+      "merge-C-G02",
+      "merge-B-G01",
+      "merge-shared-G01"
+    ],
+    "commonPieceIds": [
+      "merge-shared-G01"
+    ],
+    "pathLengths": {
+      "A": 11.141592653589793,
+      "B": 12.0,
+      "C": 11.141592653589793
+    },
+    "uniqueGeometryLength": 26.283185307179586
+  },
+  "closing": {
+    "unitIds": [
+      "T-01",
+      "T-02"
+    ],
+    "pieceIds": [
+      "T-G01",
+      "T-G02",
+      "T-G03",
+      "T-G04",
+      "T-G05",
+      "T-G06",
+      "T-G07",
+      "T-G08",
+      "T-G09",
+      "T-G10",
+      "T-G11",
+      "T-G12",
+      "T-G13",
+      "T-G14",
+      "T-G15"
+    ],
+    "length": 75.18893421169301,
+    "exactObstacleCount": 2
+  },
+  "finish": {
+    "ballCenter": [
+      10.930155375224208,
+      7.2236635678704815,
+      -144.79999999999995
+    ],
+    "safePadFrom": [
+      7.930155375224208,
+      6.673663567870482,
+      -144.79999999999995
+    ],
+    "safePadTo": [
+      13.930155375224208,
+      6.673663567870482,
+      -144.79999999999995
+    ],
+    "requires": "common opening complete AND one selected branch complete AND common closing complete"
+  },
+  "instances": [
+    {
+      "id": "P-01",
+      "owner": "P",
+      "kind": "pendulum",
+      "name": "单摆锤",
+      "placement": {
+        "position": [
+          2.755455298081545e-16,
+          0.0,
+          11.829999999999998
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        2.2043642384652358e-16,
+        3.4,
+        12.729999999999999
+      ],
+      "exit": [
+        3.3065463576978537e-16,
+        3.4,
+        10.929999999999998
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "laneWidth": 1.3,
+        "length": 1.8,
+        "headSize": [
+          0.9,
+          0.9,
+          1.36
+        ],
+        "amplitude": 1.65,
+        "period": 2.4,
+        "phasePeakTime": 0.45,
+        "lift": 0.16,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry",
+        "phase": 0.39269908169872414
+      },
+      "pathLength": 1.8000000000000003,
+      "uniqueGeometryLength": 1.8000000000000003,
+      "pieceIds": [
+        "P-G02"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "P-02",
+      "owner": "P",
+      "kind": "piston-wall",
+      "name": "伸缩推墙",
+      "placement": {
+        "position": [
+          4.255647627037052e-16,
+          0.0,
+          9.379999999999999
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        3.5208595475486404e-16,
+        3.4,
+        10.579999999999998
+      ],
+      "exit": [
+        4.990435706525464e-16,
+        3.4,
+        8.179999999999998
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "laneWidth": 3.2,
+        "length": 2.4,
+        "headSize": [
+          0.35,
+          1.1,
+          1.6
+        ],
+        "travel": 3.7,
+        "stages": [
+          0.83,
+          0.45,
+          0.22,
+          0.65,
+          0.25
+        ],
+        "warningIncluded": false,
+        "period": 2.4,
+        "retractedStartTime": 0.4,
+        "rodRadius": 0.08,
+        "rodReferenceLength": 0.3,
+        "rodMaximumLength": 4,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry",
+        "phaseSeconds": 2.0
+      },
+      "pathLength": 2.4000000000000004,
+      "uniqueGeometryLength": 2.4000000000000004,
+      "pieceIds": [
+        "P-G04"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "A-01",
+      "owner": "A",
+      "kind": "hammers",
+      "name": "三锤阵",
+      "placement": {
+        "position": [
+          -13.78,
+          0.0,
+          1.175660927181459e-15
+        ],
+        "yaw": 90.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        -7.779999999999999,
+        3.4,
+        4.4087284769304716e-16
+      ],
+      "exit": [
+        -19.78,
+        3.4,
+        1.910449006669871e-15
+      ],
+      "entryHeading": 180.0,
+      "exitHeading": 180.0,
+      "parameters": {
+        "laneWidth": 1.4,
+        "length": 12,
+        "headSize": [
+          0.9,
+          0.9,
+          1.36
+        ],
+        "count": 3,
+        "gateStations": [
+          1.4,
+          6,
+          10.6
+        ],
+        "periods": [
+          4,
+          3,
+          2.4
+        ],
+        "peakTimes": [
+          0.33,
+          1.4,
+          2.47
+        ],
+        "rodLength": 3.6,
+        "maxLateralOffset": 1.65,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry",
+        "angularSpeeds": [
+          1.5707963267948966,
+          2.0943951023931953,
+          2.6179938779914944
+        ],
+        "phases": [
+          1.0524335389525805,
+          1.7802358370342164,
+          1.387536755335491
+        ]
+      },
+      "pathLength": 12.0,
+      "uniqueGeometryLength": 12.0,
+      "pieceIds": [
+        "A-G02"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "A-02",
+      "owner": "A",
+      "kind": "cross",
+      "name": "十字旋转台",
+      "placement": {
+        "position": [
+          -24.28,
+          0.0,
+          2.46154006628618e-15
+        ],
+        "yaw": 90.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        -20.28,
+        3.4,
+        1.9716813466272385e-15
+      ],
+      "exit": [
+        -24.28,
+        3.4,
+        -3.9999999999999973
+      ],
+      "entryHeading": 180.0,
+      "exitHeading": 270.0,
+      "parameters": {
+        "span": 8,
+        "armWidth": 1.4,
+        "thickness": 0.5,
+        "fullPeriod": 12,
+        "turnDegrees": 90,
+        "entryAlignTime": 3,
+        "riderRadius": 3.2,
+        "realCornerVoids": true,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry",
+        "phase": 4.71238898038469
+      },
+      "pathLength": 6.62654824574367,
+      "uniqueGeometryLength": 16.0,
+      "pieceIds": [
+        "A-G04"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "A-03",
+      "owner": "A",
+      "kind": "lifts",
+      "name": "交替升降板",
+      "placement": {
+        "position": [
+          -24.28,
+          0.0,
+          -10.404999999999998
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        -24.28,
+        3.4,
+        -4.579999999999997
+      ],
+      "exit": [
+        -24.280000000000005,
+        3.4,
+        -16.229999999999997
+      ],
+      "entryHeading": 270.0,
+      "exitHeading": 270.0,
+      "parameters": {
+        "count": 4,
+        "bodySize": [
+          3.2,
+          0.32,
+          2.8
+        ],
+        "pitch": 2.95,
+        "length": 11.65,
+        "amplitude": 0.6,
+        "period": 4,
+        "zeroTime": 6.2,
+        "alternating": true,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry",
+        "phases": [
+          2.827433388230814,
+          5.969026041820607,
+          2.827433388230814,
+          5.969026041820607
+        ]
+      },
+      "pathLength": 11.649999999999999,
+      "uniqueGeometryLength": 11.649999999999999,
+      "pieceIds": [
+        "A-G06"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "A-04",
+      "owner": "A",
+      "kind": "axial-roller",
+      "name": "轴向滚筒桥",
+      "placement": {
+        "position": [
+          -24.280000000000005,
+          0.0,
+          -19.029999999999998
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        -24.280000000000005,
+        3.4,
+        -16.529999999999998
+      ],
+      "exit": [
+        -24.280000000000005,
+        3.4,
+        -21.529999999999998
+      ],
+      "entryHeading": 270.0,
+      "exitHeading": 270.0,
+      "parameters": {
+        "bodySize": [
+          2,
+          2,
+          5
+        ],
+        "length": 5,
+        "angularSpeed": -4.5,
+        "noArtificialPush": true,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry"
+      },
+      "pathLength": 5.0,
+      "uniqueGeometryLength": 5.0,
+      "pieceIds": [
+        "A-G08"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "A-05",
+      "owner": "A",
+      "kind": "timed-trapdoor",
+      "name": "定时翻板",
+      "placement": {
+        "position": [
+          -24.280000000000005,
+          0.0,
+          -23.529999999999998
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        -24.280000000000005,
+        3.4,
+        -22.029999999999998
+      ],
+      "exit": [
+        -24.280000000000005,
+        3.4,
+        -25.029999999999998
+      ],
+      "entryHeading": 270.0,
+      "exitHeading": 270.0,
+      "parameters": {
+        "bodySize": [
+          2.2,
+          0.24,
+          3
+        ],
+        "length": 3,
+        "stages": [
+          1.5,
+          0.2,
+          0.48,
+          0.22
+        ],
+        "warningSeconds": 0.4,
+        "warningIncluded": true,
+        "period": 2.4,
+        "closedStartTime": 15.55,
+        "openAngle": -90,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry",
+        "phaseSeconds": 1.2499999999999987
+      },
+      "pathLength": 3.0,
+      "uniqueGeometryLength": 3.0,
+      "pieceIds": [
+        "A-G10"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "A-06",
+      "owner": "A",
+      "kind": "platform",
+      "name": "横移平台",
+      "placement": {
+        "position": [
+          -24.280000000000005,
+          0.0,
+          -26.779999999999998
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        -24.280000000000005,
+        3.4,
+        -25.33
+      ],
+      "exit": [
+        -24.280000000000005,
+        3.4,
+        -28.229999999999997
+      ],
+      "entryHeading": 270.0,
+      "exitHeading": 270.0,
+      "parameters": {
+        "bodySize": [
+          3,
+          0.36,
+          2.9
+        ],
+        "length": 2.9,
+        "amplitude": 3.6,
+        "period": 4.8,
+        "zeroTime": 16.5,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry",
+        "phaseSeconds": -16.5
+      },
+      "pathLength": 2.8999999999999986,
+      "uniqueGeometryLength": 2.8999999999999986,
+      "pieceIds": [
+        "A-G12"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "A-07",
+      "owner": "A",
+      "kind": "piston-wall",
+      "name": "伸缩推墙",
+      "placement": {
+        "position": [
+          -24.280000000000005,
+          0.0,
+          -29.629999999999995
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        -24.280000000000005,
+        3.4,
+        -28.429999999999996
+      ],
+      "exit": [
+        -24.280000000000005,
+        3.4,
+        -30.829999999999995
+      ],
+      "entryHeading": 270.0,
+      "exitHeading": 270.0,
+      "parameters": {
+        "laneWidth": 3.2,
+        "length": 2.4,
+        "headSize": [
+          0.35,
+          1.1,
+          1.6
+        ],
+        "travel": 3.7,
+        "stages": [
+          0.83,
+          0.45,
+          0.22,
+          0.65,
+          0.25
+        ],
+        "warningIncluded": false,
+        "period": 2.4,
+        "retractedStartTime": 18.9,
+        "rodRadius": 0.08,
+        "rodReferenceLength": 0.3,
+        "rodMaximumLength": 4,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry",
+        "phaseSeconds": 0.3000000000000007
+      },
+      "pathLength": 2.3999999999999986,
+      "uniqueGeometryLength": 2.3999999999999986,
+      "pieceIds": [
+        "A-G14"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "A-08",
+      "owner": "A",
+      "kind": "hammers",
+      "name": "三锤阵",
+      "placement": {
+        "position": [
+          -24.280000000000005,
+          0.0,
+          -40.83
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        -24.280000000000005,
+        3.4,
+        -34.83
+      ],
+      "exit": [
+        -24.28000000000001,
+        3.4,
+        -46.83
+      ],
+      "entryHeading": 270.0,
+      "exitHeading": 270.0,
+      "parameters": {
+        "laneWidth": 1.4,
+        "length": 12,
+        "headSize": [
+          0.9,
+          0.9,
+          1.36
+        ],
+        "count": 3,
+        "gateStations": [
+          1.4,
+          6,
+          10.6
+        ],
+        "periods": [
+          3,
+          2.4,
+          4
+        ],
+        "peakTimes": [
+          0.33,
+          1.4,
+          2.47
+        ],
+        "rodLength": 3.6,
+        "maxLateralOffset": 1.65,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry",
+        "angularSpeeds": [
+          2.0943951023931953,
+          2.6179938779914944,
+          1.5707963267948966
+        ],
+        "phases": [
+          0.8796459430051421,
+          1.0471975511965983,
+          3.974114706791088
+        ]
+      },
+      "pathLength": 12.000000000000007,
+      "uniqueGeometryLength": 12.0,
+      "pieceIds": [
+        "A-G16"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "A-09",
+      "owner": "A",
+      "kind": "lifts",
+      "name": "交替升降板",
+      "placement": {
+        "position": [
+          -24.28000000000001,
+          0.0,
+          -52.955
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        -24.28000000000001,
+        3.4,
+        -47.129999999999995
+      ],
+      "exit": [
+        -24.280000000000012,
+        3.4,
+        -58.779999999999994
+      ],
+      "entryHeading": 270.0,
+      "exitHeading": 270.0,
+      "parameters": {
+        "count": 4,
+        "bodySize": [
+          3.2,
+          0.32,
+          2.8
+        ],
+        "pitch": 2.95,
+        "length": 11.65,
+        "amplitude": 0.65,
+        "period": 4,
+        "zeroTime": 2.9,
+        "alternating": true,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry",
+        "phases": [
+          1.7278759594743862,
+          4.869468613064179,
+          1.7278759594743862,
+          4.869468613064179
+        ]
+      },
+      "pathLength": 11.650000000000006,
+      "uniqueGeometryLength": 11.650000000000006,
+      "pieceIds": [
+        "A-G18"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "A-10",
+      "owner": "A",
+      "kind": "timed-trapdoor",
+      "name": "定时翻板",
+      "placement": {
+        "position": [
+          -24.280000000000012,
+          0.0,
+          -60.48
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        -24.280000000000012,
+        3.4,
+        -58.98
+      ],
+      "exit": [
+        -24.280000000000012,
+        3.4,
+        -61.98
+      ],
+      "entryHeading": 270.0,
+      "exitHeading": 270.0,
+      "parameters": {
+        "bodySize": [
+          2.2,
+          0.24,
+          3
+        ],
+        "length": 3,
+        "stages": [
+          1.5,
+          0.2,
+          0.48,
+          0.22
+        ],
+        "warningSeconds": 0.4,
+        "warningIncluded": true,
+        "period": 2.4,
+        "closedStartTime": 10.9,
+        "openAngle": -90,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry",
+        "phaseSeconds": 1.0999999999999992
+      },
+      "pathLength": 3.0,
+      "uniqueGeometryLength": 3.0,
+      "pieceIds": [
+        "A-G20"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "A-11",
+      "owner": "A",
+      "kind": "beam",
+      "name": "独木桥",
+      "placement": {
+        "position": [
+          -24.280000000000012,
+          0.0,
+          -69.13
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        -24.280000000000012,
+        3.4,
+        -62.129999999999995
+      ],
+      "exit": [
+        -24.280000000000015,
+        3.4,
+        -76.13
+      ],
+      "entryHeading": 270.0,
+      "exitHeading": 270.0,
+      "parameters": {
+        "length": 14,
+        "width": 0.5,
+        "noRails": true,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry"
+      },
+      "pathLength": 14.0,
+      "uniqueGeometryLength": 14.0,
+      "pieceIds": [
+        "A-G22"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "B-01",
+      "owner": "B",
+      "kind": "weight-seesaw",
+      "name": "压重跷跷板",
+      "placement": {
+        "position": [
+          4.280140563019999e-16,
+          0.0,
+          -11.17
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        2.2043642384652358e-16,
+        3.4,
+        -7.779999999999999
+      ],
+      "exit": [
+        6.355916887574763e-16,
+        3.4,
+        -14.559999999999999
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "bodySize": [
+          0.7,
+          0.3,
+          7
+        ],
+        "length": 6.78,
+        "materialLength": 7,
+        "pivotHeightAboveDeck": 1.3432177480369507,
+        "bankTipGap": 0.1545300061106203,
+        "mass": 0.65,
+        "spring": 4,
+        "damping": 3,
+        "restAngle": 25,
+        "limitAngle": 25,
+        "period": null,
+        "loadDriven": true,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry"
+      },
+      "pathLength": 7.3090600122212415,
+      "uniqueGeometryLength": 7.3090600122212415,
+      "pieceIds": [
+        "B-G02"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "B-02",
+      "owner": "B",
+      "kind": "beam",
+      "name": "独木桥",
+      "placement": {
+        "position": [
+          1.0029857285016823e-15,
+          0.0,
+          -20.56
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        6.355916887574763e-16,
+        3.4,
+        -14.559999999999999
+      ],
+      "exit": [
+        1.3703797682458881e-15,
+        3.4,
+        -26.56
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "length": 12,
+        "width": 0.45,
+        "noRails": true,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry"
+      },
+      "pathLength": 11.999999999999998,
+      "uniqueGeometryLength": 11.999999999999998,
+      "pieceIds": [
+        "B-G04"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "B-03",
+      "owner": "B",
+      "kind": "axial-roller",
+      "name": "轴向滚筒桥",
+      "placement": {
+        "position": [
+          1.5418303201265175e-15,
+          0.0,
+          -29.36
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        1.3887494702330984e-15,
+        3.4,
+        -26.86
+      ],
+      "exit": [
+        1.6949111700199366e-15,
+        3.4,
+        -31.86
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "bodySize": [
+          2,
+          2,
+          5
+        ],
+        "length": 5,
+        "angularSpeed": 4.5,
+        "noArtificialPush": true,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry"
+      },
+      "pathLength": 5.0,
+      "uniqueGeometryLength": 5.0,
+      "pieceIds": [
+        "B-G06"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "B-04",
+      "owner": "B",
+      "kind": "sway-cradle-bridge",
+      "name": "摆动吊桥",
+      "placement": {
+        "position": [
+          1.8663617219005662e-15,
+          0.0,
+          -34.66
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        1.7132808720071469e-15,
+        3.4,
+        -32.16
+      ],
+      "exit": [
+        2.019442571793985e-15,
+        3.4,
+        -37.16
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "bodySize": [
+          2.4,
+          0.24,
+          5
+        ],
+        "length": 5,
+        "amplitude": 45,
+        "period": 4.8,
+        "zeroTime": 0,
+        "pivotHeightAboveDeck": 2.68,
+        "centerOffset": [
+          0,
+          -2.8,
+          0
+        ],
+        "movingFrameHalfWidth": 3.9,
+        "fixedFrameHalfWidth": 4.85,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry",
+        "phaseSeconds": 0
+      },
+      "pathLength": 5.0,
+      "uniqueGeometryLength": 5.0,
+      "pieceIds": [
+        "B-G08"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "B-05",
+      "owner": "B",
+      "kind": "timed-trapdoor",
+      "name": "定时翻板",
+      "placement": {
+        "position": [
+          2.148030485704457e-15,
+          0.0,
+          -39.26
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        2.0561819757684056e-15,
+        3.4,
+        -37.76
+      ],
+      "exit": [
+        2.2398789956405087e-15,
+        3.4,
+        -40.76
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "bodySize": [
+          2.2,
+          0.24,
+          3
+        ],
+        "length": 3,
+        "stages": [
+          1.5,
+          0.2,
+          0.48,
+          0.22
+        ],
+        "warningSeconds": 0.4,
+        "warningIncluded": true,
+        "period": 2.4,
+        "closedStartTime": 2.45,
+        "openAngle": -90,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry",
+        "phaseSeconds": 2.3499999999999996
+      },
+      "pathLength": 3.0,
+      "uniqueGeometryLength": 3.0,
+      "pieceIds": [
+        "B-G10"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "B-06",
+      "owner": "B",
+      "kind": "beam",
+      "name": "独木桥",
+      "placement": {
+        "position": [
+          2.6164578863783198e-15,
+          0.0,
+          -46.91
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        2.249063846634114e-15,
+        3.4,
+        -40.91
+      ],
+      "exit": [
+        2.9838519261225256e-15,
+        3.4,
+        -52.91
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "length": 12,
+        "width": 0.5,
+        "noRails": true,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry"
+      },
+      "pathLength": 12.0,
+      "uniqueGeometryLength": 12.0,
+      "pieceIds": [
+        "B-G12"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "B-07",
+      "owner": "B",
+      "kind": "weight-seesaw",
+      "name": "压重跷跷板",
+      "placement": {
+        "position": [
+          3.4363589184074727e-15,
+          0.0,
+          -60.3
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        3.2287812859519963e-15,
+        3.4,
+        -56.91
+      ],
+      "exit": [
+        3.643936550862949e-15,
+        3.4,
+        -63.69
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "bodySize": [
+          0.7,
+          0.3,
+          7
+        ],
+        "length": 6.78,
+        "materialLength": 7,
+        "pivotHeightAboveDeck": 1.3432177480369507,
+        "bankTipGap": 0.1545300061106203,
+        "mass": 0.65,
+        "spring": 4,
+        "damping": 3,
+        "restAngle": 25,
+        "limitAngle": 25,
+        "period": null,
+        "loadDriven": true,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry"
+      },
+      "pathLength": 7.309060012221238,
+      "uniqueGeometryLength": 7.309060012221238,
+      "pieceIds": [
+        "B-G14"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "B-08",
+      "owner": "B",
+      "kind": "axial-roller",
+      "name": "轴向滚筒桥",
+      "placement": {
+        "position": [
+          3.815387102743578e-15,
+          0.0,
+          -66.49
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        3.662306252850159e-15,
+        3.4,
+        -63.989999999999995
+      ],
+      "exit": [
+        3.968467952636998e-15,
+        3.4,
+        -68.99
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "bodySize": [
+          2,
+          2,
+          5
+        ],
+        "length": 5,
+        "angularSpeed": -5,
+        "noArtificialPush": true,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry"
+      },
+      "pathLength": 5.0,
+      "uniqueGeometryLength": 5.0,
+      "pieceIds": [
+        "B-G16"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "B-09",
+      "owner": "B",
+      "kind": "sway-cradle-bridge",
+      "name": "摆动吊桥",
+      "placement": {
+        "position": [
+          4.1460417385133635e-15,
+          0.0,
+          -71.89
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        3.9929608886199446e-15,
+        3.4,
+        -69.39
+      ],
+      "exit": [
+        4.299122588406783e-15,
+        3.4,
+        -74.39
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "bodySize": [
+          2.4,
+          0.24,
+          5
+        ],
+        "length": 5,
+        "amplitude": 45,
+        "period": 3.6,
+        "zeroTime": 0,
+        "pivotHeightAboveDeck": 2.68,
+        "centerOffset": [
+          0,
+          -2.8,
+          0
+        ],
+        "movingFrameHalfWidth": 3.9,
+        "fixedFrameHalfWidth": 4.85,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry",
+        "phaseSeconds": 0
+      },
+      "pathLength": 5.0,
+      "uniqueGeometryLength": 5.0,
+      "pieceIds": [
+        "B-G18"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "B-10",
+      "owner": "B",
+      "kind": "serpentine",
+      "name": "蛇形回头弯",
+      "placement": {
+        "position": [
+          4.299122588406783e-15,
+          0.0,
+          -74.39
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        4.299122588406783e-15,
+        3.4,
+        -74.39
+      ],
+      "exit": [
+        -12.799999999999997,
+        3.4,
+        -74.39
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "radius": 3.2,
+        "width": 1.0,
+        "legs": [
+          3.5,
+          3.5
+        ],
+        "entryQuarter": false,
+        "turnSigns": [
+          -180,
+          180
+        ],
+        "noInnerFill": true,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry"
+      },
+      "pathLength": 27.106192982974676,
+      "uniqueGeometryLength": 27.106192982974676,
+      "pieceIds": [
+        "B-G20",
+        "B-G21",
+        "B-G22",
+        "B-G23"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "B-11",
+      "owner": "B",
+      "kind": "beam",
+      "name": "独木桥",
+      "placement": {
+        "position": [
+          -12.799999999999997,
+          0.0,
+          -74.39
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        -12.799999999999997,
+        3.4,
+        -74.39
+      ],
+      "exit": [
+        3.1305133661759438e-15,
+        3.4,
+        -100.0
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "length": 45.54274122871837,
+        "width": 0.5,
+        "noRails": true,
+        "singleContinuousThinStructure": true,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry"
+      },
+      "pathLength": 45.54274122871837,
+      "uniqueGeometryLength": 45.54274122871837,
+      "pieceIds": [
+        "B-G25",
+        "B-G26",
+        "B-G27",
+        "B-G28",
+        "B-G29",
+        "B-G30",
+        "B-G31",
+        "B-G32",
+        "B-G33",
+        "B-G34",
+        "B-G35"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "C-01",
+      "owner": "C",
+      "kind": "hammers",
+      "name": "三锤阵",
+      "placement": {
+        "position": [
+          14.78,
+          0.0,
+          0.0
+        ],
+        "yaw": 270.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        7.779999999999999,
+        3.4,
+        0.0
+      ],
+      "exit": [
+        21.78,
+        3.4,
+        0.0
+      ],
+      "entryHeading": 0.0,
+      "exitHeading": 0.0,
+      "parameters": {
+        "laneWidth": 1.4,
+        "length": 14,
+        "headSize": [
+          0.9,
+          0.9,
+          1.36
+        ],
+        "count": 3,
+        "gateStations": [
+          1.4,
+          7,
+          12.6
+        ],
+        "periods": [
+          2.4,
+          4,
+          3
+        ],
+        "peakTimes": [
+          0.31,
+          1.56,
+          2.8
+        ],
+        "rodLength": 3.6,
+        "maxLateralOffset": 1.65,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry",
+        "angularSpeeds": [
+          2.6179938779914944,
+          1.5707963267948966,
+          2.0943951023931953
+        ],
+        "phases": [
+          0.7592182246175333,
+          2.2619467105846507,
+          1.9896753472735362
+        ]
+      },
+      "pathLength": 14.000000000000002,
+      "uniqueGeometryLength": 14.000000000000002,
+      "pieceIds": [
+        "C-G02"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "C-02",
+      "owner": "C",
+      "kind": "pendulum",
+      "name": "单摆锤",
+      "placement": {
+        "position": [
+          25.78,
+          0.0,
+          -4.8999999999999995
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        25.78,
+        3.4,
+        -3.9999999999999996
+      ],
+      "exit": [
+        25.78,
+        3.4,
+        -5.8
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "laneWidth": 1.3,
+        "length": 1.8,
+        "headSize": [
+          0.9,
+          0.9,
+          1.36
+        ],
+        "amplitude": 1.65,
+        "period": 2.4,
+        "phasePeakTime": 4.7,
+        "lift": 0.16,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry",
+        "phase": 1.8325957145940457
+      },
+      "pathLength": 1.8000000000000007,
+      "uniqueGeometryLength": 1.8000000000000007,
+      "pieceIds": [
+        "C-G04"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "C-03",
+      "owner": "C",
+      "kind": "serpentine",
+      "name": "蛇形回头弯",
+      "placement": {
+        "position": [
+          25.78,
+          0.0,
+          -5.8
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        25.78,
+        3.4,
+        -5.8
+      ],
+      "exit": [
+        12.980000000000004,
+        3.4,
+        -15.3
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "radius": 3.2,
+        "width": 1.2,
+        "legs": [
+          13,
+          3.5
+        ],
+        "entryQuarter": false,
+        "turnSigns": [
+          -180,
+          180
+        ],
+        "noInnerFill": true,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry"
+      },
+      "pathLength": 36.606192982974676,
+      "uniqueGeometryLength": 36.606192982974676,
+      "pieceIds": [
+        "C-G06",
+        "C-G07",
+        "C-G08",
+        "C-G09"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "C-04",
+      "owner": "C",
+      "kind": "ramp",
+      "name": "惯性坡",
+      "placement": {
+        "position": [
+          12.980000000000004,
+          0.0,
+          -15.65
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        12.980000000000004,
+        3.4,
+        -15.65
+      ],
+      "exit": [
+        12.980000000000004,
+        6.673663567870482,
+        -20.030155375224208
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "angles": [
+          20,
+          46,
+          20
+        ],
+        "lengths": [
+          1,
+          3.6,
+          1
+        ],
+        "width": 1.3,
+        "entrySpeedTarget": [
+          4.5,
+          6.2
+        ],
+        "noHiddenSpeedGate": true,
+        "parts": [
+          {
+            "start": [
+              12.980000000000004,
+              3.4,
+              -15.65
+            ],
+            "end": [
+              12.980000000000004,
+              3.742020143325669,
+              -16.589692620785907
+            ],
+            "angle": 20,
+            "length": 1
+          },
+          {
+            "start": [
+              12.980000000000004,
+              3.742020143325669,
+              -16.589692620785907
+            ],
+            "end": [
+              12.980000000000004,
+              6.331643424544813,
+              -19.0904627544383
+            ],
+            "angle": 46,
+            "length": 3.6
+          },
+          {
+            "start": [
+              12.980000000000004,
+              6.331643424544813,
+              -19.0904627544383
+            ],
+            "end": [
+              12.980000000000004,
+              6.673663567870482,
+              -20.030155375224208
+            ],
+            "angle": 20,
+            "length": 1
+          }
+        ],
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry"
+      },
+      "pathLength": 5.600000000000001,
+      "uniqueGeometryLength": 5.600000000000001,
+      "pieceIds": [
+        "C-G11",
+        "C-G12",
+        "C-G13"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "C-05",
+      "owner": "C",
+      "kind": "beam",
+      "name": "独木桥",
+      "placement": {
+        "position": [
+          12.980000000000004,
+          3.2736635678704817,
+          -24.030155375224208
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        12.980000000000004,
+        6.673663567870482,
+        -20.030155375224208
+      ],
+      "exit": [
+        12.980000000000004,
+        6.673663567870482,
+        -28.030155375224208
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "length": 8,
+        "width": 0.65,
+        "noRails": true,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry"
+      },
+      "pathLength": 8.0,
+      "uniqueGeometryLength": 8.0,
+      "pieceIds": [
+        "C-G15"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "C-06",
+      "owner": "C",
+      "kind": "axial-roller",
+      "name": "轴向滚筒桥",
+      "placement": {
+        "position": [
+          12.980000000000004,
+          3.2736635678704817,
+          -34.53015537522421
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        12.980000000000004,
+        6.673663567870482,
+        -32.03015537522421
+      ],
+      "exit": [
+        12.980000000000004,
+        6.673663567870482,
+        -37.03015537522421
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "bodySize": [
+          2,
+          2,
+          5
+        ],
+        "length": 5,
+        "angularSpeed": -5,
+        "noArtificialPush": true,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry"
+      },
+      "pathLength": 5.0,
+      "uniqueGeometryLength": 5.0,
+      "pieceIds": [
+        "C-G17"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "C-07",
+      "owner": "C",
+      "kind": "piston-wall",
+      "name": "伸缩推墙",
+      "placement": {
+        "position": [
+          12.980000000000004,
+          3.2736635678704817,
+          -38.53015537522421
+        ],
+        "yaw": 180.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        12.980000000000004,
+        6.673663567870482,
+        -37.33015537522421
+      ],
+      "exit": [
+        12.980000000000004,
+        6.673663567870482,
+        -39.73015537522421
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "laneWidth": 3.2,
+        "length": 2.4,
+        "headSize": [
+          0.35,
+          1.1,
+          1.6
+        ],
+        "travel": 3.7,
+        "stages": [
+          0.83,
+          0.45,
+          0.22,
+          0.65,
+          0.25
+        ],
+        "warningIncluded": false,
+        "period": 2.4,
+        "retractedStartTime": 1.25,
+        "rodRadius": 0.08,
+        "rodReferenceLength": 0.3,
+        "rodMaximumLength": 4,
+        "reverseTraversal": true,
+        "housingSide": "world+X away from central branch",
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry",
+        "phaseSeconds": 1.15
+      },
+      "pathLength": 2.4000000000000057,
+      "uniqueGeometryLength": 2.4000000000000057,
+      "pieceIds": [
+        "C-G19"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "C-08",
+      "owner": "C",
+      "kind": "platform",
+      "name": "横移平台",
+      "placement": {
+        "position": [
+          12.980000000000004,
+          3.2736635678704817,
+          -41.58015537522421
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        12.980000000000004,
+        6.673663567870482,
+        -40.130155375224206
+      ],
+      "exit": [
+        12.980000000000004,
+        6.673663567870482,
+        -43.030155375224204
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "bodySize": [
+          3,
+          0.36,
+          2.9
+        ],
+        "length": 2.9,
+        "amplitude": 3.6,
+        "period": 4.8,
+        "zeroTime": 2.05,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry",
+        "phaseSeconds": -2.05
+      },
+      "pathLength": 2.9000000000000057,
+      "uniqueGeometryLength": 2.9000000000000057,
+      "pieceIds": [
+        "C-G21"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "C-09",
+      "owner": "C",
+      "kind": "hammers",
+      "name": "三锤阵",
+      "placement": {
+        "position": [
+          12.980000000000004,
+          3.2736635678704817,
+          -49.1801553752242
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        12.980000000000004,
+        6.673663567870482,
+        -43.1801553752242
+      ],
+      "exit": [
+        12.980000000000004,
+        6.673663567870482,
+        -55.1801553752242
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "laneWidth": 1.4,
+        "length": 12,
+        "headSize": [
+          0.9,
+          0.9,
+          1.36
+        ],
+        "count": 3,
+        "gateStations": [
+          1.2,
+          6,
+          10.8
+        ],
+        "periods": [
+          3,
+          2.4,
+          4
+        ],
+        "peakTimes": [
+          4.75,
+          5.82,
+          6.89
+        ],
+        "rodLength": 3.6,
+        "maxLateralOffset": 1.65,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry",
+        "angularSpeeds": [
+          2.0943951023931953,
+          2.6179938779914944,
+          1.5707963267948966
+        ],
+        "phases": [
+          4.188790204786391,
+          2.042035224833363,
+          3.3143802495372316
+        ]
+      },
+      "pathLength": 12.0,
+      "uniqueGeometryLength": 12.0,
+      "pieceIds": [
+        "C-G23"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "C-10",
+      "owner": "C",
+      "kind": "beam",
+      "name": "独木桥",
+      "placement": {
+        "position": [
+          12.980000000000004,
+          3.2736635678704817,
+          -58.1801553752242
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        12.980000000000004,
+        6.673663567870482,
+        -55.1801553752242
+      ],
+      "exit": [
+        12.980000000000004,
+        6.673663567870482,
+        -61.1801553752242
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": -90.0,
+      "parameters": {
+        "length": 6,
+        "width": 0.6,
+        "noRails": true,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry"
+      },
+      "pathLength": 6.0,
+      "uniqueGeometryLength": 6.0,
+      "pieceIds": [
+        "C-G25"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "T-01",
+      "owner": "T",
+      "kind": "serpentine",
+      "name": "蛇形回头弯",
+      "placement": {
+        "position": [
+          2.4492935982947064e-16,
+          0.0,
+          -116.0
+        ],
+        "yaw": 0.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        2.4492935982947064e-16,
+        3.4,
+        -116.0
+      ],
+      "exit": [
+        3.2000000000000015,
+        3.4,
+        -144.79999999999995
+      ],
+      "entryHeading": -90.0,
+      "exitHeading": 0.0,
+      "parameters": {
+        "radius": 3.2,
+        "width": 1.25,
+        "legs": [
+          3.5,
+          3.5,
+          3.5,
+          3.5
+        ],
+        "entryQuarter": true,
+        "turnSigns": [
+          -180,
+          180,
+          -180,
+          180
+        ],
+        "noInnerFill": true,
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry"
+      },
+      "pathLength": 59.23893421169302,
+      "uniqueGeometryLength": 59.23893421169302,
+      "pieceIds": [
+        "T-G02",
+        "T-G03",
+        "T-G04",
+        "T-G05",
+        "T-G06",
+        "T-G07",
+        "T-G08",
+        "T-G09",
+        "T-G10"
+      ],
+      "status": "design-only"
+    },
+    {
+      "id": "T-02",
+      "owner": "T",
+      "kind": "ramp",
+      "name": "惯性坡",
+      "placement": {
+        "position": [
+          3.5500000000000016,
+          0.0,
+          -144.79999999999995
+        ],
+        "yaw": 270.0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "originMeaning": "library span center; static complex snake/ramp/curved beam use start anchor"
+      },
+      "entry": [
+        3.5500000000000016,
+        3.4,
+        -144.79999999999995
+      ],
+      "exit": [
+        7.930155375224208,
+        6.673663567870482,
+        -144.79999999999995
+      ],
+      "entryHeading": 0.0,
+      "exitHeading": 0.0,
+      "parameters": {
+        "angles": [
+          20,
+          46,
+          20
+        ],
+        "lengths": [
+          1,
+          3.6,
+          1
+        ],
+        "width": 1.25,
+        "entrySpeedTarget": [
+          4.5,
+          6.2
+        ],
+        "noHiddenSpeedGate": true,
+        "parts": [
+          {
+            "start": [
+              3.5500000000000016,
+              3.4,
+              -144.79999999999995
+            ],
+            "end": [
+              4.48969262078591,
+              3.742020143325669,
+              -144.79999999999995
+            ],
+            "angle": 20,
+            "length": 1
+          },
+          {
+            "start": [
+              4.48969262078591,
+              3.742020143325669,
+              -144.79999999999995
+            ],
+            "end": [
+              6.990462754438299,
+              6.331643424544813,
+              -144.79999999999995
+            ],
+            "angle": 46,
+            "length": 3.6
+          },
+          {
+            "start": [
+              6.990462754438299,
+              6.331643424544813,
+              -144.79999999999995
+            ],
+            "end": [
+              7.930155375224208,
+              6.673663567870482,
+              -144.79999999999995
+            ],
+            "angle": 20,
+            "length": 1
+          }
+        ],
+        "phaseSemantics": "global gameplay clock; no automatic reset on branch entry"
+      },
+      "pathLength": 5.599999999999987,
+      "uniqueGeometryLength": 5.599999999999987,
+      "pieceIds": [
+        "T-G12",
+        "T-G13",
+        "T-G14"
+      ],
+      "status": "design-only"
+    }
+  ],
+  "coverage": {
+    "pendulum": {
+      "name": "单摆锤",
+      "count": 2,
+      "instances": [
+        "P-01",
+        "C-02"
+      ]
+    },
+    "hammers": {
+      "name": "三锤阵",
+      "count": 4,
+      "instances": [
+        "A-01",
+        "A-08",
+        "C-01",
+        "C-09"
+      ]
+    },
+    "cross": {
+      "name": "十字旋转台",
+      "count": 2,
+      "instances": [
+        "D-01",
+        "A-02"
+      ]
+    },
+    "lifts": {
+      "name": "交替升降板",
+      "count": 2,
+      "instances": [
+        "A-03",
+        "A-09"
+      ]
+    },
+    "platform": {
+      "name": "横移平台",
+      "count": 2,
+      "instances": [
+        "A-06",
+        "C-08"
+      ]
+    },
+    "beam": {
+      "name": "独木桥",
+      "count": 6,
+      "instances": [
+        "A-11",
+        "B-02",
+        "B-06",
+        "B-11",
+        "C-05",
+        "C-10"
+      ]
+    },
+    "serpentine": {
+      "name": "蛇形回头弯",
+      "count": 3,
+      "instances": [
+        "B-10",
+        "C-03",
+        "T-01"
+      ]
+    },
+    "ramp": {
+      "name": "惯性坡",
+      "count": 2,
+      "instances": [
+        "C-04",
+        "T-02"
+      ]
+    },
+    "weight-seesaw": {
+      "name": "压重跷跷板",
+      "count": 2,
+      "instances": [
+        "B-01",
+        "B-07"
+      ]
+    },
+    "axial-roller": {
+      "name": "轴向滚筒桥",
+      "count": 4,
+      "instances": [
+        "A-04",
+        "B-03",
+        "B-08",
+        "C-06"
+      ]
+    },
+    "piston-wall": {
+      "name": "伸缩推墙",
+      "count": 3,
+      "instances": [
+        "P-02",
+        "A-07",
+        "C-07"
+      ]
+    },
+    "timed-trapdoor": {
+      "name": "定时翻板",
+      "count": 3,
+      "instances": [
+        "A-05",
+        "A-10",
+        "B-05"
+      ]
+    },
+    "sway-cradle-bridge": {
+      "name": "摆动吊桥",
+      "count": 2,
+      "instances": [
+        "B-04",
+        "B-09"
+      ]
+    }
+  },
+  "wholeMapObstacleCount": 37,
+  "connections": [
+    {
+      "id": "P-J01",
+      "owner": "P",
+      "from": "P-01",
+      "to": "P-02",
+      "exit": [
+        3.3065463576978537e-16,
+        3.4,
+        10.929999999999998
+      ],
+      "entry": [
+        3.5208595475486404e-16,
+        3.4,
+        10.579999999999998
+      ],
+      "distance": 0.35,
+      "fixedTongueLength": 0.15,
+      "airSeams": [
+        0.09999999999999999,
+        0.09999999999999999
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "锤后立即进推头危险带，先看两者让空",
+      "realWindowValidated": false,
+      "pair": [
+        "pendulum",
+        "piston-wall"
+      ],
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "前速3.5–4.5，读锤后立即穿推头；杆和头均真实有碰撞。",
+      "timingDesign": "单锤T2.4、峰值t.45，投影让空约±.32s；参考t.23过锤心，t.54进推墙，推墙全收回含预告t.40–1.68。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "A-J01",
+      "owner": "A",
+      "from": "A-01",
+      "to": "A-02",
+      "exit": [
+        -19.78,
+        3.4,
+        1.910449006669871e-15
+      ],
+      "entry": [
+        -20.28,
+        3.4,
+        1.9716813466272385e-15
+      ],
+      "distance": 0.5,
+      "fixedTongueLength": 0.2,
+      "airSeams": [
+        0.15,
+        0.15
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "hammers",
+        "cross"
+      ],
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "末锤过后前速约4.3–5，直接上臂；短舌不能作为新的固定休整岛。",
+      "timingDesign": "三锤参考峰值t.33/1.40/2.47；12.5m/4.3≈2.907到十字入口，对齐t3±.150s。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "A-J02",
+      "owner": "A",
+      "from": "A-02",
+      "to": "A-03",
+      "exit": [
+        -24.28,
+        3.4,
+        -3.9999999999999973
+      ],
+      "entry": [
+        -24.28,
+        3.4,
+        -4.579999999999997
+      ],
+      "distance": 0.58,
+      "fixedTongueLength": 0.25,
+      "airSeams": [
+        0.18,
+        0.15
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "cross",
+        "lifts"
+      ],
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "内部十字从东入口转到北出口，只取四分之一圈；出臂先收侧速。",
+      "timingDesign": "同臂出口t6±.150；.58m/4≈.145，第一板零位t6.20，高差<=.10约t6.093–6.307，参考到达6.145。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "A-J03",
+      "owner": "A",
+      "from": "A-03",
+      "to": "A-04",
+      "exit": [
+        -24.280000000000005,
+        3.4,
+        -16.229999999999997
+      ],
+      "entry": [
+        -24.280000000000005,
+        3.4,
+        -16.529999999999998
+      ],
+      "distance": 0.3,
+      "fixedTongueLength": 0,
+      "airSeams": [
+        0.3
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "lifts",
+        "axial-roller"
+      ],
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "从最后升降板直接上滚筒，零位时离板并准备反向纠偏。",
+      "timingDesign": "第一组接板参考6.2/8.2/10.2/12.2，最后板离岸14.2；.3缝按4m/s约.075，滚筒冠部常在，前速4–5。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "A-J04",
+      "owner": "A",
+      "from": "A-04",
+      "to": "A-05",
+      "exit": [
+        -24.280000000000005,
+        3.4,
+        -21.529999999999998
+      ],
+      "entry": [
+        -24.280000000000005,
+        3.4,
+        -22.029999999999998
+      ],
+      "distance": 0.5,
+      "fixedTongueLength": 0.3,
+      "airSeams": [
+        0.1,
+        0.1
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "axial-roller",
+        "timed-trapdoor"
+      ],
+      "lateralExitCondition": {
+        "positionTolerance": 0.12,
+        "speedAbsMax": 0.6,
+        "notRuntimeGate": true
+      },
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "出筒横偏<=.12、横速<=.4，赶上闭合板；条纹转动不等于接触已验。",
+      "timingDesign": "参考入筒14.275、出15.525，.5m/4=.125到板15.650；闭合窗15.55–17.05，计划16.40离板。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "A-J05",
+      "owner": "A",
+      "from": "A-05",
+      "to": "A-06",
+      "exit": [
+        -24.280000000000005,
+        3.4,
+        -25.029999999999998
+      ],
+      "entry": [
+        -24.280000000000005,
+        3.4,
+        -25.33
+      ],
+      "distance": 0.3,
+      "fixedTongueLength": 0,
+      "airSeams": [
+        0.3
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "timed-trapdoor",
+        "platform"
+      ],
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "板后直接上侧移平台，不等它从远端回来。",
+      "timingDesign": "翻板出16.40，.3m/4=.075，平台中位16.50，参考入16.475；目标横偏<=.12，横速<=.6。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "A-J06",
+      "owner": "A",
+      "from": "A-06",
+      "to": "A-07",
+      "exit": [
+        -24.280000000000005,
+        3.4,
+        -28.229999999999997
+      ],
+      "entry": [
+        -24.280000000000005,
+        3.4,
+        -28.429999999999996
+      ],
+      "distance": 0.2,
+      "fixedTongueLength": 0,
+      "airSeams": [
+        0.2
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "platform",
+        "piston-wall"
+      ],
+      "lateralExitCondition": {
+        "positionTolerance": 0.12,
+        "speedAbsMax": 0.6,
+        "notRuntimeGate": true
+      },
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "跟平台到下一中心，离台即穿推头危险带。",
+      "timingDesign": "平台再到中位18.90；.2m/4=.05到推墙18.95；推头全收回18.90–20.18，预计中心带19.25。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "A-J07",
+      "owner": "A",
+      "from": "A-08",
+      "to": "A-09",
+      "exit": [
+        -24.28000000000001,
+        3.4,
+        -46.83
+      ],
+      "entry": [
+        -24.28000000000001,
+        3.4,
+        -47.129999999999995
+      ],
+      "distance": 0.3,
+      "fixedTongueLength": 0,
+      "airSeams": [
+        0.3
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "hammers",
+        "lifts"
+      ],
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "第二组三锤直接接交替板，宽安全岛已在这一组合之前。",
+      "timingDesign": "锤峰t.33/1.40/2.47；12.3m/4.3≈2.860到板，零位2.90，高差<=.10约±.098s（A=.65）。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "A-J08",
+      "owner": "A",
+      "from": "A-09",
+      "to": "A-10",
+      "exit": [
+        -24.280000000000012,
+        3.4,
+        -58.779999999999994
+      ],
+      "entry": [
+        -24.280000000000012,
+        3.4,
+        -58.98
+      ],
+      "distance": 0.2,
+      "fixedTongueLength": 0,
+      "airSeams": [
+        0.2
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "lifts",
+        "timed-trapdoor"
+      ],
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "最后升降接闭合翻板，要求同时看高度与开合。",
+      "timingDesign": "第二组零位2.9/4.9/6.9/8.9、出端10.9；.2缝/4=.05到翻板10.95，闭合10.9–12.4。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "A-J09",
+      "owner": "A",
+      "from": "A-10",
+      "to": "A-11",
+      "exit": [
+        -24.280000000000012,
+        3.4,
+        -61.98
+      ],
+      "entry": [
+        -24.280000000000012,
+        3.4,
+        -62.129999999999995
+      ],
+      "distance": 0.15,
+      "fixedTongueLength": 0,
+      "airSeams": [
+        0.15
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "timed-trapdoor",
+        "beam"
+      ],
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "翻板未开前对准.5米梁，沿梁连续控线；梁之后才进入汇合引道。",
+      "timingDesign": "参考出板11.70、入梁11.738；梁无相位，不能靠下层轴套绕过翻板。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "B-J01",
+      "owner": "B",
+      "from": "B-01",
+      "to": "B-02",
+      "exit": [
+        6.355916887574763e-16,
+        3.4,
+        -14.559999999999999
+      ],
+      "entry": [
+        6.355916887574763e-16,
+        3.4,
+        -14.559999999999999
+      ],
+      "distance": 0,
+      "fixedTongueLength": 0,
+      "airSeams": [
+        0
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "板低端到名义岸沿的.15453米缝已计入板单元，附加接头不重复计缝；负载事件无固定通过相位。",
+      "realWindowValidated": false,
+      "pair": [
+        "weight-seesaw",
+        "beam"
+      ],
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "板低端接平时直接上.45米梁；看角度/角速度，不使用固定通过时间。",
+      "timingDesign": "负载事件：出口约-25至-23°、下岸余速2–3.5。板单元已含两端.15453米缝，附加接头0不表示板端埋入梁。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "B-J02",
+      "owner": "B",
+      "from": "B-02",
+      "to": "B-03",
+      "exit": [
+        1.3703797682458881e-15,
+        3.4,
+        -26.56
+      ],
+      "entry": [
+        1.3887494702330984e-15,
+        3.4,
+        -26.86
+      ],
+      "distance": 0.3,
+      "fixedTongueLength": 0,
+      "airSeams": [
+        0.3
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "beam",
+        "axial-roller"
+      ],
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "窄梁先对准冠部，滚筒正转要求与A路相反的侧向补偿。",
+      "timingDesign": "滚筒+4.5rad/s恒转，入口无需特定转角；.3m接缝以3.5–4.5m/s连续过，横偏<=.10。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "B-J03",
+      "owner": "B",
+      "from": "B-03",
+      "to": "B-04",
+      "exit": [
+        1.6949111700199366e-15,
+        3.4,
+        -31.86
+      ],
+      "entry": [
+        1.7132808720071469e-15,
+        3.4,
+        -32.16
+      ],
+      "distance": 0.3,
+      "fixedTongueLength": 0,
+      "airSeams": [
+        0.3
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "axial-roller",
+        "sway-cradle-bridge"
+      ],
+      "lateralExitCondition": {
+        "positionTolerance": 0.12,
+        "speedAbsMax": 0.6,
+        "notRuntimeGate": true
+      },
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "滚筒末端择时上45°吊桥，筒上等候也要持续纠偏，无固定平台。",
+      "timingDesign": "B04周期4.8，|摆角|<=3°的中位带约±.051s；.3m/4=.075，因此出筒需在目标中位前约.075s。此条件可观察，未证明真实接触通过。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "B-J04",
+      "owner": "B",
+      "from": "B-04",
+      "to": "B-05",
+      "exit": [
+        2.019442571793985e-15,
+        3.4,
+        -37.16
+      ],
+      "entry": [
+        2.0561819757684056e-15,
+        3.4,
+        -37.76
+      ],
+      "distance": 0.6,
+      "fixedTongueLength": 0.3,
+      "airSeams": [
+        0.15,
+        0.15
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "sway-cradle-bridge",
+        "timed-trapdoor"
+      ],
+      "lateralExitCondition": {
+        "positionTolerance": 0.12,
+        "speedAbsMax": 0.6,
+        "notRuntimeGate": true
+      },
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "桥出口先收与岸的相对横速<=.6，再过窄舌进翻板。",
+      "timingDesign": "桥中位参考0/2.4；2.4离桥+.6m/4=.15到板2.55，闭合窗2.45–3.95，计划3.30出板。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "B-J05",
+      "owner": "B",
+      "from": "B-05",
+      "to": "B-06",
+      "exit": [
+        2.2398789956405087e-15,
+        3.4,
+        -40.76
+      ],
+      "entry": [
+        2.249063846634114e-15,
+        3.4,
+        -40.91
+      ],
+      "distance": 0.15,
+      "fixedTongueLength": 0,
+      "airSeams": [
+        0.15
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "timed-trapdoor",
+        "beam"
+      ],
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "板后是12米.5宽梁，提前收侧速不在缝边停车。",
+      "timingDesign": "参考3.30出板+.15/4=.0375入梁3.338；闭合到3.95，梁恒在，偏线落水回该路CP。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "B-J06",
+      "owner": "B",
+      "from": "B-07",
+      "to": "B-08",
+      "exit": [
+        3.643936550862949e-15,
+        3.4,
+        -63.69
+      ],
+      "entry": [
+        3.662306252850159e-15,
+        3.4,
+        -63.989999999999995
+      ],
+      "distance": 0.3,
+      "fixedTongueLength": 0,
+      "airSeams": [
+        0.3
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "板低端到名义岸沿的.15453米缝已计入板单元，附加接头不重复计缝；负载事件无固定通过相位。",
+      "realWindowValidated": false,
+      "pair": [
+        "weight-seesaw",
+        "axial-roller"
+      ],
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "第二块负载板直接接反转滚筒，尽量在板落低且角速减小时进冠部。",
+      "timingDesign": "出口由球重控制，不给跷跷板phase；滚筒-5rad/s恒转，目标前速3–4、横偏<=.10。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "B-J07",
+      "owner": "B",
+      "from": "B-08",
+      "to": "B-09",
+      "exit": [
+        3.968467952636998e-15,
+        3.4,
+        -68.99
+      ],
+      "entry": [
+        3.9929608886199446e-15,
+        3.4,
+        -69.39
+      ],
+      "distance": 0.4,
+      "fixedTongueLength": 0.1,
+      "airSeams": [
+        0.15000000000000002,
+        0.15000000000000002
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "axial-roller",
+        "sway-cradle-bridge"
+      ],
+      "lateralExitCondition": {
+        "positionTolerance": 0.12,
+        "speedAbsMax": 0.6,
+        "notRuntimeGate": true
+      },
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "出滚筒后没有完整岸岛，直接追更快吊桥的中位。",
+      "timingDesign": "B09周期3.6，|摆角|<=3°约±.038s；.4m/4=.10，需要约中位前.10s离筒，并提前抵消横带速。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "B-J08",
+      "owner": "B",
+      "from": "B-09",
+      "to": "B-10",
+      "exit": [
+        4.299122588406783e-15,
+        3.4,
+        -74.39
+      ],
+      "entry": [
+        4.299122588406783e-15,
+        3.4,
+        -74.39
+      ],
+      "distance": 0,
+      "fixedTongueLength": 0,
+      "airSeams": [
+        0
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "sway-cradle-bridge",
+        "serpentine"
+      ],
+      "lateralExitCondition": {
+        "positionTolerance": 0.12,
+        "speedAbsMax": 0.6,
+        "notRuntimeGate": true
+      },
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "吊桥中位直接进入静态双回头，出桥后马上转向。",
+      "timingDesign": "名义顶同高、共边0；中位附近高差小，离桥时横速<=.6。不是任何摆角都能走下去。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "B-J09",
+      "owner": "B",
+      "from": "B-10",
+      "to": "B-11",
+      "exit": [
+        -12.799999999999997,
+        3.4,
+        -74.39
+      ],
+      "entry": [
+        -12.799999999999997,
+        3.4,
+        -74.39
+      ],
+      "distance": 0,
+      "fixedTongueLength": 0,
+      "airSeams": [
+        0
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "serpentine",
+        "beam"
+      ],
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "蛇形出口接同高连续曲窄梁，梁的西侧绕行与北侧归中为同一固定窄结构。",
+      "timingDesign": "静态接头0；这段45.543米全程.5米宽，曲线半径2/4米，允许减速但无宽休整台。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "C-J01",
+      "owner": "C",
+      "from": "C-02",
+      "to": "C-03",
+      "exit": [
+        25.78,
+        3.4,
+        -5.8
+      ],
+      "entry": [
+        25.78,
+        3.4,
+        -5.8
+      ],
+      "distance": 0,
+      "fixedTongueLength": 0,
+      "airSeams": [
+        0
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "pendulum",
+        "serpentine"
+      ],
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "单锤后直接进紧回头，不先给宽直道重整。",
+      "timingDesign": "C01至C02之间R4窄转弯长6.283；以约4.5m/s参考单锤心t4.70。通过锤后蛇形没有时钟，保持走线。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "C-J02",
+      "owner": "C",
+      "from": "C-03",
+      "to": "C-04",
+      "exit": [
+        12.980000000000004,
+        3.4,
+        -15.3
+      ],
+      "entry": [
+        12.980000000000004,
+        3.4,
+        -15.65
+      ],
+      "distance": 0.35,
+      "fixedTongueLength": 0.35,
+      "airSeams": [
+        0,
+        0
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.2,
+      "noRestIsland": true,
+      "note": "仅.35m同高切向接坡；上游目标4.5–6.2m/s，无定时停等，无隐藏速度门。",
+      "realWindowValidated": false,
+      "pair": [
+        "serpentine",
+        "ramp"
+      ],
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "最后回头只隔.35米就上坡，目标出弯余速4.5–6.2。",
+      "timingDesign": "纯静态无停等；三段20/46/20°、斜长1/3.6/1米，是否能靠余速登顶未试玩，不设硬编码门槛。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "C-J03",
+      "owner": "C",
+      "from": "C-04",
+      "to": "C-05",
+      "exit": [
+        12.980000000000004,
+        6.673663567870482,
+        -20.030155375224208
+      ],
+      "entry": [
+        12.980000000000004,
+        6.673663567870482,
+        -20.030155375224208
+      ],
+      "distance": 0,
+      "fixedTongueLength": 0,
+      "airSeams": [
+        0
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "ramp",
+        "beam"
+      ],
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "坡顶立即收成.65米梁，出坡后刹车定线。",
+      "timingDesign": "坡末与梁顶同高6.673664、同切线、接缝0；不加隐藏坡顶宽台。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "C-J04",
+      "owner": "C",
+      "from": "C-06",
+      "to": "C-07",
+      "exit": [
+        12.980000000000004,
+        6.673663567870482,
+        -37.03015537522421
+      ],
+      "entry": [
+        12.980000000000004,
+        6.673663567870482,
+        -37.33015537522421
+      ],
+      "distance": 0.3,
+      "fixedTongueLength": 0,
+      "airSeams": [
+        0.3
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "axial-roller",
+        "piston-wall"
+      ],
+      "lateralExitCondition": {
+        "positionTolerance": 0.12,
+        "speedAbsMax": 0.6,
+        "notRuntimeGate": true
+      },
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "出筒穿反向摆放的推墙，缸壳朝外侧，头推向另一侧；沿局部+Z反向通过。",
+      "timingDesign": "中段起跑参考t0：5m筒/4=1.25，加.3/4=.075，到推墙1.325；全收回1.25–2.53，门带中心约1.625。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "C-J05",
+      "owner": "C",
+      "from": "C-07",
+      "to": "C-08",
+      "exit": [
+        12.980000000000004,
+        6.673663567870482,
+        -39.73015537522421
+      ],
+      "entry": [
+        12.980000000000004,
+        6.673663567870482,
+        -40.130155375224206
+      ],
+      "distance": 0.4,
+      "fixedTongueLength": 0.1,
+      "airSeams": [
+        0.15000000000000002,
+        0.15000000000000002
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "piston-wall",
+        "platform"
+      ],
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "穿墙后追平台中位，保持前速约4、横速<=.6。",
+      "timingDesign": "推墙出端约1.925；.4/4=.10到平台2.025，对齐中心2.05，下次中心4.45。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "C-J06",
+      "owner": "C",
+      "from": "C-08",
+      "to": "C-09",
+      "exit": [
+        12.980000000000004,
+        6.673663567870482,
+        -43.030155375224204
+      ],
+      "entry": [
+        12.980000000000004,
+        6.673663567870482,
+        -43.1801553752242
+      ],
+      "distance": 0.15,
+      "fixedTongueLength": 0,
+      "airSeams": [
+        0.15
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "platform",
+        "hammers"
+      ],
+      "lateralExitCondition": {
+        "positionTolerance": 0.12,
+        "speedAbsMax": 0.6,
+        "notRuntimeGate": true
+      },
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "平台离开即三锤，来不及在岸上重新读节奏。",
+      "timingDesign": "平台4.45出端+.15/4=.0375进锤道；三个锤峰4.75/5.82/6.89，对应门心1.2/6/10.8m。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "C-J07",
+      "owner": "C",
+      "from": "C-09",
+      "to": "C-10",
+      "exit": [
+        12.980000000000004,
+        6.673663567870482,
+        -55.1801553752242
+      ],
+      "entry": [
+        12.980000000000004,
+        6.673663567870482,
+        -55.1801553752242
+      ],
+      "distance": 0,
+      "fixedTongueLength": 0,
+      "airSeams": [
+        0
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.4,
+      "noRestIsland": true,
+      "note": "",
+      "realWindowValidated": false,
+      "pair": [
+        "hammers",
+        "beam"
+      ],
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "锤后直入.6宽梁，再走窄的下降汇合引道，避免一路不刹冲进共同尾段。",
+      "timingDesign": "同高共边0；梁6米，之后12°下降恢复Y3.4，下降不计惯性坡覆盖次数。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    },
+    {
+      "id": "T-J01",
+      "owner": "T",
+      "from": "T-01",
+      "to": "T-02",
+      "exit": [
+        3.2000000000000015,
+        3.4,
+        -144.79999999999995
+      ],
+      "entry": [
+        3.5500000000000016,
+        3.4,
+        -144.79999999999995
+      ],
+      "distance": 0.35,
+      "fixedTongueLength": 0.35,
+      "airSeams": [
+        0,
+        0
+      ],
+      "nominalHeightDifference": 0,
+      "width": 1.25,
+      "noRestIsland": true,
+      "note": "仅.35m同高切向接坡；上游目标4.5–6.2m/s，无定时停等，无隐藏速度门。",
+      "realWindowValidated": false,
+      "pair": [
+        "serpentine",
+        "ramp"
+      ],
+      "failure": "fall returns to selected-branch latest checkpoint; no jump/teleport/hidden support",
+      "action": "两侧支路都完成汇合后才进入公共蛇形；蛇形后无休整直接冲坡。",
+      "timingDesign": "共同尾段严格只有T01蛇形与T02惯性坡；中间.35米切向段，目标余速4.5–6.2，失败从共同汇合CP重试。",
+      "retryRule": "latest active checkpoint of selected branch; after CP-MERGED always common tail, unselected CP ignored"
+    }
+  ],
+  "tightCombinationGroups": {
+    "P": [
+      "P-01",
+      "P-02"
+    ],
+    "A-first": [
+      "A-01",
+      "A-02",
+      "A-03",
+      "A-04",
+      "A-05",
+      "A-06",
+      "A-07"
+    ],
+    "A-last": [
+      "A-08",
+      "A-09",
+      "A-10",
+      "A-11"
+    ],
+    "B-first": [
+      "B-01",
+      "B-02",
+      "B-03",
+      "B-04",
+      "B-05",
+      "B-06"
+    ],
+    "B-last": [
+      "B-07",
+      "B-08",
+      "B-09",
+      "B-10",
+      "B-11"
+    ],
+    "C-speed": [
+      "C-02",
+      "C-03",
+      "C-04",
+      "C-05"
+    ],
+    "C-chain": [
+      "C-06",
+      "C-07",
+      "C-08",
+      "C-09",
+      "C-10"
+    ],
+    "T": [
+      "T-01",
+      "T-02"
+    ]
+  },
+  "geometryPieces": [
+    {
+      "id": "P-G01",
+      "owner": "P",
+      "kind": "observation-pad",
+      "start": [
+        0,
+        3.4,
+        16.33
+      ],
+      "end": [
+        2.2043642384652358e-16,
+        3.4,
+        12.729999999999999
+      ],
+      "pathLength": 3.6,
+      "uniqueGeometryLength": 3.6,
+      "width": 3.6
+    },
+    {
+      "id": "P-G02",
+      "owner": "P",
+      "kind": "unit-span",
+      "start": [
+        2.2043642384652358e-16,
+        3.4,
+        12.729999999999999
+      ],
+      "end": [
+        3.3065463576978537e-16,
+        3.4,
+        10.929999999999998
+      ],
+      "pathLength": 1.8,
+      "uniqueGeometryLength": 1.8,
+      "width": 1.3
+    },
+    {
+      "id": "P-G03",
+      "owner": "P",
+      "kind": "short-junction",
+      "start": [
+        3.3065463576978537e-16,
+        3.4,
+        10.929999999999998
+      ],
+      "end": [
+        3.5208595475486404e-16,
+        3.4,
+        10.579999999999998
+      ],
+      "pathLength": 0.35,
+      "uniqueGeometryLength": 0.35,
+      "width": 1.4
+    },
+    {
+      "id": "P-G04",
+      "owner": "P",
+      "kind": "unit-span",
+      "start": [
+        3.5208595475486404e-16,
+        3.4,
+        10.579999999999998
+      ],
+      "end": [
+        4.990435706525464e-16,
+        3.4,
+        8.179999999999998
+      ],
+      "pathLength": 2.4,
+      "uniqueGeometryLength": 2.4,
+      "width": 3.2
+    },
+    {
+      "id": "P-G05",
+      "owner": "P",
+      "kind": "observation-pad",
+      "start": [
+        4.990435706525464e-16,
+        3.4,
+        8.179999999999998
+      ],
+      "end": [
+        7.439729304820171e-16,
+        3.4,
+        4.179999999999998
+      ],
+      "pathLength": 4,
+      "uniqueGeometryLength": 4,
+      "width": 3.2
+    },
+    {
+      "id": "A-G01",
+      "owner": "A",
+      "kind": "observation-pad",
+      "start": [
+        -4.18,
+        3.4,
+        0
+      ],
+      "end": [
+        -7.779999999999999,
+        3.4,
+        4.4087284769304716e-16
+      ],
+      "pathLength": 3.6,
+      "uniqueGeometryLength": 3.6,
+      "width": 3.2
+    },
+    {
+      "id": "A-G02",
+      "owner": "A",
+      "kind": "unit-span",
+      "start": [
+        -7.779999999999999,
+        3.4,
+        4.4087284769304716e-16
+      ],
+      "end": [
+        -19.78,
+        3.4,
+        1.910449006669871e-15
+      ],
+      "pathLength": 12,
+      "uniqueGeometryLength": 12,
+      "width": 1.4
+    },
+    {
+      "id": "A-G03",
+      "owner": "A",
+      "kind": "short-junction",
+      "start": [
+        -19.78,
+        3.4,
+        1.910449006669871e-15
+      ],
+      "end": [
+        -20.28,
+        3.4,
+        1.9716813466272385e-15
+      ],
+      "pathLength": 0.5,
+      "uniqueGeometryLength": 0.5,
+      "width": 1.4
+    },
+    {
+      "id": "A-G04",
+      "owner": "A",
+      "kind": "cross-temporal-ride",
+      "start": [
+        -20.28,
+        3.4,
+        1.9716813466272385e-15
+      ],
+      "end": [
+        -24.28,
+        3.4,
+        -3.9999999999999973
+      ],
+      "pathLength": 6.626548245743669,
+      "uniqueGeometryLength": 16,
+      "width": 1.4,
+      "points": [
+        [
+          -20.28,
+          3.4,
+          1.9716813466272385e-15
+        ],
+        [
+          -21.080000000000002,
+          3.4,
+          2.069653090559027e-15
+        ],
+        [
+          -21.092176966106415,
+          3.4,
+          -0.27889837679250407
+        ],
+        [
+          -21.128615190360936,
+          3.4,
+          -0.555674168534175
+        ],
+        [
+          -21.189037355874984,
+          3.4,
+          -0.8282209443280643
+        ],
+        [
+          -21.272983613485096,
+          3.4,
+          -1.094464458642138
+        ],
+        [
+          -21.37981508148272,
+          3.4,
+          -1.3523784375702363
+        ],
+        [
+          -21.5087187078898,
+          3.4,
+          -1.5999999999999976
+        ],
+        [
+          -21.658713458275226,
+          3.4,
+          -1.8354445963233452
+        ],
+        [
+          -21.82865778201927,
+          3.4,
+          -2.0569203509969234
+        ],
+        [
+          -22.01725830020305,
+          3.4,
+          -2.26274169979695
+        ],
+        [
+          -22.223079649003076,
+          3.4,
+          -2.4513422179807276
+        ],
+        [
+          -22.444555403676652,
+          3.4,
+          -2.6212865417247713
+        ],
+        [
+          -22.68,
+          3.4,
+          -2.7712812921102015
+        ],
+        [
+          -22.927621562429763,
+          3.4,
+          -2.9001849185172777
+        ],
+        [
+          -23.18553554135786,
+          3.4,
+          -3.0070163865149047
+        ],
+        [
+          -23.451779055671935,
+          3.4,
+          -3.090962644125016
+        ],
+        [
+          -23.724325831465823,
+          3.4,
+          -3.1513848096390635
+        ],
+        [
+          -24.001101623207497,
+          3.4,
+          -3.187823033893584
+        ],
+        [
+          -24.28,
+          3.4,
+          -3.1999999999999975
+        ],
+        [
+          -24.28,
+          3.4,
+          -3.9999999999999973
+        ]
+      ],
+      "center": [
+        -24.28,
+        3.4,
+        2.46154006628618e-15
+      ],
+      "notStaticArc": true
+    },
+    {
+      "id": "A-G05",
+      "owner": "A",
+      "kind": "short-junction",
+      "start": [
+        -24.28,
+        3.4,
+        -3.9999999999999973
+      ],
+      "end": [
+        -24.28,
+        3.4,
+        -4.579999999999997
+      ],
+      "pathLength": 0.58,
+      "uniqueGeometryLength": 0.58,
+      "width": 1.4
+    },
+    {
+      "id": "A-G06",
+      "owner": "A",
+      "kind": "unit-span",
+      "start": [
+        -24.28,
+        3.4,
+        -4.579999999999997
+      ],
+      "end": [
+        -24.280000000000005,
+        3.4,
+        -16.229999999999997
+      ],
+      "pathLength": 11.65,
+      "uniqueGeometryLength": 11.65,
+      "width": 3.2
+    },
+    {
+      "id": "A-G07",
+      "owner": "A",
+      "kind": "short-junction",
+      "start": [
+        -24.280000000000005,
+        3.4,
+        -16.229999999999997
+      ],
+      "end": [
+        -24.280000000000005,
+        3.4,
+        -16.529999999999998
+      ],
+      "pathLength": 0.3,
+      "uniqueGeometryLength": 0.3,
+      "width": 1.4
+    },
+    {
+      "id": "A-G08",
+      "owner": "A",
+      "kind": "unit-span",
+      "start": [
+        -24.280000000000005,
+        3.4,
+        -16.529999999999998
+      ],
+      "end": [
+        -24.280000000000005,
+        3.4,
+        -21.529999999999998
+      ],
+      "pathLength": 5,
+      "uniqueGeometryLength": 5,
+      "width": 2
+    },
+    {
+      "id": "A-G09",
+      "owner": "A",
+      "kind": "short-junction",
+      "start": [
+        -24.280000000000005,
+        3.4,
+        -21.529999999999998
+      ],
+      "end": [
+        -24.280000000000005,
+        3.4,
+        -22.029999999999998
+      ],
+      "pathLength": 0.5,
+      "uniqueGeometryLength": 0.5,
+      "width": 1.4
+    },
+    {
+      "id": "A-G10",
+      "owner": "A",
+      "kind": "unit-span",
+      "start": [
+        -24.280000000000005,
+        3.4,
+        -22.029999999999998
+      ],
+      "end": [
+        -24.280000000000005,
+        3.4,
+        -25.029999999999998
+      ],
+      "pathLength": 3,
+      "uniqueGeometryLength": 3,
+      "width": 2.2
+    },
+    {
+      "id": "A-G11",
+      "owner": "A",
+      "kind": "short-junction",
+      "start": [
+        -24.280000000000005,
+        3.4,
+        -25.029999999999998
+      ],
+      "end": [
+        -24.280000000000005,
+        3.4,
+        -25.33
+      ],
+      "pathLength": 0.3,
+      "uniqueGeometryLength": 0.3,
+      "width": 1.4
+    },
+    {
+      "id": "A-G12",
+      "owner": "A",
+      "kind": "unit-span",
+      "start": [
+        -24.280000000000005,
+        3.4,
+        -25.33
+      ],
+      "end": [
+        -24.280000000000005,
+        3.4,
+        -28.229999999999997
+      ],
+      "pathLength": 2.9,
+      "uniqueGeometryLength": 2.9,
+      "width": 3
+    },
+    {
+      "id": "A-G13",
+      "owner": "A",
+      "kind": "short-junction",
+      "start": [
+        -24.280000000000005,
+        3.4,
+        -28.229999999999997
+      ],
+      "end": [
+        -24.280000000000005,
+        3.4,
+        -28.429999999999996
+      ],
+      "pathLength": 0.2,
+      "uniqueGeometryLength": 0.2,
+      "width": 1.4
+    },
+    {
+      "id": "A-G14",
+      "owner": "A",
+      "kind": "unit-span",
+      "start": [
+        -24.280000000000005,
+        3.4,
+        -28.429999999999996
+      ],
+      "end": [
+        -24.280000000000005,
+        3.4,
+        -30.829999999999995
+      ],
+      "pathLength": 2.4,
+      "uniqueGeometryLength": 2.4,
+      "width": 3.2
+    },
+    {
+      "id": "A-G15",
+      "owner": "A",
+      "kind": "observation-pad",
+      "start": [
+        -24.280000000000005,
+        3.4,
+        -30.829999999999995
+      ],
+      "end": [
+        -24.280000000000005,
+        3.4,
+        -34.83
+      ],
+      "pathLength": 4,
+      "uniqueGeometryLength": 4,
+      "width": 3.2
+    },
+    {
+      "id": "A-G16",
+      "owner": "A",
+      "kind": "unit-span",
+      "start": [
+        -24.280000000000005,
+        3.4,
+        -34.83
+      ],
+      "end": [
+        -24.28000000000001,
+        3.4,
+        -46.83
+      ],
+      "pathLength": 12,
+      "uniqueGeometryLength": 12,
+      "width": 1.4
+    },
+    {
+      "id": "A-G17",
+      "owner": "A",
+      "kind": "short-junction",
+      "start": [
+        -24.28000000000001,
+        3.4,
+        -46.83
+      ],
+      "end": [
+        -24.28000000000001,
+        3.4,
+        -47.129999999999995
+      ],
+      "pathLength": 0.3,
+      "uniqueGeometryLength": 0.3,
+      "width": 1.4
+    },
+    {
+      "id": "A-G18",
+      "owner": "A",
+      "kind": "unit-span",
+      "start": [
+        -24.28000000000001,
+        3.4,
+        -47.129999999999995
+      ],
+      "end": [
+        -24.280000000000012,
+        3.4,
+        -58.779999999999994
+      ],
+      "pathLength": 11.65,
+      "uniqueGeometryLength": 11.65,
+      "width": 3.2
+    },
+    {
+      "id": "A-G19",
+      "owner": "A",
+      "kind": "short-junction",
+      "start": [
+        -24.280000000000012,
+        3.4,
+        -58.779999999999994
+      ],
+      "end": [
+        -24.280000000000012,
+        3.4,
+        -58.98
+      ],
+      "pathLength": 0.2,
+      "uniqueGeometryLength": 0.2,
+      "width": 1.4
+    },
+    {
+      "id": "A-G20",
+      "owner": "A",
+      "kind": "unit-span",
+      "start": [
+        -24.280000000000012,
+        3.4,
+        -58.98
+      ],
+      "end": [
+        -24.280000000000012,
+        3.4,
+        -61.98
+      ],
+      "pathLength": 3,
+      "uniqueGeometryLength": 3,
+      "width": 2.2
+    },
+    {
+      "id": "A-G21",
+      "owner": "A",
+      "kind": "short-junction",
+      "start": [
+        -24.280000000000012,
+        3.4,
+        -61.98
+      ],
+      "end": [
+        -24.280000000000012,
+        3.4,
+        -62.129999999999995
+      ],
+      "pathLength": 0.15,
+      "uniqueGeometryLength": 0.15,
+      "width": 1.4
+    },
+    {
+      "id": "A-G22",
+      "owner": "A",
+      "kind": "unit-span",
+      "start": [
+        -24.280000000000012,
+        3.4,
+        -62.129999999999995
+      ],
+      "end": [
+        -24.280000000000015,
+        3.4,
+        -76.13
+      ],
+      "pathLength": 14,
+      "uniqueGeometryLength": 14,
+      "width": 0.5
+    },
+    {
+      "id": "A-G23",
+      "owner": "A",
+      "kind": "merge-approach",
+      "start": [
+        -24.280000000000015,
+        3.4,
+        -76.13
+      ],
+      "end": [
+        -24.28000000000002,
+        3.4,
+        -102.0
+      ],
+      "pathLength": 25.870000000000005,
+      "uniqueGeometryLength": 25.870000000000005,
+      "width": 1.1
+    },
+    {
+      "id": "A-G24",
+      "owner": "A",
+      "kind": "merge-approach-curve",
+      "start": [
+        -24.28000000000002,
+        3.4,
+        -102.0
+      ],
+      "end": [
+        -20.28000000000002,
+        3.4,
+        -106.0
+      ],
+      "pathLength": 6.283185307179586,
+      "uniqueGeometryLength": 6.283185307179586,
+      "width": 1.1,
+      "points": [
+        [
+          -24.28000000000002,
+          3.4,
+          -102.0
+        ],
+        [
+          -24.264778792367,
+          3.4,
+          -102.34862297099063
+        ],
+        [
+          -24.21923101204885,
+          3.4,
+          -102.69459271066772
+        ],
+        [
+          -24.143703305156293,
+          3.4,
+          -103.03527618041008
+        ],
+        [
+          -24.038770483143654,
+          3.4,
+          -103.36808057330268
+        ],
+        [
+          -23.90523114814662,
+          3.4,
+          -103.6904730469628
+        ],
+        [
+          -23.744101615137772,
+          3.4,
+          -104.0
+        ],
+        [
+          -23.556608177155987,
+          3.4,
+          -104.29430574540419
+        ],
+        [
+          -23.34417777247593,
+          3.4,
+          -104.57115043874616
+        ],
+        [
+          -23.10842712474621,
+          3.4,
+          -104.82842712474618
+        ],
+        [
+          -22.851150438746178,
+          3.4,
+          -105.06417777247592
+        ],
+        [
+          -22.574305745404203,
+          3.4,
+          -105.27660817715596
+        ],
+        [
+          -22.280000000000022,
+          3.4,
+          -105.46410161513775
+        ],
+        [
+          -21.970473046962816,
+          3.4,
+          -105.6252311481466
+        ],
+        [
+          -21.648080573302693,
+          3.4,
+          -105.75877048314364
+        ],
+        [
+          -21.315276180410102,
+          3.4,
+          -105.86370330515628
+        ],
+        [
+          -20.97459271066774,
+          3.4,
+          -105.93923101204884
+        ],
+        [
+          -20.62862297099065,
+          3.4,
+          -105.98477879236698
+        ],
+        [
+          -20.28000000000002,
+          3.4,
+          -106.0
+        ]
+      ],
+      "centerXZ": [
+        -20.28000000000002,
+        -102.0
+      ],
+      "radius": 4,
+      "degrees": 90
+    },
+    {
+      "id": "A-G25",
+      "owner": "A",
+      "kind": "merge-approach",
+      "start": [
+        -20.28000000000002,
+        3.4,
+        -106.0
+      ],
+      "end": [
+        -6.0,
+        3.4,
+        -106.0
+      ],
+      "pathLength": 14.280000000000019,
+      "uniqueGeometryLength": 14.280000000000019,
+      "width": 1.1
+    },
+    {
+      "id": "B-G01",
+      "owner": "B",
+      "kind": "observation-pad",
+      "start": [
+        0,
+        3.4,
+        -4.18
+      ],
+      "end": [
+        2.2043642384652358e-16,
+        3.4,
+        -7.779999999999999
+      ],
+      "pathLength": 3.6,
+      "uniqueGeometryLength": 3.6,
+      "width": 3.2
+    },
+    {
+      "id": "B-G02",
+      "owner": "B",
+      "kind": "unit-span",
+      "start": [
+        2.2043642384652358e-16,
+        3.4,
+        -7.779999999999999
+      ],
+      "end": [
+        6.355916887574763e-16,
+        3.4,
+        -14.559999999999999
+      ],
+      "pathLength": 7.309060012221241,
+      "uniqueGeometryLength": 7.309060012221241,
+      "width": 0.7,
+      "lengthMeaning": "material centerline7m plus two low-tip seams, not fixed world travel under load"
+    },
+    {
+      "id": "B-G03",
+      "owner": "B",
+      "kind": "short-junction",
+      "start": [
+        6.355916887574763e-16,
+        3.4,
+        -14.559999999999999
+      ],
+      "end": [
+        6.355916887574763e-16,
+        3.4,
+        -14.559999999999999
+      ],
+      "pathLength": 0,
+      "uniqueGeometryLength": 0,
+      "width": 1.4
+    },
+    {
+      "id": "B-G04",
+      "owner": "B",
+      "kind": "unit-span",
+      "start": [
+        6.355916887574763e-16,
+        3.4,
+        -14.559999999999999
+      ],
+      "end": [
+        1.3703797682458881e-15,
+        3.4,
+        -26.56
+      ],
+      "pathLength": 12,
+      "uniqueGeometryLength": 12,
+      "width": 0.45
+    },
+    {
+      "id": "B-G05",
+      "owner": "B",
+      "kind": "short-junction",
+      "start": [
+        1.3703797682458881e-15,
+        3.4,
+        -26.56
+      ],
+      "end": [
+        1.3887494702330984e-15,
+        3.4,
+        -26.86
+      ],
+      "pathLength": 0.3,
+      "uniqueGeometryLength": 0.3,
+      "width": 1.4
+    },
+    {
+      "id": "B-G06",
+      "owner": "B",
+      "kind": "unit-span",
+      "start": [
+        1.3887494702330984e-15,
+        3.4,
+        -26.86
+      ],
+      "end": [
+        1.6949111700199366e-15,
+        3.4,
+        -31.86
+      ],
+      "pathLength": 5,
+      "uniqueGeometryLength": 5,
+      "width": 2
+    },
+    {
+      "id": "B-G07",
+      "owner": "B",
+      "kind": "short-junction",
+      "start": [
+        1.6949111700199366e-15,
+        3.4,
+        -31.86
+      ],
+      "end": [
+        1.7132808720071469e-15,
+        3.4,
+        -32.16
+      ],
+      "pathLength": 0.3,
+      "uniqueGeometryLength": 0.3,
+      "width": 1.4
+    },
+    {
+      "id": "B-G08",
+      "owner": "B",
+      "kind": "unit-span",
+      "start": [
+        1.7132808720071469e-15,
+        3.4,
+        -32.16
+      ],
+      "end": [
+        2.019442571793985e-15,
+        3.4,
+        -37.16
+      ],
+      "pathLength": 5,
+      "uniqueGeometryLength": 5,
+      "width": 2.4
+    },
+    {
+      "id": "B-G09",
+      "owner": "B",
+      "kind": "short-junction",
+      "start": [
+        2.019442571793985e-15,
+        3.4,
+        -37.16
+      ],
+      "end": [
+        2.0561819757684056e-15,
+        3.4,
+        -37.76
+      ],
+      "pathLength": 0.6,
+      "uniqueGeometryLength": 0.6,
+      "width": 1.4
+    },
+    {
+      "id": "B-G10",
+      "owner": "B",
+      "kind": "unit-span",
+      "start": [
+        2.0561819757684056e-15,
+        3.4,
+        -37.76
+      ],
+      "end": [
+        2.2398789956405087e-15,
+        3.4,
+        -40.76
+      ],
+      "pathLength": 3,
+      "uniqueGeometryLength": 3,
+      "width": 2.2
+    },
+    {
+      "id": "B-G11",
+      "owner": "B",
+      "kind": "short-junction",
+      "start": [
+        2.2398789956405087e-15,
+        3.4,
+        -40.76
+      ],
+      "end": [
+        2.249063846634114e-15,
+        3.4,
+        -40.91
+      ],
+      "pathLength": 0.15,
+      "uniqueGeometryLength": 0.15,
+      "width": 1.4
+    },
+    {
+      "id": "B-G12",
+      "owner": "B",
+      "kind": "unit-span",
+      "start": [
+        2.249063846634114e-15,
+        3.4,
+        -40.91
+      ],
+      "end": [
+        2.9838519261225256e-15,
+        3.4,
+        -52.91
+      ],
+      "pathLength": 12,
+      "uniqueGeometryLength": 12,
+      "width": 0.5
+    },
+    {
+      "id": "B-G13",
+      "owner": "B",
+      "kind": "observation-pad",
+      "start": [
+        2.9838519261225256e-15,
+        3.4,
+        -52.91
+      ],
+      "end": [
+        3.2287812859519963e-15,
+        3.4,
+        -56.91
+      ],
+      "pathLength": 4,
+      "uniqueGeometryLength": 4,
+      "width": 3.2
+    },
+    {
+      "id": "B-G14",
+      "owner": "B",
+      "kind": "unit-span",
+      "start": [
+        3.2287812859519963e-15,
+        3.4,
+        -56.91
+      ],
+      "end": [
+        3.643936550862949e-15,
+        3.4,
+        -63.69
+      ],
+      "pathLength": 7.309060012221241,
+      "uniqueGeometryLength": 7.309060012221241,
+      "width": 0.7,
+      "lengthMeaning": "material centerline7m plus two low-tip seams, not fixed world travel under load"
+    },
+    {
+      "id": "B-G15",
+      "owner": "B",
+      "kind": "short-junction",
+      "start": [
+        3.643936550862949e-15,
+        3.4,
+        -63.69
+      ],
+      "end": [
+        3.662306252850159e-15,
+        3.4,
+        -63.989999999999995
+      ],
+      "pathLength": 0.3,
+      "uniqueGeometryLength": 0.3,
+      "width": 1.4
+    },
+    {
+      "id": "B-G16",
+      "owner": "B",
+      "kind": "unit-span",
+      "start": [
+        3.662306252850159e-15,
+        3.4,
+        -63.989999999999995
+      ],
+      "end": [
+        3.968467952636998e-15,
+        3.4,
+        -68.99
+      ],
+      "pathLength": 5,
+      "uniqueGeometryLength": 5,
+      "width": 2
+    },
+    {
+      "id": "B-G17",
+      "owner": "B",
+      "kind": "short-junction",
+      "start": [
+        3.968467952636998e-15,
+        3.4,
+        -68.99
+      ],
+      "end": [
+        3.9929608886199446e-15,
+        3.4,
+        -69.39
+      ],
+      "pathLength": 0.4,
+      "uniqueGeometryLength": 0.4,
+      "width": 1.4
+    },
+    {
+      "id": "B-G18",
+      "owner": "B",
+      "kind": "unit-span",
+      "start": [
+        3.9929608886199446e-15,
+        3.4,
+        -69.39
+      ],
+      "end": [
+        4.299122588406783e-15,
+        3.4,
+        -74.39
+      ],
+      "pathLength": 5,
+      "uniqueGeometryLength": 5,
+      "width": 2.4
+    },
+    {
+      "id": "B-G19",
+      "owner": "B",
+      "kind": "short-junction",
+      "start": [
+        4.299122588406783e-15,
+        3.4,
+        -74.39
+      ],
+      "end": [
+        4.299122588406783e-15,
+        3.4,
+        -74.39
+      ],
+      "pathLength": 0,
+      "uniqueGeometryLength": 0,
+      "width": 1.4
+    },
+    {
+      "id": "B-G20",
+      "owner": "B",
+      "kind": "serpentine-leg",
+      "start": [
+        4.299122588406783e-15,
+        3.4,
+        -74.39
+      ],
+      "end": [
+        4.51343577825757e-15,
+        3.4,
+        -77.89
+      ],
+      "pathLength": 3.5,
+      "uniqueGeometryLength": 3.5,
+      "width": 1.0
+    },
+    {
+      "id": "B-G21",
+      "owner": "B",
+      "kind": "serpentine-arc",
+      "start": [
+        4.51343577825757e-15,
+        3.4,
+        -77.89
+      ],
+      "end": [
+        -6.399999999999996,
+        3.4,
+        -77.89
+      ],
+      "pathLength": 10.053096491487338,
+      "uniqueGeometryLength": 10.053096491487338,
+      "width": 1.0,
+      "points": [
+        [
+          4.51343577825757e-15,
+          3.4,
+          -77.89
+        ],
+        [
+          -0.012176966106409726,
+          3.4,
+          -78.16889837679251
+        ],
+        [
+          -0.04861519036092998,
+          3.4,
+          -78.44567416853418
+        ],
+        [
+          -0.10903735587497687,
+          3.4,
+          -78.71822094432807
+        ],
+        [
+          -0.1929836134850884,
+          3.4,
+          -78.98446445864214
+        ],
+        [
+          -0.2998150814827154,
+          3.4,
+          -79.24237843757024
+        ],
+        [
+          -0.4287187078897916,
+          3.4,
+          -79.49
+        ],
+        [
+          -0.5787134582752222,
+          3.4,
+          -79.72544459632334
+        ],
+        [
+          -0.7486577820192659,
+          3.4,
+          -79.94692035099693
+        ],
+        [
+          -0.9372583002030432,
+          3.4,
+          -80.15274169979695
+        ],
+        [
+          -1.1430796490030692,
+          3.4,
+          -80.34134221798072
+        ],
+        [
+          -1.3645554036766472,
+          3.4,
+          -80.51128654172477
+        ],
+        [
+          -1.5999999999999945,
+          3.4,
+          -80.6612812921102
+        ],
+        [
+          -1.8476215624297572,
+          3.4,
+          -80.79018491851728
+        ],
+        [
+          -2.105535541357855,
+          3.4,
+          -80.8970163865149
+        ],
+        [
+          -2.37177905567193,
+          3.4,
+          -80.98096264412501
+        ],
+        [
+          -2.6443258314658187,
+          3.4,
+          -81.04138480963907
+        ],
+        [
+          -2.9211016232074893,
+          3.4,
+          -81.07782303389358
+        ],
+        [
+          -3.1999999999999953,
+          3.4,
+          -81.09
+        ],
+        [
+          -3.4788983767925012,
+          3.4,
+          -81.07782303389358
+        ],
+        [
+          -3.755674168534172,
+          3.4,
+          -81.04138480963907
+        ],
+        [
+          -4.028220944328062,
+          3.4,
+          -80.98096264412501
+        ],
+        [
+          -4.294464458642135,
+          3.4,
+          -80.8970163865149
+        ],
+        [
+          -4.552378437570233,
+          3.4,
+          -80.79018491851728
+        ],
+        [
+          -4.799999999999995,
+          3.4,
+          -80.6612812921102
+        ],
+        [
+          -5.035444596323344,
+          3.4,
+          -80.51128654172477
+        ],
+        [
+          -5.256920350996921,
+          3.4,
+          -80.34134221798072
+        ],
+        [
+          -5.462741699796948,
+          3.4,
+          -80.15274169979695
+        ],
+        [
+          -5.651342217980725,
+          3.4,
+          -79.94692035099693
+        ],
+        [
+          -5.821286541724771,
+          3.4,
+          -79.72544459632334
+        ],
+        [
+          -5.9712812921102,
+          3.4,
+          -79.49
+        ],
+        [
+          -6.100184918517276,
+          3.4,
+          -79.24237843757024
+        ],
+        [
+          -6.207016386514903,
+          3.4,
+          -78.98446445864214
+        ],
+        [
+          -6.290962644125015,
+          3.4,
+          -78.71822094432807
+        ],
+        [
+          -6.351384809639061,
+          3.4,
+          -78.44567416853418
+        ],
+        [
+          -6.387823033893582,
+          3.4,
+          -78.16889837679251
+        ],
+        [
+          -6.399999999999996,
+          3.4,
+          -77.89
+        ]
+      ],
+      "centerXZ": [
+        -3.1999999999999957,
+        -77.89
+      ],
+      "radius": 3.2,
+      "degrees": -180
+    },
+    {
+      "id": "B-G22",
+      "owner": "B",
+      "kind": "serpentine-leg",
+      "start": [
+        -6.399999999999996,
+        3.4,
+        -77.89
+      ],
+      "end": [
+        -6.399999999999997,
+        3.4,
+        -74.39
+      ],
+      "pathLength": 3.5,
+      "uniqueGeometryLength": 3.5,
+      "width": 1.0
+    },
+    {
+      "id": "B-G23",
+      "owner": "B",
+      "kind": "serpentine-arc",
+      "start": [
+        -6.399999999999997,
+        3.4,
+        -74.39
+      ],
+      "end": [
+        -12.799999999999997,
+        3.4,
+        -74.39
+      ],
+      "pathLength": 10.053096491487338,
+      "uniqueGeometryLength": 10.053096491487338,
+      "width": 1.0,
+      "points": [
+        [
+          -6.399999999999997,
+          3.4,
+          -74.39
+        ],
+        [
+          -6.412176966106411,
+          3.4,
+          -74.11110162320749
+        ],
+        [
+          -6.448615190360933,
+          3.4,
+          -73.83432583146582
+        ],
+        [
+          -6.509037355874979,
+          3.4,
+          -73.56177905567193
+        ],
+        [
+          -6.5929836134850905,
+          3.4,
+          -73.29553554135786
+        ],
+        [
+          -6.699815081482718,
+          3.4,
+          -73.03762156242976
+        ],
+        [
+          -6.828718707889795,
+          3.4,
+          -72.78999999999999
+        ],
+        [
+          -6.978713458275225,
+          3.4,
+          -72.55455540367666
+        ],
+        [
+          -7.148657782019269,
+          3.4,
+          -72.33307964900307
+        ],
+        [
+          -7.337258300203046,
+          3.4,
+          -72.12725830020305
+        ],
+        [
+          -7.543079649003072,
+          3.4,
+          -71.93865778201928
+        ],
+        [
+          -7.76455540367665,
+          3.4,
+          -71.76871345827523
+        ],
+        [
+          -7.999999999999997,
+          3.4,
+          -71.6187187078898
+        ],
+        [
+          -8.24762156242976,
+          3.4,
+          -71.48981508148272
+        ],
+        [
+          -8.505535541357858,
+          3.4,
+          -71.3829836134851
+        ],
+        [
+          -8.771779055671933,
+          3.4,
+          -71.29903735587499
+        ],
+        [
+          -9.044325831465821,
+          3.4,
+          -71.23861519036093
+        ],
+        [
+          -9.321101623207493,
+          3.4,
+          -71.20217696610642
+        ],
+        [
+          -9.599999999999998,
+          3.4,
+          -71.19
+        ],
+        [
+          -9.878898376792504,
+          3.4,
+          -71.20217696610642
+        ],
+        [
+          -10.155674168534174,
+          3.4,
+          -71.23861519036093
+        ],
+        [
+          -10.428220944328064,
+          3.4,
+          -71.29903735587499
+        ],
+        [
+          -10.694464458642138,
+          3.4,
+          -71.3829836134851
+        ],
+        [
+          -10.952378437570236,
+          3.4,
+          -71.48981508148272
+        ],
+        [
+          -11.199999999999998,
+          3.4,
+          -71.6187187078898
+        ],
+        [
+          -11.435444596323347,
+          3.4,
+          -71.76871345827523
+        ],
+        [
+          -11.656920350996923,
+          3.4,
+          -71.93865778201928
+        ],
+        [
+          -11.86274169979695,
+          3.4,
+          -72.12725830020305
+        ],
+        [
+          -12.051342217980729,
+          3.4,
+          -72.33307964900307
+        ],
+        [
+          -12.221286541724773,
+          3.4,
+          -72.55455540367666
+        ],
+        [
+          -12.371281292110202,
+          3.4,
+          -72.79
+        ],
+        [
+          -12.500184918517277,
+          3.4,
+          -73.03762156242976
+        ],
+        [
+          -12.607016386514905,
+          3.4,
+          -73.29553554135786
+        ],
+        [
+          -12.690962644125017,
+          3.4,
+          -73.56177905567193
+        ],
+        [
+          -12.751384809639063,
+          3.4,
+          -73.83432583146582
+        ],
+        [
+          -12.787823033893584,
+          3.4,
+          -74.11110162320749
+        ],
+        [
+          -12.799999999999997,
+          3.4,
+          -74.39
+        ]
+      ],
+      "centerXZ": [
+        -9.599999999999998,
+        -74.39
+      ],
+      "radius": 3.2,
+      "degrees": 180
+    },
+    {
+      "id": "B-G24",
+      "owner": "B",
+      "kind": "short-junction",
+      "start": [
+        -12.799999999999997,
+        3.4,
+        -74.39
+      ],
+      "end": [
+        -12.799999999999997,
+        3.4,
+        -74.39
+      ],
+      "pathLength": 0,
+      "uniqueGeometryLength": 0,
+      "width": 1.4
+    },
+    {
+      "id": "B-G25",
+      "owner": "B",
+      "kind": "beam-arc",
+      "start": [
+        -12.799999999999997,
+        3.4,
+        -74.39
+      ],
+      "end": [
+        -14.799999999999997,
+        3.4,
+        -76.39
+      ],
+      "pathLength": 3.141592653589793,
+      "uniqueGeometryLength": 3.141592653589793,
+      "width": 0.5,
+      "points": [
+        [
+          -12.799999999999997,
+          3.4,
+          -74.39
+        ],
+        [
+          -12.807610603816507,
+          3.4,
+          -74.56431148549531
+        ],
+        [
+          -12.830384493975581,
+          3.4,
+          -74.73729635533387
+        ],
+        [
+          -12.86814834742186,
+          3.4,
+          -74.90763809020504
+        ],
+        [
+          -12.92061475842818,
+          3.4,
+          -75.07404028665134
+        ],
+        [
+          -12.987384425926697,
+          3.4,
+          -75.2352365234814
+        ],
+        [
+          -13.06794919243112,
+          3.4,
+          -75.39
+        ],
+        [
+          -13.161695911422013,
+          3.4,
+          -75.5371528727021
+        ],
+        [
+          -13.267911113762041,
+          3.4,
+          -75.67557521937307
+        ],
+        [
+          -13.385786437626901,
+          3.4,
+          -75.80421356237309
+        ],
+        [
+          -13.514424780626918,
+          3.4,
+          -75.92208888623796
+        ],
+        [
+          -13.652847127297905,
+          3.4,
+          -76.02830408857798
+        ],
+        [
+          -13.799999999999997,
+          3.4,
+          -76.12205080756888
+        ],
+        [
+          -13.954763476518599,
+          3.4,
+          -76.2026155740733
+        ],
+        [
+          -14.115959713348659,
+          3.4,
+          -76.26938524157181
+        ],
+        [
+          -14.282361909794956,
+          3.4,
+          -76.32185165257813
+        ],
+        [
+          -14.452703644666137,
+          3.4,
+          -76.35961550602441
+        ],
+        [
+          -14.62568851450468,
+          3.4,
+          -76.3823893961835
+        ],
+        [
+          -14.799999999999997,
+          3.4,
+          -76.39
+        ]
+      ],
+      "centerXZ": [
+        -14.799999999999997,
+        -74.39
+      ],
+      "radius": 2,
+      "degrees": -90
+    },
+    {
+      "id": "B-G26",
+      "owner": "B",
+      "kind": "beam-line",
+      "start": [
+        -14.799999999999997,
+        3.4,
+        -76.39
+      ],
+      "end": [
+        -17.799999999999997,
+        3.4,
+        -76.39
+      ],
+      "pathLength": 3,
+      "uniqueGeometryLength": 3,
+      "width": 0.5
+    },
+    {
+      "id": "B-G27",
+      "owner": "B",
+      "kind": "beam-arc",
+      "start": [
+        -17.799999999999997,
+        3.4,
+        -76.39
+      ],
+      "end": [
+        -19.799999999999997,
+        3.4,
+        -78.39
+      ],
+      "pathLength": 3.141592653589793,
+      "uniqueGeometryLength": 3.141592653589793,
+      "width": 0.5,
+      "points": [
+        [
+          -17.799999999999997,
+          3.4,
+          -76.39
+        ],
+        [
+          -17.974311485495313,
+          3.4,
+          -76.3976106038165
+        ],
+        [
+          -18.147296355333857,
+          3.4,
+          -76.42038449397559
+        ],
+        [
+          -18.31763809020504,
+          3.4,
+          -76.45814834742187
+        ],
+        [
+          -18.484040286651336,
+          3.4,
+          -76.51061475842819
+        ],
+        [
+          -18.645236523481397,
+          3.4,
+          -76.5773844259267
+        ],
+        [
+          -18.799999999999997,
+          3.4,
+          -76.65794919243112
+        ],
+        [
+          -18.94715287270209,
+          3.4,
+          -76.75169591142202
+        ],
+        [
+          -19.085575219373077,
+          3.4,
+          -76.85791111376204
+        ],
+        [
+          -19.214213562373093,
+          3.4,
+          -76.97578643762691
+        ],
+        [
+          -19.332088886237955,
+          3.4,
+          -77.10442478062693
+        ],
+        [
+          -19.43830408857798,
+          3.4,
+          -77.2428471272979
+        ],
+        [
+          -19.532050807568876,
+          3.4,
+          -77.39
+        ],
+        [
+          -19.612615574073295,
+          3.4,
+          -77.5447634765186
+        ],
+        [
+          -19.679385241571815,
+          3.4,
+          -77.70595971334866
+        ],
+        [
+          -19.731851652578133,
+          3.4,
+          -77.87236190979496
+        ],
+        [
+          -19.76961550602441,
+          3.4,
+          -78.04270364466613
+        ],
+        [
+          -19.792389396183488,
+          3.4,
+          -78.21568851450469
+        ],
+        [
+          -19.799999999999997,
+          3.4,
+          -78.39
+        ]
+      ],
+      "centerXZ": [
+        -17.799999999999997,
+        -78.39
+      ],
+      "radius": 2,
+      "degrees": 90
+    },
+    {
+      "id": "B-G28",
+      "owner": "B",
+      "kind": "beam-line",
+      "start": [
+        -19.799999999999997,
+        3.4,
+        -78.39
+      ],
+      "end": [
+        -19.799999999999997,
+        3.4,
+        -80.39
+      ],
+      "pathLength": 2,
+      "uniqueGeometryLength": 2,
+      "width": 0.5
+    },
+    {
+      "id": "B-G29",
+      "owner": "B",
+      "kind": "beam-arc",
+      "start": [
+        -19.799999999999997,
+        3.4,
+        -80.39
+      ],
+      "end": [
+        -17.799999999999997,
+        3.4,
+        -82.39
+      ],
+      "pathLength": 3.141592653589793,
+      "uniqueGeometryLength": 3.141592653589793,
+      "width": 0.5,
+      "points": [
+        [
+          -19.799999999999997,
+          3.4,
+          -80.39
+        ],
+        [
+          -19.792389396183488,
+          3.4,
+          -80.56431148549532
+        ],
+        [
+          -19.76961550602441,
+          3.4,
+          -80.73729635533387
+        ],
+        [
+          -19.731851652578133,
+          3.4,
+          -80.90763809020504
+        ],
+        [
+          -19.679385241571815,
+          3.4,
+          -81.07404028665134
+        ],
+        [
+          -19.612615574073295,
+          3.4,
+          -81.2352365234814
+        ],
+        [
+          -19.532050807568876,
+          3.4,
+          -81.39
+        ],
+        [
+          -19.43830408857798,
+          3.4,
+          -81.5371528727021
+        ],
+        [
+          -19.332088886237955,
+          3.4,
+          -81.67557521937307
+        ],
+        [
+          -19.214213562373093,
+          3.4,
+          -81.80421356237309
+        ],
+        [
+          -19.085575219373077,
+          3.4,
+          -81.92208888623796
+        ],
+        [
+          -18.94715287270209,
+          3.4,
+          -82.02830408857798
+        ],
+        [
+          -18.799999999999997,
+          3.4,
+          -82.12205080756888
+        ],
+        [
+          -18.645236523481397,
+          3.4,
+          -82.2026155740733
+        ],
+        [
+          -18.484040286651336,
+          3.4,
+          -82.26938524157181
+        ],
+        [
+          -18.317638090205037,
+          3.4,
+          -82.32185165257813
+        ],
+        [
+          -18.147296355333857,
+          3.4,
+          -82.35961550602441
+        ],
+        [
+          -17.974311485495313,
+          3.4,
+          -82.3823893961835
+        ],
+        [
+          -17.799999999999997,
+          3.4,
+          -82.39
+        ]
+      ],
+      "centerXZ": [
+        -17.799999999999997,
+        -80.39
+      ],
+      "radius": 2,
+      "degrees": 90
+    },
+    {
+      "id": "B-G30",
+      "owner": "B",
+      "kind": "beam-line",
+      "start": [
+        -17.799999999999997,
+        3.4,
+        -82.39
+      ],
+      "end": [
+        -14.799999999999997,
+        3.4,
+        -82.39
+      ],
+      "pathLength": 3,
+      "uniqueGeometryLength": 3,
+      "width": 0.5
+    },
+    {
+      "id": "B-G31",
+      "owner": "B",
+      "kind": "beam-arc",
+      "start": [
+        -14.799999999999997,
+        3.4,
+        -82.39
+      ],
+      "end": [
+        -12.799999999999997,
+        3.4,
+        -84.39
+      ],
+      "pathLength": 3.141592653589793,
+      "uniqueGeometryLength": 3.141592653589793,
+      "width": 0.5,
+      "points": [
+        [
+          -14.799999999999997,
+          3.4,
+          -82.39
+        ],
+        [
+          -14.62568851450468,
+          3.4,
+          -82.3976106038165
+        ],
+        [
+          -14.452703644666137,
+          3.4,
+          -82.42038449397559
+        ],
+        [
+          -14.282361909794956,
+          3.4,
+          -82.45814834742187
+        ],
+        [
+          -14.11595971334866,
+          3.4,
+          -82.51061475842819
+        ],
+        [
+          -13.954763476518599,
+          3.4,
+          -82.5773844259267
+        ],
+        [
+          -13.799999999999997,
+          3.4,
+          -82.65794919243112
+        ],
+        [
+          -13.652847127297905,
+          3.4,
+          -82.75169591142202
+        ],
+        [
+          -13.514424780626918,
+          3.4,
+          -82.85791111376204
+        ],
+        [
+          -13.385786437626901,
+          3.4,
+          -82.97578643762691
+        ],
+        [
+          -13.267911113762041,
+          3.4,
+          -83.10442478062693
+        ],
+        [
+          -13.161695911422013,
+          3.4,
+          -83.2428471272979
+        ],
+        [
+          -13.06794919243112,
+          3.4,
+          -83.39
+        ],
+        [
+          -12.987384425926697,
+          3.4,
+          -83.5447634765186
+        ],
+        [
+          -12.920614758428181,
+          3.4,
+          -83.70595971334866
+        ],
+        [
+          -12.86814834742186,
+          3.4,
+          -83.87236190979496
+        ],
+        [
+          -12.830384493975581,
+          3.4,
+          -84.04270364466613
+        ],
+        [
+          -12.807610603816507,
+          3.4,
+          -84.21568851450468
+        ],
+        [
+          -12.799999999999997,
+          3.4,
+          -84.39
+        ]
+      ],
+      "centerXZ": [
+        -14.799999999999997,
+        -84.39
+      ],
+      "radius": 2,
+      "degrees": -90
+    },
+    {
+      "id": "B-G32",
+      "owner": "B",
+      "kind": "beam-arc",
+      "start": [
+        -12.799999999999997,
+        3.4,
+        -84.39
+      ],
+      "end": [
+        -8.799999999999997,
+        3.4,
+        -88.39
+      ],
+      "pathLength": 6.283185307179586,
+      "uniqueGeometryLength": 6.283185307179586,
+      "width": 0.5,
+      "points": [
+        [
+          -12.799999999999997,
+          3.4,
+          -84.39
+        ],
+        [
+          -12.784778792366978,
+          3.4,
+          -84.73862297099063
+        ],
+        [
+          -12.73923101204883,
+          3.4,
+          -85.08459271066772
+        ],
+        [
+          -12.66370330515627,
+          3.4,
+          -85.42527618041008
+        ],
+        [
+          -12.55877048314363,
+          3.4,
+          -85.75808057330268
+        ],
+        [
+          -12.425231148146597,
+          3.4,
+          -86.0804730469628
+        ],
+        [
+          -12.264101615137752,
+          3.4,
+          -86.39
+        ],
+        [
+          -12.076608177155965,
+          3.4,
+          -86.68430574540419
+        ],
+        [
+          -11.864177772475909,
+          3.4,
+          -86.96115043874616
+        ],
+        [
+          -11.628427124746187,
+          3.4,
+          -87.21842712474619
+        ],
+        [
+          -11.371150438746154,
+          3.4,
+          -87.45417777247592
+        ],
+        [
+          -11.094305745404181,
+          3.4,
+          -87.66660817715596
+        ],
+        [
+          -10.799999999999997,
+          3.4,
+          -87.85410161513775
+        ],
+        [
+          -10.490473046962794,
+          3.4,
+          -88.0152311481466
+        ],
+        [
+          -10.168080573302673,
+          3.4,
+          -88.14877048314364
+        ],
+        [
+          -9.83527618041008,
+          3.4,
+          -88.25370330515628
+        ],
+        [
+          -9.49459271066772,
+          3.4,
+          -88.32923101204884
+        ],
+        [
+          -9.14862297099063,
+          3.4,
+          -88.37477879236698
+        ],
+        [
+          -8.799999999999997,
+          3.4,
+          -88.39
+        ]
+      ],
+      "centerXZ": [
+        -8.799999999999997,
+        -84.39
+      ],
+      "radius": 4,
+      "degrees": 90
+    },
+    {
+      "id": "B-G33",
+      "owner": "B",
+      "kind": "beam-line",
+      "start": [
+        -8.799999999999997,
+        3.4,
+        -88.39
+      ],
+      "end": [
+        -3.9999999999999973,
+        3.4,
+        -88.39
+      ],
+      "pathLength": 4.8,
+      "uniqueGeometryLength": 4.8,
+      "width": 0.5
+    },
+    {
+      "id": "B-G34",
+      "owner": "B",
+      "kind": "beam-arc",
+      "start": [
+        -3.9999999999999973,
+        3.4,
+        -88.39
+      ],
+      "end": [
+        2.6645352591003757e-15,
+        3.4,
+        -92.39
+      ],
+      "pathLength": 6.283185307179586,
+      "uniqueGeometryLength": 6.283185307179586,
+      "width": 0.5,
+      "points": [
+        [
+          -3.9999999999999973,
+          3.4,
+          -88.39
+        ],
+        [
+          -3.651377029009365,
+          3.4,
+          -88.40522120763302
+        ],
+        [
+          -3.305407289332276,
+          3.4,
+          -88.45076898795116
+        ],
+        [
+          -2.9647238195899144,
+          3.4,
+          -88.52629669484372
+        ],
+        [
+          -2.6319194266973227,
+          3.4,
+          -88.63122951685637
+        ],
+        [
+          -2.3095269530371993,
+          3.4,
+          -88.7647688518534
+        ],
+        [
+          -1.9999999999999976,
+          3.4,
+          -88.92589838486225
+        ],
+        [
+          -1.7056942545958131,
+          3.4,
+          -89.11339182284404
+        ],
+        [
+          -1.4288495612538403,
+          3.4,
+          -89.32582222752409
+        ],
+        [
+          -1.1715728752538075,
+          3.4,
+          -89.56157287525382
+        ],
+        [
+          -0.9358222275240853,
+          3.4,
+          -89.81884956125384
+        ],
+        [
+          -0.7233918228440301,
+          3.4,
+          -90.09569425459581
+        ],
+        [
+          -0.535898384862243,
+          3.4,
+          -90.39
+        ],
+        [
+          -0.3747688518533976,
+          3.4,
+          -90.6995269530372
+        ],
+        [
+          -0.24122951685636407,
+          3.4,
+          -91.02191942669732
+        ],
+        [
+          -0.1362966948437241,
+          3.4,
+          -91.35472381958992
+        ],
+        [
+          -0.060768987951165254,
+          3.4,
+          -91.69540728933228
+        ],
+        [
+          -0.015221207633015155,
+          3.4,
+          -92.04137702900937
+        ],
+        [
+          2.6645352591003757e-15,
+          3.4,
+          -92.39
+        ]
+      ],
+      "centerXZ": [
+        -3.9999999999999973,
+        -92.39
+      ],
+      "radius": 4,
+      "degrees": -90
+    },
+    {
+      "id": "B-G35",
+      "owner": "B",
+      "kind": "beam-line",
+      "start": [
+        2.6645352591003757e-15,
+        3.4,
+        -92.39
+      ],
+      "end": [
+        3.1305133661759438e-15,
+        3.4,
+        -100.0
+      ],
+      "pathLength": 7.609999999999999,
+      "uniqueGeometryLength": 7.609999999999999,
+      "width": 0.5
+    },
+    {
+      "id": "C-G01",
+      "owner": "C",
+      "kind": "observation-pad",
+      "start": [
+        4.18,
+        3.4,
+        0
+      ],
+      "end": [
+        7.779999999999999,
+        3.4,
+        0.0
+      ],
+      "pathLength": 3.6,
+      "uniqueGeometryLength": 3.6,
+      "width": 3.2
+    },
+    {
+      "id": "C-G02",
+      "owner": "C",
+      "kind": "unit-span",
+      "start": [
+        7.779999999999999,
+        3.4,
+        0.0
+      ],
+      "end": [
+        21.78,
+        3.4,
+        0.0
+      ],
+      "pathLength": 14,
+      "uniqueGeometryLength": 14,
+      "width": 1.4
+    },
+    {
+      "id": "C-G03",
+      "owner": "C",
+      "kind": "narrow-turn",
+      "start": [
+        21.78,
+        3.4,
+        0.0
+      ],
+      "end": [
+        25.78,
+        3.4,
+        -3.9999999999999996
+      ],
+      "pathLength": 6.283185307179586,
+      "uniqueGeometryLength": 6.283185307179586,
+      "width": 1.2,
+      "points": [
+        [
+          21.78,
+          3.4,
+          0.0
+        ],
+        [
+          22.128622970990634,
+          3.4,
+          -0.01522120763301782
+        ],
+        [
+          22.47459271066772,
+          3.4,
+          -0.06076898795116792
+        ],
+        [
+          22.815276180410084,
+          3.4,
+          -0.13629669484372675
+        ],
+        [
+          23.148080573302675,
+          3.4,
+          -0.2412295168563663
+        ],
+        [
+          23.4704730469628,
+          3.4,
+          -0.37476885185340025
+        ],
+        [
+          23.78,
+          3.4,
+          -0.5358983848622452
+        ],
+        [
+          24.074305745404185,
+          3.4,
+          -0.7233918228440328
+        ],
+        [
+          24.35115043874616,
+          3.4,
+          -0.935822227524088
+        ],
+        [
+          24.608427124746193,
+          3.4,
+          -1.1715728752538097
+        ],
+        [
+          24.844177772475913,
+          3.4,
+          -1.4288495612538425
+        ],
+        [
+          25.05660817715597,
+          3.4,
+          -1.7056942545958158
+        ],
+        [
+          25.244101615137755,
+          3.4,
+          -1.9999999999999996
+        ],
+        [
+          25.4052311481466,
+          3.4,
+          -2.309526953037202
+        ],
+        [
+          25.538770483143633,
+          3.4,
+          -2.6319194266973245
+        ],
+        [
+          25.643703305156276,
+          3.4,
+          -2.964723819589917
+        ],
+        [
+          25.719231012048834,
+          3.4,
+          -3.3054072893322783
+        ],
+        [
+          25.764778792366982,
+          3.4,
+          -3.6513770290093674
+        ],
+        [
+          25.78,
+          3.4,
+          -3.9999999999999996
+        ]
+      ],
+      "centerXZ": [
+        21.78,
+        -4.0
+      ],
+      "radius": 4,
+      "degrees": -90
+    },
+    {
+      "id": "C-G04",
+      "owner": "C",
+      "kind": "unit-span",
+      "start": [
+        25.78,
+        3.4,
+        -3.9999999999999996
+      ],
+      "end": [
+        25.78,
+        3.4,
+        -5.8
+      ],
+      "pathLength": 1.8,
+      "uniqueGeometryLength": 1.8,
+      "width": 1.3
+    },
+    {
+      "id": "C-G05",
+      "owner": "C",
+      "kind": "short-junction",
+      "start": [
+        25.78,
+        3.4,
+        -5.8
+      ],
+      "end": [
+        25.78,
+        3.4,
+        -5.8
+      ],
+      "pathLength": 0,
+      "uniqueGeometryLength": 0,
+      "width": 1.4
+    },
+    {
+      "id": "C-G06",
+      "owner": "C",
+      "kind": "serpentine-leg",
+      "start": [
+        25.78,
+        3.4,
+        -5.8
+      ],
+      "end": [
+        25.78,
+        3.4,
+        -18.8
+      ],
+      "pathLength": 13,
+      "uniqueGeometryLength": 13,
+      "width": 1.2
+    },
+    {
+      "id": "C-G07",
+      "owner": "C",
+      "kind": "serpentine-arc",
+      "start": [
+        25.78,
+        3.4,
+        -18.8
+      ],
+      "end": [
+        19.380000000000003,
+        3.4,
+        -18.8
+      ],
+      "pathLength": 10.053096491487338,
+      "uniqueGeometryLength": 10.053096491487338,
+      "width": 1.2,
+      "points": [
+        [
+          25.78,
+          3.4,
+          -18.8
+        ],
+        [
+          25.76782303389359,
+          3.4,
+          -19.078898376792505
+        ],
+        [
+          25.731384809639067,
+          3.4,
+          -19.35567416853418
+        ],
+        [
+          25.67096264412502,
+          3.4,
+          -19.628220944328067
+        ],
+        [
+          25.58701638651491,
+          3.4,
+          -19.89446445864214
+        ],
+        [
+          25.48018491851728,
+          3.4,
+          -20.15237843757024
+        ],
+        [
+          25.351281292110205,
+          3.4,
+          -20.4
+        ],
+        [
+          25.201286541724777,
+          3.4,
+          -20.63544459632335
+        ],
+        [
+          25.031342217980733,
+          3.4,
+          -20.856920350996926
+        ],
+        [
+          24.842741699796953,
+          3.4,
+          -21.062741699796952
+        ],
+        [
+          24.636920350996927,
+          3.4,
+          -21.25134221798073
+        ],
+        [
+          24.41544459632335,
+          3.4,
+          -21.421286541724776
+        ],
+        [
+          24.180000000000003,
+          3.4,
+          -21.571281292110204
+        ],
+        [
+          23.93237843757024,
+          3.4,
+          -21.70018491851728
+        ],
+        [
+          23.67446445864214,
+          3.4,
+          -21.807016386514906
+        ],
+        [
+          23.408220944328068,
+          3.4,
+          -21.89096264412502
+        ],
+        [
+          23.13567416853418,
+          3.4,
+          -21.951384809639066
+        ],
+        [
+          22.858898376792506,
+          3.4,
+          -21.987823033893587
+        ],
+        [
+          22.580000000000002,
+          3.4,
+          -22.0
+        ],
+        [
+          22.301101623207497,
+          3.4,
+          -21.987823033893587
+        ],
+        [
+          22.024325831465827,
+          3.4,
+          -21.951384809639066
+        ],
+        [
+          21.751779055671935,
+          3.4,
+          -21.89096264412502
+        ],
+        [
+          21.485535541357862,
+          3.4,
+          -21.80701638651491
+        ],
+        [
+          21.227621562429764,
+          3.4,
+          -21.70018491851728
+        ],
+        [
+          20.980000000000004,
+          3.4,
+          -21.571281292110207
+        ],
+        [
+          20.744555403676653,
+          3.4,
+          -21.421286541724776
+        ],
+        [
+          20.523079649003076,
+          3.4,
+          -21.25134221798073
+        ],
+        [
+          20.31725830020305,
+          3.4,
+          -21.062741699796952
+        ],
+        [
+          20.12865778201927,
+          3.4,
+          -20.856920350996926
+        ],
+        [
+          19.958713458275227,
+          3.4,
+          -20.635444596323346
+        ],
+        [
+          19.808718707889795,
+          3.4,
+          -20.4
+        ],
+        [
+          19.679815081482722,
+          3.4,
+          -20.15237843757024
+        ],
+        [
+          19.572983613485093,
+          3.4,
+          -19.89446445864214
+        ],
+        [
+          19.489037355874984,
+          3.4,
+          -19.628220944328067
+        ],
+        [
+          19.428615190360937,
+          3.4,
+          -19.35567416853418
+        ],
+        [
+          19.392176966106415,
+          3.4,
+          -19.07889837679251
+        ],
+        [
+          19.380000000000003,
+          3.4,
+          -18.8
+        ]
+      ],
+      "centerXZ": [
+        22.580000000000002,
+        -18.8
+      ],
+      "radius": 3.2,
+      "degrees": -180
+    },
+    {
+      "id": "C-G08",
+      "owner": "C",
+      "kind": "serpentine-leg",
+      "start": [
+        19.380000000000003,
+        3.4,
+        -18.8
+      ],
+      "end": [
+        19.380000000000003,
+        3.4,
+        -15.3
+      ],
+      "pathLength": 3.5,
+      "uniqueGeometryLength": 3.5,
+      "width": 1.2
+    },
+    {
+      "id": "C-G09",
+      "owner": "C",
+      "kind": "serpentine-arc",
+      "start": [
+        19.380000000000003,
+        3.4,
+        -15.3
+      ],
+      "end": [
+        12.980000000000004,
+        3.4,
+        -15.3
+      ],
+      "pathLength": 10.053096491487338,
+      "uniqueGeometryLength": 10.053096491487338,
+      "width": 1.2,
+      "points": [
+        [
+          19.380000000000003,
+          3.4,
+          -15.3
+        ],
+        [
+          19.36782303389359,
+          3.4,
+          -15.021101623207494
+        ],
+        [
+          19.33138480963907,
+          3.4,
+          -14.744325831465824
+        ],
+        [
+          19.27096264412502,
+          3.4,
+          -14.471779055671934
+        ],
+        [
+          19.187016386514912,
+          3.4,
+          -14.205535541357861
+        ],
+        [
+          19.080184918517283,
+          3.4,
+          -13.947621562429761
+        ],
+        [
+          18.951281292110206,
+          3.4,
+          -13.7
+        ],
+        [
+          18.801286541724778,
+          3.4,
+          -13.464555403676652
+        ],
+        [
+          18.631342217980734,
+          3.4,
+          -13.243079649003075
+        ],
+        [
+          18.442741699796954,
+          3.4,
+          -13.037258300203048
+        ],
+        [
+          18.23692035099693,
+          3.4,
+          -12.84865778201927
+        ],
+        [
+          18.015444596323352,
+          3.4,
+          -12.678713458275226
+        ],
+        [
+          17.780000000000005,
+          3.4,
+          -12.528718707889798
+        ],
+        [
+          17.53237843757024,
+          3.4,
+          -12.399815081482721
+        ],
+        [
+          17.274464458642143,
+          3.4,
+          -12.292983613485093
+        ],
+        [
+          17.00822094432807,
+          3.4,
+          -12.209037355874981
+        ],
+        [
+          16.735674168534178,
+          3.4,
+          -12.148615190360935
+        ],
+        [
+          16.458898376792508,
+          3.4,
+          -12.112176966106414
+        ],
+        [
+          16.180000000000003,
+          3.4,
+          -12.100000000000001
+        ],
+        [
+          15.901101623207497,
+          3.4,
+          -12.112176966106414
+        ],
+        [
+          15.624325831465827,
+          3.4,
+          -12.148615190360935
+        ],
+        [
+          15.351779055671937,
+          3.4,
+          -12.209037355874983
+        ],
+        [
+          15.085535541357864,
+          3.4,
+          -12.292983613485093
+        ],
+        [
+          14.827621562429766,
+          3.4,
+          -12.399815081482721
+        ],
+        [
+          14.580000000000004,
+          3.4,
+          -12.528718707889796
+        ],
+        [
+          14.344555403676654,
+          3.4,
+          -12.678713458275228
+        ],
+        [
+          14.123079649003078,
+          3.4,
+          -12.848657782019272
+        ],
+        [
+          13.91725830020305,
+          3.4,
+          -13.03725830020305
+        ],
+        [
+          13.728657782019273,
+          3.4,
+          -13.243079649003075
+        ],
+        [
+          13.558713458275228,
+          3.4,
+          -13.464555403676654
+        ],
+        [
+          13.408718707889799,
+          3.4,
+          -13.700000000000001
+        ],
+        [
+          13.279815081482724,
+          3.4,
+          -13.947621562429763
+        ],
+        [
+          13.172983613485096,
+          3.4,
+          -14.205535541357861
+        ],
+        [
+          13.089037355874984,
+          3.4,
+          -14.471779055671934
+        ],
+        [
+          13.028615190360938,
+          3.4,
+          -14.744325831465824
+        ],
+        [
+          12.992176966106417,
+          3.4,
+          -15.021101623207494
+        ],
+        [
+          12.980000000000004,
+          3.4,
+          -15.3
+        ]
+      ],
+      "centerXZ": [
+        16.180000000000003,
+        -15.3
+      ],
+      "radius": 3.2,
+      "degrees": 180
+    },
+    {
+      "id": "C-G10",
+      "owner": "C",
+      "kind": "short-junction",
+      "start": [
+        12.980000000000004,
+        3.4,
+        -15.3
+      ],
+      "end": [
+        12.980000000000004,
+        3.4,
+        -15.65
+      ],
+      "pathLength": 0.35,
+      "uniqueGeometryLength": 0.35,
+      "width": 1.2
+    },
+    {
+      "id": "C-G11",
+      "owner": "C",
+      "kind": "slope",
+      "start": [
+        12.980000000000004,
+        3.4,
+        -15.65
+      ],
+      "end": [
+        12.980000000000004,
+        3.742020143325669,
+        -16.589692620785907
+      ],
+      "pathLength": 1,
+      "uniqueGeometryLength": 1,
+      "width": 1.3,
+      "angle": 20
+    },
+    {
+      "id": "C-G12",
+      "owner": "C",
+      "kind": "slope",
+      "start": [
+        12.980000000000004,
+        3.742020143325669,
+        -16.589692620785907
+      ],
+      "end": [
+        12.980000000000004,
+        6.331643424544813,
+        -19.0904627544383
+      ],
+      "pathLength": 3.6,
+      "uniqueGeometryLength": 3.6,
+      "width": 1.3,
+      "angle": 46
+    },
+    {
+      "id": "C-G13",
+      "owner": "C",
+      "kind": "slope",
+      "start": [
+        12.980000000000004,
+        6.331643424544813,
+        -19.0904627544383
+      ],
+      "end": [
+        12.980000000000004,
+        6.673663567870482,
+        -20.030155375224208
+      ],
+      "pathLength": 1,
+      "uniqueGeometryLength": 1,
+      "width": 1.3,
+      "angle": 20
+    },
+    {
+      "id": "C-G14",
+      "owner": "C",
+      "kind": "short-junction",
+      "start": [
+        12.980000000000004,
+        6.673663567870482,
+        -20.030155375224208
+      ],
+      "end": [
+        12.980000000000004,
+        6.673663567870482,
+        -20.030155375224208
+      ],
+      "pathLength": 0,
+      "uniqueGeometryLength": 0,
+      "width": 1.4
+    },
+    {
+      "id": "C-G15",
+      "owner": "C",
+      "kind": "unit-span",
+      "start": [
+        12.980000000000004,
+        6.673663567870482,
+        -20.030155375224208
+      ],
+      "end": [
+        12.980000000000004,
+        6.673663567870482,
+        -28.030155375224208
+      ],
+      "pathLength": 8,
+      "uniqueGeometryLength": 8,
+      "width": 0.65
+    },
+    {
+      "id": "C-G16",
+      "owner": "C",
+      "kind": "observation-pad",
+      "start": [
+        12.980000000000004,
+        6.673663567870482,
+        -28.030155375224208
+      ],
+      "end": [
+        12.980000000000004,
+        6.673663567870482,
+        -32.03015537522421
+      ],
+      "pathLength": 4,
+      "uniqueGeometryLength": 4,
+      "width": 3.2
+    },
+    {
+      "id": "C-G17",
+      "owner": "C",
+      "kind": "unit-span",
+      "start": [
+        12.980000000000004,
+        6.673663567870482,
+        -32.03015537522421
+      ],
+      "end": [
+        12.980000000000004,
+        6.673663567870482,
+        -37.03015537522421
+      ],
+      "pathLength": 5,
+      "uniqueGeometryLength": 5,
+      "width": 2
+    },
+    {
+      "id": "C-G18",
+      "owner": "C",
+      "kind": "short-junction",
+      "start": [
+        12.980000000000004,
+        6.673663567870482,
+        -37.03015537522421
+      ],
+      "end": [
+        12.980000000000004,
+        6.673663567870482,
+        -37.33015537522421
+      ],
+      "pathLength": 0.3,
+      "uniqueGeometryLength": 0.3,
+      "width": 1.4
+    },
+    {
+      "id": "C-G19",
+      "owner": "C",
+      "kind": "unit-span",
+      "start": [
+        12.980000000000004,
+        6.673663567870482,
+        -37.33015537522421
+      ],
+      "end": [
+        12.980000000000004,
+        6.673663567870482,
+        -39.73015537522421
+      ],
+      "pathLength": 2.4,
+      "uniqueGeometryLength": 2.4,
+      "width": 3.2
+    },
+    {
+      "id": "C-G20",
+      "owner": "C",
+      "kind": "short-junction",
+      "start": [
+        12.980000000000004,
+        6.673663567870482,
+        -39.73015537522421
+      ],
+      "end": [
+        12.980000000000004,
+        6.673663567870482,
+        -40.130155375224206
+      ],
+      "pathLength": 0.4,
+      "uniqueGeometryLength": 0.4,
+      "width": 1.4
+    },
+    {
+      "id": "C-G21",
+      "owner": "C",
+      "kind": "unit-span",
+      "start": [
+        12.980000000000004,
+        6.673663567870482,
+        -40.130155375224206
+      ],
+      "end": [
+        12.980000000000004,
+        6.673663567870482,
+        -43.030155375224204
+      ],
+      "pathLength": 2.9,
+      "uniqueGeometryLength": 2.9,
+      "width": 3
+    },
+    {
+      "id": "C-G22",
+      "owner": "C",
+      "kind": "short-junction",
+      "start": [
+        12.980000000000004,
+        6.673663567870482,
+        -43.030155375224204
+      ],
+      "end": [
+        12.980000000000004,
+        6.673663567870482,
+        -43.1801553752242
+      ],
+      "pathLength": 0.15,
+      "uniqueGeometryLength": 0.15,
+      "width": 1.4
+    },
+    {
+      "id": "C-G23",
+      "owner": "C",
+      "kind": "unit-span",
+      "start": [
+        12.980000000000004,
+        6.673663567870482,
+        -43.1801553752242
+      ],
+      "end": [
+        12.980000000000004,
+        6.673663567870482,
+        -55.1801553752242
+      ],
+      "pathLength": 12,
+      "uniqueGeometryLength": 12,
+      "width": 1.4
+    },
+    {
+      "id": "C-G24",
+      "owner": "C",
+      "kind": "short-junction",
+      "start": [
+        12.980000000000004,
+        6.673663567870482,
+        -55.1801553752242
+      ],
+      "end": [
+        12.980000000000004,
+        6.673663567870482,
+        -55.1801553752242
+      ],
+      "pathLength": 0,
+      "uniqueGeometryLength": 0,
+      "width": 1.4
+    },
+    {
+      "id": "C-G25",
+      "owner": "C",
+      "kind": "unit-span",
+      "start": [
+        12.980000000000004,
+        6.673663567870482,
+        -55.1801553752242
+      ],
+      "end": [
+        12.980000000000004,
+        6.673663567870482,
+        -61.1801553752242
+      ],
+      "pathLength": 6,
+      "uniqueGeometryLength": 6,
+      "width": 0.6
+    },
+    {
+      "id": "C-G26",
+      "owner": "C",
+      "kind": "merge-return-descent",
+      "start": [
+        12.980000000000004,
+        6.673663567870482,
+        -61.1801553752242
+      ],
+      "end": [
+        12.980000000000006,
+        3.4,
+        -76.58153156493033
+      ],
+      "pathLength": 15.745452095524264,
+      "uniqueGeometryLength": 15.745452095524264,
+      "width": 1.1,
+      "slopeDegrees": -12,
+      "notCatalogRampCount": "return grade, not an inertia-climb obstacle"
+    },
+    {
+      "id": "C-G27",
+      "owner": "C",
+      "kind": "merge-approach",
+      "start": [
+        12.980000000000006,
+        3.4,
+        -76.58153156493033
+      ],
+      "end": [
+        12.980000000000008,
+        3.4,
+        -99.02
+      ],
+      "pathLength": 22.438468435069666,
+      "uniqueGeometryLength": 22.438468435069666,
+      "width": 1.1
+    },
+    {
+      "id": "C-G28",
+      "owner": "C",
+      "kind": "merge-approach-curve",
+      "start": [
+        12.980000000000008,
+        3.4,
+        -99.02
+      ],
+      "end": [
+        6.000000000000003,
+        3.4,
+        -106.0
+      ],
+      "pathLength": 10.964158361028387,
+      "uniqueGeometryLength": 10.964158361028387,
+      "width": 1.1,
+      "points": [
+        [
+          12.980000000000008,
+          3.4,
+          -99.02
+        ],
+        [
+          12.953438992680391,
+          3.4,
+          -99.62834708437865
+        ],
+        [
+          12.87395811602522,
+          3.4,
+          -100.23206428011517
+        ],
+        [
+          12.742162267497704,
+          3.4,
+          -100.82655693481559
+        ],
+        [
+          12.559054493085647,
+          3.4,
+          -101.40730060041317
+        ],
+        [
+          12.326028353515824,
+          3.4,
+          -101.96987546695009
+        ],
+        [
+          12.044857318415389,
+          3.4,
+          -102.50999999999999
+        ],
+        [
+          11.717681269137168,
+          3.4,
+          -103.0235635257303
+        ],
+        [
+          11.346990212970471,
+          3.4,
+          -103.50665751561205
+        ],
+        [
+          10.935605332682108,
+          3.4,
+          -103.9556053326821
+        ],
+        [
+          10.486657515612052,
+          3.4,
+          -104.36699021297046
+        ],
+        [
+          10.003563525730309,
+          3.4,
+          -104.73768126913717
+        ],
+        [
+          9.490000000000007,
+          3.4,
+          -105.06485731841538
+        ],
+        [
+          8.949875466950086,
+          3.4,
+          -105.34602835351582
+        ],
+        [
+          8.387300600413173,
+          3.4,
+          -105.57905449308564
+        ],
+        [
+          7.806556934815597,
+          3.4,
+          -105.7621622674977
+        ],
+        [
+          7.212064280115176,
+          3.4,
+          -105.89395811602522
+        ],
+        [
+          6.608347084378656,
+          3.4,
+          -105.97343899268039
+        ],
+        [
+          6.000000000000003,
+          3.4,
+          -106.0
+        ]
+      ],
+      "centerXZ": [
+        6.000000000000002,
+        -99.02
+      ],
+      "radius": 6.980000000000006,
+      "degrees": -90
+    },
+    {
+      "id": "merge-A-G01",
+      "owner": "merge-A",
+      "kind": "merge-lead",
+      "start": [
+        -6,
+        3.4,
+        -106
+      ],
+      "end": [
+        -2.0,
+        3.4,
+        -106.0
+      ],
+      "pathLength": 4,
+      "uniqueGeometryLength": 4,
+      "width": 1.6
+    },
+    {
+      "id": "merge-A-G02",
+      "owner": "merge-A",
+      "kind": "merge-arc",
+      "start": [
+        -2.0,
+        3.4,
+        -106.0
+      ],
+      "end": [
+        0.0,
+        3.4,
+        -108.0
+      ],
+      "pathLength": 3.141592653589793,
+      "uniqueGeometryLength": 3.141592653589793,
+      "width": 1.6,
+      "points": [
+        [
+          -2.0,
+          3.4,
+          -106.0
+        ],
+        [
+          -1.8256885145046837,
+          3.4,
+          -106.0076106038165
+        ],
+        [
+          -1.6527036446661394,
+          3.4,
+          -106.03038449397559
+        ],
+        [
+          -1.4823619097949585,
+          3.4,
+          -106.06814834742187
+        ],
+        [
+          -1.3159597133486627,
+          3.4,
+          -106.12061475842819
+        ],
+        [
+          -1.154763476518601,
+          3.4,
+          -106.1873844259267
+        ],
+        [
+          -1.0,
+          3.4,
+          -106.26794919243112
+        ],
+        [
+          -0.8528471272979079,
+          3.4,
+          -106.36169591142202
+        ],
+        [
+          -0.7144247806269215,
+          3.4,
+          -106.46791111376204
+        ],
+        [
+          -0.5857864376269051,
+          3.4,
+          -106.58578643762691
+        ],
+        [
+          -0.467911113762044,
+          3.4,
+          -106.71442478062693
+        ],
+        [
+          -0.3616959114220164,
+          3.4,
+          -106.8528471272979
+        ],
+        [
+          -0.2679491924311228,
+          3.4,
+          -107.0
+        ],
+        [
+          -0.18738442592670013,
+          3.4,
+          -107.1547634765186
+        ],
+        [
+          -0.12061475842818337,
+          3.4,
+          -107.31595971334866
+        ],
+        [
+          -0.06814834742186338,
+          3.4,
+          -107.48236190979496
+        ],
+        [
+          -0.03038449397558396,
+          3.4,
+          -107.65270364466613
+        ],
+        [
+          -0.00761060381650891,
+          3.4,
+          -107.82568851450469
+        ],
+        [
+          0.0,
+          3.4,
+          -108.0
+        ]
+      ],
+      "centerXZ": [
+        -2.0,
+        -108.0
+      ],
+      "radius": 2,
+      "degrees": -90
+    },
+    {
+      "id": "merge-C-G01",
+      "owner": "merge-C",
+      "kind": "merge-lead",
+      "start": [
+        6,
+        3.4,
+        -106
+      ],
+      "end": [
+        2.0,
+        3.4,
+        -106.0
+      ],
+      "pathLength": 4,
+      "uniqueGeometryLength": 4,
+      "width": 1.6
+    },
+    {
+      "id": "merge-C-G02",
+      "owner": "merge-C",
+      "kind": "merge-arc",
+      "start": [
+        2.0,
+        3.4,
+        -106.0
+      ],
+      "end": [
+        -2.220446049250313e-16,
+        3.4,
+        -108.0
+      ],
+      "pathLength": 3.141592653589793,
+      "uniqueGeometryLength": 3.141592653589793,
+      "width": 1.6,
+      "points": [
+        [
+          2.0,
+          3.4,
+          -106.0
+        ],
+        [
+          1.825688514504684,
+          3.4,
+          -106.0076106038165
+        ],
+        [
+          1.6527036446661398,
+          3.4,
+          -106.03038449397559
+        ],
+        [
+          1.482361909794958,
+          3.4,
+          -106.06814834742187
+        ],
+        [
+          1.3159597133486625,
+          3.4,
+          -106.12061475842819
+        ],
+        [
+          1.1547634765186012,
+          3.4,
+          -106.1873844259267
+        ],
+        [
+          1.0000000000000002,
+          3.4,
+          -106.26794919243112
+        ],
+        [
+          0.8528471272979075,
+          3.4,
+          -106.36169591142202
+        ],
+        [
+          0.7144247806269213,
+          3.4,
+          -106.46791111376204
+        ],
+        [
+          0.5857864376269049,
+          3.4,
+          -106.58578643762691
+        ],
+        [
+          0.467911113762044,
+          3.4,
+          -106.71442478062693
+        ],
+        [
+          0.3616959114220166,
+          3.4,
+          -106.8528471272979
+        ],
+        [
+          0.26794919243112303,
+          3.4,
+          -107.0
+        ],
+        [
+          0.18738442592669968,
+          3.4,
+          -107.1547634765186
+        ],
+        [
+          0.12061475842818292,
+          3.4,
+          -107.31595971334866
+        ],
+        [
+          0.06814834742186315,
+          3.4,
+          -107.48236190979496
+        ],
+        [
+          0.030384493975583737,
+          3.4,
+          -107.65270364466613
+        ],
+        [
+          0.0076106038165086876,
+          3.4,
+          -107.82568851450468
+        ],
+        [
+          -2.220446049250313e-16,
+          3.4,
+          -108.0
+        ]
+      ],
+      "centerXZ": [
+        1.9999999999999998,
+        -108.0
+      ],
+      "radius": 2,
+      "degrees": 90
+    },
+    {
+      "id": "merge-B-G01",
+      "owner": "merge-B",
+      "kind": "merge-lead",
+      "start": [
+        0,
+        3.4,
+        -100
+      ],
+      "end": [
+        4.898587196589413e-16,
+        3.4,
+        -108.0
+      ],
+      "pathLength": 8,
+      "uniqueGeometryLength": 8,
+      "width": 1.6
+    },
+    {
+      "id": "merge-shared-G01",
+      "owner": "merge-shared",
+      "kind": "observation-pad",
+      "start": [
+        0,
+        3.4,
+        -108
+      ],
+      "end": [
+        2.4492935982947064e-16,
+        3.4,
+        -112.0
+      ],
+      "pathLength": 4,
+      "uniqueGeometryLength": 4,
+      "width": 3.2
+    },
+    {
+      "id": "T-G01",
+      "owner": "T",
+      "kind": "pre-snake-runup",
+      "start": [
+        0,
+        3.4,
+        -112
+      ],
+      "end": [
+        2.4492935982947064e-16,
+        3.4,
+        -116.0
+      ],
+      "pathLength": 4,
+      "uniqueGeometryLength": 4,
+      "width": 1.4
+    },
+    {
+      "id": "T-G02",
+      "owner": "T",
+      "kind": "serpentine-arc",
+      "start": [
+        2.4492935982947064e-16,
+        3.4,
+        -116.0
+      ],
+      "end": [
+        3.2000000000000006,
+        3.4,
+        -119.2
+      ],
+      "pathLength": 5.026548245743669,
+      "uniqueGeometryLength": 5.026548245743669,
+      "width": 1.25,
+      "points": [
+        [
+          2.4492935982947064e-16,
+          3.4,
+          -116.0
+        ],
+        [
+          0.01217696610641461,
+          3.4,
+          -116.27889837679251
+        ],
+        [
+          0.04861519036093487,
+          3.4,
+          -116.55567416853418
+        ],
+        [
+          0.10903735587498176,
+          3.4,
+          -116.82822094432807
+        ],
+        [
+          0.19298361348509374,
+          3.4,
+          -117.09446445864214
+        ],
+        [
+          0.29981508148272074,
+          3.4,
+          -117.35237843757024
+        ],
+        [
+          0.4287187078897965,
+          3.4,
+          -117.6
+        ],
+        [
+          0.5787134582752267,
+          3.4,
+          -117.83544459632334
+        ],
+        [
+          0.7486577820192708,
+          3.4,
+          -118.05692035099693
+        ],
+        [
+          0.9372583002030486,
+          3.4,
+          -118.26274169979695
+        ],
+        [
+          1.143079649003075,
+          3.4,
+          -118.45134221798072
+        ],
+        [
+          1.3645554036766532,
+          3.4,
+          -118.62128654172477
+        ],
+        [
+          1.6000000000000005,
+          3.4,
+          -118.7712812921102
+        ],
+        [
+          1.8476215624297625,
+          3.4,
+          -118.90018491851728
+        ],
+        [
+          2.1055355413578605,
+          3.4,
+          -119.0070163865149
+        ],
+        [
+          2.3717790556719343,
+          3.4,
+          -119.09096264412501
+        ],
+        [
+          2.6443258314658236,
+          3.4,
+          -119.15138480963907
+        ],
+        [
+          2.9211016232074947,
+          3.4,
+          -119.18782303389358
+        ],
+        [
+          3.2000000000000006,
+          3.4,
+          -119.2
+        ]
+      ],
+      "centerXZ": [
+        3.2000000000000006,
+        -116.0
+      ],
+      "radius": 3.2,
+      "degrees": 90
+    },
+    {
+      "id": "T-G03",
+      "owner": "T",
+      "kind": "serpentine-leg",
+      "start": [
+        3.2000000000000006,
+        3.4,
+        -119.2
+      ],
+      "end": [
+        6.700000000000001,
+        3.4,
+        -119.2
+      ],
+      "pathLength": 3.5,
+      "uniqueGeometryLength": 3.5,
+      "width": 1.25
+    },
+    {
+      "id": "T-G04",
+      "owner": "T",
+      "kind": "serpentine-arc",
+      "start": [
+        6.700000000000001,
+        3.4,
+        -119.2
+      ],
+      "end": [
+        6.700000000000001,
+        3.4,
+        -125.60000000000001
+      ],
+      "pathLength": 10.053096491487338,
+      "uniqueGeometryLength": 10.053096491487338,
+      "width": 1.25,
+      "points": [
+        [
+          6.700000000000001,
+          3.4,
+          -119.2
+        ],
+        [
+          6.9788983767925075,
+          3.4,
+          -119.21217696610643
+        ],
+        [
+          7.255674168534178,
+          3.4,
+          -119.24861519036094
+        ],
+        [
+          7.528220944328067,
+          3.4,
+          -119.30903735587499
+        ],
+        [
+          7.794464458642141,
+          3.4,
+          -119.3929836134851
+        ],
+        [
+          8.052378437570239,
+          3.4,
+          -119.49981508148272
+        ],
+        [
+          8.3,
+          3.4,
+          -119.6287187078898
+        ],
+        [
+          8.535444596323348,
+          3.4,
+          -119.77871345827523
+        ],
+        [
+          8.756920350996927,
+          3.4,
+          -119.94865778201928
+        ],
+        [
+          8.962741699796954,
+          3.4,
+          -120.13725830020306
+        ],
+        [
+          9.15134221798073,
+          3.4,
+          -120.34307964900307
+        ],
+        [
+          9.321286541724774,
+          3.4,
+          -120.56455540367666
+        ],
+        [
+          9.471281292110206,
+          3.4,
+          -120.80000000000001
+        ],
+        [
+          9.60018491851728,
+          3.4,
+          -121.04762156242977
+        ],
+        [
+          9.707016386514908,
+          3.4,
+          -121.30553554135787
+        ],
+        [
+          9.79096264412502,
+          3.4,
+          -121.57177905567194
+        ],
+        [
+          9.851384809639066,
+          3.4,
+          -121.84432583146582
+        ],
+        [
+          9.887823033893588,
+          3.4,
+          -122.1211016232075
+        ],
+        [
+          9.900000000000002,
+          3.4,
+          -122.4
+        ],
+        [
+          9.887823033893588,
+          3.4,
+          -122.67889837679252
+        ],
+        [
+          9.851384809639066,
+          3.4,
+          -122.95567416853419
+        ],
+        [
+          9.79096264412502,
+          3.4,
+          -123.22822094432807
+        ],
+        [
+          9.707016386514908,
+          3.4,
+          -123.49446445864214
+        ],
+        [
+          9.600184918517282,
+          3.4,
+          -123.75237843757024
+        ],
+        [
+          9.471281292110206,
+          3.4,
+          -124.0
+        ],
+        [
+          9.321286541724774,
+          3.4,
+          -124.23544459632335
+        ],
+        [
+          9.15134221798073,
+          3.4,
+          -124.45692035099694
+        ],
+        [
+          8.962741699796954,
+          3.4,
+          -124.66274169979695
+        ],
+        [
+          8.756920350996928,
+          3.4,
+          -124.85134221798073
+        ],
+        [
+          8.535444596323348,
+          3.4,
+          -125.02128654172478
+        ],
+        [
+          8.3,
+          3.4,
+          -125.17128129211021
+        ],
+        [
+          8.05237843757024,
+          3.4,
+          -125.30018491851729
+        ],
+        [
+          7.794464458642142,
+          3.4,
+          -125.40701638651491
+        ],
+        [
+          7.528220944328068,
+          3.4,
+          -125.49096264412502
+        ],
+        [
+          7.255674168534178,
+          3.4,
+          -125.55138480963907
+        ],
+        [
+          6.9788983767925075,
+          3.4,
+          -125.58782303389359
+        ],
+        [
+          6.700000000000001,
+          3.4,
+          -125.60000000000001
+        ]
+      ],
+      "centerXZ": [
+        6.700000000000001,
+        -122.4
+      ],
+      "radius": 3.2,
+      "degrees": -180
+    },
+    {
+      "id": "T-G05",
+      "owner": "T",
+      "kind": "serpentine-leg",
+      "start": [
+        6.700000000000001,
+        3.4,
+        -125.60000000000001
+      ],
+      "end": [
+        3.200000000000001,
+        3.4,
+        -125.60000000000001
+      ],
+      "pathLength": 3.5,
+      "uniqueGeometryLength": 3.5,
+      "width": 1.25
+    },
+    {
+      "id": "T-G06",
+      "owner": "T",
+      "kind": "serpentine-arc",
+      "start": [
+        3.200000000000001,
+        3.4,
+        -125.60000000000001
+      ],
+      "end": [
+        3.2000000000000015,
+        3.4,
+        -132.0
+      ],
+      "pathLength": 10.053096491487338,
+      "uniqueGeometryLength": 10.053096491487338,
+      "width": 1.25,
+      "points": [
+        [
+          3.200000000000001,
+          3.4,
+          -125.60000000000001
+        ],
+        [
+          2.921101623207495,
+          3.4,
+          -125.61217696610643
+        ],
+        [
+          2.6443258314658245,
+          3.4,
+          -125.64861519036094
+        ],
+        [
+          2.3717790556719343,
+          3.4,
+          -125.709037355875
+        ],
+        [
+          2.1055355413578614,
+          3.4,
+          -125.7929836134851
+        ],
+        [
+          1.847621562429763,
+          3.4,
+          -125.89981508148273
+        ],
+        [
+          1.6000000000000016,
+          3.4,
+          -126.02871870788981
+        ],
+        [
+          1.364555403676653,
+          3.4,
+          -126.17871345827524
+        ],
+        [
+          1.143079649003075,
+          3.4,
+          -126.34865778201929
+        ],
+        [
+          0.937258300203049,
+          3.4,
+          -126.53725830020306
+        ],
+        [
+          0.7486577820192717,
+          3.4,
+          -126.74307964900308
+        ],
+        [
+          0.578713458275228,
+          3.4,
+          -126.96455540367667
+        ],
+        [
+          0.4287187078897978,
+          3.4,
+          -127.20000000000002
+        ],
+        [
+          0.2998150814827212,
+          3.4,
+          -127.44762156242977
+        ],
+        [
+          0.19298361348509419,
+          3.4,
+          -127.70553554135788
+        ],
+        [
+          0.10903735587498264,
+          3.4,
+          -127.97177905567195
+        ],
+        [
+          0.048615190360935756,
+          3.4,
+          -128.24432583146583
+        ],
+        [
+          0.012176966106415499,
+          3.4,
+          -128.5211016232075
+        ],
+        [
+          1.3322676295501878e-15,
+          3.4,
+          -128.8
+        ],
+        [
+          0.012176966106415499,
+          3.4,
+          -129.07889837679252
+        ],
+        [
+          0.048615190360935756,
+          3.4,
+          -129.3556741685342
+        ],
+        [
+          0.10903735587498309,
+          3.4,
+          -129.6282209443281
+        ],
+        [
+          0.19298361348509463,
+          3.4,
+          -129.89446445864215
+        ],
+        [
+          0.2998150814827216,
+          3.4,
+          -130.15237843757026
+        ],
+        [
+          0.4287187078897974,
+          3.4,
+          -130.4
+        ],
+        [
+          0.578713458275228,
+          3.4,
+          -130.63544459632337
+        ],
+        [
+          0.7486577820192717,
+          3.4,
+          -130.85692035099694
+        ],
+        [
+          0.9372583002030495,
+          3.4,
+          -131.06274169979696
+        ],
+        [
+          1.1430796490030755,
+          3.4,
+          -131.25134221798075
+        ],
+        [
+          1.3645554036766547,
+          3.4,
+          -131.42128654172478
+        ],
+        [
+          1.6000000000000019,
+          3.4,
+          -131.57128129211023
+        ],
+        [
+          1.8476215624297634,
+          3.4,
+          -131.7001849185173
+        ],
+        [
+          2.1055355413578614,
+          3.4,
+          -131.80701638651493
+        ],
+        [
+          2.3717790556719347,
+          3.4,
+          -131.89096264412504
+        ],
+        [
+          2.644325831465825,
+          3.4,
+          -131.95138480963908
+        ],
+        [
+          2.9211016232074956,
+          3.4,
+          -131.9878230338936
+        ],
+        [
+          3.2000000000000015,
+          3.4,
+          -132.0
+        ]
+      ],
+      "centerXZ": [
+        3.2000000000000015,
+        -128.8
+      ],
+      "radius": 3.2,
+      "degrees": 180
+    },
+    {
+      "id": "T-G07",
+      "owner": "T",
+      "kind": "serpentine-leg",
+      "start": [
+        3.2000000000000015,
+        3.4,
+        -132.0
+      ],
+      "end": [
+        6.700000000000001,
+        3.4,
+        -132.0
+      ],
+      "pathLength": 3.5,
+      "uniqueGeometryLength": 3.5,
+      "width": 1.25
+    },
+    {
+      "id": "T-G08",
+      "owner": "T",
+      "kind": "serpentine-arc",
+      "start": [
+        6.700000000000001,
+        3.4,
+        -132.0
+      ],
+      "end": [
+        6.700000000000001,
+        3.4,
+        -138.39999999999998
+      ],
+      "pathLength": 10.053096491487338,
+      "uniqueGeometryLength": 10.053096491487338,
+      "width": 1.25,
+      "points": [
+        [
+          6.700000000000001,
+          3.4,
+          -132.0
+        ],
+        [
+          6.9788983767925075,
+          3.4,
+          -132.0121769661064
+        ],
+        [
+          7.255674168534178,
+          3.4,
+          -132.04861519036092
+        ],
+        [
+          7.528220944328067,
+          3.4,
+          -132.10903735587496
+        ],
+        [
+          7.794464458642141,
+          3.4,
+          -132.19298361348507
+        ],
+        [
+          8.052378437570239,
+          3.4,
+          -132.2998150814827
+        ],
+        [
+          8.3,
+          3.4,
+          -132.42871870788977
+        ],
+        [
+          8.535444596323348,
+          3.4,
+          -132.57871345827522
+        ],
+        [
+          8.756920350996927,
+          3.4,
+          -132.74865778201925
+        ],
+        [
+          8.962741699796954,
+          3.4,
+          -132.93725830020304
+        ],
+        [
+          9.15134221798073,
+          3.4,
+          -133.14307964900306
+        ],
+        [
+          9.321286541724774,
+          3.4,
+          -133.36455540367663
+        ],
+        [
+          9.471281292110206,
+          3.4,
+          -133.6
+        ],
+        [
+          9.60018491851728,
+          3.4,
+          -133.84762156242974
+        ],
+        [
+          9.707016386514908,
+          3.4,
+          -134.10553554135785
+        ],
+        [
+          9.79096264412502,
+          3.4,
+          -134.37177905567194
+        ],
+        [
+          9.851384809639066,
+          3.4,
+          -134.6443258314658
+        ],
+        [
+          9.887823033893588,
+          3.4,
+          -134.92110162320748
+        ],
+        [
+          9.900000000000002,
+          3.4,
+          -135.2
+        ],
+        [
+          9.887823033893588,
+          3.4,
+          -135.4788983767925
+        ],
+        [
+          9.851384809639066,
+          3.4,
+          -135.75567416853417
+        ],
+        [
+          9.79096264412502,
+          3.4,
+          -136.02822094432807
+        ],
+        [
+          9.707016386514908,
+          3.4,
+          -136.29446445864212
+        ],
+        [
+          9.600184918517282,
+          3.4,
+          -136.55237843757024
+        ],
+        [
+          9.471281292110206,
+          3.4,
+          -136.79999999999998
+        ],
+        [
+          9.321286541724774,
+          3.4,
+          -137.03544459632334
+        ],
+        [
+          9.15134221798073,
+          3.4,
+          -137.25692035099692
+        ],
+        [
+          8.962741699796954,
+          3.4,
+          -137.46274169979694
+        ],
+        [
+          8.756920350996928,
+          3.4,
+          -137.65134221798073
+        ],
+        [
+          8.535444596323348,
+          3.4,
+          -137.82128654172476
+        ],
+        [
+          8.3,
+          3.4,
+          -137.9712812921102
+        ],
+        [
+          8.05237843757024,
+          3.4,
+          -138.10018491851727
+        ],
+        [
+          7.794464458642142,
+          3.4,
+          -138.2070163865149
+        ],
+        [
+          7.528220944328068,
+          3.4,
+          -138.29096264412502
+        ],
+        [
+          7.255674168534178,
+          3.4,
+          -138.35138480963906
+        ],
+        [
+          6.9788983767925075,
+          3.4,
+          -138.38782303389357
+        ],
+        [
+          6.700000000000001,
+          3.4,
+          -138.39999999999998
+        ]
+      ],
+      "centerXZ": [
+        6.700000000000001,
+        -135.2
+      ],
+      "radius": 3.2,
+      "degrees": -180
+    },
+    {
+      "id": "T-G09",
+      "owner": "T",
+      "kind": "serpentine-leg",
+      "start": [
+        6.700000000000001,
+        3.4,
+        -138.39999999999998
+      ],
+      "end": [
+        3.200000000000001,
+        3.4,
+        -138.39999999999998
+      ],
+      "pathLength": 3.5,
+      "uniqueGeometryLength": 3.5,
+      "width": 1.25
+    },
+    {
+      "id": "T-G10",
+      "owner": "T",
+      "kind": "serpentine-arc",
+      "start": [
+        3.200000000000001,
+        3.4,
+        -138.39999999999998
+      ],
+      "end": [
+        3.2000000000000015,
+        3.4,
+        -144.79999999999995
+      ],
+      "pathLength": 10.053096491487338,
+      "uniqueGeometryLength": 10.053096491487338,
+      "width": 1.25,
+      "points": [
+        [
+          3.200000000000001,
+          3.4,
+          -138.39999999999998
+        ],
+        [
+          2.921101623207495,
+          3.4,
+          -138.4121769661064
+        ],
+        [
+          2.6443258314658245,
+          3.4,
+          -138.4486151903609
+        ],
+        [
+          2.3717790556719343,
+          3.4,
+          -138.50903735587494
+        ],
+        [
+          2.1055355413578614,
+          3.4,
+          -138.59298361348505
+        ],
+        [
+          1.847621562429763,
+          3.4,
+          -138.69981508148268
+        ],
+        [
+          1.6000000000000016,
+          3.4,
+          -138.82871870788975
+        ],
+        [
+          1.364555403676653,
+          3.4,
+          -138.9787134582752
+        ],
+        [
+          1.143079649003075,
+          3.4,
+          -139.14865778201923
+        ],
+        [
+          0.937258300203049,
+          3.4,
+          -139.33725830020302
+        ],
+        [
+          0.7486577820192717,
+          3.4,
+          -139.54307964900303
+        ],
+        [
+          0.578713458275228,
+          3.4,
+          -139.7645554036766
+        ],
+        [
+          0.4287187078897978,
+          3.4,
+          -139.99999999999997
+        ],
+        [
+          0.2998150814827212,
+          3.4,
+          -140.2476215624297
+        ],
+        [
+          0.19298361348509419,
+          3.4,
+          -140.50553554135783
+        ],
+        [
+          0.10903735587498264,
+          3.4,
+          -140.7717790556719
+        ],
+        [
+          0.048615190360935756,
+          3.4,
+          -141.04432583146578
+        ],
+        [
+          0.012176966106415499,
+          3.4,
+          -141.32110162320745
+        ],
+        [
+          1.3322676295501878e-15,
+          3.4,
+          -141.59999999999997
+        ],
+        [
+          0.012176966106415499,
+          3.4,
+          -141.87889837679248
+        ],
+        [
+          0.048615190360935756,
+          3.4,
+          -142.15567416853415
+        ],
+        [
+          0.10903735587498309,
+          3.4,
+          -142.42822094432805
+        ],
+        [
+          0.19298361348509463,
+          3.4,
+          -142.6944644586421
+        ],
+        [
+          0.2998150814827216,
+          3.4,
+          -142.95237843757022
+        ],
+        [
+          0.4287187078897974,
+          3.4,
+          -143.19999999999996
+        ],
+        [
+          0.578713458275228,
+          3.4,
+          -143.43544459632332
+        ],
+        [
+          0.7486577820192717,
+          3.4,
+          -143.6569203509969
+        ],
+        [
+          0.9372583002030495,
+          3.4,
+          -143.8627416997969
+        ],
+        [
+          1.1430796490030755,
+          3.4,
+          -144.0513422179807
+        ],
+        [
+          1.3645554036766547,
+          3.4,
+          -144.22128654172474
+        ],
+        [
+          1.6000000000000019,
+          3.4,
+          -144.37128129211018
+        ],
+        [
+          1.8476215624297634,
+          3.4,
+          -144.50018491851725
+        ],
+        [
+          2.1055355413578614,
+          3.4,
+          -144.60701638651489
+        ],
+        [
+          2.3717790556719347,
+          3.4,
+          -144.690962644125
+        ],
+        [
+          2.644325831465825,
+          3.4,
+          -144.75138480963903
+        ],
+        [
+          2.9211016232074956,
+          3.4,
+          -144.78782303389355
+        ],
+        [
+          3.2000000000000015,
+          3.4,
+          -144.79999999999995
+        ]
+      ],
+      "centerXZ": [
+        3.2000000000000015,
+        -141.59999999999997
+      ],
+      "radius": 3.2,
+      "degrees": 180
+    },
+    {
+      "id": "T-G11",
+      "owner": "T",
+      "kind": "short-junction",
+      "start": [
+        3.2000000000000015,
+        3.4,
+        -144.79999999999995
+      ],
+      "end": [
+        3.5500000000000016,
+        3.4,
+        -144.79999999999995
+      ],
+      "pathLength": 0.35,
+      "uniqueGeometryLength": 0.35,
+      "width": 1.25
+    },
+    {
+      "id": "T-G12",
+      "owner": "T",
+      "kind": "slope",
+      "start": [
+        3.5500000000000016,
+        3.4,
+        -144.79999999999995
+      ],
+      "end": [
+        4.48969262078591,
+        3.742020143325669,
+        -144.79999999999995
+      ],
+      "pathLength": 1,
+      "uniqueGeometryLength": 1,
+      "width": 1.25,
+      "angle": 20
+    },
+    {
+      "id": "T-G13",
+      "owner": "T",
+      "kind": "slope",
+      "start": [
+        4.48969262078591,
+        3.742020143325669,
+        -144.79999999999995
+      ],
+      "end": [
+        6.990462754438299,
+        6.331643424544813,
+        -144.79999999999995
+      ],
+      "pathLength": 3.6,
+      "uniqueGeometryLength": 3.6,
+      "width": 1.25,
+      "angle": 46
+    },
+    {
+      "id": "T-G14",
+      "owner": "T",
+      "kind": "slope",
+      "start": [
+        6.990462754438299,
+        6.331643424544813,
+        -144.79999999999995
+      ],
+      "end": [
+        7.930155375224208,
+        6.673663567870482,
+        -144.79999999999995
+      ],
+      "pathLength": 1,
+      "uniqueGeometryLength": 1,
+      "width": 1.25,
+      "angle": 20
+    },
+    {
+      "id": "T-G15",
+      "owner": "T",
+      "kind": "observation-pad",
+      "start": [
+        7.930155375224208,
+        6.673663567870482,
+        -144.79999999999995
+      ],
+      "end": [
+        13.930155375224208,
+        6.673663567870482,
+        -144.79999999999995
+      ],
+      "pathLength": 6,
+      "uniqueGeometryLength": 6,
+      "width": 4.4
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "CP-SELECT",
+      "owner": "P",
+      "position": [
+        6.215082505672817e-16,
+        3.95,
+        6.179999999999998
+      ],
+      "ringPosition": [
+        6.215082505672817e-16,
+        3.46,
+        6.179999999999998
+      ],
+      "ringRadius": 0.8,
+      "radius": 1.2,
+      "conditionalOnBranch": null
+    },
+    {
+      "id": "CP-A-ENTRY",
+      "owner": "A",
+      "position": [
+        -5.9799999999999995,
+        3.95,
+        2.2043642384652358e-16
+      ],
+      "ringPosition": [
+        -5.9799999999999995,
+        3.46,
+        2.2043642384652358e-16
+      ],
+      "ringRadius": 0.8,
+      "radius": 1.2,
+      "conditionalOnBranch": "A"
+    },
+    {
+      "id": "CP-A-MID",
+      "owner": "A",
+      "position": [
+        -24.280000000000005,
+        3.95,
+        -32.83
+      ],
+      "ringPosition": [
+        -24.280000000000005,
+        3.46,
+        -32.83
+      ],
+      "ringRadius": 0.8,
+      "radius": 1.2,
+      "conditionalOnBranch": "A"
+    },
+    {
+      "id": "CP-B-ENTRY",
+      "owner": "B",
+      "position": [
+        1.1021821192326179e-16,
+        3.95,
+        -5.9799999999999995
+      ],
+      "ringPosition": [
+        1.1021821192326179e-16,
+        3.46,
+        -5.9799999999999995
+      ],
+      "ringRadius": 0.8,
+      "radius": 1.2,
+      "conditionalOnBranch": "B"
+    },
+    {
+      "id": "CP-B-MID",
+      "owner": "B",
+      "position": [
+        3.1063166060372608e-15,
+        3.95,
+        -54.91
+      ],
+      "ringPosition": [
+        3.1063166060372608e-15,
+        3.46,
+        -54.91
+      ],
+      "ringRadius": 0.8,
+      "radius": 1.2,
+      "conditionalOnBranch": "B"
+    },
+    {
+      "id": "CP-C-ENTRY",
+      "owner": "C",
+      "position": [
+        5.9799999999999995,
+        3.95,
+        0.0
+      ],
+      "ringPosition": [
+        5.9799999999999995,
+        3.46,
+        0.0
+      ],
+      "ringRadius": 0.8,
+      "radius": 1.2,
+      "conditionalOnBranch": "C"
+    },
+    {
+      "id": "CP-C-MID",
+      "owner": "C",
+      "position": [
+        12.980000000000004,
+        7.2236635678704815,
+        -30.030155375224208
+      ],
+      "ringPosition": [
+        12.980000000000004,
+        6.733663567870481,
+        -30.030155375224208
+      ],
+      "ringRadius": 0.8,
+      "radius": 1.2,
+      "conditionalOnBranch": "C"
+    },
+    {
+      "id": "CP-MERGED",
+      "owner": "merge-shared",
+      "position": [
+        1.2246467991473532e-16,
+        3.95,
+        -110.0
+      ],
+      "ringPosition": [
+        1.2246467991473532e-16,
+        3.46,
+        -110.0
+      ],
+      "ringRadius": 0.8,
+      "radius": 1.2,
+      "conditionalOnBranch": null
+    }
+  ],
+  "uniqueGeometryLengths": {
+    "opening": 12.15,
+    "selector": 16.72,
+    "branches": {
+      "A": 150.66318530717965,
+      "B": 143.91705423613553,
+      "C": 158.5374571817766
+    },
+    "merge": 26.283185307179586,
+    "closing": 75.18893421169301,
+    "total": 583.4598162439644
+  },
+  "singleRunReferenceLengths": {
+    "A": {
+      "opening": 12.15,
+      "selectorReferenceRide": 17.039644737231008,
+      "branch": 141.2897335529233,
+      "merge": 11.141592653589793,
+      "closing": 75.18893421169301,
+      "total": 256.80990515543715,
+      "obstacleUnitsVisited": 16,
+      "wholeCatalogRequired": false
+    },
+    "B": {
+      "opening": 12.15,
+      "selectorReferenceRide": 12.013096491487339,
+      "branch": 143.91705423613553,
+      "merge": 12.0,
+      "closing": 75.18893421169301,
+      "total": 255.2690849393159,
+      "obstacleUnitsVisited": 16,
+      "wholeCatalogRequired": false
+    },
+    "C": {
+      "opening": 12.15,
+      "selectorReferenceRide": 6.986548245743669,
+      "branch": 158.5374571817766,
+      "merge": 11.141592653589793,
+      "closing": 75.18893421169301,
+      "total": 264.0045322928031,
+      "obstacleUnitsVisited": 15,
+      "wholeCatalogRequired": false
+    }
+  },
+  "lengthAccounting": "Count each graph geometry edge once. Cross selector geometric skeleton16.72m differs from moving-arm reference ride; internal A cross geometric skeleton16m differs from quarter-turn ride. Seesaw uses material7m+low-tip gaps, not load-dependent world trajectory. Never sum A+B+C as a single run.",
+  "branchStateDesign": {
+    "selection": "uncommitted while on cross; commit when crossing A/B/C outward shore gate and activating its entry CP",
+    "selectionGateOffsetFromPort": 0.8,
+    "retainOnFall": true,
+    "reselect": "before shore commitment freely move/change arms; after commitment restart current run to choose again, no invisible wall",
+    "requiredRoute": "only selectedBranch ordered group gates; unchosen branches exempt",
+    "branchCompletionGates": {
+      "A": [
+        "A-03-exit",
+        "A-07-exit",
+        "A-11-exit",
+        "merge-A-inlet"
+      ],
+      "B": [
+        "B-03-exit",
+        "B-06-exit",
+        "B-10-exit",
+        "B-11-exit",
+        "merge-B-inlet"
+      ],
+      "C": [
+        "C-05-exit",
+        "C-09-exit",
+        "C-10-exit",
+        "merge-C-inlet"
+      ]
+    },
+    "mergeCommitPlaneZ": -108.5,
+    "mergeCpActivation": "selected branch complete AND cross common merge commit plane northbound",
+    "afterMergeFall": "respawn CP-MERGED, preserve selectedBranch completion; do not require other two branches",
+    "finish": "two opening units,selector exit,selectedBranch required gates andT01/T02 complete, then finish trigger",
+    "unsupportedNow": "Current linear checkpoint array/progress cannot express conditional branch chain; graph-aware progress/checkpoints/route-tagged records are future work only",
+    "milestoneGatesAreNotExtraObstacles": true,
+    "perRunCheckpointVisits": 4,
+    "physicalCheckpointCount": 8
+  },
+  "antiShortcutDesign": [
+    "Branches only share selector and defined merge. No fixed cross-branch links.",
+    "A occupies west corridor; B doglegs remain east of A return corridor; C maintains east corridor and mirrors piston housing outward.",
+    "B final thin curved beam detours west and then passes north of its own two hairpins, avoiding self-overlap.",
+    "C return descent reaches3.4m before merge; high speed section does not land on B. No bridge across water between branches.",
+    "Wrong-branch landing or reverse merge traversal cannot satisfy ordered gates for selected branch, but no physics teleport or invisible wall is introduced.",
+    "Geometry alone cannot exclude every collision-launched flight; no physical playtest has been performed."
+  ],
+  "futureDependencies": [
+    "physical four-port cross layout and per-route entry markers",
+    "conditional graph checkpoint/progress and merge/finish state",
+    "legacy hammer/cross/lift/platform repeated instances and yaw/phase",
+    "close-junction library bearing/gantry support clearances",
+    "C reverse-traversed pusher orientation and real rod collision",
+    "route-tagged medals/records if chosen later, no thresholds now"
+  ],
+  "validation": {
+    "test": false,
+    "build": false,
+    "playtest": false,
+    "geometrySimulation": false,
+    "note": "design arithmetic and local drawing only; no implementation or certification"
+  },
+  "implementationDecision": "intended as fourth level; design only, not registered or implemented",
+  "source": "docs/product/level-04-design.md",
+  "intendedLevelNumber": 4,
+  "timeConvention": "All phase values reference global gameplay clock. A first chain and C middle chain repeat24s, A last chain12s; B load-driven arrivals have no fixed epoch. Boundary pads allow choosing launch time, no auto reset on entering group.",
+  "comparison": {
+    "maxVsMinReferencePathPercent": 3.422054556886067,
+    "routeTimeClaim": "No calibrated difficulty/time equality. C may reward good speed control; no wide bypass or all-three traversal requirement."
+  }
+}

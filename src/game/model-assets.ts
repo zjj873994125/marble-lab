@@ -43,13 +43,14 @@ export function createModelAssets(app: pc.Application, signal?: AbortSignal) {
   return { load, destroy }
 }
 
-export async function attachMovingVisual(load: (file: string) => Promise<pc.Asset>, file: string | undefined, parent: pc.Entity, replaced: pc.RenderComponent[]) {
+export async function attachMovingVisual(load: (file: string) => Promise<pc.Asset>, file: string | undefined, parent: pc.Entity, replaced: pc.RenderComponent[], decorate?: (entity:pc.Entity)=>void) {
   if (!file) return () => {}
   let instance: pc.Entity | undefined
   const dispose = () => { instance?.destroy(); instance = undefined; replaced.forEach(render => { render.enabled = true }) }
   try {
     const asset = await load(file)
     instance = (asset.resource as pc.ContainerResource).instantiateRenderEntity()
+    decorate?.(instance)
     const scale = parent.getLocalScale()
     instance.setLocalScale(1 / scale.x, 1 / scale.y, 1 / scale.z)
     parent.addChild(instance)

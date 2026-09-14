@@ -73,7 +73,7 @@ kbd { display: inline-block; border: 1px solid #c6ccc6; border-bottom-width: 2px
   --ui-footer-height: 52px;
 }
 .app-shell { min-height: 640px; }
-.app-shell.atlas-open { height:auto; min-height:100svh; overflow:visible; background:#f0f3e9; }
+.app-shell.atlas-open, .app-shell.skin-shop-open { height:auto; min-height:100svh; overflow:visible; background:#f0f3e9; }
 .app-shell:not(.in-game)::before {
   content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background: linear-gradient(to bottom, rgba(247, 246, 240, .92), transparent 170px);
@@ -183,6 +183,26 @@ kbd { background: #f5f6ef; color: #485e53; border-color: #c8d2c8; }
 .touch-layout .pause-button.el-button { height: 44px; min-width: 76px; font-size: 13px; padding: 0 12px; }
 .touch-layout .progress-rail { bottom: 0; }
 .mobile-pause-detail { display: block; margin-top: 8px; font-size: 12px; }
+.game-actions { display:flex; align-items:center; gap:8px; flex-shrink:0; }
+.performance-readout { display:inline-flex; align-items:center; min-height:30px; padding:5px 8px; border:1px solid #ffffff70; border-radius:9px; background:#faf9f2de; color:#40534a; font-size:12px; line-height:1.5; font-variant-numeric:tabular-nums; pointer-events:none; white-space:nowrap; small { font-size:10px; color:#56665c; margin-left:4px; } }
+.performance-clean { position:fixed; z-index:3; min-height:44px; top:calc(var(--performance-view-top,0px) + max(10px,env(safe-area-inset-top,0px))); right:calc(var(--performance-view-right,0px) + max(14px,env(safe-area-inset-right,0px))); }
+.performance-shown.in-game .game-top { --performance-top-gap:24px; --performance-side-gap:28px; top:calc(var(--performance-view-top,0px) + max(var(--performance-top-gap),env(safe-area-inset-top,0px))); left:calc(var(--performance-view-left,0px) + max(var(--performance-side-gap),env(safe-area-inset-left,0px))); right:calc(var(--performance-view-right,0px) + max(var(--performance-side-gap),env(safe-area-inset-right,0px))); }
+.performance-compact .performance-readout small { display:none; }
+@media(max-width:1200px) { .performance-readout small { display:none; } }
+@media(max-width:680px) { .performance-shown.in-game .game-top { --performance-top-gap:14px; --performance-side-gap:14px; } }
+.touch-layout.performance-shown.in-game .game-top { --performance-top-gap:10px; --performance-side-gap:16px; left:calc(var(--performance-view-left,0px) + max(16px,calc(env(safe-area-inset-left,0px) + 8px))); right:calc(var(--performance-view-right,0px) + max(16px,calc(env(safe-area-inset-right,0px) + 8px))); }
+@media(max-width:1050px) {
+  .home-menu.performance-shown .brand-orbit { display:none; }
+  .home-menu.performance-shown .top-actions { gap:6px; }
+  .home-menu.performance-shown .topbar nav a { min-width:72px; padding-inline:10px; font-size:12px; }
+  .performance-readout { font-size:11px; padding-inline:6px; }
+}
+@media(max-width:480px) {
+  .home-menu.performance-shown .brand { font-size:14px; }
+  .home-menu.performance-shown .top-actions { gap:4px; .el-button { width:36px; height:36px; } }
+  .home-menu.performance-shown .home-ready-status { font-size:9px; gap:3px; padding:4px; }
+  .performance-readout { font-size:10px; padding-inline:4px; }
+}
 .clean-timer { position:fixed; z-index:3; left:calc(var(--clean-viewport-x,0px) + max(12px,env(safe-area-inset-left,0px))); top:calc(var(--clean-viewport-y,0px) + max(10px,env(safe-area-inset-top,0px))); min-height:44px; min-width:44px; padding:0 12px; border:1px solid var(--ui-line); border-radius:10px; background:#faf9f2e8; color:#40534a; font-size:22px; font-weight:600; line-height:1; font-variant-numeric:tabular-nums; letter-spacing:-.3px; box-shadow:0 2px 8px #15333814; cursor:pointer; touch-action:manipulation; }
 @media (min-width:681px) and (max-width:1100px) {
   .topbar { gap:12px; nav a { min-width:0; padding:12px 10px; font-size:12px; } }
@@ -225,3 +245,7 @@ kbd { background: #f5f6ef; color: #485e53; border-color: #c8d2c8; }
   .game-dialog .dialog-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; .el-button { margin: 0; } .el-button:first-child { grid-column: 1 / -1; } }
   .game-dialog .result-time { font-size: 38px; }
 }
+.topbar nav { min-width:0; overflow-x:auto; overscroll-behavior-inline:contain; scrollbar-width:none; }
+.topbar nav::-webkit-scrollbar { display:none; }
+.topbar nav a { flex:0 0 auto; }
+@media(max-width:680px) { .topbar nav { width:100%; } .topbar nav a { min-width:80px; flex:0 0 auto; } }

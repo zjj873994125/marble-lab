@@ -25,7 +25,9 @@ const smooth = (t: number) => t*t*(3-2*t)
 const cycleTime = (time: number, stages: readonly number[]) => {
   if (stages.some(stage => !Number.isFinite(stage) || stage <= 0)) throw new Error('机关各阶段时长必须为正数')
   const cycle = stages.reduce((sum,value) => sum+value,0)
-  return ((time % cycle)+cycle)%cycle
+  const phase = time % cycle
+  // 正余数已在周期内；再加整周期会让3.6等边界因舍入落到阈值之前。
+  return phase < 0 ? (phase+cycle)%cycle : phase
 }
 
 // 跷跷板角度必须由调用者明确提供：图鉴给示意角，游戏给真实刚体角。

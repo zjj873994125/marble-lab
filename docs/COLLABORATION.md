@@ -92,4 +92,10 @@ npm run build
 
 ## 障碍物图鉴
 
+皮肤统一从`/#/skins`商城装备，赛道七款与球九款使用独立v3字段trackTheme/ballSkin，类型和纹理作用域由CODE维护。ART只交设计/可用纹理，CODE复制到src/assets并接入；默认classic/steel恢复原PBR。球体UV贴图不能改变几何/碰撞或通过转环境伪造旋转，运动球用非金属及自身粗糙/法线。商城无付费/解锁，设置仅保留功能选项。具体见 [商城交付](integration/skin-shop.md)。
+
+性能信息只按showPerformance显式开关采集主Application，按真实postrender与下一frameupdate统计配对、750ms汇总，不写指标到存档，不在图鉴/商城另开采集。生产版缺失详细三角面时显示“—”，不造数；纯净模式不会自动启用。见 [性能交付](integration/performance-overlay.md)。
+
+赛道主题由代码维护`src/game/track-themes.ts`与`theme-materials.ts`，设置trackTheme保存在v3，七id为classic/industrial/glacier/black-gold/violet/pink/yellow，验证器和设置卡片直接读取统一目录。模型角色按实际语义名匹配，原始PBR基线按来源对象保存；Safety terracotta混有警示、Printed markings、Rubber pads及握柄保护。新资源交付需说明材质语义，不按原RGB猜用途。主题不改球/CP/警示、物理和关卡，也不重载场景。图鉴3D跟随主题，ART静态PNG保持经典示意；详细作用域和未验边界见 [主题交付](integration/track-themes.md)。
+
 代码维护 `src/game/obstacles.ts` 的障碍资料和搭配关系；`/#/obstacles` 收录13类，以三列“名称＋模型”卡片和独立PlayCanvas预览呈现，弹窗只有名称、大预览及图标控制。图鉴不启动Ammo或挑战，不写成绩；静态结构的小球和跷跷板姿态均为示意，不能作为可通性证据。共享库在当前图鉴页复用模板，关闭弹窗释放实例，离页释放资源。新增机关先实现行为，再补图鉴类型/预览及推荐用途，不在关卡数据或GLB中混入UI代码。具体边界见 [图鉴说明](integration/obstacle-atlas.md)。

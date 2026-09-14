@@ -13,6 +13,7 @@ const router = createRouter({ history: createWebHashHistory(), routes: [
   { path: '/levels', redirect: { path: '/', query: { choose: '1' } } },
   { path: '/records', component: Records },
   { path: '/obstacles', component: () => import('./components/Obstacles.vue') },
+  { path: '/skins', component: () => import('./components/SkinsShop.vue') },
   { path: '/:pathMatch(.*)*', redirect: '/' },
 ] })
 createApp(App).use(router).use(ElementPlus, { locale: zhCn }).mount('#app')

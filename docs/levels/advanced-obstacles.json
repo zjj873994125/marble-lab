@@ -1,0 +1,961 @@
+{
+  "schema": "advanced-obstacle-design/1",
+  "status": "design-only",
+  "title": "复杂高难机关 · 第二批设计",
+  "date": "2026-09-14",
+  "source": "docs/product/advanced-obstacles.md",
+  "baseline": {
+    "ballDiameter": 0.85,
+    "ballRadius": 0.425,
+    "ballMass": 1,
+    "gravity": [
+      0,
+      -16,
+      0
+    ],
+    "horizontalSpeedLimit": 7,
+    "verticalSpeedLimitPresent": false,
+    "inputForceAtSensitivity1": 12,
+    "sensitivityRange": [
+      0.5,
+      1.5
+    ],
+    "airInputCurrentlyApplied": true,
+    "brakeModel": "vx/vz *= exp(-7*dt); vy unchanged",
+    "bodyFriction": 0.55,
+    "bodyRestitution": 0.06,
+    "linearDamping": 0.13,
+    "angularDamping": 0.12,
+    "fixedTimeStep": 0.008333333333333333,
+    "maxSubSteps": 10,
+    "ccdMotionThreshold": 0.15,
+    "ccdSweptSphereRadius": 0.3,
+    "cameraOffset": [
+      0,
+      17,
+      13
+    ],
+    "playingOrthoHeight": 9,
+    "sourceFiles": [
+      "src/game/runtime.ts",
+      "src/state.ts",
+      "src/game/library-mechanisms.ts",
+      "src/game/library-types.ts"
+    ],
+    "note": "Read current source during this task. Numerical sketches use sensitivity1 and omit damping unless stated; do not change saved settings."
+  },
+  "designCount": 8,
+  "recommendedFirst": [
+    "pulse-jet",
+    "spring-trampoline",
+    "cascade-bridge"
+  ],
+  "entries": [
+    {
+      "id": "spring-trampoline",
+      "name": "蓄能蹦床",
+      "status": "design-only",
+      "implemented": false,
+      "skill": "以入射位置和速度组织真实弹道；区别于只改变台面姿态的升降/跷跷板。",
+      "structure": [
+        "2.4×.30×2.4米接触台，顶Y3.4；中心半径.75米为等能量区，.75–1.10米为渐弱边缘。固定框在作用区外，不能用框架充当额外着陆面。",
+        "入口固定岸顶3.7，末端提供.3米可见落差，使球真正向下接触弹面；不是平地掠过触发盒就飞起。",
+        "独立示范：落点固定台中心[0,3.4,-4.5]，尺寸[2.8,.30,2.6]；球心允许区域须扣.425半径。弹射点实际偏移也要计入落点。"
+      ],
+      "parameters": {
+        "deckSize": [
+          2.4,
+          0.3,
+          2.4
+        ],
+        "topY": 3.4,
+        "coreRadius": 0.75,
+        "outerRadius": 1.1,
+        "storedEnergyJ": 32,
+        "poweredNormalSpeedCeiling": 8.5,
+        "entryDrop": 0.3,
+        "nominalOutgoingVelocity": [
+          0,
+          8,
+          -4.5
+        ],
+        "rearmSeparationAboveSurface": 0.5449999999999999,
+        "minimumRearmSeconds": 0.25
+      },
+      "derivations": [
+        "中心示例忽略阻尼、松开摇杆、不按刹车：向上8m/s，最高增加v²/(2g)=2m，同高飞行2v/g=1s，沿-Z4.5m；这是以实际离面点为原点的预测。",
+        "E=32J、m=1、被动回弹近0时，额外弹出速度sqrt(2E/m)=8m/s；实际被动回弹与入射速度有关，不把原.06参数直接当成有效接触恢复系数。",
+        "原刹车只减水平速度。理想持续刹车1秒的水平路程约4.5(1-exp(-7))/7=.642m，竖直高度并不会同步减小；过早刹车易落短。",
+        "现有空中输入仍施力12×灵敏度。以灵敏度1、前速4.5持续前推，约.208秒触及水平7上限，1秒路程约6.74m；不能拿4.5m名义落点当自动命中。"
+      ],
+      "physics": [
+        "只接受弹面上表面真实新接触且入射法向相对速度<-0.5m/s；侧撞和从下方擦到不能触发。入射数据相对弹面取值。",
+        "推荐首版采用接触激活的可见蓄能机构：接触求解后读实际被动外向法向速度u。中心额外能量Eeff=min(32w,max(0,m(8.5²-u²)/2))，边缘权重w由1平滑降至0；沿法向仅补J=m(sqrt(u²+2Eeff/m)-u)。",
+        "上述上限只限制本机关再注入能量；若被动回弹已高于8.5则不追加，不能反向钳低全局速度。若求解后仍向内运动，需要先正确处理接触，不能混算两次恢复冲量。",
+        "入射动能由原接触/缓冲处理，弹簧额外功由机械源供给；不调整全关重力或玩家基础restitution。床面压缩形变只是反馈，不另外叠一次弹跳动画推球。"
+      ],
+      "stateMachine": [
+        {
+          "state": "armed",
+          "transition": "真实上表面下落接触→记录入射/锁定本次接触ID"
+        },
+        {
+          "state": "compress",
+          "transition": "压缩反馈最多.06s；同一物理接触最多提交一次冲量，先置spent再提交"
+        },
+        {
+          "state": "spent",
+          "transition": "保持接触/边缘抖动时不重复弹；离面高度>.545且无接触，且至少.25s后才能重装"
+        },
+        {
+          "state": "armed-again",
+          "transition": "同一球再次真实落下可连跳；不因事件重复或恢复焦点重发"
+        }
+      ],
+      "playerResponse": "先看核心圈和落台位置，入口按速度组织下落，起跳后松杆保持参考轨迹，再小幅横向修正。踩边能量不足、提前刹车落短、持续前推飞过台面都是可见失败；落水回弹面前固定CP。",
+      "mobile": "不加跳跃键。当前摇杆在空中有效，应明确“刹车缩短水平距离而非快速落下”。双指操作可以修正，但不要求精确点按起跳帧。",
+      "camera": "当前游戏镜头球上方17米、后方13米且orthoHeight9。2米弹高/约4.5米名义落距先控制在同画面；显示固定落台与由当前速度推得的短暂落点提示只是未来可选反馈，不自动导航。",
+      "risks": [
+        "接触开始回调重复、子步多接触和落点台边的再碰撞是首要风险。",
+        "球已有CCD参数不等于薄弹面和高速落地一定可靠。",
+        "同时只建议1–2个活跃弹射，预测落点用轻量解析线，不能每帧跑多套真实物理。"
+      ],
+      "combinations": [
+        {
+          "id": "spring-catcher-beam",
+          "chain": [
+            "spring-trampoline",
+            "orbital-catcher",
+            "beam"
+          ],
+          "junction": "弹跳是真实空气航段，不套地面.6米接头限制；名义水平距离4.5–4.7米，接球斗与末梁短舌.3米。",
+          "condition": "起跳法向约8、前速约4.5，接球斗较低.3米时名义飞行约1.036s；选择其中心接近落点的相位，落点横偏与相对速度共同决定是否留斗。",
+          "failure": "边弹/空中猛刹/斗错位均会错失目标；斗不能瞬移到球下方。"
+        },
+        {
+          "id": "ramp-spring-flap",
+          "chain": [
+            "ramp",
+            "spring-trampoline",
+            "timed-trapdoor"
+          ],
+          "junction": "上游坡顶以可见.3米落差落到弹面，空中跨约4.5米后落到3米翻板。",
+          "condition": "翻板闭合时段需覆盖预计落地t≈1s及之后穿过3米所需约.75s；候选闭合2.0s，从参考落地前.2s开始，而非缩成无法落地的闪烁门。",
+          "failure": "到板时已开始下翻会真实滑落；不临时延长闭合期等球。"
+        }
+      ],
+      "currentFoundations": [
+        "真实球刚体/碰撞回调、原重力/空中输入、局部GLB反馈可复用。"
+      ],
+      "codeDependencies": [
+        "区分上表面新接触与抖动，建立一次性法向冲量/能量注入与离面重装协议。",
+        "碰撞前后速度采样顺序、原接触恢复与弹射附加量去重；只在机关接触时工作。",
+        "落点预测若加入UI需另行实现并处理暂停/失焦，不能当引擎已有功能。"
+      ],
+      "artDependencies": [
+        "床面、固定框、压缩机构/可见储能器分件；核心/弱边缘不同静态标记。",
+        "冲量状态指示使用弹簧压缩/压力指针，不烘焙球跳跃。"
+      ],
+      "complexity": "中等偏复杂",
+      "priority": "P1 · 推荐首批",
+      "diagram": "advanced-obstacles/spring-trampoline.svg"
+    },
+    {
+      "id": "gravity-coaster",
+      "name": "重力过山车弯轨",
+      "status": "design-only",
+      "implemented": false,
+      "skill": "通过连续凹凸曲率、倾斜弯和势能交换控速；区别于单一静态直坡。",
+      "structure": [
+        "首版独立段从Y5.2降至3.4，再过R4米/90°倾斜弯，最后升.8米到Y4.2；可行走宽1.4米，两侧实体低轨高.25米，不能画无碰撞护轨。",
+        "下降采用两段R4/30°竖向过渡圆弧，中间30°直坡约1.456米，合计落差1.8；弯道倾角候选32°。出口升坡采用两段R4/20°过渡，中间约.928米直段，增高.8。",
+        "完整竖直环道是本项后续子方案，不计第9种机制：球心轨迹半径R=3米，接触内表面半径为R+.425=3.425米。"
+      ],
+      "parameters": {
+        "entryTopY": 5.2,
+        "valleyTopY": 3.4,
+        "exitTopY": 4.2,
+        "width": 1.4,
+        "verticalTransitionRadius": 4,
+        "planTurnRadius": 4,
+        "planTurnDegrees": 90,
+        "bankDegrees": 32,
+        "railHeight": 0.25,
+        "coastEntrySpeed": 2,
+        "exampleLoopCenterRadius": 3,
+        "loopPassivePointBottomSpeed": 15.491933384829668,
+        "loopTopSpeed": 6.928203230275509,
+        "globalSpeedChanged": false
+      },
+      "derivations": [
+        "理想无滑滚动实心球：v_low²=v_entry²+(10/7)gΔh。v_entry2、Δh1.8时v_low≈6.72m/s，接近但未故意越过7水平限速；阻尼/控速会改变结果。",
+        "平面弯R4、v6时无侧滑倾角参考atan(v²/(gR))≈29.36°；候选32°用于约6m/s，不能保证整个速度带都不碰侧轨。",
+        "凸弧维持压轨的点质量条件N=m(g-v²/R)>0；R4、v7时N≈3.75N仍为正，优先用这种不过顶的曲轨结构。",
+        "完整环：顶部N≥0要求v_top≥sqrt(gR)=6.93。无外部功、忽略自转的质点由底到顶需v_bottom²≥5gR，R3需15.49m/s；由底部水平7反推R≤.6125米仅是该被动质点模型，不是所有有控制球的普遍上限。",
+        "再考虑正常无滑球在7m/s的总动能.7mv²=34.3J；灵敏度1时，即便乐观给半环最大水平控制功12×(2R)=72J，升高6米消耗96J，顶部剩至多10.3J，仍小于仅平移压轨所需24J。此假设下R3开敞环不能靠当前输入自然跑通。",
+        "灵敏度1.5的力上限18会改变功的上界，且实际水平限速沿环不断耗能、球自转/摩擦也影响接触，因此不将上式写成任意设置下的绝对不可能定理。完整环需独立方案和验证。"
+      ],
+      "physics": [
+        "首版只有连续可触的静态曲面/侧轨，重力、原输入和真实法向接触决定路径；不附着球到样条。",
+        "当前旋转盒可近似曲面，但接缝必须足够细且渲染同形；曲面精确碰撞/分段生成尚需实现。不能只画弧线留下宽平面托底。",
+        "若未来坚持R3完整开敞环，应另行批准局部速度上限例外和可见机械加速源，并设计进出区交接；只允许未来提案，当前不改7上限。",
+        "另一未来子方案是可见、内外双导轨/管道的真实碰撞约束，可在低速过顶提供另一侧法向力；这不是磁吸/锁球，也仍需核算爬升能量与卡球。不得把透明轨道约束当自然压轨。"
+      ],
+      "stateMachine": [
+        {
+          "state": "approach",
+          "transition": "固定高岸观察，速度与姿态进入开放曲轨"
+        },
+        {
+          "state": "coasting",
+          "transition": "纯重力/原施力通过凹弧、倾斜弯和出口凸弧，不设过点强制速度"
+        },
+        {
+          "state": "exit",
+          "transition": "真实滚到同高出口；若飞离曲面就进入正常自由落体"
+        },
+        {
+          "state": "future-loop-mode",
+          "transition": "未实现且不启用；有批准的局部协议才可改变该区规则"
+        }
+      ],
+      "playerResponse": "下坡前控制速度，入倾斜弯保持向内小幅输入，出口小坡前减少刹车损耗。太快撞外轨/飞出，太慢回滑；不靠跳跃完成独立段。CP位于高岸，不能在倒挂位置复活。",
+      "mobile": "保持现有方向坐标和原空中操控，不自动随轨道转摇杆。连续90°弯要求提前拨杆，低轨碰撞让错误有实际反馈。",
+      "camera": "首版总高差控制在1.8米，弯出口应可从入口看到。完整环高度约6.85米与现orthoHeight9紧张，未来需单独可见性设计或显式局部镜头协议；本轮不改已认可镜头。",
+      "risks": [
+        "曲面小段接缝/高曲率法向跳变、侧轨球半径偏置和抬头遮挡。",
+        "完整环道的水平限速与原输入沿切线投影冲突，不能只算总速。",
+        "未来分段静态网格可合并，不能上百动态小刚体模拟静态轨。"
+      ],
+      "combinations": [
+        {
+          "id": "coaster-crosswind",
+          "chain": [
+            "gravity-coaster",
+            "pulse-jet",
+            "beam"
+          ],
+          "junction": "曲轨出口Y4.2，.3米同高短接到侧风区，再.2米接窄梁。",
+          "condition": "出曲轨目标5–6m/s，2m风区暴露约.33–.40s；在入弯时已看预告，风后横速需<=.5、横偏<=.1再上梁。",
+          "failure": "先出弯再想紧急抵消全部横风会来不及；不在风后加宽停靠岛。"
+        },
+        {
+          "id": "coaster-belt",
+          "chain": [
+            "gravity-coaster",
+            "reversing-conveyor"
+          ],
+          "junction": "出口Y4.2与带顶匹配，.2米真实缝；输送带反向段不能误作静态减速贴花。",
+          "condition": "以4–5m/s入带，在可见反向保持段用原推力克服真实摩擦带动；是否余速足够离带需要后续接触验证。",
+          "failure": "高曲轨出速带来的偏线和带面反向牵引共同导致后退/侧落。"
+        }
+      ],
+      "currentFoundations": [
+        "已有静态Euler代理、真实重力、球CCD和基础侧轨可以复用。"
+      ],
+      "codeDependencies": [
+        "连续曲面/偏置球心轨迹的碰撞生成与接缝协议；不将样条动画当模拟。",
+        "完整环局部加速/限速交接或真实内外导轨均属未来新增能力，不能现在偷改全局。"
+      ],
+      "artDependencies": [
+        "连续弯轨、实体低侧轨、承载立柱与可拆曲段；曲轨内外面不能用大盒包络合并。",
+        "完整环概念只出尺寸示意，不在本轮生成模型。"
+      ],
+      "complexity": "复杂；完整环更高",
+      "priority": "P3 · 后续专项",
+      "diagram": "advanced-obstacles/gravity-coaster.svg"
+    },
+    {
+      "id": "pulse-jet",
+      "name": "脉冲喷气阵",
+      "status": "design-only",
+      "implemented": false,
+      "skill": "进入可见喷流体积后受到真实局部力；区别于碰撞推头或只转模型。",
+      "structure": [
+        "侧喷示范道宽3.2、作用沿路长2米；喷口位于侧外，轴指向横向+X，喷束中心覆盖球心高度3.825。出口接.6–.8米窄线，段前固定岛可观察。",
+        "喷流为有限圆锥台/柱体，轴向0–3米、核心半径.55、外缘.9；实体喷嘴壳有碰撞，流体体积不产生隐形硬墙。",
+        "垂直风柱为本项子模式：喷口位于下方，中心力32N，作用高度2.5米，用可见格栅/气柱标出边界。"
+      ],
+      "parameters": {
+        "sideCoreForceN": 8,
+        "upwardCoreForceN": 32,
+        "axialRange": [
+          0,
+          3
+        ],
+        "coreRadius": 0.55,
+        "outerRadius": 0.9,
+        "sideLaneWidth": 3.2,
+        "sideExposureLength": 2,
+        "cycleStagesSeconds": [
+          1.6,
+          0.7,
+          0.45,
+          0.25
+        ],
+        "stageNames": [
+          "idle",
+          "warning",
+          "pulse",
+          "decay"
+        ],
+        "verticalPulseSeconds": 0.32,
+        "combinationForceBudgetN": 40,
+        "maximumSimultaneousNozzles": 2,
+        "forceFalloff": "smooth radial core-to-edge and axial far-end decay",
+        "sideAxis": [
+          1,
+          0,
+          0
+        ],
+        "verticalAxis": [
+          0,
+          1,
+          0
+        ],
+        "forceSampling": "ball center in nozzle local coordinates; no force outside explicit support volume"
+      },
+      "derivations": [
+        "侧向质点上界F/m=8m/s²，持续.45s的Δv=3.6m/s、位移.81m；理想无滑实心球滚动有效质量约1.4m，位移约.579m，两者都不是已测漂移。",
+        "水平宽3.2扣球半径后的中心余量1.175米；喷流结束后横向惯性继续，不能只看喷流内.81米就说不会落水。",
+        "中心垂直32N减重力16N，净加速度16；.32s内上升约.819m、离开时vy≈5.12，再升约.819m，合计约1.638m。这是持续停在核心的无阻尼上界，离开核心会更低。"
+      ],
+      "physics": [
+        "首版按真实球心在喷嘴局部坐标中计算轴向距离s和径向rho；F=F0*w_radial*w_axial*pulse(t)*axis，离开范围为0，不直接设速度或位置。以后更细的球体覆盖采样需另定协议。",
+        "核心至边缘平滑衰减，边缘与粒子/刻度一致。参数单位N；重力仍为原向下16。多个喷嘴矢量相加，首版只允许两束重叠且设计总合力峰值<=40N，不以隐藏钳制补救任意多束。",
+        "喷嘴/格栅是真实可触结构，喷流只是局部力。上升会自然脱离核心，之后按正常弹道飞行；水平分量仍受当前7限速约束。"
+      ],
+      "stateMachine": [
+        {
+          "state": "idle",
+          "transition": "1.6s无力，可见指针回到等待区"
+        },
+        {
+          "state": "warning",
+          "transition": ".7s机械阀预开/低频颜色变化，仍不施推力"
+        },
+        {
+          "state": "pulse",
+          "transition": ".45s侧喷或独立.32s上喷，按物理步长施加有限区域力"
+        },
+        {
+          "state": "decay",
+          "transition": ".25s连续衰减至0；离区立即无新力但保留惯性"
+        }
+      ],
+      "playerResponse": "看阀门预告，选择顺势穿过或提前反向补偿；刹车会延长在风区的停留，不一定更安全。退出后仍要收横漂，出界落水回喷嘴前CP。",
+      "mobile": "无新按钮。灵敏度.5–1.5对应不同抗风能力，设计量级以1为基准，不强制改用户设置；不能只以声音提示。",
+      "camera": "喷束边界用低成本定向条纹/少量粒子，避免遮住球和末端细路。上喷落台应在当前镜头内，不用漫天白烟掩盖落点。",
+      "risks": [
+        "渲染帧与物理步长不同，力积分要用实际步，不把maxSubSteps当喷流已细分。",
+        "边缘采样抖动/多个喷嘴叠加/全局残留力。",
+        "透明粒子过绘与低画质无粒子时的提示一致性；作用本体不能随画质关闭。"
+      ],
+      "combinations": [
+        {
+          "id": "jet-gimbal",
+          "chain": [
+            "pulse-jet",
+            "gimbal-platform"
+          ],
+          "junction": "风区尾端到双轴板前缘总.4米，风体积截止在固定短舌前，不暗中覆盖整个盘。",
+          "condition": "风尾横速目标<=.5；双轴入口需在X角接近+14、Z角接近0时接平，偏线的残余动量会立刻改变两轴负载。",
+          "failure": "进入盘角而非入口中线会两轴同时失衡，不能用自动导向修正。"
+        },
+        {
+          "id": "jet-spring",
+          "chain": [
+            "pulse-jet",
+            "spring-trampoline"
+          ],
+          "junction": "侧风后.3米可见低落差落到弹面，接触核心<=.75米；飞行落点在前方约4.5米。",
+          "condition": "必须在风区内先收横速到约.5以下并对准核心；最后.3米不足以抵消全部侧带。只有真实下降碰床才弹。",
+          "failure": "踩弱边缘弹高不足或带横速飞偏，不能因为进入触发范围就补成标准弹道。"
+        }
+      ],
+      "currentFoundations": [
+        "现有applyForce、刚体位置/原重力与暂停时钟可复用。"
+      ],
+      "codeDependencies": [
+        "有限体积局部力组件、统一物理步积分和多喷嘴合力管理。",
+        "实体壳与非碰撞力区分离，暂停/卸载清作用注册，不恢复焦点补喷。"
+      ],
+      "artDependencies": [
+        "喷嘴壳/阀门/指针/格栅与喷束标识分件；固定方向和力区边界可读。"
+      ],
+      "complexity": "中等",
+      "priority": "P1 · 推荐首批",
+      "diagram": "advanced-obstacles/pulse-jet.svg"
+    },
+    {
+      "id": "orbital-catcher",
+      "name": "巡航接球斗",
+      "status": "design-only",
+      "implemented": false,
+      "skill": "必须落进运动中的凹斗，接触后机械减速再送往出口；不是普通往返平板。",
+      "structure": [
+        "接球斗内半径1.2米、中心底Y3.10、唇口Y3.45、中央可落核心半径.70；用真实分段凹面，不能用一个凸包把斗口填平。",
+        "巡航中心轨迹x=sin(2πt/6)、z=-5+.4cos(2πt/6)，保持斗体水平；每圈6秒。",
+        "固定离斗岸靠巡航右侧dock角π/2：斗心[1,3.10,-5]，唇口最右X2.2，岸边X2.35、顶Y3.45，保留.15米缝；连接后续机关的窄舌.3米。"
+      ],
+      "parameters": {
+        "bowlRadius": 1.2,
+        "coreRadius": 0.7,
+        "floorY": 3.1,
+        "lipY": 3.45,
+        "orbitXAmplitude": 1,
+        "orbitZAmplitude": 0.4,
+        "orbitCenterZ": -5,
+        "period": 6,
+        "brakingSeconds": 0.35,
+        "settleHoldSeconds": 0.65,
+        "dockAngleDegrees": 90,
+        "dockHoldSeconds": 1,
+        "dockLipGap": 0.15,
+        "nominalRelativeLandingSpeedMax": 2
+      },
+      "derivations": [
+        "蹦床vy8落到比原台低.30米的斗底：8t-8t²=-.30，t≈1.036s，水平4.5对应4.663米；名义斗在phase0时z=-4.6。",
+        "巡航最大侧速2π/6≈1.047m/s；.35秒匀减速量级约3m/s²，仍会通过接触影响球，不代表球随斗停住。",
+        "入斗速度条件约相对水平<=2m/s、落点距斗心<=.7是留斗目标，不作为拒绝碰撞或自动吸球的门槛。"
+      ],
+      "physics": [
+        "凹斗和唇口使用12–16片可触凸楔/底板组成刚性运动学载体，静态导轨/驱动在斗下；不做透明大接球平面。",
+        "实际新接触且球心落于凹斗内才触发机械刹停；位置/速度只决定动力过程，不把球设子对象、不将斗瞬移到球下。",
+        "减速、短稳停、沿原轨前进到dock均是连续位姿/速度；dock1秒后若球未离开，继续同轨一圈再给下一次窗口，而非弹出球。"
+      ],
+      "stateMachine": [
+        {
+          "state": "patrol",
+          "transition": "按椭圆巡航，空中球位置不改变目标轨迹"
+        },
+        {
+          "state": "capture-brake",
+          "transition": "凹斗真实接触→连续.35s减速，锁定本次载客状态"
+        },
+        {
+          "state": "settle",
+          "transition": ".65s停稳，球仍可滚出，不保证接住"
+        },
+        {
+          "state": "carry-to-dock",
+          "transition": "沿同一轨道继续到π/2出口，非走最短直线瞬移"
+        },
+        {
+          "state": "dock",
+          "transition": "保持1s；球真正离斗后清载客，未离则再巡一圈"
+        }
+      ],
+      "playerResponse": "起跳前看斗的轨迹与出口，空中只小修；落入后用刹车抑制相对滑动，再向出口侧上小坡离开。碰唇弹走、错过核心、迟迟不下斗会增加一圈风险；CP放发射台前，不能在运动斗内复活。",
+      "mobile": "摇杆+刹车两指即可；接触触发刹停是看得见的机械动作，不需要“抓住”键。更改选向不会让斗追球。",
+      "camera": "入口发射点、整个椭圆与dock需同画面可见；用少量空心落点圈提示未来位置，不画必中导航线。不要用深斗高墙遮住钢珠。",
+      "risks": [
+        "动态凹面不能直接假设Ammo接受任意concave rigid body，需要凸分件。",
+        "停/走状态切换的加速度可能让球滑出；碰唇就触发刹车必须与真正落入核心区分。",
+        "16片运动学代理与共享材质要批量复用，不能为预测每帧克隆整套斗。"
+      ],
+      "combinations": [
+        {
+          "id": "spring-orbit",
+          "chain": [
+            "spring-trampoline",
+            "orbital-catcher",
+            "beam"
+          ],
+          "junction": "约4.66米空气接驳；斗dock→.3米短舌→窄梁。",
+          "condition": "预计落地时轨道phase≈0，入斗横向位置误差需考虑其约1.047m/s侧速；出斗上.35米浅坡，留斗持有段不直接把球推上梁。",
+          "failure": "落入后过度刹车也可能在离斗1秒窗口中来不及爬到唇口。"
+        },
+        {
+          "id": "orbit-belt",
+          "chain": [
+            "orbital-catcher",
+            "reversing-conveyor"
+          ],
+          "junction": "dock唇口到带顶Y3.45，.15米缝加.15米短舌，总.3米。",
+          "condition": "只在带的前进保持窗口尚余约.6秒时离斗；否则可以留斗等下一圈，不重置输送带时钟。",
+          "failure": "向回收带离斗会被拉回、撞唇或侧落；没有隐形保护墙。"
+        }
+      ],
+      "currentFoundations": [
+        "已有运动学承托/杆件分离加载/暂停可复用；仅横移平台机制不等于此载客状态已支持。"
+      ],
+      "codeDependencies": [
+        "凹面刚性分件、接触核心识别与事件驱动速度规划、dock相位和占用生命周期。",
+        "预测位置使用实际巡航/制动计划，暂停或重生取消旧接触事件。"
+      ],
+      "artDependencies": [
+        "低唇口凹斗、底部小车、导轨和可见刹车夹具；凹斗/底轨动静分组。"
+      ],
+      "complexity": "复杂",
+      "priority": "P2 · 在弹射之后",
+      "diagram": "advanced-obstacles/orbital-catcher.svg"
+    },
+    {
+      "id": "reversing-conveyor",
+      "name": "反转输送带桥",
+      "status": "design-only",
+      "implemented": false,
+      "skill": "台面接触速度改变而桥位置不变，原地需要顶住带面牵引；不是滚筒曲面或UV动画。",
+      "structure": [
+        "带顶宽1.4、有效长6米、Y3.4；首尾各.12米接缝和完整固定岸。两端滚轮半径.35，回程位于台下，皮带不把球带进隐藏夹缝。",
+        "首版以约32块真实刚性板条沿封闭椭圆长圆路径循环，上层连续、缝约.01–.02；可见护罩遮挡端部夹点，护罩也需碰撞。"
+      ],
+      "parameters": {
+        "topWidth": 1.4,
+        "topLength": 6,
+        "topY": 3.4,
+        "endDrumRadius": 0.35,
+        "targetTreadSpeed": 2.5,
+        "candidateSlatCount": 32,
+        "slatGapRange": [
+          0.01,
+          0.02
+        ],
+        "holdEachDirectionSeconds": 2.2,
+        "warningEachHoldFinalSeconds": 0.8,
+        "reverseDecelSeconds": 0.6,
+        "zeroHoldSeconds": 0.3,
+        "reverseAccelSeconds": 0.6,
+        "nominalCycleSeconds": 7.4,
+        "candidateSlatSize": [
+          1.4,
+          0.08,
+          0.43
+        ],
+        "loopLength": 14.199114857512855,
+        "slatPitch": 0.4437223392972767
+      },
+      "derivations": [
+        "非滑动平面点受力近似可用friction*N作量级，.55×16=8.8N是库参数的简单上界示意；真实球滚动/接触材料组合不等同恒定8.8N拖力。",
+        "对默认输入12N，逆带仍有抗衡可能；灵敏度.5仅6N，与带接触后可能持续后退，因此难度需按现有设置范围另评，不改用户灵敏度。",
+        "每次反向过程.6降速+.3停+.6升速=1.5秒，两方向各保持2.2秒，周期7.4秒；.8秒预告含在保持尾段。"
+      ],
+      "physics": [
+        "使用有真实切向速度的板条/端鼓接触带动球，不仅平移纹理，也不直接对球施加伪造带力。",
+        "板条走完整闭合路径，在下层回程而不是从前端瞬移到后端；如果以后改用接触表面速度API，必须先确认Ammo接口真实可用，不能把这写成当前已有。",
+        "桥体根不动，只有接触表面运动。反转是机械电机可见减速/停顿/反向，所有板条统一速度参数，无独立乱相。"
+      ],
+      "stateMachine": [
+        {
+          "state": "forward-hold",
+          "transition": "前进2.2秒，末.8预告反转"
+        },
+        {
+          "state": "reverse-transition",
+          "transition": ".6降至0→.3停→.6加到反向2.5"
+        },
+        {
+          "state": "backward-hold",
+          "transition": "反向2.2秒，末.8预告回转"
+        },
+        {
+          "state": "forward-transition",
+          "transition": "同样1.5秒回正；无位置重置跳变"
+        }
+      ],
+      "playerResponse": "看箭头/驱动鼓准备反向，不要把刹车当与带面粘合。逆向段可向前顶住，变向时少量修正边线；入带偏心、迟迟不反推、在端鼓处回头会掉落或被真实护罩挡住。",
+      "mobile": "不需要点按节奏键，单摇杆持续抵抗+短刹足够表达；操控可行性受现有灵敏度影响，不能隐式强制设成最大。",
+      "camera": "方向用大面积箭头/机械指针显示，少量条纹随板条走；不能用密条纹制造闪烁。回程和端轮应可见但不遮盖球边缘。",
+      "risks": [
+        "大量运动学接触和板条缝造成抖动/法线变化；需要统一路径和形状复用。",
+        "不能把physics120Hz误当32块板已每子步插值；低帧目标跳变仍有风险。",
+        "纹理与接触速度脱节会误导用户，低画质仍保留速度标识和碰撞。"
+      ],
+      "combinations": [
+        {
+          "id": "belt-hammer",
+          "chain": [
+            "reversing-conveyor",
+            "pendulum"
+          ],
+          "junction": "带出口到单锤短道.25米，等高，锤前无完整安全岛。",
+          "condition": "前速目标2.5–3.5；出带时查看(t_exit+1.15/v)是否落入锤头让空窗口，不能把带面速度直接当球速。",
+          "failure": "回转带造成停顿或加速会改变撞锤时刻，错过不能被隐形栏接住。"
+        },
+        {
+          "id": "coaster-conveyor",
+          "chain": [
+            "gravity-coaster",
+            "reversing-conveyor",
+            "beam"
+          ],
+          "junction": "同高.2米接带，带后.2米接窄梁。",
+          "condition": "从曲轨控制到4–5m/s再上带；离带横速<=.4、中心偏差<=.1才能上梁，反转预告期间要在带上提前准备。",
+          "failure": "把带当贴图直冲会在末端失速或偏出细梁。"
+        }
+      ],
+      "currentFoundations": [
+        "已有运动学刚体、圆柱/盒代理、统一时间与实例资源可复用。"
+      ],
+      "codeDependencies": [
+        "闭环板条姿态、真实接触切向速度、统一反转曲线和低帧更新策略。",
+        "潜在表面速度优化仅列研究，不假定现有Ammo有传送带开关。"
+      ],
+      "artDependencies": [
+        "静态机架/护罩、端鼓与重复板条；共享网格/材质，不造32套材质。"
+      ],
+      "complexity": "复杂",
+      "priority": "P2 · 接触稳定后",
+      "diagram": "advanced-obstacles/reversing-conveyor.svg"
+    },
+    {
+      "id": "vortex-funnel",
+      "name": "回旋漏斗",
+      "status": "design-only",
+      "implemented": false,
+      "skill": "在真实斜碗里控制轨道半径，再减速从中心孔准确下落；不暗加离心力。",
+      "structure": [
+        "静态圆锥环碗：外半径4、中心孔半径.65，坡向中心下降20°；内圈唇口Y3.4，外缘顶Y约4.619。入口切向接外圈，不从边外直线穿碗。",
+        "下方固定或移动接台顶Y1.4；中心孔直径1.3大于球.85，孔内没有底板。整碗用约24–32片带孔斜楔，不能做填孔凸包。"
+      ],
+      "parameters": {
+        "outerRadius": 4,
+        "holeRadius": 0.65,
+        "coneSlopeDegrees": 20,
+        "holeLipY": 3.4,
+        "outerLipY": 4.619300284791778,
+        "catchTopY": 1.4,
+        "referenceOrbitRadius": 2.5,
+        "referenceOrbitSpeed": 3.815600787641193,
+        "holeClearanceForBallCenter": 0.22500000000000003,
+        "dropHorizontalSpeedTarget": 1,
+        "fixedCatchDeckSize": [
+          2.4,
+          0.3,
+          2.4
+        ]
+      },
+      "derivations": [
+        "光滑点质量圆轨近似v²/r=g*tan20°，r2.5对应v≈3.82m/s；现有滚动/摩擦改变轨迹，不能用公式直接锁半径。",
+        "v5对应平衡半径v²/(g*tan20°)≈4.29m，超过外缘4；过快可能冲出，过慢向中心跌落。",
+        "整球平面投影入直径1.3孔需中心r≤.225；进入孔后有真实边缘接触，不以触发器提前判穿孔。",
+        "孔下落到低2米的接台，忽略初始竖速时约.5秒；水平余速1m/s仍漂移.5米，因此必须先在碗内减速定位。"
+      ],
+      "physics": [
+        "只使用重力、原输入和斜面法向/摩擦；所谓回旋是惯性轨道，不添加虚构径向力、吸球或自动收口。",
+        "孔与外围边缘均真实开放；若使用静态三角网格，应保留孔拓扑，不能碰撞简化成完整圆盘。",
+        "下方落台单独有碰撞；标记投影只是帮助看孔下落点，不给球位置校正。"
+      ],
+      "stateMachine": [
+        {
+          "state": "entry",
+          "transition": "从切线接岸进入外圈，真实接触后自然回旋"
+        },
+        {
+          "state": "orbit",
+          "transition": "玩家控制速度/半径，不设自动匀速环绕"
+        },
+        {
+          "state": "release-to-hole",
+          "transition": "重心靠中心孔并减横速，真实失去支撑后落下"
+        },
+        {
+          "state": "land-or-fall",
+          "transition": "落台接触则继续；错失目标正常落水重生"
+        }
+      ],
+      "playerResponse": "先沿碗边建立可控回旋，再逐渐减速缩圈。大力直冲会跨过理想落点，早刹会从孔中落下但带错方向余速。CP放高侧入口，不能在孔内复活。",
+      "mobile": "持续摇杆方向随球在碗内的位置变化，仍使用世界方向，不自动改成“绕圈按钮”；刹车用于减半径但过早会提前落孔。",
+      "camera": "中央必须能看到下方接台或明确落点投影，碗壁不能挡成黑洞；外径8米已接近现镜头可视量级，先摆在视野正中，不宣称手机横屏必全见。",
+      "risks": [
+        "碗/球曲率偏置、斜楔接缝、低速静摩擦粘住或边缘震荡。",
+        "真实孔口容错仅.225米，图示圆不能放大成实际隐藏洞。",
+        "静态网格优于大量动态片；阴影和孔下可见性需后续美术处理。"
+      ],
+      "combinations": [
+        {
+          "id": "roller-funnel",
+          "chain": [
+            "axial-roller",
+            "vortex-funnel"
+          ],
+          "junction": "滚筒出口以.3米同高切向短接到碗外圈Y4.619，筒根随岸高抬升。",
+          "condition": "出筒横漂需<=.5，切向目标3.5–4m/s；不能把5m/s以上直接当理想入碗速度。",
+          "failure": "出筒侧滑会变成径向冲击，可能越外缘而不是进入回旋。"
+        },
+        {
+          "id": "funnel-catcher",
+          "chain": [
+            "vortex-funnel",
+            "orbital-catcher",
+            "beam"
+          ],
+          "junction": "孔下2米真实空气航段，接球斗底升降到对应Y1.4；出斗.3米接梁。",
+          "condition": "预计孔口横速<=1、下落约.5秒；接斗在该时刻靠近孔下，实际中心还要扣孔口.225与斗相位误差。",
+          "failure": "漂出接斗或擦孔沿都正常失败，不瞬移对准。"
+        }
+      ],
+      "currentFoundations": [
+        "静态旋转面、球重力/输入与下层固定岸可复用。"
+      ],
+      "codeDependencies": [
+        "有孔曲面碰撞生成、层间落点/可见性提示；无新增全局力。"
+      ],
+      "artDependencies": [
+        "分段内碗、切向入口、开放孔口与外支座；不放跨孔底板或遮挡视线的大罩。"
+      ],
+      "complexity": "中等偏复杂",
+      "priority": "P2 · 静态几何路线",
+      "diagram": "advanced-obstacles/vortex-funnel.svg"
+    },
+    {
+      "id": "gimbal-platform",
+      "name": "双轴天平台",
+      "status": "design-only",
+      "implemented": false,
+      "skill": "球的位置同时改变俯仰与横滚，向相邻岸压出出口；不是跷跷板单轴加快。",
+      "structure": [
+        "内板3.2×.24×3.2米，外框X铰链+内框Z铰链串联，两个真实受限转轴；固定底座不动。",
+        "入口在+Z边、出口在-X邻边；两岸顶3.4、口宽1.8、边距中心1.72。轴心Y约3.671，初始αX=+14°、βZ=0使入口低。",
+        "两轴均限±14°，外框和内盘各有惯量/可见止挡；不将质心读数直接变成Euler角。"
+      ],
+      "parameters": {
+        "bodySize": [
+          3.2,
+          0.24,
+          3.2
+        ],
+        "pivotY": 3.6706395458063485,
+        "outerAxis": [
+          1,
+          0,
+          0
+        ],
+        "innerAxis": [
+          0,
+          0,
+          1
+        ],
+        "rotationOrder": "Rx(alpha)*Rz(beta)",
+        "limitsDegrees": [
+          14,
+          14
+        ],
+        "restAnglesDegrees": [
+          14,
+          0
+        ],
+        "innerMass": 1.2,
+        "outerFrameMass": 0.3,
+        "springEach": 2,
+        "dampingEach": 1.8,
+        "bankEdgeRadius": 1.72,
+        "entryPort": [
+          0,
+          3.4,
+          1.72
+        ],
+        "exitPort": [
+          -1.72,
+          3.4,
+          0
+        ]
+      },
+      "derivations": [
+        "轴高h=3.4+1.6sin14−.12cos14≈3.671，使β0/α14的入口低端顶Y3.4；不能用水平板中心Y3.28套两轴大角后造成永久台阶。",
+        "出口β≈+14时，局部-X边顶点经过Rx(alpha)Rz(beta)，α在±14内的端面高度约3.4–3.408米，仍可在邻岸择时滚动接上；实际球接触未验证。",
+        "球在1米偏置的重力矩量级16N·m，候选每轴2N·m/rad弱回位与1.8N·m·s阻尼只作用机关；质量/框架惯量会耦合响应。"
+      ],
+      "physics": [
+        "必须两个动态受限关节：固定座→外框绕X→内板绕框局部Z。球负载经真实接触产生力矩，不用固定正弦或读球坐标追角。",
+        "每个关节施有限回位/阻尼力矩，不加自动找平力到球；角度采用实际关节状态，不能用错误世界Euler分解串轴。",
+        "台面、可触框架和止挡都需匹配碰撞；两框之间不能互相锁死或重叠抖动，默认不引入软体。"
+      ],
+      "stateMachine": [
+        {
+          "state": "entry-low",
+          "transition": "空载回到入口低位α14/β0"
+        },
+        {
+          "state": "loaded",
+          "transition": "真实接触后两轴按负载响应，无固定周期"
+        },
+        {
+          "state": "adjacent-dock",
+          "transition": "玩家将重心移向-X，使β靠+14；出口接近同高时离开"
+        },
+        {
+          "state": "unloaded",
+          "transition": "球离开后有限弹簧自然回位，普通接触抖动不重置姿态"
+        }
+      ],
+      "playerResponse": "沿入口中线进板，避免先压角；到盘中再缓慢左移，使邻边降到出口。对角猛冲会两轴同时倾斜，角落掉落；长按刹车仍给板持续负载。CP在入口固定岸，掉落后等盘回低端。",
+      "mobile": "只需摇杆和刹车，但不能自动旋转摇杆参考系随盘摆。两轴反馈要用边缘刻度和低端位置可读，不要求精准点铰链。",
+      "camera": "框架设在板下/侧外，入口出口标识保持固定岸坐标；两轴俯仰不能让外框遮球。手机需看清哪一边正在降低。",
+      "risks": [
+        "双铰链累计误差、框间碰撞、惯量与角度读取顺序。",
+        "负载响应没有保证每次同速，出口条件必须观察，不给固定phase。",
+        "关节先于刚体释放，避免切关后残留世界约束；这一项优先级后置。"
+      ],
+      "combinations": [
+        {
+          "id": "jet-double-axis",
+          "chain": [
+            "pulse-jet",
+            "gimbal-platform"
+          ],
+          "junction": "喷区截止后.4米入盘，入口岸Y3.4；不把整个盘放进强风里。",
+          "condition": "入口α接近14/β接近0；喷后侧速<=.5才能不直接压角。",
+          "failure": "残余侧向动量改变两个关节，不能触发“自动找平救援”。"
+        },
+        {
+          "id": "gimbal-collapse",
+          "chain": [
+            "gimbal-platform",
+            "cascade-bridge"
+          ],
+          "junction": "盘邻边到首块坍塌板.2米，基准顶3.4，无完整中间岛。",
+          "condition": "出口β靠14且端面接平后以3.6–4m/s进入首板；坍塌计时由首次实际承重启动，因此不假定负载板有固定出端时间。",
+          "failure": "盘端太慢导致第一块释放前来不及跑开；不能在连锁中刹住重开。"
+        }
+      ],
+      "currentFoundations": [
+        "当前单铰链跷跷板提供真实关节/负载处理基础，但未有串联双轴。"
+      ],
+      "codeDependencies": [
+        "两级动态刚体/局部轴关节、有限恢复/阻尼和清理；模型轴心/质心分别约定。",
+        "接岸角度是观察条件，不能成为隐藏传送或禁止碰撞规则。"
+      ],
+      "artDependencies": [
+        "固定底座、外框、内板、两轴套/止挡独立；质量分布在协议中说明。"
+      ],
+      "complexity": "复杂",
+      "priority": "P3 · 约束专项",
+      "diagram": "advanced-obstacles/gimbal-platform.svg"
+    },
+    {
+      "id": "cascade-bridge",
+      "name": "连锁坍塌桥",
+      "status": "design-only",
+      "implemented": false,
+      "skill": "第一处承重启动顺序脱锁，必须持续前进；不是定时翻板重复开合。",
+      "structure": [
+        "6块真实台面，每块1.2米宽、1.4米长、.22米厚，间缝.12，总跨越9米；初始顶Y3.4，两侧无护栏。",
+        "板下可见锁销/承载扣，接触时指针和扣件逐级变色；到时每块变为受重力的动态板下落，不仅隐藏Render。",
+        "入口/出口各固定3.6米岛。独立示范只单向跑一组，CP在入口岛；新组合可以接旧平台或弹台，但不从中间板重生。"
+      ],
+      "parameters": {
+        "tileCount": 6,
+        "tileSize": [
+          1.2,
+          0.22,
+          1.4
+        ],
+        "gap": 0.12,
+        "pitch": 1.52,
+        "totalLength": 9,
+        "topY": 3.4,
+        "tileMass": 0.8,
+        "firstReleaseDelay": 0.85,
+        "releaseInterval": 0.42,
+        "visibleWarningBeforeEachRelease": 0.35,
+        "minimumContactDwell": 0.04,
+        "targetRunSpeed": [
+          3.6,
+          4.5
+        ],
+        "restoreOnlyAfterSafeRespawn": true,
+        "bankGap": 0.12
+      },
+      "derivations": [
+        "以球心首次触及首板前缘约-.425作为参考，整球离第i块的距离1.52i+2.25米。v4时清板t=.5625+.38i；释放t=.85+.42i，每块有正的设计余量。",
+        "v3时清板t=.75+.5067i，后几块会赶不上释放；按最后一块清完前的充分条件，参考下限9.85/2.95≈3.34m/s，目标选3.6–4.5，不是运行时速度门。",
+        "板解除后与球同受重力，释放不等于瞬间无接触；落差逐渐形成。比如释放.3秒后理想下落.72米，会让迟到球难以爬上尚未释放的下一板。"
+      ],
+      "physics": [
+        "上表面实际承重接触持续.04秒后锁存首次触发，局部链从所触板及后续依次排时；独立示范从第一板进入。仅掠过触发盒、侧擦或光效不触发。",
+        "每块到releaseTime解除固定约束或切为真实动态刚体，保留其当前位姿/速度并受原重力；不能直接瞬移向下、消失碰撞或强制把球推落。",
+        "连锁一旦开始不因球后退取消，也不在玩家还在桥上时自动重生板。落水回入口CP后才在清场状态重置该组；已越过且激活后方CP时失败不要求重走整组。"
+      ],
+      "stateMachine": [
+        {
+          "state": "armed",
+          "transition": "初始锁销承托，等待真实上表面承重"
+        },
+        {
+          "state": "triggered",
+          "transition": "锁存t0，发布各板t0+.85+.42i，不随帧刷新重新计时"
+        },
+        {
+          "state": "warning-i",
+          "transition": "各板释放前.35秒给局部可见预告"
+        },
+        {
+          "state": "falling-i",
+          "transition": "到时真实脱锁下落，其他板按既定链继续"
+        },
+        {
+          "state": "spent",
+          "transition": "全组坍塌；只有安全重生/重开才恢复，暂停冻结剩余延迟"
+        }
+      ],
+      "playerResponse": "先在入口建立速度，再连续沿中线过桥；临时退回或在第二块停下会被链追上。失败原因是可见锁销与板落差，不是随机抽一块；不要求跳跃。",
+      "mobile": "持续前推、小幅横向修正；可以刹但会付出被追上的时间。压板触发不依赖用户点屏幕或第三根手指。",
+      "camera": "9米跨度在当前镜头中可能只见前几板，预告应沿前方逐块出现，入口能看到链方向；禁止用满屏红闪，掉板不遮住下一块。",
+      "risks": [
+        "静态转动态的接触/惯量初始化、锁存触发与碰撞事件抖动。",
+        "每组6体落水后回收复用，不能不断spawn新板或销毁仍被球接触的板。",
+        "如果未来更长链超出可见距离，需提前可读预告，不以看不见的计时逼跳。"
+      ],
+      "combinations": [
+        {
+          "id": "gimbal-cascade-platform",
+          "chain": [
+            "gimbal-platform",
+            "cascade-bridge",
+            "platform"
+          ],
+          "junction": "盘出端.2米到首板；第6板后.2米真实缝到横移台，没有尾端固定岛。",
+          "condition": "进入坍塌首板前已看到平台相位；v4参考跨末缝约t2.38，目标平台在t0+2.4附近对齐。t0来自真实承重，选择何时出盘而非重置平台时钟。",
+          "failure": "板上减速会错过末台；旧平台横移不因人晚到而等待。"
+        },
+        {
+          "id": "cascade-spring",
+          "chain": [
+            "cascade-bridge",
+            "spring-trampoline"
+          ],
+          "junction": "末端用.3米可见落差落到蹦床核心，再飞向固定窄落台；无尾部休息。",
+          "condition": "清板前速约4，进入弹面需真实下落且踩核心；蹦床以当前入射/弹能决定起跳，不把坍塌余速统一成标准值。",
+          "failure": "在末板慌刹会错过弹面或只踩弱边缘，不能靠床自动吸住。"
+        }
+      ],
+      "currentFoundations": [
+        "接触事件、动态/静态盒、原重力和CP重生基础可复用；当前无承重连锁释放。"
+      ],
+      "codeDependencies": [
+        "承重接触去抖与一次触发队列、单组锁销/板状态、静态转动态或约束释放。",
+        "安全重生后的局部重装与全局计时/成绩分离，暂停/卸载取消队列。"
+      ],
+      "artDependencies": [
+        "六块共享台面与可见锁销/指示，板与支座分离；洞下不留完整平台。"
+      ],
+      "complexity": "中等偏复杂",
+      "priority": "P1 · 推荐首批",
+      "diagram": "advanced-obstacles/cascade-bridge.svg"
+    }
+  ],
+  "sharedLifecycle": {
+    "pause": "freeze local force schedules/compression/chain timers; no paused-time catch-up",
+    "restart": "clear per-body contact latches and restore module rest pose before player spawn",
+    "respawn": "normal hazards continue unless this new mechanism explicitly needs safe local reassembly (cascade); never respawn on moving/airborne target",
+    "exit": "unregister force volumes and contacts; cancel timers; remove constraints before bodies; release owned reusable vectors/shapes/instances once",
+    "noNewJumpButton": true
+  },
+  "scope": {
+    "existing13TypesPreserved": true,
+    "newObstaclesDocumentPreserved": true,
+    "topDifficultyPreserved": true,
+    "threeRoutePreserved": true,
+    "runtimeFilesModified": false,
+    "modelFilesCreated": false,
+    "implementationDispatched": false,
+    "testsRun": false,
+    "buildRun": false,
+    "browserUsed": false,
+    "gitWrites": false,
+    "externalAssetsDownloaded": false
+  },
+  "localExceptionPolicy": "Only gravity-coaster future loop section discusses a possible later-approved local speed mode/visible guide. Nothing changes global gravity, speed, input, camera or ball material now."
+}

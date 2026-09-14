@@ -1,6 +1,37 @@
 import * as pc from 'playcanvas'
+import { ballSkin, type BallSkin, type BallSkinId } from './ball-skins'
+import { createBallSkinTextures } from './ball-skin-textures'
 
-export function createSteelMaterial(app: pc.Application) {
+function createRingTextures(app:pc.Application,skin:BallSkin,base:pc.Color,baseGloss:number) {
+  const ring=skin.rings!,width=1024,height=512,ringColor=new pc.Color().fromString(ring.color)
+  const canvases=[document.createElement('canvas'),document.createElement('canvas')]
+  const contexts=canvases.map(canvas=>{canvas.width=width;canvas.height=height;return canvas.getContext('2d')!})
+  const images=contexts.map(context=>context.createImageData(width,height))
+  for(let row=0;row<height;row++) {
+    const v=row/(height-1),distance=Math.min(...ring.centers.map(center=>Math.abs(v-center)))
+    const edge=Math.max(0,Math.min(1,(distance-ring.width/2)/ring.feather)),mask=1-edge*edge*(3-2*edge)
+    const factors=[ringColor.r/base.r,ringColor.g/base.g,ringColor.b/base.b]
+    for(let column=0;column<width;column++) {
+      const index=(row*width+column)*4
+      for(let channel=0;channel<3;channel++) {
+        images[0]!.data[index+channel]=Math.round(255*(1+(factors[channel]!-1)*mask))
+        images[1]!.data[index+channel]=Math.round(255*(1+(ring.gloss/baseGloss-1)*mask))
+      }
+      images[0]!.data[index+3]=images[1]!.data[index+3]=255
+    }
+  }
+  const textures:pc.Texture[]=[]
+  try {
+    canvases.forEach((canvas,index)=>{
+      contexts[index]!.putImageData(images[index]!,0,0)
+      const texture=new pc.Texture(app.graphicsDevice,{name:`player-ring-${index}`,width,height,format:pc.PIXELFORMAT_RGBA8,addressU:pc.ADDRESS_REPEAT,addressV:pc.ADDRESS_CLAMP_TO_EDGE,mipmaps:true})
+      textures.push(texture);texture.setSource(canvas)
+    })
+    return {color:textures[0]!,gloss:textures[1]!}
+  } catch(error) {textures.forEach(texture=>texture.destroy());throw error}
+}
+
+export function createSteelMaterial(app: pc.Application,onAppearanceChanged?:()=>void) {
   const size = 128
   const smooth = (a: number, b: number, value: number) => {
     const t = Math.max(0, Math.min(1, (value - a) / (b - a)))
@@ -59,10 +90,44 @@ export function createSteelMaterial(app: pc.Application) {
   material.cubeMap = environment; material.reflectivity = 1
   material.normalMap = polish; material.bumpiness = 0
   material.update()
+  const baseline={diffuse:material.diffuse.clone(),metalness:material.metalness,gloss:material.gloss,reflectivity:material.reflectivity,diffuseMap:material.diffuseMap,glossMap:material.glossMap,glossMapChannel:material.glossMapChannel,glossInvert:material.glossInvert}
+  const skinTextures=createBallSkinTextures(app)
+  let rings:ReturnType<typeof createRingTextures>|undefined,active:BallSkinId='steel',requested:BallSkinId='steel',generation=0,disposed=false,lastSpeed=0
+  function apply(skin:BallSkin,maps?:{color:pc.Texture;roughness:pc.Texture;normal?:pc.Texture}) {
+    if(skin.rings)rings??=createRingTextures(app,skin,baseline.diffuse,baseline.gloss)
+    if(skin.id==='steel')material.diffuse.copy(baseline.diffuse)
+    else if(skin.explicitDiffuse)material.diffuse.set(...skin.explicitDiffuse)
+    else material.diffuse.fromString(skin.color)
+    material.metalness=skin.id==='steel'?baseline.metalness:skin.metalness
+    material.gloss=skin.id==='steel'||skin.rings?baseline.gloss:1-skin.roughness
+    material.reflectivity=skin.id==='steel'?baseline.reflectivity:skin.reflectivity
+    material.diffuseMap=baseline.diffuseMap;material.glossMap=baseline.glossMap;material.glossMapChannel=baseline.glossMapChannel;material.glossInvert=baseline.glossInvert
+    material.normalMap=skin.maps?(maps?.normal??null):polish
+    if(skin.rings) {
+      material.diffuseMap=rings!.color;material.glossMap=rings!.gloss;material.glossMapChannel='r'
+    } else if(maps) {
+      material.diffuseMap=maps.color;material.glossMap=maps.roughness;material.glossMapChannel='r'
+      // 运动球贴图给绝对roughness，不能再乘一次平均粗糙度。
+      material.gloss=1;material.glossInvert=true
+    }
+    active=skin.id
+    material.bumpiness=skin.maps?(skin.normalStrength??0):.18*smooth(.02,.35,lastSpeed)
+    material.update()
+    onAppearanceChanged?.()
+  }
   return {
     material,
+    setSkin(id:BallSkinId) {
+      if(disposed||requested===id)return
+      requested=id;const token=++generation,skin=ballSkin(id)
+      const failed=(error:unknown)=>{if(!disposed&&token===generation){requested=active;console.warn('球皮肤暂未加载，保留上一外观。',error)}}
+      if(skin.maps) {
+        void Promise.all([skinTextures.load(skin.maps.color,true),skinTextures.load(skin.maps.roughness,false),skin.maps.normal?skinTextures.load(skin.maps.normal,false):Promise.resolve(undefined)])
+          .then(([color,roughness,normal])=>{if(!disposed&&token===generation)apply(skin,{color,roughness,normal})}).catch(failed)
+      } else {try {apply(skin)}catch(error){failed(error)}}
+    },
     // 微纹绑定原球体 UV；渐隐只避免停住后残余竖轴自旋显形，不改物理旋转。
-    update(speed: number) { material.bumpiness = .18 * smooth(.02, .35, speed); material.update() },
-    destroy() { material.destroy(); environment.destroy(); polish.destroy() },
+    update(speed: number) { if(disposed)return;lastSpeed=speed;const skin=ballSkin(active);material.bumpiness=skin.maps?(skin.normalStrength??0):.18*smooth(.02,.35,speed);material.update() },
+    destroy() { if(disposed)return;disposed=true;generation++;material.destroy();skinTextures.destroy();rings?.color.destroy();rings?.gloss.destroy();rings=undefined;environment.destroy();polish.destroy() },
   }
 }

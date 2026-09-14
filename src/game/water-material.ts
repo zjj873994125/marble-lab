@@ -1,4 +1,5 @@
 import * as pc from 'playcanvas'
+import type { TrackThemeId } from './track-themes'
 
 // 周期噪声的梯度生成法线，不把波峰画成平行白线。
 function createWaveNormal(app: pc.Application) {
@@ -31,12 +32,12 @@ function createWaveNormal(app: pc.Application) {
   }
   context.putImageData(pixels, 0, 0)
   const texture = new pc.Texture(app.graphicsDevice, { name: 'water-wave-normal', width: size, height: size, format: pc.PIXELFORMAT_RGBA8, mipmaps: true, addressU: pc.ADDRESS_REPEAT, addressV: pc.ADDRESS_REPEAT })
-  texture.setSource(canvas)
+  try { texture.setSource(canvas) } catch(error) { texture.destroy();throw error }
   return texture
 }
 
 // 一次生成柔和环境色，只供水材质反射；不是场景实时倒影。
-function createWaterReflection(app: pc.Application) {
+function createWaterReflection(app: pc.Application, neutral = false) {
   const size = 64
   const directions = [
     (u: number, v: number) => [1, -v, -u], (u: number, v: number) => [-1, -v, u],
@@ -55,13 +56,17 @@ function createWaterReflection(app: pc.Application) {
       pixels.data[index] = 42 + sky * 80 + horizon * 20 + softLight * 65
       pixels.data[index + 1] = 66 + sky * 79 + horizon * 20 + softLight * 61
       pixels.data[index + 2] = 72 + sky * 82 + horizon * 18 + softLight * 54
+      if(neutral) {
+        const luminance=pixels.data[index]!*.2126+pixels.data[index+1]!*.7152+pixels.data[index+2]!*.0722
+        pixels.data[index]=pixels.data[index+1]=pixels.data[index+2]=luminance
+      }
       pixels.data[index + 3] = 255
     }
     context.putImageData(pixels, 0, 0)
     return canvas
   })
-  const texture = new pc.Texture(app.graphicsDevice, { name: 'water-soft-environment', width: size, height: size, cubemap: true, format: pc.PIXELFORMAT_SRGBA8, mipmaps: true })
-  texture.setSource(faces)
+  const texture = new pc.Texture(app.graphicsDevice, { name: neutral?'water-neutral-environment':'water-soft-environment', width: size, height: size, cubemap: true, format: pc.PIXELFORMAT_SRGBA8, mipmaps: true })
+  try { texture.setSource(faces) } catch(error) { texture.destroy();throw error }
   return texture
 }
 
@@ -86,7 +91,9 @@ void getNormal() {
 `
 
 export function createWaterMaterial(app: pc.Application) {
-  const normal = createWaveNormal(app), reflection = createWaterReflection(app)
+  const normal = createWaveNormal(app)
+  let reflection:pc.Texture
+  try { reflection=createWaterReflection(app) } catch(error) { normal.destroy();throw error }
   const material = new pc.StandardMaterial()
   material.name = 'Pool fine ripples'
   material.diffuse = new pc.Color().fromString('#123c45')
@@ -101,8 +108,16 @@ export function createWaterMaterial(app: pc.Application) {
   material.setParameter('water_detail', 1)
   material.update()
   let lastFrame = performance.now(), wasAnimating = false, highQuality = true
+  let neutralReflection:pc.Texture|undefined,classicReflection=true,disposed=false
   return {
     material,
+    setTheme(theme:TrackThemeId) {
+      if(disposed||classicReflection===(theme==='classic'))return
+      // 经典恢复原贴图对象；其他主题复用一张中性反射，不让蓝青环境固定染水。
+      if(theme!=='classic')neutralReflection??=createWaterReflection(app,true)
+      material.cubeMap=theme==='classic'?reflection:neutralReflection!
+      classicReflection=theme==='classic';material.update()
+    },
     resetClock() { lastFrame = performance.now(); wasAnimating = false },
     configure(high: boolean) {
       if (highQuality === high) return
@@ -118,6 +133,6 @@ export function createWaterMaterial(app: pc.Application) {
       }
       wasAnimating = animate
     },
-    destroy() { material.destroy(); normal.destroy(); reflection.destroy() },
+    destroy() { if(disposed)return;disposed=true;material.destroy(); normal.destroy(); reflection.destroy();neutralReflection?.destroy() },
   }
 }

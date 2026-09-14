@@ -3,9 +3,11 @@ import { computed } from 'vue'
 import { createObstacleScene, partCorners, rotatePoint } from '../game/obstacle-scene'
 import type { ObstacleId } from '../game/obstacles'
 import type { Position } from '../game/level-types'
+import { state } from '../state'
+import { themedPrimitiveColor, trackTheme } from '../game/track-themes'
 const props=defineProps<{ id: ObstacleId }>()
 const picture=computed(()=>{
-  const parts=createObstacleScene(props.id).frame(.6).filter(p=>!p.hidden)
+  const scene=createObstacleScene(props.id),parts=scene.frame(.6).filter(p=>!p.hidden)
   const project=([x,y,z]:Position)=>({x:(x-z)*.707,y:(x+z)*.31-y*.9,depth:x+z+y*.3})
   const faces:{points:ReturnType<typeof project>[];color:string;shade:number;depth:number}[]=[]
   const spheres:{point:ReturnType<typeof project>;radius:number}[]=[]
@@ -26,7 +28,9 @@ const picture=computed(()=>{
     }
     for(const [index,polygon] of polygons.entries()) {
       const points=polygon.map(i=>project(vertices[i]!))
-      faces.push({points,color:colors[part.material]??'#afc5be',shade:part.type==='cylinder'?index>1?.08+(index%5)*.025:0:[.16,.07,.04,.13,0,.25][index]!,depth:points.reduce((sum,p)=>sum+p.depth,0)/points.length})
+      const model=scene.models.find(model=>model.replaces.includes(part.name)),original=colors[part.material]??'#afc5be'
+      const color=part.protectedTheme||model?.handle?original:state.settings.trackTheme!=='classic'&&model?.file.startsWith('hammer-head-toy')?trackTheme(state.settings.trackTheme).roles.hammer.color:themedPrimitiveColor(state.settings.trackTheme,part.material,original)
+      faces.push({points,color,shade:part.type==='cylinder'?index>1?.08+(index%5)*.025:0:[.16,.07,.04,.13,0,.25][index]!,depth:points.reduce((sum,p)=>sum+p.depth,0)/points.length})
     }
   }
   const points=faces.flatMap(f=>f.points),minX=Math.min(...points.map(p=>p.x)),maxX=Math.max(...points.map(p=>p.x)),minY=Math.min(...points.map(p=>p.y)),maxY=Math.max(...points.map(p=>p.y))

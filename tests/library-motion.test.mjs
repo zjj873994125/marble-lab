@@ -62,6 +62,18 @@ test('推墙五阶段与翻板预告不增加安全时长，打开后板心绕�
   near(libraryPose(trapdoor, 8.5).angle, 0)
 })
 
+test('预告边界两侧不串阶段，整周期和负相位仍正确回绕', () => {
+  const trapdoor=config('timed-trapdoor')
+  for(const lap of [0,1,2]) {
+    const boundary=lap*8.5+3.6
+    assert.equal(libraryPose(trapdoor,boundary-1e-10).warning,false)
+    assert.equal(libraryPose(trapdoor,boundary+1e-10).warning,true)
+  }
+  assert.deepEqual(libraryPose(trapdoor,8.5),libraryPose(trapdoor,0))
+  assert.deepEqual(libraryPose({...trapdoor,phaseSeconds:-1},0),libraryPose(trapdoor,7.5))
+  assert.deepEqual(libraryPose({...trapdoor,phaseSeconds:-8.5},0),libraryPose(trapdoor,0))
+})
+
 test('滚筒轴角、吊桥悬挂半径及跷跷板外部角度保持各自运动约定', () => {
   const roller = libraryPose(config('axial-roller'), 2)
   near(roller.rotation[2], -.9 * 180 / Math.PI)

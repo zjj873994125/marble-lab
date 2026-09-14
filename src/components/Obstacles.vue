@@ -18,7 +18,7 @@ function reset(){query.value='';category.value='全部'}
     <div class="atlas-grid">
       <button v-for="entry in visible" :key="entry.id" type="button" class="obstacle-card" :aria-label="`查看${entry.name}动态预览`" @click="show(entry)">
         <div class="card-heading"><h2>{{ entry.name }}</h2></div>
-        <div class="card-picture"><img v-if="entry.thumbnail" :src="entry.thumbnail" alt="" loading="lazy"/><ObstacleThumbnail v-else :id="entry.id"/></div>
+        <div class="card-picture"><img v-if="entry.thumbnail" :src="entry.thumbnail" alt="" title="经典外观示意，动态预览使用当前皮肤" loading="lazy"/><ObstacleThumbnail v-else :id="entry.id"/></div>
       </button>
     </div>
     <div v-if="!visible.length" class="atlas-empty"><h2>还没有找到这个障碍。</h2><p>试试名称或“控球”“时机”等关键词。</p><el-button @click="reset">查看全部</el-button></div>

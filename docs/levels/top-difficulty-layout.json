@@ -4263,7 +4263,24 @@
         37.33,
         3.4,
         -3.0
-      ]
+      ],
+      "boundarySeams": {
+        "sourceToStatic": 0.15,
+        "staticToTargetAlongPath": 0.12,
+        "firstStaticPoint": [
+          30.479999999999997,
+          3.4,
+          0.0
+        ],
+        "lastStaticPoint": [
+          37.327600319982935,
+          3.4,
+          -2.8800319974400974
+        ],
+        "includedInReportedBoundaryLength": true,
+        "note": "Support is trimmed at these endpoints; boundary centerline length still includes the gaps. Seesaw units already include low-tip gaps, no duplicate entrance gap."
+      },
+      "padSupportLength": 3.85
     },
     {
       "id": "B02",
@@ -4296,7 +4313,24 @@
         40.33,
         3.4,
         -27.5
-      ]
+      ],
+      "boundarySeams": {
+        "sourceToStatic": 0,
+        "staticToTargetAlongPath": 0,
+        "firstStaticPoint": [
+          37.33,
+          3.4,
+          -20.5
+        ],
+        "lastStaticPoint": [
+          40.33,
+          3.4,
+          -27.5
+        ],
+        "includedInReportedBoundaryLength": true,
+        "note": "Support is trimmed at these endpoints; boundary centerline length still includes the gaps. Seesaw units already include low-tip gaps, no duplicate entrance gap."
+      },
+      "padSupportLength": 4
     },
     {
       "id": "B03",
@@ -4325,7 +4359,24 @@
         51.97999999999999,
         3.4,
         -27.5
-      ]
+      ],
+      "boundarySeams": {
+        "sourceToStatic": 0,
+        "staticToTargetAlongPath": 0,
+        "firstStaticPoint": [
+          47.97999999999999,
+          3.4,
+          -27.5
+        ],
+        "lastStaticPoint": [
+          51.97999999999999,
+          3.4,
+          -27.5
+        ],
+        "includedInReportedBoundaryLength": true,
+        "note": "Support is trimmed at these endpoints; boundary centerline length still includes the gaps. Seesaw units already include low-tip gaps, no duplicate entrance gap."
+      },
+      "padSupportLength": 4
     },
     {
       "id": "B04",
@@ -4343,7 +4394,7 @@
       ],
       "padSizeAlongAcross": [
         4,
-        3.2
+        6.8
       ],
       "topY": 6.673663567870482,
       "checkpoint": "CP2",
@@ -4354,7 +4405,24 @@
         97.25999999999999,
         6.673663567870482,
         -8.26984462477579
-      ]
+      ],
+      "boundarySeams": {
+        "sourceToStatic": 0,
+        "staticToTargetAlongPath": 0.15,
+        "firstStaticPoint": [
+          97.25999999999999,
+          6.673663567870482,
+          -12.26984462477579
+        ],
+        "lastStaticPoint": [
+          97.25999999999999,
+          6.673663567870482,
+          -8.41984462477579
+        ],
+        "includedInReportedBoundaryLength": true,
+        "note": "Support is trimmed at these endpoints; boundary centerline length still includes the gaps. Seesaw units already include low-tip gaps, no duplicate entrance gap."
+      },
+      "padSupportLength": 3.85
     },
     {
       "id": "B05",
@@ -4387,7 +4455,24 @@
         94.25999999999999,
         6.673663567870482,
         14.48015537522421
-      ]
+      ],
+      "boundarySeams": {
+        "sourceToStatic": 0,
+        "staticToTargetAlongPath": 0,
+        "firstStaticPoint": [
+          97.25999999999999,
+          6.673663567870482,
+          7.480155375224211
+        ],
+        "lastStaticPoint": [
+          94.25999999999999,
+          6.673663567870482,
+          14.48015537522421
+        ],
+        "includedInReportedBoundaryLength": true,
+        "note": "Support is trimmed at these endpoints; boundary centerline length still includes the gaps. Seesaw units already include low-tip gaps, no duplicate entrance gap."
+      },
+      "padSupportLength": 4
     },
     {
       "id": "B06",
@@ -4416,7 +4501,24 @@
         74.85999999999999,
         6.673663567870482,
         14.480155375224212
-      ]
+      ],
+      "boundarySeams": {
+        "sourceToStatic": 0,
+        "staticToTargetAlongPath": 0.12,
+        "firstStaticPoint": [
+          78.85999999999999,
+          6.673663567870482,
+          14.480155375224212
+        ],
+        "lastStaticPoint": [
+          74.97999999999999,
+          6.673663567870482,
+          14.480155375224212
+        ],
+        "includedInReportedBoundaryLength": true,
+        "note": "Support is trimmed at these endpoints; boundary centerline length still includes the gaps. Seesaw units already include low-tip gaps, no duplicate entrance gap."
+      },
+      "padSupportLength": 3.88
     },
     {
       "id": "B07",
@@ -4445,7 +4547,24 @@
         45.32999999999999,
         6.673663567870482,
         14.480155375224216
-      ]
+      ],
+      "boundarySeams": {
+        "sourceToStatic": 0.18,
+        "staticToTargetAlongPath": 0,
+        "firstStaticPoint": [
+          49.14999999999999,
+          6.673663567870482,
+          14.480155375224216
+        ],
+        "lastStaticPoint": [
+          45.32999999999999,
+          6.673663567870482,
+          14.480155375224216
+        ],
+        "includedInReportedBoundaryLength": true,
+        "note": "Support is trimmed at these endpoints; boundary centerline length still includes the gaps. Seesaw units already include low-tip gaps, no duplicate entrance gap."
+      },
+      "padSupportLength": 3.82
     },
     {
       "id": "B08",
@@ -4463,7 +4582,7 @@
       ],
       "padSizeAlongAcross": [
         4,
-        3.2
+        6.8
       ],
       "topY": 10.181654191335918,
       "checkpoint": null,
@@ -4474,7 +4593,24 @@
         7.949999999999992,
         10.181654191335918,
         -4.491926170511263
-      ]
+      ],
+      "boundarySeams": {
+        "sourceToStatic": 0,
+        "staticToTargetAlongPath": 0.15,
+        "firstStaticPoint": [
+          7.949999999999993,
+          10.181654191335918,
+          -0.4919261705112632
+        ],
+        "lastStaticPoint": [
+          7.949999999999992,
+          10.181654191335918,
+          -4.341926170511263
+        ],
+        "includedInReportedBoundaryLength": true,
+        "note": "Support is trimmed at these endpoints; boundary centerline length still includes the gaps. Seesaw units already include low-tip gaps, no duplicate entrance gap."
+      },
+      "padSupportLength": 3.85
     },
     {
       "id": "B09",
@@ -4507,7 +4643,24 @@
         10.949999999999989,
         10.181654191335918,
         -22.691926170511262
-      ]
+      ],
+      "boundarySeams": {
+        "sourceToStatic": 0,
+        "staticToTargetAlongPath": 0,
+        "firstStaticPoint": [
+          7.94999999999999,
+          10.181654191335918,
+          -15.691926170511262
+        ],
+        "lastStaticPoint": [
+          10.949999999999989,
+          10.181654191335918,
+          -22.691926170511262
+        ],
+        "includedInReportedBoundaryLength": true,
+        "note": "Support is trimmed at these endpoints; boundary centerline length still includes the gaps. Seesaw units already include low-tip gaps, no duplicate entrance gap."
+      },
+      "padSupportLength": 4
     }
   ],
   "routePieces": [
@@ -8632,12 +8785,12 @@
       "lowerGantryTopY": 8.02,
       "protectedLowerPrism": {
         "min": [
-          5.5,
+          4,
           0,
           -3.4
         ],
         "max": [
-          10.4,
+          11.9,
           8.15,
           3.4
         ]
@@ -8652,6 +8805,7 @@
     "Direct roller/flap/cross/lift connections must trim/reposition only decorative bearing covers if they project into named seam. Do not remove real support or assume whole existing GLB bounding box fits.",
     "Shared-library support feet on high decks need local columns/piles down to ground outside lower-route protected prism. Do not float them in air or put broad hidden ground slabs.",
     "Ramps are46/48degree short energy barriers following continuous serpentines; pending actual speed/contact verification, not inherited50degree evidence.",
-    "Only planned upper/lower crossing is recorded in designedGradeSeparation; drawing is not an automatic nonintersection certificate."
+    "Only planned upper/lower crossing is recorded in designedGradeSeparation; drawing is not an automatic nonintersection certificate.",
+    "B04/B08 preceding45degree bridges widen only the boundary observation mouth to6.8m; other observation pads3.2m. Air seams are trimmed out of support within reported boundary centerline length, not extra travel."
   ]
 }

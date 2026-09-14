@@ -1,12 +1,14 @@
 import { computed, reactive, watch } from 'vue'
 import { levelCatalog } from './game/levels'
 import type { RulesVersion } from './game/level-types'
+import { isTrackTheme, type TrackThemeId } from './game/track-themes'
+import { isBallSkin, type BallSkinId } from './game/ball-skins'
 export type Quality = 'low' | 'high'
 export type CleanMode = 'auto' | 'on' | 'off'
 export type Phase = 'menu' | 'playing' | 'paused' | 'finished'
-export interface Settings { quality: Quality; volume: number; sensitivity: number; reducedMotion: boolean; waterSpeed: number; cleanMode: CleanMode }
+export interface Settings { quality: Quality; volume: number; sensitivity: number; reducedMotion: boolean; waterSpeed: number; cleanMode: CleanMode; trackTheme:TrackThemeId; showPerformance:boolean; ballSkin:BallSkinId }
 export interface Run { time: number; falls: number; date: string }
-export const defaults: Settings = { quality: 'high', volume: 45, sensitivity: 1, reducedMotion: false, waterSpeed: 1, cleanMode: 'auto' }
+export const defaults: Settings = { quality: 'high', volume: 45, sensitivity: 1, reducedMotion: false, waterSpeed: 1, cleanMode: 'auto', trackTheme:'classic', showPerformance:false, ballSkin:'steel' }
 const key = 'marble-lab-v3'
 const firstLevel = levelCatalog[0]!
 const versionLabels: Record<string, string> = { classic: '初版', 'open-hammer': '圆头锤版', 'flat-hammer': '平端锤版', standard: '初始难度', challenge: '挑战难度', serpentine: '蛇形挑战', intense: '极限挑战', 'intense-v2': '极限挑战Ⅱ' }
@@ -43,7 +45,7 @@ function bucketsFor(id: string, version: string) {
   return { runs: validRuns(buckets[version]), archivedByVersion: Object.fromEntries(Object.entries(buckets).filter(([key]) => key !== version)) }
 }
 export const state = reactive({
-  settings: { quality: s.quality === 'low' ? 'low' : 'high', volume: number(s.volume, 45, 0, 100), sensitivity: number(s.sensitivity, 1, .5, 1.5), reducedMotion: s.reducedMotion === true, waterSpeed: number(s.waterSpeed, defaults.waterSpeed, 0, 10), cleanMode: s.cleanMode === 'on' || s.cleanMode === 'off' ? s.cleanMode : defaults.cleanMode } as Settings,
+  settings: { quality: s.quality === 'low' ? 'low' : 'high', volume: number(s.volume, 45, 0, 100), sensitivity: number(s.sensitivity, 1, .5, 1.5), reducedMotion: s.reducedMotion === true, waterSpeed: number(s.waterSpeed, defaults.waterSpeed, 0, 10), cleanMode: s.cleanMode === 'on' || s.cleanMode === 'off' ? s.cleanMode : defaults.cleanMode, trackTheme:isTrackTheme(s.trackTheme)?s.trackTheme:defaults.trackTheme, showPerformance:s.showPerformance===true, ballSkin:isBallSkin(s.ballSkin)?s.ballSkin:defaults.ballSkin } as Settings,
   levelId: initialLevel.config.id,
   lastStartedLevelId: lastStarted?.config.id ?? null,
   hasPlayedBeyondFirst,

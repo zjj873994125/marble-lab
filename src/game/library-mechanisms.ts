@@ -13,8 +13,8 @@ type NativeBody = {
   clearForces?:()=>void
 }
 
-export function createLibraryMechanisms(app:pc.Application,configs:LibraryMechanismConfig[],createBody:CreateBody,load:(file:string)=>Promise<pc.Asset>) {
-  const library=createObstacleLibrary(load)
+export function createLibraryMechanisms(app:pc.Application,configs:LibraryMechanismConfig[],createBody:CreateBody,load:(file:string)=>Promise<pc.Asset>,decorate?:(entity:pc.Entity)=>void) {
+  const library=createObstacleLibrary(load,decorate)
   let disposed=false
   const indicators:pc.StandardMaterial[]=[]
   const entities:pc.Entity[]=[],joints:pc.Entity[]=[]

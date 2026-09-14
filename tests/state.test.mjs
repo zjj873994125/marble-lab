@@ -5,7 +5,13 @@ import ts from 'typescript'
 import { nextTick } from 'vue'
 
 // 在 Node 中检查游戏状态与持久化边界，不依赖 WebGL 或浏览器插件。
+const themeSource=readFileSync(new URL('../src/game/track-themes.ts',import.meta.url),'utf8')
+const themeUrl=`data:text/javascript;base64,${Buffer.from(ts.transpileModule(themeSource,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText).toString('base64')}`
+const ballSource=readFileSync(new URL('../src/game/ball-skins.ts',import.meta.url),'utf8')
+const ballUrl=`data:text/javascript;base64,${Buffer.from(ts.transpileModule(ballSource,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText).toString('base64')}`
 const source = readFileSync(new URL('../src/state.ts', import.meta.url), 'utf8')
+  .replace("from './game/track-themes'",`from '${themeUrl}'`)
+  .replace("from './game/ball-skins'",`from '${ballUrl}'`)
 let counter = 0
 async function load(saved, { version, v2, v3, waterVersion = 'standard', trialVersion } = {}) {
   const catalog = [{config:{id:'initial-gravity',rulesVersion:version ?? 'classic'},medals:[35,55,90]},{config:{id:'water-rush',rulesVersion:waterVersion}},...(trialVersion ? [{config:{id:'mechanism-trial',rulesVersion:trialVersion}}] : [])]
@@ -71,6 +77,63 @@ test('纯净模式兼容旧值、保存手动偏好，恢复默认保留所有�
   assert.equal(current.storage.get('marble-lab-v1'),v1);assert.equal(current.storage.get('marble-lab-v2'),v2)
 })
 
+test('赛道主题校验和恢复默认不丢纯净设置或历史成绩，切肤不重开',async()=>{
+  const buckets={'initial-gravity':{classic:[{time:30,falls:0,date:'2026-09-14'}]},'mechanism-trial':{standard:[{time:50,falls:0,date:'2026-09-14'}],'intense-v2':[{time:80,falls:1,date:'2026-09-14'}]}}
+  for(const value of [undefined,null,'invalid','__proto__',true]) {
+    const current=await load('{}',{v3:JSON.stringify({schemaVersion:3,settings:{trackTheme:value},runsByLevel:buckets})})
+    assert.equal(current.state.settings.trackTheme,'classic')
+  }
+  let current=await load('{}',{v3:JSON.stringify({schemaVersion:3,settings:{cleanMode:'off',waterSpeed:2.5},runsByLevel:buckets})})
+  for(const theme of ['industrial','glacier','black-gold','violet','pink','yellow','classic']) {
+    current.state.phase='paused';current.state.elapsed=12;current.state.checkpoint=1;current.state.falls=2
+    const runId=current.state.runId,sceneLoadId=current.state.sceneLoadId
+    current.state.settings.trackTheme=theme;await nextTick()
+    assert.equal(current.state.phase,'paused');assert.equal(current.state.elapsed,12);assert.equal(current.state.checkpoint,1);assert.equal(current.state.falls,2)
+    assert.equal(current.state.runId,runId);assert.equal(current.state.sceneLoadId,sceneLoadId)
+    const written=current.storage.get('marble-lab-v3')
+    assert.deepEqual(JSON.parse(written).runsByLevel,buckets)
+    current=await load('{}',{v3:written})
+    assert.equal(current.state.settings.trackTheme,theme);assert.equal(current.state.settings.cleanMode,'off');assert.equal(current.state.settings.waterSpeed,2.5)
+  }
+  current.state.settings.trackTheme='black-gold';Object.assign(current.state.settings,current.defaults);await nextTick()
+  assert.equal(current.state.settings.trackTheme,'classic')
+  assert.deepEqual(JSON.parse(current.storage.get('marble-lab-v3')).runsByLevel,buckets)
+})
+
+test('性能开关严格布尔、刷新保留且恢复默认不删除历史',async()=>{
+  const buckets={'initial-gravity':{classic:[{time:30,falls:0,date:'2026-09-14'}]},'mechanism-trial':{'intense-v2':[{time:80,falls:1,date:'2026-09-14'}]}}
+  for(const value of [undefined,null,0,1,'true',false,true]) {
+    const current=await load('{}',{v3:JSON.stringify({schemaVersion:3,settings:{showPerformance:value},runsByLevel:buckets})})
+    assert.equal(current.state.settings.showPerformance,value===true)
+  }
+  let current=await load('{}',{v3:JSON.stringify({schemaVersion:3,settings:{cleanMode:'on',trackTheme:'pink',waterSpeed:2.5},runsByLevel:buckets})})
+  current.state.settings.showPerformance=true;await nextTick()
+  current=await load('{}',{v3:current.storage.get('marble-lab-v3')})
+  assert.equal(current.state.settings.showPerformance,true);assert.equal(current.state.settings.cleanMode,'on');assert.equal(current.state.settings.trackTheme,'pink');assert.equal(current.state.settings.waterSpeed,2.5)
+  Object.assign(current.state.settings,current.defaults);await nextTick()
+  assert.equal(current.state.settings.showPerformance,false)
+  assert.deepEqual(JSON.parse(current.storage.get('marble-lab-v3')).runsByLevel,buckets)
+})
+
+test('九球皮肤独立保存，不改赛道选择或游玩状态，非法回退钢球',async()=>{
+  const buckets={'initial-gravity':{classic:[{time:30,falls:0,date:'2026-09-14'}]}}
+  for(const value of [undefined,null,1,'invalid','shuttlecock']) {
+    const current=await load('{}',{v3:JSON.stringify({schemaVersion:3,settings:{ballSkin:value},runsByLevel:buckets})})
+    assert.equal(current.state.settings.ballSkin,'steel')
+  }
+  let current=await load('{}',{v3:JSON.stringify({schemaVersion:3,settings:{trackTheme:'violet',cleanMode:'off',showPerformance:true},runsByLevel:buckets})})
+  for(const skin of ['titanium','rose-gold','ice-blue','ringed-steel','basketball','soccer','tennis','eight-ball','steel']) {
+    const runId=current.state.runId,sceneLoadId=current.state.sceneLoadId
+    current.state.settings.ballSkin=skin;await nextTick()
+    assert.equal(current.state.phase,'menu');assert.equal(current.state.runId,runId);assert.equal(current.state.sceneLoadId,sceneLoadId)
+    assert.equal(current.state.settings.trackTheme,'violet');assert.equal(current.state.settings.cleanMode,'off');assert.equal(current.state.settings.showPerformance,true)
+    const written=current.storage.get('marble-lab-v3');assert.deepEqual(JSON.parse(written).runsByLevel,buckets)
+    current=await load('{}',{v3:written});assert.equal(current.state.settings.ballSkin,skin)
+  }
+  current.state.settings.ballSkin='eight-ball';Object.assign(current.state.settings,current.defaults);await nextTick()
+  assert.equal(current.state.settings.ballSkin,'steel');assert.deepEqual(JSON.parse(current.storage.get('marble-lab-v3')).runsByLevel,buckets)
+})
+
 
 test('新玩法只迁入旧版桶，保存保留 v1 原文，重复加载不重复迁移', async () => {
   const legacy = JSON.stringify({ settings: { quality: 'low', volume: 27, sensitivity: .8, reducedMotion: true }, runs: [{ time: 12, falls: 1, date: 'old' }] })
@@ -133,7 +196,7 @@ test('平端规则独立计分，重复保存和切回旧规则都保留已有�
   first.state.ready = true; first.startRun(); first.state.elapsed = 31; first.finishRun(); await nextTick()
   const written = first.storage.get('marble-lab-v3')
   const data = JSON.parse(written)
-  assert.deepEqual(data.settings, { ...settings, waterSpeed: 1, cleanMode: 'auto' })
+  assert.deepEqual(data.settings, { ...settings, waterSpeed: 1, cleanMode: 'auto', trackTheme:'classic', showPerformance:false, ballSkin:'steel' })
   for (const version of Object.keys(oldBuckets)) assert.deepEqual(data.runsByLevel['initial-gravity'][version], oldBuckets[version])
   assert.deepEqual(data.runsByLevel['initial-gravity']['flat-hammer'].map(run => run.time), [31])
   assert.equal(first.storage.get('marble-lab-v1'), legacy)
@@ -204,7 +267,7 @@ test('调难challenge不混入standard，往返第一关及刷新保留所有旧
 for (const targetVersion of ['intense','intense-v2']) test(`第三关${targetVersion}独立保存，所有历史及设置往返刷新均保留`, async () => {
   const old = { standard: [{time:50,falls:1,date:'2026-09-14'}], challenge: [{time:60,falls:2,date:'2026-09-14'}], ...(targetVersion==='intense-v2'?{intense:[{time:70,falls:3,date:'2026-09-14'}]}:{}) }
   const other = { classic: [{time:30,falls:0,date:'2026-09-13'}] }
-  const settings = { quality:'low',volume:23,sensitivity:1.1,reducedMotion:true,waterSpeed:2.5,cleanMode:'off' }
+  const settings = { quality:'low',volume:23,sensitivity:1.1,reducedMotion:true,waterSpeed:2.5,cleanMode:'off',trackTheme:'industrial',showPerformance:false,ballSkin:'eight-ball' }
   const v1='{"runs":[]}',v2='{"schemaVersion":2,"runsByVersion":{}}'
   const v3=JSON.stringify({schemaVersion:3,settings,lastStartedLevelId:'mechanism-trial',hasPlayedBeyondFirst:true,runsByLevel:{'initial-gravity':other,'mechanism-trial':old}})
   const current=await load(v1,{v2,v3,trialVersion:targetVersion})

@@ -4,6 +4,8 @@ import type { LevelConfig, Position, PrimitiveConfig } from '../game/level-types
 import { turntablePose } from '../game/mechanism-motion'
 import { partCorners, rotatePoint } from '../game/obstacle-scene'
 import { libraryFallback } from '../game/library-visuals'
+import { state } from '../state'
+import { themedPrimitiveColor, trackTheme } from '../game/track-themes'
 
 const props = defineProps<{ level: LevelConfig }>()
 const imageId = useId()
@@ -49,6 +51,7 @@ const picture = computed(() => {
     objects.push({name:'Cross axle',type:'cylinder',position:[cross.position[0],1.3,cross.position[2]],size:[.65,2.6,.65],material:'dark'})
   }
   const palette:Record<string,string> = {cream:'#fff6de',edge:'#b4c9c3',orange:'#eea343',blue:'#9ac6cf',dark:'#426169'}
+  for(const key of Object.keys(palette))palette[key]=themedPrimitiveColor(state.settings.trackTheme,key,palette[key]!)
   const faces:{polygon:string;color:string;depth:number}[]=[]
   const shadows:string[]=[]
   const polygon = (points:Position[]) => points.map(point => {const p=project(point);return `${p.x},${p.y}`}).join(' ')
@@ -69,7 +72,8 @@ const picture = computed(() => {
     for(const [index,indices] of polygons.entries()) {
       const points=indices.map(i=>vertices[i]!)
       const brightness=part.type==='cylinder'?(index<2?.97:.65+.3*(.5+.5*Math.cos((index-2)*Math.PI/10))):[.7,.84,.92,.76,1,.58][index]!
-      faces.push({polygon:polygon(points),color:shade(palette[part.material]??'#fff6de',brightness),depth:points.reduce((sum,p)=>sum+project(p).depth,0)/points.length})
+      const color=state.settings.trackTheme!=='classic'&&teaching&&part.name===level.pendulum!.ball.name?trackTheme(state.settings.trackTheme).roles.hammer.color:palette[part.material]??'#fff6de'
+      faces.push({polygon:polygon(points),color:shade(color,brightness),depth:points.reduce((sum,p)=>sum+project(p).depth,0)/points.length})
       // 光线投影到水面；整组透明合成，交叠处不会反复变黑。
       shadows.push(polygon(points.map(([x,y,z])=>[x+(y+.1)*.6,-.1,z+(y+.1)*.3] as Position)))
     }
@@ -83,14 +87,15 @@ const picture = computed(() => {
   }
   const sphere=project(ball),sphereRadius=.425*scale
   const ballShadow=project([ball[0]+.14,3.405,ball[2]+.12])
-  return {faces:faces.sort((a,b)=>a.depth-b.depth),shadows,sphere,sphereRadius,ballShadow}
+  const water=trackTheme(state.settings.trackTheme).roles.water.color
+  return {faces:faces.sort((a,b)=>a.depth-b.depth),shadows,sphere,sphereRadius,ballShadow,waterTop:state.settings.trackTheme==='classic'?'#427d81':shade(water,1.12),waterBottom:state.settings.trackTheme==='classic'?'#22525c':water}
 })
 </script>
 
 <template>
   <svg viewBox="0 0 300 210" class="level-thumbnail" aria-hidden="true">
     <defs>
-      <linearGradient :id="`${imageId}-water`" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#427d81"/><stop offset="1" stop-color="#22525c"/></linearGradient>
+      <linearGradient :id="`${imageId}-water`" x1="0" y1="0" x2="1" y2="1"><stop :stop-color="picture.waterTop"/><stop offset="1" :stop-color="picture.waterBottom"/></linearGradient>
       <radialGradient :id="`${imageId}-steel`" cx="32%" cy="25%"><stop stop-color="#fffef1"/><stop offset=".27" stop-color="#dce9e3"/><stop offset=".48" stop-color="#526a70"/><stop offset=".75" stop-color="#a9c0c0"/><stop offset="1" stop-color="#354c54"/></radialGradient>
       <filter :id="`${imageId}-shadow`" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.1"/></filter>
       <clipPath :id="`${imageId}-crop`"><rect width="300" height="210" rx="12"/></clipPath>

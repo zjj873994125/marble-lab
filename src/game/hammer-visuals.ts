@@ -22,7 +22,7 @@ export function createHammerCylinderGeometry(size: Position) {
 }
 
 // 锤头和柄必须一起就绪，避免半个模型与基础几何叠在一起。
-export async function attachHammerVisuals(app: pc.Application, head: pc.Entity, rod: pc.Entity, config?: HammerVisualsConfig | null, sharedLoad?: (file: string) => Promise<pc.Asset>): Promise<() => void> {
+export async function attachHammerVisuals(app: pc.Application, head: pc.Entity, rod: pc.Entity, config?: HammerVisualsConfig | null, sharedLoad?: (file: string) => Promise<pc.Asset>, decorate?: (entity:pc.Entity)=>void): Promise<() => void> {
   if (!config) return () => {}
   const assets: pc.Asset[] = []
   const instances: pc.Entity[] = []
@@ -43,6 +43,7 @@ export async function attachHammerVisuals(app: pc.Application, head: pc.Entity, 
     instances.push(headVisual)
     const rodVisual = (rodAsset.resource as pc.ContainerResource).instantiateRenderEntity()
     instances.push(rodVisual)
+    decorate?.(headVisual);decorate?.(rodVisual)
     const headScale = head.getLocalScale(), rodScale = rod.getLocalScale()
     headVisual.setLocalScale(1 / headScale.x, 1 / headScale.y, 1 / headScale.z)
     // 柄模型长一米，保留父实体的长度伸缩，只抵消径向的基础图元比例。

@@ -18,7 +18,7 @@ function nodeAt(root:pc.Entity,path:string) {
 }
 
 // 每个Application使用域一份整包模板，实例只克隆目标根；资产由外层资源池持有。
-export function createObstacleLibrary(load:(file:string)=>Promise<pc.Asset>) {
+export function createObstacleLibrary(load:(file:string)=>Promise<pc.Asset>,decorate?:(entity:pc.Entity)=>void) {
   let template:pc.Entity|undefined,pending:Promise<pc.Entity>|undefined,disposed=false
   const instances=new Set<LibraryInstance>()
   async function getTemplate() {
@@ -27,6 +27,7 @@ export function createObstacleLibrary(load:(file:string)=>Promise<pc.Asset>) {
       if(disposed)throw new DOMException('机关库已卸载','AbortError')
       const entity=(asset.resource as pc.ContainerResource).instantiateRenderEntity()
       entity.enabled=false;template=entity
+      try { decorate?.(entity) } catch(error) { entity.destroy();template=undefined;throw error }
       return entity
     })
     return pending

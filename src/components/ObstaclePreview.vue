@@ -11,6 +11,7 @@ const playing=ref(!state.settings.reducedMotion&&!reduce.matches)
 let preview:ObstaclePreview|undefined,disposed=false
 function reduction(){if(state.settings.reducedMotion||reduce.matches)playing.value=false}
 watch(()=>state.settings.reducedMotion,reduction)
+watch(()=>[state.settings.trackTheme,state.settings.quality,state.settings.reducedMotion,state.settings.waterSpeed,state.settings.ballSkin],()=>preview?.applyTheme())
 watch(() => [playing.value, props.active],()=>{preview?.setVisible(props.active);preview?.setPlaying(playing.value&&props.active)})
 watch(() => props.id,id=>{playing.value=!state.settings.reducedMotion&&!reduce.matches;preview?.setObstacle(id);preview?.setPlaying(playing.value&&props.active)})
 function replay(){preview?.replay();playing.value=true}
@@ -20,7 +21,7 @@ onMounted(async()=>{
     const {createObstaclePreview}=await import('../game/obstacle-preview')
     if(disposed||!host.value)return
     const canvas=document.createElement('canvas');canvas.setAttribute('aria-label','障碍物三维预览，可拖动旋转');host.value.append(canvas)
-    preview=createObstaclePreview(canvas,props.id,message=>{if(!disposed)status.value=message})
+    preview=createObstaclePreview(canvas,props.id,message=>{if(!disposed)status.value=message},()=>state.settings.trackTheme,()=>state.settings)
     preview.setVisible(props.active)
     preview.setPlaying(playing.value&&props.active)
   }catch(e){if(!disposed)error.value=e instanceof Error?e.message:'三维预览暂不可用'}finally{if(!disposed)loading.value=false}

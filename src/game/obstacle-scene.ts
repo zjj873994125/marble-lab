@@ -7,7 +7,7 @@ import { isLibraryKind, previewLibraryConfig } from './library-data'
 import { libraryFallback, libraryPreviewAngle } from './library-visuals'
 import type { LibraryKind } from './library-types'
 
-export interface PreviewPart extends PrimitiveConfig { hidden?: boolean; marker?: boolean }
+export interface PreviewPart extends PrimitiveConfig { hidden?: boolean; marker?: boolean; protectedTheme?:boolean }
 export interface PreviewModel { file: string; anchor: string; replaces: string[]; handle?: boolean }
 export interface ObstacleScene { frame: (time: number) => PreviewPart[]; models: PreviewModel[]; moving: boolean; library?:LibraryKind }
 const clone = (part: PrimitiveConfig): PreviewPart => ({ ...part, position: [...part.position], size: [...part.size], rotation: part.rotation ? [...part.rotation] : undefined })
@@ -59,7 +59,7 @@ export function createObstacleScene(id: ObstacleId): ObstacleScene {
     const p=water.platform!
     if(water.visuals?.platform)models.push({file:water.visuals.platform,anchor:p.body.name,replaces:[p.body.name]})
     const scenery=[box('Near bank',[p.body.position[0],p.body.position[1],7.2],[3.6,.36,2.4]),box('Far bank',[p.body.position[0],p.body.position[1],-.6],[3.6,.36,2.4]),...water.staticObjects.filter(o=>o.name.startsWith('Crossing guide')).map(clone)]
-    frame=time=>{const x=(p.centerX??p.body.position[0])+p.amplitude*Math.sin(time*p.angularSpeed);return [...scenery,{...clone(p.body),position:[x,p.body.position[1],p.centerZ]},{...clone(p.stripe),position:[x,p.stripeY,p.centerZ]}]}
+    frame=time=>{const x=(p.centerX??p.body.position[0])+p.amplitude*Math.sin(time*p.angularSpeed);return [...scenery,{...clone(p.body),position:[x,p.body.position[1],p.centerZ]},{...clone(p.stripe),position:[x,p.stripeY,p.centerZ],protectedTheme:true}]}
   } else {
     let parts: PreviewPart[], path: Position[]
     if(id==='beam') {
