@@ -6,10 +6,14 @@ import type { Position, PrimitiveConfig } from './level-types'
 import { isLibraryKind, previewLibraryConfig } from './library-data'
 import { libraryFallback, libraryPreviewAngle } from './library-visuals'
 import type { LibraryKind } from './library-types'
+import { isAdvancedKind } from './advanced-library'
+import { previewAdvancedConfig } from './advanced-preview'
+import { cascadeState, conveyorSpeed, orbitalPose } from './advanced-motion'
+import type { AdvancedKind, AdvancedMechanismConfig } from './advanced-types'
 
 export interface PreviewPart extends PrimitiveConfig { hidden?: boolean; marker?: boolean; protectedTheme?:boolean }
 export interface PreviewModel { file: string; anchor: string; replaces: string[]; handle?: boolean }
-export interface ObstacleScene { frame: (time: number) => PreviewPart[]; models: PreviewModel[]; moving: boolean; library?:LibraryKind }
+export interface ObstacleScene { frame: (time: number) => PreviewPart[]; models: PreviewModel[]; moving: boolean; library?:LibraryKind; advanced?:AdvancedKind }
 const clone = (part: PrimitiveConfig): PreviewPart => ({ ...part, position: [...part.position], size: [...part.size], rotation: part.rotation ? [...part.rotation] : undefined })
 const box = (name: string, position: Position, size: Position, material: PrimitiveConfig['material'] = 'cream'): PreviewPart => ({ name, position, size, material, type: 'box' })
 const marker = (position: Position): PreviewPart => ({ name: 'Path illustration', position, size: [.85,.85,.85], type: 'sphere', material: 'edge', marker: true })
@@ -26,6 +30,23 @@ export function rotatePoint(point: Position, angles: Position = [0,0,0]): Positi
 // 卡片和大预览使用同一份构图；只有大预览推进动画，不创建游戏刚体或存档。
 export function createObstacleScene(id: ObstacleId): ObstacleScene {
   if(isLibraryKind(id)) { const config=previewLibraryConfig(id);return {library:id,models:[],moving:true,frame:time=>libraryFallback(config,time,libraryPreviewAngle(config,time))} }
+  if(isAdvancedKind(id)){
+    const config=previewAdvancedConfig(id),frames:PreviewPart[]=[]
+    const parts=(value:AdvancedMechanismConfig):PreviewPart[]=>value.kind==='spring-trampoline'?[clone(value.deck)]:value.kind==='gravity-coaster'||value.kind==='vortex-funnel'?value.colliders.map(clone):value.kind==='pulse-jet'?(value.staticColliders??[]).map(clone):value.kind==='orbital-catcher'?value.parts.map(clone):value.kind==='reversing-conveyor'?[clone(value.deck)]:value.kind==='gimbal-platform'?[clone(value.outerFrame),clone(value.innerDeck)]:value.tiles.map(clone)
+    const frame=(time:number)=>{
+      const result=parts(config)
+      if(config.kind==='orbital-catcher'){const offset=orbitalPose(time,config).offset;result.forEach(part=>{part.position=part.position.map((coordinate,index)=>coordinate+offset[index]!) as Position})}
+      else if(config.kind==='reversing-conveyor'){const speed=conveyorSpeed(time,config),z=((time*speed+3)%6+6)%6-3;result.push(marker([0,3.825,z]))}
+      else if(config.kind==='gimbal-platform'){result[0]!.rotation=[config.restAnglesDegrees[0]+Math.sin(time*.8)*5,0,0];result[1]!.rotation=[result[0]!.rotation![0],0,Math.sin(time*1.1)*9]}
+      else if(config.kind==='cascade-bridge')for(let index=0;index<result.length;index++){const state=cascadeState(time,1,index,config),elapsed=Math.max(0,time-(1+config.firstReleaseDelay+config.releaseInterval*index));if(state.released)result[index]!.position[1]-=Math.min(5,8*elapsed*elapsed)}
+      else if(config.kind==='spring-trampoline'){const y=config.deck.position[1]+config.deck.size[1]/2+.425+Math.max(0,Math.sin(time*Math.PI))*2;result.push(marker([0,y,0]))}
+      else if(config.kind==='pulse-jet'){result.push(marker([Math.sin(time*1.5)*.8,3.825,0]))}
+      else if(config.kind==='vortex-funnel'){const radius=Math.max(.2,3-(time%5)*.55),angle=time*2;result.push(marker([Math.cos(angle)*radius,4.5-Math.min(2,time%5*.35),Math.sin(angle)*radius]))}
+      else if(config.kind==='gravity-coaster')result.push(marker(result[Math.floor((time*.8)%result.length)]?.position??[0,3.825,0]))
+      return [...frames,...result]
+    }
+    return {advanced:id,models:[],moving:!['gravity-coaster'].includes(id),frame}
+  }
   const models: PreviewModel[] = []
   let frame: (time: number) => PreviewPart[]
   if (id === 'hammers') {

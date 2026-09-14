@@ -1,0 +1,201 @@
+{
+  "asset": "advanced-obstacle-library.glb",
+  "source": "art/advanced-obstacle-library.blend",
+  "sourceSha256": "cca45bb2583104a25afef1f99db7b9d1c229b50c9cf1d63bffe269155e8f537e",
+  "glbSha256": "99b0803ec4196cbe2d88170b23b9ce628637205b201a5e7739f8ccf49e40c428",
+  "manifestSha256": "936894f7d45a9066337951ffb9b35cd6bb0fe302dd1428972f284197a8d5be34",
+  "constructionSha256": "90c580d7db8a50eb642380df9d8a104b3a5529241aedfb5f80da9528993d02d1",
+  "contractSha256": "26c1fe976537c0ac5b6a27b4e721a4316994e32521b67097fa6102f969c06465",
+  "units": "m",
+  "upAxis": "+Y",
+  "forwardAxis": "-Z",
+  "runtimeSupported": true,
+  "runtimeSupportScope": "asset-loading-and-semantic-parts",
+  "statistics": {
+    "bytes": 1514564,
+    "triangles": 84968,
+    "materials": 8,
+    "meshes": 617,
+    "materialNames": [
+      "Platform enamel",
+      "Graphite chassis",
+      "Safety terracotta",
+      "Brushed alloy",
+      "Printed markings",
+      "Rubber pads",
+      "Ivory polymer",
+      "Airflow indicator"
+    ]
+  },
+  "entries": [
+    {
+      "id": "spring-trampoline",
+      "rootNode": "SpringTrampoline",
+      "rootBounds": {
+        "min": [
+          -1.7000000476837158,
+          0.0,
+          -1.7000000476837158
+        ],
+        "max": [
+          1.7000000476837158,
+          3.502500057220459,
+          1.7000000476837158
+        ]
+      },
+      "statistics": {
+        "triangles": 38768,
+        "materials": 6,
+        "meshes": 342
+      }
+    },
+    {
+      "id": "gravity-coaster",
+      "rootNode": "GravityCoaster",
+      "rootBounds": {
+        "min": [
+          -0.699999988079071,
+          0.0,
+          -9.960999488830566
+        ],
+        "max": [
+          7.608195781707764,
+          5.37999963760376,
+          0.3100000023841858
+        ]
+      },
+      "statistics": {
+        "triangles": 7060,
+        "materials": 5,
+        "meshes": 50
+      }
+    },
+    {
+      "id": "pulse-jet",
+      "rootNode": "PulseJet",
+      "rootBounds": {
+        "min": [
+          -2.375,
+          0.0,
+          -1.0450000762939453
+        ],
+        "max": [
+          0.9724999070167542,
+          4.644999980926514,
+          1.0450000762939453
+        ]
+      },
+      "statistics": {
+        "triangles": 3092,
+        "materials": 5,
+        "meshes": 13
+      }
+    },
+    {
+      "id": "orbital-catcher",
+      "rootNode": "OrbitalCatcher",
+      "rootBounds": {
+        "min": [
+          -2.0,
+          0.0,
+          -1.2549999952316284
+        ],
+        "max": [
+          2.7899999618530273,
+          3.512500047683716,
+          1.4399999380111694
+        ]
+      },
+      "statistics": {
+        "triangles": 10984,
+        "materials": 6,
+        "meshes": 64
+      }
+    },
+    {
+      "id": "reversing-conveyor",
+      "rootNode": "ReversingConveyor",
+      "rootBounds": {
+        "min": [
+          -1.1299999952316284,
+          0.0,
+          -3.3499999046325684
+        ],
+        "max": [
+          1.1299999952316284,
+          3.4210000038146973,
+          3.3499999046325684
+        ]
+      },
+      "statistics": {
+        "triangles": 6460,
+        "materials": 5,
+        "meshes": 53
+      }
+    },
+    {
+      "id": "vortex-funnel",
+      "rootNode": "VortexFunnel",
+      "rootBounds": {
+        "min": [
+          -4.090000152587891,
+          0.0,
+          -4.090000152587891
+        ],
+        "max": [
+          4.090000152587891,
+          4.75,
+          4.090000152587891
+        ]
+      },
+      "statistics": {
+        "triangles": 11256,
+        "materials": 7,
+        "meshes": 32
+      }
+    },
+    {
+      "id": "gimbal-platform",
+      "rootNode": "GimbalPlatform",
+      "rootBounds": {
+        "min": [
+          -2.510000228881836,
+          0.0,
+          -2.510000228881836
+        ],
+        "max": [
+          2.510000228881836,
+          3.8206393718719482,
+          2.510000228881836
+        ]
+      },
+      "statistics": {
+        "triangles": 3028,
+        "materials": 5,
+        "meshes": 23
+      }
+    },
+    {
+      "id": "cascade-bridge",
+      "rootNode": "CascadeBridge",
+      "rootBounds": {
+        "min": [
+          -1.1449999809265137,
+          0.0,
+          -4.774999618530273
+        ],
+        "max": [
+          1.1449999809265137,
+          3.4200000762939453,
+          4.774999618530273
+        ]
+      },
+      "statistics": {
+        "triangles": 4320,
+        "materials": 5,
+        "meshes": 40
+      }
+    }
+  ],
+  "status": "Asset loading and semantic hierarchy confirmed by CODE; per-mechanism physics and full route validation tracked separately."
+}

@@ -46,8 +46,8 @@ CODE先实现八项类型/行为和资源接口，LEVEL设计测试场及正式 
 
 ## 状态与记录
 
-- 第一阶段：开发中，待测试/试玩、commit与第一次push/CI。
-- 第二阶段：等待第一阶段关口，尚未开工。
+- 第一阶段：**已完成并推送**。commit `e5d9025859e918f1f6c98209d5464605c53e377d`（`feat: add long-form challenge courses`）已在origin/main，本地与远程0/0一致。关联GitHub Actions [run 34835720369](https://github.com/zjj873994125/marble-lab/actions/runs/34835720369) 于2026-09-14完成，结论success；包含check、publish、deploy的工作流总体成功。CODE交付记录包含59项测试与生产构建通过、五关及两关资源加载、top主线有向步骤、three A/B/C选择/保持/汇合/结算的浏览器隔离验证；真实全长手动滚动难度仍由用户后续体验判断。
+- 第二阶段：**第一阶段关口通过，现已正式开工**。目标为八种新机关、21类图鉴和advanced-trial高阶机关试验场，完成测试/构建/逐项及整场浏览器验证后执行本次第二次push并取得CI结果。
 - Git执行授权：**仅本次**两批及其必要修复提交、推送到origin/main已获授权，无需再次确认。用户已明确补充：这不是后续任务的长期Git授权；本次两阶段完成后授权终止，其他任务在用户明确要求前不得add/commit/push、合并/变基、切换分支或执行其他Git写入。不能把无关改动一并提交，后续不得沿用本执行单授权。
-- 当前已有两份正式TS和CODE多实例/course协议，LEVEL已补有向gate/steps，待ART资源和CODE测试/实际通路交付；不能将配置落盘视为阶段1完成。
+- 第一阶段正式TS、两份TrackStatic、CODE多实例/course协议和模型接入已作为e5d9025交付；后续修改不应混回第一批历史状态。
 - 持续跟进已设置：当前任务的heartbeat自动化 `marble-lab`，每15分钟检查三任务与阶段关口，无变化静默，两次最终push及关联CI均成功后暂停。CODE仍是唯一Git写入方，跟进不重复创建执行任务。

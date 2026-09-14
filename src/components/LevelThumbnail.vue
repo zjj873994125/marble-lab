@@ -13,10 +13,11 @@ const picture = computed(() => {
   const level = props.level
   const teaching = !!level.pendulum
   const libraryMechanism = level.mechanisms?.find(config=>config.kind==='weight-seesaw') ?? level.mechanisms?.[0]
+  const advancedMechanism = level.advancedMechanisms?.[0]
   const libraryParts = libraryMechanism ? libraryFallback(libraryMechanism,1,libraryMechanism.kind==='weight-seesaw'?(libraryMechanism.restAngle??8):0) : []
   // 固定局部取景，不再把整条赛道压进一张线路图；只影响缩略图相机。
-  const focus: Position = teaching ? [-6.5, 3.4, -3] : libraryMechanism ? [libraryMechanism.position[0],libraryMechanism.position[1]+3.4,libraryMechanism.position[2]] : [level.turntable!.position[0], 2.5, level.turntable!.position[2]]
-  const scale = teaching ? 22 : libraryMechanism ? 26 : 21
+  const focus: Position = teaching ? [-6.5, 3.4, -3] : libraryMechanism ? [libraryMechanism.position[0],libraryMechanism.position[1]+3.4,libraryMechanism.position[2]] : advancedMechanism ? [advancedMechanism.position[0],advancedMechanism.position[1]+3.4,advancedMechanism.position[2]] : [level.turntable!.position[0], 2.5, level.turntable!.position[2]]
+  const scale = teaching ? 22 : libraryMechanism ? 26 : advancedMechanism ? 24 : 21
   const project = ([x,y,z]: Position) => ({ x: 150 + ((x-focus[0])-(z-focus[2]))*.707*scale, y: 130 + (((x-focus[0])+(z-focus[2]))*.36-(y-focus[1])*.86)*scale, depth:x+z+y*.84 })
   const box = (name:string,position:Position,size:Position,material:PrimitiveConfig['material']):PrimitiveConfig => ({name,type:'box',position,size,material})
   const objects:PrimitiveConfig[] = []
@@ -35,6 +36,10 @@ const picture = computed(() => {
       const local=rotatePoint(part.position,[0,yaw,0])
       objects.push({...part,position:local.map((v,i)=>v+libraryMechanism.position[i]!) as Position,rotation:[part.rotation?.[0]??0,yaw+(part.rotation?.[1]??0),part.rotation?.[2]??0]})
     }
+  } else if(advancedMechanism) {
+    objects.push(...level.staticObjects.filter(object=>object.body==='static'&&Math.hypot(object.position[0]-focus[0],object.position[2]-focus[2])<7))
+    const localParts=advancedMechanism.kind==='spring-trampoline'?[advancedMechanism.deck]:advancedMechanism.kind==='gravity-coaster'||advancedMechanism.kind==='vortex-funnel'?advancedMechanism.colliders:advancedMechanism.kind==='pulse-jet'?advancedMechanism.staticColliders??[]:advancedMechanism.kind==='orbital-catcher'?advancedMechanism.parts:advancedMechanism.kind==='reversing-conveyor'?[advancedMechanism.deck]:advancedMechanism.kind==='gimbal-platform'?[advancedMechanism.outerFrame,advancedMechanism.innerDeck]:advancedMechanism.tiles
+    for(const part of localParts){const local=rotatePoint(part.position,[0,advancedMechanism.yaw??0,0]);objects.push({...part,position:local.map((value,index)=>value+advancedMechanism.position[index]!) as Position,rotation:[part.rotation?.[0]??0,(advancedMechanism.yaw??0)+(part.rotation?.[1]??0),part.rotation?.[2]??0]})}
   } else {
     const banks = level.staticObjects.filter(object => ['turntable-approach-island','turntable-entry-tongue','turntable-exit-tongue','turntable-exit-island','turntable-to-lifts-link'].includes(object.name))
     for (const bank of banks) {

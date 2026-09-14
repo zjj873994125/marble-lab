@@ -65,9 +65,14 @@ def fast_box(name, position, size, material, parent, bevel=0):
     mesh.materials.append(material)
     obj = bpy.data.objects.new(name, mesh)
     parts.collection.objects.link(obj)
-    obj.location = assets.game_position(position)
+    world_matrix = Matrix.Translation(assets.game_position(position))
     if parent:
+        bpy.context.view_layer.update()
         obj.parent = parent
+        obj.matrix_parent_inverse = Matrix.Identity(4)
+        obj.matrix_basis = parent.matrix_world.inverted() @ world_matrix
+    else:
+        obj.matrix_world = world_matrix
     if bevel:
         modifier = obj.modifiers.new('Machined edge', 'BEVEL')
         modifier.width = min(bevel, min(size) / 4)

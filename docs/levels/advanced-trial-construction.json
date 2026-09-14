@@ -1,0 +1,411 @@
+{
+  "schema": "marble-lab.advanced-trial-construction.v1",
+  "status": "technical-gate-passed-awaiting-full-route-playtest-and-product-acceptance",
+  "id": "advanced-trial",
+  "title": "高阶机关试验场",
+  "rulesVersion": "standard",
+  "catalogNumber": "试验",
+  "sourceDesign": "docs/levels/advanced-obstacles.json",
+  "sourceDesignSha256": "61880813d78329d7cc7d1fcb8817f901dec431334f9382bb96d3e3e21b498f0f",
+  "units": "metres-seconds-newtons-degrees",
+  "coordinates": {
+    "runtime": "Y-up; [x,y,z]",
+    "moduleBasis": "local -Z forward, local +X lateral, local +Y up",
+    "rootTransform": "position+yaw only; scale [1,1,1]",
+    "sizes": "full extents, not half extents",
+    "portPosition": "surface contact point; add ball radius 0.425 for ball-center route points"
+  },
+  "playerBaseline": {
+    "ballDiameter": 0.85,
+    "ballRadius": 0.425,
+    "mass": 1,
+    "gravity": [0,-16,0],
+    "globalHorizontalSpeedLimit": 7,
+    "changedByLevel": false
+  },
+  "staticAsset": {
+    "blend": "art/advanced-trial.blend",
+    "glb": "advanced-trial-track.glb",
+    "root": "TrackStatic",
+    "origin": [0,0,0],
+    "transform": "identity",
+    "include": "fixed course decks, banks, ramps, rails and level-specific foundations/support columns",
+    "exclude": "all moving module parts, force volumes, water, checkpoint rings and gameplay scripts"
+  },
+  "deliveredAssets": {
+    "advancedTrialTrack": {"path":"public/models/advanced-trial-track.glb","sha256":"137e6b18094491e169de6b06b821c58d500e561d88bbee5354e727b1f9ffab4d","bytes":663112,"triangles":35460,"materials":6,"root":"TrackStatic"},
+    "advancedLibrary": {"path":"public/models/advanced-obstacle-library.glb","sha256":"99b0803ec4196cbe2d88170b23b9ce628637205b201a5e7739f8ccf49e40c428","bytes":1514564,"triangles":84968,"materials":8,"identityRoots":8},
+    "advancedLibraryManifest": {"path":"public/models/advanced-obstacle-library.json","sha256":"936894f7d45a9066337951ffb9b35cd6bb0fe302dd1428972f284197a8d5be34","runtimeSupportedMeaning":"asset-loading-and-semantic-parts only; physics not yet verified"},
+    "geometryCompatibility": "ART reports dock local Z 0.4, support exclusions and current construction 90c580d7 were applied"
+  },
+  "advancedLibraryAssetRequirement": {
+    "preferredBlend": "art/advanced-obstacle-library.blend",
+    "preferredGlb": "advanced-obstacle-library.glb",
+    "root": "AdvancedObstacleLibrary",
+    "transform": "identity",
+    "rule": "one shared asset and manifest; instances share meshes/materials; gameplay collision remains explicit"
+  },
+  "libraryModules": [
+    {
+      "kind": "spring-trampoline",
+      "name": "蓄能蹦床",
+      "rootMeaning": "contact deck center projected to world XZ; root Y=0 and all listed Y are local world-height offsets",
+      "entryPort": {"position":[0,3.7,1.5],"forward":[0,0,-1],"note":"fixed approach bank ends 0.3m above deck"},
+      "exitPort": {"position":[0,3.4,-4.5],"forward":[0,0,-1],"kind":"nominal airborne landing target"},
+      "parameters": {"deckSize":[2.4,0.3,2.4],"topY":3.4,"coreRadius":0.75,"outerRadius":1.1,"storedEnergyJ":32,"poweredNormalSpeedCeiling":8.5,"entryDrop":0.3,"nominalOutgoingVelocity":[0,8,-4.5],"rearmSeparationAboveSurface":0.545,"minimumRearmSeconds":0.25},
+      "dynamicParts": ["SpringDeck","CompressionLinkage","EnergyNeedle"],
+      "fixedParts": ["SpringFrame","SpringGuardNorth","SpringGuardSouth","SpringPedestal"],
+      "collision": "SpringDeck is the only powered top contact; frame collision must remain outside outerRadius 1.1",
+      "sweptOrActionRegion": {"type":"cylinder","center":[0,3.325,0],"radius":1.1,"yRange":[3.22,3.4],"collision":true},
+      "supportExclusion": {"type":"box","center":[0,3.4,0],"size":[2.4,0.8,2.4],"reason":"no static deck beneath powered surface"}
+    },
+    {
+      "kind": "gravity-coaster",
+      "name": "重力过山车弯轨",
+      "rootMeaning": "entry centerline surface point",
+      "entryPort": {"position":[0,5.2,0],"forward":[0,0,-1]},
+      "exitPort": {"position":[7.608,4.2,-9.261],"forward":[1,0,0]},
+      "parameters": {"entryTopY":5.2,"valleyTopY":3.4,"exitTopY":4.2,"width":1.4,"verticalTransitionRadius":4,"planTurnRadius":4,"planTurnDegrees":90,"bankDegrees":32,"railHeight":0.25,"globalSpeedChanged":false,"completeLoopIncluded":false},
+      "centerlineConstruction": [
+        {"kind":"verticalArc","radius":4,"degrees":30,"from":[0,5.2,0],"heading":"-Z","sense":"down-concave"},
+        {"kind":"slope","length":1.456,"degrees":-30,"heading":"-Z"},
+        {"kind":"verticalArc","radius":4,"degrees":30,"to":[0,3.4,-5.261],"sense":"down-to-level"},
+        {"kind":"bankedPlanArc","radius":4,"degrees":90,"center":[4,3.4,-5.261],"to":[4,3.4,-9.261],"bankDegrees":32,"headingOut":"+X"},
+        {"kind":"verticalArc","radius":4,"degrees":20,"sense":"level-to-up"},
+        {"kind":"slope","length":0.928,"degrees":20,"heading":"+X"},
+        {"kind":"verticalArc","radius":4,"degrees":20,"to":[7.608,4.2,-9.261],"sense":"up-to-level"}
+      ],
+      "dynamicParts": [],
+      "fixedParts": ["CoasterDeckSegments","CoasterRailLeft","CoasterRailRight","CoasterColumns"],
+      "collision": "static segmented concave course and two real 0.25m rails; no flat hidden underlay and no spline attachment",
+      "sweptOrActionRegion": {"type":"static-envelope","min":[-1,3.15,-10.3],"max":[8.3,5.45,1],"collision":true},
+      "supportExclusion": {"type":"centerline-clearance","lateral":1.0,"verticalAbove":1.5,"reason":"columns stay outside travel and camera corridor"}
+    },
+    {
+      "kind": "pulse-jet",
+      "name": "脉冲喷气阵",
+      "rootMeaning": "center of 2m route exposure on deck topY 3.4",
+      "entryPort": {"position":[0,3.4,1.2],"forward":[0,0,-1]},
+      "exitPort": {"position":[0,3.4,-1.2],"forward":[0,0,-1]},
+      "parameters": {"sideCoreForceN":8,"upwardCoreForceN":32,"axialRange":[0,3],"coreRadius":0.55,"outerRadius":0.9,"sideLaneWidth":3.2,"sideExposureLength":2,"cycleStagesSeconds":[1.6,0.7,0.45,0.25],"stageNames":["idle","warning","pulse","decay"],"maximumSimultaneousNozzles":2,"combinationForceBudgetN":40,"sideAxis":[1,0,0]},
+      "dynamicParts": ["JetValve","JetNeedle"],
+      "fixedParts": ["JetNozzleShell","JetNozzleGuard","JetPedestal","JetDeckMarkers"],
+      "collision": "nozzle shell and guard collide; force volume never collides or carries the ball",
+      "sweptOrActionRegion": {"type":"truncated-force-volume","origin":[-1.6,3.825,0],"axis":[1,0,0],"axialRange":[0,3],"coreRadius":0.55,"outerRadius":0.9,"routeZRange":[-1,1],"collision":false},
+      "supportExclusion": {"type":"none-under-deck","note":"fixed route deck is allowed; only the force volume is non-collision"}
+    },
+    {
+      "kind": "orbital-catcher",
+      "name": "巡航接球斗",
+      "rootMeaning": "center of bowl patrol ellipse; local bowl floor reference",
+      "entryPort": {"position":[0,3.1,0],"forward":[0,0,-1],"kind":"airborne capture target"},
+      "exitPort": {"position":[2.35,3.45,0.4],"forward":[1,0,0],"kind":"fixed dock bank edge at runtime dock offset"},
+      "parameters": {"bowlRadius":1.2,"coreRadius":0.7,"floorY":3.1,"lipY":3.45,"orbitXAmplitude":1,"orbitZAmplitude":0.4,"period":6,"brakingSeconds":0.35,"settleHoldSeconds":0.65,"dockAngleDegrees":90,"dockHoldSeconds":1,"dockLipGap":0.15,"nominalRelativeLandingSpeedMax":2},
+      "dynamicParts": ["CatcherBowlSegments","CatcherCart","BrakeClamp","OccupancyNeedle"],
+      "fixedParts": ["CatcherGuideRail","CatcherRailSupports","CatcherDock","CatcherPedestal"],
+      "collision": "segmented concave bowl with open top; never replace with a filled convex hull; runtime dock offset is local [1,0,0.4]",
+      "sweptOrActionRegion": {"type":"box","min":[-2.2,2.95,-1.6],"max":[2.2,3.7,1.6],"collision":true},
+      "supportExclusion": {"type":"box","min":[-2.25,3.0,-1.65],"max":[2.25,3.8,1.65],"reason":"no fixed catch floor inside bowl sweep"}
+    },
+    {
+      "kind": "reversing-conveyor",
+      "name": "反转输送带桥",
+      "rootMeaning": "top run center",
+      "entryPort": {"position":[0,3.4,3.12],"forward":[0,0,-1]},
+      "exitPort": {"position":[0,3.4,-3.12],"forward":[0,0,-1]},
+      "parameters": {"topWidth":1.4,"topLength":6,"topY":3.4,"endDrumRadius":0.35,"targetTreadSpeed":2.5,"candidateSlatCount":32,"slatGapRange":[0.01,0.02],"holdEachDirectionSeconds":2.2,"warningEachHoldFinalSeconds":0.8,"reverseDecelSeconds":0.6,"zeroHoldSeconds":0.3,"reverseAccelSeconds":0.6,"nominalCycleSeconds":7.4,"candidateSlatSize":[1.4,0.08,0.43]},
+      "dynamicParts": ["ConveyorSlats","ConveyorDrumNorth","ConveyorDrumSouth","DirectionNeedle"],
+      "fixedParts": ["ConveyorFrame","ConveyorSideGuards","ConveyorDrumCovers","ConveyorPedestals"],
+      "collision": "top slats provide real moving contact; no hidden static bridge across the six-metre span",
+      "sweptOrActionRegion": {"type":"box","min":[-0.72,2.62,-3.36],"max":[0.72,3.44,3.36],"collision":true},
+      "supportExclusion": {"type":"box","min":[-0.75,3.15,-3.02],"max":[0.75,3.45,3.02],"reason":"no static support intersecting top slats"}
+    },
+    {
+      "kind": "vortex-funnel",
+      "name": "回旋漏斗",
+      "rootMeaning": "vertical axis through hole center at world XZ",
+      "entryPort": {"position":[0,4.619,4],"forward":[1,0,0],"kind":"tangent outer-lip entry"},
+      "exitPort": {"position":[0,1.4,0],"forward":[0,0,-1],"kind":"fixed lower catch-deck continuation"},
+      "parameters": {"outerRadius":4,"holeRadius":0.65,"coneSlopeDegrees":20,"holeLipY":3.4,"outerLipY":4.6193002848,"catchTopY":1.4,"referenceOrbitRadius":2.5,"referenceOrbitSpeed":3.8156007876,"holeClearanceForBallCenter":0.225,"fixedCatchDeckSize":[2.4,0.3,2.4]},
+      "dynamicParts": [],
+      "fixedParts": ["FunnelWedges","FunnelOuterRail","FunnelLegs","FunnelCatchDeck"],
+      "collision": "24-32 static concave wedge segments with a true open center hole; no filled convex hull",
+      "sweptOrActionRegion": {"type":"annulus","center":[0,3.4,0],"outerRadius":4,"holeRadius":0.65,"yRange":[3.4,4.619],"collision":true},
+      "supportExclusion": {"type":"cylinder","center":[0,2.9,0],"radius":0.65,"yRange":[1.55,4.0],"reason":"keep complete drop shaft open above catch deck"}
+    },
+    {
+      "kind": "gimbal-platform",
+      "name": "双轴天平台",
+      "rootMeaning": "intersection of two hinge axes projected to XZ",
+      "entryPort": {"position":[0,3.4,1.72],"forward":[0,0,-1]},
+      "exitPort": {"position":[-1.72,3.4,0],"forward":[-1,0,0]},
+      "parameters": {"bodySize":[3.2,0.24,3.2],"pivotY":3.6706395458,"outerAxis":[1,0,0],"innerAxis":[0,0,1],"rotationOrder":"Rx(alpha)*Rz(beta)","limitsDegrees":[14,14],"restAnglesDegrees":[14,0],"innerMass":1.2,"outerFrameMass":0.3,"springEach":2,"dampingEach":1.8,"bankEdgeRadius":1.72},
+      "dynamicParts": ["GimbalOuterFrame","GimbalInnerDeck","GimbalAxisX","GimbalAxisZ"],
+      "fixedParts": ["GimbalBase","GimbalPedestal","GimbalStops","GimbalEntryBracket","GimbalExitBracket"],
+      "collision": "two nested dynamic bodies and two limited hinges; visible stops match limits",
+      "sweptOrActionRegion": {"type":"box","min":[-2.05,3.0,-2.05],"max":[2.05,4.35,2.05],"collision":true},
+      "supportExclusion": {"type":"box","min":[-1.75,3.0,-1.75],"max":[1.75,4.35,1.75],"reason":"base must not become a hidden platform under tilted deck"}
+    },
+    {
+      "kind": "cascade-bridge",
+      "name": "连锁坍塌桥",
+      "rootMeaning": "center of six-tile span",
+      "entryPort": {"position":[0,3.4,4.62],"forward":[0,0,-1]},
+      "exitPort": {"position":[0,3.4,-4.62],"forward":[0,0,-1]},
+      "parameters": {"tileCount":6,"tileSize":[1.2,0.22,1.4],"gap":0.12,"pitch":1.52,"totalLength":9,"topY":3.4,"tileMass":0.8,"firstReleaseDelay":0.85,"releaseInterval":0.42,"visibleWarningBeforeEachRelease":0.35,"minimumContactDwell":0.04,"targetRunSpeed":[3.6,4.5],"restoreOnlyAfterSafeRespawn":true,"bankGap":0.12},
+      "tileCenters": [[0,3.29,3.8],[0,3.29,2.28],[0,3.29,0.76],[0,3.29,-0.76],[0,3.29,-2.28],[0,3.29,-3.8]],
+      "dynamicParts": ["CascadeTile01-06","CascadePins01-06","CascadeWarning01-06"],
+      "fixedParts": ["CascadeEntryFrame","CascadeExitFrame","CascadeSideBeams","CascadePedestals"],
+      "collision": "each tile truly supports then becomes a gravity-driven dynamic body; no full-span fallback deck",
+      "sweptOrActionRegion": {"type":"box","min":[-0.62,-0.1,-4.52],"max":[0.62,3.42,4.52],"collision":true},
+      "supportExclusion": {"type":"box","min":[-0.65,0.0,-4.55],"max":[0.65,3.35,4.55],"reason":"fall path remains open; side beams stay outside ball lane"}
+    }
+  ],
+  "courseLayout": {
+    "status": "construction-ready-awaiting-runtime-contract",
+    "topology": "single route; eight isolated demonstrations followed by two combination zones",
+    "orderedZones": [
+      "D01-spring","D02-catcher","D03-jet","D04-conveyor","D05-coaster","D06-funnel","D07-gimbal","D08-cascade","C01-jet-gimbal","C02-cascade-spring-catcher"
+    ],
+    "checkpointPolicy": "one fixed safe checkpoint before every isolated demo and every combination; never respawn on a moving, airborne, collapsing or force-volume surface",
+    "gatePolicy": "one directed gate after every instance; airborne modules gate only after the real landing/dock support",
+    "finishPolicy": "all ordered steps required; no medal thresholds until measured playtests"
+  },
+  "environment": {
+    "poolBounds": {"min":[-8,-0.9,-122],"max":[22,0.2,12]},
+    "waterTopY": -0.1,
+    "fallY": -2.5,
+    "cameraClearance": "keep columns at least 1.0m laterally outside route envelopes; no overhead roofs"
+  },
+  "start": {"position":[0,4.125,8],"previewPosition":[0,4.075,8],"surfaceTopY":3.7},
+  "finish": {"position":[6,3.825,-117.5],"ring":{"position":[6,3.46,-117.5],"radius":1.05},"triggerRadius":1.35,"heightTolerance":1.2},
+  "instances": [
+    {"id":"D01-spring","kind":"spring-trampoline","position":[0,0,1],"yaw":0,"role":"isolated-demo","entry":[0,3.7,2.5],"exit":[0,3.4,-3.5],"configRef":"libraryModules.spring-trampoline"},
+    {"id":"D02-catcher","kind":"orbital-catcher","position":[0,0,-14],"yaw":90,"phaseSeconds":0,"role":"isolated-demo","entry":[0,3.1,-14],"exit":[0.4,3.45,-16.35],"configRef":"libraryModules.orbital-catcher"},
+    {"id":"D03-jet","kind":"pulse-jet","position":[0,0,-22],"yaw":0,"phaseSeconds":0,"role":"isolated-demo","entry":[0,3.4,-20.8],"exit":[0,3.4,-23.2],"configRef":"libraryModules.pulse-jet"},
+    {"id":"D04-conveyor","kind":"reversing-conveyor","position":[0,0,-29],"yaw":0,"phaseSeconds":0,"role":"isolated-demo","entry":[0,3.4,-25.88],"exit":[0,3.4,-32.12],"configRef":"libraryModules.reversing-conveyor"},
+    {"id":"D05-coaster","kind":"gravity-coaster","position":[0,0,-39],"yaw":0,"role":"isolated-demo","entry":[0,5.2,-39],"exit":[7.608,4.2,-48.261],"configRef":"libraryModules.gravity-coaster"},
+    {"id":"D06-funnel","kind":"vortex-funnel","position":[14,0,-53],"yaw":0,"role":"isolated-demo","entry":[14,4.6193002848,-49],"exit":[14,1.4,-53],"configRef":"libraryModules.vortex-funnel"},
+    {"id":"D07-gimbal","kind":"gimbal-platform","position":[14,0,-66],"yaw":0,"role":"isolated-demo","entry":[14,3.4,-64.28],"exit":[12.28,3.4,-66],"configRef":"libraryModules.gimbal-platform"},
+    {"id":"D08-cascade","kind":"cascade-bridge","position":[10,0,-74],"yaw":0,"role":"isolated-demo","entry":[10,3.4,-69.38],"exit":[10,3.4,-78.62],"configRef":"libraryModules.cascade-bridge"},
+    {"id":"C01-jet","kind":"pulse-jet","position":[10,0,-84],"yaw":0,"phaseSeconds":0.85,"role":"jet-gimbal-combination","entry":[10,3.4,-82.8],"exit":[10,3.4,-85.2],"configRef":"libraryModules.pulse-jet"},
+    {"id":"C01-gimbal","kind":"gimbal-platform","position":[10,0,-87.32],"yaw":0,"role":"jet-gimbal-combination","entry":[10,3.4,-85.6],"exit":[8.28,3.4,-87.32],"configRef":"libraryModules.gimbal-platform"},
+    {"id":"C02-cascade","kind":"cascade-bridge","position":[6,0,-98],"yaw":0,"role":"cascade-spring-catcher-combination","entry":[6,3.4,-93.38],"exit":[6,3.4,-102.62],"configRef":"libraryModules.cascade-bridge"},
+    {"id":"C02-spring","kind":"spring-trampoline","position":[6,-0.3,-104.22],"yaw":0,"role":"cascade-spring-catcher-combination","entry":[6,3.4,-102.72],"exit":[6,3.1,-108.72],"configRef":"libraryModules.spring-trampoline"},
+    {"id":"C02-catcher","kind":"orbital-catcher","position":[6,-0.3,-108.8],"yaw":90,"phaseSeconds":1.2,"role":"cascade-spring-catcher-combination","entry":[6,2.8,-108.8],"exit":[6.4,3.15,-111.15],"configRef":"libraryModules.orbital-catcher"}
+  ],
+  "staticDecks": [
+    {"id":"start-pad","type":"box","center":[0,3.55,6.5],"size":[3.6,0.3,7],"topY":3.7},
+    {"id":"D01-landing","type":"box","center":[0,3.25,-3.8],"size":[2.8,0.3,3],"topY":3.4},
+    {"id":"to-D02-high-ramp","type":"ramp","from":[0,3.4,-5.3],"to":[0,4.2,-8.8],"width":2.4,"thickness":0.3},
+    {"id":"D02-approach","type":"box","center":[0,4.05,-10.15],"size":[2.8,0.3,2.7],"topY":4.2},
+    {"id":"D02-launch-tongue","type":"box","center":[0,4.05,-11.65],"size":[1.4,0.3,0.3],"topY":4.2},
+    {"id":"D02-dock-to-D03","type":"ramp","from":[0.4,3.45,-16.5],"to":[0,3.4,-18.1],"width":2.2,"thickness":0.3},
+    {"id":"D03-safe-pad","type":"box","center":[0,3.25,-19.45],"size":[3.6,0.3,2.7],"topY":3.4},
+    {"id":"D03-jet-deck","type":"box","center":[0,3.25,-22],"size":[3.2,0.3,2.4],"topY":3.4},
+    {"id":"D03-exit-beam","type":"box","center":[0,3.25,-24],"size":[1.2,0.3,1.6],"topY":3.4},
+    {"id":"D04-entry-bank","type":"box","center":[0,3.25,-25.3],"size":[3.6,0.3,1.6],"topY":3.4},
+    {"id":"D04-exit-bank","type":"box","center":[0,3.25,-33.15],"size":[3.6,0.3,1.8],"topY":3.4},
+    {"id":"to-D05-high-ramp","type":"ramp","from":[0,3.4,-34.05],"to":[0,5.2,-37],"width":2.4,"thickness":0.3,"note":"longitudinal length 3.45m; CODE/ART must flag if slope contact is too abrupt"},
+    {"id":"D05-high-pad","type":"box","center":[0,5.05,-37.9],"size":[3.6,0.3,2.2],"topY":5.2},
+    {"id":"D05-to-D06","type":"polyline-deck","points":[[7.608,4.2,-48.261],[9.2,4.45,-49],[13.7,4.6193002848,-49]],"width":2.2,"thickness":0.3,"turnRadius":1.6},
+    {"id":"D06-tangent-safe-pad","type":"box","center":[11.2,4.4693002848,-49],"size":[5.2,0.3,2.2],"topY":4.6193002848,"rotationY":90},
+    {"id":"D06-lower-catch","type":"box","center":[14,1.25,-53],"size":[2.4,0.3,2.4],"topY":1.4},
+    {"id":"D06-exit-ramp","type":"ramp","from":[14,1.4,-54.2],"to":[14,3.4,-61],"width":2.4,"thickness":0.3},
+    {"id":"D07-safe-pad","type":"box","center":[14,3.25,-62.65],"size":[3.6,0.3,3.3],"topY":3.4},
+    {"id":"D07-exit-turn","type":"polyline-deck","points":[[12.28,3.4,-66],[10,3.4,-66],[10,3.4,-68.9]],"width":2.2,"thickness":0.3,"turnRadius":1.5},
+    {"id":"D08-entry-bank","type":"box","center":[10,3.25,-68.4],"size":[3.6,0.3,2],"topY":3.4},
+    {"id":"D08-exit-bank","type":"box","center":[10,3.25,-79.65],"size":[3.6,0.3,1.8],"topY":3.4},
+    {"id":"C01-safe-pad","type":"box","center":[10,3.25,-81.4],"size":[3.6,0.3,2.2],"topY":3.4},
+    {"id":"C01-jet-deck","type":"box","center":[10,3.25,-84],"size":[3.2,0.3,2.4],"topY":3.4},
+    {"id":"C01-fixed-tongue","type":"box","center":[10,3.25,-85.4],"size":[1.4,0.3,0.4],"topY":3.4,"note":"force volume ends before tongue; 0.4m total to gimbal entry"},
+    {"id":"C01-exit-turn","type":"polyline-deck","points":[[8.28,3.4,-87.32],[6,3.4,-87.32],[6,3.4,-92.9]],"width":2.2,"thickness":0.3,"turnRadius":1.5},
+    {"id":"C02-safe-pad","type":"box","center":[6,3.25,-92.4],"size":[3.6,0.3,2],"topY":3.4},
+    {"id":"C02-spring-entry-tongue","type":"box","center":[6,3.25,-102.67],"size":[1.2,0.3,0.3],"topY":3.4,"note":"visible drop to spring topY 3.1; no support beneath spring"},
+    {"id":"C02-catcher-exit-ramp","type":"ramp","from":[6.4,3.15,-111.3],"to":[6,3.4,-114],"width":2.2,"thickness":0.3},
+    {"id":"finish-pad","type":"box","center":[6,3.25,-116],"size":[3.6,0.3,5],"topY":3.4}
+  ],
+  "staticStructures": [
+    {"id":"module-foundations","kind":"instance-ref","instances":["D01-spring","D02-catcher","D03-jet","D04-conveyor","D05-coaster","D06-funnel","D07-gimbal","D08-cascade","C01-jet","C01-gimbal","C02-cascade","C02-spring","C02-catcher"],"instruction":"transform each library fixed-part footprint; extend only its explicit pedestal/columns to pool floor"},
+    {"id":"safe-pad-rails","kind":"low-rails","height":0.22,"instruction":"rails only on outer sides of safe pads and ramps; leave every mechanism entry/exit open"},
+    {"id":"checkpoint-markers","kind":"paint-only","collision":false,"instruction":"unique two-stripe marker at each CP; rings remain runtime objects"}
+  ],
+  "supportPoints": [
+    {"id":"SP-start","position":[0,0,6.5],"topY":3.4,"footprint":[3.2,5.8]},
+    {"id":"SP-D02-high","position":[0,0,-10.15],"topY":3.9,"footprint":[2.4,2.2]},
+    {"id":"SP-D05-high","position":[0,0,-37.9],"topY":4.9,"footprint":[3.2,1.8]},
+    {"id":"SP-D06-tangent","position":[11.2,0,-49],"topY":4.3193002848,"footprint":[4.6,1.8]},
+    {"id":"SP-D06-catch","position":[14,0,-53],"topY":1.1,"footprint":[2,2]},
+    {"id":"SP-D07","position":[14,0,-62.65],"topY":3.1,"footprint":[3,2.7]},
+    {"id":"SP-D08-entry","position":[10,0,-68.4],"topY":3.1,"footprint":[3,1.5]},
+    {"id":"SP-C01","position":[10,0,-81.4],"topY":3.1,"footprint":[3,1.8]},
+    {"id":"SP-C02","position":[6,0,-92.4],"topY":3.1,"footprint":[3,1.6]},
+    {"id":"SP-finish","position":[6,0,-116],"topY":3.1,"footprint":[3.2,4.4]}
+  ],
+  "supportExclusions": [
+    {"instanceId":"D01-spring","transform":{"position":[0,0,1],"yaw":0},"ref":"spring-trampoline.supportExclusion"},
+    {"instanceId":"D02-catcher","transform":{"position":[0,0,-14],"yaw":90},"ref":"orbital-catcher.supportExclusion"},
+    {"instanceId":"D04-conveyor","transform":{"position":[0,0,-29],"yaw":0},"ref":"reversing-conveyor.supportExclusion"},
+    {"instanceId":"D06-funnel","transform":{"position":[14,0,-53],"yaw":0},"ref":"vortex-funnel.supportExclusion"},
+    {"instanceId":"D07-gimbal","transform":{"position":[14,0,-66],"yaw":0},"ref":"gimbal-platform.supportExclusion"},
+    {"instanceId":"D08-cascade","transform":{"position":[10,0,-74],"yaw":0},"ref":"cascade-bridge.supportExclusion"},
+    {"instanceId":"C01-gimbal","transform":{"position":[10,0,-87.32],"yaw":0},"ref":"gimbal-platform.supportExclusion"},
+    {"instanceId":"C02-cascade","transform":{"position":[6,0,-98],"yaw":0},"ref":"cascade-bridge.supportExclusion"},
+    {"instanceId":"C02-spring","transform":{"position":[6,-0.3,-104.22],"yaw":0},"ref":"spring-trampoline.supportExclusion"},
+    {"instanceId":"C02-catcher","transform":{"position":[6,-0.3,-108.8],"yaw":90},"ref":"orbital-catcher.supportExclusion"}
+  ],
+  "course": {
+    "checkpoints": [
+      {"id":"CP-D01-SPRING","ring":{"position":[0,3.76,4],"radius":0.8},"respawn":[0,4.125,4],"triggerRadius":1.15,"heightTolerance":1.1},
+      {"id":"CP-D02-CATCHER","ring":{"position":[0,4.26,-10.15],"radius":0.8},"respawn":[0,4.625,-10.15],"triggerRadius":1.15,"heightTolerance":1.1},
+      {"id":"CP-D03-JET","ring":{"position":[0,3.46,-19.45],"radius":0.8},"respawn":[0,3.825,-19.45],"triggerRadius":1.15,"heightTolerance":1.1},
+      {"id":"CP-D04-CONVEYOR","ring":{"position":[0,3.46,-25.3],"radius":0.8},"respawn":[0,3.825,-25.3],"triggerRadius":1.15,"heightTolerance":1.1},
+      {"id":"CP-D05-COASTER","ring":{"position":[0,5.26,-37.9],"radius":0.8},"respawn":[0,5.625,-37.9],"triggerRadius":1.15,"heightTolerance":1.1},
+      {"id":"CP-D06-FUNNEL","ring":{"position":[11.2,4.6793002848,-49],"radius":0.8},"respawn":[11.2,5.0443002848,-49],"triggerRadius":1.15,"heightTolerance":1.1},
+      {"id":"CP-D07-GIMBAL","ring":{"position":[14,3.46,-62.65],"radius":0.8},"respawn":[14,3.825,-62.65],"triggerRadius":1.15,"heightTolerance":1.1},
+      {"id":"CP-D08-CASCADE","ring":{"position":[10,3.46,-68.4],"radius":0.8},"respawn":[10,3.825,-68.4],"triggerRadius":1.15,"heightTolerance":1.1},
+      {"id":"CP-C01-JET-GIMBAL","ring":{"position":[10,3.46,-81.4],"radius":0.8},"respawn":[10,3.825,-81.4],"triggerRadius":1.15,"heightTolerance":1.1},
+      {"id":"CP-C02-CASCADE-SPRING-CATCHER","ring":{"position":[6,3.46,-92.4],"radius":0.8},"respawn":[6,3.825,-92.4],"triggerRadius":1.15,"heightTolerance":1.1}
+    ],
+    "gates": [
+      {"id":"D01-spring-out","position":[0,3.825,-4.8],"forward":[0,0,-1],"radius":1.25,"heightTolerance":1.4},
+      {"id":"D02-catcher-out","position":[0.4,3.875,-16.6],"forward":[0,0,-1],"radius":1.1,"heightTolerance":1.0},
+      {"id":"D03-jet-out","position":[0,3.825,-23.5],"forward":[0,0,-1],"radius":0.75,"heightTolerance":0.9},
+      {"id":"D04-conveyor-out","position":[0,3.825,-32.4],"forward":[0,0,-1],"radius":0.75,"heightTolerance":0.9},
+      {"id":"D05-coaster-out","position":[7.95,4.625,-48.261],"forward":[1,0,0],"radius":0.85,"heightTolerance":1.0},
+      {"id":"D06-funnel-out","position":[14,1.825,-54],"forward":[0,0,-1],"radius":1.0,"heightTolerance":1.0},
+      {"id":"D07-gimbal-out","position":[12,3.825,-66],"forward":[-1,0,0],"radius":0.9,"heightTolerance":1.0},
+      {"id":"D08-cascade-out","position":[10,3.825,-78.9],"forward":[0,0,-1],"radius":0.9,"heightTolerance":1.0},
+      {"id":"C01-jet-out","position":[10,3.825,-85.35],"forward":[0,0,-1],"radius":0.75,"heightTolerance":0.9},
+      {"id":"C01-gimbal-out","position":[8,3.825,-87.32],"forward":[-1,0,0],"radius":0.9,"heightTolerance":1.0},
+      {"id":"C02-cascade-out","position":[6,3.825,-102.8],"forward":[0,0,-1],"radius":0.9,"heightTolerance":1.0},
+      {"id":"C02-spring-flight","position":[6,4.0,-107.8],"forward":[0,0,-1],"radius":1.35,"heightTolerance":1.8},
+      {"id":"C02-catcher-out","position":[6.4,3.575,-111.4],"forward":[0,0,-1],"radius":1.1,"heightTolerance":1.0}
+    ],
+    "routes": [
+      {
+        "id":"main",
+        "checkpointIds":["CP-D01-SPRING","CP-D02-CATCHER","CP-D03-JET","CP-D04-CONVEYOR","CP-D05-COASTER","CP-D06-FUNNEL","CP-D07-GIMBAL","CP-D08-CASCADE","CP-C01-JET-GIMBAL","CP-C02-CASCADE-SPRING-CATCHER"],
+        "steps":[
+          {"kind":"checkpoint","id":"CP-D01-SPRING"},{"kind":"gate","id":"D01-spring-out"},
+          {"kind":"checkpoint","id":"CP-D02-CATCHER"},{"kind":"gate","id":"D02-catcher-out"},
+          {"kind":"checkpoint","id":"CP-D03-JET"},{"kind":"gate","id":"D03-jet-out"},
+          {"kind":"checkpoint","id":"CP-D04-CONVEYOR"},{"kind":"gate","id":"D04-conveyor-out"},
+          {"kind":"checkpoint","id":"CP-D05-COASTER"},{"kind":"gate","id":"D05-coaster-out"},
+          {"kind":"checkpoint","id":"CP-D06-FUNNEL"},{"kind":"gate","id":"D06-funnel-out"},
+          {"kind":"checkpoint","id":"CP-D07-GIMBAL"},{"kind":"gate","id":"D07-gimbal-out"},
+          {"kind":"checkpoint","id":"CP-D08-CASCADE"},{"kind":"gate","id":"D08-cascade-out"},
+          {"kind":"checkpoint","id":"CP-C01-JET-GIMBAL"},{"kind":"gate","id":"C01-jet-out"},{"kind":"gate","id":"C01-gimbal-out"},
+          {"kind":"checkpoint","id":"CP-C02-CASCADE-SPRING-CATCHER"},{"kind":"gate","id":"C02-cascade-out"},{"kind":"gate","id":"C02-spring-flight"},{"kind":"gate","id":"C02-catcher-out"}
+        ],
+        "referencePolylineLength":142.4797570759,
+        "lengthMeaning":"HUD and construction reference only; not true curved-surface travel or medal calibration",
+        "points":[
+          [0,4.125,8],[0,4.125,4],[0,3.825,-4.8],[0,4.625,-10.15],[0,3.525,-14],[0.4,3.875,-16.6],
+          [0,3.825,-19.45],[0,3.825,-23.5],[0,3.825,-25.3],[0,3.825,-32.4],[0,5.625,-37.9],[0,5.625,-39],
+          [0,3.825,-44.261],[4,3.825,-48.261],[7.95,4.625,-48.261],[11.2,5.0443002848,-49],[14,5.0443002848,-49],
+          [14,3.825,-53],[14,1.825,-54],[14,3.825,-62.65],[14,3.825,-64.28],[12,3.825,-66],[10,3.825,-68.4],
+          [10,3.825,-69.38],[10,3.825,-78.9],[10,3.825,-81.4],[10,3.825,-85.35],[10,3.825,-85.6],[8,3.825,-87.32],
+          [6,3.825,-92.4],[6,3.825,-93.38],[6,3.825,-102.8],[6,3.525,-104.22],[6,4,-107.8],[6,3.225,-108.8],
+          [6.4,3.575,-111.4],[6,3.825,-117.5]
+        ]
+      }
+    ]
+  },
+  "counts": {"libraryKinds":8,"instances":13,"isolatedDemoInstances":8,"combinationInstances":5,"checkpoints":10,"gates":13,"routes":1,"staticDeckEntries":29,"supportPoints":10},
+  "authoringChecks": [
+    "Every kind appears once in D01-D08 before any combination repeat.",
+    "Every checkpoint is on a fixed deck and precedes its hazard zone.",
+    "No gate itself changes respawn or mechanism state.",
+    "C01 force volume ends before the fixed tongue and gimbal sweep.",
+    "C02 cascade has no hidden deck; spring top is 0.3m lower; catcher target is 4.5m after spring center.",
+    "Funnel hole shaft is open to the lower catch deck and has no support column through it.",
+    "Gravity coaster contains no complete loop and changes no global speed or gravity.",
+    "Formal TS remains blocked only on the implemented CODE contract, not on layout decisions."
+  ],
+  "runtimeContract": {
+    "path": "docs/integration/advanced-obstacles-contract.md",
+    "sha256": "7fbcd75706494d2a83e865c7ec8ba15c604cdcdce3dd6aa09f6610d3e818cf10",
+    "typesPath": "src/game/advanced-types.ts",
+    "typesSha256": "b574b7bf03abb503e6e0496e51a7044d80e1a5fe43428a23c2d58a465318ebf5",
+    "requiredArray": "advancedMechanisms",
+    "requiredCommonFields": ["id","kind","position","yaw","config"],
+    "requiredKinds": ["spring-trampoline","gravity-coaster","pulse-jet","orbital-catcher","reversing-conveyor","vortex-funnel","gimbal-platform","cascade-bridge"],
+    "requiredLifecycle": ["pause freezes schedules","restart clears contact latches and restores rest pose","safe respawn restores cascade only","destroy unregisters forces and constraints before assets"],
+    "requiredEvidence": ["real contact/force per kind","reset and respawn","fast collision","complete route","small-screen controls"],
+    "formalLevelTs": "src/levels/advanced-trial.ts authored after CODE confirmed runtime implementation build and pure tests passed"
+  },
+  "contractConfigTemplates": {
+    "spring-trampoline": {
+      "deck": {"name":"spring-deck","type":"box","position":[0,3.25,0],"size":[2.4,0.3,2.4],"material":"orange"},
+      "coreRadius":0.75,"outerRadius":1.1,"storedEnergyJ":32,"poweredNormalSpeedCeiling":8.5,"rearmSeparationAboveSurface":0.545,"minimumRearmSeconds":0.25
+    },
+    "gravity-coaster": {
+      "colliders":"expand colliderRecipes.gravity-coaster into fine static boxes; no hidden floor",
+      "colliderCountTarget":40
+    },
+    "pulse-jet": {
+      "nozzles":[{"position":[-1.6,3.825,0],"axis":[1,0,0],"force":8,"axialRange":[0,3],"coreRadius":0.55,"outerRadius":0.9,"stages":[1.6,0.7,0.45,0.25]}],
+      "staticColliders":[{"name":"jet-housing","type":"cylinder","collisionAxis":2,"position":[-1.85,3.825,0],"rotation":[0,90,0],"size":[0.7,0.7,0.7],"material":"dark"}]
+    },
+    "orbital-catcher": {
+      "parts":"expand colliderRecipes.orbital-catcher into 16 moving concave bowl panels plus carriage proxy",
+      "orbitAmplitude":[1,0,0.4],"period":6,"brakingSeconds":0.35,"settleHoldSeconds":0.65,"dockAngleDegrees":90,"dockHoldSeconds":1
+    },
+    "reversing-conveyor": {
+      "deck":{"name":"conveyor-contact-deck","type":"box","position":[0,3.35,0],"size":[1.4,0.1,6],"material":"orange"},
+      "axis":[0,0,-1],"targetTreadSpeed":2.5,"tractionForce":10,"tractionForceStatus":"LEVEL initial candidate; CODE playtest calibration required","holdEachDirectionSeconds":2.2,"reverseDecelSeconds":0.6,"zeroHoldSeconds":0.3,"reverseAccelSeconds":0.6
+    },
+    "vortex-funnel": {
+      "colliders":"expand colliderRecipes.vortex-funnel into 32 azimuth sectors x 3 radial bands; center radius 0.65 remains open",
+      "colliderCountTarget":96
+    },
+    "gimbal-platform": {
+      "outerFrame":{"name":"gimbal-outer-axis-beam","type":"box","position":[0,3.6706395458,0],"size":[3.8,0.18,0.28],"material":"dark"},
+      "innerDeck":{"name":"gimbal-inner-deck","type":"box","position":[0,3.6706395458,0],"size":[3.2,0.24,3.2],"material":"orange"},
+      "outerPivot":[0,3.6706395458,0],"innerPivot":[0,3.6706395458,0],"limitsDegrees":[14,14],"restAnglesDegrees":[14,0],"innerMass":1.2,"outerFrameMass":0.3,"springEach":2,"dampingEach":1.8,
+      "proxyNote":"single outerFrame primitive is the real X-axis beam; visual four-sided frame comes from GLB and does not add a filled collision box"
+    },
+    "cascade-bridge": {
+      "tiles":[
+        {"name":"cascade-tile-01","type":"box","position":[0,3.29,3.8],"size":[1.2,0.22,1.4],"material":"cream"},
+        {"name":"cascade-tile-02","type":"box","position":[0,3.29,2.28],"size":[1.2,0.22,1.4],"material":"cream"},
+        {"name":"cascade-tile-03","type":"box","position":[0,3.29,0.76],"size":[1.2,0.22,1.4],"material":"orange"},
+        {"name":"cascade-tile-04","type":"box","position":[0,3.29,-0.76],"size":[1.2,0.22,1.4],"material":"orange"},
+        {"name":"cascade-tile-05","type":"box","position":[0,3.29,-2.28],"size":[1.2,0.22,1.4],"material":"cream"},
+        {"name":"cascade-tile-06","type":"box","position":[0,3.29,-3.8],"size":[1.2,0.22,1.4],"material":"cream"}
+      ],
+      "tileMass":0.8,"firstReleaseDelay":0.85,"releaseInterval":0.42,"visibleWarningBeforeEachRelease":0.35,"minimumContactDwell":0.04
+    }
+  },
+  "colliderRecipes": {
+    "gravity-coaster": {
+      "deckWidth":1.4,"deckThickness":0.22,"railHeight":0.25,"maxCenterlineStepDegrees":5,"maxCenterlineSegmentLength":0.5,
+      "method":"sample the seven centerlineConstruction pieces by arc length; each deck box joins consecutive samples at midpoint, aligns longitudinally to tangent and vertically to chord; extend each end 0.015m to close numerical seams; rails use the same samples offset by deckWidth/2 and never bridge across the inside of the plan turn"
+    },
+    "orbital-catcher": {
+      "azimuthSegments":16,"innerFlatRadius":0.22,"outerRadius":1.2,"floorY":3.1,"lipY":3.45,"panelThickness":0.1,
+      "method":"one small center floor plus 16 radial sloped panel boxes; panel tangential width follows outer arc and overlaps neighbours by 0.015m; retain open top and low dock lip"
+    },
+    "vortex-funnel": {
+      "azimuthSegments":32,"radialBands":3,"outerRadius":4,"holeRadius":0.65,"holeLipY":3.4,"outerLipY":4.6193002848,"thickness":0.18,
+      "method":"for each azimuth and radial band create one tangential wedge-approximation box at the band midpoint, slope 20 degrees outward, overlap azimuth edges 0.012m and radial edges 0.015m; never create any collider whose radial inner edge is below 0.65"
+    }
+  },
+  "validation": {
+    "assemblyGeometry": "frozen for ART; full layout, route, checkpoints, gates and contract templates complete",
+    "runtimeContract": "frozen; CODE reported implementation build and pure tests passed before formal TS authoring",
+    "testsRun": true,
+    "testResult": "CODE final gate: npm test 84/84 passed",
+    "levelDataAudit": "passed: 8 kinds, 13 unique instances, fixed CP supports, 13 gate references, 23 ordered steps, funnel inner edge >= 0.65; catcher docks include runtime local +Z 0.4 offset",
+    "buildRun": true,
+    "buildResult": "CODE final gate passed; existing large chunk warning only",
+    "playtestRun": false,
+    "playtestBoundary": "no complete continuous physical clear evidence; not product acceptance",
+    "technicalGatePassed": true,
+    "assetHashesCheckedByLevel": true,
+    "gitWritesByLevel": false
+  },
+  "configPath": "src/levels/advanced-trial.ts",
+  "configSha256": "9b754916f5713f37a681a5b523ca9d3d67b1d0b67c13f92e3627dfe51225a434"
+}

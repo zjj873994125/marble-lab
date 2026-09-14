@@ -1,0 +1,891 @@
+{
+  "courseId": "advanced-trial",
+  "source": "art/advanced-trial.blend",
+  "sourceSha256": "1e0b96326ec8b57ba099cfdb1a7df9a69a02e3b72e7dc381c0cf98f11ef7994f",
+  "constructionSha256": "90c580d7db8a50eb642380df9d8a104b3a5529241aedfb5f80da9528993d02d1",
+  "formalConfigSha256": "9b754916f5713f37a681a5b523ca9d3d67b1d0b67c13f92e3627dfe51225a434",
+  "geometrySourceSha256": "90c580d7db8a50eb642380df9d8a104b3a5529241aedfb5f80da9528993d02d1",
+  "currentConstructionMetadataSha256": "cf8799da029795c3aeac53d6f2484857940d177bf759bd3c7e83c35ee21661e3",
+  "configurationStatus": "LEVEL restored visuals.track; CODE full validation pending.",
+  "library": "advanced-obstacle-library.glb",
+  "librarySha256": "99b0803ec4196cbe2d88170b23b9ce628637205b201a5e7739f8ccf49e40c428",
+  "units": "m",
+  "upAxis": "+Y",
+  "origin": [
+    0,
+    0,
+    0
+  ],
+  "export": {
+    "file": "advanced-trial-track.glb",
+    "node": "TrackStatic",
+    "sha256": "137e6b18094491e169de6b06b821c58d500e561d88bbee5354e727b1f9ffab4d",
+    "bytes": 663112,
+    "triangles": 35460,
+    "materials": 6,
+    "bounds_min": [
+      -2.375,
+      -0.8999996185302734,
+      -118.54000091552734
+    ],
+    "bounds_max": [
+      17.90999984741211,
+      5.2089996337890625,
+      10.039999961853027
+    ],
+    "dimensions_xyz_m": [
+      20.28499984741211,
+      6.108999252319336,
+      128.58000087738037
+    ]
+  },
+  "counts": {
+    "constructionDeckEntries": 29,
+    "bakedRouteModules": 31,
+    "supportPoints": 10,
+    "supportLegs": 40,
+    "moduleInstances": 13,
+    "moduleFootFoundations": 58,
+    "checkpointPaintPairs": 10
+  },
+  "layers": {
+    "deckModules": 31,
+    "accentModules": 31,
+    "structureModules": 31
+  },
+  "excluded": [
+    "advanced mechanism roots",
+    "force volumes",
+    "water/pool",
+    "checkpoint and finish rings",
+    "D06-lower-catch duplicate"
+  ],
+  "moduleFootFoundations": [
+    {
+      "instance": "D01-spring",
+      "sourceFoot": "Spring frame foot -1.35-1.35",
+      "center": [
+        -1.350000023841858,
+        -0.45,
+        -0.3500000387430191
+      ],
+      "size": [
+        0.7000000476837158,
+        0.9,
+        0.7000000178813934
+      ]
+    },
+    {
+      "instance": "D01-spring",
+      "sourceFoot": "Spring frame foot -1.351.35",
+      "center": [
+        -1.350000023841858,
+        -0.45,
+        2.3499998450279236
+      ],
+      "size": [
+        0.7000000476837158,
+        0.9,
+        0.6999999284744263
+      ]
+    },
+    {
+      "instance": "D01-spring",
+      "sourceFoot": "Spring frame foot 1.35-1.35",
+      "center": [
+        1.350000023841858,
+        -0.45,
+        -0.3500000387430191
+      ],
+      "size": [
+        0.7000000476837158,
+        0.9,
+        0.7000000178813934
+      ]
+    },
+    {
+      "instance": "D01-spring",
+      "sourceFoot": "Spring frame foot 1.351.35",
+      "center": [
+        1.350000023841858,
+        -0.45,
+        2.3499998450279236
+      ],
+      "size": [
+        0.7000000476837158,
+        0.9,
+        0.6999999284744263
+      ]
+    },
+    {
+      "instance": "D02-catcher",
+      "sourceFoot": "Catcher rail foot -1.65",
+      "center": [
+        -4.470348358154297e-08,
+        -0.45,
+        -12.350000381469727
+      ],
+      "size": [
+        0.6999999582767487,
+        0.9,
+        0.7000007629394531
+      ]
+    },
+    {
+      "instance": "D02-catcher",
+      "sourceFoot": "Catcher rail foot 1.65",
+      "center": [
+        4.470348358154297e-08,
+        -0.45,
+        -15.649999618530273
+      ],
+      "size": [
+        0.6999999582767487,
+        0.9,
+        0.7000007629394531
+      ]
+    },
+    {
+      "instance": "D03-jet",
+      "sourceFoot": "Jet pedestal",
+      "center": [
+        -2.0,
+        -0.45,
+        -22.0
+      ],
+      "size": [
+        0.75,
+        0.9,
+        1.2000007629394531
+      ]
+    },
+    {
+      "instance": "D03-jet",
+      "sourceFoot": "Jet guard foot -0.72",
+      "center": [
+        -1.7000000476837158,
+        -0.45,
+        -22.719999313354492
+      ],
+      "size": [
+        0.6500000953674316,
+        0.9,
+        0.6500015258789062
+      ]
+    },
+    {
+      "instance": "D03-jet",
+      "sourceFoot": "Jet guard foot 0.72",
+      "center": [
+        -1.7000000476837158,
+        -0.45,
+        -21.280000686645508
+      ],
+      "size": [
+        0.6500000953674316,
+        0.9,
+        0.6500015258789062
+      ]
+    },
+    {
+      "instance": "D04-conveyor",
+      "sourceFoot": "Conveyor frame foot -0.82-2.75",
+      "center": [
+        -0.8199999928474426,
+        -0.45,
+        -31.750000953674316
+      ],
+      "size": [
+        0.6200000047683716,
+        0.9,
+        0.6200008392333984
+      ]
+    },
+    {
+      "instance": "D04-conveyor",
+      "sourceFoot": "Conveyor frame foot -0.820",
+      "center": [
+        -0.8199999928474426,
+        -0.45,
+        -29.0
+      ],
+      "size": [
+        0.6200000047683716,
+        0.9,
+        0.6199989318847656
+      ]
+    },
+    {
+      "instance": "D04-conveyor",
+      "sourceFoot": "Conveyor frame foot -0.822.75",
+      "center": [
+        -0.8199999928474426,
+        -0.45,
+        -26.25
+      ],
+      "size": [
+        0.6200000047683716,
+        0.9,
+        0.6199989318847656
+      ]
+    },
+    {
+      "instance": "D04-conveyor",
+      "sourceFoot": "Conveyor frame foot 0.82-2.75",
+      "center": [
+        0.8199999928474426,
+        -0.45,
+        -31.750000953674316
+      ],
+      "size": [
+        0.6200000047683716,
+        0.9,
+        0.6200008392333984
+      ]
+    },
+    {
+      "instance": "D04-conveyor",
+      "sourceFoot": "Conveyor frame foot 0.820",
+      "center": [
+        0.8199999928474426,
+        -0.45,
+        -29.0
+      ],
+      "size": [
+        0.6200000047683716,
+        0.9,
+        0.6199989318847656
+      ]
+    },
+    {
+      "instance": "D04-conveyor",
+      "sourceFoot": "Conveyor frame foot 0.822.75",
+      "center": [
+        0.8199999928474426,
+        -0.45,
+        -26.25
+      ],
+      "size": [
+        0.6200000047683716,
+        0.9,
+        0.6199989318847656
+      ]
+    },
+    {
+      "instance": "D05-coaster",
+      "sourceFoot": "Coaster foot 0-1",
+      "center": [
+        0.9200000166893005,
+        -0.45,
+        -39.0
+      ],
+      "size": [
+        0.6200000047683716,
+        0.9,
+        0.6200027465820312
+      ]
+    },
+    {
+      "instance": "D05-coaster",
+      "sourceFoot": "Coaster foot 01",
+      "center": [
+        0.9200000166893005,
+        -0.45,
+        -39.0
+      ],
+      "size": [
+        0.6200000047683716,
+        0.9,
+        0.6200027465820312
+      ]
+    },
+    {
+      "instance": "D05-coaster",
+      "sourceFoot": "Coaster foot 10-1",
+      "center": [
+        0.9200000166893005,
+        -0.45,
+        -40.69047164916992
+      ],
+      "size": [
+        0.6200000047683716,
+        0.9,
+        0.6200027465820312
+      ]
+    },
+    {
+      "instance": "D05-coaster",
+      "sourceFoot": "Coaster foot 101",
+      "center": [
+        0.9200000166893005,
+        -0.45,
+        -40.69047164916992
+      ],
+      "size": [
+        0.6200000047683716,
+        0.9,
+        0.6200027465820312
+      ]
+    },
+    {
+      "instance": "D05-coaster",
+      "sourceFoot": "Coaster foot 20-1",
+      "center": [
+        0.9199999868869781,
+        -0.45,
+        -42.26093292236328
+      ],
+      "size": [
+        0.6200000643730164,
+        0.9,
+        0.6200027465820312
+      ]
+    },
+    {
+      "instance": "D05-coaster",
+      "sourceFoot": "Coaster foot 201",
+      "center": [
+        0.9199999868869781,
+        -0.45,
+        -42.26093292236328
+      ],
+      "size": [
+        0.6200000643730164,
+        0.9,
+        0.6200027465820312
+      ]
+    },
+    {
+      "instance": "D05-coaster",
+      "sourceFoot": "Coaster foot 30-1",
+      "center": [
+        0.9200000166893005,
+        -0.45,
+        -43.91231155395508
+      ],
+      "size": [
+        0.6200000047683716,
+        0.9,
+        0.6200027465820312
+      ]
+    },
+    {
+      "instance": "D05-coaster",
+      "sourceFoot": "Coaster foot 301",
+      "center": [
+        0.9200000166893005,
+        -0.45,
+        -43.91231155395508
+      ],
+      "size": [
+        0.6200000047683716,
+        0.9,
+        0.6200027465820312
+      ]
+    },
+    {
+      "instance": "D05-coaster",
+      "sourceFoot": "Coaster foot 40-1",
+      "center": [
+        1.2115750014781952,
+        -0.45,
+        -45.87089920043945
+      ],
+      "size": [
+        0.6199999451637268,
+        0.9,
+        0.6200027465820312
+      ]
+    },
+    {
+      "instance": "D05-coaster",
+      "sourceFoot": "Coaster foot 401",
+      "center": [
+        1.2115750014781952,
+        -0.45,
+        -45.87089920043945
+      ],
+      "size": [
+        0.6199999451637268,
+        0.9,
+        0.6200027465820312
+      ]
+    },
+    {
+      "instance": "D05-coaster",
+      "sourceFoot": "Coaster foot 50-1",
+      "center": [
+        2.7678375244140625,
+        -0.45,
+        -47.23570251464844
+      ],
+      "size": [
+        0.619999885559082,
+        0.9,
+        0.6200027465820312
+      ]
+    },
+    {
+      "instance": "D05-coaster",
+      "sourceFoot": "Coaster foot 501",
+      "center": [
+        2.7678375244140625,
+        -0.45,
+        -47.23570251464844
+      ],
+      "size": [
+        0.619999885559082,
+        0.9,
+        0.6200027465820312
+      ]
+    },
+    {
+      "instance": "D05-coaster",
+      "sourceFoot": "Coaster foot 60-1",
+      "center": [
+        4.7386274337768555,
+        -0.45,
+        -47.37664031982422
+      ],
+      "size": [
+        0.619999885559082,
+        0.9,
+        0.6200027465820312
+      ]
+    },
+    {
+      "instance": "D05-coaster",
+      "sourceFoot": "Coaster foot 601",
+      "center": [
+        4.7386274337768555,
+        -0.45,
+        -47.37664031982422
+      ],
+      "size": [
+        0.619999885559082,
+        0.9,
+        0.6200027465820312
+      ]
+    },
+    {
+      "instance": "D05-coaster",
+      "sourceFoot": "Coaster foot 70-1",
+      "center": [
+        6.240115165710449,
+        -0.45,
+        -47.340999603271484
+      ],
+      "size": [
+        0.619999885559082,
+        0.9,
+        0.6200027465820312
+      ]
+    },
+    {
+      "instance": "D05-coaster",
+      "sourceFoot": "Coaster foot 701",
+      "center": [
+        6.240115165710449,
+        -0.45,
+        -47.340999603271484
+      ],
+      "size": [
+        0.619999885559082,
+        0.9,
+        0.6200027465820312
+      ]
+    },
+    {
+      "instance": "D06-funnel",
+      "sourceFoot": "Funnel foot 1",
+      "center": [
+        17.549999237060547,
+        -0.45,
+        -53.0
+      ],
+      "size": [
+        0.720001220703125,
+        0.9,
+        0.720001220703125
+      ]
+    },
+    {
+      "instance": "D06-funnel",
+      "sourceFoot": "Funnel foot 2",
+      "center": [
+        16.510229110717773,
+        -0.45,
+        -50.489768981933594
+      ],
+      "size": [
+        0.720001220703125,
+        0.9,
+        0.720001220703125
+      ]
+    },
+    {
+      "instance": "D06-funnel",
+      "sourceFoot": "Funnel foot 3",
+      "center": [
+        14.0,
+        -0.45,
+        -49.45000076293945
+      ],
+      "size": [
+        0.7199993133544922,
+        0.9,
+        0.720001220703125
+      ]
+    },
+    {
+      "instance": "D06-funnel",
+      "sourceFoot": "Funnel foot 4",
+      "center": [
+        11.489770889282227,
+        -0.45,
+        -50.489768981933594
+      ],
+      "size": [
+        0.7199993133544922,
+        0.9,
+        0.720001220703125
+      ]
+    },
+    {
+      "instance": "D06-funnel",
+      "sourceFoot": "Funnel foot 5",
+      "center": [
+        10.449999809265137,
+        -0.45,
+        -53.0
+      ],
+      "size": [
+        0.7199993133544922,
+        0.9,
+        0.720001220703125
+      ]
+    },
+    {
+      "instance": "D06-funnel",
+      "sourceFoot": "Funnel foot 6",
+      "center": [
+        11.489770889282227,
+        -0.45,
+        -55.510231018066406
+      ],
+      "size": [
+        0.7199993133544922,
+        0.9,
+        0.720001220703125
+      ]
+    },
+    {
+      "instance": "D06-funnel",
+      "sourceFoot": "Funnel foot 7",
+      "center": [
+        14.0,
+        -0.45,
+        -56.54999923706055
+      ],
+      "size": [
+        0.7199993133544922,
+        0.9,
+        0.720001220703125
+      ]
+    },
+    {
+      "instance": "D06-funnel",
+      "sourceFoot": "Funnel foot 8",
+      "center": [
+        16.510229110717773,
+        -0.45,
+        -55.510231018066406
+      ],
+      "size": [
+        0.720001220703125,
+        0.9,
+        0.720001220703125
+      ]
+    },
+    {
+      "instance": "D07-gimbal",
+      "sourceFoot": "Gimbal base foot -2.15-2.15",
+      "center": [
+        11.850000381469727,
+        -0.45,
+        -68.1500015258789
+      ],
+      "size": [
+        0.7199993133544922,
+        0.9,
+        0.720001220703125
+      ]
+    },
+    {
+      "instance": "D07-gimbal",
+      "sourceFoot": "Gimbal base foot -2.152.15",
+      "center": [
+        11.850000381469727,
+        -0.45,
+        -63.849998474121094
+      ],
+      "size": [
+        0.7199993133544922,
+        0.9,
+        0.720001220703125
+      ]
+    },
+    {
+      "instance": "D07-gimbal",
+      "sourceFoot": "Gimbal base foot 2.15-2.15",
+      "center": [
+        16.15000009536743,
+        -0.45,
+        -68.1500015258789
+      ],
+      "size": [
+        0.7200002670288086,
+        0.9,
+        0.720001220703125
+      ]
+    },
+    {
+      "instance": "D07-gimbal",
+      "sourceFoot": "Gimbal base foot 2.152.15",
+      "center": [
+        16.15000009536743,
+        -0.45,
+        -63.849998474121094
+      ],
+      "size": [
+        0.7200002670288086,
+        0.9,
+        0.720001220703125
+      ]
+    },
+    {
+      "instance": "D08-cascade",
+      "sourceFoot": "Cascade end foot -0.82-4.45",
+      "center": [
+        9.180000305175781,
+        -0.45,
+        -78.44999694824219
+      ],
+      "size": [
+        0.6499996185302734,
+        0.9,
+        0.649993896484375
+      ]
+    },
+    {
+      "instance": "D08-cascade",
+      "sourceFoot": "Cascade end foot -0.824.45",
+      "center": [
+        9.180000305175781,
+        -0.45,
+        -69.55000305175781
+      ],
+      "size": [
+        0.6499996185302734,
+        0.9,
+        0.649993896484375
+      ]
+    },
+    {
+      "instance": "D08-cascade",
+      "sourceFoot": "Cascade end foot 0.82-4.45",
+      "center": [
+        10.819999694824219,
+        -0.45,
+        -78.44999694824219
+      ],
+      "size": [
+        0.6499996185302734,
+        0.9,
+        0.649993896484375
+      ]
+    },
+    {
+      "instance": "D08-cascade",
+      "sourceFoot": "Cascade end foot 0.824.45",
+      "center": [
+        10.819999694824219,
+        -0.45,
+        -69.55000305175781
+      ],
+      "size": [
+        0.6499996185302734,
+        0.9,
+        0.649993896484375
+      ]
+    },
+    {
+      "instance": "C01-jet",
+      "sourceFoot": "Jet pedestal",
+      "center": [
+        8.0,
+        -0.45,
+        -84.0
+      ],
+      "size": [
+        0.75,
+        0.9,
+        1.1999969482421875
+      ]
+    },
+    {
+      "instance": "C01-jet",
+      "sourceFoot": "Jet guard foot -0.72",
+      "center": [
+        8.300000190734863,
+        -0.45,
+        -84.72000122070312
+      ],
+      "size": [
+        0.6499996185302734,
+        0.9,
+        0.649993896484375
+      ]
+    },
+    {
+      "instance": "C01-jet",
+      "sourceFoot": "Jet guard foot 0.72",
+      "center": [
+        8.300000190734863,
+        -0.45,
+        -83.27999877929688
+      ],
+      "size": [
+        0.6499996185302734,
+        0.9,
+        0.649993896484375
+      ]
+    },
+    {
+      "instance": "C01-gimbal",
+      "sourceFoot": "Gimbal base foot -2.15-2.15",
+      "center": [
+        7.849999904632568,
+        -0.45,
+        -89.47000122070312
+      ],
+      "size": [
+        0.7200002670288086,
+        0.9,
+        0.720001220703125
+      ]
+    },
+    {
+      "instance": "C01-gimbal",
+      "sourceFoot": "Gimbal base foot -2.152.15",
+      "center": [
+        7.849999904632568,
+        -0.45,
+        -85.16999816894531
+      ],
+      "size": [
+        0.7200002670288086,
+        0.9,
+        0.720001220703125
+      ]
+    },
+    {
+      "instance": "C01-gimbal",
+      "sourceFoot": "Gimbal base foot 2.15-2.15",
+      "center": [
+        12.149999618530273,
+        -0.45,
+        -89.47000122070312
+      ],
+      "size": [
+        0.7199993133544922,
+        0.9,
+        0.720001220703125
+      ]
+    },
+    {
+      "instance": "C01-gimbal",
+      "sourceFoot": "Gimbal base foot 2.152.15",
+      "center": [
+        12.149999618530273,
+        -0.45,
+        -85.16999816894531
+      ],
+      "size": [
+        0.7199993133544922,
+        0.9,
+        0.720001220703125
+      ]
+    },
+    {
+      "instance": "C02-cascade",
+      "sourceFoot": "Cascade end foot -0.82-4.45",
+      "center": [
+        5.179999828338623,
+        -0.45,
+        -102.44999694824219
+      ],
+      "size": [
+        0.6499996185302734,
+        0.9,
+        0.649993896484375
+      ]
+    },
+    {
+      "instance": "C02-cascade",
+      "sourceFoot": "Cascade end foot -0.824.45",
+      "center": [
+        5.179999828338623,
+        -0.45,
+        -93.55000305175781
+      ],
+      "size": [
+        0.6499996185302734,
+        0.9,
+        0.649993896484375
+      ]
+    },
+    {
+      "instance": "C02-cascade",
+      "sourceFoot": "Cascade end foot 0.82-4.45",
+      "center": [
+        6.820000171661377,
+        -0.45,
+        -102.44999694824219
+      ],
+      "size": [
+        0.6499996185302734,
+        0.9,
+        0.649993896484375
+      ]
+    },
+    {
+      "instance": "C02-cascade",
+      "sourceFoot": "Cascade end foot 0.824.45",
+      "center": [
+        6.820000171661377,
+        -0.45,
+        -93.55000305175781
+      ],
+      "size": [
+        0.6499996185302734,
+        0.9,
+        0.649993896484375
+      ]
+    }
+  ],
+  "supportExclusionCount": 10,
+  "protectedPreviousAssets": {
+    "art/obstacle-library.blend": "43c336afd41f47bceaa1046d68e73fd335afe932d48e069b9b6a0eac8a40fd91",
+    "public/models/obstacle-library.glb": "8281551e662b13d240a1f5ffa64bcfb43d3687cc37ddd0ae605e28f8575f4b68",
+    "art/water-rush.blend": "7189c6bb95349a4ae79444ebd72b3d46822607ba165164a0973f026d5390da47",
+    "public/models/water-rush-track.glb": "3c1698f1671cc0428a93b5bea0c865858b0fe3a2fec4e0f9d44ee64b368a0221",
+    "art/mechanism-trial.blend": "02c615c12777f8c9ab3cd629db1b4a6888d3df9eb151df15854799bf3d94a3b0",
+    "public/models/mechanism-trial-track.glb": "5d56e7739479d8ba62b89e0c926421ff368ed53976ad3938c92b68946e4f8a5f",
+    "art/top-difficulty.blend": "2872517e7480b0646f029951ef66ae0821e06f8e0f692f8f271e42a2d62cd019",
+    "public/models/top-difficulty-track.glb": "e763368112829da380e2e3c1f6e1f534125d8e4dc05a8ab8767c9511f98d998b",
+    "art/three-route.blend": "4a0c25bde0ae926e3a67cbfea825f58f45bbf575c11d8ef113a8fec7cc464307",
+    "public/models/three-route-track.glb": "f472fdb2e5659594c7b4bb69ae796c2551d8fa33d377722bc1943878d994cb3d"
+  },
+  "status": "Model/export complete with current module foot foundations; CODE full validation pending."
+}

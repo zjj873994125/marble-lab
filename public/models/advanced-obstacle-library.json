@@ -1,0 +1,1543 @@
+{
+  "schemaVersion": 1,
+  "asset": "advanced-obstacle-library.glb",
+  "units": "m",
+  "upAxis": "+Y",
+  "forwardAxis": "-Z",
+  "referenceDeckY": 3.4,
+  "glbSha256": "99b0803ec4196cbe2d88170b23b9ce628637205b201a5e7739f8ccf49e40c428",
+  "source": "art/advanced-obstacle-library.blend",
+  "sourceSha256": "cca45bb2583104a25afef1f99db7b9d1c229b50c9cf1d63bffe269155e8f537e",
+  "constructionSha256": "90c580d7db8a50eb642380df9d8a104b3a5529241aedfb5f80da9528993d02d1",
+  "contractSha256": "26c1fe976537c0ac5b6a27b4e721a4316994e32521b67097fa6102f969c06465",
+  "runtimeSupported": true,
+  "runtimeSupportScope": "asset-loading-and-semantic-parts",
+  "statistics": {
+    "bytes": 1514564,
+    "triangles": 84968,
+    "materials": 8,
+    "meshes": 617,
+    "materialNames": [
+      "Platform enamel",
+      "Graphite chassis",
+      "Safety terracotta",
+      "Brushed alloy",
+      "Printed markings",
+      "Rubber pads",
+      "Ivory polymer",
+      "Airflow indicator"
+    ]
+  },
+  "entries": [
+    {
+      "id": "spring-trampoline",
+      "rootNode": "SpringTrampoline",
+      "restPose": "armed-neutral",
+      "rootBounds": {
+        "min": [
+          -1.7000000476837158,
+          0.0,
+          -1.7000000476837158
+        ],
+        "max": [
+          1.7000000476837158,
+          3.502500057220459,
+          1.7000000476837158
+        ]
+      },
+      "parts": [
+        {
+          "nodePath": "SpringTrampoline_Deck",
+          "role": "body",
+          "motion": "kinematic",
+          "pivot": [
+            0,
+            3.25,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            2.4,
+            0.3,
+            2.4
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 2912,
+            "materials": 5,
+            "meshes": 10
+          }
+        },
+        {
+          "nodePath": "SpringTrampoline_Frame",
+          "role": "frame",
+          "motion": "fixed",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            3.05,
+            3.4,
+            3.05
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 35856,
+            "materials": 3,
+            "meshes": 332
+          }
+        },
+        {
+          "nodePath": "SpringTrampoline_Deck/SpringTrampoline_CompressionLinkage",
+          "role": "linkage",
+          "motion": "kinematic",
+          "pivot": [
+            0,
+            3.25,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            1.5,
+            0.65,
+            1.5
+          ],
+          "collision": false,
+          "statistics": {
+            "triangles": 432,
+            "materials": 1,
+            "meshes": 4
+          }
+        },
+        {
+          "nodePath": "SpringTrampoline_Deck/SpringTrampoline_EnergyNeedle",
+          "role": "indicator",
+          "motion": "indicator",
+          "pivot": [
+            0,
+            3.25,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            0.08,
+            0.025,
+            0.32
+          ],
+          "collision": false,
+          "statistics": {
+            "triangles": 108,
+            "materials": 1,
+            "meshes": 1
+          }
+        },
+        {
+          "nodePath": "SpringTrampoline_Deck/SpringTrampoline_Core",
+          "role": "zone",
+          "motion": "indicator",
+          "pivot": [
+            0,
+            3.25,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            2.2,
+            0.05,
+            2.2
+          ],
+          "collision": false,
+          "statistics": {
+            "triangles": 2048,
+            "materials": 2,
+            "meshes": 2
+          }
+        }
+      ],
+      "design": {
+        "deckSize": [
+          2.4,
+          0.3,
+          2.4
+        ],
+        "topY": 3.4,
+        "coreRadius": 0.75,
+        "outerRadius": 1.1,
+        "storedEnergyJ": 32,
+        "poweredNormalSpeedCeiling": 8.5,
+        "entryDrop": 0.3,
+        "nominalOutgoingVelocity": [
+          0,
+          8,
+          -4.5
+        ],
+        "rearmSeparationAboveSurface": 0.545,
+        "minimumRearmSeconds": 0.25
+      },
+      "statistics": {
+        "triangles": 38768,
+        "materials": 6,
+        "meshes": 342
+      }
+    },
+    {
+      "id": "gravity-coaster",
+      "rootNode": "GravityCoaster",
+      "restPose": "static-open-course",
+      "rootBounds": {
+        "min": [
+          -0.699999988079071,
+          0.0,
+          -9.960999488830566
+        ],
+        "max": [
+          7.608195781707764,
+          5.37999963760376,
+          0.3100000023841858
+        ]
+      },
+      "parts": [
+        {
+          "nodePath": "GravityCoaster_Track",
+          "role": "body",
+          "motion": "fixed",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            9.3,
+            2.3,
+            11.3
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 628,
+            "materials": 1,
+            "meshes": 1
+          }
+        },
+        {
+          "nodePath": "GravityCoaster_Rails",
+          "role": "guard",
+          "motion": "fixed",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            9.3,
+            2.55,
+            11.3
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 1248,
+            "materials": 1,
+            "meshes": 1
+          }
+        },
+        {
+          "nodePath": "GravityCoaster_Supports",
+          "role": "frame",
+          "motion": "fixed",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            10,
+            5.2,
+            12
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 5184,
+            "materials": 3,
+            "meshes": 48
+          }
+        }
+      ],
+      "design": {
+        "entryTopY": 5.2,
+        "valleyTopY": 3.4,
+        "exitTopY": 4.2,
+        "width": 1.4,
+        "verticalTransitionRadius": 4,
+        "planTurnRadius": 4,
+        "planTurnDegrees": 90,
+        "bankDegrees": 32,
+        "railHeight": 0.25,
+        "globalSpeedChanged": false,
+        "completeLoopIncluded": false
+      },
+      "statistics": {
+        "triangles": 7060,
+        "materials": 5,
+        "meshes": 50
+      }
+    },
+    {
+      "id": "pulse-jet",
+      "rootNode": "PulseJet",
+      "restPose": "idle",
+      "rootBounds": {
+        "min": [
+          -2.375,
+          0.0,
+          -1.0450000762939453
+        ],
+        "max": [
+          0.9724999070167542,
+          4.644999980926514,
+          1.0450000762939453
+        ]
+      },
+      "parts": [
+        {
+          "nodePath": "PulseJet_Housing",
+          "role": "frame",
+          "motion": "fixed",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "referenceSize": [
+            2.45,
+            4.55,
+            1.7
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 1368,
+            "materials": 4,
+            "meshes": 7
+          }
+        },
+        {
+          "nodePath": "PulseJet_Valve",
+          "role": "valve",
+          "motion": "kinematic",
+          "pivot": [
+            -1.85,
+            3.825,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "referenceSize": [
+            0.52,
+            0.72,
+            0.52
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 488,
+            "materials": 2,
+            "meshes": 2
+          }
+        },
+        {
+          "nodePath": "PulseJet_Flow",
+          "role": "zone",
+          "motion": "indicator",
+          "pivot": [
+            -1.6,
+            3.825,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "referenceSize": [
+            3,
+            1.8,
+            1.8
+          ],
+          "collision": false,
+          "statistics": {
+            "triangles": 1236,
+            "materials": 2,
+            "meshes": 4
+          }
+        }
+      ],
+      "design": {
+        "sideCoreForceN": 8,
+        "upwardCoreForceN": 32,
+        "axialRange": [
+          0,
+          3
+        ],
+        "coreRadius": 0.55,
+        "outerRadius": 0.9,
+        "sideLaneWidth": 3.2,
+        "sideExposureLength": 2,
+        "cycleStagesSeconds": [
+          1.6,
+          0.7,
+          0.45,
+          0.25
+        ],
+        "stageNames": [
+          "idle",
+          "warning",
+          "pulse",
+          "decay"
+        ],
+        "maximumSimultaneousNozzles": 2,
+        "combinationForceBudgetN": 40,
+        "sideAxis": [
+          1,
+          0,
+          0
+        ]
+      },
+      "statistics": {
+        "triangles": 3092,
+        "materials": 5,
+        "meshes": 13
+      }
+    },
+    {
+      "id": "orbital-catcher",
+      "rootNode": "OrbitalCatcher",
+      "restPose": "patrol-center",
+      "rootBounds": {
+        "min": [
+          -2.0,
+          0.0,
+          -1.2549999952316284
+        ],
+        "max": [
+          2.7899999618530273,
+          3.512500047683716,
+          1.4399999380111694
+        ]
+      },
+      "parts": [
+        {
+          "nodePath": "OrbitalCatcher_Carriage",
+          "role": "carriage",
+          "motion": "kinematic",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            1.8,
+            0.45,
+            1.45
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 5152,
+            "materials": 4,
+            "meshes": 10
+          }
+        },
+        {
+          "nodePath": "OrbitalCatcher_Carriage/OrbitalCatcher_Bowl",
+          "role": "body",
+          "motion": "kinematic",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            2.4,
+            0.45,
+            2.4
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 3692,
+            "materials": 2,
+            "meshes": 3
+          }
+        },
+        {
+          "nodePath": "OrbitalCatcher_Rail",
+          "role": "frame",
+          "motion": "fixed",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            3.6,
+            2.6,
+            2.1
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 5616,
+            "materials": 3,
+            "meshes": 52
+          }
+        },
+        {
+          "nodePath": "OrbitalCatcher_Dock",
+          "role": "dock",
+          "motion": "fixed",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            0.48,
+            0.5,
+            2.08
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 216,
+            "materials": 2,
+            "meshes": 2
+          }
+        },
+        {
+          "nodePath": "OrbitalCatcher_Carriage/OrbitalCatcher_BrakeClamp",
+          "role": "brake",
+          "motion": "kinematic",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            2,
+            0.5,
+            0.45
+          ],
+          "collision": false,
+          "statistics": {
+            "triangles": 216,
+            "materials": 1,
+            "meshes": 2
+          }
+        },
+        {
+          "nodePath": "OrbitalCatcher_Carriage/OrbitalCatcher_Bowl/OrbitalCatcher_OccupancyNeedle",
+          "role": "indicator",
+          "motion": "indicator",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            0.08,
+            0.025,
+            0.34
+          ],
+          "collision": false,
+          "statistics": {
+            "triangles": 108,
+            "materials": 1,
+            "meshes": 1
+          }
+        }
+      ],
+      "design": {
+        "bowlRadius": 1.2,
+        "coreRadius": 0.7,
+        "floorY": 3.1,
+        "lipY": 3.45,
+        "orbitXAmplitude": 1,
+        "orbitZAmplitude": 0.4,
+        "period": 6,
+        "brakingSeconds": 0.35,
+        "settleHoldSeconds": 0.65,
+        "dockAngleDegrees": 90,
+        "dockHoldSeconds": 1,
+        "dockLipGap": 0.15,
+        "nominalRelativeLandingSpeedMax": 2
+      },
+      "statistics": {
+        "triangles": 10984,
+        "materials": 6,
+        "meshes": 64
+      }
+    },
+    {
+      "id": "reversing-conveyor",
+      "rootNode": "ReversingConveyor",
+      "restPose": "stopped-neutral",
+      "rootBounds": {
+        "min": [
+          -1.1299999952316284,
+          0.0,
+          -3.3499999046325684
+        ],
+        "max": [
+          1.1299999952316284,
+          3.4210000038146973,
+          3.3499999046325684
+        ]
+      },
+      "parts": [
+        {
+          "nodePath": "ReversingConveyor_Belt",
+          "role": "body",
+          "motion": "fixed",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "referenceSize": [
+            1.4,
+            0.08,
+            6
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 3456,
+            "materials": 1,
+            "meshes": 32
+          }
+        },
+        {
+          "nodePath": "ReversingConveyor_Frame",
+          "role": "frame",
+          "motion": "fixed",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "referenceSize": [
+            1.72,
+            3.4,
+            6.7
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 1728,
+            "materials": 2,
+            "meshes": 16
+          }
+        },
+        {
+          "nodePath": "ReversingConveyor_DrumA",
+          "role": "drum",
+          "motion": "kinematic",
+          "pivot": [
+            0,
+            3.05,
+            3
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "referenceSize": [
+            1.42,
+            0.7,
+            0.7
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 476,
+            "materials": 1,
+            "meshes": 1
+          }
+        },
+        {
+          "nodePath": "ReversingConveyor_DrumB",
+          "role": "drum",
+          "motion": "kinematic",
+          "pivot": [
+            0,
+            3.05,
+            -3
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "referenceSize": [
+            1.42,
+            0.7,
+            0.7
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 476,
+            "materials": 1,
+            "meshes": 1
+          }
+        },
+        {
+          "nodePath": "ReversingConveyor_Direction",
+          "role": "indicator",
+          "motion": "indicator",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "referenceSize": [
+            0.32,
+            0.012,
+            2.48
+          ],
+          "collision": false,
+          "statistics": {
+            "triangles": 324,
+            "materials": 1,
+            "meshes": 3
+          }
+        }
+      ],
+      "design": {
+        "topWidth": 1.4,
+        "topLength": 6,
+        "topY": 3.4,
+        "endDrumRadius": 0.35,
+        "targetTreadSpeed": 2.5,
+        "candidateSlatCount": 32,
+        "slatGapRange": [
+          0.01,
+          0.02
+        ],
+        "holdEachDirectionSeconds": 2.2,
+        "warningEachHoldFinalSeconds": 0.8,
+        "reverseDecelSeconds": 0.6,
+        "zeroHoldSeconds": 0.3,
+        "reverseAccelSeconds": 0.6,
+        "nominalCycleSeconds": 7.4,
+        "candidateSlatSize": [
+          1.4,
+          0.08,
+          0.43
+        ]
+      },
+      "statistics": {
+        "triangles": 6460,
+        "materials": 5,
+        "meshes": 53
+      }
+    },
+    {
+      "id": "vortex-funnel",
+      "rootNode": "VortexFunnel",
+      "restPose": "static-open-hole",
+      "rootBounds": {
+        "min": [
+          -4.090000152587891,
+          0.0,
+          -4.090000152587891
+        ],
+        "max": [
+          4.090000152587891,
+          4.75,
+          4.090000152587891
+        ]
+      },
+      "parts": [
+        {
+          "nodePath": "VortexFunnel_Surface",
+          "role": "body",
+          "motion": "fixed",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            8,
+            1.22,
+            8
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 6400,
+            "materials": 2,
+            "meshes": 4
+          }
+        },
+        {
+          "nodePath": "VortexFunnel_Rails",
+          "role": "guard",
+          "motion": "fixed",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            8.18,
+            1.35,
+            8.18
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 2048,
+            "materials": 2,
+            "meshes": 2
+          }
+        },
+        {
+          "nodePath": "VortexFunnel_CatchDeck",
+          "role": "catch",
+          "motion": "fixed",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            2.5,
+            0.44,
+            2.5
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 216,
+            "materials": 2,
+            "meshes": 2
+          }
+        },
+        {
+          "nodePath": "VortexFunnel_Supports",
+          "role": "frame",
+          "motion": "fixed",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            7.82,
+            4.55,
+            7.82
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 2592,
+            "materials": 3,
+            "meshes": 24
+          }
+        }
+      ],
+      "design": {
+        "outerRadius": 4,
+        "holeRadius": 0.65,
+        "coneSlopeDegrees": 20,
+        "holeLipY": 3.4,
+        "outerLipY": 4.6193002848,
+        "catchTopY": 1.4,
+        "referenceOrbitRadius": 2.5,
+        "referenceOrbitSpeed": 3.8156007876,
+        "holeClearanceForBallCenter": 0.225,
+        "fixedCatchDeckSize": [
+          2.4,
+          0.3,
+          2.4
+        ]
+      },
+      "statistics": {
+        "triangles": 11256,
+        "materials": 7,
+        "meshes": 32
+      }
+    },
+    {
+      "id": "gimbal-platform",
+      "rootNode": "GimbalPlatform",
+      "restPose": "export-zero-both-axes",
+      "rootBounds": {
+        "min": [
+          -2.510000228881836,
+          0.0,
+          -2.510000228881836
+        ],
+        "max": [
+          2.510000228881836,
+          3.8206393718719482,
+          2.510000228881836
+        ]
+      },
+      "parts": [
+        {
+          "nodePath": "GimbalPlatform_Base",
+          "role": "frame",
+          "motion": "fixed",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            4.76,
+            3.45,
+            4.76
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 1512,
+            "materials": 4,
+            "meshes": 14
+          }
+        },
+        {
+          "nodePath": "GimbalPlatform_OuterFrame",
+          "role": "outer",
+          "motion": "dynamic",
+          "pivot": [
+            0,
+            3.6706395458,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "referenceSize": [
+            3.82,
+            0.18,
+            3.74
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 1516,
+            "materials": 4,
+            "meshes": 9
+          }
+        },
+        {
+          "nodePath": "GimbalPlatform_OuterFrame/GimbalPlatform_OuterAxle",
+          "role": "outer-axle",
+          "motion": "dynamic",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "referenceSize": [
+            4.7,
+            0.2,
+            0.2
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 380,
+            "materials": 1,
+            "meshes": 1
+          }
+        },
+        {
+          "nodePath": "GimbalPlatform_OuterFrame/GimbalPlatform_InnerDeck",
+          "role": "body",
+          "motion": "dynamic",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "referenceSize": [
+            3.2,
+            0.24,
+            3.2
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 704,
+            "materials": 4,
+            "meshes": 4
+          }
+        },
+        {
+          "nodePath": "GimbalPlatform_OuterFrame/GimbalPlatform_InnerDeck/GimbalPlatform_InnerAxle",
+          "role": "inner-axle",
+          "motion": "dynamic",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "referenceSize": [
+            0.15,
+            0.15,
+            3.75
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 380,
+            "materials": 1,
+            "meshes": 1
+          }
+        }
+      ],
+      "design": {
+        "bodySize": [
+          3.2,
+          0.24,
+          3.2
+        ],
+        "pivotY": 3.6706395458,
+        "outerAxis": [
+          1,
+          0,
+          0
+        ],
+        "innerAxis": [
+          0,
+          0,
+          1
+        ],
+        "rotationOrder": "Rx(alpha)*Rz(beta)",
+        "limitsDegrees": [
+          14,
+          14
+        ],
+        "restAnglesDegrees": [
+          14,
+          0
+        ],
+        "innerMass": 1.2,
+        "outerFrameMass": 0.3,
+        "springEach": 2,
+        "dampingEach": 1.8,
+        "bankEdgeRadius": 1.72
+      },
+      "statistics": {
+        "triangles": 3028,
+        "materials": 5,
+        "meshes": 23
+      }
+    },
+    {
+      "id": "cascade-bridge",
+      "rootNode": "CascadeBridge",
+      "restPose": "all-tiles-locked",
+      "rootBounds": {
+        "min": [
+          -1.1449999809265137,
+          0.0,
+          -4.774999618530273
+        ],
+        "max": [
+          1.1449999809265137,
+          3.4200000762939453,
+          4.774999618530273
+        ]
+      },
+      "parts": [
+        {
+          "nodePath": "CascadeBridge_Frame",
+          "role": "frame",
+          "motion": "fixed",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "referenceSize": [
+            1.8,
+            3.4,
+            9.4
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 1080,
+            "materials": 2,
+            "meshes": 10
+          }
+        },
+        {
+          "nodePath": "CascadeBridge_Tile01",
+          "role": "body",
+          "motion": "dynamic",
+          "pivot": [
+            0,
+            3.29,
+            3.8
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "referenceSize": [
+            1.2,
+            0.22,
+            1.4
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 324,
+            "materials": 3,
+            "meshes": 3
+          }
+        },
+        {
+          "nodePath": "CascadeBridge_Lock01",
+          "role": "lock",
+          "motion": "indicator",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "referenceSize": [
+            0.42,
+            0.32,
+            0.34
+          ],
+          "collision": false,
+          "statistics": {
+            "triangles": 216,
+            "materials": 2,
+            "meshes": 2
+          }
+        },
+        {
+          "nodePath": "CascadeBridge_Tile02",
+          "role": "body",
+          "motion": "dynamic",
+          "pivot": [
+            0,
+            3.29,
+            2.28
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "referenceSize": [
+            1.2,
+            0.22,
+            1.4
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 324,
+            "materials": 3,
+            "meshes": 3
+          }
+        },
+        {
+          "nodePath": "CascadeBridge_Lock02",
+          "role": "lock",
+          "motion": "indicator",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "referenceSize": [
+            0.42,
+            0.32,
+            0.34
+          ],
+          "collision": false,
+          "statistics": {
+            "triangles": 216,
+            "materials": 2,
+            "meshes": 2
+          }
+        },
+        {
+          "nodePath": "CascadeBridge_Tile03",
+          "role": "body",
+          "motion": "dynamic",
+          "pivot": [
+            0,
+            3.29,
+            0.76
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "referenceSize": [
+            1.2,
+            0.22,
+            1.4
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 324,
+            "materials": 3,
+            "meshes": 3
+          }
+        },
+        {
+          "nodePath": "CascadeBridge_Lock03",
+          "role": "lock",
+          "motion": "indicator",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "referenceSize": [
+            0.42,
+            0.32,
+            0.34
+          ],
+          "collision": false,
+          "statistics": {
+            "triangles": 216,
+            "materials": 2,
+            "meshes": 2
+          }
+        },
+        {
+          "nodePath": "CascadeBridge_Tile04",
+          "role": "body",
+          "motion": "dynamic",
+          "pivot": [
+            0,
+            3.29,
+            -0.76
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "referenceSize": [
+            1.2,
+            0.22,
+            1.4
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 324,
+            "materials": 3,
+            "meshes": 3
+          }
+        },
+        {
+          "nodePath": "CascadeBridge_Lock04",
+          "role": "lock",
+          "motion": "indicator",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "referenceSize": [
+            0.42,
+            0.32,
+            0.34
+          ],
+          "collision": false,
+          "statistics": {
+            "triangles": 216,
+            "materials": 2,
+            "meshes": 2
+          }
+        },
+        {
+          "nodePath": "CascadeBridge_Tile05",
+          "role": "body",
+          "motion": "dynamic",
+          "pivot": [
+            0,
+            3.29,
+            -2.28
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "referenceSize": [
+            1.2,
+            0.22,
+            1.4
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 324,
+            "materials": 3,
+            "meshes": 3
+          }
+        },
+        {
+          "nodePath": "CascadeBridge_Lock05",
+          "role": "lock",
+          "motion": "indicator",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "referenceSize": [
+            0.42,
+            0.32,
+            0.34
+          ],
+          "collision": false,
+          "statistics": {
+            "triangles": 216,
+            "materials": 2,
+            "meshes": 2
+          }
+        },
+        {
+          "nodePath": "CascadeBridge_Tile06",
+          "role": "body",
+          "motion": "dynamic",
+          "pivot": [
+            0,
+            3.29,
+            -3.8
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "referenceSize": [
+            1.2,
+            0.22,
+            1.4
+          ],
+          "collision": true,
+          "statistics": {
+            "triangles": 324,
+            "materials": 3,
+            "meshes": 3
+          }
+        },
+        {
+          "nodePath": "CascadeBridge_Lock06",
+          "role": "lock",
+          "motion": "indicator",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "referenceSize": [
+            0.42,
+            0.32,
+            0.34
+          ],
+          "collision": false,
+          "statistics": {
+            "triangles": 216,
+            "materials": 2,
+            "meshes": 2
+          }
+        }
+      ],
+      "design": {
+        "tileCount": 6,
+        "tileSize": [
+          1.2,
+          0.22,
+          1.4
+        ],
+        "gap": 0.12,
+        "pitch": 1.52,
+        "totalLength": 9,
+        "topY": 3.4,
+        "tileMass": 0.8,
+        "firstReleaseDelay": 0.85,
+        "releaseInterval": 0.42,
+        "visibleWarningBeforeEachRelease": 0.35,
+        "minimumContactDwell": 0.04,
+        "targetRunSpeed": [
+          3.6,
+          4.5
+        ],
+        "restoreOnlyAfterSafeRespawn": true,
+        "bankGap": 0.12
+      },
+      "statistics": {
+        "triangles": 4320,
+        "materials": 5,
+        "meshes": 40
+      }
+    }
+  ],
+  "note": "Model and semantic hierarchy delivered; CODE behavior and physics validation remain separate."
+}

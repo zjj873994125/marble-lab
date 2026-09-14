@@ -1,13 +1,14 @@
 import initial from '../levels/initial-gravity'
 import water from '../levels/water-rush'
 import type { LibraryKind } from './library-types'
+import type { AdvancedKind } from './advanced-types'
 import seesawThumbnail from '../assets/obstacles/weight-seesaw.png'
 import rollerThumbnail from '../assets/obstacles/axial-roller.png'
 import pistonThumbnail from '../assets/obstacles/piston-wall.png'
 import trapdoorThumbnail from '../assets/obstacles/timed-trapdoor.png'
 import cradleThumbnail from '../assets/obstacles/sway-cradle-bridge.png'
 
-export type ObstacleId = 'pendulum' | 'hammers' | 'cross' | 'lifts' | 'platform' | 'beam' | 'serpentine' | 'ramp' | LibraryKind
+export type ObstacleId = 'pendulum' | 'hammers' | 'cross' | 'lifts' | 'platform' | 'beam' | 'serpentine' | 'ramp' | LibraryKind | AdvancedKind
 export type ObstacleCategory = '动态机关' | '路线挑战'
 export interface ObstacleEntry {
   id: ObstacleId
@@ -53,3 +54,15 @@ const libraryCards:{id:LibraryKind;name:string;thumbnail:string;skill:string}[]=
   {id:'sway-cradle-bridge',name:'摆动吊桥',thumbnail:cradleThumbnail,skill:'倾摆控球'},
 ]
 obstacleCatalog.push(...libraryCards.map(card=>({...card,category:'动态机关' as const,summary:'',motion:'',strategy:'',placement:'',caution:'图鉴为分件姿态示意，第三关动力已实现但未经试玩验证。',appearsIn:['机关试炼'],pairs:[],facts:[],previewSupported:true,gameplayImplemented:true})))
+
+const advancedCards:{id:AdvancedKind;name:string;category:ObstacleCategory;skill:string;pairs:ObstacleId[]}[]=[
+  {id:'spring-trampoline',name:'蓄能蹦床',category:'动态机关',skill:'弹道控制',pairs:['orbital-catcher','cascade-bridge']},
+  {id:'gravity-coaster',name:'重力过山车弯轨',category:'路线挑战',skill:'惯性过弯',pairs:['pulse-jet','reversing-conveyor']},
+  {id:'pulse-jet',name:'脉冲喷气阵',category:'动态机关',skill:'侧向补偿',pairs:['gimbal-platform','spring-trampoline']},
+  {id:'orbital-catcher',name:'巡航接球斗',category:'动态机关',skill:'动态落点',pairs:['spring-trampoline','beam']},
+  {id:'reversing-conveyor',name:'反转输送带桥',category:'动态机关',skill:'反向牵引',pairs:['gravity-coaster','beam']},
+  {id:'vortex-funnel',name:'回旋漏斗',category:'路线挑战',skill:'缩圈落孔',pairs:['orbital-catcher','spring-trampoline']},
+  {id:'gimbal-platform',name:'双轴天平台',category:'动态机关',skill:'双轴负载',pairs:['pulse-jet','cascade-bridge']},
+  {id:'cascade-bridge',name:'连锁坍塌桥',category:'动态机关',skill:'持续冲刺',pairs:['gimbal-platform','spring-trampoline']},
+]
+obstacleCatalog.push(...advancedCards.map(card=>({...card,summary:'',motion:'',strategy:'',placement:'',caution:'动态预览展示机构姿态，真实接触与负载以高阶机关试验场为准。',appearsIn:['高阶机关试验场'],facts:[],previewSupported:true,gameplayImplemented:true})))

@@ -14,17 +14,19 @@ const progressSource=readFileSync(new URL('../src/game/course-progress.ts',impor
 const progressJs=compile(progressSource).replace(/^import .*;?$/gm,'').replace('export function','function')
 const createCourseProgress=new Function(`${progressJs};return createCourseProgress`)()
 
-test('五项目录保留旧三关，新挑战与04标题按产品约定注册',async()=>{
+test('六项目录保留旧三关、长关与高阶试验场',async()=>{
   const source=readFileSync(new URL('../src/game/levels.ts',import.meta.url),'utf8')
     .replace(/^import initialGravity .*$/m,"const initialGravity={id:'initial-gravity'}")
     .replace(/^import waterRush .*$/m,"const waterRush={id:'water-rush'}")
     .replace(/^import mechanismTrial .*$/m,"const mechanismTrial={id:'mechanism-trial'}")
     .replace(/^import topDifficulty .*$/m,"const topDifficulty={id:'top-difficulty'}")
     .replace(/^import threeRoute .*$/m,"const threeRoute={id:'three-route'}")
+    .replace(/^import advancedTrial .*$/m,"const advancedTrial={id:'advanced-trial'}")
   const {levelCatalog}=await import(`data:text/javascript;base64,${Buffer.from(compile(source)).toString('base64')}`)
   assert.deepEqual(levelCatalog.map(entry=>[entry.config.id,entry.number,entry.title]),[
     ['initial-gravity','01','教学关卡'],['water-rush','02','水上冲关'],['mechanism-trial','03','机关试炼'],
     ['top-difficulty','挑战','顶级难度关卡'],['three-route','04','三路分流'],
+    ['advanced-trial','试验','高阶机关试验场'],
   ])
 })
 

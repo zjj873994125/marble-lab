@@ -1,5 +1,6 @@
 // 由代码对话维护格式；关卡对话只填写 src/levels 下的数据。
 import type { LibraryMechanismConfig } from './library-types'
+import type { AdvancedMechanismConfig } from './advanced-types'
 export type Position = [number, number, number]
 export type MaterialName = 'cream' | 'edge' | 'orange' | 'dark' | 'blue' | 'floorMat' | 'water' | 'poolEdge'
 export type RulesVersion = 'classic' | 'open-hammer' | 'flat-hammer' | 'standard' | 'challenge' | 'serpentine' | 'intense' | 'intense-v2'
@@ -120,6 +121,7 @@ export interface LevelConfig {
   lifts?: LiftConfig[]
   turntable?: TurntableConfig
   mechanisms?: LibraryMechanismConfig[]
+  advancedMechanisms?: AdvancedMechanismConfig[]
   mechanismGroups?: MechanismGroupConfig[]
   course?: CourseProgressConfig
   platform?: PlatformConfig

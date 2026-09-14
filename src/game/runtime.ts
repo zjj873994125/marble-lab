@@ -12,6 +12,7 @@ import { primitiveThemeRoles, type ThemeRole } from './track-themes'
 import { createPerformanceMonitor, type PerformanceSample } from './performance'
 import { createLegacyMechanisms } from './legacy-mechanisms'
 import { createCourseProgress } from './course-progress'
+import { createAdvancedMechanisms } from './advanced-mechanisms'
 import type { LevelConfig, Position, PrimitiveConfig, RingConfig } from './level-types'
 
 interface Hooks {
@@ -125,8 +126,11 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
   let libraryMechanisms: ReturnType<typeof createLibraryMechanisms>
   try { libraryMechanisms = createLibraryMechanisms(app, level.mechanisms ?? [], addObject, modelAssets.load,themes.applyEntity) }
   catch (error) { performanceMonitor.destroy(); themes.destroy(); modelAssets.destroy(); water?.destroy(); steel.destroy(); app.destroy(); materials.forEach(m=>m.destroy()); meshes.forEach(m=>m.destroy()); throw error }
+  let advancedMechanisms:ReturnType<typeof createAdvancedMechanisms>
+  try {advancedMechanisms=createAdvancedMechanisms(app,level.advancedMechanisms??[],addObject,ball,modelAssets.load,themes.applyEntity)}
+  catch(error){performanceMonitor.destroy();libraryMechanisms.destroy();themes.destroy();modelAssets.destroy();water?.destroy();steel.destroy();app.destroy();materials.forEach(m=>m.destroy());meshes.forEach(m=>m.destroy());throw error}
   // 先释放库实例/模板，再取消资源池，避免迟到模型使用已卸载资源。
-  const cancelLoading = () => { performanceMonitor.destroy(); libraryMechanisms.destroy(); themes.destroy(); modelAssets.destroy() }
+  const cancelLoading = () => { performanceMonitor.destroy(); advancedMechanisms.destroy(); libraryMechanisms.destroy(); themes.destroy(); modelAssets.destroy() }
   signal?.addEventListener('abort', cancelLoading, { once: true })
   if (signal?.aborted) cancelLoading()
   const visualDisposers = await Promise.all([
@@ -134,9 +138,10 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
     ...await legacyMechanisms.ready,
   ])
   await libraryMechanisms.ready
+  await advancedMechanisms.ready
   signal?.removeEventListener('abort', cancelLoading)
   let sceneDisposed = false
-  function disposeScene() { if (sceneDisposed) return; sceneDisposed = true; performanceMonitor.destroy(); libraryMechanisms.destroy(); visualDisposers.forEach(dispose => dispose()); themes.destroy(); modelAssets.destroy(); water?.destroy(); steel.destroy(); app.destroy(); materials.forEach(m=>m.destroy()); meshes.forEach(m=>m.destroy()) }
+  function disposeScene() { if (sceneDisposed) return; sceneDisposed = true; performanceMonitor.destroy(); advancedMechanisms.destroy(); libraryMechanisms.destroy(); visualDisposers.forEach(dispose => dispose()); themes.destroy(); modelAssets.destroy(); water?.destroy(); steel.destroy(); app.destroy(); materials.forEach(m=>m.destroy()); meshes.forEach(m=>m.destroy()) }
   if (signal?.aborted) { disposeScene(); throw new DOMException('关卡已卸载', 'AbortError') }
 
   let audio: AudioContext | undefined
@@ -169,12 +174,13 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
   }
   function updateMechanisms() { legacyMechanisms.update(time) }
   if ((level.rulesVersion ?? 'classic') !== 'classic') updateMechanisms()
-  function respawn() { const coursePosition=course?.respawn(),target=coursePosition?new pc.Vec3(...coursePosition):checkpoint ? checkpoints[checkpoint-1]! : initial;rigid.teleport(target, pc.Vec3.ZERO);coursePrevious=target.toArray() as Position; rigid.linearVelocity=pc.Vec3.ZERO; rigid.angularVelocity=pc.Vec3.ZERO }
+  function respawn() { const coursePosition=course?.respawn(),target=coursePosition?new pc.Vec3(...coursePosition):checkpoint ? checkpoints[checkpoint-1]! : initial;advancedMechanisms.onRespawn();rigid.teleport(target, pc.Vec3.ZERO);coursePrevious=target.toArray() as Position; rigid.linearVelocity=pc.Vec3.ZERO; rigid.angularVelocity=pc.Vec3.ZERO }
   function setPhase(phase: Phase) { keys.clear(); water?.resetClock(); app.timeScale = phase==='playing' ? 1 : 0; if (phase==='menu') respawn() }
   function start() {
     elapsed=0; falls=0; checkpoint=0; time=0; keys.clear();course?.reset()
     water?.resetClock()
     libraryMechanisms.reset()
+    advancedMechanisms.reset()
     if ((level.rulesVersion ?? 'classic') !== 'classic') updateMechanisms()
     checkpointRings.forEach(e=>e.render!.meshInstances.forEach(m=>m.material=blue))
     respawn(); cameraTarget.copy(initial); cameraPosition.set(initial.x,initial.y+17,initial.z+13)
@@ -209,7 +215,9 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
       elapsed+=dt; time+=dt
       updateMechanisms()
       libraryMechanisms.update(time)
+      advancedMechanisms.update(time)
       if (dt > 0) libraryMechanisms.applyForces()
+      if (dt > 0) advancedMechanisms.applyForces()
       const input=resolveInput(keys,hooks.input?.())
       if(input.x || input.z) rigid.applyForce(input.x*12*hooks.settings().sensitivity,0,input.z*12*hooks.settings().sensitivity)
       const v=rigid.linearVelocity
@@ -233,7 +241,7 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
       }
       hooks.tick(elapsed,falls,checkpoint,progress)
       const checkpointsComplete=course?course.complete():checkpoint===checkpoints.length
-      if(checkpointsComplete && Math.hypot(pos.x-level.finish.position[0],pos.z-level.finish.position[2])<level.finish.radius && Math.abs(pos.y-level.finish.position[1])<level.finish.heightTolerance) { hooks.tick(elapsed,falls,checkpoint,1); tone(1100,.35); hooks.finish(course?.route()); app.timeScale=0; keys.clear() }
+      if(checkpointsComplete && Math.hypot(pos.x-level.finish.position[0],pos.z-level.finish.position[2])<level.finish.radius && Math.abs(pos.y-level.finish.position[1])<level.finish.heightTolerance) { hooks.tick(elapsed,falls,checkpoint,1); tone(1100,.35); hooks.finish(level.course&&level.course.routes.length>1?course?.route():undefined); app.timeScale=0; keys.clear() }
     }
     steel.update(Math.hypot(rigid.linearVelocity.x, rigid.linearVelocity.z))
     if(phase==='menu') {

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1500" viewBox="0 0 1400 1500">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#244b47"/></marker>
+  </defs>
+  <style>
+    text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;fill:#20393d;letter-spacing:0}.title{font-size:38px;font-weight:700}.sub{font-size:19px;fill:#607477}.label{font-size:18px;font-weight:600}.small{font-size:15px}.cp{font-size:13px;fill:#76462e}.route{fill:none;stroke:#244b47;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}.safe{fill:#fff8df;stroke:#aa6849;stroke-width:2}.demo{fill:#dcecea;stroke:#317a73;stroke-width:2}.combo{fill:#e8e0f0;stroke:#76588e;stroke-width:2}.air{fill:none;stroke:#2b7890;stroke-width:3;stroke-dasharray:8 7}.gate{stroke:#b34e45;stroke-width:4}.dim{fill:none;stroke:#95a6a4;stroke-width:1.5;stroke-dasharray:5 5}
+  </style>
+  <rect width="1400" height="1500" fill="#f7f8f3"/>
+  <text x="52" y="62" class="title">高阶机关试验场</text>
+  <text x="52" y="98" class="sub">8个独立示范区 + 2个连续组合区 · 10个固定安全CP · 13个有向gate</text>
+  <rect x="45" y="130" width="790" height="1290" fill="#e5f0ee" stroke="#cadbd7"/>
+  <rect x="865" y="130" width="490" height="1290" fill="#ffffff" stroke="#d8e0dd"/>
+
+  <path class="route" d="M400 170 L400 250 L400 320 L400 410 L400 500 L400 600 L480 690 L680 730 L680 870 L600 910 L600 1030 L560 1085 L520 1135 L520 1270 L520 1360"/>
+  <path class="air" d="M400 205 Q400 160 400 275"/>
+  <path class="air" d="M400 330 Q400 285 400 375"/>
+  <path class="air" d="M520 1245 Q520 1180 520 1290"/>
+
+  <rect class="safe" x="360" y="145" width="80" height="38"/><text x="449" y="170" class="cp">CP-D01</text>
+  <rect class="demo" x="370" y="188" width="60" height="52"/><text x="446" y="218" class="label">D01 蹦床</text>
+  <line class="gate" x1="365" y1="262" x2="435" y2="262"/>
+
+  <rect class="safe" x="350" y="288" width="100" height="34"/><text x="459" y="311" class="cp">CP-D02</text>
+  <circle class="demo" cx="400" cy="350" r="34"/><text x="446" y="355" class="label">D02 接球斗</text>
+  <line class="gate" x1="365" y1="386" x2="435" y2="386"/>
+
+  <rect class="safe" x="350" y="405" width="100" height="34"/><text x="459" y="428" class="cp">CP-D03</text>
+  <rect class="demo" x="355" y="445" width="90" height="34"/><text x="456" y="469" class="label">D03 喷气</text>
+  <line class="gate" x1="365" y1="486" x2="435" y2="486"/>
+
+  <rect class="safe" x="350" y="497" width="100" height="32"/><text x="459" y="519" class="cp">CP-D04</text>
+  <rect class="demo" x="380" y="532" width="40" height="62"/><text x="446" y="568" class="label">D04 输送带</text>
+  <line class="gate" x1="365" y1="600" x2="435" y2="600"/>
+
+  <rect class="safe" x="350" y="615" width="100" height="32"/><text x="459" y="637" class="cp">CP-D05</text>
+  <path class="demo" d="M390 650 Q390 690 430 700 Q455 705 480 680 L510 680 L510 710 L475 710 Q445 735 405 718 Q370 700 370 650Z"/>
+  <text x="520" y="693" class="label">D05 开放过山车</text>
+  <text x="520" y="716" class="small">Y5.2 → 3.4 · R4倾斜90°弯 → Y4.2</text>
+  <line class="gate" x1="520" y1="672" x2="520" y2="722"/>
+
+  <rect class="safe" x="560" y="705" width="105" height="34"/><text x="675" y="728" class="cp">CP-D06</text>
+  <circle class="demo" cx="680" cy="770" r="48"/><circle cx="680" cy="770" r="9" fill="#f7f8f3" stroke="#317a73" stroke-width="2"/>
+  <text x="738" y="775" class="label">D06 漏斗真孔</text>
+  <line class="gate" x1="645" y1="830" x2="715" y2="830"/>
+
+  <rect class="safe" x="635" y="848" width="90" height="32"/><text x="735" y="870" class="cp">CP-D07</text>
+  <rect class="demo" x="647" y="887" width="66" height="66" transform="rotate(-7 680 920)"/><text x="725" y="925" class="label">D07 双轴台</text>
+  <line class="gate" x1="620" y1="895" x2="620" y2="950"/>
+
+  <rect class="safe" x="555" y="955" width="90" height="32"/><text x="655" y="977" class="cp">CP-D08</text>
+  <g class="demo"><rect x="586" y="994" width="28" height="25"/><rect x="586" y="1023" width="28" height="25"/><rect x="586" y="1052" width="28" height="25"/><rect x="586" y="1081" width="28" height="25"/><rect x="586" y="1110" width="28" height="25"/><rect x="586" y="1139" width="28" height="25"/></g>
+  <text x="625" y="1065" class="label">D08 六板坍塌桥</text><line class="gate" x1="565" y1="1170" x2="635" y2="1170"/>
+
+  <rect class="safe" x="555" y="1182" width="90" height="32"/><text x="655" y="1204" class="cp">CP-C01</text>
+  <rect class="combo" x="570" y="1220" width="60" height="34"/><rect class="combo" x="550" y="1260" width="70" height="58" transform="rotate(-7 585 1289)"/>
+  <text x="640" y="1250" class="label">C01 喷气 → 双轴台</text><text x="640" y="1274" class="small">作用区后0.4m接台</text><line class="gate" x1="540" y1="1295" x2="540" y2="1338"/>
+
+  <rect class="safe" x="475" y="1320" width="90" height="32"/><text x="575" y="1342" class="cp">CP-C02</text>
+  <g class="combo"><rect x="507" y="1358" width="26" height="18"/><rect x="507" y="1379" width="26" height="18"/><rect x="507" y="1400" width="26" height="18"/></g>
+  <text x="575" y="1370" class="label">C02 坍塌 → 蹦床 → 接球斗</text><text x="575" y="1394" class="small">真实落差与4.5m空气接驳</text>
+
+  <text x="900" y="180" class="title" style="font-size:27px">施工口径</text>
+  <text x="900" y="225" class="label">统一坐标</text><text x="900" y="252" class="small">Y-up；局部-Z前进，+X右侧；单位米</text>
+  <text x="900" y="300" class="label">路线与重生</text><text x="900" y="327" class="small">单路线 · 23个有序step</text><text x="900" y="350" class="small">所有CP在固定岸；动件/空中/孔口不重生</text>
+  <text x="900" y="400" class="label">模型分包</text><text x="900" y="427" class="small">advanced-obstacle-library.glb：八机关分件</text><text x="900" y="450" class="small">advanced-trial-track.glb：岸、接驳、支撑</text>
+  <text x="900" y="500" class="label">真实接触边界</text><text x="900" y="527" class="small">喷流/标记无碰撞；漏斗孔和坍塌下方开放</text><text x="900" y="550" class="small">过山车无平托；接球斗无封口凸包</text>
+  <text x="900" y="600" class="label">高度层</text><text x="900" y="627" class="small">基础岸3.4m · 高岸5.2m · 漏斗落台1.4m</text><text x="900" y="650" class="small">C02弹床3.1m · 接球斗底2.8m</text>
+  <text x="900" y="700" class="label">设计长度</text><text x="900" y="727" class="small">中心线折线约142.48m，仅供HUD和施工核对</text><text x="900" y="750" class="small">不作为真实曲面里程或奖牌阈值</text>
+  <text x="900" y="800" class="label">验证状态</text><text x="900" y="827" class="small">正式TS、资源、84项测试与构建门禁通过</text><text x="900" y="850" class="small">整场连续物理通关与产品验收尚未取得</text>
+  <rect class="dim" x="890" y="900" width="420" height="190"/>
+  <text x="915" y="940" class="label">失败应保持可定位</text>
+  <text x="915" y="976" class="small">独立区：确认单项接触、作用、重装</text>
+  <text x="915" y="1005" class="small">C01：确认喷流截止与双轴负载衔接</text>
+  <text x="915" y="1034" class="small">C02：确认坍塌、弹道、接斗连续状态</text>
+  <text x="915" y="1063" class="small">不用传送、吸附、暗推或隐藏托板修通路</text>
+  <text x="900" y="1370" class="sub">精确坐标、扫掠、作用区与参数见</text>
+  <text x="900" y="1400" class="label">advanced-trial-construction.json</text>
+</svg>

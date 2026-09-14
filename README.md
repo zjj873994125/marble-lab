@@ -25,7 +25,7 @@ npm run preview
 
 - Vue 主界面、关卡入口、本地纪录页、操作说明。
 - 首页左侧合并开始／继续与选关：继续会新开上次实际开始的关卡，旧关卡页链接兼容跳转；进展保存在当前浏览器，见 [首页入口说明](docs/integration/home-level-entry.md)。
-- 障碍物图鉴：13类障碍、仅名字与模型的三列卡片、分类搜索、点击放大的动态预览；新增五机关复用共享模型库，本轮尚未做本地验证，见 [图鉴说明](docs/integration/obstacle-atlas.md)。
+- 障碍物图鉴：21类障碍、仅名字与模型的三列卡片、分类搜索、点击放大的动态预览；旧五机关与高级八机关分别复用各自共享库，见 [图鉴说明](docs/integration/obstacle-atlas.md)。
 - Element Plus 设置抽屉、画质切换、水波速度（0–10倍，自动保存）、音效音量、控制灵敏度、减少动态效果、纯净模式和默认关闭的性能信息。性能与就绪/暂停同行，约750ms汇总，见 [性能交付](docs/integration/performance-overlay.md)。
 - 皮肤商城 `/#/skins`：七套赛道与九款小球，分类卡片直接装备保存；赛道皮肤已移出设置。三关与动态图鉴读取装备，球与赛道独立，默认可恢复原材质；本轮未经运行验收，见 [商城交付](docs/integration/skin-shop.md)。
 - 主题水色覆盖工业黑海、黑金金黄及其余配色，非classic复用水专用中性反射、classic恢复原环境，水纹速度/相位保持，见 [水色交付](docs/integration/water-themes.md)。
@@ -33,6 +33,7 @@ npm run preview
 - 第二关“水上冲关”已接入本地选关、三圆弧锤、十字旋转台、四升降板及惯性坡；旧standard已真实通关，R8版challenge已接入；当前已接入serpentine连续回头弯与0.5米细梁，最新几何未做本轮验证，旧证据不作为新几何结果。
 - 第三关“机关试炼”已注册03入口，使用伸缩推墙、定时翻板、压重跷跷板、轴向滚筒桥和摆动吊桥。真实刚体行为代码与模型已接入，当前intense-v2独立成绩桶、保留standard/challenge/intense历史成绩、暂无奖牌阈值；未运行本轮测试、构建或试玩，不代表物理与可通性验收通过，见 [第三关交付](docs/integration/level-03-delivery.md)。
 - 独立挑战“顶级难度关卡”与第四关“三路分流”已注册：共用旧机关多实例、定向 gate、四个可重生 CP 和独立 `standard` 成绩桶。三路关由 A/B/C 入口 CP 提交路线，每局只需完成所选支路，成绩保留路线字段。两条静态轨道 GLB 已接入，见 [第一阶段技术验证](docs/integration/stage-01-validation.md)。
+- “高阶机关试验场”以“试验”编号注册，收录蹦床、开放过山车弯轨、喷气、接球斗、反转输送带、回旋漏斗、双轴天平台和坍塌桥。13 实例共用一份高级机关 GLB，10 CP/13 gate/23 步单路线独立存储，见 [第二阶段技术验证](docs/integration/stage-02-validation.md)。
 - WASD / 方向键移动，空格刹车，R 重开，Esc 暂停或继续。
 - 掉落从最近检查点重生，计时继续；切换标签页或失去窗口焦点自动暂停。
 - 完赛结算、目标奖牌、每关每种玩法最快 20 次成绩；新版与旧版分开比较，旧纪录和设置保留。
@@ -65,14 +66,17 @@ npm run preview
 - `src/game/levels.ts`：本地关卡目录，`src/levels/water-rush.ts` 为第二关正式配置。第二关当前证据与未完成项见 [技术验证](docs/integration/level-02-validation.md)。
 - `src/levels/mechanism-trial.ts`：第三关正式配置；`src/game/library-types.ts`、`library-data.ts`、`library-mechanisms.ts` 定义共享机关配置、姿态和物理，`obstacle-library.ts`、`library-visuals.ts` 管理分件模型取用与运动。
 - `src/levels/top-difficulty.ts`、`src/levels/three-route.ts`：两条长关正式配置；`mechanism-groups.ts` 统一旧机关多实例坐标，`course-progress.ts` 管理有向 gate、分支、重生和路线进度。
+- `src/levels/advanced-trial.ts`：高阶试验场配置；`advanced-types.ts`、`advanced-motion.ts`、`advanced-mechanisms.ts`和 `advanced-library.ts` 管理八机关类型、动力、物理实体和共享资源。
 
 ### 轨道外观资源
 
-关卡配置与运行时代码已分离。当前已注册本地五项，场景布局通过配置传给运行时。精细轨道 GLB 仍是整关模型，布局变化不会自动更新外观；可将配置的 `visuals` 设为 `null`，用基础几何体验证碰撞。五机关独立复用 `obstacle-library.glb`，模型仅供显示，碰撞由明确代理创建。`art/course_track_assets.py` 从 LEVEL 交付的施工 JSON 生成新长关静态资源，拒绝覆盖已有源文件。
+关卡配置与运行时代码已分离。当前已注册本地六项，场景布局通过配置传给运行时。精细轨道 GLB 仍是整关模型，布局变化不会自动更新外观；可将配置的 `visuals` 设为 `null`，用基础几何体验证碰撞。五机关独立复用 `obstacle-library.glb`，高级八机关复用 `advanced-obstacle-library.glb`，模型仅供显示，碰撞由明确代理创建。
 
 当前静态 `track-round-03.glb`：30,615 三角面 / 6 材质 / 573,320 字节；继续使用原 `platform-refined.glb`。玩具锤采用 `hammer-head-toy-round-03.glb` 与 `hammer-handle-toy-round-03.glb`，与 [.9,.9,1.36] 的 Z 向平端圆柱主体匹配。完整资源统计、原点与哈希见 [ART-03 交付](docs/art/round-03-delivery.md)。
 
 `top-difficulty-track.glb` 为 268,508 三角面 / 5 材质 / 5,033,820 字节；`three-route-track.glb` 为 143,176 三角面 / 5 材质 / 2,713,168 字节。两者均为世界原点、米制 Y-up、唯一 `TrackStatic` 根和自包含 GLB，动态机关使用共享库或既有单件资源。
+
+`advanced-trial-track.glb` 为 35,460 三角面 / 6 材质 / 663,112 字节；`advanced-obstacle-library.glb` 为 84,968 三角面 / 8 材质 / 1,514,564 字节。后者恰好包含 8 个 identity 根，manifest 的 `runtimeSupported` 只表示资源根/语义分件已接入。
 
 模型采用米制、glTF Y-up。旧 .blend、旧 GLB、旧生成器及问题证据都保留；不要重跑 `art/build_track.py` 恢复旧布局。用户最新要求直接修改当前模型文件和同名 GLB，不再另建版本或备份；仍先核对用户手动编辑，按当前协作协议操作。
 
