@@ -30,7 +30,7 @@ async function load() {
       performanceEnabled: () => props.performanceEnabled===true,
       performance: sample => { if(!disposed&&props.performanceEnabled)emit('performance',sample) },
       tick: (time, falls, checkpoint, progress) => { if (disposed) return; state.elapsed = time; state.falls = falls; state.checkpoint = checkpoint; state.progress = progress },
-      finish: () => { if (!disposed) finishRun() },
+      finish: route => { if (!disposed) finishRun(route) },
       pause: () => { if (state.settingsOpen || state.helpOpen) return; if (state.phase === 'playing') state.phase = 'paused'; else if (state.phase === 'paused') state.phase = 'playing' },
       restart: () => { if (!state.settingsOpen && state.phase !== 'menu') startRun() },
     }, level, controller.signal)

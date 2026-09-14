@@ -1,16 +1,17 @@
 import * as pc from 'playcanvas'
 import type { Phase, Settings } from '../state'
 import { attachTrackVisuals } from './track-visuals'
-import { attachHammerVisuals, createHammerCapsuleGeometry, createHammerCylinderGeometry } from './hammer-visuals'
+import { createHammerCapsuleGeometry, createHammerCylinderGeometry } from './hammer-visuals'
 import { createWaterMaterial } from './water-material'
 import { createSteelMaterial } from './steel-material'
-import { createModelAssets, attachMovingVisual } from './model-assets'
-import { arcHammerPose, liftPosition, turntablePose } from './mechanism-motion'
+import { createModelAssets } from './model-assets'
 import { resolveInput, type GameInput } from './input'
 import { createLibraryMechanisms } from './library-mechanisms'
 import { createThemeMaterials } from './theme-materials'
 import { primitiveThemeRoles, type ThemeRole } from './track-themes'
 import { createPerformanceMonitor, type PerformanceSample } from './performance'
+import { createLegacyMechanisms } from './legacy-mechanisms'
+import { createCourseProgress } from './course-progress'
 import type { LevelConfig, Position, PrimitiveConfig, RingConfig } from './level-types'
 
 interface Hooks {
@@ -19,7 +20,7 @@ interface Hooks {
   performanceEnabled?: () => boolean
   performance?: (sample:PerformanceSample|null) => void
   tick: (time: number, falls: number, checkpoint: number, progress: number) => void
-  finish: () => void; pause: () => void; restart: () => void
+  finish: (route?:string) => void; pause: () => void; restart: () => void
 }
 export interface MarbleGame { start: () => void; setPhase: (phase: Phase) => void; applySettings: () => void; destroy: () => void }
 let physics: Promise<unknown> | undefined
@@ -105,19 +106,10 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
   // 关卡配置只提供数据；实体、碰撞体和生命周期由运行时统一管理。
   level.staticObjects.forEach(config => addObject(config))
   const checkpoints = level.checkpoints.map(point => new pc.Vec3(...point.position))
-  const checkpointRings = level.checkpoints.map((point, i) => addRing(`Checkpoint ${i+1}`, point.ring, blue))
+  const courseCheckpointRings=new Map(level.course?.checkpoints.map(point=>[point.id,addRing(`Checkpoint ${point.id}`,point.ring,blue)])??[])
+  const checkpointRings = level.course?[...courseCheckpointRings.values()]:level.checkpoints.map((point, i) => addRing(`Checkpoint ${i+1}`, point.ring, blue))
   addRing('Start ring', level.start.ring, orange)
   addRing('Finish ring', level.finish.ring, orange)
-  const pendulumConfig = level.pendulum, platformConfig = level.platform
-  const pendulum = pendulumConfig ? addObject(pendulumConfig.ball, 'kinematic','hammer') : undefined
-  const rod = pendulumConfig ? addObject(pendulumConfig.rod,undefined,null) : undefined
-  const hammers = (level.hammers ?? []).map(config => ({ config, head: addObject(config.ball, 'kinematic','hammer'), rod: addObject(config.rod,undefined,null) }))
-  const lifts = (level.lifts ?? []).map(config => ({ config, entity: addObject(config.body, 'kinematic','platform') }))
-  const turntable = level.turntable ? { config: level.turntable, root: new pc.Entity('Turntable visuals'), parts: level.turntable.parts.map(part => addObject(part, 'kinematic')) } : undefined
-  if (turntable) app.root.addChild(turntable.root)
-  const platform = platformConfig ? addObject(platformConfig.body, 'kinematic','platform') : undefined
-  const platformStripe = platformConfig ? addObject(platformConfig.stripe,undefined,null) : undefined
-  if (platform) replaced.push(platform.render!)
   const ball = primitive('Player marble','sphere',level.start.previewPosition,[.85,.85,.85],steel.material,'dynamic')
   const ballMesh = pc.Mesh.fromGeometry(app.graphicsDevice, new pc.SphereGeometry({ radius: .5, latitudeBands: 32, longitudeBands: 48, calculateTangents: true }))
   meshes.push(ballMesh)
@@ -127,6 +119,9 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
   ammoBody.setCcdMotionThreshold?.(.15); ammoBody.setCcdSweptSphereRadius?.(.3)
   const modelAssets = createModelAssets(app)
   const performanceMonitor=createPerformanceMonitor(app,sample=>hooks.performance?.(sample),import.meta.env.DEV)
+  const legacyMechanisms=createLegacyMechanisms(app,level,addObject,modelAssets.load,themes.applyEntity)
+  const platform=legacyMechanisms.legacyPlatform
+  if(platform)replaced.push(platform.render!)
   let libraryMechanisms: ReturnType<typeof createLibraryMechanisms>
   try { libraryMechanisms = createLibraryMechanisms(app, level.mechanisms ?? [], addObject, modelAssets.load,themes.applyEntity) }
   catch (error) { performanceMonitor.destroy(); themes.destroy(); modelAssets.destroy(); water?.destroy(); steel.destroy(); app.destroy(); materials.forEach(m=>m.destroy()); meshes.forEach(m=>m.destroy()); throw error }
@@ -136,10 +131,7 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
   if (signal?.aborted) cancelLoading()
   const visualDisposers = await Promise.all([
     attachTrackVisuals(app, platform, level.visuals, replaced, modelAssets.load,themes.applyEntity),
-    ...(pendulum && rod ? [attachHammerVisuals(app, pendulum, rod, pendulumConfig!.visuals, modelAssets.load,themes.applyEntity)] : []),
-    ...hammers.map(hammer => attachHammerVisuals(app, hammer.head, hammer.rod, hammer.config.visuals, modelAssets.load,themes.applyEntity)),
-    ...lifts.map(lift => attachMovingVisual(modelAssets.load, lift.config.visual, lift.entity, [lift.entity.render!],themes.applyEntity)),
-    ...(turntable ? [attachMovingVisual(modelAssets.load, turntable.config.visual, turntable.root, turntable.parts.map(part => part.render!),themes.applyEntity)] : []),
+    ...await legacyMechanisms.ready,
   ])
   await libraryMechanisms.ready
   signal?.removeEventListener('abort', cancelLoading)
@@ -161,39 +153,26 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
   const keys = new Set<string>()
   const pos = new pc.Vec3(), cameraTarget = new pc.Vec3(), cameraPosition = new pc.Vec3()
   const initial = new pc.Vec3(...level.start.position)
-  function updateMechanisms() {
-    if (pendulumConfig && pendulum && rod) {
-      const px=Math.sin(time*pendulumConfig.angularSpeed)*pendulumConfig.amplitude
-      pendulum.setPosition(pendulumConfig.ball.position[0],pendulumConfig.ball.position[1]+Math.abs(px)*pendulumConfig.lift,pendulumConfig.ball.position[2]+px)
-      const a = new pc.Vec3(...pendulumConfig.anchor), b=pendulum.getPosition()
-      rod.setPosition(new pc.Vec3().lerp(a,b,.5)); rod.setLocalScale(pendulumConfig.rodWidth,a.distance(b),pendulumConfig.rodWidth)
-      const direction = (level.rulesVersion ?? 'classic') !== 'classic' ? new pc.Vec3().sub2(a,b).normalize() : new pc.Vec3().sub2(b,a).normalize(); const rotation = new pc.Quat().setFromDirections(pc.Vec3.UP,direction); rod.setRotation(rotation)
-      if ((level.rulesVersion ?? 'classic') !== 'classic') pendulum.setRotation(rotation)
+  const course=level.course?createCourseProgress(level.course):undefined
+  let coursePrevious:Position=[...level.start.position]
+  let clearPlaytest=()=>{}
+  if(import.meta.env.DEV){
+    const playtestWindow=window as typeof window&{__marbleLabPlaytest?:()=>unknown}
+    const playtestSnapshot=()=>{
+      const movers:{name:string;position:number[];rotation:number[]}[]=[]
+      const visit=(entity:pc.Entity)=>{if(entity.rigidbody?.type!=='static'&&entity.rigidbody)movers.push({name:entity.name,position:entity.getPosition().toArray(),rotation:entity.getEulerAngles().toArray()});entity.children.forEach(child=>visit(child as pc.Entity))}
+      visit(app.root)
+      return {position:ball.getPosition().toArray(),velocity:rigid.linearVelocity.toArray(),elapsed,falls,checkpoint,route:course?.route(),complete:course?.complete(),routes:level.course?.routes,phase:hooks.phase(),movers}
     }
-      hammers.forEach(({ config, head, rod }) => {
-        const pose = arcHammerPose(config, time)
-        head.setPosition(...pose.head); head.setEulerAngles(...pose.rotation)
-        rod.setPosition(...pose.rod); rod.setEulerAngles(...pose.rotation); rod.setLocalScale(config.rodWidth, config.rodLength, config.rodWidth)
-      })
-      lifts.forEach(({ config, entity }) => entity.setPosition(...liftPosition(config, time)))
-      if (turntable) {
-        const pose = turntablePose(turntable.config, time)
-        turntable.root.setPosition(...turntable.config.position); turntable.root.setEulerAngles(...pose.rotation)
-        turntable.parts.forEach((part, index) => { part.setPosition(...pose.parts[index]!); part.setEulerAngles(...pose.rotation) })
-      }
-    if (platformConfig && platform && platformStripe) {
-      const offset = Math.sin(time*platformConfig.angularSpeed)*platformConfig.amplitude
-      const xPlatform = platformConfig.axis === 'x' ? (platformConfig.centerX ?? platformConfig.body.position[0]) + offset : platformConfig.body.position[0]
-      const zPlatform = platformConfig.axis === 'x' ? platformConfig.centerZ : platformConfig.centerZ + offset
-      platform.setPosition(xPlatform,platformConfig.body.position[1],zPlatform)
-      platformStripe.setPosition(platformConfig.axis === 'x' ? xPlatform : platformConfig.stripe.position[0],platformConfig.stripeY,zPlatform)
-    }
+    playtestWindow.__marbleLabPlaytest=playtestSnapshot
+    clearPlaytest=()=>{if(playtestWindow.__marbleLabPlaytest===playtestSnapshot)delete playtestWindow.__marbleLabPlaytest}
   }
+  function updateMechanisms() { legacyMechanisms.update(time) }
   if ((level.rulesVersion ?? 'classic') !== 'classic') updateMechanisms()
-  function respawn() { rigid.teleport(checkpoint ? checkpoints[checkpoint-1]! : initial, pc.Vec3.ZERO); rigid.linearVelocity=pc.Vec3.ZERO; rigid.angularVelocity=pc.Vec3.ZERO }
+  function respawn() { const coursePosition=course?.respawn(),target=coursePosition?new pc.Vec3(...coursePosition):checkpoint ? checkpoints[checkpoint-1]! : initial;rigid.teleport(target, pc.Vec3.ZERO);coursePrevious=target.toArray() as Position; rigid.linearVelocity=pc.Vec3.ZERO; rigid.angularVelocity=pc.Vec3.ZERO }
   function setPhase(phase: Phase) { keys.clear(); water?.resetClock(); app.timeScale = phase==='playing' ? 1 : 0; if (phase==='menu') respawn() }
   function start() {
-    elapsed=0; falls=0; checkpoint=0; time=0; keys.clear()
+    elapsed=0; falls=0; checkpoint=0; time=0; keys.clear();course?.reset()
     water?.resetClock()
     libraryMechanisms.reset()
     if ((level.rulesVersion ?? 'classic') !== 'classic') updateMechanisms()
@@ -239,14 +218,22 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
       if(input.brake) { const brake=Math.exp(-7*dt); rigid.linearVelocity=new pc.Vec3(v.x*brake,v.y,v.z*brake) }
       pos.copy(ball.getPosition())
       if(pos.y<level.fallY) { falls++; tone(140,.18); respawn(); pos.copy(ball.getPosition()) }
-      const next=checkpoints[checkpoint]
-      if(next && Math.hypot(pos.x-next.x,pos.z-next.z)<level.checkpointTrigger.radius && Math.abs(pos.y-next.y)<level.checkpointTrigger.heightTolerance) {
-        checkpointRings[checkpoint]!.render!.meshInstances.forEach(m=>m.material=orange); checkpoint++; tone(650+checkpoint*140,.18)
+      let progress:number
+      if(course) {
+        const current:Position=[pos.x,pos.y,pos.z],reached=course.advance(coursePrevious,current);coursePrevious=current
+        if(reached?.checkpoint){courseCheckpointRings.get(reached.id)!.render!.meshInstances.forEach(m=>m.material=orange);checkpoint=course.checkpointCount();tone(650+checkpoint*140,.18)}
+        progress=course.progress(current)
+      } else {
+        const next=checkpoints[checkpoint]
+        if(next && Math.hypot(pos.x-next.x,pos.z-next.z)<level.checkpointTrigger.radius && Math.abs(pos.y-next.y)<level.checkpointTrigger.heightTolerance) {
+          checkpointRings[checkpoint]!.render!.meshInstances.forEach(m=>m.material=orange); checkpoint++; tone(650+checkpoint*140,.18)
+        }
+        const segment=level.progress[checkpoint]!
+        progress=segment.base+Math.max(0,Math.min(segment.max,((segment.axis === 'x' ? pos.x : pos.z)-(segment.origin ?? segment.originZ))*segment.direction/segment.divisor))
       }
-      const segment=level.progress[checkpoint]!
-      const progress=segment.base+Math.max(0,Math.min(segment.max,((segment.axis === 'x' ? pos.x : pos.z)-(segment.origin ?? segment.originZ))*segment.direction/segment.divisor))
       hooks.tick(elapsed,falls,checkpoint,progress)
-      if(checkpoint===checkpoints.length && Math.hypot(pos.x-level.finish.position[0],pos.z-level.finish.position[2])<level.finish.radius && Math.abs(pos.y-level.finish.position[1])<level.finish.heightTolerance) { hooks.tick(elapsed,falls,checkpoint,1); tone(1100,.35); hooks.finish(); app.timeScale=0; keys.clear() }
+      const checkpointsComplete=course?course.complete():checkpoint===checkpoints.length
+      if(checkpointsComplete && Math.hypot(pos.x-level.finish.position[0],pos.z-level.finish.position[2])<level.finish.radius && Math.abs(pos.y-level.finish.position[1])<level.finish.heightTolerance) { hooks.tick(elapsed,falls,checkpoint,1); tone(1100,.35); hooks.finish(course?.route()); app.timeScale=0; keys.clear() }
     }
     steel.update(Math.hypot(rigid.linearVelocity.x, rigid.linearVelocity.z))
     if(phase==='menu') {
@@ -259,7 +246,7 @@ export async function createGame(canvas: HTMLCanvasElement, hooks: Hooks, level:
       camera.camera!.orthoHeight=9
     }
   })
-  function destroy() { if (sceneDisposed) return; observer.disconnect(); window.removeEventListener('keydown',down); window.removeEventListener('keyup',up); window.removeEventListener('blur',blur); document.removeEventListener('visibilitychange',hidden); void audio?.close(); disposeScene() }
+  function destroy() { if (sceneDisposed) return; clearPlaytest(); observer.disconnect(); window.removeEventListener('keydown',down); window.removeEventListener('keyup',up); window.removeEventListener('blur',blur); document.removeEventListener('visibilitychange',hidden); void audio?.close(); disposeScene() }
   try { app.start() } catch(error) { destroy();throw error }
   return { start,setPhase,applySettings,destroy }
 }

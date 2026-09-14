@@ -1,8 +1,11 @@
-# 顶级难度关卡 · 可讨论设计稿
+# 顶级难度关卡 · 设计与实施
 
 2026-09-14，依据[设计任务](../product/top-difficulty-design.md)。**约387.25米、10个连续挑战段、36个机关单元、13类全部至少两次、4个边界CP。** 重点是过A马上处理C；不是把现有“机关试炼”放大后换名字。
 
-本稿只交 `top-difficulty.md`、`top-difficulty-layout.json`、`top-difficulty-top-view.svg`。JSON的 `status=design-only`；`top-difficulty`仅设计标识，是否替换现有关卡或新增入口尚未决定。没有运行配置、模型、注册、实施派单、测试、构建、试玩或Git操作。当前三关不改。
+本稿已依据[正式开发任务](../product/two-courses-implementation.md)转入实施：独立id=`top-difficulty`，目录编号“挑战”，规则`standard`，无奖牌阈值。正式白盒配置已交付；模型、目录接入及全程技术验收以对应任务的实际证据为准。原三关保留。
+
+
+实施交付：[`top-difficulty.ts`](../../src/levels/top-difficulty.ts)、[精确施工JSON](top-difficulty-construction.json)。原layout与俯视图保留设计中心线口径，施工JSON提供台面、固定结构、支撑与进度元数据；TS为运行配置。已恢复`top-difficulty-track.glb`静态引用；CODE已核对资源结构与哈希，运行装配及完整试玩仍待验证。已填有向组末gate和4CP顺序，gate不重生、不增加HUD检查点。必要测试、构建及隔离试玩由CODE统一执行，未据实完成前不宣称可通或验收通过。
 
 ## 总体路线
 

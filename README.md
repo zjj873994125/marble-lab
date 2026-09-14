@@ -32,6 +32,7 @@ npm run preview
 - 教学关卡：开放的玩具锤路段、窄桥、左右横移并完整让空的平台、两个检查点和终点。
 - 第二关“水上冲关”已接入本地选关、三圆弧锤、十字旋转台、四升降板及惯性坡；旧standard已真实通关，R8版challenge已接入；当前已接入serpentine连续回头弯与0.5米细梁，最新几何未做本轮验证，旧证据不作为新几何结果。
 - 第三关“机关试炼”已注册03入口，使用伸缩推墙、定时翻板、压重跷跷板、轴向滚筒桥和摆动吊桥。真实刚体行为代码与模型已接入，当前intense-v2独立成绩桶、保留standard/challenge/intense历史成绩、暂无奖牌阈值；未运行本轮测试、构建或试玩，不代表物理与可通性验收通过，见 [第三关交付](docs/integration/level-03-delivery.md)。
+- 独立挑战“顶级难度关卡”与第四关“三路分流”已注册：共用旧机关多实例、定向 gate、四个可重生 CP 和独立 `standard` 成绩桶。三路关由 A/B/C 入口 CP 提交路线，每局只需完成所选支路，成绩保留路线字段。两条静态轨道 GLB 已接入，见 [第一阶段技术验证](docs/integration/stage-01-validation.md)。
 - WASD / 方向键移动，空格刹车，R 重开，Esc 暂停或继续。
 - 掉落从最近检查点重生，计时继续；切换标签页或失去窗口焦点自动暂停。
 - 完赛结算、目标奖牌、每关每种玩法最快 20 次成绩；新版与旧版分开比较，旧纪录和设置保留。
@@ -63,12 +64,15 @@ npm run preview
 - `src/state.ts`：游戏状态与 `marble-lab-v3` 按关卡/规则分桶保存；v1/v2 均只读保留原文。
 - `src/game/levels.ts`：本地关卡目录，`src/levels/water-rush.ts` 为第二关正式配置。第二关当前证据与未完成项见 [技术验证](docs/integration/level-02-validation.md)。
 - `src/levels/mechanism-trial.ts`：第三关正式配置；`src/game/library-types.ts`、`library-data.ts`、`library-mechanisms.ts` 定义共享机关配置、姿态和物理，`obstacle-library.ts`、`library-visuals.ts` 管理分件模型取用与运动。
+- `src/levels/top-difficulty.ts`、`src/levels/three-route.ts`：两条长关正式配置；`mechanism-groups.ts` 统一旧机关多实例坐标，`course-progress.ts` 管理有向 gate、分支、重生和路线进度。
 
 ### 轨道外观资源
 
-关卡配置与运行时代码已分离。当前已注册本地三关，第三关尚未验收，场景布局通过配置传给运行时。精细轨道 GLB 仍是整关模型，布局变化不会自动更新外观；可将配置的 `visuals` 设为 `null`，用基础几何体验证碰撞。五机关独立复用 `obstacle-library.glb`，模型仅供显示，碰撞由明确代理创建。Blender 生成脚本尚未自动读取关卡配置。
+关卡配置与运行时代码已分离。当前已注册本地五项，场景布局通过配置传给运行时。精细轨道 GLB 仍是整关模型，布局变化不会自动更新外观；可将配置的 `visuals` 设为 `null`，用基础几何体验证碰撞。五机关独立复用 `obstacle-library.glb`，模型仅供显示，碰撞由明确代理创建。`art/course_track_assets.py` 从 LEVEL 交付的施工 JSON 生成新长关静态资源，拒绝覆盖已有源文件。
 
 当前静态 `track-round-03.glb`：30,615 三角面 / 6 材质 / 573,320 字节；继续使用原 `platform-refined.glb`。玩具锤采用 `hammer-head-toy-round-03.glb` 与 `hammer-handle-toy-round-03.glb`，与 [.9,.9,1.36] 的 Z 向平端圆柱主体匹配。完整资源统计、原点与哈希见 [ART-03 交付](docs/art/round-03-delivery.md)。
+
+`top-difficulty-track.glb` 为 268,508 三角面 / 5 材质 / 5,033,820 字节；`three-route-track.glb` 为 143,176 三角面 / 5 材质 / 2,713,168 字节。两者均为世界原点、米制 Y-up、唯一 `TrackStatic` 根和自包含 GLB，动态机关使用共享库或既有单件资源。
 
 模型采用米制、glTF Y-up。旧 .blend、旧 GLB、旧生成器及问题证据都保留；不要重跑 `art/build_track.py` 恢复旧布局。用户最新要求直接修改当前模型文件和同名 GLB，不再另建版本或备份；仍先核对用户手动编辑，按当前协作协议操作。
 

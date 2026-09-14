@@ -1,0 +1,76 @@
+{
+  "courseId": "three-route",
+  "source": "art/three-route.blend",
+  "sourceSha256": "4a0c25bde0ae926e3a67cbfea825f58f45bbf575c11d8ef113a8fec7cc464307",
+  "construction": "docs/levels/three-route-construction.json",
+  "constructionSha256": "532b19efb62efa9406c472cf8d0fad3a7af319653d106750c411a9b6a5b2d5f4",
+  "geometrySourceSha256": "1d5af8d467dac1bfe8b608be28203e158bcd25b787fd282a2c5fb52c50493b6c",
+  "currentConstructionMetadataSha256": "f8bf56ea90d5b28d360b02404fda0a403e38ba42fb85c43f4995403121dc9e06",
+  "formalConfigSha256": "cf49a2800e1bf698996a941a5a57f116ce79c761e415268aed01f1a4b6d9bd5d",
+  "configurationStatus": "LEVEL restored visuals.track; CODE A/B/C runtime validation pending.",
+  "units": "m",
+  "upAxis": "+Y",
+  "origin": [
+    0,
+    0,
+    0
+  ],
+  "export": {
+    "file": "three-route-track.glb",
+    "node": "TrackStatic",
+    "sha256": "f472fdb2e5659594c7b4bb69ae796c2551d8fa33d377722bc1943878d994cb3d",
+    "bytes": 2713168,
+    "triangles": 143176,
+    "materials": 5,
+    "bounds_min": [
+      -31.079999923706055,
+      -0.40000009536743164,
+      -147.04000854492188
+    ],
+    "bounds_max": [
+      29.029998779296875,
+      11.293663024902344,
+      16.369998931884766
+    ],
+    "dimensions_xyz_m": [
+      60.10999870300293,
+      11.693663120269775,
+      163.41000747680664
+    ]
+  },
+  "counts": {
+    "staticDeckControls": 564,
+    "staticRails": 0,
+    "staticStructures": 162,
+    "supportPoints": 112,
+    "dynamicReferences": 26
+  },
+  "layerConstruction": [
+    {
+      "name": "Ivory continuous surface",
+      "moduleCount": 564,
+      "method": "overlapping rigid modules, no long Boolean chain"
+    },
+    {
+      "name": "Safety orange seam",
+      "moduleCount": 564,
+      "method": "overlapping rigid modules, no long Boolean chain"
+    },
+    {
+      "name": "Graphite underframe",
+      "moduleCount": 564,
+      "method": "overlapping rigid modules, no long Boolean chain"
+    }
+  ],
+  "supportExclusionCount": 26,
+  "overpasses": [],
+  "dynamicAssetsExcludedFromTrackGlb": [
+    "hammer-handle-toy-round-03.glb",
+    "hammer-head-toy-round-03.glb",
+    "obstacle-library.glb",
+    "platform-refined.glb",
+    "water-rush-lift.glb",
+    "water-rush-turntable.glb"
+  ],
+  "status": "Model/export complete; CODE tests, build and isolated playtest pending."
+}

@@ -1,9 +1,9 @@
 {
   "schema": "top-difficulty-design/1",
-  "status": "design-only",
+  "status": "implementation-in-progress-unverified",
   "title": "顶级难度关卡",
   "designId": "top-difficulty",
-  "registeredLevelId": null,
+  "registeredLevelId": "top-difficulty",
   "placementDecision": "Not decided: replacing or adding a runtime level requires later user authorization.",
   "units": "metres",
   "coordinateSystem": "+Y up; headingDegreesXZ0=+X,90=+Z; library forward-Z transformed by yaw",
@@ -8807,5 +8807,13 @@
     "Ramps are46/48degree short energy barriers following continuous serpentines; pending actual speed/contact verification, not inherited50degree evidence.",
     "Only planned upper/lower crossing is recorded in designedGradeSeparation; drawing is not an automatic nonintersection certificate.",
     "B04/B08 preceding45degree bridges widen only the boundary observation mouth to6.8m; other observation pads3.2m. Air seams are trimmed out of support within reported boundary centerline length, not extra travel."
-  ]
+  ],
+  "implementation": {
+    "authorization": "docs/product/two-courses-implementation.md",
+    "config": "src/levels/top-difficulty.ts",
+    "construction": "docs/levels/top-difficulty-construction.json",
+    "geometryRole": "design-centerline-reference",
+    "validation": "CODE tests, build and isolated full-route playtest pending evidence",
+    "medals": null
+  }
 }

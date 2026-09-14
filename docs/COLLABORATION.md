@@ -19,7 +19,7 @@
 
 数据入口为 `src/levels/initial-gravity.ts`，类型定义为 `src/game/level-types.ts`。使用普通 TypeScript 对象、数组和数值，允许简单坐标算术；不导入 Vue 或 PlayCanvas，不创建实体，不写回调、存储或资源请求。类型导入不产生运行时代码。
 
-运行时和 HUD 读取同一份配置。当前已注册“教学关卡”“水上冲关”和“机关试炼”，目录由代码维护于 `src/game/levels.ts`；单独增加配置文件不会自动注册。第一关 `rulesVersion` 为 classic/open-hammer/flat-hammer（省略为classic），第二关区分standard/challenge/serpentine，第三关mechanism-trial当前为intense-v2、保留standard/challenge/intense历史桶、暂无奖牌阈值。第三关已开发，尚未测试、构建或试玩。`marble-lab-v3` 按关卡和规则分桶，v1/v2原文只读保留，旧成绩不参与新难度最佳。后续改变真实规则仍需先确认版本归属，不能清空记录。
+运行时和 HUD 读取同一份配置。当前已注册“教学关卡”“水上冲关”“机关试炼”“顶级难度关卡”和“三路分流”，目录由代码维护于 `src/game/levels.ts`；单独增加配置文件不会自动注册。两条新关首版均为 `standard`，不套用旧奖牌阈值。`marble-lab-v3` 按关卡和规则分桶，v1/v2原文只读保留，三路成绩可额外保留 `route`。后续改变真实规则仍需先确认版本归属，不能清空记录。
 
 首页左侧合并开始/继续与选关，旧 `/#/levels` 跳回首页并打开选关。v3的lastStartedLevelId/hasPlayedBeyondFirst只在有效startRun时记入，旧成绩可用于迁移，预览选择不算游玩。继续表示新开上次实际开始的关卡，显式选关优先，不伪造跨刷新局内续玩；详见 [首页入口说明](integration/home-level-entry.md)。
 
@@ -34,6 +34,8 @@
 - `pendulum`：第一关保留一个沿 Z 方向运动的摆锤，`ball` 为当前玩具锤的 Z 向平端圆柱运动学代理（旧版球/胶囊成绩单独归档），`rod` 为独立锤柄，`anchor` 为杆上端。偏移为 `sin(time * angularSpeed) * amplitude`；Y 额外增加 `abs(偏移) * lift`；杆宽为 `rodWidth`。
 - `platform`：可选的一个盒形运动学平台，`axis` 选择 x/z（省略 z）；第一关当前 x=8+3.4sin(1.25t)、z=-.35，模型和 stripe 同步。centerX 默认 body.position[0]，Y 来自 body.position，条纹 Y 来自 stripeY。角频率为弧度/秒、振幅为米；时间从开局累计，暂停不推进。
 - `mechanisms`：可选的共享库五机关实例数组，根position/yaw与具体机关参数由LEVEL填写；主体尺寸/枢轴读取共享manifest，staticColliders与frameColliders只使用明确分件代理。跷跷板为动态单铰链，其余为运动学刚体，见 [第三关接口](integration/level-03-contract.md)。图鉴预置姿态不是游戏负载响应。
+- `mechanismGroups`：旧摆锤/三锤/升降/十字台/移动平台的多实例根配置；局部 `-Z` 前进、`+X` 侧向，主体、柄、锚点、模型与碰撞统一叠加 position/yaw/phaseSeconds。
+- `course`：用 `checkpoints` 定义可见且可重生的 CP，用无圆环 `gates` 定义定向步骤，`routes[].steps` 定义合法顺序。三路关在 A/B/C ENTRY CP 锁定支路，入口前可改选；掉落保留已提交路线与 gate 历史，重开清空。进度只在已完成步骤与下一步之间的中心线上投影，避免回头弯/上下层跳到未来进度。
 - `progress`：第 n 项对应已通过 n 个检查点。公式为 `base + clamp((z - originZ) * direction / divisor, 0, max)`；`direction` 为 `-1` 或 `1`，`divisor > 0`。必须有“检查点数量 + 1”项；每项 `base + max <= 1`，完赛时设为 1。第一关默认沿Z；第二关可用axis=x/z和origin，仍不是自动测算路径长度。
 
 支持的基础材质键为 `cream`、`edge`、`orange`、`dark`、`blue`、`floorMat`、`water`、`poolEdge`。材质具体参数由代码对话维护；GLB 的 PBR 材质由建模对话维护。球体质量、重力、步长、摩擦、控制力度、刹车、速度上限和镜头仍由代码对话管理，本次没有改动。
@@ -44,6 +46,7 @@
 
 - `public/models/track-round-03.glb`（旧版资源保留）：整关静态外观，导出网格名称 `TrackStatic`；坐标包含整条轨道的世界位置，原点为 `[0, 0, 0]`，运行时直接挂到场景根节点，不再添加位置、旋转或缩放。
 - `public/models/platform-refined.glb`：移动平台外观，导出网格名称 `PlatformVisual`；原点是原平台刚体中心，局部尺寸为 `3 × 0.36 × 2.9` 米，不能把世界位置烘焙到平台模型里。
+- `public/models/top-difficulty-track.glb`、`public/models/three-route-track.glb`：两条长关静态外观，均为唯一 `TrackStatic` 根、世界原点、identity、米制 Y-up 且自包含；动态机关不烘入。
 - 当前 Blender 源文件为 `art/track-round-03.blend`、`art/hammer-toy-round-03.blend`，具体脚本以 ART-03 交付为准。旧 `art/build_track.py` 仅为历史参考。导出前应用对象变换，GLB 不包含灯光、摄像机或玩法脚本；保持自包含，纹理如有新增必须嵌入 GLB。
 - 运行时仅实例化 GLB 的 Render。轨道和护栏使用轴对齐盒形代理，半尺寸由运行时按 `size / 2` 生成；球形代理要求三个尺寸相等，半径为 `size[0] / 2`。cylinder 默认沿 Y，显式 collisionAxis:2 时显示和原生圆柱碰撞均沿局部 Z，size 为 [直径,直径,端面间总长]；当前锤头半径 .45、总长1.36。旧 capsule 语义保留用于兼容，不作为当前平端锤代理。
 - 摆锤与平台的碰撞由运行时设为 `kinematic`；配置里的装饰杆、标识和导轨不增加碰撞。显示模型的倒角、螺栓、底座、支撑件不得改变碰撞边界。
@@ -84,7 +87,7 @@ npm run build
 
 代码对话统一进行浏览器接入验证，复用 `http://127.0.0.1:5177/`，确认服务工作目录是本项目。布局或模型变更还要检查：加载、外观与碰撞对齐、开局、刹车、暂停、重开、机关运动、按序检查点、掉落重生和终点结算。需要写入测试成绩时使用隔离测试浏览器，不清空或覆盖用户当前浏览器的设置与成绩。
 
-当前三关通过独立配置加载；第二关三圆弧锤、五盒十字、四升降及旋转坡面的字段见 [第二关接入协议](integration/level-02-contract.md)，第三关五机关见 [第三关接入协议](integration/level-03-contract.md)，不是通用关卡编辑器。Vue 与运行时的 `start / setPhase / applySettings / destroy`、`tick / finish / pause / restart` 边界保留。本地选关与卸载已经实现，PlayCanvas Editor 场景导入仍未实现。
+当前五项通过独立配置加载；旧三关接口继续保留，两条长关的多实例、gate 与分支字段见 [长关编排协议](integration/course-authoring-contract.md)。这些是当前支持的配置接口，不是通用关卡编辑器。Vue 与运行时的 `start / setPhase / applySettings / destroy`、`tick / finish / pause / restart` 边界保留。本地选关与卸载已经实现，PlayCanvas Editor 场景导入仍未实现。
 
 ## 手机瞬时输入
 

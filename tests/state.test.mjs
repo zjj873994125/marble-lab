@@ -13,8 +13,8 @@ const source = readFileSync(new URL('../src/state.ts', import.meta.url), 'utf8')
   .replace("from './game/track-themes'",`from '${themeUrl}'`)
   .replace("from './game/ball-skins'",`from '${ballUrl}'`)
 let counter = 0
-async function load(saved, { version, v2, v3, waterVersion = 'standard', trialVersion } = {}) {
-  const catalog = [{config:{id:'initial-gravity',rulesVersion:version ?? 'classic'},medals:[35,55,90]},{config:{id:'water-rush',rulesVersion:waterVersion}},...(trialVersion ? [{config:{id:'mechanism-trial',rulesVersion:trialVersion}}] : [])]
+async function load(saved, { version, v2, v3, waterVersion = 'standard', trialVersion, newCourses = false } = {}) {
+  const catalog = [{config:{id:'initial-gravity',rulesVersion:version ?? 'classic'},medals:[35,55,90]},{config:{id:'water-rush',rulesVersion:waterVersion}},...(trialVersion ? [{config:{id:'mechanism-trial',rulesVersion:trialVersion}}] : []),...(newCourses ? [{config:{id:'top-difficulty',rulesVersion:'standard'}},{config:{id:'three-route',rulesVersion:'standard'}}] : [])]
   const compiled = ts.transpileModule(source.replace("from 'vue'", `from '${import.meta.resolve('vue')}'`).replace("import { levelCatalog } from './game/levels'", `const levelCatalog = ${JSON.stringify(catalog)}`), { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext } }).outputText
   const storage = new Map([['marble-lab-v1', saved], ['marble-lab-v2', v2], ['marble-lab-v3', v3]])
   globalThis.localStorage = { getItem: key => storage.get(key) ?? null, setItem: (key,value) => storage.set(key,value) }
@@ -288,4 +288,25 @@ for (const targetVersion of ['intense','intense-v2']) test(`第三关${targetVer
   assert.equal(refreshed.state.lastStartedLevelId,'mechanism-trial');assert.equal(refreshed.state.hasPlayedBeyondFirst,true)
   const olderRule=await load(v1,{v2,v3:written,trialVersion:'challenge'})
   assert.equal(olderRule.archivedGroups.value.find(group=>group.version===targetVersion).label,targetVersion==='intense'?'极限挑战':'极限挑战Ⅱ')
+})
+
+test('五关切换、新关standard分桶和三路成绩刷新后完整保留',async()=>{
+  const old={
+    'initial-gravity':{classic:[{time:30,falls:0,date:'old-1'}]},
+    'water-rush':{challenge:[{time:60,falls:1,date:'old-2'}]},
+    'mechanism-trial':{'intense-v2':[{time:90,falls:2,date:'old-3'}]},
+  }
+  const current=await load('{}',{v3:JSON.stringify({schemaVersion:3,runsByLevel:old}),trialVersion:'intense-v2',newCourses:true})
+  current.selectLevel('top-difficulty');current.state.ready=true;current.startRun();current.state.elapsed=180;current.finishRun();current.state.phase='menu'
+  current.selectLevel('three-route');current.state.ready=true;current.startRun();current.state.elapsed=150;current.finishRun('B');await nextTick()
+  const written=current.storage.get('marble-lab-v3'),saved=JSON.parse(written)
+  assert.deepEqual(saved.runsByLevel['initial-gravity'],old['initial-gravity'])
+  assert.deepEqual(saved.runsByLevel['water-rush'],old['water-rush'])
+  assert.deepEqual(saved.runsByLevel['mechanism-trial'],old['mechanism-trial'])
+  assert.equal(saved.runsByLevel['top-difficulty'].standard[0].time,180)
+  assert.equal(saved.runsByLevel['three-route'].standard[0].route,'B')
+  const refreshed=await load('{}',{v3:written,trialVersion:'intense-v2',newCourses:true})
+  assert.equal(refreshed.state.levelId,'three-route');assert.equal(refreshed.state.runs[0].route,'B')
+  for(const id of ['initial-gravity','water-rush','mechanism-trial','top-difficulty','three-route'])refreshed.selectLevel(id)
+  assert.equal(refreshed.state.levelId,'three-route')
 })

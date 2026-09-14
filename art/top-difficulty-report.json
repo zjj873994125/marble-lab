@@ -1,0 +1,142 @@
+{
+  "courseId": "top-difficulty",
+  "source": "art/top-difficulty.blend",
+  "sourceSha256": "2872517e7480b0646f029951ef66ae0821e06f8e0f692f8f271e42a2d62cd019",
+  "construction": "docs/levels/top-difficulty-construction.json",
+  "constructionSha256": "39d43ba64a002e1efe95ad23e67eb280e2037dae65aee09b73715e91e2afec9e",
+  "units": "m",
+  "upAxis": "+Y",
+  "origin": [
+    0,
+    0,
+    0
+  ],
+  "export": {
+    "file": "top-difficulty-track.glb",
+    "node": "TrackStatic",
+    "sha256": "e763368112829da380e2e3c1f6e1f534125d8e4dc05a8ab8767c9511f98d998b",
+    "bytes": 5033820,
+    "triangles": 268508,
+    "materials": 5,
+    "bounds_min": [
+      -3.6399998664855957,
+      -0.40000009536743164,
+      -34.30000305175781
+    ],
+    "bounds_max": [
+      102.01000213623047,
+      14.801654815673828,
+      21.280155181884766
+    ],
+    "dimensions_xyz_m": [
+      105.65000200271606,
+      15.20165491104126,
+      55.58015823364258
+    ]
+  },
+  "counts": {
+    "staticDeckControls": 446,
+    "staticRails": 0,
+    "staticStructures": 161,
+    "supportPoints": 67,
+    "dynamicReferences": 26
+  },
+  "layerConstruction": [
+    {
+      "name": "Ivory continuous surface",
+      "sections": [
+        {
+          "topY": 3.4,
+          "controlPolygons": 217,
+          "surfaceTriangles": 2048
+        },
+        {
+          "topY": 6.67366,
+          "controlPolygons": 196,
+          "surfaceTriangles": 1864
+        },
+        {
+          "topY": 10.18165,
+          "controlPolygons": 27,
+          "surfaceTriangles": 211
+        }
+      ]
+    },
+    {
+      "name": "Safety orange seam",
+      "sections": [
+        {
+          "topY": 3.1075,
+          "controlPolygons": 217,
+          "surfaceTriangles": 2061
+        },
+        {
+          "topY": 6.38116,
+          "controlPolygons": 196,
+          "surfaceTriangles": 1869
+        },
+        {
+          "topY": 9.88915,
+          "controlPolygons": 27,
+          "surfaceTriangles": 216
+        }
+      ]
+    },
+    {
+      "name": "Graphite underframe",
+      "sections": [
+        {
+          "topY": 3.07,
+          "controlPolygons": 217,
+          "surfaceTriangles": 2210
+        },
+        {
+          "topY": 6.34366,
+          "controlPolygons": 196,
+          "surfaceTriangles": 1952
+        },
+        {
+          "topY": 9.85165,
+          "controlPolygons": 27,
+          "surfaceTriangles": 283
+        }
+      ]
+    }
+  ],
+  "supportExclusionCount": 27,
+  "overpasses": [
+    {
+      "upper": "beam-05 and boundary B08",
+      "lower": "hammers-01",
+      "upperDeckY": 10.181654191335918,
+      "lowerGantryTopY": 8.02,
+      "protectedLowerPrism": {
+        "min": [
+          4,
+          0,
+          -3.4
+        ],
+        "max": [
+          11.9,
+          8.15,
+          3.4
+        ]
+      },
+      "supportRule": "No upper supports in protected lower prism. Span from Z>=4.2 to Z<=-4.2, soffit above9.8m; no pillar through lower lane or hammer gantry.",
+      "status": "design reservation only; geometry/visibility not validated",
+      "minimumUpperSoffitY": 9.821654191335918
+    }
+  ],
+  "dynamicAssetsExcludedFromTrackGlb": [
+    "hammer-handle-toy-round-03.glb",
+    "hammer-head-toy-round-03.glb",
+    "obstacle-library.glb",
+    "platform-refined.glb",
+    "water-rush-lift.glb",
+    "water-rush-turntable.glb"
+  ],
+  "status": "Model/export complete; CODE tests, build and isolated playtest pending.",
+  "currentConstructionMetadataSha256": "7da04b0fd0d9a5dfd6977c62d5fd4d8f140c15a57fb63cc9fb01a5d9451156b8",
+  "formalConfigSha256": "bc2d98db0a0be1cce58632e70ecaddcd9308d52a6658829f1985d5bffc5c619d",
+  "configurationStatus": "LEVEL restored visuals.track; CODE runtime validation pending."
+}

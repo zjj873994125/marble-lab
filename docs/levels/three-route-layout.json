@@ -1,9 +1,9 @@
 {
   "schema": "three-route-design/1",
-  "status": "design-only",
+  "status": "implementation-in-progress-unverified",
   "title": "第四关 · 三路分流",
   "designId": "three-route",
-  "registeredLevelId": null,
+  "registeredLevelId": "three-route",
   "currentTopology": "two opening obstacles -> one physical four-port cross selector -> choose A or B or C -> real geometric merge -> two closing obstacles -> finish",
   "scope": "Separate fourth-level design only. Preserve all top-difficulty originals and existing levels/models/themes. No runtime implementation dispatched.",
   "units": "metres",
@@ -8918,5 +8918,13 @@
   "comparison": {
     "maxVsMinReferencePathPercent": 3.422054556886067,
     "routeTimeClaim": "No calibrated difficulty/time equality. C may reward good speed control; no wide bypass or all-three traversal requirement."
+  },
+  "implementation": {
+    "authorization": "docs/product/two-courses-implementation.md",
+    "config": "src/levels/three-route.ts",
+    "construction": "docs/levels/three-route-construction.json",
+    "geometryRole": "design-centerline-reference",
+    "validation": "CODE tests, build and isolated full-route playtest pending evidence",
+    "medals": null
   }
 }

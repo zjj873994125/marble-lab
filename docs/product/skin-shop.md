@@ -48,3 +48,7 @@ ART扩现有ball-skins文档和同名九款总览，可提供本地原创球面�
 ART已完成 [九款小球视觉规格](../art/ball-skins.md)、[九款对照图](../art/ball-skins-preview.png) 和 `docs/art/ball-skins/` 下9张透明卡图、11张1024×512运行纹理。运动款包含4张baseColor、4张roughness及篮球/足球/网球3张normal；黑8为双侧正确朝向圆标，没有羽毛球或第十卡。五款金属保留既有环境和微纹，环纹钢球以UV横环材质表达，无凸起几何。
 
 赛道水色美术也已定稿：工业黑海#101316、roughness .34、reflectivity .40；黑金金水#C6A128、roughness .38、reflectivity .32。其余主题水色及所有非water角色保持。以上为可供CODE直接复制的本地原创资源，不代表游戏内效果已验；CODE继续商城、球材质、水色和性能同行的实际接入。
+
+### 最终代码交付
+
+CODE已完成商城/#/skins、七赛道从设置迁移、九小球独立装备与v3保存、金属与运动材质切换、按需纹理缓存/迟到取消及释放；9张卡图和11张运行纹理已复制到src/assets/ball-skins。没有羽毛球、付费/货币/解锁。工业黑海与黑金金水、性能同行也已收尾，见 [商城交付](../integration/skin-shop.md)、[水色交付](../integration/water-themes.md)、[性能交付](../integration/performance-overlay.md)。原球刚体/手感、纯净模式、首页布局及CI边界修复保持。保存/材质/纹理生命周期用例已写未运行，无测试/构建/浏览器/Git或部署；开发完成，运行验收未通过任何本轮实际验证。

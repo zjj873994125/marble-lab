@@ -10,7 +10,8 @@ import { state, startRun, formatTime, medal, activeLevel, retrySceneLoad } from 
 import type { PerformanceSample } from './game/performance'
 const level = computed(() => activeLevel.value.config)
 const hasWater = computed(() => level.value.staticObjects.some(object => object.material === 'water'))
-const checkpointLabel = computed(() => level.value.checkpoints.length === 2 ? '两个' : `${level.value.checkpoints.length}个`)
+const checkpointTotal=computed(()=>level.value.course?Math.max(...level.value.course.routes.map(route=>route.checkpointIds.length)):level.value.checkpoints.length)
+const checkpointLabel = computed(() => checkpointTotal.value === 2 ? '两个' : `${checkpointTotal.value}个`)
 const inGame = computed(() => state.phase !== 'menu')
 const route = useRoute()
 const inAtlas = computed(() => route.path === '/obstacles' && !inGame.value)
@@ -61,9 +62,9 @@ watch(() => state.settings.reducedMotion, value => document.documentElement.clas
       <div v-if="!cleanHud" class="game-top" :style="performanceVisible ? performancePlacement : undefined">
         <div v-if="!touchMode" class="game-summary">
           <div class="course-heading"><span class="course-number">{{ activeLevel.number }}</span><div>{{ activeLevel.title }}<small>到达橙色终点 · 经过{{ checkpointLabel }}检查点</small></div></div>
-          <div class="timer-panel"><span>本次用时</span><strong>{{ formatTime(state.elapsed) }}</strong><div>检查点 {{ state.checkpoint }} / {{ level.checkpoints.length }} <i/> 掉落 {{ state.falls }} 次</div></div>
+          <div class="timer-panel"><span>本次用时</span><strong>{{ formatTime(state.elapsed) }}</strong><div>检查点 {{ state.checkpoint }} / {{ checkpointTotal }} <i/> 掉落 {{ state.falls }} 次</div></div>
         </div>
-        <div v-else class="mobile-status"><strong>{{ formatTime(state.elapsed) }}</strong><span>{{ state.checkpoint }} / {{ level.checkpoints.length }} 检查点</span></div>
+        <div v-else class="mobile-status"><strong>{{ formatTime(state.elapsed) }}</strong><span>{{ state.checkpoint }} / {{ checkpointTotal }} 检查点</span></div>
         <div class="game-actions"><span v-if="performanceVisible" class="performance-readout" aria-label="实时渲染性能">{{ performanceText.fps }} FPS · {{ performanceText.frameMs }} ms<small> · 绘制 {{ performanceText.drawCalls }} · 三角面 {{ performanceText.triangles }}</small></span><el-button class="pause-button" :icon="VideoPause" :title="performanceVisible ? performanceDetails : undefined" @click="state.phase = 'paused'">暂停 <kbd v-if="!touchMode">Esc</kbd></el-button></div>
       </div>
       <div v-if="!cleanHud" class="progress-rail" aria-label="关卡进度"><span :style="{ width: `${state.progress * 100}%` }"/></div>

@@ -7,7 +7,7 @@ export type Quality = 'low' | 'high'
 export type CleanMode = 'auto' | 'on' | 'off'
 export type Phase = 'menu' | 'playing' | 'paused' | 'finished'
 export interface Settings { quality: Quality; volume: number; sensitivity: number; reducedMotion: boolean; waterSpeed: number; cleanMode: CleanMode; trackTheme:TrackThemeId; showPerformance:boolean; ballSkin:BallSkinId }
-export interface Run { time: number; falls: number; date: string }
+export interface Run { time: number; falls: number; date: string; route?:string }
 export const defaults: Settings = { quality: 'high', volume: 45, sensitivity: 1, reducedMotion: false, waterSpeed: 1, cleanMode: 'auto', trackTheme:'classic', showPerformance:false, ballSkin:'steel' }
 const key = 'marble-lab-v3'
 const firstLevel = levelCatalog[0]!
@@ -26,7 +26,7 @@ const hasV2 = previous.schemaVersion === 2 && isObject(previous.runsByVersion)
 const source = hasV3 ? saved : hasV2 ? previous : readSaved('marble-lab-v1')
 const s = source.settings || {}
 const originalBuckets = hasV3 ? source.runsByLevel! : { [firstLevel.config.id]: hasV2 ? source.runsByVersion! : { classic: source.runs } }
-const validRuns = (value: unknown): Run[] => Array.isArray(value) ? value.filter(r => r && typeof r.time === 'number' && r.time > 0 && Number.isFinite(r.time) && Number.isInteger(r.falls) && r.falls >= 0 && typeof r.date === 'string').sort((a,b) => a.time - b.time).slice(0, 20) : []
+const validRuns = (value: unknown): Run[] => Array.isArray(value) ? value.filter(r => r && typeof r.time === 'number' && r.time > 0 && Number.isFinite(r.time) && Number.isInteger(r.falls) && r.falls >= 0 && typeof r.date === 'string').map(r=>typeof r.route==='string'&&r.route?{...r,route:r.route}:{...r}).sort((a,b) => a.time - b.time).slice(0, 20) : []
 const number = (v: unknown, fallback: number, min: number, max: number) => typeof v === 'number' && Number.isFinite(v) ? Math.max(min, Math.min(max, v)) : fallback
 const allBuckets: Record<string, Record<string, Run[]>> = Object.fromEntries(Object.entries(originalBuckets).filter(([, value]) => isObject(value)).map(([id, versions]) => [id, Object.fromEntries(Object.entries(versions).map(([version, runs]) => [version, validRuns(runs)]))]))
 const completedLevels = levelCatalog.filter(entry => Object.values(allBuckets[entry.config.id] ?? {}).some(runs => runs.length > 0))
@@ -85,10 +85,10 @@ export function startRun() {
   if (levelIndex > 0) state.hasPlayedBeyondFirst = true
   state.elapsed = 0; state.falls = 0; state.checkpoint = 0; state.progress = 0; state.runId++; state.phase = 'playing'
 }
-export function finishRun() {
+export function finishRun(route?:string) {
   if (state.phase !== 'playing') return
   state.phase = 'finished'
-  state.runs = [...state.runs, { time: state.elapsed, falls: state.falls, date: new Date().toISOString() }].sort((a,b) => a.time - b.time).slice(0, 20)
+  state.runs = [...state.runs, { time: state.elapsed, falls: state.falls, date: new Date().toISOString(), ...(route?{route}:{}) }].sort((a,b) => a.time - b.time).slice(0, 20)
 }
 export function formatTime(seconds: number) { const centis = Math.floor(seconds * 100); return `${String(Math.floor(centis / 6000)).padStart(2, '0')}:${String(Math.floor(centis / 100) % 60).padStart(2, '0')}.${String(centis % 100).padStart(2, '0')}` }
 export function medal(time: number) { const targets = activeLevel.value.medals; return targets ? time <= targets[0] ? '金牌' : time <= targets[1] ? '银牌' : time <= targets[2] ? '铜牌' : '完赛' : '完赛' }

@@ -46,6 +46,64 @@ export interface TurntableConfig {
   visual?: string
 }
 
+export interface PendulumConfig {
+  visuals?: HammerVisualsConfig | null
+  ball: PrimitiveConfig
+  rod: PrimitiveConfig
+  anchor: Position
+  angularSpeed: number
+  amplitude: number
+  lift: number
+  rodWidth: number
+}
+
+export interface PlatformConfig {
+  axis?: 'x' | 'z'
+  centerX?: number
+  body: PrimitiveConfig
+  stripe: PrimitiveConfig
+  centerZ: number
+  angularSpeed: number
+  amplitude: number
+  stripeY: number
+  visual?: string
+}
+
+interface MechanismPlacement { id:string; position:Position; yaw?:number; phaseSeconds?:number }
+export type MechanismGroupConfig = MechanismPlacement & (
+  { kind:'pendulum'; config:PendulumConfig } |
+  { kind:'platform'; config:PlatformConfig } |
+  { kind:'turntable'; config:TurntableConfig } |
+  { kind:'hammers'; configs:ArcHammerConfig[] } |
+  { kind:'lifts'; configs:LiftConfig[] }
+)
+
+export interface CourseCheckpoint {
+  id:string
+  ring:RingConfig
+  respawn:Position
+  triggerRadius?:number
+  heightTolerance?:number
+}
+export interface CourseRoute {
+  id:string
+  checkpointIds:string[]
+  steps?:{kind:'checkpoint'|'gate';id:string}[]
+  points:Position[]
+}
+export interface CourseGate {
+  id:string
+  position:Position
+  forward?:Position
+  radius:number
+  heightTolerance?:number
+}
+export interface CourseProgressConfig {
+  routes:CourseRoute[]
+  checkpoints:CourseCheckpoint[]
+  gates?:CourseGate[]
+}
+
 export interface LevelConfig {
   id: string
   rulesVersion?: RulesVersion
@@ -57,30 +115,14 @@ export interface LevelConfig {
   checkpointTrigger: { radius: number; heightTolerance: number }
   finish: { position: Position; radius: number; heightTolerance: number; ring: RingConfig }
   fallY: number
-  pendulum?: {
-    visuals?: HammerVisualsConfig | null
-    ball: PrimitiveConfig
-    rod: PrimitiveConfig
-    anchor: Position
-    angularSpeed: number
-    amplitude: number
-    lift: number
-    rodWidth: number
-  }
+  pendulum?: PendulumConfig
   hammers?: ArcHammerConfig[]
   lifts?: LiftConfig[]
   turntable?: TurntableConfig
   mechanisms?: LibraryMechanismConfig[]
-  platform?: {
-    axis?: 'x' | 'z'
-    centerX?: number
-    body: PrimitiveConfig
-    stripe: PrimitiveConfig
-    centerZ: number
-    angularSpeed: number
-    amplitude: number
-    stripeY: number
-  }
+  mechanismGroups?: MechanismGroupConfig[]
+  course?: CourseProgressConfig
+  platform?: PlatformConfig
   // 第 n 段对应已通过 n 个检查点；沿 Z 轴估算进度，保留当前赛道的计算方式。
   progress: { axis?: 'x' | 'z'; origin?: number; originZ: number; direction: number; divisor: number; base: number; max: number }[]
 }
